@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Sistema Integrado de Decisión para Operaciones con Drones – tesis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../references.html" rel="next">
+<link href="../chapters/chapter3.html" rel="prev">
+<link href="../logos/FCFM-UNACH.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fced259a1985fd972ecb57c7cd45153f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-732fb9ccd080a018ca85ca5d15770f52.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fced259a1985fd972ecb57c7cd45153f.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-8214a2def84fb786748306236f71585f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-dedc67fb57f33d5f39d2824a25da7f7f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-8214a2def84fb786748306236f71585f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<script>
+
+window.MathJax = {
+
+  tex: {
+
+    tags: 'ams'   // Activa numeración AMS: (3.1), (3.2), …
+
+  }
+
+};
+
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter4.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sistema Integrado de Decisión para Operaciones con Drones</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logos/LOGO.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">tesis</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/AngelaOrtiz25/thesis_ortiz" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../tesis.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../tesis.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Optimización de Rutas Terrestres mediante PageRank</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sistema Integrado de Decisión para Operaciones con Drones</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/appendix_a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apéndice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sistema Integrado de Decisión para Operaciones con Drones</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div style="text-align: justify">
+<p>Este capítulo presenta un marco matemáticamente fundamentado para la toma de decisiones operativas en el despliegue de drones para transporte de ayuda humanitaria. Se desarrolla un modelo de pronóstico advectivo a corto plazo (<em>nowcasting</em>) que integra técnicas de análisis espectral, series de tiempo y teoría de decisión bajo incertidumbre. El sistema evalúa la viabilidad de operaciones aéreas mediante la cuantificación de variables meteorológicas críticas (velocidad del viento, temperatura, humedad relativa y precipitación) a lo largo de una ruta específica: Aeropuerto Internacional Ángel Albino Corzo hacia Protección Civil en Tuxtla Gutiérrez, Chiapas. La metodología propuesta garantiza la seguridad operacional mediante una política conservadora de tolerancia cero frente a violaciones de umbrales técnicos, proporcionando un protocolo reproducible para la logística humanitaria en entornos meteorológicos variables.</p>
+<p>El transporte aéreo mediante drones representa una alternativa prometedora para la distribución rápida de ayuda humanitaria en escenarios de emergencia, particularmente en regiones con topografía accidentada o infraestructura terrestre comprometida. No obstante, la operación segura de aeronaves no tripuladas está condicionada por factores ambientales que pueden comprometer tanto la estabilidad del vuelo como la integridad de los sistemas electrónicos a bordo.</p>
+<p>En el contexto específico del estado de Chiapas, caracterizado por una dinámica atmosférica compleja derivada de su configuración orográfica, resulta fundamental disponer de herramientas predictivas que permitan anticipar las condiciones meteorológicas a lo largo de la trayectoria de vuelo. Este capítulo aborda el problema mediante un enfoque integrado que combina:</p>
+<ol type="1">
+<li><p><strong>Modelación geométrica terrestre</strong>: Representación esférica de la superficie terrestre para el cálculo preciso de distancias geodésicas y direcciones de desplazamiento.</p></li>
+<li><p><strong>Análisis de transporte atmosférico</strong>: Estimación de la velocidad de advección mediante dos metodologías complementarias: correlación cruzada entre segmentos espaciales adyacentes y análisis frecuencia-espacio (<span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>) basado en la pendiente de fase espectral.</p></li>
+<li><p><strong>Pronóstico híbrido</strong>: Combinación convexa de componentes advectiva, autorregresiva y de persistencia para generar nowcasts de corto horizonte (60 minutos).</p></li>
+<li><p><strong>Cuantificación de incertidumbre</strong>: Aplicación de block bootstrap temporal para construir intervalos de confianza robustos que preservan la dependencia serial de las series meteorológicas.</p></li>
+<li><p><strong>Teoría de decisión</strong>: Formulación rigurosa del problema de viabilidad operacional como un problema de decisión multicriterio en condiciones de incertidumbre, con región factible definida por restricciones técnicas del dron.</p></li>
+</ol>
+<p>El flujo metodológico se organiza en tres etapas secuenciales: (i) estimación de la velocidad de advección dominante, (ii) generación de pronósticos espaciales para variables meteorológicas críticas, y (iii) evaluación de la viabilidad operacional mediante una función de decisión binaria. Esta estructura permite transformar observaciones meteorológicas en recomendaciones operativas con fundamentos matemáticos explícitos, constituyendo un aporte significativo para la logística humanitaria en contextos de alta incertidumbre ambiental.</p>
+<section id="contexto-operativo-aeropuerto-internacional-ángel-albino-corzo-hacia-protección-civil" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="contexto-operativo-aeropuerto-internacional-ángel-albino-corzo-hacia-protección-civil"><span class="header-section-number">3.1</span> Contexto operativo: Aeropuerto Internacional Ángel Albino Corzo hacia Protección Civil</h2>
+<p>El desarrollo del modelo matemático presentado en este capítulo responde a una aplicación concreta en el ámbito de la logística humanitaria mediante drones. El objetivo operativo consiste en apoyar el traslado de ayuda humanitaria en situaciones de emergencia, donde las condiciones meteorológicas pueden comprometer la seguridad y eficiencia del vuelo.</p>
+<section id="caso-de-estudio" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="caso-de-estudio"><span class="header-section-number">3.1.1</span> Caso de estudio</h3>
+<p>El caso de estudio corresponde a una ruta estratégica dentro del municipio de Tuxtla Gutiérrez, Chiapas, que inicia en el <strong>Aeropuerto Internacional Ángel Albino Corzo</strong> y finaliza en las instalaciones de <strong>Protección Civil</strong> del estado. Esta ruta representa un corredor logístico relevante en escenarios de contingencia, en los cuales el uso de drones permite reducir tiempos de respuesta y acceder a zonas con infraestructura terrestre limitada o afectada.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Características operativas de la ruta</strong></p>
+<ul>
+<li><strong>Longitud aproximada</strong>: 28.5 km (distancia geodésica 3D)</li>
+<li><strong>Duración estimada del vuelo</strong>: 18–22 minutos bajo condiciones meteorológicas favorables</li>
+<li><strong>Altitud media de operación</strong>: 120–150 m sobre el nivel del terreno</li>
+<li><strong>Topografía predominante</strong>: Valle Central de Chiapas con pendientes moderadas (&lt; 5%)</li>
+<li><strong>Puntos críticos</strong>: Cruce del Río Grijalva y zona urbana densa en aproximación a Protección Civil</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="discretización-espacial-de-la-trayectoria" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="discretización-espacial-de-la-trayectoria"><span class="header-section-number">3.1.2</span> Discretización espacial de la trayectoria</h3>
+<p>Para el análisis de navegación, la trayectoria completa se discretiza en <span class="math inline">\(N\)</span> segmentos espaciales consecutivos. Cada segmento se representa mediante su centroide longitudinal <span class="math inline">\(s_i\)</span>, lo que permite transformar el problema continuo de transporte atmosférico en un esquema discreto espacio–temporal adecuado para estimación y pronóstico numérico.</p>
+<p>Matemáticamente, sea <span class="math inline">\(\mathcal{R} = \{P_0, P_1, \dots, P_M\}\)</span> la secuencia de puntos geográficos que definen la ruta, donde <span class="math inline">\(P_k = (\varphi_k, \lambda_k)\)</span> representa las coordenadas geodésicas del punto <span class="math inline">\(k\)</span>-ésimo. La partición en segmentos se construye mediante:</p>
+<p><span class="math display">\[
+s_i = \frac{1}{|\mathcal{I}_i|} \sum_{k \in \mathcal{I}_i} d(P_0, P_k), \quad i = 1, \dots, N,
+\]</span></p>
+<p>donde <span class="math inline">\(d(P_0, P_k)\)</span> denota la distancia geodésica acumulada desde el punto inicial <span class="math inline">\(P_0\)</span> hasta <span class="math inline">\(P_k\)</span>, y <span class="math inline">\(\mathcal{I}_i\)</span> es el conjunto de índices correspondientes al segmento <span class="math inline">\(i\)</span>.</p>
+<p>La discretización espacial cumple dos funciones fundamentales:</p>
+<ol type="1">
+<li><p><strong>Evaluación de coherencia espacial</strong>: Permite analizar la variabilidad de las variables meteorológicas a lo largo de la ruta de vuelo, identificando zonas críticas donde las condiciones podrían comprometer la operación del dron.</p></li>
+<li><p><strong>Modelación del transporte advectivo</strong>: Facilita la representación del fenómeno atmosférico como un proceso unidimensional dominante, consistente con la orientación principal del trayecto de vuelo.</p></li>
+</ol>
+</section>
+<section id="horizonte-temporal-de-análisis" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="horizonte-temporal-de-análisis"><span class="header-section-number">3.1.3</span> Horizonte temporal de análisis</h3>
+<p>El horizonte de pronóstico considerado para la toma de decisiones operativas es de <strong>60 minutos</strong> a partir del momento actual <span class="math inline">\(t_0\)</span>. Este intervalo se discretiza en pasos temporales de <span class="math inline">\(\Delta t = 5\)</span> minutos, generando un conjunto de instantes:</p>
+<p><span class="math display">\[
+\mathcal{T} = \{t_0, t_1, \dots, t_{12}\}, \quad t_k = t_0 + k\Delta t.
+\]</span></p>
+<p>Este horizonte resulta apropiado para operaciones de drones de corto alcance, ya que:</p>
+<ul>
+<li>Es consistente con la autonomía típica de aeronaves no tripuladas de carga media (20–30 minutos de vuelo efectivo más margen de seguridad).</li>
+<li>Permite anticipar cambios meteorológicos de escala sinóptica menor que afectan directamente la estabilidad del vuelo.</li>
+<li>Facilita la reprogramación operativa en caso de deterioro de las condiciones ambientales.</li>
+</ul>
+</section>
+<section id="variables-meteorológicas-críticas" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="variables-meteorológicas-críticas"><span class="header-section-number">3.1.4</span> Variables meteorológicas críticas</h3>
+<p>El modelo de decisión considera cuatro variables ambientales cuyas condiciones determinan la viabilidad operativa:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 18%">
+<col style="width: 16%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Símbolo</th>
+<th>Unidad</th>
+<th>Relevancia operativa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Velocidad del viento</td>
+<td><span class="math inline">\(V\)</span></td>
+<td><span class="math inline">\(\mathrm{m \cdot s^{-1}}\)</span></td>
+<td>Estabilidad aerodinámica y consumo energético</td>
+</tr>
+<tr class="even">
+<td>Temperatura del aire</td>
+<td><span class="math inline">\(T\)</span></td>
+<td><span class="math inline">\(^\circ\mathrm{C}\)</span></td>
+<td>Rendimiento de baterías y sistemas electrónicos</td>
+</tr>
+<tr class="odd">
+<td>Humedad relativa</td>
+<td><span class="math inline">\(H\)</span></td>
+<td>Fracción <span class="math inline">\([0,1]\)</span></td>
+<td>Riesgo de condensación en sensores y circuitos</td>
+</tr>
+<tr class="even">
+<td>Precipitación</td>
+<td><span class="math inline">\(R\)</span></td>
+<td><span class="math inline">\(\mathrm{mm \cdot h^{-1}}\)</span></td>
+<td>Seguridad estructural y visibilidad</td>
+</tr>
+</tbody>
+</table>
+<p>Estas variables se monitorean y pronostican en cada segmento espacial <span class="math inline">\(s_i\)</span> y en cada instante <span class="math inline">\(t_k\)</span> del horizonte temporal, generando un campo espacio-temporal discreto <span class="math inline">\(\mathbf{X}(s_i, t_k)\)</span> que constituye la entrada al sistema de decisión.</p>
+</section>
+<section id="integración-con-la-cadena-logística" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="integración-con-la-cadena-logística"><span class="header-section-number">3.1.5</span> Integración con la cadena logística</h3>
+<p>Esta etapa de transporte aéreo constituye el primer eslabón de la cadena logística integrada propuesta en esta tesis. Una vez completada la operación del dron y depositada la ayuda humanitaria en las instalaciones de Protección Civil, se activa la segunda etapa: la distribución terrestre optimizada mediante el algoritmo PageRank descrito en el Capítulo 3. Esta integración secuencial permite combinar la rapidez del transporte aéreo con la cobertura territorial del sistema vial estatal, maximizando la eficiencia global de la respuesta humanitaria.</p>
+</section>
+</section>
+<section id="marco-del-modelo-geométrico-terrestre" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="marco-del-modelo-geométrico-terrestre"><span class="header-section-number">3.2</span> Marco del modelo geométrico terrestre</h2>
+<section id="representación-esférica-de-la-superficie-terrestre" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="representación-esférica-de-la-superficie-terrestre"><span class="header-section-number">3.2.1</span> Representación esférica de la superficie terrestre</h3>
+<p>La implementación desarrollada se fundamenta en un modelo geométrico esférico de la Tierra, en el cual cada punto geográfico se describe mediante un par de coordenadas angulares correspondientes a la latitud y la longitud. En este contexto, un punto sobre la superficie terrestre se representa como:</p>
+<p><span class="math display">\[
+(\varphi, \lambda) \in \left[-\frac{\pi}{2}, \frac{\pi}{2}\right] \times [-\pi, \pi],
+\]</span></p>
+<p>donde <span class="math inline">\(\varphi\)</span> denota la latitud y <span class="math inline">\(\lambda\)</span> la longitud, ambas expresadas en radianes.</p>
+<p>Se adopta la hipótesis de que la Tierra puede aproximarse por una esfera de radio constante:</p>
+<p><span class="math display">\[
+R = 6,\!371,\!000 \ \text{m}.
+\]</span></p>
+<p>Esta suposición es estándar en problemas de navegación aérea de corto alcance y resulta adecuada para trayectorias del orden de decenas de kilómetros, como las consideradas en este trabajo para la operación de drones. El error introducido por esta aproximación es despreciable frente a otras fuentes de incertidumbre inherentes a los datos meteorológicos.</p>
+</section>
+<section id="distancia-geodésica-entre-puntos-geográficos" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="distancia-geodésica-entre-puntos-geográficos"><span class="header-section-number">3.2.2</span> Distancia geodésica entre puntos geográficos</h3>
+<p>Sean <span class="math inline">\(P_1 = (\varphi_1, \lambda_1)\)</span> y <span class="math inline">\(P_2 = (\varphi_2, \lambda_2)\)</span> dos puntos sobre la superficie esférica terrestre. La distancia mínima entre ambos puntos se define como la longitud del arco del círculo máximo que los une. Dicha distancia puede expresarse como:</p>
+<p><span class="math display">\[
+d = R \, \Delta\sigma,
+\]</span></p>
+<p>donde <span class="math inline">\(\Delta\sigma\)</span> representa el ángulo central subtendido por los puntos <span class="math inline">\(P_1\)</span> y <span class="math inline">\(P_2\)</span> en el centro de la esfera.</p>
+<p>Para el cálculo de este ángulo se emplea la fórmula del <strong>haverseno</strong>, la cual es particularmente estable desde el punto de vista numérico, incluso para distancias pequeñas. La función haverseno se define como:</p>
+<p><span class="math display">\[
+\operatorname{hav}(\theta) = \sin^2\left(\frac{\theta}{2}\right). \tag{4.1}
+\]</span></p>
+<p>Bajo esta definición, el ángulo central satisface la relación:</p>
+<p><span class="math display">\[
+\operatorname{hav}(\Delta\sigma) = \operatorname{hav}(\varphi_2 - \varphi_1) + \cos(\varphi_1)\cos(\varphi_2)\operatorname{hav}(\lambda_2 - \lambda_1). \tag{4.2}
+\]</span></p>
+<p>Desarrollando explícitamente esta expresión, se introduce la variable auxiliar:</p>
+<p><span class="math display">\[
+a = \sin^2\left(\frac{\varphi_2 - \varphi_1}{2}\right) + \cos(\varphi_1)\cos(\varphi_2) \sin^2\left(\frac{\lambda_2 - \lambda_1}{2}\right),
+\]</span></p>
+<p>a partir de la cual el ángulo central puede escribirse como:</p>
+<p><span class="math display">\[
+\Delta\sigma = 2 \arctan\left(\frac{\sqrt{a}}{\sqrt{1-a}}\right).
+\]</span></p>
+<p>En consecuencia, la distancia geodésica entre los puntos queda finalmente dada por:</p>
+<p><span class="math display">\[
+d = 2R \arctan\left(\frac{\sqrt{a}}{\sqrt{1-a}}\right).
+\]</span></p>
+<p>La función <code>haversine_m</code>, implementada en el lenguaje de programación Python, traduce directamente esta expresión matemática al ámbito computacional, garantizando una correspondencia exacta entre el modelo teórico y su realización numérica. Esta formulación es ampliamente utilizada en aplicaciones de navegación aérea, marítima y satelital.</p>
+</section>
+<section id="dirección-de-desplazamiento-rumbo-inicial-geodésico" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="dirección-de-desplazamiento-rumbo-inicial-geodésico"><span class="header-section-number">3.2.3</span> Dirección de desplazamiento: rumbo inicial geodésico</h3>
+<p>Además de la distancia, resulta fundamental determinar la dirección del desplazamiento entre dos puntos geográficos. El <strong>rumbo inicial</strong>, o <em>bearing</em>, se define como el ángulo formado entre la dirección del norte geográfico y la dirección del movimiento desde el punto <span class="math inline">\(P_1\)</span> hacia el punto <span class="math inline">\(P_2\)</span>, medido en sentido horario.</p>
+<p>Desde el punto de vista geométrico, este ángulo puede deducirse considerando el triángulo esférico formado por el polo norte, el punto inicial <span class="math inline">\(P_1\)</span> y el punto final <span class="math inline">\(P_2\)</span>. A partir de relaciones de trigonometría esférica, el rumbo inicial <span class="math inline">\(\theta\)</span> viene dado por:</p>
+<p><span class="math display">\[
+\theta = \arctan\left(
+\frac{
+\sin(\Delta\lambda)\cos(\varphi_2)
+}{
+\cos(\varphi_1)\sin(\varphi_2) - \sin(\varphi_1)\cos(\varphi_2)\cos(\Delta\lambda)
+}
+\right),
+\]</span></p>
+<p>donde <span class="math inline">\(\Delta\lambda = \lambda_2 - \lambda_1\)</span>.</p>
+<p>Dado que la función arco tangente devuelve valores en el intervalo <span class="math inline">\((-\pi, \pi)\)</span>, es necesario normalizar el resultado para obtener un ángulo expresado en grados dentro del rango <span class="math inline">\([0, 360)\)</span>. Esta normalización se realiza mediante la transformación:</p>
+<p><span class="math display">\[
+\theta_{\text{deg}} = \left(\theta \cdot \frac{180}{\pi} + 360\right) \bmod 360.
+\]</span></p>
+<p>La función <code>bearing_deg</code> implementa esta expresión de forma directa, proporcionando el rumbo inicial geodésico sobre una esfera.</p>
+<p>El cálculo de distancias y direcciones entre puntos geográficos se modela considerando la superficie terrestre como una esfera de radio constante. Bajo esta hipótesis, la distancia mínima entre dos puntos se obtiene como la longitud del arco de círculo máximo que los une, calculada mediante la fórmula del haverseno (Ecuación 4.1). Asimismo, el rumbo inicial se determina a partir de relaciones trigonométricas esféricas, permitiendo establecer la orientación de la trayectoria con respecto al norte geográfico. Estas magnitudes son fundamentales para proyectar correctamente las variables meteorológicas, particularmente el viento, sobre la ruta de navegación del dron.</p>
+</section>
+<section id="aplicación-a-la-discretización-de-la-ruta-de-vuelo" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="aplicación-a-la-discretización-de-la-ruta-de-vuelo"><span class="header-section-number">3.2.4</span> Aplicación a la discretización de la ruta de vuelo</h3>
+<p>En el contexto específico de la ruta Aeropuerto Internacional Ángel Albino Corzo → Protección Civil, la trayectoria se discretiza en <span class="math inline">\(N\)</span> segmentos espaciales consecutivos. Cada segmento se representa mediante su centroide longitudinal <span class="math inline">\(s_i\)</span>, calculado como la distancia geodésica acumulada desde el punto inicial:</p>
+<p><span class="math display">\[
+s_i = \sum_{k=1}^{i} d(P_{k-1}, P_k),
+\]</span></p>
+<p>donde <span class="math inline">\(d(P_{k-1}, P_k)\)</span> denota la distancia geodésica entre puntos consecutivos de la trayectoria.</p>
+<p>Esta discretización permite transformar el problema continuo de transporte atmosférico en un esquema discreto espacio-temporal adecuado para estimación y pronóstico numérico, facilitando tanto el análisis de coherencia espacial como la modelación del transporte advectivo unidimensional.</p>
+</section>
+</section>
+<section id="estimación-de-la-velocidad-de-advección-mediante-correlación-cruzada-y-análisis-f-k" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="estimación-de-la-velocidad-de-advección-mediante-correlación-cruzada-y-análisis-f-k"><span class="header-section-number">3.3</span> Estimación de la velocidad de advección mediante correlación cruzada y análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span></h2>
+<section id="introducción-al-problema-de-estimación" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="introducción-al-problema-de-estimación"><span class="header-section-number">3.3.1</span> Introducción al problema de estimación</h3>
+<p>El pronóstico de variables meteorológicas a lo largo de la ruta de vuelo del dron requiere estimar la velocidad de advección dominante, entendida como la velocidad con la que las estructuras atmosféricas se propagan en la dirección de la trayectoria. Esta magnitud constituye un parámetro fundamental para el modelo de pronóstico advectivo, ya que determina la posición espacial desde donde se extrae información para predecir el estado futuro en cada segmento.</p>
+<p>En este trabajo se proponen dos metodologías complementarias para la estimación de la velocidad de advección:</p>
+<ol type="1">
+<li><p><strong>Análisis de correlación cruzada entre segmentos adyacentes</strong>: Método basado en la identificación de retardos temporales coherentes entre señales medidas en posiciones espaciales consecutivas.</p></li>
+<li><p><strong>Análisis frecuencia-espacio (<span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>) basado en pendiente de fase</strong>: Enfoque espectral que estima la velocidad a partir de la variación espacial de la fase del campo meteorológico.</p></li>
+</ol>
+<p>Ambos métodos se aplican secuencialmente, utilizando el segundo como alternativa robusta cuando el primero no proporciona resultados estadísticamente confiables.</p>
+</section>
+<section id="estimación-mediante-correlación-cruzada-entre-segmentos-adyacentes" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="estimación-mediante-correlación-cruzada-entre-segmentos-adyacentes"><span class="header-section-number">3.3.2</span> Estimación mediante correlación cruzada entre segmentos adyacentes</h3>
+<section id="formulación-matemática" class="level4" data-number="3.3.2.1">
+<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="formulación-matemática"><span class="header-section-number">3.3.2.1</span> Formulación matemática</h4>
+<p>Sea la ruta discretizada en <span class="math inline">\(N\)</span> segmentos consecutivos, cada uno asociado a una señal temporal suavizada <span class="math inline">\(\{x_i(t)\}\)</span>, donde el subíndice <span class="math inline">\(i\)</span> indica el segmento espacial y <span class="math inline">\(t\)</span> representa el tiempo de muestreo. Para cada par de segmentos adyacentes <span class="math inline">\((i, i+1)\)</span>, se calcula la función de correlación cruzada discreta:</p>
+<p><span class="math display">\[
+\rho_{i,i+1}(k) = \operatorname{corr}\big(x_i(t), x_{i+1}(t+k)\big),
+\]</span></p>
+<p>donde <span class="math inline">\(k\)</span> es un desfase temporal entero expresado en número de pasos de muestreo. El análisis se restringe a desfases pertenecientes a un intervalo simétrico <span class="math inline">\([-K, K]\)</span>, donde <span class="math inline">\(K\)</span> corresponde a un máximo de tiempo físicamente razonable para el desplazamiento del fenómeno entre segmentos adyacentes.</p>
+<p>Para cada par <span class="math inline">\((i, i+1)\)</span>, se identifica el desfase dominante:</p>
+<p><span class="math display">\[
+k^*_{i,i+1} = \arg\max_k \, |\rho_{i,i+1}(k)|,
+\]</span></p>
+<p>junto con el valor máximo de correlación asociado:</p>
+<p><span class="math display">\[
+\rho^{\max}_{i,i+1} = \max_k \, |\rho_{i,i+1}(k)|.
+\]</span></p>
+<p>El desfase <span class="math inline">\(k^*_{i,i+1}\)</span> se interpreta como una estimación del retardo temporal con el que la señal observada en el segmento <span class="math inline">\(i\)</span> se reproduce en el segmento <span class="math inline">\(i+1\)</span>.</p>
+</section>
+<section id="criterio-de-aceptación-global" class="level4" data-number="3.3.2.2">
+<h4 data-number="3.3.2.2" class="anchored" data-anchor-id="criterio-de-aceptación-global"><span class="header-section-number">3.3.2.2</span> Criterio de aceptación global</h4>
+<p>No todos los pares de segmentos proporcionan información fiable para la estimación de la velocidad. Por ello, se introduce un criterio de aceptación global basado en la fracción de pares adyacentes que presentan simultáneamente una correlación suficientemente alta y un desfase no nulo. Denotando por <span class="math inline">\(\rho_{\min}\)</span> un umbral mínimo de correlación y por <span class="math inline">\(\gamma_{\min}\)</span> una fracción mínima aceptable, el método se considera válido si:</p>
+<p><span class="math display">\[
+\frac{1}{N-1} \sum_{i=1}^{N-1} \mathbf{1}_{\{|\rho^{\max}_{i,i+1}| &gt; \rho_{\min} \, \wedge \, k^*_{i,i+1} \neq 0\}} \geq \gamma_{\min},
+\]</span></p>
+<p>donde <span class="math inline">\(\mathbf{1}(\cdot)\)</span> denota la función indicadora. Este criterio permite descartar situaciones en las que la coherencia espacial de la señal es insuficiente para inferir un desplazamiento dominante.</p>
+</section>
+<section id="relación-distanciatiempo-y-estimación-de-la-velocidad" class="level4" data-number="3.3.2.3">
+<h4 data-number="3.3.2.3" class="anchored" data-anchor-id="relación-distanciatiempo-y-estimación-de-la-velocidad"><span class="header-section-number">3.3.2.3</span> Relación distancia–tiempo y estimación de la velocidad</h4>
+<p>Una vez aceptado el conjunto de correlaciones, el desfase temporal estimado para cada par de segmentos se convierte en un tiempo físico mediante:</p>
+<p><span class="math display">\[
+t_{i,i+1} = |k^*_{i,i+1}| \Delta t,
+\]</span></p>
+<p>donde <span class="math inline">\(\Delta t\)</span> es el intervalo de muestreo en segundos. De forma análoga, se define la distancia espacial entre segmentos adyacentes como:</p>
+<p><span class="math display">\[
+d_{i,i+1} = |s_{i+1} - s_i|,
+\]</span></p>
+<p>siendo <span class="math inline">\(s_i\)</span> la coordenada longitudinal del centroide del segmento <span class="math inline">\(i\)</span> a lo largo de la ruta.</p>
+<p>Bajo la hipótesis de advección aproximadamente uniforme, se espera una relación lineal entre el tiempo de desplazamiento y la distancia recorrida, dada por:</p>
+<p><span class="math display">\[
+t_{i,i+1} = m d_{i,i+1} + c,
+\]</span></p>
+<p>donde <span class="math inline">\(m\)</span> representa el inverso de la velocidad media de advección y <span class="math inline">\(c\)</span> recoge posibles efectos sistemáticos o errores de alineación temporal.</p>
+<p>La estimación de los parámetros se realiza mediante un ajuste por mínimos cuadrados ponderados, asignando a cada par un peso proporcional a la magnitud de su correlación máxima:</p>
+<p><span class="math display">\[
+w_{i,i+1} = |\rho^{\max}_{i,i+1}|.
+\]</span></p>
+<p>En forma matricial, el problema se escribe como:</p>
+<p><span class="math display">\[
+\hat{\beta} =
+\begin{pmatrix}
+\hat{m} \\
+\hat{c}
+\end{pmatrix}
+= (X^\top W X)^{-1} X^\top W t,
+\]</span></p>
+<p>donde <span class="math inline">\(X = [d_{i,i+1},\, 1]\)</span>, <span class="math inline">\(t = [t_{i,i+1}]\)</span> y <span class="math inline">\(W\)</span> es una matriz diagonal cuyos elementos son los pesos <span class="math inline">\(w_{i,i+1}\)</span>.</p>
+<p>Finalmente, la velocidad efectiva de advección se estima como:</p>
+<p><span class="math display">\[
+\hat{v}_{\text{CCF}} = \frac{1}{\hat{m}},
+\]</span></p>
+<p>siempre que <span class="math inline">\(\hat{m} \neq 0\)</span>. Esta magnitud se expresa en metros por segundo y constituye una estimación empírica de la velocidad con la que la señal meteorológica se propaga a lo largo de la ruta.</p>
+</section>
+</section>
+<section id="estimación-mediante-análisis-f-k-basado-en-pendiente-de-fase" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="estimación-mediante-análisis-f-k-basado-en-pendiente-de-fase"><span class="header-section-number">3.3.3</span> Estimación mediante análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> basado en pendiente de fase</h3>
+<section id="fundamentos-teóricos" class="level4" data-number="3.3.3.1">
+<h4 data-number="3.3.3.1" class="anchored" data-anchor-id="fundamentos-teóricos"><span class="header-section-number">3.3.3.1</span> Fundamentos teóricos</h4>
+<p>Cuando el análisis de correlación cruzada entre segmentos adyacentes no proporciona resultados estadísticamente confiables, se adopta un enfoque alternativo basado en el análisis conjunto en frecuencia y espacio, conocido como análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>. Este método permite estimar la velocidad de propagación de estructuras coherentes a partir de la variación espacial de la fase espectral, y resulta particularmente adecuado cuando la señal presenta un carácter oscilatorio dominante.</p>
+<p>Sea <span class="math inline">\(M(s,t)\)</span> una matriz de datos obtenida a partir de los valores suavizados de una variable meteorológica, donde <span class="math inline">\(s\)</span> representa la coordenada longitudinal a lo largo de la ruta de navegación y <span class="math inline">\(t\)</span> el tiempo. Cada fila de la matriz <span class="math inline">\(M\)</span> corresponde a un segmento espacial, caracterizado por su posición centroidal <span class="math inline">\(s_i\)</span>, y cada columna a un instante temporal muestreado uniformemente con paso <span class="math inline">\(\Delta t\)</span>.</p>
+<p>Para cada segmento <span class="math inline">\(s_i\)</span>, se calcula la transformada de Fourier temporal:</p>
+<p><span class="math display">\[
+\hat{M}(s_i,\omega) = \int M(s_i,t) e^{-i\omega t} dt,
+\]</span></p>
+<p>obteniéndose así un <strong>espectro complejo</strong> cuya fase contiene información sobre el desplazamiento espacial de las estructuras dominantes de la señal.</p>
+</section>
+<section id="modelo-de-onda-viajera-y-relación-de-fase" class="level4" data-number="3.3.3.2">
+<h4 data-number="3.3.3.2" class="anchored" data-anchor-id="modelo-de-onda-viajera-y-relación-de-fase"><span class="header-section-number">3.3.3.2</span> Modelo de onda viajera y relación de fase</h4>
+<p>Bajo la hipótesis de que el campo meteorológico puede aproximarse localmente como una onda viajera unidimensional, se modela la señal como:</p>
+<p><span class="math display">\[
+M(s,t) = A \cos(ks - \omega t + \phi_0),
+\]</span></p>
+<p>donde <span class="math inline">\(k\)</span> es el número de onda espacial, <span class="math inline">\(\omega\)</span> la frecuencia angular y <span class="math inline">\(\phi_0\)</span> una fase constante. En este caso, la fase espectral satisface la relación lineal:</p>
+<p><span class="math display">\[
+\phi(s) = ks + \phi_0.
+\]</span></p>
+<p>Por tanto, para una frecuencia fija <span class="math inline">\(\omega\)</span>, la fase desenrollada <span class="math inline">\(\phi(s_i)\)</span> puede aproximarse mediante un modelo de regresión lineal:</p>
+<p><span class="math display">\[
+\phi(s_i) = \alpha s_i + \beta + \varepsilon_i,
+\]</span></p>
+<p>donde <span class="math inline">\(\alpha\)</span> es una estimación empírica del número de onda <span class="math inline">\(k\)</span>, <span class="math inline">\(\beta\)</span> es una constante y <span class="math inline">\(\varepsilon_i\)</span> representa errores debidos a ruido y no idealidades del modelo.</p>
+</section>
+<section id="estimación-de-la-velocidad-de-propagación" class="level4" data-number="3.3.3.3">
+<h4 data-number="3.3.3.3" class="anchored" data-anchor-id="estimación-de-la-velocidad-de-propagación"><span class="header-section-number">3.3.3.3</span> Estimación de la velocidad de propagación</h4>
+<p>La pendiente <span class="math inline">\(\hat{k} = \alpha\)</span> se estima mediante mínimos cuadrados ordinarios sobre el conjunto de segmentos espaciales. Una vez obtenida esta pendiente, la velocidad de propagación se calcula utilizando la relación fundamental de ondas:</p>
+<p><span class="math display">\[
+v = \frac{\omega}{k}.
+\]</span></p>
+<p>En términos del estimador, la velocidad asociada a una frecuencia <span class="math inline">\(\omega\)</span> se obtiene como:</p>
+<p><span class="math display">\[
+\hat{v} = -\frac{\omega}{\hat{k}},
+\]</span></p>
+<p>donde el signo negativo refleja la convención adoptada para la orientación espacial y temporal del sistema de coordenadas.</p>
+<p>Este procedimiento se repite para un conjunto de frecuencias positivas seleccionadas dentro de una banda de interés, correspondiente a escalas temporales relevantes para la dinámica atmosférica considerada. Para cada frecuencia se obtiene un estimador de velocidad, generando así un conjunto de candidatos <span class="math inline">\(\{\hat{v}_j\}\)</span>.</p>
+<p>Con el fin de robustecer la estimación final frente a valores atípicos y a frecuencias poco representativas, se selecciona como estimador definitivo la mediana de los valores finitos y físicamente plausibles del conjunto <span class="math inline">\(\{\hat{v}_j\}\)</span>. Este criterio reduce la sensibilidad a ruido espectral y a desviaciones locales del modelo de onda viajera.</p>
+<p>El análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> permite, por tanto, inferir la velocidad de advección directamente a partir de la estructura de fase del campo meteorológico, sin requerir alineamiento temporal explícito entre segmentos. Este enfoque complementa al método basado en correlación cruzada y proporciona una alternativa sólida cuando la coherencia temporal entre señales adyacentes es insuficiente.</p>
+</section>
+</section>
+<section id="modelo-de-respaldo-persistencia-temporal-y-regularización-advectiva" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="modelo-de-respaldo-persistencia-temporal-y-regularización-advectiva"><span class="header-section-number">3.3.4</span> Modelo de respaldo: persistencia temporal y regularización advectiva</h3>
+<section id="motivación" class="level4" data-number="3.3.4.1">
+<h4 data-number="3.3.4.1" class="anchored" data-anchor-id="motivación"><span class="header-section-number">3.3.4.1</span> Motivación</h4>
+<p>Cuando ambos métodos anteriores fallan, es decir, cuando no se dispone de suficiente coherencia espacial ni estructura espectral clara, se recurre a un <strong>modelo de respaldo</strong> basado en persistencia temporal con corrección advectiva regularizada. El objetivo de este modelo no es proporcionar una estimación precisa de la velocidad, sino una <strong>cota conservadora</strong> del transporte medio, entendido como el desplazamiento promedio del patrón espacial de la variable atmosférica a lo largo de la ruta.</p>
+</section>
+<section id="modelo-ar1-por-segmento-espacial" class="level4" data-number="3.3.4.2">
+<h4 data-number="3.3.4.2" class="anchored" data-anchor-id="modelo-ar1-por-segmento-espacial"><span class="header-section-number">3.3.4.2</span> Modelo AR(1) por segmento espacial</h4>
+<p>Sea <span class="math inline">\(y_i(t)\)</span> la serie temporal correspondiente al segmento espacial <span class="math inline">\(s_i\)</span>. Se modela mediante un proceso autorregresivo de orden uno:</p>
+<p><span class="math display">\[
+y_i(t+\Delta t) = a_i y_i(t) + \varepsilon_i(t),
+\]</span></p>
+<p>donde <span class="math inline">\(a_i\)</span> es el coeficiente de persistencia temporal y <span class="math inline">\(\varepsilon_i(t)\)</span> representa un término de ruido no correlacionado.</p>
+<p>El coeficiente <span class="math inline">\(a_i\)</span> se estima mediante mínimos cuadrados ordinarios:</p>
+<p><span class="math display">\[
+a_i = \arg\min_a \sum_{k} \left(y_i(t_{k+1}) - a y_i(t_k)\right)^2.
+\]</span></p>
+<p>Para obtener un parámetro representativo del sistema completo, se define:</p>
+<p><span class="math display">\[
+a_{\text{med}} = \operatorname{mediana}_i \left( a_i \right),
+\]</span></p>
+<p>lo que reduce la influencia de segmentos atípicos o ruidosos.</p>
+</section>
+<section id="estimación-advectiva-regularizada" class="level4" data-number="3.3.4.3">
+<h4 data-number="3.3.4.3" class="anchored" data-anchor-id="estimación-advectiva-regularizada"><span class="header-section-number">3.3.4.3</span> Estimación advectiva regularizada</h4>
+<p>Se define la media espacial de la señal como:</p>
+<p><span class="math display">\[
+\bar{y}(t) = \frac{1}{N} \sum_{i=1}^{N} y_i(t),
+\]</span></p>
+<p>la cual se suaviza mediante un filtro robusto (mediana móvil). Su derivada temporal se aproxima por diferencias finitas:</p>
+<p><span class="math display">\[
+\frac{d\bar{y}}{dt}(t) \approx \frac{\bar{y}(t+\Delta t)-\bar{y}(t)}{\Delta t}.
+\]</span></p>
+<p>Bajo un modelo advectivo unidimensional simplificado:</p>
+<p><span class="math display">\[
+\frac{\partial y}{\partial t} + v \frac{\partial y}{\partial s} \approx 0,
+\]</span></p>
+<p>la velocidad puede relacionarse de forma heurística con la tasa de cambio temporal promedio. Así, se define una estimación conservadora de la velocidad:</p>
+<p><span class="math display">\[
+v_{\text{fallback}} = -\lambda \operatorname{mediana}\left( \frac{d\bar{y}}{dt} \right),
+\]</span></p>
+<p>donde <span class="math inline">\(\lambda &gt; 0\)</span> es un factor de regularización pequeño que atenúa la magnitud de la estimación para evitar sobreajustes o interpretaciones físicas no realistas.</p>
+<p>Este modelo de respaldo garantiza que siempre se disponga de una estimación de la velocidad de advección, aunque sea conservadora, permitiendo la generación de pronósticos incluso en condiciones de baja coherencia espacial.</p>
+</section>
+</section>
+</section>
+<section id="pronóstico-advectivo-a-corto-plazo-nowcasting" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="pronóstico-advectivo-a-corto-plazo-nowcasting"><span class="header-section-number">3.4</span> Pronóstico advectivo a corto plazo (nowcasting)</h2>
+<section id="formulación-del-problema-de-pronóstico" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="formulación-del-problema-de-pronóstico"><span class="header-section-number">3.4.1</span> Formulación del problema de pronóstico</h3>
+<p>Una vez estimada la velocidad advectiva dominante <span class="math inline">\(v\)</span> a lo largo de la ruta, se utiliza un modelo de pronóstico determinista a corto plazo (<em>nowcast</em>) con horizonte <span class="math inline">\(H\)</span>. El objetivo consiste en predecir la evolución temporal de las variables climáticas en cada segmento espacial <span class="math inline">\(s_i\)</span> durante el período de interés.</p>
+<p>Sea <span class="math inline">\(y_i(t)\)</span> el valor observado de una variable climática (por ejemplo, velocidad del viento proyectada) en el segmento espacial <span class="math inline">\(i\)</span> en el tiempo <span class="math inline">\(t\)</span>, y sea <span class="math inline">\(s_i\)</span> la posición longitudinal del centroide del segmento <span class="math inline">\(i\)</span>. El pronóstico <span class="math inline">\(\hat{y}_i(t+H)\)</span> se construye mediante la combinación de tres componentes fundamentales: advectiva, autorregresiva y de persistencia.</p>
+</section>
+<section id="componente-advectiva" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="componente-advectiva"><span class="header-section-number">3.4.2</span> Componente advectiva</h3>
+<p>Bajo la hipótesis de transporte advectivo unidimensional, el valor futuro de la variable en el segmento <span class="math inline">\(i\)</span> se asocia al valor observado en la posición precedente en la dirección del flujo:</p>
+<p><span class="math display">\[
+s_i^{\text{up}} = s_i - vH,
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(v\)</span> es la velocidad advectiva estimada,</li>
+<li><span class="math inline">\(H\)</span> es el horizonte de pronóstico (en segundos).</li>
+</ul>
+<p>El valor estimado por advección se aproxima mediante interpolación lineal espacial:</p>
+<p><span class="math display">\[
+y_i^{\text{adv}}(t+H) =
+\begin{cases}
+y_1(t), &amp; s_i^{\text{up}} \le s_1, \\[6pt]
+y_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(y_{j+1}(t)-y_j(t)\bigr), &amp; s_j \le s_i^{\text{up}} &lt; s_{j+1},
+\end{cases}
+\]</span></p>
+<p>donde <span class="math inline">\(s_j\)</span> y <span class="math inline">\(s_{j+1}\)</span> son los segmentos que delimitan la posición aguas arriba.</p>
+<p>Este término modela el <strong>desplazamiento espacial coherente</strong> de la señal climática y constituye una aproximación discreta del operador de transporte asociado a la ecuación de advección unidimensional:</p>
+<p><span class="math display">\[
+\frac{\partial y}{\partial t} + v \frac{\partial y}{\partial s} \approx 0.
+\]</span></p>
+</section>
+<section id="componente-autorregresiva-temporal" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="componente-autorregresiva-temporal"><span class="header-section-number">3.4.3</span> Componente autorregresiva temporal</h3>
+<p>Para capturar la persistencia temporal local, cada segmento se modela mediante un proceso autorregresivo de primer orden:</p>
+<p><span class="math display">\[
+y_i(t+\Delta t) = a_i y_i(t) + \varepsilon_i(t),
+\]</span></p>
+<p>donde <span class="math inline">\(a_i \in (0,1)\)</span> es el coeficiente AR(1) estimado por mínimos cuadrados ordinarios y <span class="math inline">\(\varepsilon_i(t)\)</span> representa un término de ruido no correlacionado.</p>
+<p>En segmentos con información insuficiente, se utiliza un valor regularizado <span class="math inline">\(\tilde{a}_i\)</span>, correspondiente a la mediana de los coeficientes válidos. El pronóstico autorregresivo a horizonte <span class="math inline">\(H = n\Delta t\)</span> queda entonces:</p>
+<p><span class="math display">\[
+y_i^{\text{AR}}(t+H) = a_i^{n} y_i(t). \tag{4.3}
+\]</span></p>
+<p>Esta componente permite modelar la inercia temporal inherente a las variables meteorológicas, especialmente relevante para variables como la temperatura que presentan alta persistencia.</p>
+</section>
+<section id="componente-de-persistencia" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="componente-de-persistencia"><span class="header-section-number">3.4.4</span> Componente de persistencia</h3>
+<p>Como referencia conservadora, se incluye el modelo de persistencia:</p>
+<p><span class="math display">\[
+y_i^{\text{pers}}(t+H) = y_i(t),
+\]</span></p>
+<p>el cual asume ausencia total de cambio temporal. Este término proporciona estabilidad al pronóstico cuando la información disponible es limitada o cuando las condiciones atmosféricas presentan baja variabilidad.</p>
+</section>
+<section id="modelo-híbrido-de-pronóstico" class="level3" data-number="3.4.5">
+<h3 data-number="3.4.5" class="anchored" data-anchor-id="modelo-híbrido-de-pronóstico"><span class="header-section-number">3.4.5</span> Modelo híbrido de pronóstico</h3>
+<p>El pronóstico final se construye como una combinación convexa de los tres componentes:</p>
+<p><span class="math display">\[
+\hat{y}_i(t+H) = w_1 y_i^{\text{AR}}(t+H) + w_2 y_i^{\text{pers}}(t+H) + w_3 y_i^{\text{adv}}(t+H),
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+w_1 + w_2 + w_3 = 1, \qquad w_k \ge 0.
+\]</span></p>
+<p>En esta implementación se utilizan pesos fijos:</p>
+<p><span class="math display">\[
+(w_1, w_2, w_3) = (0.5, 0.3, 0.2),
+\]</span></p>
+<p>priorizando la estabilidad temporal sin perder sensibilidad al transporte espacial. Este enfoque híbrido permite balancear persistencia, dinámica local y estructura espacial, lo cual resulta particularmente adecuado para pronósticos operativos de corto plazo.</p>
+</section>
+<section id="propiedades-del-modelo-híbrido" class="level3" data-number="3.4.6">
+<h3 data-number="3.4.6" class="anchored" data-anchor-id="propiedades-del-modelo-híbrido"><span class="header-section-number">3.4.6</span> Propiedades del modelo híbrido</h3>
+<p>El modelo de pronóstico propuesto presenta las siguientes propiedades:</p>
+<ol type="1">
+<li><p><strong>Consistencia espacial</strong>: La componente advectiva garantiza que el patrón espacial de la variable se propague coherentemente a lo largo de la ruta, respetando la dirección y magnitud del flujo atmosférico dominante.</p></li>
+<li><p><strong>Estabilidad temporal</strong>: La componente autorregresiva proporciona suavidad temporal y evita oscilaciones espurias en el pronóstico, especialmente en segmentos con baja variabilidad observada.</p></li>
+<li><p><strong>Robustez numérica</strong>: La inclusión del término de persistencia asegura que el pronóstico permanezca acotado incluso en situaciones donde las estimaciones advectivas o autorregresivas puedan ser inestables.</p></li>
+<li><p><strong>Interpretabilidad física</strong>: Cada componente del modelo tiene una interpretación física clara relacionada con procesos atmosféricos bien establecidos (advección, persistencia y difusión).</p></li>
+</ol>
+</section>
+<section id="implementación-computacional" class="level3" data-number="3.4.7">
+<h3 data-number="3.4.7" class="anchored" data-anchor-id="implementación-computacional"><span class="header-section-number">3.4.7</span> Implementación computacional</h3>
+<p>La implementación del modelo híbrido sigue el siguiente algoritmo:</p>
+<ol type="1">
+<li><p><strong>Estimación de parámetros</strong>: Para cada segmento <span class="math inline">\(i\)</span>, se calculan los coeficientes <span class="math inline">\(a_i\)</span> mediante regresión lineal sobre la serie temporal observada.</p></li>
+<li><p><strong>Cálculo de posición advectiva</strong>: Para cada segmento <span class="math inline">\(i\)</span> y horizonte <span class="math inline">\(H\)</span>, se determina <span class="math inline">\(s_i^{\text{up}} = s_i - vH\)</span>.</p></li>
+<li><p><strong>Interpolación espacial</strong>: Se obtiene <span class="math inline">\(y_i^{\text{adv}}(t+H)\)</span> mediante interpolación lineal entre los segmentos adyacentes que contienen <span class="math inline">\(s_i^{\text{up}}\)</span>.</p></li>
+<li><p><strong>Pronóstico autorregresivo</strong>: Se calcula <span class="math inline">\(y_i^{\text{AR}}(t+H) = a_i^n y_i(t)\)</span> con <span class="math inline">\(n = H/\Delta t\)</span>.</p></li>
+<li><p><strong>Combinación convexa</strong>: Se obtiene el pronóstico final <span class="math inline">\(\hat{y}_i(t+H)\)</span> mediante la combinación ponderada de los tres componentes.</p></li>
+</ol>
+<p>La complejidad computacional del algoritmo es <span class="math inline">\(\mathcal{O}(N)\)</span>, donde <span class="math inline">\(N\)</span> es el número de segmentos espaciales, lo que permite su ejecución en tiempo real incluso en sistemas embebidos con recursos limitados.</p>
+</section>
+<section id="consideraciones-sobre-el-horizonte-de-pronóstico" class="level3" data-number="3.4.8">
+<h3 data-number="3.4.8" class="anchored" data-anchor-id="consideraciones-sobre-el-horizonte-de-pronóstico"><span class="header-section-number">3.4.8</span> Consideraciones sobre el horizonte de pronóstico</h3>
+<p>El horizonte de pronóstico <span class="math inline">\(H\)</span> constituye un parámetro crítico que determina el equilibrio entre precisión y utilidad operativa del nowcast. Para el caso de operaciones con drones, se adopta un horizonte de <span class="math inline">\(H = 60\)</span> minutos, basado en las siguientes consideraciones:</p>
+<ul>
+<li><p><strong>Autonomía de vuelo</strong>: La mayoría de los drones de carga media tienen una autonomía de 20–30 minutos de vuelo efectivo, por lo que un horizonte de 60 minutos permite evaluar múltiples ciclos operativos.</p></li>
+<li><p><strong>Escalas temporales atmosféricas</strong>: Las variables meteorológicas relevantes para la navegación de drones (viento, temperatura, humedad) presentan escalas de correlación temporal del orden de decenas de minutos, lo que justifica un horizonte de pronóstico en este rango.</p></li>
+<li><p><strong>Replanificación operativa</strong>: Un horizonte de 60 minutos proporciona suficiente tiempo para la toma de decisiones y la reprogramación de misiones en caso de deterioro de las condiciones ambientales.</p></li>
+</ul>
+<p>Este horizonte se discretiza en pasos temporales de <span class="math inline">\(\Delta t = 5\)</span> minutos, generando un conjunto de 12 instantes de pronóstico que permiten evaluar la evolución temporal continua de las condiciones meteorológicas.</p>
+</section>
+</section>
+<section id="aplicación-del-modelo-advectivo-a-la-temperatura-del-aire" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="aplicación-del-modelo-advectivo-a-la-temperatura-del-aire"><span class="header-section-number">3.5</span> Aplicación del modelo advectivo a la temperatura del aire</h2>
+<p>En esta sección se particulariza el esquema advectivo–autorregresivo previamente formulado al caso de la temperatura del aire, con el objetivo de obtener un pronóstico espacial de corto horizonte a lo largo de la ruta de vuelo del dron.</p>
+<p>La estructura matemática del modelo se mantiene sin modificaciones respecto a la formulación general presentada anteriormente. En consecuencia, los componentes advectivo, autorregresivo y el procedimiento de cuantificación de incertidumbre se conservan en la misma forma funcional. Únicamente se recalibran los parámetros específicos del campo térmico, a fin de reflejar su mayor persistencia temporal y su elevada coherencia espacial en comparación con otras variables atmosféricas.</p>
+<p>La formulación obtenida para la temperatura constituye, por tanto, el caso de referencia sobre el cual se apoyará la modelización de las restantes variables ambientales, introduciendo únicamente los ajustes paramétricos o estructurales que resulten necesarios en cada caso.</p>
+<section id="variable-de-estudio-y-discretización-espacial" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="variable-de-estudio-y-discretización-espacial"><span class="header-section-number">3.5.1</span> Variable de estudio y discretización espacial</h3>
+<p>Sea <span class="math inline">\(T(s,t)\)</span> la temperatura del aire en la posición longitudinal <span class="math inline">\(s\)</span> de la ruta y en el tiempo <span class="math inline">\(t\)</span>.</p>
+<p>La ruta se discretiza en <span class="math inline">\(N\)</span> segmentos espaciales, definidos a partir del promedio de los puntos de muestreo cercanos, y cada segmento queda representado por su centroide <span class="math inline">\(s_i\)</span>. La serie temporal asociada al segmento <span class="math inline">\(i\)</span> se denota como:</p>
+<p><span class="math display">\[
+T_i(t) = \frac{1}{|\mathcal{S}_i|} \sum_{k \in \mathcal{S}_i} T_k(t),
+\]</span></p>
+<p>donde <span class="math inline">\(\mathcal{S}_i\)</span> es el conjunto de puntos de muestreo que conforman el segmento <span class="math inline">\(i\)</span>.</p>
+<p>Esta agregación espacial permite reducir el ruido de medición y obtener estimaciones más robustas de la temperatura promedio en cada segmento de la trayectoria.</p>
+</section>
+<section id="hipótesis-de-advección-con-velocidad-conocida" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="hipótesis-de-advección-con-velocidad-conocida"><span class="header-section-number">3.5.2</span> Hipótesis de advección con velocidad conocida</h3>
+<p>A diferencia del caso del viento, para la temperatura se adopta una <strong>velocidad de advección fija</strong>, obtenida previamente del análisis del campo de viento:</p>
+<p><span class="math display">\[
+v = v_{\text{viento}}.
+\]</span></p>
+<p>Esta hipótesis se fundamenta en que la temperatura del aire se transporta pasivamente por el flujo atmosférico dominante, sin presentar una dinámica de propagación independiente. Por tanto, la velocidad de advección térmica coincide con la velocidad del viento medio en la capa límite atmosférica donde opera el dron.</p>
+</section>
+<section id="componente-advectiva-del-pronóstico" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="componente-advectiva-del-pronóstico"><span class="header-section-number">3.5.3</span> Componente advectiva del pronóstico</h3>
+<p>Bajo el supuesto de advección unidimensional, el valor futuro de la temperatura en el segmento <span class="math inline">\(i\)</span> se asocia al valor observado en la posición precedente en la dirección del flujo:</p>
+<p><span class="math display">\[
+s_i^{\text{up}} = s_i - vH,
+\]</span></p>
+<p>donde <span class="math inline">\(H\)</span> es el horizonte de pronóstico y <span class="math inline">\(v\)</span> la velocidad media de transporte.</p>
+<p>El valor estimado por advección se aproxima mediante interpolación lineal espacial:</p>
+<p><span class="math display">\[
+T_i^{\text{adv}}(t+H) =
+\begin{cases}
+T_1(t), &amp; s_i^{\text{up}} \le s_1, \\[6pt]
+T_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(T_{j+1}(t)-T_j(t)\bigr), &amp; s_j \le s_i^{\text{up}} &lt; s_{j+1}.
+\end{cases}
+\]</span></p>
+<p>Sea <span class="math inline">\(\{s_1,\dots,s_N\}\)</span> una partición ordenada del dominio espacial <span class="math inline">\([0,L]\)</span>, con</p>
+<p><span class="math display">\[
+s_1 &lt; s_2 &lt; \dots &lt; s_N.
+\]</span></p>
+<p>Para cada índice <span class="math inline">\(i \in \{1,\dots,N\}\)</span>, el subíndice <span class="math inline">\(j\)</span> se define como el único entero en <span class="math inline">\(\{1,\dots,N-1\}\)</span> que satisface</p>
+<p><span class="math display">\[
+s_j \le s_i^{\text{up}} &lt; s_{j+1}.
+\]</span></p>
+<p>En consecuencia, <span class="math inline">\(j = j(i)\)</span> depende del segmento destino <span class="math inline">\(i\)</span> a través de la posición advectiva <span class="math inline">\(s_i^{\text{up}}\)</span>. Esta construcción garantiza que la interpolación se realice en el intervalo espacial que contiene el punto de origen advectivo.</p>
+<p>En el caso <span class="math inline">\(s_i^{\text{up}} \le s_1\)</span>, el punto advectivo queda fuera del dominio por el extremo izquierdo, por lo que se adopta una extrapolación constante basada en el valor del primer nodo.</p>
+<p>Este término representa el <strong>transporte térmico dominante</strong> a lo largo de la ruta y constituye una aproximación discreta del operador de transporte asociado a la ecuación de advección unidimensional.</p>
+</section>
+<section id="componente-autorregresiva-temporal-1" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="componente-autorregresiva-temporal-1"><span class="header-section-number">3.5.4</span> Componente autorregresiva temporal</h3>
+<p>La temperatura presenta una elevada persistencia temporal, característica de variables termodinámicas con alta inercia física. Por ello, cada segmento se modela mediante un proceso autorregresivo de primer orden:</p>
+<p><span class="math display">\[
+T_i(t+\Delta t) = a_i T_i(t),
+\]</span></p>
+<p>donde <span class="math inline">\(a_i \in (0,1)\)</span> es el coeficiente estimado por mínimos cuadrados ordinarios.</p>
+<p>El pronóstico autorregresivo a horizonte <span class="math inline">\(H = n\Delta t\)</span> se expresa como:</p>
+<p><span class="math display">\[
+T_i^{\text{AR}}(t+H) = a_i^{n} T_i(t).
+\]</span></p>
+<p>En los segmentos donde la información temporal resulta insuficiente (menos de 10 observaciones), se emplea un valor regularizado <span class="math inline">\(a_i = 0.95\)</span>, consistente con la elevada inercia térmica del sistema atmosférico en escalas temporales de minutos.</p>
+</section>
+<section id="modelo-híbrido-de-nowcasting-para-temperatura" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="modelo-híbrido-de-nowcasting-para-temperatura"><span class="header-section-number">3.5.5</span> Modelo híbrido de nowcasting para temperatura</h3>
+<p>El pronóstico final se obtiene mediante una combinación convexa de tres componentes: autorregresiva, persistente y advectiva:</p>
+<p><span class="math display">\[
+\hat{T}_i(t+H) = w_1 T_i^{\text{AR}}(t+H) + w_2 T_i(t) + w_3 T_i^{\text{adv}}(t+H),
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+w_1 + w_2 + w_3 = 1, \qquad w_k \ge 0.
+\]</span></p>
+<p>Para el caso de la temperatura se adoptaron los pesos fijos:</p>
+<p><span class="math display">\[
+(w_1, w_2, w_3) = (0.4, 0.2, 0.4),
+\]</span></p>
+<p>asignando mayor relevancia al transporte advectivo y a la persistencia temporal, en concordancia con la naturaleza física de la variable. Esta ponderación refleja que la temperatura del aire presenta:</p>
+<ul>
+<li>Alta coherencia espacial debido al transporte advectivo dominante,</li>
+<li>Elevada persistencia temporal por su inercia termodinámica,</li>
+<li>Baja variabilidad intrínseca en escalas temporales cortas.</li>
+</ul>
+</section>
+<section id="estimación-de-la-incertidumbre-mediante-block-bootstrap" class="level3" data-number="3.5.6">
+<h3 data-number="3.5.6" class="anchored" data-anchor-id="estimación-de-la-incertidumbre-mediante-block-bootstrap"><span class="header-section-number">3.5.6</span> Estimación de la incertidumbre mediante block bootstrap</h3>
+<p>La incertidumbre del pronóstico se cuantificó mediante un procedimiento de <strong>block bootstrap temporal</strong>, que preserva la dependencia serial de las observaciones.</p>
+<p>Sea <span class="math inline">\(\{T_i(t)\}_{t=1}^T\)</span> la serie observada. Se generan <span class="math inline">\(B\)</span> réplicas bootstrap mediante remuestreo con reemplazo de bloques temporales de longitud <span class="math inline">\(L\)</span>. Para cada réplica <span class="math inline">\(b\)</span>, se calcula un pronóstico:</p>
+<p><span class="math display">\[
+\hat{T}_i^{(b)}(t+H).
+\]</span></p>
+<p>A partir de la distribución empírica resultante se estiman los cuantiles:</p>
+<p><span class="math display">\[
+\text{p05}_i, \quad \text{p50}_i, \quad \text{p95}_i,
+\]</span></p>
+<p>los cuales definen intervalos de confianza del 90% para el nowcast de temperatura en cada segmento.</p>
+<p>El uso de bloques temporales de longitud <span class="math inline">\(L = 15\)</span> minutos (mayores que en el caso del viento) refleja la mayor continuidad temporal y menor variabilidad de la temperatura del aire.</p>
+</section>
+<section id="discusión-y-propiedades-del-modelo" class="level3" data-number="3.5.7">
+<h3 data-number="3.5.7" class="anchored" data-anchor-id="discusión-y-propiedades-del-modelo"><span class="header-section-number">3.5.7</span> Discusión y propiedades del modelo</h3>
+<p>Es importante destacar que la estructura matemática del modelo es <strong>independiente de la variable climática analizada</strong>. En consecuencia, la metodología puede aplicarse de manera consistente a viento, temperatura o precipitación, modificando únicamente los parámetros y la interpretación física de la variable transportada.</p>
+<p>Las principales ventajas de este enfoque para la temperatura son:</p>
+<ol type="1">
+<li><p><strong>Consistencia física</strong>: El modelo respeta la ecuación de advección unidimensional que gobierna el transporte pasivo de calor en la atmósfera.</p></li>
+<li><p><strong>Adaptabilidad espacial</strong>: La discretización en segmentos permite capturar gradientes térmicos locales a lo largo de la ruta de vuelo.</p></li>
+<li><p><strong>Robustez estadística</strong>: La combinación de componentes advectiva y autorregresiva proporciona estabilidad frente a perturbaciones puntuales en los datos de observación.</p></li>
+<li><p><strong>Cuantificación de incertidumbre</strong>: El block bootstrap permite evaluar la confiabilidad del pronóstico en cada segmento, información crítica para la toma de decisiones operativas.</p></li>
+</ol>
+<p>Esta formulación constituye la base para la aplicación posterior del modelo a otras variables meteorológicas, como se describe en las secciones siguientes.</p>
+</section>
+</section>
+<section id="aplicación-del-modelo-advectivo-a-la-humedad-relativa" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="aplicación-del-modelo-advectivo-a-la-humedad-relativa"><span class="header-section-number">3.6</span> Aplicación del modelo advectivo a la humedad relativa</h2>
+</section>
+<section id="aplicación-del-modelo-advectivo-a-la-precipitación-esquema-de-persistencia-ponderada-adaptativa" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="aplicación-del-modelo-advectivo-a-la-precipitación-esquema-de-persistencia-ponderada-adaptativa"><span class="header-section-number">3.7</span> Aplicación del modelo advectivo a la precipitación: esquema de persistencia ponderada adaptativa</h2>
+</section>
+<section id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap"><span class="header-section-number">3.8</span> Cuantificación de la incertidumbre mediante block bootstrap</h2>
+</section>
+<section id="decisión-para-operaciones-con-drones-variables-de-estado-umbrales-y-función-de-decisión" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="decisión-para-operaciones-con-drones-variables-de-estado-umbrales-y-función-de-decisión"><span class="header-section-number">3.9</span> Decisión para operaciones con drones: variables de estado, umbrales y función de decisión</h2>
+</section>
+<section id="integración-de-ambas-etapas-análisis-de-eficiencia-logística" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="integración-de-ambas-etapas-análisis-de-eficiencia-logística"><span class="header-section-number">3.10</span> Integración de ambas etapas: análisis de eficiencia logística</h2>
+</section>
+<section id="recomendaciones-operativas-y-perspectivas" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="recomendaciones-operativas-y-perspectivas"><span class="header-section-number">3.11</span> Recomendaciones operativas y perspectivas</h2>
+</section>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/chapter3.html" class="pagination-link" aria-label="Optimización de Rutas Terrestres mediante PageRank">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Optimización de Rutas Terrestres mediante PageRank</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../references.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
