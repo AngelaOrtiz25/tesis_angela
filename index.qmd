@@ -1,0 +1,34 @@
+---
+title: ""
+unnumbered: true
+
+author:
+  - name: "Ángela Yaneli Ortiz Diaz"
+    email: angela.ortiz69@unach.mx
+    affiliations:
+      - ref: unach
+    corresponding: true
+
+  - name: "Asesor: Dr. Yofre Hernán García Gómez"
+    role: "Director de tesis"
+    email: yofre.garcia@unach.mx
+    affiliations:
+      - ref: unach
+
+affiliations:
+  - id: unach
+    name: "Universidad Autónoma de Chiapas"
+---
+
+:::{style="text-align: justify"}
+# Resumen
+
+
+
+**Palabras clave**: 
+
+## Abstract
+
+**Keywords**: 
+
+:::

@@ -1,0 +1,106 @@
+project:
+  type: book
+  output-dir: _book
+
+execute:
+  freeze: auto
+
+website:
+  favicon: logos/FCFM-UNACH.png
+  reader-mode: true
+  search:
+    location: sidebar
+    type: overlay
+  comments:
+    hypothesis: true
+
+book:
+  title: "tesis"
+  reader-mode: true
+  language: es
+  date: today
+  image: logos/FCFM-UNACH.png
+  downloads: [pdf, epub]
+  favicon: logos/FCFM-UNACH.png
+  sidebar:
+    logo: logos/LOGO.png
+    style: floating
+    collapse-level: 2
+    border: true
+    search: true
+  repo-url:  https://github.com/AngelaOrtiz25/thesis_ortiz
+  page-navigation: true
+  chapters:
+    - index.qmd
+    - chapters/chapter3.qmd
+    - chapters/chapter4.qmd
+    - references.qmd
+  appendices:
+    - chapters/appendix_a.qmd
+
+comments:
+  hypothesis: true
+
+bibliography: references.bib
+
+
+number-sections: true
+
+crossref:
+  chapters: true
+  fig-prefix: "Figura"
+  tbl-prefix: "Tabla"
+  sec-prefix: "Sección"
+
+fig-cap-location: bottom
+tbl-cap-location: top
+
+format:
+
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    highlight-style: a11y
+    lang: es
+    html-math-method: mathjax
+    include-in-header: mathjax-config.html
+    grid:
+      sidebar-width: 300px
+      body-width: 950px
+      margin-width: 250px
+      gutter-width: 1.5rem
+    code-fold: true
+    code-copy: true
+    toc-title: "Tabla de contenidos" 
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    toc-expand: true
+    number-sections: true
+
+  pdf: 
+    lang: es
+    include-in-header:
+      - packa.tex
+      - text: 
+          \usepackage{graphicx}
+          \usepackage{float}
+          \usepackage{amsmath}
+    template-partials:
+      - before-body.tex  
+    documentclass: scrreprt
+    papersize: us-letter
+    titlegraphic: logos/FCFM-UNACH.png
+    institution: Universidad Autónoma de Chiapas
+    email: angela.ortiz69@unach.mx
+    keep-tex: true
+    pdf-engine: lualatex
+    toc: true
+    code-fold: true
+    fig-align: center
+    fig-cap-location: bottom
+    link-citations: true
+
+  epub:
+    cover-image: logos/FCFM-UNACH.png

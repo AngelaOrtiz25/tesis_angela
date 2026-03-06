@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Chiapas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .map-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #2c3e50;
+        }
+        
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(44, 62, 80, 0.9);
+            z-index: 10;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <div class="loading">
+            <div class="spinner"></div>
+        </div>
+        
+        <iframe src="file:///C:/Users/yanel/OneDrive/Desktop/thesis/mapa_rutas_chiapas_completo.html" 
+                class="map-frame" 
+                title="Mapa de Chiapas"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <script>
+        // Ocultar el spinner cuando el mapa esté cargado
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

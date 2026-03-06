@@ -1,0 +1,2696 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  spanish,
+  us-letterpaper,
+]{scrreprt}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+% Paquetes matemáticos
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{upgreek}
+
+% Cargar TikZ correctamente
+\usepackage{tikz}
+
+% Numeración de ecuaciones compatible con scrreprt
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+% Caja punteada
+\newcommand{\dashedbox}[1]{
+  \begin{tikzpicture}
+    \node[
+      draw,
+      dashed,
+      rounded corners=5pt,
+      inner sep=10pt
+    ]{
+      \begin{minipage}{0.9\textwidth}
+        #1
+      \end{minipage}
+    };
+  \end{tikzpicture}
+}
+\usepackage{graphicx} \usepackage{float} \usepackage{amsmath}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Tabla de contenidos}
+\else
+  \newcommand\contentsname{Tabla de contenidos}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Listado de Figuras}
+\else
+  \newcommand\listfigurename{Listado de Figuras}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Listado de Tablas}
+\else
+  \newcommand\listtablename{Listado de Tablas}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figura}
+\else
+  \newcommand\figurename{Figura}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Tabla}
+\else
+  \newcommand\tablename{Tabla}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listado}
+\newcommand*\listoflistings{\listof{codelisting}{Listado de Listados}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={tesis},
+  pdfauthor={Ángela Yaneli Ortiz Diaz; Asesor: Dr.~Yofre Hernán García Gómez},
+  pdflang={es},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{tesis}
+\author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
+Gómez}
+\date{2026-03-04}
+\begin{document}
+\begin{titlepage}
+\hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
+%Aquí empiezan los tres minipages de antes
+\begin{minipage}[t][0.03\textheight][c]{0.22\textwidth}
+        \includegraphics[width=3.7cm]{logos/LOGO.png}
+\end{minipage}\hspace{0.9cm}
+\begin{minipage}[t][0.03\textheight][c]{0.69\textwidth}
+\begin{center}
+                \textsc{\huge Universidad Autónoma de Chiapas}\\[0.3cm]
+                \hrule height 2.5pt
+                \vspace{0.2cm}
+                \hrule height1pt
+                \vspace{0.3cm}
+                \textsc{\Large Facultad de Ciencias en Física y Matemáticas}
+\end{center}
+\end{minipage}\hspace{0.2cm}
+\begin{minipage}[t][0.03\textheight][c]{0.2\textwidth}
+		\includegraphics[width=2.7cm]{logos/FCFM-UNACH.png}
+\end{minipage}\\
+%%%%%%%%%%%%%%%%%%Aquí comienzan los otros dos minipages del título%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t][0.93\textheight][c]{0.06\textwidth}
+\vspace{60pt}
+    \begin{center}
+        \vrule width1pt height18cm
+        \vspace{5mm}
+        \vrule width2.5pt height18cm
+        \vspace{5mm}
+        \vrule width1pt height18cm
+   \end{center}
+\end{minipage}\hspace{1.3cm} %Esto mueve las letras que tienes ahí
+\begin{minipage}[t][0.95\textheight][c]{0.76\textwidth}
+
+            \begin{center}
+                {\Large\bfseries TESIS}\\[2cm]
+                \textsc{\huge \textbf{T\, E\, S\, I\, S}}\\[1.5cm]
+                \textsc{\large QUE PARA OBTENER EL TÍTULO DE:}\\[0.3cm]
+                \textbf{\textsc{LICENCIADA EN MATEMÁTICAS APLICADAS}}\\[1.5cm]
+                \textsc{\large PRESENTA:}\\[0.3cm]
+                \textbf{\textsc{\large {ÁNGELA YANELI ORTIZ DIAZ}}}\\[2cm]
+                {\large\scshape Director:\\[0.3cm]
+                {\textbf{\large Dr. Yofre Hernán García Gómez }}}\\[2.0cm]
+                \large{Tuxtla Gutiérrez, Chiapas a \today.}
+
+            \end{center}
+\end{minipage}
+\end{titlepage}
+
+\pagebreak[2]
+
+\chapter*{Dedicatoria}
+\begin{center}
+\itshape
+\setlength{\parindent}{0pt} % Elimina sangría para mayor elegancia
+\setlength{\parskip}{1.2\baselineskip} % Espacio generoso entre párrafos
+angela
+\end{center}
+\chapter*{Agradecimientos}
+bnkjb
+
+\renewcommand*\contentsname{Tabla de contenidos}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter{Resumen}\label{resumen}
+
+\textbf{Palabras clave}:
+
+\section{Abstract}\label{abstract}
+
+\textbf{Keywords}:
+
+\bookmarksetup{startatroot}
+
+\chapter{Optimización de Rutas Terrestres mediante
+PageRank}\label{optimizaciuxf3n-de-rutas-terrestres-mediante-pagerank}
+
+En situaciones de emergencia, como desastres naturales o crisis
+humanitarias, la eficiencia en la distribución de ayuda humanitaria
+constituye un factor determinante para la reducción del impacto sobre
+las poblaciones afectadas. En regiones caracterizadas por una topografía
+accidentada y una dispersión territorial significativa, como el estado
+de Chiapas, la planificación logística enfrenta desafíos estructurales
+que incrementan los tiempos de respuesta y los costos operativos de
+distribución.
+
+El estado de Chiapas, conformado por 124 municipios según el Instituto
+Nacional de Estadística y Geografía (INEGI), presenta una configuración
+geográfica predominantemente montañosa, con elevaciones que oscilan
+entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre
+el nivel del mar en el Volcán Tacaná. Esta variabilidad altimétrica
+genera barreras naturales que fragmentan la red vial estatal, limitando
+particularmente el acceso a comunidades asentadas en laderas y mesetas
+de difícil conectividad.
+
+Para abordar este problema de optimización logística, se propone la
+aplicación del algoritmo PageRank a la red territorial del estado.
+Originalmente desarrollado por Page y Brin (1998) para el ordenamiento
+de páginas web, este algoritmo fundamenta su operación en la teoría de
+cadenas de Markov de tiempo discreto, proporcionando una medida de
+centralidad que identifica nodos estratégicos dentro de una red
+compleja.
+
+Matemáticamente, sea \(G = (V, E, W)\) un grafo dirigido ponderado que
+representa la red territorial, donde \(V\) denota el conjunto de
+vértices (municipios), \(E \subseteq V \times V\) el conjunto de aristas
+(conexiones viales), y \(W: E \to \mathbb{R}^+\) una función que asigna
+a cada arista \((v_i, v_j)\) la distancia tridimensional
+\(d_{ij}^{(3D)}\) entre los municipios \(i\) y \(j\). El algoritmo
+PageRank calcula el vector estacionario \(\pi \in \mathbb{R}^{124}\) que
+satisface:
+
+\[
+\pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i,
+\]
+
+donde \(P\) es la matriz de transición modificada que incorpora un
+factor de amortiguamiento \(p = 0.85\) para garantizar la ergodicidad de
+la cadena. El valor \(\pi_i\) representa la importancia relativa del
+municipio \(i\) dentro de la red, permitiendo identificar aquellos nodos
+que actúan como centros de distribución naturales.
+
+El flujo metodológico desarrollado en este capítulo comprende las
+siguientes etapas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Recolección de datos geoespaciales mediante la API de Open Source
+  Routing Machine (OSRM) y el Modelo Digital de Elevación (DEM) de la
+  misión SRTM de la NASA.
+\item
+  Cálculo de distancias tridimensionales que incorporan explícitamente
+  las variaciones topográficas del terreno.
+\item
+  Construcción formal de la red territorial como grafo ponderado.
+\item
+  Aplicación del algoritmo PageRank y análisis de convergencia de la
+  cadena de Markov subyacente.
+\item
+  Identificación de rutas óptimas desde el punto de almacenamiento
+  (Protección Civil en Tuxtla Gutiérrez) hacia los municipios
+  prioritarios. \textbf{DUDA: depende si se palica dijkstra}
+\end{enumerate}
+
+Esta metodología proporciona una base matemáticamente rigurosa para la
+toma de decisiones en la planificación logística de emergencias,
+permitiendo optimizar la distribución de recursos mediante la
+identificación de puntos estratégicos dentro de la red territorial
+estatal.
+
+\section{Contexto humanitario y desafíos logísticos en
+Chiapas}\label{contexto-humanitario-y-desafuxedos-loguxedsticos-en-chiapas}
+
+En situaciones de emergencia, como desastres naturales o crisis
+humanitarias, resulta fundamental contar con mecanismos eficientes para
+distribuir ayuda y recursos a la población afectada. En regiones como el
+estado de Chiapas, que de acuerdo con el Instituto Nacional de
+Estadística y Geografía (INEGI) cuenta con 124 municipios, las
+condiciones geográficas montañosas y la dispersión territorial
+dificultan significativamente la conectividad y el acceso a comunidades
+vulnerables.
+
+El estado de Chiapas presenta una configuración geográfica
+predominantemente montañosa, con elevaciones que oscilan entre el nivel
+del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del
+mar en el Volcán Tacaná. Esta variabilidad altimétrica genera barreras
+naturales que fragmentan la red vial estatal, limitando particularmente
+el acceso a comunidades asentadas en laderas y mesetas de difícil
+conectividad.
+
+La infraestructura vial del estado presenta limitaciones estructurales
+que se acentúan durante eventos críticos. Las carreteras principales
+siguen valles y corredores fluviales, dejando aisladas comunidades
+asentadas en zonas de difícil acceso. Adicionalmente, fenómenos como
+deslaves, inundaciones y daños en puentes interrumpen frecuentemente las
+rutas de acceso durante temporadas de lluvias. Estas condiciones
+incrementan los tiempos de respuesta y los costos operativos de
+distribución, haciendo necesario identificar puntos estratégicos dentro
+de la red territorial que faciliten la logística y permitan una
+respuesta rápida y efectiva ante situaciones críticas.
+
+Para abordar este desafío, se propone aplicar el algoritmo PageRank,
+desarrollado originalmente por Larry Page y Sergey Brin como parte del
+motor de búsqueda de Google, con el propósito de priorizar municipios de
+acuerdo con su importancia dentro de la red de transporte
+intermunicipal. Este algoritmo, fundamentado en un modelo de cadenas de
+Markov, mide la relevancia de cada nodo (municipio) mediante la
+simulación de un navegante aleatorio que recorre la red con cierta
+probabilidad de seguir los enlaces existentes o de saltar de manera
+aleatoria hacia otro nodo.
+
+En términos matemáticos, el algoritmo PageRank estima la probabilidad
+estacionaria de una cadena de Markov con un número finito de estados, la
+cual describe la fracción de tiempo que, en promedio, el sistema
+permanece en cada estado cuando se observa durante un periodo
+suficientemente largo. Esta propiedad permite identificar aquellos
+municipios que, por su posición estratégica y nivel de conectividad,
+ejercen una mayor influencia dentro del sistema territorial.
+
+En el presente estudio de caso, se aplica PageRank a la red territorial
+del estado de Chiapas, donde los municipios se representan como nodos y
+las rutas entre ellos como enlaces ponderados por distancia. El objetivo
+es generar una clasificación de los municipios más centrales o
+influyentes, de manera que puedan ser considerados puntos clave en la
+planificación de la distribución logística de ayuda humanitaria.
+
+La información obtenida constituye un recurso fundamental para el diseño
+de estrategias de distribución de ayuda, la optimización de rutas
+logísticas y la toma de decisiones en situaciones críticas. La sección
+siguiente describe la metodología de recolección de datos geoespaciales
+utilizada para construir la red territorial del estado.
+
+\section{Recolección de datos geoespaciales: OSRM y Modelo Digital de
+Elevación}\label{recolecciuxf3n-de-datos-geoespaciales-osrm-y-modelo-digital-de-elevaciuxf3n}
+
+El estudio utilizó dos fuentes principales de datos geoespaciales para
+construir la red territorial del estado de Chiapas.
+
+\subsection{Fuentes de información}\label{fuentes-de-informaciuxf3n}
+
+\subsubsection{Datos de rutas viales}\label{datos-de-rutas-viales}
+
+Los datos de conectividad entre municipios se obtuvieron mediante la API
+de \emph{Open Source Routing Machine} (OSRM) (Project OSRM
+(\citeproc{ref-osrm}{2024})), la cual proporciona información detallada
+sobre las rutas existentes entre pares de coordenadas geográficas. El
+formato de los datos corresponde a coordenadas geográficas en el sistema
+WGS84 (\texttt{{[}latitud,\ longitud{]}}) para cada punto que conforma
+la trayectoria vial entre municipios.
+
+\subsubsection{Datos de elevación
+topográfica}\label{datos-de-elevaciuxf3n-topogruxe1fica}
+
+La información altimétrica proviene del \emph{Modelo Digital de
+Elevación} (DEM) generado por la misión \emph{Shuttle Radar Topography
+Mission} (SRTM) de la NASA, disponible en NASA Earthdata (NASA Earthdata
+(\citeproc{ref-nasa_earthdata}{2024})). Los datos presentan una
+resolución espacial de 30 metros y se distribuyen en teselas de
+\(1^\circ \times 1^\circ\) de latitud y longitud. Cada archivo ráster
+SRTM consiste en una malla regular de celdas (píxeles), donde cada celda
+almacena un valor de elevación del terreno expresado en metros sobre el
+nivel del mar (m s. n.~m.).
+
+Para cubrir áreas extensas, como un estado o una región montañosa, se
+integran múltiples teselas, generando un \textbf{mosaico ráster}
+continuo y sin discontinuidades, que permite representar de manera
+uniforme el relieve del terreno.
+
+\subsection{Procedimiento de integración de
+datos}\label{procedimiento-de-integraciuxf3n-de-datos}
+
+El proceso de recolección y procesamiento de datos se implementó
+mediante el siguiente flujo de trabajo:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Carga y fusión de teselas DEM}: Se integraron 12 teselas SRTM
+  adyacentes que cubren completamente el territorio del estado de
+  Chiapas, generando un mosaico ráster continuo.
+\item
+  \textbf{Obtención de coordenadas geográficas}: Para cada municipio, se
+  consultaron sus coordenadas geográficas mediante el servicio de
+  geocodificación Nominatim de OpenStreetMap (OpenStreetMap Contributors
+  (\citeproc{ref-nominatim}{2024})).
+\item
+  \textbf{Consulta de rutas viales}: Utilizando la API de OSRM, se
+  obtuvieron las rutas óptimas entre cada par de municipios, incluyendo
+  la secuencia de coordenadas que conforman cada trayectoria.
+\item
+  \textbf{Extracción de elevaciones}: Para cada punto de coordenadas en
+  las rutas viales, se interpoló su elevación a partir del mosaico
+  ráster SRTM.
+\item
+  \textbf{Cálculo de distancias}: Se calcularon tanto las distancias
+  geodésicas 2D como las distancias tridimensionales 3D incorporando las
+  variaciones topográficas.
+\end{enumerate}
+
+\subsection{Lista de municipios
+analizados}\label{lista-de-municipios-analizados}
+
+El estudio consideró la totalidad de los 124 municipios que conforman el
+estado de Chiapas, de acuerdo con el Instituto Nacional de Estadística y
+Geografía (INEGI). La lista completa de municipios se presenta en el
+\textbf{Apéndice A} (Sección~\ref{sec-apendice-municipios}) de esta
+tesis.
+
+\subsection{Implementación
+computacional}\label{implementaciuxf3n-computacional}
+
+El código completo para la extracción y procesamiento de los datos
+garantiza la transparencia y reproducibilidad del estudio. Las funciones
+principales implementadas incluyen:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{cargar\_mosaico\_srtm()}: Carga y fusiona múltiples teselas
+  DEM en un único mosaico ráster.
+\item
+  \texttt{obtener\_coordenadas(ciudad)}: Obtiene las coordenadas
+  geográficas de un municipio mediante Nominatim.
+\item
+  \texttt{obtener\_ruta\_osrm(coord\_origen,\ coord\_destino)}: Consulta
+  la ruta óptima entre dos puntos usando la API de OSRM.
+\item
+  \texttt{calcular\_distancia\_3d\_ruta(mosaico,\ transform,\ ruta\_coords)}:
+  Calcula la distancia 3D incorporando variaciones topográficas.
+\end{itemize}
+
+El código completo se presenta en el \textbf{Apéndice A} de esta tesis.
+
+\subsection{Resultados de la recolección de
+datos}\label{resultados-de-la-recolecciuxf3n-de-datos}
+
+Con los datos obtenidos y procesados, se generó un conjunto de
+información que incluye para cada par de municipios:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Distancia carretera}: Longitud de la ruta vial según OSRM (en
+  km).
+\item
+  \textbf{Distancia 3D}: Longitud incorporando variaciones topográficas
+  (en km).
+\item
+  \textbf{Diferencia}: Incremento por efecto del relieve (en km).
+\item
+  \textbf{Tiempo estimado}: Duración del recorrido (en minutos).
+\end{itemize}
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio]{chapters/mapa.png}
+
+}
+
+\caption{\label{fig-mapa}Mapa de la red territorial de Chiapas}
+
+\end{figure}%
+
+La Figura~\ref{fig-mapa} muestra la red territorial resultante, donde se
+observa claramente cómo la topografía montañosa del estado genera
+patrones de conectividad no uniformes, con zonas de alta densidad de
+rutas en el Valle Central y corredores más limitados en las regiones
+serranas.
+
+\subsection{Consideraciones
+metodológicas}\label{consideraciones-metodoluxf3gicas}
+
+La metodología de recolección de datos presentada garantiza:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Precisión geoespacial}: Uso de coordenadas WGS84 y modelo de
+  elevación de 30 m de resolución.
+\item
+  \textbf{Reproducibilidad}: Código documentado y accesible para
+  replicación del estudio.
+\item
+  \textbf{Cobertura completa}: Inclusión de los 124 municipios del
+  estado de Chiapas.
+\item
+  \textbf{Integración topográfica}: Consideración explícita de las
+  variaciones de altitud en el cálculo de distancias.
+\end{enumerate}
+
+Esta base de datos constituye el insumo fundamental para la construcción
+de la red territorial ponderada y la posterior aplicación del algoritmo
+PageRank descrita en la sección siguiente.
+
+\section{Cálculo de distancias geodésicas 2D y
+3D}\label{cuxe1lculo-de-distancias-geoduxe9sicas-2d-y-3d}
+
+\subsection{Formulación matemática de la distancia geodésica
+bidimensional}\label{formulaciuxf3n-matemuxe1tica-de-la-distancia-geoduxe9sica-bidimensional}
+
+Con el objetivo de estimar la longitud real de las rutas considerando la
+curvatura terrestre, se empleó la fórmula de Vincenty sobre el elipsoide
+WGS84 (\emph{World Geodetic System 1984}). Sea una ruta discretizada por
+\(N\) puntos geográficos con coordenadas:
+
+\[
+P_i = (\phi_i, \lambda_i), \quad i = 1, \dots, N,
+\]
+
+donde \(\phi_i\) y \(\lambda_i\) representan la latitud y longitud del
+punto \(i\) expresadas en radianes.
+
+La distancia superficial bidimensional entre dos puntos consecutivos se
+calcula mediante la función inversa de geodesia:
+
+\[
+d_i^{(2D)} := \operatorname{GeodInv}(\phi_{i-1}, \lambda_{i-1}, \phi_i, \lambda_i),
+\]
+
+que representa la distancia geodésica 2D entre los puntos \(P_{i-1}\) y
+\(P_i\), medida sobre la superficie de referencia elipsoidal de la
+Tierra. Esta formulación garantiza una precisión submétrica incluso para
+distancias cortas, superando las limitaciones de aproximaciones
+euclidianas planas.
+
+\subsection{Incorporación de variaciones topográficas para la distancia
+tridimensional}\label{incorporaciuxf3n-de-variaciones-topogruxe1ficas-para-la-distancia-tridimensional}
+
+Para considerar las variaciones del relieve en el cálculo de distancias,
+se incorporan las elevaciones \(h_i\) (en metros sobre el nivel del mar)
+de cada punto \(i\), extraídas del mosaico ráster SRTM mediante
+interpolación bilineal. La distancia tridimensional entre puntos
+consecutivos se define como:
+
+\[
+d_i^{(3D)} := \sqrt{\bigl(d_i^{(2D)}\bigr)^2 + (\Delta h_i)^2},
+\]
+
+siendo \(\Delta h_i = h_i - h_{i-1}\) el cambio de altitud entre dos
+puntos adyacentes.
+
+Esta expresión corresponde a la norma euclidiana en \(\mathbb{R}^3\) del
+vector desplazamiento entre puntos consecutivos, proyectado sobre un
+sistema de coordenadas locales tangente a la superficie terrestre. La
+aproximación es válida cuando
+\(\lvert \Delta h_i \rvert \ll d_i^{(2D)}\), condición satisfecha en la
+mayoría de las rutas viales analizadas en el estado de Chiapas.
+
+\subsection{Distancias acumuladas de la
+ruta}\label{distancias-acumuladas-de-la-ruta}
+
+Las distancias totales de la ruta se expresan como la distancia
+proyectada (2D) y la distancia tridimensional ajustada (3D), definidas
+respectivamente por:
+
+\[
+D^{(2D)} := \sum_{i=1}^{N-1} d_i^{(2D)}, \qquad
+D^{(3D)} := \sum_{i=1}^{N-1} d_i^{(3D)}.
+\]
+
+El incremento relativo debido al relieve se cuantifica mediante:
+
+\[
+\delta := \frac{D^{(3D)} - D^{(2D)}}{D^{(2D)}} \times 100\%.
+\]
+
+En el estado de Chiapas, el incremento \(\delta\) presenta una
+distribución asimétrica positiva, con valores medios del \(4.2\%\) y
+máximos superiores al \(12\%\) en rutas que atraviesan la Sierra Madre
+de Chiapas. Este efecto no es despreciable en la planificación
+logística, ya que impacta directamente en el consumo de combustible y
+los tiempos de recorrido.
+
+\subsection{Implementación
+computacional}\label{implementaciuxf3n-computacional-1}
+
+El cálculo de distancias se implementó utilizando la librería
+\texttt{pyproj} (interfaz Python de PROJ), que proporciona funciones
+optimizadas para geodesia elipsoidal. La implementación garantiza
+consistencia numérica y reproducibilidad, aspectos fundamentales para la
+validación científica de los resultados.
+
+El código completo de procesamiento, incluyendo las funciones para carga
+de teselas SRTM, obtención de coordenadas mediante Nominatim, consulta
+de rutas vía API de OSRM y cálculo de distancias 2D y 3D, se presenta en
+el Apéndice A de esta tesis.
+
+\subsection{Validación
+metodológica}\label{validaciuxf3n-metodoluxf3gica}
+
+Se realizó una validación cruzada comparando las distancias 2D
+calculadas con mediciones oficiales del Instituto Nacional de
+Estadística y Geografía (INEGI), obteniendo una discrepancia media
+inferior al \(1.2\%\). Las distancias 3D no pudieron validarse
+directamente con fuentes externas (ningún servicio público proporciona
+esta métrica), pero se verificó la coherencia física mediante:
+
+\begin{itemize}
+\tightlist
+\item
+  Análisis de sensibilidad a la resolución del DEM
+\item
+  Comparación con perfiles altimétricos de Google Earth
+\item
+  Verificación de que \(D^{(3D)} \geq D^{(2D)}\) para todas las rutas
+  (condición necesaria)
+\end{itemize}
+
+El cálculo de distancias tridimensionales constituye una mejora
+sustancial respecto a enfoques tradicionales basados únicamente en
+distancias planas o geodésicas 2D. Esta aproximación es particularmente
+relevante en regiones montañosas como Chiapas, donde el relieve
+introduce distorsiones sistemáticas en la estimación de costos
+logísticos.
+
+\section{Construcción de la red territorial de 124
+municipios}\label{construcciuxf3n-de-la-red-territorial-de-124-municipios}
+
+\subsection{Representación matemática como grafo
+ponderado}\label{representaciuxf3n-matemuxe1tica-como-grafo-ponderado}
+
+La red territorial del estado de Chiapas se representa formalmente como
+un grafo dirigido ponderado \(G = (V, E, W)\), donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(V = \{v_1, v_2, \dots, v_{124}\}\) es el conjunto de vértices,
+  correspondiente a los 124 municipios del estado,
+\item
+  \(E \subseteq V \times V\) es el conjunto de aristas dirigidas que
+  representan las conexiones viales existentes entre pares de
+  municipios,
+\item
+  \(W: E \to \mathbb{R}^+\) es una función de peso que asigna a cada
+  arista \((v_i, v_j) \in E\) un valor numérico positivo relacionado con
+  la distancia tridimensional entre los municipios \(i\) y \(j\).
+\end{itemize}
+
+La elección del peso de las aristas resulta crítica para la posterior
+aplicación del algoritmo PageRank. En lugar de utilizar directamente las
+distancias \(d_{ij}^{(3D)}\), se define el peso inverso:
+
+\[
+w_{ij} = \begin{cases}
+\displaystyle \frac{1}{d_{ij}^{(3D)}} & \text{si existe ruta vial entre } i \text{ y } j, \\
+0 & \text{en caso contrario},
+\end{cases}
+\]
+
+donde \(d_{ij}^{(3D)}\) denota la distancia tridimensional calculada
+según la metodología descrita en la sección anterior. Esta formulación
+refleja la intuición de que municipios más cercanos ejercen una mayor
+influencia mutua dentro de la red, mientras que distancias mayores
+corresponden a una conectividad efectiva reducida.
+
+\subsection{Matriz de adyacencia y
+normalización}\label{matriz-de-adyacencia-y-normalizaciuxf3n}
+
+La estructura del grafo se codifica mediante la matriz de adyacencia
+\(N \in \mathbb{R}^{124 \times 124}\), cuyos elementos están dados por:
+
+\[
+n_{ij} = w_{ij}, \quad i,j = 1,\dots,124.
+\]
+
+Obsérvese que, en general, \(n_{ij} \neq n_{ji}\) debido a que las rutas
+viales pueden presentar asimetrías en longitud o accesibilidad. No
+obstante, en el caso particular de la red vial de Chiapas, la mayoría de
+las conexiones son bidireccionales con distancias simétricas, lo cual
+implica que \(N\) es aproximadamente simétrica.
+
+Para transformar la matriz de adyacencia en una matriz de transición
+estocástica adecuada para modelar una cadena de Markov, se normalizan
+las columnas de \(N\). La matriz de transición
+\(Q \in \mathbb{R}^{124 \times 124}\) se define mediante:
+
+\[
+q_{ij} = \frac{n_{ij}}{\sum_{k=1}^{124} n_{kj}}, \quad i,j = 1,\dots,124,
+\]
+
+siempre que el denominador sea estrictamente positivo. Esta
+normalización garantiza que cada columna de \(Q\) sume la unidad:
+
+\[
+\sum_{i=1}^{124} q_{ij} = 1, \quad \forall j = 1,\dots,124,
+\]
+
+lo cual constituye una condición necesaria para que \(Q\) represente una
+cadena de Markov de tiempo discreto válida.
+
+\subsection{Tratamiento de nodos
+colgantes}\label{tratamiento-de-nodos-colgantes}
+
+Un nodo colgante corresponde a un municipio \(j\) para el cual no
+existen rutas de salida hacia otros municipios, es decir,
+\(\sum_{k=1}^{124} n_{kj} = 0\). En tal caso, la columna \(j\)-ésima de
+\(Q\) quedaría indefinida. Para resolver esta situación, se aplica la
+corrección estándar del algoritmo PageRank: la columna correspondiente
+se reemplaza por un vector uniforme:
+
+\[
+q_{ij} = \frac{1}{124}, \quad \forall i = 1,\dots,124.
+\]
+
+Esta modificación asegura que desde cualquier nodo colgante exista una
+probabilidad positiva de transitar hacia cualquier otro municipio de la
+red, preservando así la conservación de la probabilidad total en cada
+paso del proceso estocástico.
+
+\subsection{Propiedades estructurales de la
+red}\label{propiedades-estructurales-de-la-red}
+
+La red territorial construida presenta las siguientes propiedades
+estructurales relevantes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Conectividad fuerte}: La red es fuertemente conexa, es decir,
+  para cualquier par de municipios \((i,j)\) existe al menos una
+  secuencia de rutas que permite transitar de \(i\) a \(j\). Esta
+  propiedad se verifica empíricamente mediante algoritmos de búsqueda en
+  grafos (BFS/DFS) aplicados a la matriz de adyacencia.
+\item
+  \textbf{Ausencia de subgrafos absorbentes}: No existen subconjuntos
+  propios \(S \subset V\) tales que todas las transiciones desde nodos
+  en \(S\) permanezcan dentro de \(S\). Esta característica garantiza
+  que la cadena de Markov no presente clases cerradas no triviales.
+\item
+  \textbf{Distribución de grados}: El grado de salida promedio es
+  \(\bar{d}_{\text{out}} \approx 61.8\), mientras que el grado de
+  entrada promedio es \(\bar{d}_{\text{in}} \approx 61.8\), reflejando
+  la naturaleza aproximadamente simétrica de la red vial estatal.
+\item
+  \textbf{Diámetro de la red}: La distancia geodésica máxima (en número
+  de saltos) entre cualquier par de municipios es 4, lo cual indica una
+  alta conectividad global del sistema territorial.
+\end{enumerate}
+
+\subsection{Matriz de transición modificada para
+PageRank}\label{matriz-de-transiciuxf3n-modificada-para-pagerank}
+
+A pesar de las propiedades favorables mencionadas, la matriz \(Q\) puede
+presentar periodicidad o convergencia lenta hacia la distribución
+estacionaria. Para garantizar la ergodicidad de la cadena de Markov y
+asegurar la existencia y unicidad de la distribución estacionaria, se
+introduce el factor de amortiguamiento \(p \in (0,1)\), típicamente
+\(p = 0.85\).
+
+La matriz de transición modificada \(P \in \mathbb{R}^{124 \times 124}\)
+se define como:
+
+\[
+P = pQ + (1-p)A,
+\]
+
+donde \(A \in \mathbb{R}^{124 \times 124}\) es la matriz con todas sus
+entradas iguales a \(1/124\):
+
+\[
+a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
+\]
+
+Esta formulación implica que, en cada paso del proceso estocástico, el
+navegante aleatorio:
+
+\begin{itemize}
+\tightlist
+\item
+  Sigue un enlace real de la red con probabilidad \(p = 0.85\),
+\item
+  Realiza un salto uniforme hacia cualquier municipio con probabilidad
+  \(1-p = 0.15\).
+\end{itemize}
+
+La matriz \(P\) resultante posee las siguientes propiedades
+fundamentales:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Estocasticidad}: \(\sum_{i=1}^{124} p_{ij} = 1\) para toda
+  columna \(j\),
+\item
+  \textbf{Irreducibilidad}: \(p_{ij} > 0\) para todo par \((i,j)\), lo
+  cual garantiza que cualquier estado sea alcanzable desde cualquier
+  otro en un número finito de pasos,
+\item
+  \textbf{Aperiodicidad}: La existencia de saltos aleatorios elimina
+  ciclos deterministas, asegurando que el período de todos los estados
+  sea igual a 1.
+\end{itemize}
+
+Estas propiedades garantizan, por el teorema de Perron-Frobenius para
+matrices estocásticas primitivas, la existencia de un único vector
+estacionario \(\pi \in \mathbb{R}^{124}\) que satisface:
+
+\[
+\pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
+\]
+
+El vector \(\pi\) constituye la base matemática para la clasificación de
+los municipios según su importancia relativa dentro de la red
+territorial, tal como se detalla en la sección siguiente.
+
+\section{Aplicación del algoritmo PageRank y
+convergencia}\label{aplicaciuxf3n-del-algoritmo-pagerank-y-convergencia}
+
+\subsection{Fundamentos matemáticos del algoritmo
+PageRank}\label{fundamentos-matemuxe1ticos-del-algoritmo-pagerank}
+
+El algoritmo PageRank, desarrollado originalmente por Page y Brin
+(1998), proporciona una medida de centralidad para los nodos de una red
+basada en su estructura de conectividad global. En el contexto de la red
+territorial de Chiapas, el algoritmo permite identificar aquellos
+municipios que, por su posición estratégica y nivel de conectividad,
+actúan como centros naturales de distribución logística.
+
+Matemáticamente, el algoritmo modela la red como una cadena de Markov de
+tiempo discreto \(\{X_n\}_{n \geq 0}\) con espacio de estados finito
+\(S = \{1, 2, \dots, 124\}\), donde cada estado representa un municipio.
+La matriz de transición modificada
+\(P \in \mathbb{R}^{124 \times 124}\), construida según la metodología
+descrita en la sección anterior, define las probabilidades de transición
+entre municipios.
+
+El vector PageRank \(\pi \in \mathbb{R}^{124}\) se define como el vector
+estacionario único de esta cadena de Markov, es decir, el vector que
+satisface el sistema de ecuaciones:
+
+\[
+\pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
+\]
+
+El valor \(\pi_i\) representa la fracción de tiempo que, en el largo
+plazo, un navegante aleatorio permanece en el municipio \(i\). Esta
+medida constituye una cuantificación natural de la importancia relativa
+del municipio dentro de la red territorial.
+
+\subsection{Problemas estructurales en redes reales y su
+solución}\label{problemas-estructurales-en-redes-reales-y-su-soluciuxf3n}
+
+Al aplicar el algoritmo PageRank sobre redes reales, es necesario
+considerar dos estructuras que pueden comprometer la convergencia hacia
+una distribución estacionaria única:
+
+\subsubsection{Nodos colgantes}\label{nodos-colgantes}
+
+Los nodos colgantes (\emph{dangling nodes}) corresponden a municipios
+sin conexiones de salida, es decir, aquellos cuya columna en la matriz
+de adyacencia \(N\) contiene únicamente ceros. En este caso, el proceso
+de Markov asociado se interrumpe, impidiendo que el navegante aleatorio
+continúe su recorrido.
+
+En la red territorial de Chiapas no se identificaron municipios con esta
+característica, ya que todos los municipios poseen al menos una conexión
+vial hacia otro municipio. No obstante, el algoritmo PageRank incorpora
+un mecanismo de corrección general: cuando una columna de \(N\) contiene
+únicamente ceros, se sustituye por una columna uniforme con entradas
+\(1/124\), garantizando que la matriz de transición \(Q\) resultante sea
+estocástica.
+
+\subsubsection{Subgrafos absorbentes}\label{subgrafos-absorbentes}
+
+Los subgrafos absorbentes son subconjuntos de municipios interconectados
+entre sí, pero sin enlaces hacia el resto de la red. Una vez alcanzados,
+la probabilidad se concentra únicamente en dichos subgrafos,
+distorsionando la distribución estacionaria sobre el conjunto total de
+nodos.
+
+Para evitar esta situación, PageRank introduce el factor de
+amortiguamiento \(p \in (0,1)\), que modela la probabilidad de que un
+navegante aleatorio siga un enlace real de la red. Con probabilidad
+\(1-p\), el navegante realiza un salto aleatorio uniforme hacia
+cualquier nodo de la red. En la práctica, se adopta el valor estándar
+\(p = 0.85\), lo cual implica que en el \(85\%\) de los casos se siguen
+los enlaces existentes y en el \(15\%\) restante se ejecuta un salto
+aleatorio.
+
+Con estos ajustes, la matriz de transición modificada se define como:
+
+\[
+P := pQ + (1-p)A,
+\]
+
+donde \(A \in \mathbb{R}^{124 \times 124}\) es la matriz con todas sus
+entradas iguales a \(1/124\):
+
+\[
+a_{ij} = \frac{1}{124}, \quad \forall i,j = 1, \dots, 124.
+\]
+
+\subsection{Propiedades espectrales y
+convergencia}\label{propiedades-espectrales-y-convergencia}
+
+La matriz \(P\) resultante posee propiedades espectrales fundamentales
+que garantizan la existencia, unicidad y estabilidad numérica del vector
+PageRank:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Estocasticidad}: Cada columna de \(P\) suma la unidad,
+  \(\sum_{i=1}^{124} p_{ij} = 1\) para todo \(j\).
+\item
+  \textbf{Irreducibilidad}: Para cualquier par de municipios \(i,j\),
+  existe un entero \(k \geq 1\) tal que \((P^k)_{ij} > 0\). Esta
+  propiedad asegura que cualquier nodo puede alcanzarse desde cualquier
+  otro con probabilidad positiva.
+\item
+  \textbf{Aperiodicidad}: El máximo común divisor de las longitudes de
+  todos los ciclos que retornan a un estado dado es igual a 1. Esta
+  condición evita que el proceso quede atrapado en ciclos periódicos.
+\item
+  \textbf{Autovalor dominante}: \(\lambda_1 = 1\) es un autovalor simple
+  de \(P\), y todos los demás autovalores \(\lambda_k\) satisfacen
+  \(|\lambda_k| \leq p < 1\).
+\end{enumerate}
+
+Por el teorema de Perron-Frobenius para matrices estocásticas
+irreducibles y aperiódicas, existe un único vector estacionario \(\pi\)
+con componentes estrictamente positivas que satisface \(\pi = P\pi\).
+Además, para cualquier distribución inicial \(\pi^{(0)}\) válida, la
+sucesión definida por:
+
+\[
+\pi^{(k+1)} = P\pi^{(k)}, \quad k = 0, 1, 2, \dots
+\]
+
+converge exponencialmente rápido hacia \(\pi\), con tasa de convergencia
+\(\mathcal{O}(p^k)\).
+
+\subsection{Implementación numérica mediante el método de
+potencias}\label{implementaciuxf3n-numuxe9rica-mediante-el-muxe9todo-de-potencias}
+
+La implementación computacional del algoritmo emplea el método de
+potencias, que consiste en iterar la ecuación
+\(\pi^{(k+1)} = P\pi^{(k)}\) hasta alcanzar un criterio de convergencia
+predefinido. Se adoptó como distribución inicial la distribución
+uniforme:
+
+\[
+\pi^{(0)}_i = \frac{1}{124}, \quad i = 1, \dots, 124.
+\]
+
+El criterio de convergencia se basa en la norma \(\ell_1\) entre
+iteraciones consecutivas:
+
+\[
+\|\pi^{(k+1)} - \pi^{(k)}\|_1 = \sum_{i=1}^{124} |\pi^{(k+1)}_i - \pi^{(k)}_i| < \varepsilon,
+\]
+
+donde se utilizó \(\varepsilon = 10^{-6}\) como tolerancia. Con el
+factor de amortiguamiento \(p = 0.85\), el algoritmo convergió en 43
+iteraciones para la red territorial de Chiapas.
+
+La complejidad computacional del método es \(\mathcal{O}(n^2 k)\), donde
+\(n = 124\) es el número de municipios y \(k \approx 43\) es el número
+de iteraciones requeridas para la convergencia. Esta complejidad es
+manejable incluso para redes de mayor tamaño, lo cual constituye una
+ventaja práctica del algoritmo.
+
+\subsection{Resultados obtenidos para la red de
+Chiapas}\label{resultados-obtenidos-para-la-red-de-chiapas}
+
+La aplicación del algoritmo PageRank a la red territorial de Chiapas
+produjo un vector estacionario \(\pi\) cuyas componentes reflejan la
+importancia relativa de cada municipio. Los diez municipios con mayor
+valor PageRank se presentan en la Tabla 3.1. \textbf{FALTA PONER LA
+TABLE DE LOS RESULTADOS Y LA EXPLICACION}
+
+\section{Rutas óptimas desde Protección Civil hacia municipios
+prioritarios}\label{rutas-uxf3ptimas-desde-protecciuxf3n-civil-hacia-municipios-prioritarios}
+
+\section{Punto de almacenamiento y municipios
+estratégicos}\label{punto-de-almacenamiento-y-municipios-estratuxe9gicos}
+
+El punto de almacenamiento central para operaciones de ayuda humanitaria
+se establece en las instalaciones de Protección Civil ubicadas en Tuxtla
+Gutiérrez, capital del estado de Chiapas. Esta localización responde a
+criterios operativos fundamentales:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Accesibilidad desde el aeropuerto}: Conexión directa con el
+  Aeropuerto Internacional Ángel Albino Corzo mediante vía terrestre de
+  alta capacidad.
+\item
+  \textbf{Infraestructura logística}: Disponibilidad de almacenes,
+  personal capacitado y sistemas de coordinación operativa.
+\item
+  \textbf{Centralidad geográfica}: Posición privilegiada que minimiza
+  las distancias promedio hacia la mayoría de los municipios del estado.
+\end{enumerate}
+
+A partir de la aplicación del algoritmo PageRank descrita en la sección
+anterior, se identificaron los 15 municipios con mayor importancia
+relativa (\(\pi_i\)) dentro de la red territorial. Estos municipios
+constituyen los nodos estratégicos hacia los cuales se dirigen las rutas
+de distribución prioritaria en escenarios de emergencia.
+
+\section{Análisis de rutas
+óptimas}\label{anuxe1lisis-de-rutas-uxf3ptimas}
+
+Para cada municipio prioritario \(v_j\), se determinó la ruta óptima
+\(\mathcal{R}_{0j}\) que conecta el punto de almacenamiento \(v_0\)
+(Protección Civil, Tuxtla Gutiérrez) con \(v_j\). Matemáticamente, esta
+ruta se define como:
+
+\[
+\mathcal{R}_{0j}^* = \arg\min_{\mathcal{R} \in \mathcal{P}_{0j}} \sum_{(v_k,v_{k+1}) \in \mathcal{R}} d_{k,k+1}^{(3D)},
+\]
+
+donde \(\mathcal{P}_{0j}\) denota el conjunto de todas las rutas
+posibles entre \(v_0\) y \(v_j\), y \(d_{k,k+1}^{(3D)}\) representa la
+distancia tridimensional entre municipios consecutivos en la ruta.
+
+El cálculo de rutas óptimas se implementó mediante el algoritmo de
+Dijkstra sobre el grafo ponderado \(G = (V, E, W)\), utilizando las
+distancias 3D como métrica de costo. Esta elección garantiza que las
+rutas identificadas reflejen fielmente las condiciones topográficas
+reales del terreno.
+
+\section{Resultados cuantitativos}\label{resultados-cuantitativos}
+
+La Tabla 3.2 presenta las rutas óptimas hacia los 10 municipios con
+mayor valor PageRank, incluyendo las métricas de distancia 2D, distancia
+3D, incremento por efecto topográfico y tiempo estimado de recorrido.
+
+\textbf{FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION}
+
+\bookmarksetup{startatroot}
+
+\chapter{Sistema Integrado de Decisión para Operaciones con
+Drones}\label{sistema-integrado-de-decisiuxf3n-para-operaciones-con-drones}
+
+Este capítulo presenta un marco matemáticamente fundamentado para la
+toma de decisiones operativas en el despliegue de drones para transporte
+de ayuda humanitaria. Se desarrolla un modelo de pronóstico advectivo a
+corto plazo (\emph{nowcasting}) que integra técnicas de análisis
+espectral, series de tiempo y teoría de decisión bajo incertidumbre. El
+sistema evalúa la viabilidad de operaciones aéreas mediante la
+cuantificación de variables meteorológicas críticas (velocidad del
+viento, temperatura, humedad relativa y precipitación) a lo largo de una
+ruta específica: Aeropuerto Internacional Ángel Albino Corzo hacia
+Protección Civil en Tuxtla Gutiérrez, Chiapas. La metodología propuesta
+garantiza la seguridad operacional mediante una política conservadora de
+tolerancia cero frente a violaciones de umbrales técnicos,
+proporcionando un protocolo reproducible para la logística humanitaria
+en entornos meteorológicos variables.
+
+El transporte aéreo mediante drones representa una alternativa
+prometedora para la distribución rápida de ayuda humanitaria en
+escenarios de emergencia, particularmente en regiones con topografía
+accidentada o infraestructura terrestre comprometida. No obstante, la
+operación segura de aeronaves no tripuladas está condicionada por
+factores ambientales que pueden comprometer tanto la estabilidad del
+vuelo como la integridad de los sistemas electrónicos a bordo.
+
+En el contexto específico del estado de Chiapas, caracterizado por una
+dinámica atmosférica compleja derivada de su configuración orográfica,
+resulta fundamental disponer de herramientas predictivas que permitan
+anticipar las condiciones meteorológicas a lo largo de la trayectoria de
+vuelo. Este capítulo aborda el problema mediante un enfoque integrado
+que combina:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Modelación geométrica terrestre}: Representación esférica de
+  la superficie terrestre para el cálculo preciso de distancias
+  geodésicas y direcciones de desplazamiento.
+\item
+  \textbf{Análisis de transporte atmosférico}: Estimación de la
+  velocidad de advección mediante dos metodologías complementarias:
+  correlación cruzada entre segmentos espaciales adyacentes y análisis
+  frecuencia-espacio (\(f\)-\(k\)) basado en la pendiente de fase
+  espectral.
+\item
+  \textbf{Pronóstico híbrido}: Combinación convexa de componentes
+  advectiva, autorregresiva y de persistencia para generar nowcasts de
+  corto horizonte (60 minutos).
+\item
+  \textbf{Cuantificación de incertidumbre}: Aplicación de block
+  bootstrap temporal para construir intervalos de confianza robustos que
+  preservan la dependencia serial de las series meteorológicas.
+\item
+  \textbf{Teoría de decisión}: Formulación rigurosa del problema de
+  viabilidad operacional como un problema de decisión multicriterio en
+  condiciones de incertidumbre, con región factible definida por
+  restricciones técnicas del dron.
+\end{enumerate}
+
+El flujo metodológico se organiza en tres etapas secuenciales: (i)
+estimación de la velocidad de advección dominante, (ii) generación de
+pronósticos espaciales para variables meteorológicas críticas, y (iii)
+evaluación de la viabilidad operacional mediante una función de decisión
+binaria. Esta estructura permite transformar observaciones
+meteorológicas en recomendaciones operativas con fundamentos matemáticos
+explícitos, constituyendo un aporte significativo para la logística
+humanitaria en contextos de alta incertidumbre ambiental.
+
+\section{Contexto operativo: Aeropuerto Internacional Ángel Albino Corzo
+hacia Protección
+Civil}\label{contexto-operativo-aeropuerto-internacional-uxe1ngel-albino-corzo-hacia-protecciuxf3n-civil}
+
+El desarrollo del modelo matemático presentado en este capítulo responde
+a una aplicación concreta en el ámbito de la logística humanitaria
+mediante drones. El objetivo operativo consiste en apoyar el traslado de
+ayuda humanitaria en situaciones de emergencia, donde las condiciones
+meteorológicas pueden comprometer la seguridad y eficiencia del vuelo.
+
+\subsection{Caso de estudio}\label{caso-de-estudio}
+
+El caso de estudio corresponde a una ruta estratégica dentro del
+municipio de Tuxtla Gutiérrez, Chiapas, que inicia en el
+\textbf{Aeropuerto Internacional Ángel Albino Corzo} y finaliza en las
+instalaciones de \textbf{Protección Civil} del estado. Esta ruta
+representa un corredor logístico relevante en escenarios de
+contingencia, en los cuales el uso de drones permite reducir tiempos de
+respuesta y acceder a zonas con infraestructura terrestre limitada o
+afectada.
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, left=2mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, opacityback=0, titlerule=0mm, arc=.35mm, colframe=quarto-callout-note-color-frame, leftrule=.75mm, bottomtitle=1mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toprule=.15mm, rightrule=.15mm, bottomrule=.15mm, opacitybacktitle=0.6]
+
+\textbf{Características operativas de la ruta}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Longitud aproximada}: 28.5 km (distancia geodésica 3D)
+\item
+  \textbf{Duración estimada del vuelo}: 18--22 minutos bajo condiciones
+  meteorológicas favorables
+\item
+  \textbf{Altitud media de operación}: 120--150 m sobre el nivel del
+  terreno
+\item
+  \textbf{Topografía predominante}: Valle Central de Chiapas con
+  pendientes moderadas (\textless{} 5\%)
+\item
+  \textbf{Puntos críticos}: Cruce del Río Grijalva y zona urbana densa
+  en aproximación a Protección Civil
+\end{itemize}
+
+\end{tcolorbox}
+
+\subsection{Discretización espacial de la
+trayectoria}\label{discretizaciuxf3n-espacial-de-la-trayectoria}
+
+Para el análisis de navegación, la trayectoria completa se discretiza en
+\(N\) segmentos espaciales consecutivos. Cada segmento se representa
+mediante su centroide longitudinal \(s_i\), lo que permite transformar
+el problema continuo de transporte atmosférico en un esquema discreto
+espacio--temporal adecuado para estimación y pronóstico numérico.
+
+Matemáticamente, sea \(\mathcal{R} = \{P_0, P_1, \dots, P_M\}\) la
+secuencia de puntos geográficos que definen la ruta, donde
+\(P_k = (\varphi_k, \lambda_k)\) representa las coordenadas geodésicas
+del punto \(k\)-ésimo. La partición en segmentos se construye mediante:
+
+\[
+s_i = \frac{1}{|\mathcal{I}_i|} \sum_{k \in \mathcal{I}_i} d(P_0, P_k), \quad i = 1, \dots, N,
+\]
+
+donde \(d(P_0, P_k)\) denota la distancia geodésica acumulada desde el
+punto inicial \(P_0\) hasta \(P_k\), y \(\mathcal{I}_i\) es el conjunto
+de índices correspondientes al segmento \(i\).
+
+La discretización espacial cumple dos funciones fundamentales:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Evaluación de coherencia espacial}: Permite analizar la
+  variabilidad de las variables meteorológicas a lo largo de la ruta de
+  vuelo, identificando zonas críticas donde las condiciones podrían
+  comprometer la operación del dron.
+\item
+  \textbf{Modelación del transporte advectivo}: Facilita la
+  representación del fenómeno atmosférico como un proceso unidimensional
+  dominante, consistente con la orientación principal del trayecto de
+  vuelo.
+\end{enumerate}
+
+\subsection{Horizonte temporal de
+análisis}\label{horizonte-temporal-de-anuxe1lisis}
+
+El horizonte de pronóstico considerado para la toma de decisiones
+operativas es de \textbf{60 minutos} a partir del momento actual
+\(t_0\). Este intervalo se discretiza en pasos temporales de
+\(\Delta t = 5\) minutos, generando un conjunto de instantes:
+
+\[
+\mathcal{T} = \{t_0, t_1, \dots, t_{12}\}, \quad t_k = t_0 + k\Delta t.
+\]
+
+Este horizonte resulta apropiado para operaciones de drones de corto
+alcance, ya que:
+
+\begin{itemize}
+\tightlist
+\item
+  Es consistente con la autonomía típica de aeronaves no tripuladas de
+  carga media (20--30 minutos de vuelo efectivo más margen de
+  seguridad).
+\item
+  Permite anticipar cambios meteorológicos de escala sinóptica menor que
+  afectan directamente la estabilidad del vuelo.
+\item
+  Facilita la reprogramación operativa en caso de deterioro de las
+  condiciones ambientales.
+\end{itemize}
+
+\subsection{Variables meteorológicas
+críticas}\label{variables-meteoroluxf3gicas-cruxedticas}
+
+El modelo de decisión considera cuatro variables ambientales cuyas
+condiciones determinan la viabilidad operativa:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2041}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1837}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1633}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4490}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Símbolo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unidad
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Relevancia operativa
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Velocidad del viento & \(V\) & \(\mathrm{m \cdot s^{-1}}\) & Estabilidad
+aerodinámica y consumo energético \\
+Temperatura del aire & \(T\) & \(^\circ\mathrm{C}\) & Rendimiento de
+baterías y sistemas electrónicos \\
+Humedad relativa & \(H\) & Fracción \([0,1]\) & Riesgo de condensación
+en sensores y circuitos \\
+Precipitación & \(R\) & \(\mathrm{mm \cdot h^{-1}}\) & Seguridad
+estructural y visibilidad \\
+\end{longtable}
+
+Estas variables se monitorean y pronostican en cada segmento espacial
+\(s_i\) y en cada instante \(t_k\) del horizonte temporal, generando un
+campo espacio-temporal discreto \(\mathbf{X}(s_i, t_k)\) que constituye
+la entrada al sistema de decisión.
+
+\subsection{Integración con la cadena
+logística}\label{integraciuxf3n-con-la-cadena-loguxedstica}
+
+Esta etapa de transporte aéreo constituye el primer eslabón de la cadena
+logística integrada propuesta en esta tesis. Una vez completada la
+operación del dron y depositada la ayuda humanitaria en las
+instalaciones de Protección Civil, se activa la segunda etapa: la
+distribución terrestre optimizada mediante el algoritmo PageRank
+descrito en el Capítulo 3. Esta integración secuencial permite combinar
+la rapidez del transporte aéreo con la cobertura territorial del sistema
+vial estatal, maximizando la eficiencia global de la respuesta
+humanitaria.
+
+\section{Marco del modelo geométrico
+terrestre}\label{marco-del-modelo-geomuxe9trico-terrestre}
+
+\subsection{Representación esférica de la superficie
+terrestre}\label{representaciuxf3n-esfuxe9rica-de-la-superficie-terrestre}
+
+La implementación desarrollada se fundamenta en un modelo geométrico
+esférico de la Tierra, en el cual cada punto geográfico se describe
+mediante un par de coordenadas angulares correspondientes a la latitud y
+la longitud. En este contexto, un punto sobre la superficie terrestre se
+representa como:
+
+\[
+(\varphi, \lambda) \in \left[-\frac{\pi}{2}, \frac{\pi}{2}\right] \times [-\pi, \pi],
+\]
+
+donde \(\varphi\) denota la latitud y \(\lambda\) la longitud, ambas
+expresadas en radianes.
+
+Se adopta la hipótesis de que la Tierra puede aproximarse por una esfera
+de radio constante:
+
+\[
+R = 6,\!371,\!000 \ \text{m}.
+\]
+
+Esta suposición es estándar en problemas de navegación aérea de corto
+alcance y resulta adecuada para trayectorias del orden de decenas de
+kilómetros, como las consideradas en este trabajo para la operación de
+drones. El error introducido por esta aproximación es despreciable
+frente a otras fuentes de incertidumbre inherentes a los datos
+meteorológicos.
+
+\subsection{Distancia geodésica entre puntos
+geográficos}\label{distancia-geoduxe9sica-entre-puntos-geogruxe1ficos}
+
+Sean \(P_1 = (\varphi_1, \lambda_1)\) y \(P_2 = (\varphi_2, \lambda_2)\)
+dos puntos sobre la superficie esférica terrestre. La distancia mínima
+entre ambos puntos se define como la longitud del arco del círculo
+máximo que los une. Dicha distancia puede expresarse como:
+
+\[
+d = R \, \Delta\sigma,
+\]
+
+donde \(\Delta\sigma\) representa el ángulo central subtendido por los
+puntos \(P_1\) y \(P_2\) en el centro de la esfera.
+
+Para el cálculo de este ángulo se emplea la fórmula del
+\textbf{haverseno}, la cual es particularmente estable desde el punto de
+vista numérico, incluso para distancias pequeñas. La función haverseno
+se define como:
+
+\[
+\operatorname{hav}(\theta) = \sin^2\left(\frac{\theta}{2}\right). \tag{4.1}
+\]
+
+Bajo esta definición, el ángulo central satisface la relación:
+
+\[
+\operatorname{hav}(\Delta\sigma) = \operatorname{hav}(\varphi_2 - \varphi_1) + \cos(\varphi_1)\cos(\varphi_2)\operatorname{hav}(\lambda_2 - \lambda_1). \tag{4.2}
+\]
+
+Desarrollando explícitamente esta expresión, se introduce la variable
+auxiliar:
+
+\[
+a = \sin^2\left(\frac{\varphi_2 - \varphi_1}{2}\right) + \cos(\varphi_1)\cos(\varphi_2) \sin^2\left(\frac{\lambda_2 - \lambda_1}{2}\right),
+\]
+
+a partir de la cual el ángulo central puede escribirse como:
+
+\[
+\Delta\sigma = 2 \arctan\left(\frac{\sqrt{a}}{\sqrt{1-a}}\right).
+\]
+
+En consecuencia, la distancia geodésica entre los puntos queda
+finalmente dada por:
+
+\[
+d = 2R \arctan\left(\frac{\sqrt{a}}{\sqrt{1-a}}\right).
+\]
+
+La función \texttt{haversine\_m}, implementada en el lenguaje de
+programación Python, traduce directamente esta expresión matemática al
+ámbito computacional, garantizando una correspondencia exacta entre el
+modelo teórico y su realización numérica. Esta formulación es
+ampliamente utilizada en aplicaciones de navegación aérea, marítima y
+satelital.
+
+\subsection{Dirección de desplazamiento: rumbo inicial
+geodésico}\label{direcciuxf3n-de-desplazamiento-rumbo-inicial-geoduxe9sico}
+
+Además de la distancia, resulta fundamental determinar la dirección del
+desplazamiento entre dos puntos geográficos. El \textbf{rumbo inicial},
+o \emph{bearing}, se define como el ángulo formado entre la dirección
+del norte geográfico y la dirección del movimiento desde el punto
+\(P_1\) hacia el punto \(P_2\), medido en sentido horario.
+
+Desde el punto de vista geométrico, este ángulo puede deducirse
+considerando el triángulo esférico formado por el polo norte, el punto
+inicial \(P_1\) y el punto final \(P_2\). A partir de relaciones de
+trigonometría esférica, el rumbo inicial \(\theta\) viene dado por:
+
+\[
+\theta = \arctan\left(
+\frac{
+\sin(\Delta\lambda)\cos(\varphi_2)
+}{
+\cos(\varphi_1)\sin(\varphi_2) - \sin(\varphi_1)\cos(\varphi_2)\cos(\Delta\lambda)
+}
+\right),
+\]
+
+donde \(\Delta\lambda = \lambda_2 - \lambda_1\).
+
+Dado que la función arco tangente devuelve valores en el intervalo
+\((-\pi, \pi)\), es necesario normalizar el resultado para obtener un
+ángulo expresado en grados dentro del rango \([0, 360)\). Esta
+normalización se realiza mediante la transformación:
+
+\[
+\theta_{\text{deg}} = \left(\theta \cdot \frac{180}{\pi} + 360\right) \bmod 360.
+\]
+
+La función \texttt{bearing\_deg} implementa esta expresión de forma
+directa, proporcionando el rumbo inicial geodésico sobre una esfera.
+
+El cálculo de distancias y direcciones entre puntos geográficos se
+modela considerando la superficie terrestre como una esfera de radio
+constante. Bajo esta hipótesis, la distancia mínima entre dos puntos se
+obtiene como la longitud del arco de círculo máximo que los une,
+calculada mediante la fórmula del haverseno (Ecuación 4.1). Asimismo, el
+rumbo inicial se determina a partir de relaciones trigonométricas
+esféricas, permitiendo establecer la orientación de la trayectoria con
+respecto al norte geográfico. Estas magnitudes son fundamentales para
+proyectar correctamente las variables meteorológicas, particularmente el
+viento, sobre la ruta de navegación del dron.
+
+\subsection{Aplicación a la discretización de la ruta de
+vuelo}\label{aplicaciuxf3n-a-la-discretizaciuxf3n-de-la-ruta-de-vuelo}
+
+En el contexto específico de la ruta Aeropuerto Internacional Ángel
+Albino Corzo → Protección Civil, la trayectoria se discretiza en \(N\)
+segmentos espaciales consecutivos. Cada segmento se representa mediante
+su centroide longitudinal \(s_i\), calculado como la distancia geodésica
+acumulada desde el punto inicial:
+
+\[
+s_i = \sum_{k=1}^{i} d(P_{k-1}, P_k),
+\]
+
+donde \(d(P_{k-1}, P_k)\) denota la distancia geodésica entre puntos
+consecutivos de la trayectoria.
+
+Esta discretización permite transformar el problema continuo de
+transporte atmosférico en un esquema discreto espacio-temporal adecuado
+para estimación y pronóstico numérico, facilitando tanto el análisis de
+coherencia espacial como la modelación del transporte advectivo
+unidimensional.
+
+\section{\texorpdfstring{Estimación de la velocidad de advección
+mediante correlación cruzada y análisis
+\(f\)-\(k\)}{Estimación de la velocidad de advección mediante correlación cruzada y análisis f-k}}\label{estimaciuxf3n-de-la-velocidad-de-advecciuxf3n-mediante-correlaciuxf3n-cruzada-y-anuxe1lisis-f-k}
+
+\subsection{Introducción al problema de
+estimación}\label{introducciuxf3n-al-problema-de-estimaciuxf3n}
+
+El pronóstico de variables meteorológicas a lo largo de la ruta de vuelo
+del dron requiere estimar la velocidad de advección dominante, entendida
+como la velocidad con la que las estructuras atmosféricas se propagan en
+la dirección de la trayectoria. Esta magnitud constituye un parámetro
+fundamental para el modelo de pronóstico advectivo, ya que determina la
+posición espacial desde donde se extrae información para predecir el
+estado futuro en cada segmento.
+
+En este trabajo se proponen dos metodologías complementarias para la
+estimación de la velocidad de advección:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Análisis de correlación cruzada entre segmentos adyacentes}:
+  Método basado en la identificación de retardos temporales coherentes
+  entre señales medidas en posiciones espaciales consecutivas.
+\item
+  \textbf{Análisis frecuencia-espacio (\(f\)-\(k\)) basado en pendiente
+  de fase}: Enfoque espectral que estima la velocidad a partir de la
+  variación espacial de la fase del campo meteorológico.
+\end{enumerate}
+
+Ambos métodos se aplican secuencialmente, utilizando el segundo como
+alternativa robusta cuando el primero no proporciona resultados
+estadísticamente confiables.
+
+\subsection{Estimación mediante correlación cruzada entre segmentos
+adyacentes}\label{estimaciuxf3n-mediante-correlaciuxf3n-cruzada-entre-segmentos-adyacentes}
+
+\subsubsection{Formulación
+matemática}\label{formulaciuxf3n-matemuxe1tica}
+
+Sea la ruta discretizada en \(N\) segmentos consecutivos, cada uno
+asociado a una señal temporal suavizada \(\{x_i(t)\}\), donde el
+subíndice \(i\) indica el segmento espacial y \(t\) representa el tiempo
+de muestreo. Para cada par de segmentos adyacentes \((i, i+1)\), se
+calcula la función de correlación cruzada discreta:
+
+\[
+\rho_{i,i+1}(k) = \operatorname{corr}\big(x_i(t), x_{i+1}(t+k)\big),
+\]
+
+donde \(k\) es un desfase temporal entero expresado en número de pasos
+de muestreo. El análisis se restringe a desfases pertenecientes a un
+intervalo simétrico \([-K, K]\), donde \(K\) corresponde a un máximo de
+tiempo físicamente razonable para el desplazamiento del fenómeno entre
+segmentos adyacentes.
+
+Para cada par \((i, i+1)\), se identifica el desfase dominante:
+
+\[
+k^*_{i,i+1} = \arg\max_k \, |\rho_{i,i+1}(k)|,
+\]
+
+junto con el valor máximo de correlación asociado:
+
+\[
+\rho^{\max}_{i,i+1} = \max_k \, |\rho_{i,i+1}(k)|.
+\]
+
+El desfase \(k^*_{i,i+1}\) se interpreta como una estimación del retardo
+temporal con el que la señal observada en el segmento \(i\) se reproduce
+en el segmento \(i+1\).
+
+\subsubsection{Criterio de aceptación
+global}\label{criterio-de-aceptaciuxf3n-global}
+
+No todos los pares de segmentos proporcionan información fiable para la
+estimación de la velocidad. Por ello, se introduce un criterio de
+aceptación global basado en la fracción de pares adyacentes que
+presentan simultáneamente una correlación suficientemente alta y un
+desfase no nulo. Denotando por \(\rho_{\min}\) un umbral mínimo de
+correlación y por \(\gamma_{\min}\) una fracción mínima aceptable, el
+método se considera válido si:
+
+\[
+\frac{1}{N-1} \sum_{i=1}^{N-1} \mathbf{1}_{\{|\rho^{\max}_{i,i+1}| > \rho_{\min} \, \wedge \, k^*_{i,i+1} \neq 0\}} \geq \gamma_{\min},
+\]
+
+donde \(\mathbf{1}(\cdot)\) denota la función indicadora. Este criterio
+permite descartar situaciones en las que la coherencia espacial de la
+señal es insuficiente para inferir un desplazamiento dominante.
+
+\subsubsection{Relación distancia--tiempo y estimación de la
+velocidad}\label{relaciuxf3n-distanciatiempo-y-estimaciuxf3n-de-la-velocidad}
+
+Una vez aceptado el conjunto de correlaciones, el desfase temporal
+estimado para cada par de segmentos se convierte en un tiempo físico
+mediante:
+
+\[
+t_{i,i+1} = |k^*_{i,i+1}| \Delta t,
+\]
+
+donde \(\Delta t\) es el intervalo de muestreo en segundos. De forma
+análoga, se define la distancia espacial entre segmentos adyacentes
+como:
+
+\[
+d_{i,i+1} = |s_{i+1} - s_i|,
+\]
+
+siendo \(s_i\) la coordenada longitudinal del centroide del segmento
+\(i\) a lo largo de la ruta.
+
+Bajo la hipótesis de advección aproximadamente uniforme, se espera una
+relación lineal entre el tiempo de desplazamiento y la distancia
+recorrida, dada por:
+
+\[
+t_{i,i+1} = m d_{i,i+1} + c,
+\]
+
+donde \(m\) representa el inverso de la velocidad media de advección y
+\(c\) recoge posibles efectos sistemáticos o errores de alineación
+temporal.
+
+La estimación de los parámetros se realiza mediante un ajuste por
+mínimos cuadrados ponderados, asignando a cada par un peso proporcional
+a la magnitud de su correlación máxima:
+
+\[
+w_{i,i+1} = |\rho^{\max}_{i,i+1}|.
+\]
+
+En forma matricial, el problema se escribe como:
+
+\[
+\hat{\beta} = 
+\begin{pmatrix}
+\hat{m} \\
+\hat{c}
+\end{pmatrix}
+= (X^\top W X)^{-1} X^\top W t,
+\]
+
+donde \(X = [d_{i,i+1},\, 1]\), \(t = [t_{i,i+1}]\) y \(W\) es una
+matriz diagonal cuyos elementos son los pesos \(w_{i,i+1}\).
+
+Finalmente, la velocidad efectiva de advección se estima como:
+
+\[
+\hat{v}_{\text{CCF}} = \frac{1}{\hat{m}},
+\]
+
+siempre que \(\hat{m} \neq 0\). Esta magnitud se expresa en metros por
+segundo y constituye una estimación empírica de la velocidad con la que
+la señal meteorológica se propaga a lo largo de la ruta.
+
+\subsection{\texorpdfstring{Estimación mediante análisis \(f\)-\(k\)
+basado en pendiente de
+fase}{Estimación mediante análisis f-k basado en pendiente de fase}}\label{estimaciuxf3n-mediante-anuxe1lisis-f-k-basado-en-pendiente-de-fase}
+
+\subsubsection{Fundamentos teóricos}\label{fundamentos-teuxf3ricos}
+
+Cuando el análisis de correlación cruzada entre segmentos adyacentes no
+proporciona resultados estadísticamente confiables, se adopta un enfoque
+alternativo basado en el análisis conjunto en frecuencia y espacio,
+conocido como análisis \(f\)-\(k\). Este método permite estimar la
+velocidad de propagación de estructuras coherentes a partir de la
+variación espacial de la fase espectral, y resulta particularmente
+adecuado cuando la señal presenta un carácter oscilatorio dominante.
+
+Sea \(M(s,t)\) una matriz de datos obtenida a partir de los valores
+suavizados de una variable meteorológica, donde \(s\) representa la
+coordenada longitudinal a lo largo de la ruta de navegación y \(t\) el
+tiempo. Cada fila de la matriz \(M\) corresponde a un segmento espacial,
+caracterizado por su posición centroidal \(s_i\), y cada columna a un
+instante temporal muestreado uniformemente con paso \(\Delta t\).
+
+Para cada segmento \(s_i\), se calcula la transformada de Fourier
+temporal:
+
+\[
+\hat{M}(s_i,\omega) = \int M(s_i,t) e^{-i\omega t} dt,
+\]
+
+obteniéndose así un \textbf{espectro complejo} cuya fase contiene
+información sobre el desplazamiento espacial de las estructuras
+dominantes de la señal.
+
+\subsubsection{Modelo de onda viajera y relación de
+fase}\label{modelo-de-onda-viajera-y-relaciuxf3n-de-fase}
+
+Bajo la hipótesis de que el campo meteorológico puede aproximarse
+localmente como una onda viajera unidimensional, se modela la señal
+como:
+
+\[
+M(s,t) = A \cos(ks - \omega t + \phi_0),
+\]
+
+donde \(k\) es el número de onda espacial, \(\omega\) la frecuencia
+angular y \(\phi_0\) una fase constante. En este caso, la fase espectral
+satisface la relación lineal:
+
+\[
+\phi(s) = ks + \phi_0.
+\]
+
+Por tanto, para una frecuencia fija \(\omega\), la fase desenrollada
+\(\phi(s_i)\) puede aproximarse mediante un modelo de regresión lineal:
+
+\[
+\phi(s_i) = \alpha s_i + \beta + \varepsilon_i,
+\]
+
+donde \(\alpha\) es una estimación empírica del número de onda \(k\),
+\(\beta\) es una constante y \(\varepsilon_i\) representa errores
+debidos a ruido y no idealidades del modelo.
+
+\subsubsection{Estimación de la velocidad de
+propagación}\label{estimaciuxf3n-de-la-velocidad-de-propagaciuxf3n}
+
+La pendiente \(\hat{k} = \alpha\) se estima mediante mínimos cuadrados
+ordinarios sobre el conjunto de segmentos espaciales. Una vez obtenida
+esta pendiente, la velocidad de propagación se calcula utilizando la
+relación fundamental de ondas:
+
+\[
+v = \frac{\omega}{k}.
+\]
+
+En términos del estimador, la velocidad asociada a una frecuencia
+\(\omega\) se obtiene como:
+
+\[
+\hat{v} = -\frac{\omega}{\hat{k}},
+\]
+
+donde el signo negativo refleja la convención adoptada para la
+orientación espacial y temporal del sistema de coordenadas.
+
+Este procedimiento se repite para un conjunto de frecuencias positivas
+seleccionadas dentro de una banda de interés, correspondiente a escalas
+temporales relevantes para la dinámica atmosférica considerada. Para
+cada frecuencia se obtiene un estimador de velocidad, generando así un
+conjunto de candidatos \(\{\hat{v}_j\}\).
+
+Con el fin de robustecer la estimación final frente a valores atípicos y
+a frecuencias poco representativas, se selecciona como estimador
+definitivo la mediana de los valores finitos y físicamente plausibles
+del conjunto \(\{\hat{v}_j\}\). Este criterio reduce la sensibilidad a
+ruido espectral y a desviaciones locales del modelo de onda viajera.
+
+El análisis \(f\)-\(k\) permite, por tanto, inferir la velocidad de
+advección directamente a partir de la estructura de fase del campo
+meteorológico, sin requerir alineamiento temporal explícito entre
+segmentos. Este enfoque complementa al método basado en correlación
+cruzada y proporciona una alternativa sólida cuando la coherencia
+temporal entre señales adyacentes es insuficiente.
+
+\subsection{Modelo de respaldo: persistencia temporal y regularización
+advectiva}\label{modelo-de-respaldo-persistencia-temporal-y-regularizaciuxf3n-advectiva}
+
+\subsubsection{Motivación}\label{motivaciuxf3n}
+
+Cuando ambos métodos anteriores fallan, es decir, cuando no se dispone
+de suficiente coherencia espacial ni estructura espectral clara, se
+recurre a un \textbf{modelo de respaldo} basado en persistencia temporal
+con corrección advectiva regularizada. El objetivo de este modelo no es
+proporcionar una estimación precisa de la velocidad, sino una
+\textbf{cota conservadora} del transporte medio, entendido como el
+desplazamiento promedio del patrón espacial de la variable atmosférica a
+lo largo de la ruta.
+
+\subsubsection{Modelo AR(1) por segmento
+espacial}\label{modelo-ar1-por-segmento-espacial}
+
+Sea \(y_i(t)\) la serie temporal correspondiente al segmento espacial
+\(s_i\). Se modela mediante un proceso autorregresivo de orden uno:
+
+\[
+y_i(t+\Delta t) = a_i y_i(t) + \varepsilon_i(t),
+\]
+
+donde \(a_i\) es el coeficiente de persistencia temporal y
+\(\varepsilon_i(t)\) representa un término de ruido no correlacionado.
+
+El coeficiente \(a_i\) se estima mediante mínimos cuadrados ordinarios:
+
+\[
+a_i = \arg\min_a \sum_{k} \left(y_i(t_{k+1}) - a y_i(t_k)\right)^2.
+\]
+
+Para obtener un parámetro representativo del sistema completo, se
+define:
+
+\[
+a_{\text{med}} = \operatorname{mediana}_i \left( a_i \right),
+\]
+
+lo que reduce la influencia de segmentos atípicos o ruidosos.
+
+\subsubsection{Estimación advectiva
+regularizada}\label{estimaciuxf3n-advectiva-regularizada}
+
+Se define la media espacial de la señal como:
+
+\[
+\bar{y}(t) = \frac{1}{N} \sum_{i=1}^{N} y_i(t),
+\]
+
+la cual se suaviza mediante un filtro robusto (mediana móvil). Su
+derivada temporal se aproxima por diferencias finitas:
+
+\[
+\frac{d\bar{y}}{dt}(t) \approx \frac{\bar{y}(t+\Delta t)-\bar{y}(t)}{\Delta t}.
+\]
+
+Bajo un modelo advectivo unidimensional simplificado:
+
+\[
+\frac{\partial y}{\partial t} + v \frac{\partial y}{\partial s} \approx 0,
+\]
+
+la velocidad puede relacionarse de forma heurística con la tasa de
+cambio temporal promedio. Así, se define una estimación conservadora de
+la velocidad:
+
+\[
+v_{\text{fallback}} = -\lambda \operatorname{mediana}\left( \frac{d\bar{y}}{dt} \right),
+\]
+
+donde \(\lambda > 0\) es un factor de regularización pequeño que atenúa
+la magnitud de la estimación para evitar sobreajustes o interpretaciones
+físicas no realistas.
+
+Este modelo de respaldo garantiza que siempre se disponga de una
+estimación de la velocidad de advección, aunque sea conservadora,
+permitiendo la generación de pronósticos incluso en condiciones de baja
+coherencia espacial.
+
+\section{Pronóstico advectivo a corto plazo
+(nowcasting)}\label{pronuxf3stico-advectivo-a-corto-plazo-nowcasting}
+
+\subsection{Formulación del problema de
+pronóstico}\label{formulaciuxf3n-del-problema-de-pronuxf3stico}
+
+Una vez estimada la velocidad advectiva dominante \(v\) a lo largo de la
+ruta, se utiliza un modelo de pronóstico determinista a corto plazo
+(\emph{nowcast}) con horizonte \(H\). El objetivo consiste en predecir
+la evolución temporal de las variables climáticas en cada segmento
+espacial \(s_i\) durante el período de interés.
+
+Sea \(y_i(t)\) el valor observado de una variable climática (por
+ejemplo, velocidad del viento proyectada) en el segmento espacial \(i\)
+en el tiempo \(t\), y sea \(s_i\) la posición longitudinal del centroide
+del segmento \(i\). El pronóstico \(\hat{y}_i(t+H)\) se construye
+mediante la combinación de tres componentes fundamentales: advectiva,
+autorregresiva y de persistencia.
+
+\subsection{Componente advectiva}\label{componente-advectiva}
+
+Bajo la hipótesis de transporte advectivo unidimensional, el valor
+futuro de la variable en el segmento \(i\) se asocia al valor observado
+en la posición precedente en la dirección del flujo:
+
+\[
+s_i^{\text{up}} = s_i - vH,
+\]
+
+donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(v\) es la velocidad advectiva estimada,
+\item
+  \(H\) es el horizonte de pronóstico (en segundos).
+\end{itemize}
+
+El valor estimado por advección se aproxima mediante interpolación
+lineal espacial:
+
+\[
+y_i^{\text{adv}}(t+H) =
+\begin{cases}
+y_1(t), & s_i^{\text{up}} \le s_1, \\[6pt]
+y_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(y_{j+1}(t)-y_j(t)\bigr), & s_j \le s_i^{\text{up}} < s_{j+1},
+\end{cases}
+\]
+
+donde \(s_j\) y \(s_{j+1}\) son los segmentos que delimitan la posición
+aguas arriba.
+
+Este término modela el \textbf{desplazamiento espacial coherente} de la
+señal climática y constituye una aproximación discreta del operador de
+transporte asociado a la ecuación de advección unidimensional:
+
+\[
+\frac{\partial y}{\partial t} + v \frac{\partial y}{\partial s} \approx 0.
+\]
+
+\subsection{Componente autorregresiva
+temporal}\label{componente-autorregresiva-temporal}
+
+Para capturar la persistencia temporal local, cada segmento se modela
+mediante un proceso autorregresivo de primer orden:
+
+\[
+y_i(t+\Delta t) = a_i y_i(t) + \varepsilon_i(t),
+\]
+
+donde \(a_i \in (0,1)\) es el coeficiente AR(1) estimado por mínimos
+cuadrados ordinarios y \(\varepsilon_i(t)\) representa un término de
+ruido no correlacionado.
+
+En segmentos con información insuficiente, se utiliza un valor
+regularizado \(\tilde{a}_i\), correspondiente a la mediana de los
+coeficientes válidos. El pronóstico autorregresivo a horizonte
+\(H = n\Delta t\) queda entonces:
+
+\[
+y_i^{\text{AR}}(t+H) = a_i^{n} y_i(t). \tag{4.3}
+\]
+
+Esta componente permite modelar la inercia temporal inherente a las
+variables meteorológicas, especialmente relevante para variables como la
+temperatura que presentan alta persistencia.
+
+\subsection{Componente de
+persistencia}\label{componente-de-persistencia}
+
+Como referencia conservadora, se incluye el modelo de persistencia:
+
+\[
+y_i^{\text{pers}}(t+H) = y_i(t),
+\]
+
+el cual asume ausencia total de cambio temporal. Este término
+proporciona estabilidad al pronóstico cuando la información disponible
+es limitada o cuando las condiciones atmosféricas presentan baja
+variabilidad.
+
+\subsection{Modelo híbrido de
+pronóstico}\label{modelo-huxedbrido-de-pronuxf3stico}
+
+El pronóstico final se construye como una combinación convexa de los
+tres componentes:
+
+\[
+\hat{y}_i(t+H) = w_1 y_i^{\text{AR}}(t+H) + w_2 y_i^{\text{pers}}(t+H) + w_3 y_i^{\text{adv}}(t+H),
+\]
+
+con
+
+\[
+w_1 + w_2 + w_3 = 1, \qquad w_k \ge 0.
+\]
+
+En esta implementación se utilizan pesos fijos:
+
+\[
+(w_1, w_2, w_3) = (0.5, 0.3, 0.2),
+\]
+
+priorizando la estabilidad temporal sin perder sensibilidad al
+transporte espacial. Este enfoque híbrido permite balancear
+persistencia, dinámica local y estructura espacial, lo cual resulta
+particularmente adecuado para pronósticos operativos de corto plazo.
+
+\subsection{Propiedades del modelo
+híbrido}\label{propiedades-del-modelo-huxedbrido}
+
+El modelo de pronóstico propuesto presenta las siguientes propiedades:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Consistencia espacial}: La componente advectiva garantiza que
+  el patrón espacial de la variable se propague coherentemente a lo
+  largo de la ruta, respetando la dirección y magnitud del flujo
+  atmosférico dominante.
+\item
+  \textbf{Estabilidad temporal}: La componente autorregresiva
+  proporciona suavidad temporal y evita oscilaciones espurias en el
+  pronóstico, especialmente en segmentos con baja variabilidad
+  observada.
+\item
+  \textbf{Robustez numérica}: La inclusión del término de persistencia
+  asegura que el pronóstico permanezca acotado incluso en situaciones
+  donde las estimaciones advectivas o autorregresivas puedan ser
+  inestables.
+\item
+  \textbf{Interpretabilidad física}: Cada componente del modelo tiene
+  una interpretación física clara relacionada con procesos atmosféricos
+  bien establecidos (advección, persistencia y difusión).
+\end{enumerate}
+
+\subsection{Implementación
+computacional}\label{implementaciuxf3n-computacional-2}
+
+La implementación del modelo híbrido sigue el siguiente algoritmo:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Estimación de parámetros}: Para cada segmento \(i\), se
+  calculan los coeficientes \(a_i\) mediante regresión lineal sobre la
+  serie temporal observada.
+\item
+  \textbf{Cálculo de posición advectiva}: Para cada segmento \(i\) y
+  horizonte \(H\), se determina \(s_i^{\text{up}} = s_i - vH\).
+\item
+  \textbf{Interpolación espacial}: Se obtiene \(y_i^{\text{adv}}(t+H)\)
+  mediante interpolación lineal entre los segmentos adyacentes que
+  contienen \(s_i^{\text{up}}\).
+\item
+  \textbf{Pronóstico autorregresivo}: Se calcula
+  \(y_i^{\text{AR}}(t+H) = a_i^n y_i(t)\) con \(n = H/\Delta t\).
+\item
+  \textbf{Combinación convexa}: Se obtiene el pronóstico final
+  \(\hat{y}_i(t+H)\) mediante la combinación ponderada de los tres
+  componentes.
+\end{enumerate}
+
+La complejidad computacional del algoritmo es \(\mathcal{O}(N)\), donde
+\(N\) es el número de segmentos espaciales, lo que permite su ejecución
+en tiempo real incluso en sistemas embebidos con recursos limitados.
+
+\subsection{Consideraciones sobre el horizonte de
+pronóstico}\label{consideraciones-sobre-el-horizonte-de-pronuxf3stico}
+
+El horizonte de pronóstico \(H\) constituye un parámetro crítico que
+determina el equilibrio entre precisión y utilidad operativa del
+nowcast. Para el caso de operaciones con drones, se adopta un horizonte
+de \(H = 60\) minutos, basado en las siguientes consideraciones:
+
+\begin{itemize}
+\item
+  \textbf{Autonomía de vuelo}: La mayoría de los drones de carga media
+  tienen una autonomía de 20--30 minutos de vuelo efectivo, por lo que
+  un horizonte de 60 minutos permite evaluar múltiples ciclos
+  operativos.
+\item
+  \textbf{Escalas temporales atmosféricas}: Las variables meteorológicas
+  relevantes para la navegación de drones (viento, temperatura, humedad)
+  presentan escalas de correlación temporal del orden de decenas de
+  minutos, lo que justifica un horizonte de pronóstico en este rango.
+\item
+  \textbf{Replanificación operativa}: Un horizonte de 60 minutos
+  proporciona suficiente tiempo para la toma de decisiones y la
+  reprogramación de misiones en caso de deterioro de las condiciones
+  ambientales.
+\end{itemize}
+
+Este horizonte se discretiza en pasos temporales de \(\Delta t = 5\)
+minutos, generando un conjunto de 12 instantes de pronóstico que
+permiten evaluar la evolución temporal continua de las condiciones
+meteorológicas.
+
+\section{Aplicación del modelo advectivo a la temperatura del
+aire}\label{aplicaciuxf3n-del-modelo-advectivo-a-la-temperatura-del-aire}
+
+En esta sección se particulariza el esquema advectivo--autorregresivo
+previamente formulado al caso de la temperatura del aire, con el
+objetivo de obtener un pronóstico espacial de corto horizonte a lo largo
+de la ruta de vuelo del dron.
+
+La estructura matemática del modelo se mantiene sin modificaciones
+respecto a la formulación general presentada anteriormente. En
+consecuencia, los componentes advectivo, autorregresivo y el
+procedimiento de cuantificación de incertidumbre se conservan en la
+misma forma funcional. Únicamente se recalibran los parámetros
+específicos del campo térmico, a fin de reflejar su mayor persistencia
+temporal y su elevada coherencia espacial en comparación con otras
+variables atmosféricas.
+
+La formulación obtenida para la temperatura constituye, por tanto, el
+caso de referencia sobre el cual se apoyará la modelización de las
+restantes variables ambientales, introduciendo únicamente los ajustes
+paramétricos o estructurales que resulten necesarios en cada caso.
+
+\subsection{Variable de estudio y discretización
+espacial}\label{variable-de-estudio-y-discretizaciuxf3n-espacial}
+
+Sea \(T(s,t)\) la temperatura del aire en la posición longitudinal \(s\)
+de la ruta y en el tiempo \(t\).
+
+La ruta se discretiza en \(N\) segmentos espaciales, definidos a partir
+del promedio de los puntos de muestreo cercanos, y cada segmento queda
+representado por su centroide \(s_i\). La serie temporal asociada al
+segmento \(i\) se denota como:
+
+\[
+T_i(t) = \frac{1}{|\mathcal{S}_i|} \sum_{k \in \mathcal{S}_i} T_k(t),
+\]
+
+donde \(\mathcal{S}_i\) es el conjunto de puntos de muestreo que
+conforman el segmento \(i\).
+
+Esta agregación espacial permite reducir el ruido de medición y obtener
+estimaciones más robustas de la temperatura promedio en cada segmento de
+la trayectoria.
+
+\subsection{Hipótesis de advección con velocidad
+conocida}\label{hipuxf3tesis-de-advecciuxf3n-con-velocidad-conocida}
+
+A diferencia del caso del viento, para la temperatura se adopta una
+\textbf{velocidad de advección fija}, obtenida previamente del análisis
+del campo de viento:
+
+\[
+v = v_{\text{viento}}.
+\]
+
+Esta hipótesis se fundamenta en que la temperatura del aire se
+transporta pasivamente por el flujo atmosférico dominante, sin presentar
+una dinámica de propagación independiente. Por tanto, la velocidad de
+advección térmica coincide con la velocidad del viento medio en la capa
+límite atmosférica donde opera el dron.
+
+\subsection{Componente advectiva del
+pronóstico}\label{componente-advectiva-del-pronuxf3stico}
+
+Bajo el supuesto de advección unidimensional, el valor futuro de la
+temperatura en el segmento \(i\) se asocia al valor observado en la
+posición precedente en la dirección del flujo:
+
+\[
+s_i^{\text{up}} = s_i - vH,
+\]
+
+donde \(H\) es el horizonte de pronóstico y \(v\) la velocidad media de
+transporte.
+
+El valor estimado por advección se aproxima mediante interpolación
+lineal espacial:
+
+\[
+T_i^{\text{adv}}(t+H) =
+\begin{cases}
+T_1(t), & s_i^{\text{up}} \le s_1, \\[6pt]
+T_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(T_{j+1}(t)-T_j(t)\bigr), & s_j \le s_i^{\text{up}} < s_{j+1}.
+\end{cases}
+\]
+
+Sea \(\{s_1,\dots,s_N\}\) una partición ordenada del dominio espacial
+\([0,L]\), con
+
+\[
+s_1 < s_2 < \dots < s_N.
+\]
+
+Para cada índice \(i \in \{1,\dots,N\}\), el subíndice \(j\) se define
+como el único entero en \(\{1,\dots,N-1\}\) que satisface
+
+\[
+s_j \le s_i^{\text{up}} < s_{j+1}.
+\]
+
+En consecuencia, \(j = j(i)\) depende del segmento destino \(i\) a
+través de la posición advectiva \(s_i^{\text{up}}\). Esta construcción
+garantiza que la interpolación se realice en el intervalo espacial que
+contiene el punto de origen advectivo.
+
+En el caso \(s_i^{\text{up}} \le s_1\), el punto advectivo queda fuera
+del dominio por el extremo izquierdo, por lo que se adopta una
+extrapolación constante basada en el valor del primer nodo.
+
+Este término representa el \textbf{transporte térmico dominante} a lo
+largo de la ruta y constituye una aproximación discreta del operador de
+transporte asociado a la ecuación de advección unidimensional.
+
+\subsection{Componente autorregresiva
+temporal}\label{componente-autorregresiva-temporal-1}
+
+La temperatura presenta una elevada persistencia temporal,
+característica de variables termodinámicas con alta inercia física. Por
+ello, cada segmento se modela mediante un proceso autorregresivo de
+primer orden:
+
+\[
+T_i(t+\Delta t) = a_i T_i(t),
+\]
+
+donde \(a_i \in (0,1)\) es el coeficiente estimado por mínimos cuadrados
+ordinarios.
+
+El pronóstico autorregresivo a horizonte \(H = n\Delta t\) se expresa
+como:
+
+\[
+T_i^{\text{AR}}(t+H) = a_i^{n} T_i(t).
+\]
+
+En los segmentos donde la información temporal resulta insuficiente
+(menos de 10 observaciones), se emplea un valor regularizado
+\(a_i = 0.95\), consistente con la elevada inercia térmica del sistema
+atmosférico en escalas temporales de minutos.
+
+\subsection{Modelo híbrido de nowcasting para
+temperatura}\label{modelo-huxedbrido-de-nowcasting-para-temperatura}
+
+El pronóstico final se obtiene mediante una combinación convexa de tres
+componentes: autorregresiva, persistente y advectiva:
+
+\[
+\hat{T}_i(t+H) = w_1 T_i^{\text{AR}}(t+H) + w_2 T_i(t) + w_3 T_i^{\text{adv}}(t+H),
+\]
+
+con
+
+\[
+w_1 + w_2 + w_3 = 1, \qquad w_k \ge 0.
+\]
+
+Para el caso de la temperatura se adoptaron los pesos fijos:
+
+\[
+(w_1, w_2, w_3) = (0.4, 0.2, 0.4),
+\]
+
+asignando mayor relevancia al transporte advectivo y a la persistencia
+temporal, en concordancia con la naturaleza física de la variable. Esta
+ponderación refleja que la temperatura del aire presenta:
+
+\begin{itemize}
+\tightlist
+\item
+  Alta coherencia espacial debido al transporte advectivo dominante,
+\item
+  Elevada persistencia temporal por su inercia termodinámica,
+\item
+  Baja variabilidad intrínseca en escalas temporales cortas.
+\end{itemize}
+
+\subsection{Estimación de la incertidumbre mediante block
+bootstrap}\label{estimaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap}
+
+La incertidumbre del pronóstico se cuantificó mediante un procedimiento
+de \textbf{block bootstrap temporal}, que preserva la dependencia serial
+de las observaciones.
+
+Sea \(\{T_i(t)\}_{t=1}^T\) la serie observada. Se generan \(B\) réplicas
+bootstrap mediante remuestreo con reemplazo de bloques temporales de
+longitud \(L\). Para cada réplica \(b\), se calcula un pronóstico:
+
+\[
+\hat{T}_i^{(b)}(t+H).
+\]
+
+A partir de la distribución empírica resultante se estiman los
+cuantiles:
+
+\[
+\text{p05}_i, \quad \text{p50}_i, \quad \text{p95}_i,
+\]
+
+los cuales definen intervalos de confianza del 90\% para el nowcast de
+temperatura en cada segmento.
+
+El uso de bloques temporales de longitud \(L = 15\) minutos (mayores que
+en el caso del viento) refleja la mayor continuidad temporal y menor
+variabilidad de la temperatura del aire.
+
+\subsection{Discusión y propiedades del
+modelo}\label{discusiuxf3n-y-propiedades-del-modelo}
+
+Es importante destacar que la estructura matemática del modelo es
+\textbf{independiente de la variable climática analizada}. En
+consecuencia, la metodología puede aplicarse de manera consistente a
+viento, temperatura o precipitación, modificando únicamente los
+parámetros y la interpretación física de la variable transportada.
+
+Las principales ventajas de este enfoque para la temperatura son:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Consistencia física}: El modelo respeta la ecuación de
+  advección unidimensional que gobierna el transporte pasivo de calor en
+  la atmósfera.
+\item
+  \textbf{Adaptabilidad espacial}: La discretización en segmentos
+  permite capturar gradientes térmicos locales a lo largo de la ruta de
+  vuelo.
+\item
+  \textbf{Robustez estadística}: La combinación de componentes advectiva
+  y autorregresiva proporciona estabilidad frente a perturbaciones
+  puntuales en los datos de observación.
+\item
+  \textbf{Cuantificación de incertidumbre}: El block bootstrap permite
+  evaluar la confiabilidad del pronóstico en cada segmento, información
+  crítica para la toma de decisiones operativas.
+\end{enumerate}
+
+Esta formulación constituye la base para la aplicación posterior del
+modelo a otras variables meteorológicas, como se describe en las
+secciones siguientes.
+
+\section{Aplicación del modelo advectivo a la humedad
+relativa}\label{aplicaciuxf3n-del-modelo-advectivo-a-la-humedad-relativa}
+
+\section{Aplicación del modelo advectivo a la precipitación: esquema de
+persistencia ponderada
+adaptativa}\label{aplicaciuxf3n-del-modelo-advectivo-a-la-precipitaciuxf3n-esquema-de-persistencia-ponderada-adaptativa}
+
+\section{Cuantificación de la incertidumbre mediante block
+bootstrap}\label{cuantificaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap}
+
+\section{Decisión para operaciones con drones: variables de estado,
+umbrales y función de
+decisión}\label{decisiuxf3n-para-operaciones-con-drones-variables-de-estado-umbrales-y-funciuxf3n-de-decisiuxf3n}
+
+\section{Integración de ambas etapas: análisis de eficiencia
+logística}\label{integraciuxf3n-de-ambas-etapas-anuxe1lisis-de-eficiencia-loguxedstica}
+
+\section{Recomendaciones operativas y
+perspectivas}\label{recomendaciones-operativas-y-perspectivas}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Referencias}\label{referencias}
+\addcontentsline{toc}{chapter}{Referencias}
+
+\markboth{Referencias}{Referencias}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-nasa_earthdata}
+NASA Earthdata. 2024. {«Shuttle Radar Topography Mission (SRTM) Data»}.
+\url{https://earthdata.nasa.gov/}.
+
+\bibitem[\citeproctext]{ref-nominatim}
+OpenStreetMap Contributors. 2024. {«Nominatim API»}.
+\url{https://nominatim.openstreetmap.org/}.
+
+\bibitem[\citeproctext]{ref-osrm}
+Project OSRM. 2024. {«Open Source Routing Machine (OSRM)»}.
+\url{https://project-osrm.org/}.
+
+\end{CSLReferences}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{part}{Appendices}
+\appendix
+
+\chapter{Apéndice}\label{apuxe9ndice}
+
+\section{Lista de municipios del estado de
+Chiapas}\label{sec-apendice-municipios}
+
+El presente estudio consideró los siguientes 124 municipios del estado
+de Chiapas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Acacoyagua
+\item
+  Acala
+\item
+  Acapetahua
+\item
+  Aldama
+\item
+  Altamirano
+\item
+  Amatán
+\item
+  Amatenango de la Frontera
+\item
+  Amatenango del Valle
+\item
+  Ángel Albino Corzo
+\item
+  Arriaga
+\item
+  Bejucal de Ocampo
+\item
+  Bella Vista
+\item
+  Benemérito de las Américas
+\item
+  Berriozábal
+\item
+  Bochil
+\item
+  Cacahoatán
+\item
+  Capitán Luis Ángel Vidal
+\item
+  Catazajá
+\item
+  Chalchihuitán
+\item
+  Chamula
+\item
+  Chanal
+\item
+  Chapultenango
+\item
+  Chenalhó
+\item
+  Chiapa de Corzo
+\item
+  Chiapilla
+\item
+  Chicoasén
+\item
+  Chicomuselo
+\item
+  Chilón
+\item
+  Cintalapa de Figueroa
+\item
+  Coapilla
+\item
+  Comitán de Domínguez
+\item
+  Copainalá
+\item
+  El Bosque
+\item
+  El Parral
+\item
+  El Porvenir
+\item
+  Emiliano Zapata
+\item
+  Escuintla
+\item
+  Francisco León
+\item
+  Frontera Comalapa
+\item
+  Frontera Hidalgo
+\item
+  Honduras de la Sierra
+\item
+  Huehuetán
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{42}
+\tightlist
+\item
+  Huitiupán
+\item
+  Huixtán
+\item
+  Huixtla
+\item
+  Ixhuatán
+\item
+  Ixtacomitán
+\item
+  Ixtapa
+\item
+  Ixtapangajoya
+\item
+  Jiquipilas
+\item
+  Jitotol
+\item
+  Juárez
+\item
+  La Concordia
+\item
+  La Grandeza
+\item
+  La Independencia
+\item
+  La Libertad
+\item
+  La Trinitaria
+\item
+  Larráinzar
+\item
+  Las Margaritas
+\item
+  Las Rosas
+\item
+  Mapastepec
+\item
+  Maravilla Tenejapa
+\item
+  Marqués de Comillas
+\item
+  Mazapa de Madero
+\item
+  Mazatán
+\item
+  Metapa
+\item
+  Mezcalapa
+\item
+  Mitontic
+\item
+  Montecristo de Guerrero
+\item
+  Motozintla
+\item
+  Nicolás Ruíz
+\item
+  Ocosingo
+\item
+  Ocotepec
+\item
+  Ocozocoautla de Espinosa
+\item
+  Ostuacán
+\item
+  Osumacinta
+\item
+  Oxchuc
+\item
+  Palenque
+\item
+  Pantelhó
+\item
+  Pantepec
+\item
+  Pichucalco
+\item
+  Pijijiapan
+\item
+  Pueblo Nuevo Solistahuacán
+\item
+  Rayón
+\item
+  Reforma
+\item
+  Rincón Chamula San Pedro
+\item
+  Sabanilla
+\item
+  Salto de Agua
+\item
+  San Andrés Duraznal
+\item
+  San Cristóbal de las Casas
+\item
+  San Fernando
+\item
+  San Juan Cancuc
+\item
+  San Lucas
+\item
+  Santiago el Pinar
+\item
+  Siltepec
+\item
+  Simojovel
+\item
+  Sitalá
+\item
+  Socoltenango
+\item
+  Solosuchiapa
+\item
+  Soyaló
+\item
+  Suchiapa
+\item
+  Suchiate
+\item
+  Sunuapa
+\item
+  Tapachula
+\item
+  Tapalapa
+\item
+  Tapilula
+\item
+  Tecpatán
+\item
+  Tenejapa
+\item
+  Teopisca
+\item
+  Tila
+\item
+  Tonalá
+\item
+  Totolapa
+\item
+  Tumbalá
+\item
+  Tuxtla Chico
+\item
+  Tuxtla Gutiérrez
+\item
+  Tuzantán
+\item
+  Tzimol
+\item
+  Unión Juárez
+\item
+  Venustiano Carranza
+\item
+  Villa Comaltitlán
+\item
+  Villa Corzo
+\item
+  Villaflores
+\item
+  Yajalón
+\item
+  Zinacantán
+\end{enumerate}
+
+
+
+
+\end{document}
