@@ -1,8 +1,8 @@
-name: Publicar Tesis Quarto
+name: Publicar Tesis Quarto (con PDF)
 
 on:
   push:
-    branches: [master]  # Cambiado: solo master
+    branches: [master]
 
 jobs:
   build-deploy:
@@ -10,18 +10,30 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Obtener código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Instalar Quarto
+      - name: Instalar LaTeX (para PDF)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            texlive-latex-extra \
+            texlive-xetex \
+            texlive-luatex \
+            lmodern
+        # Esto instala todo lo necesario para generar PDFs con Quarto
+
+      - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Renderizar
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Render (genera HTML y PDF)
+        run: quarto render
 
-      - name: Publicar en GitHub Pages
-        uses: quarto-dev/quarto-actions/publish@v2
+      - name: Deploy a GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          target: gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
