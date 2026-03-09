@@ -14,7 +14,9 @@ jupyter: python3
 ---
 :::{style="text-align: justify"}
 
-En situaciones de emergencia, como desastres naturales o crisis humanitarias, la eficiencia en la distribución de ayuda humanitaria constituye un factor determinante para la reducción del impacto sobre las poblaciones afectadas. En regiones caracterizadas por una topografía accidentada y una dispersión territorial significativa, como el estado de Chiapas, la planificación logística enfrenta desafíos estructurales que incrementan los tiempos de respuesta y los costos operativos de distribución..
+En situaciones de emergencia, como desastres naturales o crisis humanitarias, la eficiencia en la distribución de ayuda humanitaria constituye un factor determinante para la reducción del impacto sobre las poblaciones afectadas. En regiones caracterizadas por una topografía accidentada y una dispersión territorial significativa, como el estado de Chiapas, la planificación logística enfrenta desafíos estructurales que incrementan los tiempos de respuesta y los costos operativos de distribución.
+
+HOLAA
 
 El estado de Chiapas, conformado por 124 municipios según el Instituto Nacional de Estadística y Geografía (INEGI), presenta una configuración geográfica predominantemente montañosa, con elevaciones que oscilan entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del mar en el Volcán Tacaná. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.
 
