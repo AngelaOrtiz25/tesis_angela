@@ -28,7 +28,7 @@ book:
     collapse-level: 2
     border: true
     search: true
-  repo-url:  https://github.com/AngelaOrtiz25/thesis_ortiz
+  repo-url:  https://github.com/AngelaOrtiz25/tesis_angela
   page-navigation: true
   chapters:
     - index.qmd
