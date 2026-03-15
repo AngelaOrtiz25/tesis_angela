@@ -49,13 +49,13 @@ La infraestructura vial del estado presenta limitaciones estructurales que se ac
 ::: {.columns}
 ::: {.column width="48%"}
 
-![](puente_reconstruccion.jpg){width=80%}
+![](puente_reconstruccion.jpg){width=50%}
 *Figura 1a. Reconstrucción del puente sobre el Río Novillero, autopista Mapastepec–Tapachula. Participación de CMIC y SICT (2025).*
 
 :::
 ::: {.column width="48%"}
 
-![](puente_caido.jpg){width=80%}
+![](puente_caido.jpg){width=50%}
 *Figura 1b. Colapso del puente Tablazón I en Ulapa, Mapastepec, tras intensas lluvias (2025). Fuente: Protección Civil Chiapas.*
 
 :::
@@ -85,7 +85,7 @@ La información altimétrica proviene del *Modelo Digital de Elevación* (DEM) g
 
 Para cubrir áreas extensas, como un estado o una región montañosa, se integran múltiples teselas, generando un **mosaico ráster** continuo y sin discontinuidades, que permite representar de manera uniforme el relieve del terreno.
 
-### Procedimiento de integración de datos{#nominatim2}
+### Procedimiento de integración de datos {#sec-nominatim2}
 
 El proceso de recolección y procesamiento de datos se implementó mediante el siguiente flujo de trabajo:
 
@@ -108,7 +108,7 @@ Como ya se comentó el estudio consideró la totalidad de los 124 municipios que
 El código completo para la extracción y procesamiento de los datos garantiza la transparencia y reproducibilidad del estudio. Las funciones principales implementadas incluyen:
 
 - `cargar_mosaico_srtm()`: Carga y fusiona múltiples teselas DEM en un único mosaico ráster.
-- `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver @nominatim2
+- `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver @#sec-nominatim2
 - `obtener_ruta_osrm(coord_origen, coord_destino)`: Consulta la ruta óptima entre dos puntos usando la API de OSRM.
 - `calcular_distancia_3d_ruta(mosaico, transform, ruta_coords)`: Calcula la distancia 3D incorporando variaciones topográficas.
 
