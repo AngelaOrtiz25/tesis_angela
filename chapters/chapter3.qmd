@@ -47,17 +47,16 @@ El estado de Chiapas presenta una configuración geográfica predominantemente m
 La infraestructura vial del estado presenta limitaciones estructurales que se acentúan durante eventos críticos. Las carreteras principales siguen valles y corredores fluviales, dejando aisladas comunidades asentadas en zonas de difícil acceso. Adicionalmente, fenómenos como deslaves, inundaciones y daños en puentes interrumpen frecuentemente las rutas de acceso durante temporadas de lluvias. Estas condiciones incrementan los tiempos de respuesta y los costos operativos de distribución, haciendo necesario identificar puntos estratégicos dentro de la red territorial que faciliten la logística y permitan una respuesta rápida y efectiva ante situaciones críticas.
 
 ::: {.columns}
-::: {.column width="50%"}
+::: {.column width="48%"}
 
-![](puente.png){#fig-sict width="100%"}
-*Figura 1a. Reconstrucción del puente sobre el Río Novillero en la autopista costera Mapastepec–Tapachula, con participación de la Cámara Mexicana de la Industria de la Construcción (CMIC). Fuente: Secretaría de Infraestructura, Comunicaciones y Transportes (SICT), 2025.*
+![](puente_reconstruccion.jpg){width=80%}
+*Figura 1a. Reconstrucción del puente sobre el Río Novillero, autopista Mapastepec–Tapachula. Participación de CMIC y SICT (2025).*
 
 :::
+::: {.column width="48%"}
 
-::: {.column width="50%"}
-
-![](caida_puente.png){#fig-tablazon width="100%"}
-*Figura 1b. Colapso del puente Tablazón I en la comunidad Ulapa, municipio de Mapastepec, Chiapas, tras intensas lluvias. El evento formó parte de una cadena de afectaciones que incluyeron el cierre de la Carretera Costera (Mapastepec–Tapachula) y el colapso del puente Pacayal. Fuente: Protección Civil Chiapas (2025).*
+![](puente_caido.jpg){width=80%}
+*Figura 1b. Colapso del puente Tablazón I en Ulapa, Mapastepec, tras intensas lluvias (2025). Fuente: Protección Civil Chiapas.*
 
 :::
 :::
@@ -86,7 +85,7 @@ La información altimétrica proviene del *Modelo Digital de Elevación* (DEM) g
 
 Para cubrir áreas extensas, como un estado o una región montañosa, se integran múltiples teselas, generando un **mosaico ráster** continuo y sin discontinuidades, que permite representar de manera uniforme el relieve del terreno.
 
-### Procedimiento de integración de datos {#nominatim2}
+### Procedimiento de integración de datos{#nominatim2}
 
 El proceso de recolección y procesamiento de datos se implementó mediante el siguiente flujo de trabajo:
 
