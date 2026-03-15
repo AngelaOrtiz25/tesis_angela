@@ -436,11 +436,11 @@ distribución, haciendo necesario identificar puntos estratégicos dentro
 de la red territorial que faciliten la logística y permitan una
 respuesta rápida y efectiva ante situaciones críticas.
 
-\includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{chapters/puente_reconstruccion.jpg}
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{chapters/puente_reconstruccion.jpg}
 \emph{Figura 1a. Reconstrucción del puente sobre el Río Novillero,
 autopista Mapastepec--Tapachula. Participación de CMIC y SICT (2025).}
 
-\includegraphics[width=0.8\linewidth,height=\textheight,keepaspectratio]{chapters/puente_caido.jpg}
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{chapters/puente_caido.jpg}
 \emph{Figura 1b. Colapso del puente Tablazón I en Ulapa, Mapastepec,
 tras intensas lluvias (2025). Fuente: Protección Civil Chiapas.}
 
@@ -510,7 +510,7 @@ integran múltiples teselas, generando un \textbf{mosaico ráster}
 continuo y sin discontinuidades, que permite representar de manera
 uniforme el relieve del terreno.
 
-\subsection{Procedimiento de integración de datos}\label{nominatim2}
+\subsection{Procedimiento de integración de datos}\label{sec-nominatim2}
 
 El proceso de recolección y procesamiento de datos se implementó
 mediante el siguiente flujo de trabajo:
@@ -562,8 +562,7 @@ principales implementadas incluyen:
   DEM en un único mosaico ráster.
 \item
   \texttt{obtener\_coordenadas(ciudad)}: Obtiene las coordenadas
-  geográficas de un municipio mediante Nominatim ver
-  (\citeproc{ref-nominatim2}{\textbf{nominatim2?}})
+  geográficas de un municipio mediante Nominatim ver @\#sec-nominatim2
 \item
   \texttt{obtener\_ruta\_osrm(coord\_origen,\ coord\_destino)}: Consulta
   la ruta óptima entre dos puntos usando la API de OSRM.
@@ -1270,7 +1269,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, colback=white, opacityback=0, leftrule=.75mm, left=2mm, toptitle=1mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, coltitle=black, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, titlerule=0mm, arc=.35mm, bottomrule=.15mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, leftrule=.75mm, toptitle=1mm, bottomtitle=1mm, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacitybacktitle=0.6, bottomrule=.15mm, left=2mm, toprule=.15mm, coltitle=black, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, breakable, titlerule=0mm, arc=.35mm, opacityback=0]
 
 \textbf{Características operativas de la ruta}
 
