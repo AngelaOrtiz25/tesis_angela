@@ -16,11 +16,9 @@ jupyter: python3
 
 En situaciones de emergencia, como desastres naturales o crisis humanitarias, la eficiencia en la distribución de ayuda humanitaria constituye un factor determinante para la reducción del impacto sobre las poblaciones afectadas. En regiones caracterizadas por una topografía accidentada y una dispersión territorial significativa, como el estado de Chiapas, la planificación logística enfrenta desafíos estructurales que incrementan los tiempos de respuesta y los costos operativos de distribución.
 
-HOLAA
+El estado de Chiapas, presenta una configuración geográfica predominantemente montañosa. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.
 
-El estado de Chiapas, conformado por 124 municipios según el Instituto Nacional de Estadística y Geografía (INEGI), presenta una configuración geográfica predominantemente montañosa, con elevaciones que oscilan entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del mar en el Volcán Tacaná. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.
-
-Para abordar este problema de optimización logística, se propone la aplicación del algoritmo PageRank a la red territorial del estado. Originalmente desarrollado por Page y Brin (1998) para el ordenamiento de páginas web, este algoritmo fundamenta su operación en la teoría de cadenas de Markov de tiempo discreto, proporcionando una medida de centralidad que identifica nodos estratégicos dentro de una red compleja.
+Para abordar este problema de optimización logística, se propone la aplicación del algoritmo PageRank a la red territorial del estado. Originalmente desarrollado por @brin1998anatomy para el ordenamiento de páginas web, este algoritmo fundamenta su operación en la teoría de cadenas de Markov de tiempo discreto, proporcionando una medida de centralidad que identifica nodos estratégicos dentro de una red compleja.
 
 Matemáticamente, sea $G = (V, E, W)$ un grafo dirigido ponderado que representa la red territorial, donde $V$ denota el conjunto de vértices (municipios), $E \subseteq V \times V$ el conjunto de aristas (conexiones viales), y $W: E \to \mathbb{R}^+$ una función que asigna a cada arista $(v_i, v_j)$ la distancia tridimensional $d_{ij}^{(3D)}$ entre los municipios $i$ y $j$. El algoritmo PageRank calcula el vector estacionario $\pi \in \mathbb{R}^{124}$ que satisface:
 
@@ -44,11 +42,26 @@ Esta metodología proporciona una base matemáticamente rigurosa para la toma de
 
 En situaciones de emergencia, como desastres naturales o crisis humanitarias, resulta fundamental contar con mecanismos eficientes para distribuir ayuda y recursos a la población afectada. En regiones como el estado de Chiapas, que de acuerdo con el Instituto Nacional de Estadística y Geografía (INEGI) cuenta con 124 municipios, las condiciones geográficas montañosas y la dispersión territorial dificultan significativamente la conectividad y el acceso a comunidades vulnerables.
 
-El estado de Chiapas presenta una configuración geográfica predominantemente montañosa, con elevaciones que oscilan entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del mar en el Volcán Tacaná. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.
+El estado de Chiapas presenta una configuración geográfica predominantemente montañosa, con elevaciones que oscilan entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del mar en el Volcán Tacaná.
 
 La infraestructura vial del estado presenta limitaciones estructurales que se acentúan durante eventos críticos. Las carreteras principales siguen valles y corredores fluviales, dejando aisladas comunidades asentadas en zonas de difícil acceso. Adicionalmente, fenómenos como deslaves, inundaciones y daños en puentes interrumpen frecuentemente las rutas de acceso durante temporadas de lluvias. Estas condiciones incrementan los tiempos de respuesta y los costos operativos de distribución, haciendo necesario identificar puntos estratégicos dentro de la red territorial que faciliten la logística y permitan una respuesta rápida y efectiva ante situaciones críticas.
+::: {.columns}
+::: {.column width="50%"}
 
-Para abordar este desafío, se propone aplicar el algoritmo PageRank, desarrollado originalmente por Larry Page y Sergey Brin como parte del motor de búsqueda de Google, con el propósito de priorizar municipios de acuerdo con su importancia dentro de la red de transporte intermunicipal. Este algoritmo, fundamentado en un modelo de cadenas de Markov, mide la relevancia de cada nodo (municipio) mediante la simulación de un navegante aleatorio que recorre la red con cierta probabilidad de seguir los enlaces existentes o de saltar de manera aleatoria hacia otro nodo.
+![](puente.png){#fig-sict width="100%"}
+*Figura 1a. Reconstrucción del puente sobre el Río Novillero en la autopista costera Mapastepec–Tapachula, con participación de la Cámara Mexicana de la Industria de la Construcción (CMIC). Fuente: Secretaría de Infraestructura, Comunicaciones y Transportes (SICT), 2025. Publicación en X: @SICTmx, 12 de junio de 2025.*
+
+:::
+
+::: {.column width="50%"}
+
+![](caida_puente.png){#fig-tablazon width="100%"}
+*Figura 1b. Colapso del puente Tablazón I en la comunidad Ulapa, municipio de Mapastepec, Chiapas, tras intensas lluvias. El evento formó parte de una cadena de afectaciones que incluyeron el cierre de la Carretera Costera (Mapastepec–Tapachula) y el colapso del puente Pacayal. Fuente: Protección Civil Chiapas (2025).*
+
+:::
+:::
+
+Para abordar este desafío, se propone aplicar el algoritmo PageRank, con el propósito de priorizar municipios de acuerdo con su importancia dentro de la red de transporte intermunicipal. Este algoritmo, fundamentado en un modelo de cadenas de Markov, mide la relevancia de cada nodo (municipio) mediante la simulación de un navegante aleatorio que recorre la red con cierta probabilidad de seguir los enlaces existentes o de saltar de manera aleatoria hacia otro nodo.
 
 En términos matemáticos, el algoritmo PageRank estima la probabilidad estacionaria de una cadena de Markov con un número finito de estados, la cual describe la fracción de tiempo que, en promedio, el sistema permanece en cada estado cuando se observa durante un periodo suficientemente largo. Esta propiedad permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, ejercen una mayor influencia dentro del sistema territorial.
 
@@ -64,7 +77,7 @@ El estudio utilizó dos fuentes principales de datos geoespaciales para construi
 
 #### Datos de rutas viales
 
-Los datos de conectividad entre municipios se obtuvieron mediante la API de *Open Source Routing Machine* (OSRM) (@osrm), la cual proporciona información detallada sobre las rutas existentes entre pares de coordenadas geográficas. El formato de los datos corresponde a coordenadas geográficas en el sistema WGS84 (`[latitud, longitud]`) para cada punto que conforma la trayectoria vial entre municipios.
+Los datos de conectividad entre municipios se obtuvieron mediante la API de *Open Source Routing Machine* (OSRM) (@osrm), la cual proporciona información detallada sobre las rutas existentes entre pares de coordenadas geográficas. El formato de los datos corresponde a coordenadas geográficas en el sistema WGS84 @nga2014wgs84 (`[latitud, longitud]`) para cada punto que conforma la trayectoria vial entre municipios.
 
 #### Datos de elevación topográfica
 
@@ -72,13 +85,13 @@ La información altimétrica proviene del *Modelo Digital de Elevación* (DEM) g
 
 Para cubrir áreas extensas, como un estado o una región montañosa, se integran múltiples teselas, generando un **mosaico ráster** continuo y sin discontinuidades, que permite representar de manera uniforme el relieve del terreno.
 
-### Procedimiento de integración de datos
+### Procedimiento de integración de datos {#nominatim2}
 
 El proceso de recolección y procesamiento de datos se implementó mediante el siguiente flujo de trabajo:
 
 1. **Carga y fusión de teselas DEM**: Se integraron 12 teselas SRTM adyacentes que cubren completamente el territorio del estado de Chiapas, generando un mosaico ráster continuo.
 
-2. **Obtención de coordenadas geográficas**: Para cada municipio, se consultaron sus coordenadas geográficas mediante el servicio de geocodificación Nominatim de OpenStreetMap (@nominatim).
+2. **Obtención de coordenadas geográficas**: Para cada municipio, se consultaron sus coordenadas geográficas mediante el servicio de geocodificación **Nominatim** de OpenStreetMap (@nominatim).
 
 3. **Consulta de rutas viales**: Utilizando la API de OSRM, se obtuvieron las rutas óptimas entre cada par de municipios, incluyendo la secuencia de coordenadas que conforman cada trayectoria.
 
@@ -88,14 +101,14 @@ El proceso de recolección y procesamiento de datos se implementó mediante el s
 
 ### Lista de municipios analizados
 
-El estudio consideró la totalidad de los 124 municipios que conforman el estado de Chiapas, de acuerdo con el Instituto Nacional de Estadística y Geografía (INEGI). La lista completa de municipios se presenta en el **Apéndice A** (@sec-apendice-municipios) de esta tesis.
+Como ya se comentó el estudio consideró la totalidad de los 124 municipios que conforman el estado de Chiapas. La lista completa de municipios se presenta en el **Apéndice A** (@sec-apendice-municipios) de esta tesis.
 
 ### Implementación computacional
 
 El código completo para la extracción y procesamiento de los datos garantiza la transparencia y reproducibilidad del estudio. Las funciones principales implementadas incluyen:
 
 - `cargar_mosaico_srtm()`: Carga y fusiona múltiples teselas DEM en un único mosaico ráster.
-- `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim.
+- `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver @nominatim2
 - `obtener_ruta_osrm(coord_origen, coord_destino)`: Consulta la ruta óptima entre dos puntos usando la API de OSRM.
 - `calcular_distancia_3d_ruta(mosaico, transform, ruta_coords)`: Calcula la distancia 3D incorporando variaciones topográficas.
 
