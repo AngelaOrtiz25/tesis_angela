@@ -108,7 +108,7 @@ Como ya se comentó el estudio consideró la totalidad de los 124 municipios que
 El código completo para la extracción y procesamiento de los datos garantiza la transparencia y reproducibilidad del estudio. Las funciones principales implementadas incluyen:
 
 - `cargar_mosaico_srtm()`: Carga y fusiona múltiples teselas DEM en un único mosaico ráster.
-- `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver @#sec-nominatim2
+- `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver @sec-nominatim2
 - `obtener_ruta_osrm(coord_origen, coord_destino)`: Consulta la ruta óptima entre dos puntos usando la API de OSRM.
 - `calcular_distancia_3d_ruta(mosaico, transform, ruta_coords)`: Calcula la distancia 3D incorporando variaciones topográficas.
 
