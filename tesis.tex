@@ -436,18 +436,13 @@ distribución, haciendo necesario identificar puntos estratégicos dentro
 de la red territorial que faciliten la logística y permitan una
 respuesta rápida y efectiva ante situaciones críticas.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{chapters/puente.png}
-\emph{Figura 1a. Reconstrucción del puente sobre el Río Novillero en la
-autopista costera Mapastepec--Tapachula, con participación de la Cámara
-Mexicana de la Industria de la Construcción (CMIC). Fuente: Secretaría
-de Infraestructura, Comunicaciones y Transportes (SICT), 2025.}
+\includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{chapters/puente.png}
+\emph{Figura 1a. Reconstrucción del puente sobre el Río Novillero,
+autopista Mapastepec--Tapachula. Participación de CMIC y SICT (2025).}
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{chapters/caida_puente.png}
-\emph{Figura 1b. Colapso del puente Tablazón I en la comunidad Ulapa,
-municipio de Mapastepec, Chiapas, tras intensas lluvias. El evento formó
-parte de una cadena de afectaciones que incluyeron el cierre de la
-Carretera Costera (Mapastepec--Tapachula) y el colapso del puente
-Pacayal. Fuente: Protección Civil Chiapas (2025).}
+\includegraphics[width=0.7\linewidth,height=\textheight,keepaspectratio]{chapters/caida_puente.png}
+\emph{Figura 1b. Colapso del puente Tablazón I en Ulapa, Mapastepec,
+tras intensas lluvias (2025). Fuente: Protección Civil Chiapas.}
 
 Para abordar este desafío, se propone aplicar el algoritmo PageRank, con
 el propósito de priorizar municipios de acuerdo con su importancia
@@ -515,7 +510,7 @@ integran múltiples teselas, generando un \textbf{mosaico ráster}
 continuo y sin discontinuidades, que permite representar de manera
 uniforme el relieve del terreno.
 
-\subsection{Procedimiento de integración de datos}\label{nominatim2}
+\subsection{Procedimiento de integración de datos}\label{sec-nominatim2}
 
 El proceso de recolección y procesamiento de datos se implementó
 mediante el siguiente flujo de trabajo:
@@ -568,7 +563,7 @@ principales implementadas incluyen:
 \item
   \texttt{obtener\_coordenadas(ciudad)}: Obtiene las coordenadas
   geográficas de un municipio mediante Nominatim ver
-  (\citeproc{ref-nominatim2}{\textbf{nominatim2?}})
+  Sección~\ref{sec-nominatim2}
 \item
   \texttt{obtener\_ruta\_osrm(coord\_origen,\ coord\_destino)}: Consulta
   la ruta óptima entre dos puntos usando la API de OSRM.
@@ -1275,7 +1270,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, arc=.35mm, bottomtitle=1mm, opacityback=0, colframe=quarto-callout-note-color-frame, left=2mm, bottomrule=.15mm, breakable, rightrule=.15mm, coltitle=black, toprule=.15mm, toptitle=1mm, colback=white, leftrule=.75mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colbacktitle=quarto-callout-note-color!10!white]
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, colframe=quarto-callout-note-color-frame, arc=.35mm, bottomtitle=1mm, opacitybacktitle=0.6, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, breakable, colback=white, toprule=.15mm, opacityback=0, leftrule=.75mm, titlerule=0mm, bottomrule=.15mm, left=2mm, coltitle=black]
 
 \textbf{Características operativas de la ruta}
 
