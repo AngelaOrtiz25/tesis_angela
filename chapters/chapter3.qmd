@@ -52,7 +52,8 @@ La infraestructura vial del estado presenta limitaciones estructurales que se ac
 ::: {.column width="48%"}
 
 ![](puente.png){style="height:250px; width:auto; object-fit:contain;"}
-<small><em>Figura 1a. Reconstrucción del puente sobre el Río Novillero, autopista Mapastepec–Tapachula. Participación de CMIC y SICT (2025).</em></small>
+<small><em>Figura 1a. Reconstrucción del puente sobre el Río Novillero, autopista Mapastepec–Tapachula. Participación de CMIC y SICT (2025).</em></small> 
+<br><br>
 
 :::
 
