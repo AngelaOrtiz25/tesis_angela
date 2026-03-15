@@ -45,11 +45,12 @@ En situaciones de emergencia, como desastres naturales o crisis humanitarias, re
 El estado de Chiapas presenta una configuración geográfica predominantemente montañosa, con elevaciones que oscilan entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del mar en el Volcán Tacaná.
 
 La infraestructura vial del estado presenta limitaciones estructurales que se acentúan durante eventos críticos. Las carreteras principales siguen valles y corredores fluviales, dejando aisladas comunidades asentadas en zonas de difícil acceso. Adicionalmente, fenómenos como deslaves, inundaciones y daños en puentes interrumpen frecuentemente las rutas de acceso durante temporadas de lluvias. Estas condiciones incrementan los tiempos de respuesta y los costos operativos de distribución, haciendo necesario identificar puntos estratégicos dentro de la red territorial que faciliten la logística y permitan una respuesta rápida y efectiva ante situaciones críticas.
+
 ::: {.columns}
 ::: {.column width="50%"}
 
 ![](puente.png){#fig-sict width="100%"}
-*Figura 1a. Reconstrucción del puente sobre el Río Novillero en la autopista costera Mapastepec–Tapachula, con participación de la Cámara Mexicana de la Industria de la Construcción (CMIC). Fuente: Secretaría de Infraestructura, Comunicaciones y Transportes (SICT), 2025. Publicación en X: @SICTmx, 12 de junio de 2025.*
+*Figura 1a. Reconstrucción del puente sobre el Río Novillero en la autopista costera Mapastepec–Tapachula, con participación de la Cámara Mexicana de la Industria de la Construcción (CMIC). Fuente: Secretaría de Infraestructura, Comunicaciones y Transportes (SICT), 2025.*
 
 :::
 
@@ -77,7 +78,7 @@ El estudio utilizó dos fuentes principales de datos geoespaciales para construi
 
 #### Datos de rutas viales
 
-Los datos de conectividad entre municipios se obtuvieron mediante la API de *Open Source Routing Machine* (OSRM) (@osrm), la cual proporciona información detallada sobre las rutas existentes entre pares de coordenadas geográficas. El formato de los datos corresponde a coordenadas geográficas en el sistema WGS84 @nga2014wgs84 (`[latitud, longitud]`) para cada punto que conforma la trayectoria vial entre municipios.
+Los datos de conectividad entre municipios se obtuvieron mediante la API de *Open Source Routing Machine* (OSRM) (@osrm), la cual proporciona información detallada sobre las rutas existentes entre pares de coordenadas geográficas. El formato de los datos corresponde a coordenadas geográficas en el sistema WGS84 (@nga2014wgs84) (`[latitud, longitud]`) para cada punto que conforma la trayectoria vial entre municipios.
 
 #### Datos de elevación topográfica
 
