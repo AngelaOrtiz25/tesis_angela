@@ -52,14 +52,14 @@ La infraestructura vial del estado presenta limitaciones estructurales que se ac
 ::: {.column width="48%"}
 
 ![](puente.png){style="height:250px; width:auto; object-fit:contain;"}
-*Figura 1a. Reconstrucción del puente sobre el Río Novillero, autopista Mapastepec–Tapachula. Participación de CMIC y SICT (2025).*
+<small><em>Figura 1a. Reconstrucción del puente sobre el Río Novillero, autopista Mapastepec–Tapachula. Participación de CMIC y SICT (2025).</em></small>
 
 :::
 
 ::: {.column width="48%"}
 
 ![](caida_puente.png){style="height:250px; width:auto; object-fit:contain;"}
-*Figura 1b. Colapso del puente Tablazón I en Ulapa, Mapastepec, tras intensas lluvias (2025). Fuente: Protección Civil Chiapas.*
+<small><em>Figura 1b. Colapso del puente Tablazón I en Ulapa, Mapastepec, tras intensas lluvias (2025). Fuente: Protección Civil Chiapas.</em></small>
 
 :::
 :::
