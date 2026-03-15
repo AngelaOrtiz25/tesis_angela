@@ -250,8 +250,50 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#recolección-de-datos-geoespaciales-osrm-y-modelo-digital-de-elevación" id="toc-recolección-de-datos-geoespaciales-osrm-y-modelo-digital-de-elevación" class="nav-link active" data-scroll-target="#recolección-de-datos-geoespaciales-osrm-y-modelo-digital-de-elevación"><span class="header-section-number">2.2</span> Recolección de datos geoespaciales: OSRM y Modelo Digital de Elevación</a>
+  <ul class="collapse">
+  <li><a href="#fuentes-de-información" id="toc-fuentes-de-información" class="nav-link" data-scroll-target="#fuentes-de-información"><span class="header-section-number">2.2.1</span> Fuentes de información</a></li>
+  <li><a href="#nominatim2" id="toc-nominatim2" class="nav-link" data-scroll-target="#nominatim2"><span class="header-section-number">2.2.2</span> Procedimiento de integración de datos</a></li>
+  <li><a href="#lista-de-municipios-analizados" id="toc-lista-de-municipios-analizados" class="nav-link" data-scroll-target="#lista-de-municipios-analizados"><span class="header-section-number">2.2.3</span> Lista de municipios analizados</a></li>
+  <li><a href="#implementación-computacional" id="toc-implementación-computacional" class="nav-link" data-scroll-target="#implementación-computacional"><span class="header-section-number">2.2.4</span> Implementación computacional</a></li>
+  <li><a href="#resultados-de-la-recolección-de-datos" id="toc-resultados-de-la-recolección-de-datos" class="nav-link" data-scroll-target="#resultados-de-la-recolección-de-datos"><span class="header-section-number">2.2.5</span> Resultados de la recolección de datos</a></li>
+  <li><a href="#consideraciones-metodológicas" id="toc-consideraciones-metodológicas" class="nav-link" data-scroll-target="#consideraciones-metodológicas"><span class="header-section-number">2.2.6</span> Consideraciones metodológicas</a></li>
+  </ul></li>
+  <li><a href="#cálculo-de-distancias-geodésicas-2d-y-3d" id="toc-cálculo-de-distancias-geodésicas-2d-y-3d" class="nav-link" data-scroll-target="#cálculo-de-distancias-geodésicas-2d-y-3d"><span class="header-section-number">2.3</span> Cálculo de distancias geodésicas 2D y 3D</a>
+  <ul class="collapse">
+  <li><a href="#formulación-matemática-de-la-distancia-geodésica-bidimensional" id="toc-formulación-matemática-de-la-distancia-geodésica-bidimensional" class="nav-link" data-scroll-target="#formulación-matemática-de-la-distancia-geodésica-bidimensional"><span class="header-section-number">2.3.1</span> Formulación matemática de la distancia geodésica bidimensional</a></li>
+  <li><a href="#incorporación-de-variaciones-topográficas-para-la-distancia-tridimensional" id="toc-incorporación-de-variaciones-topográficas-para-la-distancia-tridimensional" class="nav-link" data-scroll-target="#incorporación-de-variaciones-topográficas-para-la-distancia-tridimensional"><span class="header-section-number">2.3.2</span> Incorporación de variaciones topográficas para la distancia tridimensional</a></li>
+  <li><a href="#distancias-acumuladas-de-la-ruta" id="toc-distancias-acumuladas-de-la-ruta" class="nav-link" data-scroll-target="#distancias-acumuladas-de-la-ruta"><span class="header-section-number">2.3.3</span> Distancias acumuladas de la ruta</a></li>
+  <li><a href="#implementación-computacional-1" id="toc-implementación-computacional-1" class="nav-link" data-scroll-target="#implementación-computacional-1"><span class="header-section-number">2.3.4</span> Implementación computacional</a></li>
+  <li><a href="#validación-metodológica" id="toc-validación-metodológica" class="nav-link" data-scroll-target="#validación-metodológica"><span class="header-section-number">2.3.5</span> Validación metodológica</a></li>
+  </ul></li>
+  <li><a href="#construcción-de-la-red-territorial-de-124-municipios" id="toc-construcción-de-la-red-territorial-de-124-municipios" class="nav-link" data-scroll-target="#construcción-de-la-red-territorial-de-124-municipios"><span class="header-section-number">2.4</span> Construcción de la red territorial de 124 municipios</a>
+  <ul class="collapse">
+  <li><a href="#representación-matemática-como-grafo-ponderado" id="toc-representación-matemática-como-grafo-ponderado" class="nav-link" data-scroll-target="#representación-matemática-como-grafo-ponderado"><span class="header-section-number">2.4.1</span> Representación matemática como grafo ponderado</a></li>
+  <li><a href="#matriz-de-adyacencia-y-normalización" id="toc-matriz-de-adyacencia-y-normalización" class="nav-link" data-scroll-target="#matriz-de-adyacencia-y-normalización"><span class="header-section-number">2.4.2</span> Matriz de adyacencia y normalización</a></li>
+  <li><a href="#tratamiento-de-nodos-colgantes" id="toc-tratamiento-de-nodos-colgantes" class="nav-link" data-scroll-target="#tratamiento-de-nodos-colgantes"><span class="header-section-number">2.4.3</span> Tratamiento de nodos colgantes</a></li>
+  <li><a href="#propiedades-estructurales-de-la-red" id="toc-propiedades-estructurales-de-la-red" class="nav-link" data-scroll-target="#propiedades-estructurales-de-la-red"><span class="header-section-number">2.4.4</span> Propiedades estructurales de la red</a></li>
+  <li><a href="#matriz-de-transición-modificada-para-pagerank" id="toc-matriz-de-transición-modificada-para-pagerank" class="nav-link" data-scroll-target="#matriz-de-transición-modificada-para-pagerank"><span class="header-section-number">2.4.5</span> Matriz de transición modificada para PageRank</a></li>
+  </ul></li>
+  <li><a href="#aplicación-del-algoritmo-pagerank-y-convergencia" id="toc-aplicación-del-algoritmo-pagerank-y-convergencia" class="nav-link" data-scroll-target="#aplicación-del-algoritmo-pagerank-y-convergencia"><span class="header-section-number">2.5</span> Aplicación del algoritmo PageRank y convergencia</a>
+  <ul class="collapse">
+  <li><a href="#fundamentos-matemáticos-del-algoritmo-pagerank" id="toc-fundamentos-matemáticos-del-algoritmo-pagerank" class="nav-link" data-scroll-target="#fundamentos-matemáticos-del-algoritmo-pagerank"><span class="header-section-number">2.5.1</span> Fundamentos matemáticos del algoritmo PageRank</a></li>
+  <li><a href="#problemas-estructurales-en-redes-reales-y-su-solución" id="toc-problemas-estructurales-en-redes-reales-y-su-solución" class="nav-link" data-scroll-target="#problemas-estructurales-en-redes-reales-y-su-solución"><span class="header-section-number">2.5.2</span> Problemas estructurales en redes reales y su solución</a></li>
+  <li><a href="#propiedades-espectrales-y-convergencia" id="toc-propiedades-espectrales-y-convergencia" class="nav-link" data-scroll-target="#propiedades-espectrales-y-convergencia"><span class="header-section-number">2.5.3</span> Propiedades espectrales y convergencia</a></li>
+  <li><a href="#implementación-numérica-mediante-el-método-de-potencias" id="toc-implementación-numérica-mediante-el-método-de-potencias" class="nav-link" data-scroll-target="#implementación-numérica-mediante-el-método-de-potencias"><span class="header-section-number">2.5.4</span> Implementación numérica mediante el método de potencias</a></li>
+  <li><a href="#resultados-obtenidos-para-la-red-de-chiapas" id="toc-resultados-obtenidos-para-la-red-de-chiapas" class="nav-link" data-scroll-target="#resultados-obtenidos-para-la-red-de-chiapas"><span class="header-section-number">2.5.5</span> Resultados obtenidos para la red de Chiapas</a></li>
+  </ul></li>
+  <li><a href="#rutas-óptimas-desde-protección-civil-hacia-municipios-prioritarios" id="toc-rutas-óptimas-desde-protección-civil-hacia-municipios-prioritarios" class="nav-link" data-scroll-target="#rutas-óptimas-desde-protección-civil-hacia-municipios-prioritarios"><span class="header-section-number">2.6</span> Rutas óptimas desde Protección Civil hacia municipios prioritarios</a></li>
+  <li><a href="#punto-de-almacenamiento-y-municipios-estratégicos" id="toc-punto-de-almacenamiento-y-municipios-estratégicos" class="nav-link" data-scroll-target="#punto-de-almacenamiento-y-municipios-estratégicos"><span class="header-section-number">2.7</span> Punto de almacenamiento y municipios estratégicos</a></li>
+  <li><a href="#análisis-de-rutas-óptimas" id="toc-análisis-de-rutas-óptimas" class="nav-link" data-scroll-target="#análisis-de-rutas-óptimas"><span class="header-section-number">2.8</span> Análisis de rutas óptimas</a></li>
+  <li><a href="#resultados-cuantitativos" id="toc-resultados-cuantitativos" class="nav-link" data-scroll-target="#resultados-cuantitativos"><span class="header-section-number">2.9</span> Resultados cuantitativos</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -277,9 +319,8 @@ window.Quarto = {
 
 <div style="text-align: justify">
 <p>En situaciones de emergencia, como desastres naturales o crisis humanitarias, la eficiencia en la distribución de ayuda humanitaria constituye un factor determinante para la reducción del impacto sobre las poblaciones afectadas. En regiones caracterizadas por una topografía accidentada y una dispersión territorial significativa, como el estado de Chiapas, la planificación logística enfrenta desafíos estructurales que incrementan los tiempos de respuesta y los costos operativos de distribución.</p>
-<p>HOLAA</p>
-<p>El estado de Chiapas, conformado por 124 municipios según el Instituto Nacional de Estadística y Geografía (INEGI), presenta una configuración geográfica predominantemente montañosa, con elevaciones que oscilan entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del mar en el Volcán Tacaná. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.</p>
-<p>Para abordar este problema de optimización logística, se propone la aplicación del algoritmo PageRank a la red territorial del estado. Originalmente desarrollado por Page y Brin (1998) para el ordenamiento de páginas web, este algoritmo fundamenta su operación en la teoría de cadenas de Markov de tiempo discreto, proporcionando una medida de centralidad que identifica nodos estratégicos dentro de una red compleja.</p>
+<p>El estado de Chiapas, presenta una configuración geográfica predominantemente montañosa. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.</p>
+<p>Para abordar este problema de optimización logística, se propone la aplicación del algoritmo PageRank a la red territorial del estado. Originalmente desarrollado por <span class="citation" data-cites="brin1998anatomy">Brin y Page (<a href="../references.html#ref-brin1998anatomy" role="doc-biblioref">1998</a>)</span> para el ordenamiento de páginas web, este algoritmo fundamenta su operación en la teoría de cadenas de Markov de tiempo discreto, proporcionando una medida de centralidad que identifica nodos estratégicos dentro de una red compleja.</p>
 <p>Matemáticamente, sea <span class="math inline">\(G = (V, E, W)\)</span> un grafo dirigido ponderado que representa la red territorial, donde <span class="math inline">\(V\)</span> denota el conjunto de vértices (municipios), <span class="math inline">\(E \subseteq V \times V\)</span> el conjunto de aristas (conexiones viales), y <span class="math inline">\(W: E \to \mathbb{R}^+\)</span> una función que asigna a cada arista <span class="math inline">\((v_i, v_j)\)</span> la distancia tridimensional <span class="math inline">\(d_{ij}^{(3D)}\)</span> entre los municipios <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>. El algoritmo PageRank calcula el vector estacionario <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> que satisface:</p>
 <p><span class="math display">\[
 \pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i,
@@ -297,13 +338,19 @@ window.Quarto = {
 <section id="contexto-humanitario-y-desafíos-logísticos-en-chiapas" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="contexto-humanitario-y-desafíos-logísticos-en-chiapas"><span class="header-section-number">2.1</span> Contexto humanitario y desafíos logísticos en Chiapas</h2>
 <p>En situaciones de emergencia, como desastres naturales o crisis humanitarias, resulta fundamental contar con mecanismos eficientes para distribuir ayuda y recursos a la población afectada. En regiones como el estado de Chiapas, que de acuerdo con el Instituto Nacional de Estadística y Geografía (INEGI) cuenta con 124 municipios, las condiciones geográficas montañosas y la dispersión territorial dificultan significativamente la conectividad y el acceso a comunidades vulnerables.</p>
-<p>El estado de Chiapas presenta una configuración geográfica predominantemente montañosa, con elevaciones que oscilan entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del mar en el Volcán Tacaná. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.</p>
-<p>La infraestructura vial del estado presenta limitaciones estructurales que se acentúan durante eventos críticos. Las carreteras principales siguen valles y corredores fluviales, dejando aisladas comunidades asentadas en zonas de difícil acceso. Adicionalmente, fenómenos como deslaves, inundaciones y daños en puentes interrumpen frecuentemente las rutas de acceso durante temporadas de lluvias. Estas condiciones incrementan los tiempos de respuesta y los costos operativos de distribución, haciendo necesario identificar puntos estratégicos dentro de la red territorial que faciliten la logística y permitan una respuesta rápida y efectiva ante situaciones críticas.</p>
-<p>Para abordar este desafío, se propone aplicar el algoritmo PageRank, desarrollado originalmente por Larry Page y Sergey Brin como parte del motor de búsqueda de Google, con el propósito de priorizar municipios de acuerdo con su importancia dentro de la red de transporte intermunicipal. Este algoritmo, fundamentado en un modelo de cadenas de Markov, mide la relevancia de cada nodo (municipio) mediante la simulación de un navegante aleatorio que recorre la red con cierta probabilidad de seguir los enlaces existentes o de saltar de manera aleatoria hacia otro nodo.</p>
+<p>El estado de Chiapas presenta una configuración geográfica predominantemente montañosa, con elevaciones que oscilan entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del mar en el Volcán Tacaná.</p>
+<p>La infraestructura vial del estado presenta limitaciones estructurales que se acentúan durante eventos críticos. Las carreteras principales siguen valles y corredores fluviales, dejando aisladas comunidades asentadas en zonas de difícil acceso. Adicionalmente, fenómenos como deslaves, inundaciones y daños en puentes interrumpen frecuentemente las rutas de acceso durante temporadas de lluvias. Estas condiciones incrementan los tiempos de respuesta y los costos operativos de distribución, haciendo necesario identificar puntos estratégicos dentro de la red territorial que faciliten la logística y permitan una respuesta rápida y efectiva ante situaciones críticas. ::: {.columns} ::: {.column width=“50%”}</p>
+<p><img src="puente.png" id="fig-sict" class="img-fluid" style="width:100.0%"> <em>Figura 1a. Reconstrucción del puente sobre el Río Novillero en la autopista costera Mapastepec–Tapachula, con participación de la Cámara Mexicana de la Industria de la Construcción (CMIC). Fuente: Secretaría de Infraestructura, Comunicaciones y Transportes (SICT), 2025. Publicación en X: <span class="citation" data-cites="SICTmx">(<a href="../references.html#ref-SICTmx" role="doc-biblioref"><strong>SICTmx?</strong></a>)</span>, 12 de junio de 2025.</em></p>
+</section>
+</div>
+<div class="column" style="width:50%;">
+<p><img src="caida_puente.png" id="fig-tablazon" class="img-fluid" style="width:100.0%"> <em>Figura 1b. Colapso del puente Tablazón I en la comunidad Ulapa, municipio de Mapastepec, Chiapas, tras intensas lluvias. El evento formó parte de una cadena de afectaciones que incluyeron el cierre de la Carretera Costera (Mapastepec–Tapachula) y el colapso del puente Pacayal. Fuente: Protección Civil Chiapas (2025).</em></p>
+</div>
+<p>:::</p>
+<p>Para abordar este desafío, se propone aplicar el algoritmo PageRank, con el propósito de priorizar municipios de acuerdo con su importancia dentro de la red de transporte intermunicipal. Este algoritmo, fundamentado en un modelo de cadenas de Markov, mide la relevancia de cada nodo (municipio) mediante la simulación de un navegante aleatorio que recorre la red con cierta probabilidad de seguir los enlaces existentes o de saltar de manera aleatoria hacia otro nodo.</p>
 <p>En términos matemáticos, el algoritmo PageRank estima la probabilidad estacionaria de una cadena de Markov con un número finito de estados, la cual describe la fracción de tiempo que, en promedio, el sistema permanece en cada estado cuando se observa durante un periodo suficientemente largo. Esta propiedad permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, ejercen una mayor influencia dentro del sistema territorial.</p>
 <p>En el presente estudio de caso, se aplica PageRank a la red territorial del estado de Chiapas, donde los municipios se representan como nodos y las rutas entre ellos como enlaces ponderados por distancia. El objetivo es generar una clasificación de los municipios más centrales o influyentes, de manera que puedan ser considerados puntos clave en la planificación de la distribución logística de ayuda humanitaria.</p>
 <p>La información obtenida constituye un recurso fundamental para el diseño de estrategias de distribución de ayuda, la optimización de rutas logísticas y la toma de decisiones en situaciones críticas. La sección siguiente describe la metodología de recolección de datos geoespaciales utilizada para construir la red territorial del estado.</p>
-</section>
 <section id="recolección-de-datos-geoespaciales-osrm-y-modelo-digital-de-elevación" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="recolección-de-datos-geoespaciales-osrm-y-modelo-digital-de-elevación"><span class="header-section-number">2.2</span> Recolección de datos geoespaciales: OSRM y Modelo Digital de Elevación</h2>
 <p>El estudio utilizó dos fuentes principales de datos geoespaciales para construir la red territorial del estado de Chiapas.</p>
@@ -311,7 +358,7 @@ window.Quarto = {
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="fuentes-de-información"><span class="header-section-number">2.2.1</span> Fuentes de información</h3>
 <section id="datos-de-rutas-viales" class="level4" data-number="2.2.1.1">
 <h4 data-number="2.2.1.1" class="anchored" data-anchor-id="datos-de-rutas-viales"><span class="header-section-number">2.2.1.1</span> Datos de rutas viales</h4>
-<p>Los datos de conectividad entre municipios se obtuvieron mediante la API de <em>Open Source Routing Machine</em> (OSRM) (<span class="citation" data-cites="osrm">Project OSRM (<a href="../references.html#ref-osrm" role="doc-biblioref">2024</a>)</span>), la cual proporciona información detallada sobre las rutas existentes entre pares de coordenadas geográficas. El formato de los datos corresponde a coordenadas geográficas en el sistema WGS84 (<code>[latitud, longitud]</code>) para cada punto que conforma la trayectoria vial entre municipios.</p>
+<p>Los datos de conectividad entre municipios se obtuvieron mediante la API de <em>Open Source Routing Machine</em> (OSRM) (<span class="citation" data-cites="osrm">Project OSRM (<a href="../references.html#ref-osrm" role="doc-biblioref">2024</a>)</span>), la cual proporciona información detallada sobre las rutas existentes entre pares de coordenadas geográficas. El formato de los datos corresponde a coordenadas geográficas en el sistema WGS84 <span class="citation" data-cites="nga2014wgs84">National Geospatial-Intelligence Agency (<a href="../references.html#ref-nga2014wgs84" role="doc-biblioref">2014</a>)</span> (<code>[latitud, longitud]</code>) para cada punto que conforma la trayectoria vial entre municipios.</p>
 </section>
 <section id="datos-de-elevación-topográfica" class="level4" data-number="2.2.1.2">
 <h4 data-number="2.2.1.2" class="anchored" data-anchor-id="datos-de-elevación-topográfica"><span class="header-section-number">2.2.1.2</span> Datos de elevación topográfica</h4>
@@ -319,12 +366,12 @@ window.Quarto = {
 <p>Para cubrir áreas extensas, como un estado o una región montañosa, se integran múltiples teselas, generando un <strong>mosaico ráster</strong> continuo y sin discontinuidades, que permite representar de manera uniforme el relieve del terreno.</p>
 </section>
 </section>
-<section id="procedimiento-de-integración-de-datos" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="procedimiento-de-integración-de-datos"><span class="header-section-number">2.2.2</span> Procedimiento de integración de datos</h3>
+<section id="nominatim2" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="nominatim2"><span class="header-section-number">2.2.2</span> Procedimiento de integración de datos</h3>
 <p>El proceso de recolección y procesamiento de datos se implementó mediante el siguiente flujo de trabajo:</p>
 <ol type="1">
 <li><p><strong>Carga y fusión de teselas DEM</strong>: Se integraron 12 teselas SRTM adyacentes que cubren completamente el territorio del estado de Chiapas, generando un mosaico ráster continuo.</p></li>
-<li><p><strong>Obtención de coordenadas geográficas</strong>: Para cada municipio, se consultaron sus coordenadas geográficas mediante el servicio de geocodificación Nominatim de OpenStreetMap (<span class="citation" data-cites="nominatim">OpenStreetMap Contributors (<a href="../references.html#ref-nominatim" role="doc-biblioref">2024</a>)</span>).</p></li>
+<li><p><strong>Obtención de coordenadas geográficas</strong>: Para cada municipio, se consultaron sus coordenadas geográficas mediante el servicio de geocodificación <strong>Nominatim</strong> de OpenStreetMap (<span class="citation" data-cites="nominatim">OpenStreetMap Contributors (<a href="../references.html#ref-nominatim" role="doc-biblioref">2024</a>)</span>).</p></li>
 <li><p><strong>Consulta de rutas viales</strong>: Utilizando la API de OSRM, se obtuvieron las rutas óptimas entre cada par de municipios, incluyendo la secuencia de coordenadas que conforman cada trayectoria.</p></li>
 <li><p><strong>Extracción de elevaciones</strong>: Para cada punto de coordenadas en las rutas viales, se interpoló su elevación a partir del mosaico ráster SRTM.</p></li>
 <li><p><strong>Cálculo de distancias</strong>: Se calcularon tanto las distancias geodésicas 2D como las distancias tridimensionales 3D incorporando las variaciones topográficas.</p></li>
@@ -332,14 +379,14 @@ window.Quarto = {
 </section>
 <section id="lista-de-municipios-analizados" class="level3" data-number="2.2.3">
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="lista-de-municipios-analizados"><span class="header-section-number">2.2.3</span> Lista de municipios analizados</h3>
-<p>El estudio consideró la totalidad de los 124 municipios que conforman el estado de Chiapas, de acuerdo con el Instituto Nacional de Estadística y Geografía (INEGI). La lista completa de municipios se presenta en el <strong>Apéndice A</strong> (<a href="appendix_a.html#sec-apendice-municipios" class="quarto-xref"><span>Sección A.1</span></a>) de esta tesis.</p>
+<p>Como ya se comentó el estudio consideró la totalidad de los 124 municipios que conforman el estado de Chiapas. La lista completa de municipios se presenta en el <strong>Apéndice A</strong> (<a href="appendix_a.html#sec-apendice-municipios" class="quarto-xref"><span>Sección A.1</span></a>) de esta tesis.</p>
 </section>
 <section id="implementación-computacional" class="level3" data-number="2.2.4">
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="implementación-computacional"><span class="header-section-number">2.2.4</span> Implementación computacional</h3>
 <p>El código completo para la extracción y procesamiento de los datos garantiza la transparencia y reproducibilidad del estudio. Las funciones principales implementadas incluyen:</p>
 <ul>
 <li><code>cargar_mosaico_srtm()</code>: Carga y fusiona múltiples teselas DEM en un único mosaico ráster.</li>
-<li><code>obtener_coordenadas(ciudad)</code>: Obtiene las coordenadas geográficas de un municipio mediante Nominatim.</li>
+<li><code>obtener_coordenadas(ciudad)</code>: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver <span class="citation" data-cites="nominatim2">(<a href="../references.html#ref-nominatim2" role="doc-biblioref"><strong>nominatim2?</strong></a>)</span></li>
 <li><code>obtener_ruta_osrm(coord_origen, coord_destino)</code>: Consulta la ruta óptima entre dos puntos usando la API de OSRM.</li>
 <li><code>calcular_distancia_3d_ruta(mosaico, transform, ruta_coords)</code>: Calcula la distancia 3D incorporando variaciones topográficas.</li>
 </ul>
@@ -608,13 +655,18 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1, \dots, 124.
 <h2 data-number="2.9" class="anchored" data-anchor-id="resultados-cuantitativos"><span class="header-section-number">2.9</span> Resultados cuantitativos</h2>
 <p>La Tabla 3.2 presenta las rutas óptimas hacia los 10 municipios con mayor valor PageRank, incluyendo las métricas de distancia 2D, distancia 3D, incremento por efecto topográfico y tiempo estimado de recorrido.</p>
 <p><strong>FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION</strong></p>
-</section>
-</div>
+<p>:::</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-brin1998anatomy" class="csl-entry" role="listitem">
+Brin, Sergey, y Lawrence Page. 1998. <span>«The Anatomy of a Large-Scale Hypertextual Web Search Engine»</span>. <em>Computer Networks and ISDN Systems</em> 30 (1–7): 107-17. <a href="https://doi.org/10.1016/S0169-7552(98)00110-X">https://doi.org/10.1016/S0169-7552(98)00110-X</a>.
+</div>
 <div id="ref-nasa_earthdata" class="csl-entry" role="listitem">
 NASA Earthdata. 2024. <span>«Shuttle Radar Topography Mission (SRTM) Data»</span>. <a href="https://earthdata.nasa.gov/">https://earthdata.nasa.gov/</a>.
+</div>
+<div id="ref-nga2014wgs84" class="csl-entry" role="listitem">
+National Geospatial-Intelligence Agency. 2014. <span>«Department of Defense World Geodetic System 1984: Its Definition and Relationships with Local Geodetic Systems»</span>. NGA.STND.0036_1.0.0_WGS84. National Geospatial-Intelligence Agency (NGA). <a href="https://earth-info.nga.mil/GandG/wgs84/index.html">https://earth-info.nga.mil/GandG/wgs84/index.html</a>.
 </div>
 <div id="ref-nominatim" class="csl-entry" role="listitem">
 OpenStreetMap Contributors. 2024. <span>«Nominatim API»</span>. <a href="https://nominatim.openstreetmap.org/">https://nominatim.openstreetmap.org/</a>.
@@ -623,6 +675,7 @@ OpenStreetMap Contributors. 2024. <span>«Nominatim API»</span>. <a href="https
 Project OSRM. 2024. <span>«Open Source Routing Machine (OSRM)»</span>. <a href="https://project-osrm.org/">https://project-osrm.org/</a>.
 </div>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -253,7 +253,7 @@
 \title{tesis}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-03-09}
+\date{2026-03-15}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -345,24 +345,19 @@ de Chiapas, la planificación logística enfrenta desafíos estructurales
 que incrementan los tiempos de respuesta y los costos operativos de
 distribución.
 
-HOLAA
-
-El estado de Chiapas, conformado por 124 municipios según el Instituto
-Nacional de Estadística y Geografía (INEGI), presenta una configuración
-geográfica predominantemente montañosa, con elevaciones que oscilan
-entre el nivel del mar en la costa del Pacífico y los 4,097 metros sobre
-el nivel del mar en el Volcán Tacaná. Esta variabilidad altimétrica
-genera barreras naturales que fragmentan la red vial estatal, limitando
+El estado de Chiapas, presenta una configuración geográfica
+predominantemente montañosa. Esta variabilidad altimétrica genera
+barreras naturales que fragmentan la red vial estatal, limitando
 particularmente el acceso a comunidades asentadas en laderas y mesetas
 de difícil conectividad.
 
 Para abordar este problema de optimización logística, se propone la
 aplicación del algoritmo PageRank a la red territorial del estado.
-Originalmente desarrollado por Page y Brin (1998) para el ordenamiento
-de páginas web, este algoritmo fundamenta su operación en la teoría de
-cadenas de Markov de tiempo discreto, proporcionando una medida de
-centralidad que identifica nodos estratégicos dentro de una red
-compleja.
+Originalmente desarrollado por Brin y Page
+(\citeproc{ref-brin1998anatomy}{1998}) para el ordenamiento de páginas
+web, este algoritmo fundamenta su operación en la teoría de cadenas de
+Markov de tiempo discreto, proporcionando una medida de centralidad que
+identifica nodos estratégicos dentro de una red compleja.
 
 Matemáticamente, sea \(G = (V, E, W)\) un grafo dirigido ponderado que
 representa la red territorial, donde \(V\) denota el conjunto de
@@ -428,10 +423,7 @@ vulnerables.
 El estado de Chiapas presenta una configuración geográfica
 predominantemente montañosa, con elevaciones que oscilan entre el nivel
 del mar en la costa del Pacífico y los 4,097 metros sobre el nivel del
-mar en el Volcán Tacaná. Esta variabilidad altimétrica genera barreras
-naturales que fragmentan la red vial estatal, limitando particularmente
-el acceso a comunidades asentadas en laderas y mesetas de difícil
-conectividad.
+mar en el Volcán Tacaná.
 
 La infraestructura vial del estado presenta limitaciones estructurales
 que se acentúan durante eventos críticos. Las carreteras principales
@@ -442,17 +434,33 @@ rutas de acceso durante temporadas de lluvias. Estas condiciones
 incrementan los tiempos de respuesta y los costos operativos de
 distribución, haciendo necesario identificar puntos estratégicos dentro
 de la red territorial que faciliten la logística y permitan una
-respuesta rápida y efectiva ante situaciones críticas.
+respuesta rápida y efectiva ante situaciones críticas. ::: \{.columns\}
+::: \{.column width=``50\%''\}
 
-Para abordar este desafío, se propone aplicar el algoritmo PageRank,
-desarrollado originalmente por Larry Page y Sergey Brin como parte del
-motor de búsqueda de Google, con el propósito de priorizar municipios de
-acuerdo con su importancia dentro de la red de transporte
-intermunicipal. Este algoritmo, fundamentado en un modelo de cadenas de
-Markov, mide la relevancia de cada nodo (municipio) mediante la
-simulación de un navegante aleatorio que recorre la red con cierta
-probabilidad de seguir los enlaces existentes o de saltar de manera
-aleatoria hacia otro nodo.
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{chapters/puente.png}
+\emph{Figura 1a. Reconstrucción del puente sobre el Río Novillero en la
+autopista costera Mapastepec--Tapachula, con participación de la Cámara
+Mexicana de la Industria de la Construcción (CMIC). Fuente: Secretaría
+de Infraestructura, Comunicaciones y Transportes (SICT), 2025.
+Publicación en X: (\citeproc{ref-SICTmx}{\textbf{SICTmx?}}), 12 de junio
+de 2025.}
+
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{chapters/caida_puente.png}
+\emph{Figura 1b. Colapso del puente Tablazón I en la comunidad Ulapa,
+municipio de Mapastepec, Chiapas, tras intensas lluvias. El evento formó
+parte de una cadena de afectaciones que incluyeron el cierre de la
+Carretera Costera (Mapastepec--Tapachula) y el colapso del puente
+Pacayal. Fuente: Protección Civil Chiapas (2025).}
+
+:::
+
+Para abordar este desafío, se propone aplicar el algoritmo PageRank, con
+el propósito de priorizar municipios de acuerdo con su importancia
+dentro de la red de transporte intermunicipal. Este algoritmo,
+fundamentado en un modelo de cadenas de Markov, mide la relevancia de
+cada nodo (municipio) mediante la simulación de un navegante aleatorio
+que recorre la red con cierta probabilidad de seguir los enlaces
+existentes o de saltar de manera aleatoria hacia otro nodo.
 
 En términos matemáticos, el algoritmo PageRank estima la probabilidad
 estacionaria de una cadena de Markov con un número finito de estados, la
@@ -490,8 +498,9 @@ de \emph{Open Source Routing Machine} (OSRM) (Project OSRM
 (\citeproc{ref-osrm}{2024})), la cual proporciona información detallada
 sobre las rutas existentes entre pares de coordenadas geográficas. El
 formato de los datos corresponde a coordenadas geográficas en el sistema
-WGS84 (\texttt{{[}latitud,\ longitud{]}}) para cada punto que conforma
-la trayectoria vial entre municipios.
+WGS84 National Geospatial-Intelligence Agency
+(\citeproc{ref-nga2014wgs84}{2014}) (\texttt{{[}latitud,\ longitud{]}})
+para cada punto que conforma la trayectoria vial entre municipios.
 
 \subsubsection{Datos de elevación
 topográfica}\label{datos-de-elevaciuxf3n-topogruxe1fica}
@@ -511,8 +520,7 @@ integran múltiples teselas, generando un \textbf{mosaico ráster}
 continuo y sin discontinuidades, que permite representar de manera
 uniforme el relieve del terreno.
 
-\subsection{Procedimiento de integración de
-datos}\label{procedimiento-de-integraciuxf3n-de-datos}
+\subsection{Procedimiento de integración de datos}\label{nominatim2}
 
 El proceso de recolección y procesamiento de datos se implementó
 mediante el siguiente flujo de trabajo:
@@ -526,8 +534,8 @@ mediante el siguiente flujo de trabajo:
 \item
   \textbf{Obtención de coordenadas geográficas}: Para cada municipio, se
   consultaron sus coordenadas geográficas mediante el servicio de
-  geocodificación Nominatim de OpenStreetMap (OpenStreetMap Contributors
-  (\citeproc{ref-nominatim}{2024})).
+  geocodificación \textbf{Nominatim} de OpenStreetMap (OpenStreetMap
+  Contributors (\citeproc{ref-nominatim}{2024})).
 \item
   \textbf{Consulta de rutas viales}: Utilizando la API de OSRM, se
   obtuvieron las rutas óptimas entre cada par de municipios, incluyendo
@@ -545,11 +553,10 @@ mediante el siguiente flujo de trabajo:
 \subsection{Lista de municipios
 analizados}\label{lista-de-municipios-analizados}
 
-El estudio consideró la totalidad de los 124 municipios que conforman el
-estado de Chiapas, de acuerdo con el Instituto Nacional de Estadística y
-Geografía (INEGI). La lista completa de municipios se presenta en el
-\textbf{Apéndice A} (Sección~\ref{sec-apendice-municipios}) de esta
-tesis.
+Como ya se comentó el estudio consideró la totalidad de los 124
+municipios que conforman el estado de Chiapas. La lista completa de
+municipios se presenta en el \textbf{Apéndice A}
+(Sección~\ref{sec-apendice-municipios}) de esta tesis.
 
 \subsection{Implementación
 computacional}\label{implementaciuxf3n-computacional}
@@ -565,7 +572,8 @@ principales implementadas incluyen:
   DEM en un único mosaico ráster.
 \item
   \texttt{obtener\_coordenadas(ciudad)}: Obtiene las coordenadas
-  geográficas de un municipio mediante Nominatim.
+  geográficas de un municipio mediante Nominatim ver
+  (\citeproc{ref-nominatim2}{\textbf{nominatim2?}})
 \item
   \texttt{obtener\_ruta\_osrm(coord\_origen,\ coord\_destino)}: Consulta
   la ruta óptima entre dos puntos usando la API de OSRM.
@@ -1180,6 +1188,8 @@ mayor valor PageRank, incluyendo las métricas de distancia 2D, distancia
 
 \textbf{FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION}
 
+:::
+
 \bookmarksetup{startatroot}
 
 \chapter{Sistema Integrado de Decisión para Operaciones con
@@ -1272,7 +1282,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, rightrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toprule=.15mm, left=2mm, coltitle=black, toptitle=1mm, titlerule=0mm, opacitybacktitle=0.6, bottomrule=.15mm, arc=.35mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, colback=white, breakable, bottomtitle=1mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, coltitle=black, arc=.35mm, colback=white, breakable, opacitybacktitle=0.6, rightrule=.15mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, leftrule=.75mm, bottomrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacityback=0, left=2mm, toprule=.15mm, colframe=quarto-callout-note-color-frame]
 
 \textbf{Características operativas de la ruta}
 
@@ -2406,9 +2416,22 @@ perspectivas}\label{recomendaciones-operativas-y-perspectivas}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-brin1998anatomy}
+Brin, Sergey, y Lawrence Page. 1998. {«The Anatomy of a Large-Scale
+Hypertextual Web Search Engine»}. \emph{Computer Networks and ISDN
+Systems} 30 (1--7): 107-17.
+\url{https://doi.org/10.1016/S0169-7552(98)00110-X}.
+
 \bibitem[\citeproctext]{ref-nasa_earthdata}
 NASA Earthdata. 2024. {«Shuttle Radar Topography Mission (SRTM) Data»}.
 \url{https://earthdata.nasa.gov/}.
+
+\bibitem[\citeproctext]{ref-nga2014wgs84}
+National Geospatial-Intelligence Agency. 2014. {«Department of Defense
+World Geodetic System 1984: Its Definition and Relationships with Local
+Geodetic Systems»}. NGA.STND.0036\_1.0.0\_WGS84. National
+Geospatial-Intelligence Agency (NGA).
+\url{https://earth-info.nga.mil/GandG/wgs84/index.html}.
 
 \bibitem[\citeproctext]{ref-nominatim}
 OpenStreetMap Contributors. 2024. {«Nominatim API»}.
