@@ -51,14 +51,14 @@ La infraestructura vial del estado presenta limitaciones estructurales que se ac
 ::: {.columns}
 ::: {.column width="48%"}
 
-![](puente.png){width=70%}
+![](puente.png){style="height:250px; width:auto; object-fit:contain;"}
 *Figura 1a. Reconstrucción del puente sobre el Río Novillero, autopista Mapastepec–Tapachula. Participación de CMIC y SICT (2025).*
 
 :::
 
 ::: {.column width="48%"}
 
-![](caida_puente.png){width=70%}
+![](caida_puente.png){style="height:250px; width:auto; object-fit:contain;"}
 *Figura 1b. Colapso del puente Tablazón I en Ulapa, Mapastepec, tras intensas lluvias (2025). Fuente: Protección Civil Chiapas.*
 
 :::
@@ -111,7 +111,7 @@ Como ya se comentó el estudio consideró la totalidad de los 124 municipios que
 El código completo para la extracción y procesamiento de los datos garantiza la transparencia y reproducibilidad del estudio. Las funciones principales implementadas incluyen:
 
 - `cargar_mosaico_srtm()`: Carga y fusiona múltiples teselas DEM en un único mosaico ráster.
-- `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver @sec-nominatim2
+- `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver @sec-nominatim2, inciso 2
 - `obtener_ruta_osrm(coord_origen, coord_destino)`: Consulta la ruta óptima entre dos puntos usando la API de OSRM.
 - `calcular_distancia_3d_ruta(mosaico, transform, ruta_coords)`: Calcula la distancia 3D incorporando variaciones topográficas.
 
