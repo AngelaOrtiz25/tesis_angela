@@ -1,0 +1,15 @@
+/* Para imágenes con figuras */
+.figure {
+  margin-bottom: 30px !important; /* Espacio después de cada figura */
+}
+
+/* Para las leyendas específicamente */
+figcaption {
+  margin-top: 10px !important;    /* Espacio entre imagen y leyenda */
+  margin-bottom: 20px !important; /* Espacio después de la leyenda */
+}
+
+/* Si usas múltiples imágenes en una celda */
+.figure:not(:last-child) {
+  margin-bottom: 40px !important; /* Espacio entre figuras */
+}
