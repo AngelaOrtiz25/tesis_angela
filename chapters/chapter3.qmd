@@ -51,14 +51,14 @@ El estado de Chiapas presenta una configuración geográfica predominantemente m
 La infraestructura vial del estado presenta limitaciones estructurales que se acentúan durante eventos críticos. Las carreteras principales siguen valles y corredores fluviales, dejando aisladas comunidades asentadas en zonas de difícil acceso. Adicionalmente, fenómenos como deslaves, inundaciones y daños en puentes interrumpen frecuentemente las rutas de acceso durante temporadas de lluvias. Estas condiciones incrementan los tiempos de respuesta y los costos operativos de distribución, haciendo necesario identificar puntos estratégicos dentro de la red territorial que faciliten la logística y permitan una respuesta rápida y efectiva ante situaciones críticas.
 
 ::: {.columns style="display: flex; gap: 25px;"}
-::: {.column width="48%"}
+::: {.column width="46%"}
 
 ![](puente.png){style="height:250px; width:auto; object-fit:contain;"}
 <small><em>Figura 1a. Reconstrucción del puente sobre el Río Novillero, autopista Mapastepec–Tapachula. Participación de CMIC y SICT (2025).</em></small> 
 
 :::
 
-::: {.column width="48%"}
+::: {.column width="46%"}
 
 ![](caida_puente.png){style="height:250px; width:auto; object-fit:contain;"}
 <small><em>Figura 1b. Colapso del puente Tablazón I en Ulapa, Mapastepec, tras intensas lluvias (2025). Fuente: Protección Civil Chiapas.</em></small>
