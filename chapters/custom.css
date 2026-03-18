@@ -1,15 +1,22 @@
-/* Para imágenes con figuras */
-.figure {
-  margin-bottom: 30px !important; /* Espacio después de cada figura */
+/* custom.css */
+.img-espaciado {
+    margin-bottom: 25px;  /* Espacio entre figuras */
 }
 
-/* Para las leyendas específicamente */
+.img-espaciado p {
+    margin-top: 8px;      /* Espacio entre imagen y leyenda */
+    margin-bottom: 0;
+    padding-left: 5px;
+    text-align: left;      /* Alinea el texto de la leyenda */
+}
+
+/* Opcional: para figuras con sintaxis nativa de Quarto */
+figure {
+    margin-bottom: 25px !important;
+}
+
 figcaption {
-  margin-top: 10px !important;    /* Espacio entre imagen y leyenda */
-  margin-bottom: 20px !important; /* Espacio después de la leyenda */
-}
-
-/* Si usas múltiples imágenes en una celda */
-.figure:not(:last-child) {
-  margin-bottom: 40px !important; /* Espacio entre figuras */
+    margin-top: 8px !important;
+    padding-left: 5px !important;
+    text-align: left !important;
 }
