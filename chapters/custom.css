@@ -1,22 +1,5 @@
-/* custom.css */
-.img-espaciado {
-    margin-bottom: 25px;  /* Espacio entre figuras */
-}
-
-.img-espaciado p {
-    margin-top: 8px;      /* Espacio entre imagen y leyenda */
-    margin-bottom: 0;
-    padding-left: 5px;
-    text-align: left;      /* Alinea el texto de la leyenda */
-}
-
-/* Opcional: para figuras con sintaxis nativa de Quarto */
-figure {
-    margin-bottom: 25px !important;
-}
-
-figcaption {
-    margin-top: 8px !important;
-    padding-left: 5px !important;
-    text-align: left !important;
+.grid-leyendas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Dos columnas iguales */
+    gap: 15px;  /* Espacio horizontal de 15px (aproximadamente 4mm) */
 }
