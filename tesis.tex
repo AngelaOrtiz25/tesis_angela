@@ -1138,18 +1138,18 @@ Drones}\label{sistema-integrado-de-decisiuxf3n-para-operaciones-con-drones}
 
 Este capítulo presenta un marco matemáticamente fundamentado para la
 toma de decisiones operativas en el despliegue de drones para transporte
-de ayuda humanitaria. Se desarrolla un modelo de pronóstico advectivo a
-corto plazo (\emph{nowcasting}) que integra técnicas de análisis
-espectral, series de tiempo y teoría de decisión bajo incertidumbre. El
-sistema evalúa la viabilidad de operaciones aéreas mediante la
-cuantificación de variables meteorológicas críticas (velocidad del
-viento, temperatura, humedad relativa y precipitación) a lo largo de una
-ruta específica: Aeropuerto Internacional Ángel Albino Corzo hacia
-Protección Civil en Tuxtla Gutiérrez, Chiapas. La metodología propuesta
-garantiza la seguridad operacional mediante una política conservadora de
-tolerancia cero frente a violaciones de umbrales técnicos,
-proporcionando un protocolo reproducible para la logística humanitaria
-en entornos meteorológicos variables.
+de ayuda humanitaria. Se desarrolla un modelo de \textbf{pronóstico
+advectivo a corto plazo} (\emph{nowcasting}) que integra técnicas de
+análisis espectral, series de tiempo y teoría de decisión bajo
+incertidumbre. El sistema evalúa la viabilidad de operaciones aéreas
+mediante la cuantificación de variables meteorológicas críticas
+(velocidad del viento, temperatura, humedad relativa y precipitación) a
+lo largo de una ruta específica: Aeropuerto Internacional Ángel Albino
+Corzo hacia Protección Civil en Tuxtla Gutiérrez, Chiapas. La
+metodología propuesta garantiza la seguridad operacional mediante una
+política conservadora de tolerancia cero frente a violaciones de
+umbrales técnicos, proporcionando un protocolo reproducible para la
+logística humanitaria en entornos meteorológicos variables.
 
 El transporte aéreo mediante drones representa una alternativa
 prometedora para la distribución rápida de ayuda humanitaria en
@@ -1174,10 +1174,10 @@ que combina:
   geodésicas y direcciones de desplazamiento.
 \item
   \textbf{Análisis de transporte atmosférico}: Estimación de la
-  velocidad de advección mediante dos metodologías complementarias:
-  correlación cruzada entre segmentos espaciales adyacentes y análisis
-  frecuencia-espacio (\(f\)-\(k\)) basado en la pendiente de fase
-  espectral.
+  \textbf{velocidad de advección} mediante dos metodologías
+  complementarias: correlación cruzada entre segmentos espaciales
+  adyacentes y análisis frecuencia-espacio (\(f\)-\(k\)) basado en la
+  pendiente de fase espectral.
 \item
   \textbf{Pronóstico híbrido}: Combinación convexa de componentes
   advectiva, autorregresiva y de persistencia para generar nowcasts de
@@ -1223,7 +1223,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, breakable, bottomtitle=1mm, leftrule=.75mm, titlerule=0mm, toptitle=1mm, arc=.35mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, coltitle=black, colback=white, left=2mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, coltitle=black, colback=white, opacityback=0, titlerule=0mm, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, arc=.35mm, toprule=.15mm, leftrule=.75mm, toptitle=1mm, breakable, bottomrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, left=2mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -1420,15 +1420,15 @@ Para el cálculo de este ángulo se emplea la fórmula del
 vista numérico, incluso para distancias pequeñas. La función haverseno
 se define como:
 
-\[
-\operatorname{hav}(\theta) = \sin^2\left(\frac{\theta}{2}\right). \tag{4.1}
-\]
+\begin{equation}\phantomsection\label{eq-haverseno}{
+\operatorname{hav}(\theta) = \sin^2\left(\frac{\theta}{2}\right). 
+}\end{equation}
 
 Bajo esta definición, el ángulo central satisface la relación:
 
-\[
-\operatorname{hav}(\Delta\sigma) = \operatorname{hav}(\varphi_2 - \varphi_1) + \cos(\varphi_1)\cos(\varphi_2)\operatorname{hav}(\lambda_2 - \lambda_1). \tag{4.2}
-\]
+\begin{equation}\phantomsection\label{eq-angulocentral}{
+\operatorname{hav}(\Delta\sigma) = \operatorname{hav}(\varphi_2 - \varphi_1) + \cos(\varphi_1)\cos(\varphi_2)\operatorname{hav}(\lambda_2 - \lambda_1). 
+}\end{equation}
 
 Desarrollando explícitamente esta expresión, se introduce la variable
 auxiliar:
@@ -1469,7 +1469,8 @@ del norte geográfico y la dirección del movimiento desde el punto
 Desde el punto de vista geométrico, este ángulo puede deducirse
 considerando el triángulo esférico formado por el polo norte, el punto
 inicial \(P_1\) y el punto final \(P_2\). A partir de relaciones de
-trigonometría esférica, el rumbo inicial \(\theta\) viene dado por:
+trigonometría esférica Snyder (\citeproc{ref-snyder1987map}{1987}), el
+rumbo inicial \(\theta\) viene dado por:
 
 \[
 \theta = \arctan\left(
@@ -1499,21 +1500,22 @@ El cálculo de distancias y direcciones entre puntos geográficos se
 modela considerando la superficie terrestre como una esfera de radio
 constante. Bajo esta hipótesis, la distancia mínima entre dos puntos se
 obtiene como la longitud del arco de círculo máximo que los une,
-calculada mediante la fórmula del haverseno (Ecuación 4.1). Asimismo, el
-rumbo inicial se determina a partir de relaciones trigonométricas
-esféricas, permitiendo establecer la orientación de la trayectoria con
-respecto al norte geográfico. Estas magnitudes son fundamentales para
-proyectar correctamente las variables meteorológicas, particularmente el
-viento, sobre la ruta de navegación del dron.
+calculada mediante la fórmula del haverseno
+(Ecuación~\ref{eq-haverseno}). Asimismo, el rumbo inicial se determina a
+partir de relaciones trigonométricas esféricas, permitiendo establecer
+la orientación de la trayectoria con respecto al norte geográfico. Estas
+magnitudes son fundamentales para proyectar correctamente las variables
+meteorológicas, particularmente el viento, sobre la ruta de navegación
+del dron.
 
 \subsection{Aplicación a la discretización de la ruta de
 vuelo}\label{aplicaciuxf3n-a-la-discretizaciuxf3n-de-la-ruta-de-vuelo}
 
 En el contexto específico de la ruta Aeropuerto Internacional Ángel
-Albino Corzo → Protección Civil, la trayectoria se discretiza en \(N\)
-segmentos espaciales consecutivos. Cada segmento se representa mediante
-su centroide longitudinal \(s_i\), calculado como la distancia geodésica
-acumulada desde el punto inicial:
+Albino Corzo hacia Protección Civil, la trayectoria se discretiza en
+\(N\) segmentos espaciales consecutivos. Cada segmento se representa
+mediante su centroide longitudinal \(s_i\), calculado como la distancia
+geodésica acumulada desde el punto inicial:
 
 \[
 s_i = \sum_{k=1}^{i} d(P_{k-1}, P_k),
@@ -1752,8 +1754,8 @@ propagación}\label{estimaciuxf3n-de-la-velocidad-de-propagaciuxf3n}
 
 La pendiente \(\hat{k} = \alpha\) se estima mediante mínimos cuadrados
 ordinarios sobre el conjunto de segmentos espaciales. Una vez obtenida
-esta pendiente, la velocidad de propagación se calcula utilizando la
-relación fundamental de ondas:
+esta pendiente, la velocidad de propagación \(v\) se calcula utilizando
+la relación fundamental de ondas:
 
 \[
 v = \frac{\omega}{k}.
@@ -2331,9 +2333,459 @@ secciones siguientes.
 \section{Aplicación del modelo advectivo a la humedad
 relativa}\label{aplicaciuxf3n-del-modelo-advectivo-a-la-humedad-relativa}
 
+En esta sección se aplica el esquema advectivo--autorregresivo,
+previamente establecido para la temperatura del aire, al campo de
+\textbf{humedad relativa} a lo largo de la ruta de vuelo del dron.
+
+La arquitectura matemática del modelo se mantiene inalterada. En
+particular, se conserva la descomposición en un componente de transporte
+espacial y un término de persistencia temporal local, así como el
+procedimiento de estimación y cuantificación de incertidumbre descrito
+anteriormente. Las modificaciones se limitan a la recalibración de los
+coeficientes autorregresivos y de los parámetros asociados al transporte
+efectivo, con el fin de capturar la dinámica propia de la humedad,
+caracterizada por una mayor variabilidad temporal y una menor coherencia
+espacial respecto al campo térmico.
+
+De este modo, la modelización de la humedad constituye una
+especialización paramétrica del esquema general previamente formulado.
+
+\subsection{Variable de estudio y discretización
+espacial}\label{variable-de-estudio-y-discretizaciuxf3n-espacial-1}
+
+Sea \(H(s,t)\) la humedad relativa en la posición longitudinal \(s\) de
+la ruta y en el tiempo \(t\), expresada como fracción en el intervalo
+\([0,1]\).
+
+La ruta se discretiza en \(N\) segmentos espaciales, definidos a partir
+del promedio de los puntos de muestreo cercanos, y cada segmento queda
+representado por su centroide \(s_i\). La serie temporal asociada al
+segmento \(i\) se denota como:
+
+\[
+H_i(t) = \frac{1}{|\mathcal{S}_i|} \sum_{k \in \mathcal{S}_i} H_k(t),
+\]
+
+donde \(\mathcal{S}_i\) es el conjunto de puntos de muestreo que
+conforman el segmento \(i\).
+
+\subsection{Hipótesis de advección con velocidad
+conocida}\label{hipuxf3tesis-de-advecciuxf3n-con-velocidad-conocida-1}
+
+Para la humedad relativa, al igual que para la temperatura, se adopta
+una \textbf{velocidad de advección fija}, obtenida previamente del
+análisis del campo de viento:
+
+\[
+v = v_{\text{viento}}.
+\]
+
+Esta hipótesis se fundamenta en que la humedad atmosférica se transporta
+pasivamente por el flujo de aire dominante, sin presentar una dinámica
+de propagación independiente. La velocidad de advección de la humedad
+coincide con la velocidad del viento medio en la capa límite atmosférica
+donde opera el dron.
+
+\subsection{Componente advectiva del
+pronóstico}\label{componente-advectiva-del-pronuxf3stico-1}
+
+Bajo el supuesto de advección unidimensional, el valor futuro de la
+humedad en el segmento \(i\) se asocia al valor observado en la posición
+precedente en la dirección del flujo:
+
+\[
+s_i^{\text{up}} = s_i - vH,
+\]
+
+donde \(H\) es el horizonte de pronóstico y \(v\) la velocidad media de
+transporte.
+
+El valor estimado por advección se aproxima mediante interpolación
+lineal espacial:
+
+\[
+H_i^{\text{adv}}(t+H) =
+\begin{cases}
+H_1(t), & s_i^{\text{up}} \le s_1, \\[6pt]
+H_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(H_{j+1}(t)-H_j(t)\bigr), & s_j \le s_i^{\text{up}} < s_{j+1}.
+\end{cases}
+\]
+
+Este término representa el \textbf{transporte de humedad dominante} a lo
+largo de la ruta y constituye una aproximación discreta del operador de
+transporte asociado a la ecuación de advección unidimensional.
+
+\subsection{Componente autorregresiva
+temporal}\label{componente-autorregresiva-temporal-2}
+
+La humedad relativa presenta una persistencia temporal moderada,
+inferior a la de la temperatura pero superior a la del viento. Cada
+segmento se modela mediante un proceso autorregresivo de primer orden:
+
+\[
+H_i(t+\Delta t) = a_i H_i(t),
+\]
+
+donde \(a_i \in (0,1)\) es el coeficiente estimado por mínimos cuadrados
+ordinarios.
+
+El pronóstico autorregresivo a horizonte \(H = n\Delta t\) se expresa
+como:
+
+\[
+H_i^{\text{AR}}(t+H) = a_i^{n} H_i(t).
+\]
+
+En los segmentos donde la información temporal resulta insuficiente
+(menos de 10 observaciones), se emplea un valor regularizado
+\(a_i = 0.85\), consistente con la inercia moderada del campo de humedad
+en escalas temporales de minutos.
+
+\subsection{Modelo híbrido de nowcasting para humedad
+relativa}\label{modelo-huxedbrido-de-nowcasting-para-humedad-relativa}
+
+El pronóstico final se obtiene mediante una combinación convexa de tres
+componentes: autorregresiva, persistente y advectiva:
+
+\[
+\hat{H}_i(t+H) = w_1 H_i^{\text{AR}}(t+H) + w_2 H_i(t) + w_3 H_i^{\text{adv}}(t+H),
+\]
+
+con
+
+\[
+w_1 + w_2 + w_3 = 1, \qquad w_k \ge 0.
+\]
+
+Para el caso de la humedad relativa se adoptaron los pesos fijos:
+
+\[
+(w_1, w_2, w_3) = (0.3, 0.3, 0.4),
+\]
+
+asignando mayor relevancia al transporte advectivo y equilibrando la
+persistencia temporal con la componente autorregresiva. Esta ponderación
+refleja que la humedad relativa presenta:
+
+\begin{itemize}
+\tightlist
+\item
+  Moderada coherencia espacial debido al transporte advectivo,
+\item
+  Persistencia temporal intermedia por su naturaleza higroscópica,
+\item
+  Mayor variabilidad intrínseca en comparación con la temperatura.
+\end{itemize}
+
+\subsection{Estimación de la incertidumbre mediante block
+bootstrap}\label{estimaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap-1}
+
+La incertidumbre del pronóstico se cuantifica mediante un procedimiento
+de \textbf{block bootstrap temporal}, que preserva la dependencia serial
+de las observaciones.
+
+Sea \(\{H_i(t)\}_{t=1}^T\) la serie observada. Se generan \(B\) réplicas
+bootstrap mediante remuestreo con reemplazo de bloques temporales de
+longitud \(L = 10\) minutos. Para cada réplica \(b\), se calcula un
+pronóstico:
+
+\[
+\hat{H}_i^{(b)}(t+H).
+\]
+
+A partir de la distribución empírica resultante se estiman los
+cuantiles:
+
+\[
+\text{p05}_i, \quad \text{p50}_i, \quad \text{p95}_i,
+\]
+
+los cuales definen intervalos de confianza del 90\% para el nowcast de
+humedad relativa en cada segmento.
+
+El uso de bloques temporales de longitud intermedia (\(L = 10\) minutos)
+refleja la variabilidad moderada de la humedad relativa en comparación
+con la temperatura.
+
+\subsection{Discusión y propiedades del
+modelo}\label{discusiuxf3n-y-propiedades-del-modelo-1}
+
+La aplicación del modelo advectivo a la humedad relativa presenta las
+siguientes características distintivas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Menor coherencia espacial}: A diferencia de la temperatura, la
+  humedad presenta gradientes espaciales más pronunciados debido a
+  efectos locales de evaporación y condensación.
+\item
+  \textbf{Dependencia no lineal con la temperatura}: La humedad relativa
+  está relacionada con la temperatura a través de la curva de saturación
+  del vapor de agua, lo que introduce no linealidades en su evolución
+  temporal.
+\item
+  \textbf{Sensibilidad a condiciones de contorno}: La humedad es
+  particularmente sensible a la presencia de cuerpos de agua, vegetación
+  y cambios topográficos a lo largo de la ruta.
+\item
+  \textbf{Importancia operativa}: La humedad relativa constituye un
+  factor crítico para la operación de drones, ya que valores elevados
+  incrementan el riesgo de condensación en sensores y circuitos
+  electrónicos.
+\end{enumerate}
+
+Esta formulación permite integrar la humedad relativa en el sistema de
+decisión multicriterio descrito en la Sección 4.9, proporcionando una
+evaluación cuantitativa de su impacto en la viabilidad operativa de las
+misiones con drones.
+
 \section{Aplicación del modelo advectivo a la precipitación: esquema de
 persistencia ponderada
 adaptativa}\label{aplicaciuxf3n-del-modelo-advectivo-a-la-precipitaciuxf3n-esquema-de-persistencia-ponderada-adaptativa}
+
+En esta sección se adapta el esquema advectivo al caso de la
+precipitación, cuya dinámica espacial y temporal presenta un
+comportamiento significativamente más intermitente y no estacionario que
+el observado en la temperatura o la humedad.
+
+Se mantiene la formulación general basada en transporte efectivo y
+dinámica local definida en las secciones anteriores. Sin embargo, debido
+a la elevada proporción de valores nulos, la menor persistencia temporal
+y la aparición episódica de eventos precipitantes, no resulta adecuado
+emplear un modelo autorregresivo lineal para la componente local.
+
+En su lugar, se introduce un esquema de persistencia ponderada
+dependiente del estado, el cual permite ajustar dinámicamente el peso
+relativo entre el término advectivo y la condición local presente. Esta
+modificación preserva la estructura matemática global del modelo, pero
+incorpora una parametrización diferenciada que captura la naturaleza
+altamente intermitente del campo de precipitación en escalas temporales
+cortas.
+
+\subsection{Variable de estudio y discretización
+espacial}\label{variable-de-estudio-y-discretizaciuxf3n-espacial-2}
+
+Sea \(R(s,t)\) la precipitación acumulada en la posición longitudinal
+\(s\) de la ruta y en el tiempo \(t\), expresada en
+\(\mathrm{mm \cdot h^{-1}}\).
+
+La ruta se discretiza en \(N\) segmentos espaciales, definidos a partir
+del promedio de los puntos de muestreo cercanos, y cada segmento queda
+representado por su centroide \(s_i\). La serie temporal asociada al
+segmento \(i\) se denota como:
+
+\[
+R_i(t) = \frac{1}{|\mathcal{S}_i|} \sum_{k \in \mathcal{S}_i} R_k(t),
+\]
+
+donde \(\mathcal{S}_i\) es el conjunto de puntos de muestreo que
+conforman el segmento \(i\).
+
+\subsection{Características particulares de la
+precipitación}\label{caracteruxedsticas-particulares-de-la-precipitaciuxf3n}
+
+La precipitación presenta propiedades distintivas que justifican una
+modelización diferenciada:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Intermitencia}: La precipitación presenta una elevada
+  proporción de valores nulos, con eventos precipitantes concentrados en
+  intervalos temporales cortos y de alta intensidad.
+\item
+  \textbf{No estacionariedad}: Los procesos de precipitación exhiben
+  cambios abruptos en su régimen estadístico, con transiciones rápidas
+  entre estados secos y húmedos.
+\item
+  \textbf{Baja persistencia temporal}: A diferencia de la temperatura o
+  la humedad, la precipitación no presenta una estructura autorregresiva
+  clara, ya que los eventos precipitantes son altamente episódicos.
+\item
+  \textbf{Dependencia espacial compleja}: La estructura espacial de la
+  precipitación está influenciada por factores locales como la
+  topografía, la proximidad a cuerpos de agua y la convección térmica.
+\end{enumerate}
+
+Estas características hacen que el modelo AR(1) utilizado para otras
+variables no sea apropiado para la precipitación, requiriendo un enfoque
+alternativo que capture su naturaleza intermitente.
+
+\subsection{Esquema de persistencia ponderada adaptativa para
+precipitación}\label{esquema-de-persistencia-ponderada-adaptativa-para-precipitaciuxf3n}
+
+La componente local se modela mediante una combinación convexa entre el
+término advectivo y el valor observado en el instante actual. De este
+modo, el pronóstico queda definido por:
+
+\[
+R_i(t+H) = \alpha_i(t) R_i^{\text{adv}}(t+H) + (1-\alpha_i(t)) R_i(t),
+\]
+
+donde \(\alpha_i(t) \in [0,1]\) es un peso adaptativo dependiente del
+estado actual del sistema.
+
+Sea \(\tau\) el umbral mínimo de precipitación detectable. Entonces,
+
+\[
+\alpha_i(t) =
+\begin{cases}
+\alpha_{\text{act}}, & \text{si } R_i(t) > \tau \land R_i^{\text{adv}}(t+H) > \tau, \\
+\alpha_{\text{pas}}, & \text{en caso contrario},
+\end{cases}
+\]
+
+con \(\alpha_{\text{act}} > \alpha_{\text{pas}}\).
+
+Este esquema introduce una ponderación no lineal dependiente del régimen
+de precipitación, permitiendo capturar la dinámica intermitente sin
+imponer una estructura autorregresiva lineal.
+
+\subsection{Interpretación física del esquema
+adaptativo}\label{interpretaciuxf3n-fuxedsica-del-esquema-adaptativo}
+
+El esquema de persistencia ponderada adaptativa se fundamenta en la
+siguiente lógica física:
+
+\begin{itemize}
+\item
+  \textbf{Condición activa}
+  (\(R_i(t) > \tau \land R_i^{\text{adv}}(t+H) > \tau\)): Cuando tanto
+  la observación actual como el pronóstico advectivo indican
+  precipitación, se asigna un peso mayor al término advectivo
+  (\(\alpha_{\text{act}}\)), reflejando la confianza en que el evento
+  precipitante se mantendrá en el futuro inmediato.
+\item
+  \textbf{Condición pasiva} (cualquier otra situación): Cuando al menos
+  una de las condiciones no se cumple, se asigna un peso menor al
+  término advectivo (\(\alpha_{\text{pas}}\)), priorizando la
+  persistencia del estado actual como estrategia conservadora.
+\end{itemize}
+
+Los valores típicos adoptados son \(\alpha_{\text{act}} = 0.7\) y
+\(\alpha_{\text{pas}} = 0.3\), lo que refleja una mayor confianza en el
+término advectivo durante eventos activos y una mayor cautela durante
+transiciones entre estados.
+
+\subsection{Componente advectiva del
+pronóstico}\label{componente-advectiva-del-pronuxf3stico-2}
+
+Bajo el supuesto de advección unidimensional, el valor futuro de la
+precipitación en el segmento \(i\) se asocia al valor observado en la
+posición precedente en la dirección del flujo:
+
+\[
+s_i^{\text{up}} = s_i - vH,
+\]
+
+donde \(H\) es el horizonte de pronóstico y \(v\) la velocidad media de
+transporte, obtenida del análisis del campo de viento.
+
+El valor estimado por advección se aproxima mediante interpolación
+lineal espacial:
+
+\[
+R_i^{\text{adv}}(t+H) =
+\begin{cases}
+R_1(t), & s_i^{\text{up}} \le s_1, \\[6pt]
+R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr), & s_j \le s_i^{\text{up}} < s_{j+1}.
+\end{cases}
+\]
+
+Este término representa el transporte de estructuras precipitantes a lo
+largo de la ruta y constituye una aproximación discreta del operador de
+advección unidimensional.
+
+\subsection{Estimación de la incertidumbre mediante block
+bootstrap}\label{estimaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap-2}
+
+La incertidumbre del pronóstico se cuantifica mediante un procedimiento
+de \textbf{block bootstrap temporal}, adaptado a la naturaleza
+intermitente de la precipitación.
+
+Sea \(\{R_i(t)\}_{t=1}^T\) la serie observada. Se generan \(B\) réplicas
+bootstrap mediante remuestreo con reemplazo de bloques temporales de
+longitud \(L = 5\) minutos. Para cada réplica \(b\), se calcula un
+pronóstico:
+
+\[
+\hat{R}_i^{(b)}(t+H).
+\]
+
+A partir de la distribución empírica resultante se estiman los
+cuantiles:
+
+\[
+\text{p05}_i, \quad \text{p50}_i, \quad \text{p95}_i,
+\]
+
+los cuales definen intervalos de confianza del 90\% para el nowcast de
+precipitación en cada segmento.
+
+El uso de bloques temporales más cortos (\(L = 5\) minutos) refleja la
+alta variabilidad y baja persistencia temporal de la precipitación en
+comparación con otras variables meteorológicas.
+
+\subsection{Consideraciones operativas para
+drones}\label{consideraciones-operativas-para-drones}
+
+La precipitación constituye una variable crítica para la operación de
+drones por las siguientes razones:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Seguridad estructural}: La presencia de precipitación
+  compromete la estabilidad aerodinámica y el control de la aeronave.
+\item
+  \textbf{Riesgo eléctrico}: El agua puede penetrar en los
+  compartimentos electrónicos, causando cortocircuitos y fallos
+  catastróficos.
+\item
+  \textbf{Visibilidad reducida}: La precipitación intensa reduce
+  significativamente la visibilidad, afectando tanto la navegación
+  visual como el funcionamiento de sensores ópticos.
+\item
+  \textbf{Degradación del rendimiento}: La humedad adicional incrementa
+  el peso de la aeronave y reduce la eficiencia aerodinámica.
+\end{enumerate}
+
+Por estas razones, el umbral operacional adoptado para la precipitación
+es extremadamente conservador
+(\(R_{\text{máx}} = 0.1 \, \mathrm{mm \cdot h^{-1}}\)), correspondiente
+a una llovizna muy ligera apenas detectable.
+
+\subsection{Discusión y propiedades del
+modelo}\label{discusiuxf3n-y-propiedades-del-modelo-2}
+
+La aplicación del modelo advectivo a la precipitación presenta las
+siguientes características distintivas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Adaptabilidad al estado}: El esquema de persistencia ponderada
+  permite ajustar dinámicamente la confianza en el pronóstico según las
+  condiciones actuales del sistema.
+\item
+  \textbf{Robustez ante intermitencia}: La combinación de términos
+  advectivo y persistente proporciona estabilidad frente a la alta
+  variabilidad inherente a los procesos de precipitación.
+\item
+  \textbf{Conservadurismo operativo}: La ponderación adaptativa prioriza
+  la seguridad mediante una estrategia conservadora durante transiciones
+  entre estados secos y húmedos.
+\item
+  \textbf{Consistencia física}: El modelo respeta la ecuación de
+  advección unidimensional que gobierna el transporte de estructuras
+  precipitantes en la atmósfera.
+\end{enumerate}
+
+Esta formulación permite integrar la precipitación en el sistema de
+decisión multicriterio descrito en la Sección 4.9, proporcionando una
+evaluación cuantitativa de su impacto en la viabilidad operativa de las
+misiones con drones.
 
 \section{Cuantificación de la incertidumbre mediante block
 bootstrap}\label{cuantificaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap}
@@ -2385,6 +2837,11 @@ Project OSRM. 2024. {«Open Source Routing Machine (OSRM)»}.
 \bibitem[\citeproctext]{ref-pyproj_library}
 Snow, Alan D. et~al. 2023. {«pyproj4/pyproj: 3.6.0»}. Zenodo.
 \url{https://doi.org/10.5281/zenodo.3783026}.
+
+\bibitem[\citeproctext]{ref-snyder1987map}
+Snyder, John P. 1987. \emph{Map Projections: A Working Manual}. USGS
+Professional Paper 1395. Washington, DC: United States Geological
+Survey. \url{https://doi.org/10.3133/pp1395}.
 
 \bibitem[\citeproctext]{ref-vincenty1975}
 Vincenty, Thaddeus. 1975. {«Direct and Inverse Solutions of Geodesics on
