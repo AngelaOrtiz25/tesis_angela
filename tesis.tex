@@ -253,7 +253,7 @@
 \title{tesis}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-03-18}
+\date{2026-03-20}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -645,9 +645,10 @@ PageRank descrita en la sección siguiente.
 bidimensional}\label{formulaciuxf3n-matemuxe1tica-de-la-distancia-geoduxe9sica-bidimensional}
 
 Con el objetivo de estimar la longitud real de las rutas considerando la
-curvatura terrestre, se empleó la fórmula de Vincenty sobre el elipsoide
-WGS84 (\emph{World Geodetic System 1984}). Sea una ruta discretizada por
-\(N\) puntos geográficos con coordenadas:
+curvatura terrestre, se empleó la fórmula de Vincenty (Vincenty
+(\citeproc{ref-vincenty1975}{1975})) sobre el elipsoide WGS84
+(\emph{World Geodetic System 1984}). Sea una ruta discretizada por \(N\)
+puntos geográficos con coordenadas:
 
 \[
 P_i = (\phi_i, \lambda_i), \quad i = 1, \dots, N,
@@ -688,9 +689,9 @@ puntos adyacentes.
 Esta expresión corresponde a la norma euclidiana en \(\mathbb{R}^3\) del
 vector desplazamiento entre puntos consecutivos, proyectado sobre un
 sistema de coordenadas locales tangente a la superficie terrestre. La
-aproximación es válida cuando
-\(\lvert \Delta h_i \rvert \ll d_i^{(2D)}\), condición satisfecha en la
-mayoría de las rutas viales analizadas en el estado de Chiapas.
+aproximación es válida cuando \(\lvert \Delta h_i < \ll d_i^{(2D)}\),
+condición satisfecha en la mayoría de las rutas viales analizadas en el
+estado de Chiapas.
 
 \subsection{Distancias acumuladas de la
 ruta}\label{distancias-acumuladas-de-la-ruta}
@@ -721,10 +722,13 @@ los tiempos de recorrido.
 computacional}\label{implementaciuxf3n-computacional-1}
 
 El cálculo de distancias se implementó utilizando la librería
-\texttt{pyproj} (interfaz Python de PROJ), que proporciona funciones
-optimizadas para geodesia elipsoidal. La implementación garantiza
-consistencia numérica y reproducibilidad, aspectos fundamentales para la
-validación científica de los resultados.
+\texttt{pyproj} (Snow et~al. (\citeproc{ref-pyproj_library}{2023})) una
+interfaz de Python para la biblioteca de proyecciones cartográficas PROJ
+cuya documentación completa y ejemplos de uso pueden consultarse en su
+sitio oficial: https://pyproj4.github.io/pyproj/stable/. Esta librería
+proporciona proporciona funciones optimizadas para geodesia elipsoidal.
+La implementación garantiza consistencia numérica y reproducibilidad,
+aspectos fundamentales para la validación científica de los resultados.
 
 El código completo de procesamiento, incluyendo las funciones para carga
 de teselas SRTM, obtención de coordenadas mediante Nominatim, consulta
@@ -863,9 +867,9 @@ estructurales relevantes:
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Conectividad fuerte}: La red es fuertemente conexa, es decir,
-  para cualquier par de municipios \((i,j)\) existe al menos una
-  secuencia de rutas que permite transitar de \(i\) a \(j\). Esta
+  \textbf{Conectividad fuerte}: La red es \textbf{fuertemente conexa},
+  es decir, para cualquier par de municipios \((i,j)\) existe al menos
+  una secuencia de rutas que permite transitar de \(i\) a \(j\). Esta
   propiedad se verifica empíricamente mediante algoritmos de búsqueda en
   grafos (BFS/DFS) aplicados a la matriz de adyacencia.
 \item
@@ -885,14 +889,13 @@ estructurales relevantes:
 \end{enumerate}
 
 \subsection{Matriz de transición modificada para
-PageRank}\label{matriz-de-transiciuxf3n-modificada-para-pagerank}
+PageRank}\label{sec-transicion}
 
 A pesar de las propiedades favorables mencionadas, la matriz \(Q\) puede
-presentar periodicidad o convergencia lenta hacia la distribución
-estacionaria. Para garantizar la ergodicidad de la cadena de Markov y
-asegurar la existencia y unicidad de la distribución estacionaria, se
-introduce el factor de amortiguamiento \(p \in (0,1)\), típicamente
-\(p = 0.85\).
+presentar convergencia hacia la distribución estacionaria. Para
+garantizar la ergodicidad de la cadena de Markov y asegurar la
+existencia y unicidad de la distribución estacionaria, se introduce el
+factor de amortiguamiento \(p \in (0,1)\), típicamente \(p = 0.85\).
 
 La matriz de transición modificada \(P \in \mathbb{R}^{124 \times 124}\)
 se define como:
@@ -956,20 +959,20 @@ convergencia}\label{aplicaciuxf3n-del-algoritmo-pagerank-y-convergencia}
 \subsection{Fundamentos matemáticos del algoritmo
 PageRank}\label{fundamentos-matemuxe1ticos-del-algoritmo-pagerank}
 
-El algoritmo PageRank, desarrollado originalmente por Page y Brin
-(1998), proporciona una medida de centralidad para los nodos de una red
-basada en su estructura de conectividad global. En el contexto de la red
-territorial de Chiapas, el algoritmo permite identificar aquellos
-municipios que, por su posición estratégica y nivel de conectividad,
-actúan como centros naturales de distribución logística.
+El algoritmo PageRank, proporciona una medida de centralidad para los
+nodos de una red basada en su estructura de conectividad global. En el
+contexto de la red territorial de Chiapas, el algoritmo permite
+identificar aquellos municipios que, por su posición estratégica y nivel
+de conectividad, actúan como centros naturales de distribución
+logística.
 
 Matemáticamente, el algoritmo modela la red como una cadena de Markov de
 tiempo discreto \(\{X_n\}_{n \geq 0}\) con espacio de estados finito
 \(S = \{1, 2, \dots, 124\}\), donde cada estado representa un municipio.
 La matriz de transición modificada
 \(P \in \mathbb{R}^{124 \times 124}\), construida según la metodología
-descrita en la sección anterior, define las probabilidades de transición
-entre municipios.
+descrita en la Sección~\ref{sec-transicion}, define las probabilidades
+de transición entre municipios.
 
 El vector PageRank \(\pi \in \mathbb{R}^{124}\) se define como el vector
 estacionario único de esta cadena de Markov, es decir, el vector que
@@ -1024,58 +1027,8 @@ cualquier nodo de la red. En la práctica, se adopta el valor estándar
 los enlaces existentes y en el \(15\%\) restante se ejecuta un salto
 aleatorio.
 
-Con estos ajustes, la matriz de transición modificada se define como:
-
-\[
-P := pQ + (1-p)A,
-\]
-
-donde \(A \in \mathbb{R}^{124 \times 124}\) es la matriz con todas sus
-entradas iguales a \(1/124\):
-
-\[
-a_{ij} = \frac{1}{124}, \quad \forall i,j = 1, \dots, 124.
-\]
-
-\subsection{Propiedades espectrales y
-convergencia}\label{propiedades-espectrales-y-convergencia}
-
-La matriz \(P\) resultante posee propiedades espectrales fundamentales
-que garantizan la existencia, unicidad y estabilidad numérica del vector
-PageRank:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{Estocasticidad}: Cada columna de \(P\) suma la unidad,
-  \(\sum_{i=1}^{124} p_{ij} = 1\) para todo \(j\).
-\item
-  \textbf{Irreducibilidad}: Para cualquier par de municipios \(i,j\),
-  existe un entero \(k \geq 1\) tal que \((P^k)_{ij} > 0\). Esta
-  propiedad asegura que cualquier nodo puede alcanzarse desde cualquier
-  otro con probabilidad positiva.
-\item
-  \textbf{Aperiodicidad}: El máximo común divisor de las longitudes de
-  todos los ciclos que retornan a un estado dado es igual a 1. Esta
-  condición evita que el proceso quede atrapado en ciclos periódicos.
-\item
-  \textbf{Autovalor dominante}: \(\lambda_1 = 1\) es un autovalor simple
-  de \(P\), y todos los demás autovalores \(\lambda_k\) satisfacen
-  \(|\lambda_k| \leq p < 1\).
-\end{enumerate}
-
-Por el teorema de Perron-Frobenius para matrices estocásticas
-irreducibles y aperiódicas, existe un único vector estacionario \(\pi\)
-con componentes estrictamente positivas que satisface \(\pi = P\pi\).
-Además, para cualquier distribución inicial \(\pi^{(0)}\) válida, la
-sucesión definida por:
-
-\[
-\pi^{(k+1)} = P\pi^{(k)}, \quad k = 0, 1, 2, \dots
-\]
-
-converge exponencialmente rápido hacia \(\pi\), con tasa de convergencia
-\(\mathcal{O}(p^k)\).
+Con estos ajustes, la matriz de transición mantiene la misma estructura
+ya mencionada en la Sección~\ref{sec-transicion}.
 
 \subsection{Implementación numérica mediante el método de
 potencias}\label{implementaciuxf3n-numuxe9rica-mediante-el-muxe9todo-de-potencias}
@@ -1270,7 +1223,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, titlerule=0mm, leftrule=.75mm, bottomtitle=1mm, toptitle=1mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, arc=.35mm, left=2mm, colback=white, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, breakable, bottomtitle=1mm, leftrule=.75mm, titlerule=0mm, toptitle=1mm, arc=.35mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, coltitle=black, colback=white, left=2mm, rightrule=.15mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -2428,6 +2381,16 @@ OpenStreetMap Contributors. 2024. {«Nominatim API»}.
 \bibitem[\citeproctext]{ref-osrm}
 Project OSRM. 2024. {«Open Source Routing Machine (OSRM)»}.
 \url{https://project-osrm.org/}.
+
+\bibitem[\citeproctext]{ref-pyproj_library}
+Snow, Alan D. et~al. 2023. {«pyproj4/pyproj: 3.6.0»}. Zenodo.
+\url{https://doi.org/10.5281/zenodo.3783026}.
+
+\bibitem[\citeproctext]{ref-vincenty1975}
+Vincenty, Thaddeus. 1975. {«Direct and Inverse Solutions of Geodesics on
+the Ellipsoid with Application of Nested Equations»}. \emph{Survey
+Review} 23 (176): 88-93.
+\url{https://doi.org/10.1179/sre.1975.23.176.88}.
 
 \end{CSLReferences}
 

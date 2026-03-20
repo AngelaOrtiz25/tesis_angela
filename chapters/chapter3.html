@@ -390,7 +390,7 @@ Figura&nbsp;2.1
 <h2 data-number="2.3" class="anchored" data-anchor-id="cálculo-de-distancias-geodésicas-2d-y-3d"><span class="header-section-number">2.3</span> Cálculo de distancias geodésicas 2D y 3D</h2>
 <section id="formulación-matemática-de-la-distancia-geodésica-bidimensional" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="formulación-matemática-de-la-distancia-geodésica-bidimensional"><span class="header-section-number">2.3.1</span> Formulación matemática de la distancia geodésica bidimensional</h3>
-<p>Con el objetivo de estimar la longitud real de las rutas considerando la curvatura terrestre, se empleó la fórmula de Vincenty sobre el elipsoide WGS84 (<em>World Geodetic System 1984</em>). Sea una ruta discretizada por <span class="math inline">\(N\)</span> puntos geográficos con coordenadas:</p>
+<p>Con el objetivo de estimar la longitud real de las rutas considerando la curvatura terrestre, se empleó la fórmula de Vincenty (<span class="citation" data-cites="vincenty1975">Vincenty (<a href="../references.html#ref-vincenty1975" role="doc-biblioref">1975</a>)</span>) sobre el elipsoide WGS84 (<em>World Geodetic System 1984</em>). Sea una ruta discretizada por <span class="math inline">\(N\)</span> puntos geográficos con coordenadas:</p>
 <p><span class="math display">\[
 P_i = (\phi_i, \lambda_i), \quad i = 1, \dots, N,
 \]</span></p>
@@ -408,7 +408,7 @@ d_i^{(2D)} := \operatorname{GeodInv}(\phi_{i-1}, \lambda_{i-1}, \phi_i, \lambda_
 d_i^{(3D)} := \sqrt{\bigl(d_i^{(2D)}\bigr)^2 + (\Delta h_i)^2},
 \]</span></p>
 <p>siendo <span class="math inline">\(\Delta h_i = h_i - h_{i-1}\)</span> el cambio de altitud entre dos puntos adyacentes.</p>
-<p>Esta expresión corresponde a la norma euclidiana en <span class="math inline">\(\mathbb{R}^3\)</span> del vector desplazamiento entre puntos consecutivos, proyectado sobre un sistema de coordenadas locales tangente a la superficie terrestre. La aproximación es válida cuando <span class="math inline">\(\lvert \Delta h_i \rvert \ll d_i^{(2D)}\)</span>, condición satisfecha en la mayoría de las rutas viales analizadas en el estado de Chiapas.</p>
+<p>Esta expresión corresponde a la norma euclidiana en <span class="math inline">\(\mathbb{R}^3\)</span> del vector desplazamiento entre puntos consecutivos, proyectado sobre un sistema de coordenadas locales tangente a la superficie terrestre. La aproximación es válida cuando <span class="math inline">\(\lvert \Delta h_i &lt; \ll d_i^{(2D)}\)</span>, condición satisfecha en la mayoría de las rutas viales analizadas en el estado de Chiapas.</p>
 </section>
 <section id="distancias-acumuladas-de-la-ruta" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="distancias-acumuladas-de-la-ruta"><span class="header-section-number">2.3.3</span> Distancias acumuladas de la ruta</h3>
@@ -425,7 +425,7 @@ D^{(3D)} := \sum_{i=1}^{N-1} d_i^{(3D)}.
 </section>
 <section id="implementación-computacional-1" class="level3" data-number="2.3.4">
 <h3 data-number="2.3.4" class="anchored" data-anchor-id="implementación-computacional-1"><span class="header-section-number">2.3.4</span> Implementación computacional</h3>
-<p>El cálculo de distancias se implementó utilizando la librería <code>pyproj</code> (interfaz Python de PROJ), que proporciona funciones optimizadas para geodesia elipsoidal. La implementación garantiza consistencia numérica y reproducibilidad, aspectos fundamentales para la validación científica de los resultados.</p>
+<p>El cálculo de distancias se implementó utilizando la librería <code>pyproj</code> (<span class="citation" data-cites="pyproj_library">Snow et&nbsp;al. (<a href="../references.html#ref-pyproj_library" role="doc-biblioref">2023</a>)</span>) una interfaz de Python para la biblioteca de proyecciones cartográficas PROJ cuya documentación completa y ejemplos de uso pueden consultarse en su sitio oficial: https://pyproj4.github.io/pyproj/stable/. Esta librería proporciona proporciona funciones optimizadas para geodesia elipsoidal. La implementación garantiza consistencia numérica y reproducibilidad, aspectos fundamentales para la validación científica de los resultados.</p>
 <p>El código completo de procesamiento, incluyendo las funciones para carga de teselas SRTM, obtención de coordenadas mediante Nominatim, consulta de rutas vía API de OSRM y cálculo de distancias 2D y 3D, se presenta en el Apéndice A de esta tesis.</p>
 </section>
 <section id="validación-metodológica" class="level3" data-number="2.3.5">
@@ -487,15 +487,15 @@ q_{ij} = \frac{1}{124}, \quad \forall i = 1,\dots,124.
 <h3 data-number="2.4.4" class="anchored" data-anchor-id="propiedades-estructurales-de-la-red"><span class="header-section-number">2.4.4</span> Propiedades estructurales de la red</h3>
 <p>La red territorial construida presenta las siguientes propiedades estructurales relevantes:</p>
 <ol type="1">
-<li><p><strong>Conectividad fuerte</strong>: La red es fuertemente conexa, es decir, para cualquier par de municipios <span class="math inline">\((i,j)\)</span> existe al menos una secuencia de rutas que permite transitar de <span class="math inline">\(i\)</span> a <span class="math inline">\(j\)</span>. Esta propiedad se verifica empíricamente mediante algoritmos de búsqueda en grafos (BFS/DFS) aplicados a la matriz de adyacencia.</p></li>
+<li><p><strong>Conectividad fuerte</strong>: La red es <strong>fuertemente conexa</strong>, es decir, para cualquier par de municipios <span class="math inline">\((i,j)\)</span> existe al menos una secuencia de rutas que permite transitar de <span class="math inline">\(i\)</span> a <span class="math inline">\(j\)</span>. Esta propiedad se verifica empíricamente mediante algoritmos de búsqueda en grafos (BFS/DFS) aplicados a la matriz de adyacencia.</p></li>
 <li><p><strong>Ausencia de subgrafos absorbentes</strong>: No existen subconjuntos propios <span class="math inline">\(S \subset V\)</span> tales que todas las transiciones desde nodos en <span class="math inline">\(S\)</span> permanezcan dentro de <span class="math inline">\(S\)</span>. Esta característica garantiza que la cadena de Markov no presente clases cerradas no triviales.</p></li>
 <li><p><strong>Distribución de grados</strong>: El grado de salida promedio es <span class="math inline">\(\bar{d}_{\text{out}} \approx 61.8\)</span>, mientras que el grado de entrada promedio es <span class="math inline">\(\bar{d}_{\text{in}} \approx 61.8\)</span>, reflejando la naturaleza aproximadamente simétrica de la red vial estatal.</p></li>
 <li><p><strong>Diámetro de la red</strong>: La distancia geodésica máxima (en número de saltos) entre cualquier par de municipios es 4, lo cual indica una alta conectividad global del sistema territorial.</p></li>
 </ol>
 </section>
-<section id="matriz-de-transición-modificada-para-pagerank" class="level3" data-number="2.4.5">
-<h3 data-number="2.4.5" class="anchored" data-anchor-id="matriz-de-transición-modificada-para-pagerank"><span class="header-section-number">2.4.5</span> Matriz de transición modificada para PageRank</h3>
-<p>A pesar de las propiedades favorables mencionadas, la matriz <span class="math inline">\(Q\)</span> puede presentar periodicidad o convergencia lenta hacia la distribución estacionaria. Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>, típicamente <span class="math inline">\(p = 0.85\)</span>.</p>
+<section id="sec-transicion" class="level3" data-number="2.4.5">
+<h3 data-number="2.4.5" class="anchored" data-anchor-id="sec-transicion"><span class="header-section-number">2.4.5</span> Matriz de transición modificada para PageRank</h3>
+<p>A pesar de las propiedades favorables mencionadas, la matriz <span class="math inline">\(Q\)</span> puede presentar convergencia hacia la distribución estacionaria. Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>, típicamente <span class="math inline">\(p = 0.85\)</span>.</p>
 <p>La matriz de transición modificada <span class="math inline">\(P \in \mathbb{R}^{124 \times 124}\)</span> se define como:</p>
 <p><span class="math display">\[
 P = pQ + (1-p)A,
@@ -526,8 +526,8 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <h2 data-number="2.5" class="anchored" data-anchor-id="aplicación-del-algoritmo-pagerank-y-convergencia"><span class="header-section-number">2.5</span> Aplicación del algoritmo PageRank y convergencia</h2>
 <section id="fundamentos-matemáticos-del-algoritmo-pagerank" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="fundamentos-matemáticos-del-algoritmo-pagerank"><span class="header-section-number">2.5.1</span> Fundamentos matemáticos del algoritmo PageRank</h3>
-<p>El algoritmo PageRank, desarrollado originalmente por Page y Brin (1998), proporciona una medida de centralidad para los nodos de una red basada en su estructura de conectividad global. En el contexto de la red territorial de Chiapas, el algoritmo permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, actúan como centros naturales de distribución logística.</p>
-<p>Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto <span class="math inline">\(\{X_n\}_{n \geq 0}\)</span> con espacio de estados finito <span class="math inline">\(S = \{1, 2, \dots, 124\}\)</span>, donde cada estado representa un municipio. La matriz de transición modificada <span class="math inline">\(P \in \mathbb{R}^{124 \times 124}\)</span>, construida según la metodología descrita en la sección anterior, define las probabilidades de transición entre municipios.</p>
+<p>El algoritmo PageRank, proporciona una medida de centralidad para los nodos de una red basada en su estructura de conectividad global. En el contexto de la red territorial de Chiapas, el algoritmo permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, actúan como centros naturales de distribución logística.</p>
+<p>Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto <span class="math inline">\(\{X_n\}_{n \geq 0}\)</span> con espacio de estados finito <span class="math inline">\(S = \{1, 2, \dots, 124\}\)</span>, donde cada estado representa un municipio. La matriz de transición modificada <span class="math inline">\(P \in \mathbb{R}^{124 \times 124}\)</span>, construida según la metodología descrita en la <a href="#sec-transicion" class="quarto-xref"><span>Sección 2.4.5</span></a>, define las probabilidades de transición entre municipios.</p>
 <p>El vector PageRank <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones:</p>
 <p><span class="math display">\[
 \pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
@@ -546,33 +546,11 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <h4 data-number="2.5.2.2" class="anchored" data-anchor-id="subgrafos-absorbentes"><span class="header-section-number">2.5.2.2</span> Subgrafos absorbentes</h4>
 <p>Los subgrafos absorbentes son subconjuntos de municipios interconectados entre sí, pero sin enlaces hacia el resto de la red. Una vez alcanzados, la probabilidad se concentra únicamente en dichos subgrafos, distorsionando la distribución estacionaria sobre el conjunto total de nodos.</p>
 <p>Para evitar esta situación, PageRank introduce el factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>, que modela la probabilidad de que un navegante aleatorio siga un enlace real de la red. Con probabilidad <span class="math inline">\(1-p\)</span>, el navegante realiza un salto aleatorio uniforme hacia cualquier nodo de la red. En la práctica, se adopta el valor estándar <span class="math inline">\(p = 0.85\)</span>, lo cual implica que en el <span class="math inline">\(85\%\)</span> de los casos se siguen los enlaces existentes y en el <span class="math inline">\(15\%\)</span> restante se ejecuta un salto aleatorio.</p>
-<p>Con estos ajustes, la matriz de transición modificada se define como:</p>
-<p><span class="math display">\[
-P := pQ + (1-p)A,
-\]</span></p>
-<p>donde <span class="math inline">\(A \in \mathbb{R}^{124 \times 124}\)</span> es la matriz con todas sus entradas iguales a <span class="math inline">\(1/124\)</span>:</p>
-<p><span class="math display">\[
-a_{ij} = \frac{1}{124}, \quad \forall i,j = 1, \dots, 124.
-\]</span></p>
+<p>Con estos ajustes, la matriz de transición mantiene la misma estructura ya mencionada en la <a href="#sec-transicion" class="quarto-xref"><span>Sección 2.4.5</span></a>.</p>
 </section>
 </section>
-<section id="propiedades-espectrales-y-convergencia" class="level3" data-number="2.5.3">
-<h3 data-number="2.5.3" class="anchored" data-anchor-id="propiedades-espectrales-y-convergencia"><span class="header-section-number">2.5.3</span> Propiedades espectrales y convergencia</h3>
-<p>La matriz <span class="math inline">\(P\)</span> resultante posee propiedades espectrales fundamentales que garantizan la existencia, unicidad y estabilidad numérica del vector PageRank:</p>
-<ol type="1">
-<li><p><strong>Estocasticidad</strong>: Cada columna de <span class="math inline">\(P\)</span> suma la unidad, <span class="math inline">\(\sum_{i=1}^{124} p_{ij} = 1\)</span> para todo <span class="math inline">\(j\)</span>.</p></li>
-<li><p><strong>Irreducibilidad</strong>: Para cualquier par de municipios <span class="math inline">\(i,j\)</span>, existe un entero <span class="math inline">\(k \geq 1\)</span> tal que <span class="math inline">\((P^k)_{ij} &gt; 0\)</span>. Esta propiedad asegura que cualquier nodo puede alcanzarse desde cualquier otro con probabilidad positiva.</p></li>
-<li><p><strong>Aperiodicidad</strong>: El máximo común divisor de las longitudes de todos los ciclos que retornan a un estado dado es igual a 1. Esta condición evita que el proceso quede atrapado en ciclos periódicos.</p></li>
-<li><p><strong>Autovalor dominante</strong>: <span class="math inline">\(\lambda_1 = 1\)</span> es un autovalor simple de <span class="math inline">\(P\)</span>, y todos los demás autovalores <span class="math inline">\(\lambda_k\)</span> satisfacen <span class="math inline">\(|\lambda_k| \leq p &lt; 1\)</span>.</p></li>
-</ol>
-<p>Por el teorema de Perron-Frobenius para matrices estocásticas irreducibles y aperiódicas, existe un único vector estacionario <span class="math inline">\(\pi\)</span> con componentes estrictamente positivas que satisface <span class="math inline">\(\pi = P\pi\)</span>. Además, para cualquier distribución inicial <span class="math inline">\(\pi^{(0)}\)</span> válida, la sucesión definida por:</p>
-<p><span class="math display">\[
-\pi^{(k+1)} = P\pi^{(k)}, \quad k = 0, 1, 2, \dots
-\]</span></p>
-<p>converge exponencialmente rápido hacia <span class="math inline">\(\pi\)</span>, con tasa de convergencia <span class="math inline">\(\mathcal{O}(p^k)\)</span>.</p>
-</section>
-<section id="implementación-numérica-mediante-el-método-de-potencias" class="level3" data-number="2.5.4">
-<h3 data-number="2.5.4" class="anchored" data-anchor-id="implementación-numérica-mediante-el-método-de-potencias"><span class="header-section-number">2.5.4</span> Implementación numérica mediante el método de potencias</h3>
+<section id="implementación-numérica-mediante-el-método-de-potencias" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="implementación-numérica-mediante-el-método-de-potencias"><span class="header-section-number">2.5.3</span> Implementación numérica mediante el método de potencias</h3>
 <p>La implementación computacional del algoritmo emplea el método de potencias, que consiste en iterar la ecuación <span class="math inline">\(\pi^{(k+1)} = P\pi^{(k)}\)</span> hasta alcanzar un criterio de convergencia predefinido. Se adoptó como distribución inicial la distribución uniforme:</p>
 <p><span class="math display">\[
 \pi^{(0)}_i = \frac{1}{124}, \quad i = 1, \dots, 124.
@@ -584,8 +562,8 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1, \dots, 124.
 <p>donde se utilizó <span class="math inline">\(\varepsilon = 10^{-6}\)</span> como tolerancia. Con el factor de amortiguamiento <span class="math inline">\(p = 0.85\)</span>, el algoritmo convergió en 43 iteraciones para la red territorial de Chiapas.</p>
 <p>La complejidad computacional del método es <span class="math inline">\(\mathcal{O}(n^2 k)\)</span>, donde <span class="math inline">\(n = 124\)</span> es el número de municipios y <span class="math inline">\(k \approx 43\)</span> es el número de iteraciones requeridas para la convergencia. Esta complejidad es manejable incluso para redes de mayor tamaño, lo cual constituye una ventaja práctica del algoritmo.</p>
 </section>
-<section id="resultados-obtenidos-para-la-red-de-chiapas" class="level3" data-number="2.5.5">
-<h3 data-number="2.5.5" class="anchored" data-anchor-id="resultados-obtenidos-para-la-red-de-chiapas"><span class="header-section-number">2.5.5</span> Resultados obtenidos para la red de Chiapas</h3>
+<section id="resultados-obtenidos-para-la-red-de-chiapas" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="resultados-obtenidos-para-la-red-de-chiapas"><span class="header-section-number">2.5.4</span> Resultados obtenidos para la red de Chiapas</h3>
 <p>La aplicación del algoritmo PageRank a la red territorial de Chiapas produjo un vector estacionario <span class="math inline">\(\pi\)</span> cuyas componentes reflejan la importancia relativa de cada municipio. Los diez municipios con mayor valor PageRank se presentan en la Tabla 3.1. <strong>FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION</strong></p>
 </section>
 </section>
@@ -634,6 +612,12 @@ OpenStreetMap Contributors. 2024. <span>«Nominatim API»</span>. <a href="https
 </div>
 <div id="ref-osrm" class="csl-entry" role="listitem">
 Project OSRM. 2024. <span>«Open Source Routing Machine (OSRM)»</span>. <a href="https://project-osrm.org/">https://project-osrm.org/</a>.
+</div>
+<div id="ref-pyproj_library" class="csl-entry" role="listitem">
+Snow, Alan D. et&nbsp;al. 2023. <span>«pyproj4/pyproj: 3.6.0»</span>. Zenodo. <a href="https://doi.org/10.5281/zenodo.3783026">https://doi.org/10.5281/zenodo.3783026</a>.
+</div>
+<div id="ref-vincenty1975" class="csl-entry" role="listitem">
+Vincenty, Thaddeus. 1975. <span>«Direct and Inverse Solutions of Geodesics on the Ellipsoid with Application of Nested Equations»</span>. <em>Survey Review</em> 23 (176): 88-93. <a href="https://doi.org/10.1179/sre.1975.23.176.88">https://doi.org/10.1179/sre.1975.23.176.88</a>.
 </div>
 </div>
 
