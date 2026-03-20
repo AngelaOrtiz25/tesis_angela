@@ -159,7 +159,7 @@ Esta base de datos constituye el insumo fundamental para la construcción de la 
 ## Cálculo de distancias geodésicas 2D y 3D
 ### Formulación matemática de la distancia geodésica bidimensional
 
-Con el objetivo de estimar la longitud real de las rutas considerando la curvatura terrestre, se empleó la fórmula de Vincenty sobre el elipsoide WGS84 (*World Geodetic System 1984*). Sea una ruta discretizada por $N$ puntos geográficos con coordenadas:
+Con el objetivo de estimar la longitud real de las rutas considerando la curvatura terrestre, se empleó la fórmula de Vincenty (@vincenty1975) sobre el elipsoide WGS84 (*World Geodetic System 1984*). Sea una ruta discretizada por $N$ puntos geográficos con coordenadas:
 
 $$
 P_i = (\phi_i, \lambda_i), \quad i = 1, \dots, N,
@@ -185,7 +185,7 @@ $$
 
 siendo $\Delta h_i = h_i - h_{i-1}$ el cambio de altitud entre dos puntos adyacentes.
 
-Esta expresión corresponde a la norma euclidiana en $\mathbb{R}^3$ del vector desplazamiento entre puntos consecutivos, proyectado sobre un sistema de coordenadas locales tangente a la superficie terrestre. La aproximación es válida cuando $\lvert \Delta h_i \rvert \ll d_i^{(2D)}$, condición satisfecha en la mayoría de las rutas viales analizadas en el estado de Chiapas.
+Esta expresión corresponde a la norma euclidiana en $\mathbb{R}^3$ del vector desplazamiento entre puntos consecutivos, proyectado sobre un sistema de coordenadas locales tangente a la superficie terrestre. La aproximación es válida cuando $\lvert \Delta h_i < \ll d_i^{(2D)}$, condición satisfecha en la mayoría de las rutas viales analizadas en el estado de Chiapas.
 
 ### Distancias acumuladas de la ruta
 
@@ -206,7 +206,7 @@ En el estado de Chiapas, el incremento $\delta$ presenta una distribución asim�
 
 ### Implementación computacional
 
-El cálculo de distancias se implementó utilizando la librería `pyproj` (interfaz Python de PROJ), que proporciona funciones optimizadas para geodesia elipsoidal. La implementación garantiza consistencia numérica y reproducibilidad, aspectos fundamentales para la validación científica de los resultados.
+El cálculo de distancias se implementó utilizando la librería `pyproj` (@pyproj_library) una interfaz de Python para la biblioteca de proyecciones cartográficas PROJ cuya documentación completa y ejemplos de uso pueden consultarse en su sitio oficial: https://pyproj4.github.io/pyproj/stable/. Esta librería proporciona  proporciona funciones optimizadas para geodesia elipsoidal. La implementación garantiza consistencia numérica y reproducibilidad, aspectos fundamentales para la validación científica de los resultados.
 
 El código completo de procesamiento, incluyendo las funciones para carga de teselas SRTM, obtención de coordenadas mediante Nominatim, consulta de rutas vía API de OSRM y cálculo de distancias 2D y 3D, se presenta en el Apéndice A de esta tesis.
 
@@ -279,7 +279,7 @@ Esta modificación asegura que desde cualquier nodo colgante exista una probabil
 
 La red territorial construida presenta las siguientes propiedades estructurales relevantes:
 
-1. **Conectividad fuerte**: La red es fuertemente conexa, es decir, para cualquier par de municipios $(i,j)$ existe al menos una secuencia de rutas que permite transitar de $i$ a $j$. Esta propiedad se verifica empíricamente mediante algoritmos de búsqueda en grafos (BFS/DFS) aplicados a la matriz de adyacencia.
+1. **Conectividad fuerte**: La red es **fuertemente conexa**, es decir, para cualquier par de municipios $(i,j)$ existe al menos una secuencia de rutas que permite transitar de $i$ a $j$. Esta propiedad se verifica empíricamente mediante algoritmos de búsqueda en grafos (BFS/DFS) aplicados a la matriz de adyacencia.
 
 2. **Ausencia de subgrafos absorbentes**: No existen subconjuntos propios $S \subset V$ tales que todas las transiciones desde nodos en $S$ permanezcan dentro de $S$. Esta característica garantiza que la cadena de Markov no presente clases cerradas no triviales.
 
@@ -287,9 +287,9 @@ La red territorial construida presenta las siguientes propiedades estructurales 
 
 4. **Diámetro de la red**: La distancia geodésica máxima (en número de saltos) entre cualquier par de municipios es 4, lo cual indica una alta conectividad global del sistema territorial.
 
-### Matriz de transición modificada para PageRank
+### Matriz de transición modificada para PageRank {#sec-transicion}
 
-A pesar de las propiedades favorables mencionadas, la matriz $Q$ puede presentar periodicidad o convergencia lenta hacia la distribución estacionaria. Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento $p \in (0,1)$, típicamente $p = 0.85$.
+A pesar de las propiedades favorables mencionadas, la matriz $Q$ puede presentar convergencia hacia la distribución estacionaria. Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento $p \in (0,1)$, típicamente $p = 0.85$.
 
 La matriz de transición modificada $P \in \mathbb{R}^{124 \times 124}$ se define como:
 
@@ -326,9 +326,9 @@ El vector $\pi$ constituye la base matemática para la clasificación de los mun
 
 ### Fundamentos matemáticos del algoritmo PageRank
 
-El algoritmo PageRank, desarrollado originalmente por Page y Brin (1998), proporciona una medida de centralidad para los nodos de una red basada en su estructura de conectividad global. En el contexto de la red territorial de Chiapas, el algoritmo permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, actúan como centros naturales de distribución logística.
+El algoritmo PageRank, proporciona una medida de centralidad para los nodos de una red basada en su estructura de conectividad global. En el contexto de la red territorial de Chiapas, el algoritmo permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, actúan como centros naturales de distribución logística.
 
-Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto $\{X_n\}_{n \geq 0}$ con espacio de estados finito $S = \{1, 2, \dots, 124\}$, donde cada estado representa un municipio. La matriz de transición modificada $P \in \mathbb{R}^{124 \times 124}$, construida según la metodología descrita en la sección anterior, define las probabilidades de transición entre municipios.
+Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto $\{X_n\}_{n \geq 0}$ con espacio de estados finito $S = \{1, 2, \dots, 124\}$, donde cada estado representa un municipio. La matriz de transición modificada $P \in \mathbb{R}^{124 \times 124}$, construida según la metodología descrita en la @sec-transicion, define las probabilidades de transición entre municipios.
 
 El vector PageRank $\pi \in \mathbb{R}^{124}$ se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones:
 
@@ -354,37 +354,7 @@ Los subgrafos absorbentes son subconjuntos de municipios interconectados entre s
 
 Para evitar esta situación, PageRank introduce el factor de amortiguamiento $p \in (0,1)$, que modela la probabilidad de que un navegante aleatorio siga un enlace real de la red. Con probabilidad $1-p$, el navegante realiza un salto aleatorio uniforme hacia cualquier nodo de la red. En la práctica, se adopta el valor estándar $p = 0.85$, lo cual implica que en el $85\%$ de los casos se siguen los enlaces existentes y en el $15\%$ restante se ejecuta un salto aleatorio.
 
-Con estos ajustes, la matriz de transición modificada se define como:
-
-$$
-P := pQ + (1-p)A,
-$$
-
-donde $A \in \mathbb{R}^{124 \times 124}$ es la matriz con todas sus entradas iguales a $1/124$:
-
-$$
-a_{ij} = \frac{1}{124}, \quad \forall i,j = 1, \dots, 124.
-$$
-
-### Propiedades espectrales y convergencia
-
-La matriz $P$ resultante posee propiedades espectrales fundamentales que garantizan la existencia, unicidad y estabilidad numérica del vector PageRank:
-
-1. **Estocasticidad**: Cada columna de $P$ suma la unidad, $\sum_{i=1}^{124} p_{ij} = 1$ para todo $j$.
-
-2. **Irreducibilidad**: Para cualquier par de municipios $i,j$, existe un entero $k \geq 1$ tal que $(P^k)_{ij} > 0$. Esta propiedad asegura que cualquier nodo puede alcanzarse desde cualquier otro con probabilidad positiva.
-
-3. **Aperiodicidad**: El máximo común divisor de las longitudes de todos los ciclos que retornan a un estado dado es igual a 1. Esta condición evita que el proceso quede atrapado en ciclos periódicos.
-
-4. **Autovalor dominante**: $\lambda_1 = 1$ es un autovalor simple de $P$, y todos los demás autovalores $\lambda_k$ satisfacen $|\lambda_k| \leq p < 1$.
-
-Por el teorema de Perron-Frobenius para matrices estocásticas irreducibles y aperiódicas, existe un único vector estacionario $\pi$ con componentes estrictamente positivas que satisface $\pi = P\pi$. Además, para cualquier distribución inicial $\pi^{(0)}$ válida, la sucesión definida por:
-
-$$
-\pi^{(k+1)} = P\pi^{(k)}, \quad k = 0, 1, 2, \dots
-$$
-
-converge exponencialmente rápido hacia $\pi$, con tasa de convergencia $\mathcal{O}(p^k)$.
+Con estos ajustes, la matriz de transición mantiene la misma estructura ya mencionada en la @sec-transicion.
 
 ### Implementación numérica mediante el método de potencias
 
