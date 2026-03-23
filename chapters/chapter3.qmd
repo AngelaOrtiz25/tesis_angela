@@ -185,7 +185,7 @@ $$
 
 siendo $\Delta h_i = h_i - h_{i-1}$ el cambio de altitud entre dos puntos adyacentes.
 
-Esta expresión corresponde a la norma euclidiana en $\mathbb{R}^3$ del vector desplazamiento entre puntos consecutivos, proyectado sobre un sistema de coordenadas locales tangente a la superficie terrestre. La aproximación es válida cuando $\lvert \Delta h_i < \ll d_i^{(2D)}$, condición satisfecha en la mayoría de las rutas viales analizadas en el estado de Chiapas.
+Esta expresión corresponde a la norma euclidiana en $\mathbb{R}^3$ del vector desplazamiento entre puntos consecutivos, proyectado sobre un sistema de coordenadas locales tangente a la superficie terrestre. La aproximación es válida cuando $\lvert \Delta h_i < d_i^{(2D)}\rvert$, condición satisfecha en la mayoría de las rutas viales analizadas en el estado de Chiapas.
 
 ### Distancias acumuladas de la ruta
 
@@ -407,6 +407,7 @@ El cálculo de rutas óptimas se implementó mediante el algoritmo de Dijkstra s
 ## Resultados cuantitativos
 
 La Tabla 3.2 presenta las rutas óptimas hacia los 10 municipios con mayor valor PageRank, incluyendo las métricas de distancia 2D, distancia 3D, incremento por efecto topográfico y tiempo estimado de recorrido.
+
 
 **FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION**
 

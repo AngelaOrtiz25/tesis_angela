@@ -297,7 +297,7 @@ siempre que $\hat{m} \neq 0$. Esta magnitud se expresa en metros por segundo y c
 
 #### Fundamentos teóricos
 
-Cuando el análisis de correlación cruzada entre segmentos adyacentes no proporciona resultados estadísticamente confiables, se adopta un enfoque alternativo basado en el análisis conjunto en frecuencia y espacio, conocido como análisis $f$-$k$. Este método permite estimar la velocidad de propagación de estructuras coherentes a partir de la variación espacial de la fase espectral, y resulta particularmente adecuado cuando la señal presenta un carácter oscilatorio dominante.
+Cuando el análisis de correlación cruzada entre segmentos adyacentes no proporciona resultados estadísticamente confiables, se adopta un enfoque alternativo basado en el análisis conjunto en frecuencia y espacio, conocido como análisis $f$-$k$ @hayashi1973method . Este método permite estimar la velocidad de propagación de estructuras coherentes a partir de la variación espacial de la fase espectral, y resulta particularmente adecuado cuando la señal presenta un carácter oscilatorio dominante.
 
 Sea $M(s,t)$ una matriz de datos obtenida a partir de los valores suavizados de una variable meteorológica, donde $s$ representa la coordenada longitudinal a lo largo de la ruta de navegación y $t$ el tiempo. Cada fila de la matriz $M$ corresponde a un segmento espacial, caracterizado por su posición centroidal $s_i$, y cada columna a un instante temporal muestreado uniformemente con paso $\Delta t$.
 
@@ -612,7 +612,7 @@ Este término representa el **transporte térmico dominante** a lo largo de la r
 
 ### Componente autorregresiva temporal
 
-La temperatura presenta una elevada persistencia temporal, característica de variables termodinámicas con alta inercia física. Por ello, cada segmento se modela mediante un proceso autorregresivo de primer orden:
+La temperatura presenta una elevada persistencia temporal, característica de variables termodinámicas con alta inercia física, es decir, la temperatura del aire no experimenta cambios abruptos en escalas temporales cortas debido a la capacidad calorífica del medio atmosférico, que requiere intercambios energéticos significativos para modificar su estado térmico. Por ello, cada segmento se modela mediante un proceso autorregresivo de primer orden:
 
 $$
 T_i(t+\Delta t) = a_i T_i(t),
@@ -956,11 +956,11 @@ La aplicación del modelo advectivo a la precipitación presenta las siguientes 
 
 4. **Consistencia física**: El modelo respeta la ecuación de advección unidimensional que gobierna el transporte de estructuras precipitantes en la atmósfera.
 
-Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la Sección 4.9, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
+Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la @sec-drones  , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
 
 ## Cuantificación de la incertidumbre mediante block bootstrap
 
-## Decisión para operaciones con drones: variables de estado, umbrales y función de decisión
+## Decisión para operaciones con drones: variables de estado, umbrales y función de decisión  {#sec-drones} 
 
 ## Integración de ambas etapas: análisis de eficiencia logística
 
