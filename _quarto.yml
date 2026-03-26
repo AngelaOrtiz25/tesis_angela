@@ -84,6 +84,7 @@ format:
     include-in-header:
       - packa.tex
       - text: 
+          \usepackage{multicol}
           \usepackage{graphicx}
           \usepackage{float}
           \usepackage{amsmath}
