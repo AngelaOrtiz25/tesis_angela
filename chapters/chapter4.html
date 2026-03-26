@@ -614,7 +614,7 @@ d = 2R \arctan\left(\frac{\sqrt{a}}{\sqrt{1-a}}\right).
 <section id="dirección-de-desplazamiento-rumbo-inicial-geodésico" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="dirección-de-desplazamiento-rumbo-inicial-geodésico"><span class="header-section-number">3.2.3</span> Dirección de desplazamiento: rumbo inicial geodésico</h3>
 <p>Además de la distancia, resulta fundamental determinar la dirección del desplazamiento entre dos puntos geográficos. El <strong>rumbo inicial</strong>, o <em>bearing</em>, se define como el ángulo formado entre la dirección del norte geográfico y la dirección del movimiento desde el punto <span class="math inline">\(P_1\)</span> hacia el punto <span class="math inline">\(P_2\)</span>, medido en sentido horario.</p>
-<p>Desde el punto de vista geométrico, este ángulo puede deducirse considerando el triángulo esférico formado por el polo norte, el punto inicial <span class="math inline">\(P_1\)</span> y el punto final <span class="math inline">\(P_2\)</span>. A partir de relaciones de trigonometría esférica <span class="citation" data-cites="snyder1987map">Snyder (<a href="../references.html#ref-snyder1987map" role="doc-biblioref">1987</a>)</span>, el rumbo inicial <span class="math inline">\(\theta\)</span> viene dado por:</p>
+<p>Desde el punto de vista geométrico, este ángulo puede deducirse considerando el triángulo esférico formado por el polo norte, el punto inicial <span class="math inline">\(P_1\)</span> y el punto final <span class="math inline">\(P_2\)</span>. A partir de relaciones de trigonometría esférica <span class="citation" data-cites="snyder1987map">Snyder (<a href="#ref-snyder1987map" role="doc-biblioref">1987</a>)</span>, el rumbo inicial <span class="math inline">\(\theta\)</span> viene dado por:</p>
 <p><span class="math display">\[
 \theta = \arctan\left(
 \frac{
@@ -630,7 +630,7 @@ d = 2R \arctan\left(\frac{\sqrt{a}}{\sqrt{1-a}}\right).
 \theta_{\text{deg}} = \left(\theta \cdot \frac{180}{\pi} + 360\right) \bmod 360.
 \]</span></p>
 <p>La función <code>bearing_deg</code> implementa esta expresión de forma directa, proporcionando el rumbo inicial geodésico sobre una esfera.</p>
-<p>El cálculo de distancias y direcciones entre puntos geográficos se modela considerando la superficie terrestre como una esfera de radio constante. Bajo esta hipótesis, la distancia mínima entre dos puntos se obtiene como la longitud del arco de círculo máximo que los une, calculada mediante la fórmula del haverseno (<a href="#eq-haverseno" class="quarto-xref">Ecuación&nbsp;<span>3.1</span></a>). Asimismo, el rumbo inicial se determina a partir de relaciones trigonométricas esféricas, permitiendo establecer la orientación de la trayectoria con respecto al norte geográfico. Estas magnitudes son fundamentales para proyectar correctamente las variables meteorológicas, particularmente el viento, sobre la ruta de navegación del dron.</p>
+<p>El cálculo de distancias y direcciones entre puntos geográficos se modela considerando la superficie terrestre como una esfera de radio constante. Bajo esta hipótesis, la distancia mínima entre dos puntos se obtiene como la longitud del arco de círculo máximo que los une, calculada mediante la fórmula del haverseno (<a href="#eq-haverseno" class="quarto-xref">Ecuación&nbsp;<span class="quarto-unresolved-ref">eq-haverseno</span></a>). Asimismo, el rumbo inicial se determina a partir de relaciones trigonométricas esféricas, permitiendo establecer la orientación de la trayectoria con respecto al norte geográfico. Estas magnitudes son fundamentales para proyectar correctamente las variables meteorológicas, particularmente el viento, sobre la ruta de navegación del dron.</p>
 </section>
 <section id="aplicación-a-la-discretización-de-la-ruta-de-vuelo" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="aplicación-a-la-discretización-de-la-ruta-de-vuelo"><span class="header-section-number">3.2.4</span> Aplicación a la discretización de la ruta de vuelo</h3>
@@ -722,7 +722,7 @@ w_{i,i+1} = |\rho^{\max}_{i,i+1}|.
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="estimación-mediante-análisis-f-k-basado-en-pendiente-de-fase"><span class="header-section-number">3.3.3</span> Estimación mediante análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> basado en pendiente de fase</h3>
 <section id="fundamentos-teóricos" class="level4" data-number="3.3.3.1">
 <h4 data-number="3.3.3.1" class="anchored" data-anchor-id="fundamentos-teóricos"><span class="header-section-number">3.3.3.1</span> Fundamentos teóricos</h4>
-<p>Cuando el análisis de correlación cruzada entre segmentos adyacentes no proporciona resultados estadísticamente confiables, se adopta un enfoque alternativo basado en el análisis conjunto en frecuencia y espacio, conocido como análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> <span class="citation" data-cites="hayashi1973method">Hayashi (<a href="../references.html#ref-hayashi1973method" role="doc-biblioref">1973</a>)</span> . Este método permite estimar la velocidad de propagación de estructuras coherentes a partir de la variación espacial de la fase espectral, y resulta particularmente adecuado cuando la señal presenta un carácter oscilatorio dominante.</p>
+<p>Cuando el análisis de correlación cruzada entre segmentos adyacentes no proporciona resultados estadísticamente confiables, se adopta un enfoque alternativo basado en el análisis conjunto en frecuencia y espacio, conocido como análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> <span class="citation" data-cites="hayashi1973method">Hayashi (<a href="#ref-hayashi1973method" role="doc-biblioref">1973</a>)</span> . Este método permite estimar la velocidad de propagación de estructuras coherentes a partir de la variación espacial de la fase espectral, y resulta particularmente adecuado cuando la señal presenta un carácter oscilatorio dominante.</p>
 <p>Sea <span class="math inline">\(M(s,t)\)</span> una matriz de datos obtenida a partir de los valores suavizados de una variable meteorológica, donde <span class="math inline">\(s\)</span> representa la coordenada longitudinal a lo largo de la ruta de navegación y <span class="math inline">\(t\)</span> el tiempo. Cada fila de la matriz <span class="math inline">\(M\)</span> corresponde a un segmento espacial, caracterizado por su posición centroidal <span class="math inline">\(s_i\)</span>, y cada columna a un instante temporal muestreado uniformemente con paso <span class="math inline">\(\Delta t\)</span>.</p>
 <p>Para cada segmento <span class="math inline">\(s_i\)</span>, se calcula la transformada de Fourier temporal:</p>
 <p><span class="math display">\[
@@ -1223,7 +1223,7 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 <li><p><strong>Conservadurismo operativo</strong>: La ponderación adaptativa prioriza la seguridad mediante una estrategia conservadora durante transiciones entre estados secos y húmedos.</p></li>
 <li><p><strong>Consistencia física</strong>: El modelo respeta la ecuación de advección unidimensional que gobierna el transporte de estructuras precipitantes en la atmósfera.</p></li>
 </ol>
-<p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span>Sección 3.9</span></a> , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
+<p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span class="quarto-unresolved-ref">sec-drones</span></a> , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
 </section>
 </section>
 <section id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap" class="level2" data-number="3.8">
@@ -1308,7 +1308,7 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 </tbody>
 </table>
 <p>Esta adaptación refleja que la escala temporal de correlación varía significativamente entre diferentes variables atmosféricas, y que bloques más largos son necesarios para variables con mayor inercia física. En la implementación, la longitud de bloque se especifica como parámetro al llamar a la función <code>block_bootstrap_forecasts()</code>, permitiendo así adaptar el método a las características de cada variable meteorológica.</p>
-<p>La implementación computacional del método se detalla en el <a href="appendix_b.html#sec-apendice-bootstrap" class="quarto-xref"><span>Sección B.1</span></a>, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio</p>
+<p>La implementación computacional del método se detalla en el <a href="#sec-apendice-bootstrap" class="quarto-xref"><span class="quarto-unresolved-ref">sec-apendice-bootstrap</span></a>, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio</p>
 </section>
 <section id="resultados-empíricos-de-la-cuantificación-de-incertidumbre" class="level3" data-number="3.8.3">
 <h3 data-number="3.8.3" class="anchored" data-anchor-id="resultados-empíricos-de-la-cuantificación-de-incertidumbre"><span class="header-section-number">3.8.3</span> Resultados empíricos de la cuantificación de incertidumbre</h3>
@@ -1327,7 +1327,7 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-hayashi1973method" class="csl-entry" role="listitem">
 Hayashi, Yoshikazu. 1973. <span>«A method of analyzing transient waves by space-time cross spectra»</span>. <em>Journal of Applied Meteorology</em> 12 (3): 404-8. <a href="https://doi.org/10.1175/1520-0450(1973)012<0404:AMOATW>2.0.CO;2">https://doi.org/10.1175/1520-0450(1973)012&lt;0404:AMOATW&gt;2.0.CO;2</a>.
 </div>
