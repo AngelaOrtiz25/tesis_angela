@@ -96,12 +96,12 @@ El presente estudio consideró los siguientes 124 municipios del estado de Chiap
 82. Pijijiapan
 83. Pueblo Nuevo Solistahuacán
 84. Rayón
-85. Reforma
-86. Rincón Chamula San Pedro
 
 :::
 
 ::: {.column width="33%"}
+85. Reforma
+86. Rincón Chamula San Pedro
 87. Sabanilla
 88. Salto de Agua
 89. San Andrés Duraznal

@@ -85,6 +85,7 @@ format:
       - packa.tex
       - text: 
           \usepackage{multicol}
+          \setlength{\columnsep}{1cm}
           \usepackage{graphicx}
           \usepackage{float}
           \usepackage{amsmath}
