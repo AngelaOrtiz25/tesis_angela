@@ -958,23 +958,18 @@ La aplicación del modelo advectivo a la precipitación presenta las siguientes 
 
 Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la @sec-drones  , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
 
-## Cuantificación de la incertidumbre mediante block bootstrap
-El pronóstico de variables meteorológicas a corto plazo está inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido de medición, variabilidad atmosférica intrínseca, error de modelo y parámetros estimados con error. Para cuantificar esta incertidumbre de manera rigurosa en el contexto de operaciones con drones, se emplea el método de **block bootstrap temporal**, una técnica de remuestreo especialmente diseñada para series temporales con dependencia serial.
-
-A diferencia del bootstrap estándar, que asume independencia entre observaciones, el block bootstrap preserva la estructura de correlación temporal al remuestrear bloques contiguos de datos en lugar de observaciones individuales. Esta propiedad resulta esencial para variables meteorológicas muestreadas cada $\Delta t = 10$ minutos durante un período de 7 días ($T = 1\,008$ observaciones), donde la dependencia temporal constituye una característica estructural del sistema atmosférico.
-
-## Formulación matemática del block bootstrap adaptado
+### Formulación matemática del block bootstrap adaptado
 
 Sea $\{y_i(t_k)\}_{k=1}^T$ la serie temporal observada correspondiente al segmento espacial $i$, donde $t_k = k \cdot \Delta t$ representa el instante de muestreo. El procedimiento de block bootstrap se define formalmente como sigue:
 
-### Definición de parámetros operativos
+#### Definición de parámetros operativos
 
 - $L$: Longitud del bloque temporal en minutos ($L \in \{60, 90, 120\}$ según variable)
 - $B = 200$: Número de réplicas bootstrap a generar
 - $K = \lfloor T \cdot \Delta t / L \rfloor$: Número de bloques completos en la serie
 - $\mathcal{B}_k = \{y_i(t), y_i(t+1), \dots, y_i(t+L/\Delta t-1)\}$: Bloque $k$-ésimo de observaciones contiguas
 
-### Algoritmo de generación de réplicas
+#### Algoritmo de generación de réplicas
 
 Para cada réplica bootstrap $b = 1, \dots, B$:
 
@@ -1002,7 +997,7 @@ $$
 \mathcal{D}_i = \{\hat{y}_i^{(1)}(t+H), \hat{y}_i^{(2)}(t+H), \dots, \hat{y}_i^{(B)}(t+H)\}
 $$
 
-## Selección adaptativa de la longitud del bloque
+### Selección adaptativa de la longitud del bloque
 
 La elección de la longitud del bloque $L$ constituye un compromiso entre preservar la estructura de dependencia temporal y garantizar suficiente diversidad en las réplicas bootstrap. Para el conjunto de datos meteorológicos analizados (muestreo cada 10 minutos durante 7 días), se adoptan longitudes de bloque adaptadas a las propiedades físicas de cada variable:
 
