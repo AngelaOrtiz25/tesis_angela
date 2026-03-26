@@ -65,6 +65,46 @@
 \fi
 \makeatother
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -1223,7 +1263,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, bottomrule=.15mm, colback=white, breakable, left=2mm, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, coltitle=black, opacitybacktitle=0.6, leftrule=.75mm, arc=.35mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, toprule=.15mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, colframe=quarto-callout-note-color-frame, titlerule=0mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, bottomrule=.15mm, opacityback=0]
 
 \textbf{Características operativas de la ruta}
 
@@ -2791,6 +2831,25 @@ decisión multicriterio descrito en la Sección~\ref{sec-drones} ,
 proporcionando una evaluación cuantitativa de su impacto en la
 viabilidad operativa de las misiones con drones.
 
+\section{Cuantificación de la incertidumbre mediante block
+bootstrap}\label{cuantificaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap}
+
+El pronóstico de variables meteorológicas a corto plazo está
+inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido
+de medición, variabilidad atmosférica intrínseca, error de modelo y
+parámetros estimados con error. Para cuantificar esta incertidumbre de
+manera rigurosa en el contexto de operaciones con drones, se emplea el
+método de \textbf{block bootstrap temporal}, una técnica de remuestreo
+especialmente diseñada para series temporales con dependencia serial.
+
+A diferencia del bootstrap estándar, que asume independencia entre
+observaciones, el block bootstrap preserva la estructura de correlación
+temporal al remuestrear bloques contiguos de datos en lugar de
+observaciones individuales. Esta propiedad resulta esencial para
+variables meteorológicas muestreadas cada \(\Delta t = 10\) minutos
+durante un período de 7 días, donde la dependencia temporal es una
+característica estructural del sistema.
+
 \subsection{Formulación matemática del block bootstrap
 adaptado}\label{formulaciuxf3n-matemuxe1tica-del-block-bootstrap-adaptado}
 
@@ -2833,7 +2892,7 @@ Para cada réplica bootstrap \(b = 1, \dots, B\):
 \item
   \textbf{Construcción de la réplica}: Los bloques seleccionados se
   concatenan secuencialmente para formar la serie temporal bootstrap: \[
-  \{y_i^{(b)}(t)\}_{t=1}^{KL/\Delta t} = \bigoplus_{m=1}^K \mathcal{B}_{k_m^{(b)}}
+  \{y_i^{(b)}(t)\}_{t=1}^{KL/\Delta t} = \mathcal{B}_1^{(b)} \oplus \mathcal{B}_2^{(b)} \oplus \dots \oplus \mathcal{B}_K^{(b)}
   \] donde \(\oplus\) denota la operación de concatenación.
 \item
   \textbf{Reestimación de la velocidad de advección}: Utilizando la
@@ -2899,9 +2958,10 @@ parámetro al llamar a la función \texttt{block\_bootstrap\_forecasts()},
 permitiendo así adaptar el método a las características de cada variable
 meteorológica.
 
-La implementación computacional del método se detalla en el Apéndice A,
-donde se presentan las funciones principales del algoritmo. El código
-completo está disponible en el repositorio
+La implementación computacional del método se detalla en el
+Sección~\ref{sec-apendice-bootstrap}, donde se presentan las funciones
+principales del algoritmo. El código completo está disponible en el
+repositorio
 
 \section{Decisión para operaciones con drones: variables de estado,
 umbrales y función de decisión}\label{sec-drones}
@@ -3240,6 +3300,88 @@ de Chiapas:
 \item
   Zinacantán
 \end{enumerate}
+
+\chapter{Apéndice}\label{apuxe9ndice-1}
+
+\section{Implementación computacional del block
+bootstrap}\label{sec-apendice-bootstrap}
+
+La implementación del block bootstrap sigue el siguiente algoritmo
+optimizado para series con muestreo \(\Delta t = 10\) minutos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#| echo: true}
+\CommentTok{\#| eval: false}
+\KeywordTok{def}\NormalTok{ block\_bootstrap\_forecasts(df\_segments\_smooth, seg\_positions, }
+\NormalTok{                              B}\OperatorTok{=}\DecValTok{200}\NormalTok{, block\_minutes}\OperatorTok{=}\DecValTok{60}\NormalTok{, }
+\NormalTok{                              sampling\_min}\OperatorTok{=}\DecValTok{10}\NormalTok{, v\_advection}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+    \CommentTok{"""}
+\CommentTok{    Genera intervalos de confianza mediante block bootstrap temporal.}
+\CommentTok{    }
+\CommentTok{    Parámetros:}
+\CommentTok{    {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{    df\_segments\_smooth : DataFrame}
+\CommentTok{        Serie temporal suavizada por segmentos (filas=tiempo, columnas=segmentos)}
+\CommentTok{    seg\_positions : array}
+\CommentTok{        Posiciones centroidales de los segmentos espaciales (metros)}
+\CommentTok{    B : int}
+\CommentTok{        Número de réplicas bootstrap (default: 200)}
+\CommentTok{    block\_minutes : int}
+\CommentTok{        Longitud del bloque en minutos (default: 60)}
+\CommentTok{    sampling\_min : int}
+\CommentTok{        Intervalo de muestreo en minutos (default: 10)}
+\CommentTok{    v\_advection : float}
+\CommentTok{        Velocidad de advección fija (None para reestimar en cada réplica)}
+\CommentTok{    }
+\CommentTok{    Retorna:}
+\CommentTok{    {-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{    boot\_forecasts : ndarray (B x N)}
+\CommentTok{        Matriz de pronósticos bootstrap para cada réplica y segmento}
+\CommentTok{    """}
+\NormalTok{    n }\OperatorTok{=}\NormalTok{ df\_segments\_smooth.shape[}\DecValTok{0}\NormalTok{]  }\CommentTok{\# número de observaciones temporales}
+\NormalTok{    block\_size }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(}\DecValTok{1}\NormalTok{, }\BuiltInTok{int}\NormalTok{(block\_minutes }\OperatorTok{/}\NormalTok{ sampling\_min))}
+\NormalTok{    n\_blocks }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(np.ceil(n }\OperatorTok{/}\NormalTok{ block\_size))}
+\NormalTok{    boot\_forecasts }\OperatorTok{=}\NormalTok{ np.zeros((B, }\BuiltInTok{len}\NormalTok{(seg\_positions)))}
+\NormalTok{    rng }\OperatorTok{=}\NormalTok{ np.random.default\_rng(}\DecValTok{12345}\NormalTok{)  }\CommentTok{\# semilla para reproducibilidad}
+    
+    \ControlFlowTok{for}\NormalTok{ b }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(B):}
+        \CommentTok{\# Remuestreo de bloques con reemplazo}
+\NormalTok{        idx\_blocks }\OperatorTok{=}\NormalTok{ rng.integers(}\DecValTok{0}\NormalTok{, n\_blocks, size}\OperatorTok{=}\NormalTok{n\_blocks)}
+\NormalTok{        indices }\OperatorTok{=}\NormalTok{ []}
+        \ControlFlowTok{for}\NormalTok{ bl }\KeywordTok{in}\NormalTok{ idx\_blocks:}
+\NormalTok{            start }\OperatorTok{=}\NormalTok{ bl }\OperatorTok{*}\NormalTok{ block\_size}
+\NormalTok{            end }\OperatorTok{=} \BuiltInTok{min}\NormalTok{(n, start }\OperatorTok{+}\NormalTok{ block\_size)}
+\NormalTok{            indices.extend(}\BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(start, end)))}
+\NormalTok{        idxs }\OperatorTok{=}\NormalTok{ np.array(indices)[:n]  }\CommentTok{\# ajustar a longitud exacta}
+        
+        \CommentTok{\# Construir serie bootstrap}
+\NormalTok{        M\_boot }\OperatorTok{=}\NormalTok{ df\_segments\_smooth.iloc[idxs, :].reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+        
+        \CommentTok{\# Determinar velocidad de advección para esta réplica}
+        \ControlFlowTok{if}\NormalTok{ v\_advection }\KeywordTok{is} \VariableTok{None}\NormalTok{:}
+            \CommentTok{\# Reestimar velocidad (para viento)}
+\NormalTok{            v\_boot }\OperatorTok{=}\NormalTok{ estimate\_advection\_velocity(M\_boot, seg\_positions)}
+        \ControlFlowTok{else}\NormalTok{:}
+            \CommentTok{\# Usar velocidad fija (para temperatura, humedad, precipitación)}
+\NormalTok{            v\_boot }\OperatorTok{=}\NormalTok{ v\_advection}
+        
+        \CommentTok{\# Generar pronóstico para cada segmento}
+\NormalTok{        last\_vals\_boot }\OperatorTok{=}\NormalTok{ M\_boot.iloc[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{, :].values}
+        \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(seg\_positions)):}
+\NormalTok{            boot\_forecasts[b, i] }\OperatorTok{=}\NormalTok{ advective\_forecast(}
+\NormalTok{                segment\_idx}\OperatorTok{=}\NormalTok{i,}
+\NormalTok{                last\_value}\OperatorTok{=}\NormalTok{last\_vals\_boot[i],}
+\NormalTok{                positions}\OperatorTok{=}\NormalTok{seg\_positions,}
+\NormalTok{                data\_matrix}\OperatorTok{=}\NormalTok{M\_boot,}
+\NormalTok{                velocity}\OperatorTok{=}\NormalTok{v\_boot,}
+\NormalTok{                horizon\_minutes}\OperatorTok{=}\DecValTok{60}
+\NormalTok{            )}
+    
+    \ControlFlowTok{return}\NormalTok{ boot\_forecasts}
+\end{Highlighting}
+\end{Shaded}
+
 
 
 

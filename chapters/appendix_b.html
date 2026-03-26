@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Apéndice A — Apéndice – tesis</title>
+<title>Apéndice B — Apéndice – tesis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/appendix_b.html" rel="next">
-<link href="../references.html" rel="prev">
+<link href="../chapters/appendix_a.html" rel="prev">
 <link href="../logos/FCFM-UNACH.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -94,6 +128,35 @@ window.MathJax = {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -268,7 +331,7 @@ window.MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/appendix_a.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/appendix_a.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apéndice</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/appendix_a.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/appendix_b.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Apéndice</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -357,13 +420,13 @@ window.MathJax = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/appendix_a.html" class="sidebar-item-text sidebar-link active">
+  <a href="../chapters/appendix_a.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apéndice</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/appendix_b.html" class="sidebar-item-text sidebar-link">
+  <a href="../chapters/appendix_b.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Apéndice</span></span></a>
   </div>
 </li>
@@ -379,7 +442,7 @@ window.MathJax = {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#sec-apendice-municipios" id="toc-sec-apendice-municipios" class="nav-link active" data-scroll-target="#sec-apendice-municipios"><span class="header-section-number">A.1</span> Lista de municipios del estado de Chiapas</a></li>
+  <li><a href="#sec-apendice-bootstrap" id="toc-sec-apendice-bootstrap" class="nav-link active" data-scroll-target="#sec-apendice-bootstrap"><span class="header-section-number">B.1</span> Implementación computacional del block bootstrap</a></li>
   </ul>
 </nav>
     </div>
@@ -387,9 +450,9 @@ window.MathJax = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/appendix_a.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/appendix_a.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apéndice</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/appendix_a.html">Appendices</a></li><li class="breadcrumb-item"><a href="../chapters/appendix_b.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Apéndice</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Apéndice A — Apéndice</h1>
+<h1 class="title">Apéndice B — Apéndice</h1>
 </div>
 
 
@@ -406,142 +469,77 @@ window.MathJax = {
 </header>
 
 
-<section id="sec-apendice-municipios" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="sec-apendice-municipios"><span class="header-section-number">A.1</span> Lista de municipios del estado de Chiapas</h2>
-<p>El presente estudio consideró los siguientes 124 municipios del estado de Chiapas:</p>
-<div class="columns">
-<div class="column" style="width:33%;">
-<ol type="1">
-<li>Acacoyagua</li>
-<li>Acala</li>
-<li>Acapetahua</li>
-<li>Aldama</li>
-<li>Altamirano</li>
-<li>Amatán</li>
-<li>Amatenango de la Frontera</li>
-<li>Amatenango del Valle</li>
-<li>Ángel Albino Corzo</li>
-<li>Arriaga</li>
-<li>Bejucal de Ocampo</li>
-<li>Bella Vista</li>
-<li>Benemérito de las Américas</li>
-<li>Berriozábal</li>
-<li>Bochil</li>
-<li>Cacahoatán</li>
-<li>Capitán Luis Ángel Vidal</li>
-<li>Catazajá</li>
-<li>Chalchihuitán</li>
-<li>Chamula</li>
-<li>Chanal</li>
-<li>Chapultenango</li>
-<li>Chenalhó</li>
-<li>Chiapa de Corzo</li>
-<li>Chiapilla</li>
-<li>Chicoasén</li>
-<li>Chicomuselo</li>
-<li>Chilón</li>
-<li>Cintalapa de Figueroa</li>
-<li>Coapilla</li>
-<li>Comitán de Domínguez</li>
-<li>Copainalá</li>
-<li>El Bosque</li>
-<li>El Parral</li>
-<li>El Porvenir</li>
-<li>Emiliano Zapata</li>
-<li>Escuintla</li>
-<li>Francisco León</li>
-<li>Frontera Comalapa</li>
-<li>Frontera Hidalgo</li>
-<li>Honduras de la Sierra</li>
-<li>Huehuetán</li>
-</ol>
-</div><div class="column" style="width:33%;">
-<ol start="43" type="1">
-<li>Huitiupán</li>
-<li>Huixtán</li>
-<li>Huixtla</li>
-<li>Ixhuatán</li>
-<li>Ixtacomitán</li>
-<li>Ixtapa</li>
-<li>Ixtapangajoya</li>
-<li>Jiquipilas</li>
-<li>Jitotol</li>
-<li>Juárez</li>
-<li>La Concordia</li>
-<li>La Grandeza</li>
-<li>La Independencia</li>
-<li>La Libertad</li>
-<li>La Trinitaria</li>
-<li>Larráinzar</li>
-<li>Las Margaritas</li>
-<li>Las Rosas</li>
-<li>Mapastepec</li>
-<li>Maravilla Tenejapa</li>
-<li>Marqués de Comillas</li>
-<li>Mazapa de Madero</li>
-<li>Mazatán</li>
-<li>Metapa</li>
-<li>Mezcalapa</li>
-<li>Mitontic</li>
-<li>Montecristo de Guerrero</li>
-<li>Motozintla</li>
-<li>Nicolás Ruíz</li>
-<li>Ocosingo</li>
-<li>Ocotepec</li>
-<li>Ocozocoautla de Espinosa</li>
-<li>Ostuacán</li>
-<li>Osumacinta</li>
-<li>Oxchuc</li>
-<li>Palenque</li>
-<li>Pantelhó</li>
-<li>Pantepec</li>
-<li>Pichucalco</li>
-<li>Pijijiapan</li>
-<li>Pueblo Nuevo Solistahuacán</li>
-<li>Rayón</li>
-<li>Reforma</li>
-<li>Rincón Chamula San Pedro</li>
-<li>Sabanilla</li>
-<li>Salto de Agua</li>
-<li>San Andrés Duraznal</li>
-<li>San Cristóbal de las Casas</li>
-<li>San Fernando</li>
-<li>San Juan Cancuc</li>
-<li>San Lucas</li>
-<li>Santiago el Pinar</li>
-<li>Siltepec</li>
-<li>Simojovel</li>
-<li>Sitalá</li>
-<li>Socoltenango</li>
-<li>Solosuchiapa</li>
-<li>Soyaló</li>
-<li>Suchiapa</li>
-<li>Suchiate</li>
-<li>Sunuapa</li>
-<li>Tapachula</li>
-<li>Tapalapa</li>
-<li>Tapilula</li>
-<li>Tecpatán</li>
-<li>Tenejapa</li>
-<li>Teopisca</li>
-<li>Tila</li>
-<li>Tonalá</li>
-<li>Totolapa</li>
-<li>Tumbalá</li>
-<li>Tuxtla Chico</li>
-<li>Tuxtla Gutiérrez</li>
-<li>Tuzantán</li>
-<li>Tzimol</li>
-<li>Unión Juárez</li>
-<li>Venustiano Carranza</li>
-<li>Villa Comaltitlán</li>
-<li>Villa Corzo</li>
-<li>Villaflores</li>
-<li>Yajalón</li>
-<li>Zinacantán</li>
-</ol>
-</div>
-</div>
+<section id="sec-apendice-bootstrap" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="sec-apendice-bootstrap"><span class="header-section-number">B.1</span> Implementación computacional del block bootstrap</h2>
+<p>La implementación del block bootstrap sigue el siguiente algoritmo optimizado para series con muestreo <span class="math inline">\(\Delta t = 10\)</span> minutos:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> block_bootstrap_forecasts(df_segments_smooth, seg_positions, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                              B<span class="op">=</span><span class="dv">200</span>, block_minutes<span class="op">=</span><span class="dv">60</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                              sampling_min<span class="op">=</span><span class="dv">10</span>, v_advection<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Genera intervalos de confianza mediante block bootstrap temporal.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Parámetros:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    -----------</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    df_segments_smooth : DataFrame</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Serie temporal suavizada por segmentos (filas=tiempo, columnas=segmentos)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    seg_positions : array</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">        Posiciones centroidales de los segmentos espaciales (metros)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    B : int</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">        Número de réplicas bootstrap (default: 200)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">    block_minutes : int</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">        Longitud del bloque en minutos (default: 60)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">    sampling_min : int</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">        Intervalo de muestreo en minutos (default: 10)</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">    v_advection : float</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">        Velocidad de advección fija (None para reestimar en cada réplica)</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">    Retorna:</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">    boot_forecasts : ndarray (B x N)</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">        Matriz de pronósticos bootstrap para cada réplica y segmento</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> df_segments_smooth.shape[<span class="dv">0</span>]  <span class="co"># número de observaciones temporales</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    block_size <span class="op">=</span> <span class="bu">max</span>(<span class="dv">1</span>, <span class="bu">int</span>(block_minutes <span class="op">/</span> sampling_min))</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    n_blocks <span class="op">=</span> <span class="bu">int</span>(np.ceil(n <span class="op">/</span> block_size))</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    boot_forecasts <span class="op">=</span> np.zeros((B, <span class="bu">len</span>(seg_positions)))</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(<span class="dv">12345</span>)  <span class="co"># semilla para reproducibilidad</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> b <span class="kw">in</span> <span class="bu">range</span>(B):</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Remuestreo de bloques con reemplazo</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>        idx_blocks <span class="op">=</span> rng.integers(<span class="dv">0</span>, n_blocks, size<span class="op">=</span>n_blocks)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        indices <span class="op">=</span> []</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> bl <span class="kw">in</span> idx_blocks:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>            start <span class="op">=</span> bl <span class="op">*</span> block_size</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>            end <span class="op">=</span> <span class="bu">min</span>(n, start <span class="op">+</span> block_size)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>            indices.extend(<span class="bu">list</span>(<span class="bu">range</span>(start, end)))</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        idxs <span class="op">=</span> np.array(indices)[:n]  <span class="co"># ajustar a longitud exacta</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Construir serie bootstrap</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        M_boot <span class="op">=</span> df_segments_smooth.iloc[idxs, :].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Determinar velocidad de advección para esta réplica</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> v_advection <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Reestimar velocidad (para viento)</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>            v_boot <span class="op">=</span> estimate_advection_velocity(M_boot, seg_positions)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Usar velocidad fija (para temperatura, humedad, precipitación)</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>            v_boot <span class="op">=</span> v_advection</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Generar pronóstico para cada segmento</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>        last_vals_boot <span class="op">=</span> M_boot.iloc[<span class="op">-</span><span class="dv">1</span>, :].values</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(seg_positions)):</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>            boot_forecasts[b, i] <span class="op">=</span> advective_forecast(</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>                segment_idx<span class="op">=</span>i,</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>                last_value<span class="op">=</span>last_vals_boot[i],</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>                positions<span class="op">=</span>seg_positions,</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>                data_matrix<span class="op">=</span>M_boot,</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>                velocity<span class="op">=</span>v_boot,</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>                horizon_minutes<span class="op">=</span><span class="dv">60</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> boot_forecasts</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -961,14 +959,11 @@ window.MathJax = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../references.html" class="pagination-link" aria-label="Referencias">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Referencias</span>
+      <a href="../chapters/appendix_a.html" class="pagination-link" aria-label="Apéndice">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apéndice</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/appendix_b.html" class="pagination-link" aria-label="Apéndice">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Apéndice</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -410,6 +410,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apéndice</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/appendix_b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Apéndice</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -1217,13 +1223,18 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 <li><p><strong>Conservadurismo operativo</strong>: La ponderación adaptativa prioriza la seguridad mediante una estrategia conservadora durante transiciones entre estados secos y húmedos.</p></li>
 <li><p><strong>Consistencia física</strong>: El modelo respeta la ecuación de advección unidimensional que gobierna el transporte de estructuras precipitantes en la atmósfera.</p></li>
 </ol>
-<p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span>Sección 3.8</span></a> , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
+<p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span>Sección 3.9</span></a> , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
 </section>
-<section id="formulación-matemática-del-block-bootstrap-adaptado" class="level3" data-number="3.7.9">
-<h3 data-number="3.7.9" class="anchored" data-anchor-id="formulación-matemática-del-block-bootstrap-adaptado"><span class="header-section-number">3.7.9</span> Formulación matemática del block bootstrap adaptado</h3>
+</section>
+<section id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap"><span class="header-section-number">3.8</span> Cuantificación de la incertidumbre mediante block bootstrap</h2>
+<p>El pronóstico de variables meteorológicas a corto plazo está inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido de medición, variabilidad atmosférica intrínseca, error de modelo y parámetros estimados con error. Para cuantificar esta incertidumbre de manera rigurosa en el contexto de operaciones con drones, se emplea el método de <strong>block bootstrap temporal</strong>, una técnica de remuestreo especialmente diseñada para series temporales con dependencia serial.</p>
+<p>A diferencia del bootstrap estándar, que asume independencia entre observaciones, el block bootstrap preserva la estructura de correlación temporal al remuestrear bloques contiguos de datos en lugar de observaciones individuales. Esta propiedad resulta esencial para variables meteorológicas muestreadas cada <span class="math inline">\(\Delta t = 10\)</span> minutos durante un período de 7 días, donde la dependencia temporal es una característica estructural del sistema.</p>
+<section id="formulación-matemática-del-block-bootstrap-adaptado" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="formulación-matemática-del-block-bootstrap-adaptado"><span class="header-section-number">3.8.1</span> Formulación matemática del block bootstrap adaptado</h3>
 <p>Sea <span class="math inline">\(\{y_i(t_k)\}_{k=1}^T\)</span> la serie temporal observada correspondiente al segmento espacial <span class="math inline">\(i\)</span>, donde <span class="math inline">\(t_k = k \cdot \Delta t\)</span> representa el instante de muestreo. El procedimiento de block bootstrap se define formalmente como sigue:</p>
-<section id="definición-de-parámetros-operativos" class="level4" data-number="3.7.9.1">
-<h4 data-number="3.7.9.1" class="anchored" data-anchor-id="definición-de-parámetros-operativos"><span class="header-section-number">3.7.9.1</span> Definición de parámetros operativos</h4>
+<section id="definición-de-parámetros-operativos" class="level4" data-number="3.8.1.1">
+<h4 data-number="3.8.1.1" class="anchored" data-anchor-id="definición-de-parámetros-operativos"><span class="header-section-number">3.8.1.1</span> Definición de parámetros operativos</h4>
 <ul>
 <li><span class="math inline">\(L\)</span>: Longitud del bloque temporal en minutos (<span class="math inline">\(L \in \{60, 90, 120\}\)</span> según variable)</li>
 <li><span class="math inline">\(B = 200\)</span>: Número de réplicas bootstrap a generar</li>
@@ -1231,15 +1242,15 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 <li><span class="math inline">\(\mathcal{B}_k = \{y_i(t), y_i(t+1), \dots, y_i(t+L/\Delta t-1)\}\)</span>: Bloque <span class="math inline">\(k\)</span>-ésimo de observaciones contiguas</li>
 </ul>
 </section>
-<section id="algoritmo-de-generación-de-réplicas" class="level4" data-number="3.7.9.2">
-<h4 data-number="3.7.9.2" class="anchored" data-anchor-id="algoritmo-de-generación-de-réplicas"><span class="header-section-number">3.7.9.2</span> Algoritmo de generación de réplicas</h4>
+<section id="algoritmo-de-generación-de-réplicas" class="level4" data-number="3.8.1.2">
+<h4 data-number="3.8.1.2" class="anchored" data-anchor-id="algoritmo-de-generación-de-réplicas"><span class="header-section-number">3.8.1.2</span> Algoritmo de generación de réplicas</h4>
 <p>Para cada réplica bootstrap <span class="math inline">\(b = 1, \dots, B\)</span>:</p>
 <ol type="1">
 <li><p><strong>Selección de bloques</strong>: Se seleccionan <span class="math inline">\(K\)</span> bloques con reemplazo de la serie original mediante muestreo aleatorio uniforme: <span class="math display">\[
 \{k_1^{(b)}, k_2^{(b)}, \dots, k_K^{(b)}\} \sim \text{MuestreoUniforme}(\{1, \dots, K\}, K)
 \]</span></p></li>
 <li><p><strong>Construcción de la réplica</strong>: Los bloques seleccionados se concatenan secuencialmente para formar la serie temporal bootstrap: <span class="math display">\[
-\{y_i^{(b)}(t)\}_{t=1}^{KL/\Delta t} = \bigoplus_{m=1}^K \mathcal{B}_{k_m^{(b)}}
+\{y_i^{(b)}(t)\}_{t=1}^{KL/\Delta t} = \mathcal{B}_1^{(b)} \oplus \mathcal{B}_2^{(b)} \oplus \dots \oplus \mathcal{B}_K^{(b)}
 \]</span> donde <span class="math inline">\(\oplus\)</span> denota la operación de concatenación.</p></li>
 <li><p><strong>Reestimación de la velocidad de advección</strong>: Utilizando la serie bootstrap <span class="math inline">\(\{y_i^{(b)}(t)\}\)</span>, se recalcula la velocidad advectiva <span class="math inline">\(v^{(b)}\)</span> exclusivamente para la variable viento. Para temperatura, humedad relativa y precipitación se utiliza una velocidad de advección fija determinada a partir de análisis previos.</p></li>
 <li><p><strong>Generación del pronóstico bootstrap</strong>: Se aplica el modelo de pronóstico advectivo utilizando los parámetros reestimados, obteniendo: <span class="math display">\[
@@ -1251,8 +1262,8 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 \]</span></p>
 </section>
 </section>
-<section id="selección-adaptativa-de-la-longitud-del-bloque" class="level3" data-number="3.7.10">
-<h3 data-number="3.7.10" class="anchored" data-anchor-id="selección-adaptativa-de-la-longitud-del-bloque"><span class="header-section-number">3.7.10</span> Selección adaptativa de la longitud del bloque</h3>
+<section id="selección-adaptativa-de-la-longitud-del-bloque" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="selección-adaptativa-de-la-longitud-del-bloque"><span class="header-section-number">3.8.2</span> Selección adaptativa de la longitud del bloque</h3>
 <p>La elección de la longitud del bloque <span class="math inline">\(L\)</span> constituye un compromiso entre preservar la estructura de dependencia temporal y garantizar suficiente diversidad en las réplicas bootstrap. Para el conjunto de datos meteorológicos analizados (muestreo cada 10 minutos durante 7 días), se adoptan longitudes de bloque adaptadas a las propiedades físicas de cada variable:</p>
 <table class="caption-top table">
 <colgroup>
@@ -1297,17 +1308,17 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 </tbody>
 </table>
 <p>Esta adaptación refleja que la escala temporal de correlación varía significativamente entre diferentes variables atmosféricas, y que bloques más largos son necesarios para variables con mayor inercia física. En la implementación, la longitud de bloque se especifica como parámetro al llamar a la función <code>block_bootstrap_forecasts()</code>, permitiendo así adaptar el método a las características de cada variable meteorológica.</p>
-<p>La implementación computacional del método se detalla en el Apéndice A, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio</p>
+<p>La implementación computacional del método se detalla en el <a href="appendix_b.html#sec-apendice-bootstrap" class="quarto-xref"><span>Sección B.1</span></a>, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio</p>
 </section>
 </section>
-<section id="sec-drones" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="sec-drones"><span class="header-section-number">3.8</span> Decisión para operaciones con drones: variables de estado, umbrales y función de decisión</h2>
+<section id="sec-drones" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="sec-drones"><span class="header-section-number">3.9</span> Decisión para operaciones con drones: variables de estado, umbrales y función de decisión</h2>
 </section>
-<section id="integración-de-ambas-etapas-análisis-de-eficiencia-logística" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="integración-de-ambas-etapas-análisis-de-eficiencia-logística"><span class="header-section-number">3.9</span> Integración de ambas etapas: análisis de eficiencia logística</h2>
+<section id="integración-de-ambas-etapas-análisis-de-eficiencia-logística" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="integración-de-ambas-etapas-análisis-de-eficiencia-logística"><span class="header-section-number">3.10</span> Integración de ambas etapas: análisis de eficiencia logística</h2>
 </section>
-<section id="recomendaciones-operativas-y-perspectivas" class="level2" data-number="3.10">
-<h2 data-number="3.10" class="anchored" data-anchor-id="recomendaciones-operativas-y-perspectivas"><span class="header-section-number">3.10</span> Recomendaciones operativas y perspectivas</h2>
+<section id="recomendaciones-operativas-y-perspectivas" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="recomendaciones-operativas-y-perspectivas"><span class="header-section-number">3.11</span> Recomendaciones operativas y perspectivas</h2>
 </section>
 </div>
 
