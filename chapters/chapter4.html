@@ -716,7 +716,7 @@ w_{i,i+1} = |\rho^{\max}_{i,i+1}|.
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="estimación-mediante-análisis-f-k-basado-en-pendiente-de-fase"><span class="header-section-number">3.3.3</span> Estimación mediante análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> basado en pendiente de fase</h3>
 <section id="fundamentos-teóricos" class="level4" data-number="3.3.3.1">
 <h4 data-number="3.3.3.1" class="anchored" data-anchor-id="fundamentos-teóricos"><span class="header-section-number">3.3.3.1</span> Fundamentos teóricos</h4>
-<p>Cuando el análisis de correlación cruzada entre segmentos adyacentes no proporciona resultados estadísticamente confiables, se adopta un enfoque alternativo basado en el análisis conjunto en frecuencia y espacio, conocido como análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>. Este método permite estimar la velocidad de propagación de estructuras coherentes a partir de la variación espacial de la fase espectral, y resulta particularmente adecuado cuando la señal presenta un carácter oscilatorio dominante.</p>
+<p>Cuando el análisis de correlación cruzada entre segmentos adyacentes no proporciona resultados estadísticamente confiables, se adopta un enfoque alternativo basado en el análisis conjunto en frecuencia y espacio, conocido como análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> <span class="citation" data-cites="hayashi1973method">Hayashi (<a href="../references.html#ref-hayashi1973method" role="doc-biblioref">1973</a>)</span> . Este método permite estimar la velocidad de propagación de estructuras coherentes a partir de la variación espacial de la fase espectral, y resulta particularmente adecuado cuando la señal presenta un carácter oscilatorio dominante.</p>
 <p>Sea <span class="math inline">\(M(s,t)\)</span> una matriz de datos obtenida a partir de los valores suavizados de una variable meteorológica, donde <span class="math inline">\(s\)</span> representa la coordenada longitudinal a lo largo de la ruta de navegación y <span class="math inline">\(t\)</span> el tiempo. Cada fila de la matriz <span class="math inline">\(M\)</span> corresponde a un segmento espacial, caracterizado por su posición centroidal <span class="math inline">\(s_i\)</span>, y cada columna a un instante temporal muestreado uniformemente con paso <span class="math inline">\(\Delta t\)</span>.</p>
 <p>Para cada segmento <span class="math inline">\(s_i\)</span>, se calcula la transformada de Fourier temporal:</p>
 <p><span class="math display">\[
@@ -956,7 +956,7 @@ s_j \le s_i^{\text{up}} &lt; s_{j+1}.
 </section>
 <section id="componente-autorregresiva-temporal-1" class="level3" data-number="3.5.4">
 <h3 data-number="3.5.4" class="anchored" data-anchor-id="componente-autorregresiva-temporal-1"><span class="header-section-number">3.5.4</span> Componente autorregresiva temporal</h3>
-<p>La temperatura presenta una elevada persistencia temporal, característica de variables termodinámicas con alta inercia física. Por ello, cada segmento se modela mediante un proceso autorregresivo de primer orden:</p>
+<p>La temperatura presenta una elevada persistencia temporal, característica de variables termodinámicas con alta inercia física, es decir, la temperatura del aire no experimenta cambios abruptos en escalas temporales cortas debido a la capacidad calorífica del medio atmosférico, que requiere intercambios energéticos significativos para modificar su estado térmico. Por ello, cada segmento se modela mediante un proceso autorregresivo de primer orden:</p>
 <p><span class="math display">\[
 T_i(t+\Delta t) = a_i T_i(t),
 \]</span></p>
@@ -1217,14 +1217,14 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 <li><p><strong>Conservadurismo operativo</strong>: La ponderación adaptativa prioriza la seguridad mediante una estrategia conservadora durante transiciones entre estados secos y húmedos.</p></li>
 <li><p><strong>Consistencia física</strong>: El modelo respeta la ecuación de advección unidimensional que gobierna el transporte de estructuras precipitantes en la atmósfera.</p></li>
 </ol>
-<p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la Sección 4.9, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
+<p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span>Sección 3.9</span></a> , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
 </section>
 </section>
 <section id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap" class="level2" data-number="3.8">
 <h2 data-number="3.8" class="anchored" data-anchor-id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap"><span class="header-section-number">3.8</span> Cuantificación de la incertidumbre mediante block bootstrap</h2>
 </section>
-<section id="decisión-para-operaciones-con-drones-variables-de-estado-umbrales-y-función-de-decisión" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="decisión-para-operaciones-con-drones-variables-de-estado-umbrales-y-función-de-decisión"><span class="header-section-number">3.9</span> Decisión para operaciones con drones: variables de estado, umbrales y función de decisión</h2>
+<section id="sec-drones" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="sec-drones"><span class="header-section-number">3.9</span> Decisión para operaciones con drones: variables de estado, umbrales y función de decisión</h2>
 </section>
 <section id="integración-de-ambas-etapas-análisis-de-eficiencia-logística" class="level2" data-number="3.10">
 <h2 data-number="3.10" class="anchored" data-anchor-id="integración-de-ambas-etapas-análisis-de-eficiencia-logística"><span class="header-section-number">3.10</span> Integración de ambas etapas: análisis de eficiencia logística</h2>
@@ -1236,6 +1236,9 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-hayashi1973method" class="csl-entry" role="listitem">
+Hayashi, Yoshikazu. 1973. <span>«A method of analyzing transient waves by space-time cross spectra»</span>. <em>Journal of Applied Meteorology</em> 12 (3): 404-8. <a href="https://doi.org/10.1175/1520-0450(1973)012<0404:AMOATW>2.0.CO;2">https://doi.org/10.1175/1520-0450(1973)012&lt;0404:AMOATW&gt;2.0.CO;2</a>.
+</div>
 <div id="ref-snyder1987map" class="csl-entry" role="listitem">
 Snyder, John P. 1987. <em>Map Projections: A Working Manual</em>. USGS Professional Paper 1395. Washington, DC: United States Geological Survey. <a href="https://doi.org/10.3133/pp1395">https://doi.org/10.3133/pp1395</a>.
 </div>

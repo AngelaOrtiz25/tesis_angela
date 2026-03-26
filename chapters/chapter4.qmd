@@ -959,6 +959,65 @@ La aplicación del modelo advectivo a la precipitación presenta las siguientes 
 Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la @sec-drones  , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
 
 ## Cuantificación de la incertidumbre mediante block bootstrap
+El pronóstico de variables meteorológicas a corto plazo está inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido de medición, variabilidad atmosférica intrínseca, error de modelo y parámetros estimados con error. Para cuantificar esta incertidumbre de manera rigurosa en el contexto de operaciones con drones, se emplea el método de **block bootstrap temporal**, una técnica de remuestreo especialmente diseñada para series temporales con dependencia serial.
+
+A diferencia del bootstrap estándar, que asume independencia entre observaciones, el block bootstrap preserva la estructura de correlación temporal al remuestrear bloques contiguos de datos en lugar de observaciones individuales. Esta propiedad resulta esencial para variables meteorológicas muestreadas cada $\Delta t = 10$ minutos durante un período de 7 días ($T = 1\,008$ observaciones), donde la dependencia temporal constituye una característica estructural del sistema atmosférico.
+
+## Formulación matemática del block bootstrap adaptado
+
+Sea $\{y_i(t_k)\}_{k=1}^T$ la serie temporal observada correspondiente al segmento espacial $i$, donde $t_k = k \cdot \Delta t$ representa el instante de muestreo. El procedimiento de block bootstrap se define formalmente como sigue:
+
+### Definición de parámetros operativos
+
+- $L$: Longitud del bloque temporal en minutos ($L \in \{60, 90, 120\}$ según variable)
+- $B = 200$: Número de réplicas bootstrap a generar
+- $K = \lfloor T \cdot \Delta t / L \rfloor$: Número de bloques completos en la serie
+- $\mathcal{B}_k = \{y_i(t), y_i(t+1), \dots, y_i(t+L/\Delta t-1)\}$: Bloque $k$-ésimo de observaciones contiguas
+
+### Algoritmo de generación de réplicas
+
+Para cada réplica bootstrap $b = 1, \dots, B$:
+
+1. **Selección de bloques**: Se seleccionan $K$ bloques con reemplazo de la serie original mediante muestreo aleatorio uniforme:
+   $$
+   \{k_1^{(b)}, k_2^{(b)}, \dots, k_K^{(b)}\} \sim \text{MuestreoUniforme}(\{1, \dots, K\}, K)
+   $$
+
+2. **Construcción de la réplica**: Los bloques seleccionados se concatenan secuencialmente para formar la serie temporal bootstrap:
+   $$
+   \{y_i^{(b)}(t)\}_{t=1}^{KL/\Delta t} = \bigoplus_{m=1}^K \mathcal{B}_{k_m^{(b)}}
+   $$
+   donde $\oplus$ denota la operación de concatenación.
+
+3. **Reestimación de la velocidad de advección**: Utilizando la serie bootstrap $\{y_i^{(b)}(t)\}$, se recalcula la velocidad advectiva $v^{(b)}$ exclusivamente para la variable viento. Para temperatura, humedad relativa y precipitación se utiliza una velocidad de advección fija determinada a partir de análisis previos.
+
+4. **Generación del pronóstico bootstrap**: Se aplica el modelo de pronóstico advectivo utilizando los parámetros reestimados, obteniendo:
+   $$
+   \hat{y}_i^{(b)}(t+H) = \text{advect\_forecast}\left(y_i^{(b)}(t), \mathbf{s}, v^{(b)}\right)
+   $$
+   con horizonte $H = 60$ minutos.
+
+Este procedimiento produce una distribución empírica de pronósticos:
+$$
+\mathcal{D}_i = \{\hat{y}_i^{(1)}(t+H), \hat{y}_i^{(2)}(t+H), \dots, \hat{y}_i^{(B)}(t+H)\}
+$$
+
+## Selección adaptativa de la longitud del bloque
+
+La elección de la longitud del bloque $L$ constituye un compromiso entre preservar la estructura de dependencia temporal y garantizar suficiente diversidad en las réplicas bootstrap. Para el conjunto de datos meteorológicos analizados (muestreo cada 10 minutos durante 7 días), se adoptan longitudes de bloque adaptadas a las propiedades físicas de cada variable:
+
+| Variable | Longitud del bloque $L$ (min) | Tamaño en observaciones | Justificación física |
+|----------|-------------------------------|-------------------------|----------------------|
+| Viento | 60 | 6 | Baja persistencia temporal y alta variabilidad turbulenta |
+| Temperatura | 90 | 9 | Alta persistencia térmica y coherencia espacial |
+| Humedad relativa | 120 | 12 | Persistencia moderada con variabilidad intermedia |
+| Precipitación | 60 | 6 | Naturaleza intermitente y no estacionariedad |
+
+Esta adaptación refleja que la escala temporal de correlación varía significativamente entre diferentes variables atmosféricas, y que bloques más largos son necesarios para variables con mayor inercia física. En la implementación, la longitud de bloque se especifica como parámetro al llamar a la función `block_bootstrap_forecasts()`, permitiendo así adaptar el método a las características de cada variable meteorológica.
+
+La implementación computacional del método se detalla en el Apéndice A, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio
+
+
 
 ## Decisión para operaciones con drones: variables de estado, umbrales y función de decisión  {#sec-drones} 
 
