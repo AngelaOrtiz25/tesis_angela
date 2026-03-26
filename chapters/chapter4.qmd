@@ -1017,7 +1017,8 @@ Esta adaptación refleja que la escala temporal de correlación varía significa
 
 La implementación computacional del método se detalla en el @sec-apendice-bootstrap, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio
 
-
+### Resultados empíricos de la cuantificación de incertidumbre
+La aplicación del block bootstrap con $B = 200$ réplicas generó intervalos de confianza del 90% ($p_{05}$–$p_{95}$) para cada variable meteorológica en los 15 segmentos espaciales de la ruta Aeropuerto → Protección Civil. Los resultados principales se resumen en la Tabla 4.1.
 
 
 
