@@ -1310,6 +1310,10 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 <p>Esta adaptación refleja que la escala temporal de correlación varía significativamente entre diferentes variables atmosféricas, y que bloques más largos son necesarios para variables con mayor inercia física. En la implementación, la longitud de bloque se especifica como parámetro al llamar a la función <code>block_bootstrap_forecasts()</code>, permitiendo así adaptar el método a las características de cada variable meteorológica.</p>
 <p>La implementación computacional del método se detalla en el <a href="appendix_b.html#sec-apendice-bootstrap" class="quarto-xref"><span>Sección B.1</span></a>, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio</p>
 </section>
+<section id="resultados-empíricos-de-la-cuantificación-de-incertidumbre" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="resultados-empíricos-de-la-cuantificación-de-incertidumbre"><span class="header-section-number">3.8.3</span> Resultados empíricos de la cuantificación de incertidumbre</h3>
+<p>La aplicación del block bootstrap con <span class="math inline">\(B = 200\)</span> réplicas generó intervalos de confianza del 90% (<span class="math inline">\(p_{05}\)</span>–<span class="math inline">\(p_{95}\)</span>) para cada variable meteorológica en los 15 segmentos espaciales de la ruta Aeropuerto → Protección Civil. Los resultados principales se resumen en la Tabla 4.1.</p>
+</section>
 </section>
 <section id="sec-drones" class="level2" data-number="3.9">
 <h2 data-number="3.9" class="anchored" data-anchor-id="sec-drones"><span class="header-section-number">3.9</span> Decisión para operaciones con drones: variables de estado, umbrales y función de decisión</h2>

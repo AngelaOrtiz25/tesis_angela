@@ -1263,7 +1263,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, colback=white, colframe=quarto-callout-note-color-frame, titlerule=0mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, breakable, leftrule=.75mm, coltitle=black, bottomtitle=1mm, toptitle=1mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, bottomrule=.15mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, arc=.35mm, toptitle=1mm, left=2mm, breakable, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, leftrule=.75mm, toprule=.15mm, coltitle=black, rightrule=.15mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0]
 
 \textbf{Características operativas de la ruta}
 
@@ -2963,6 +2963,15 @@ Sección~\ref{sec-apendice-bootstrap}, donde se presentan las funciones
 principales del algoritmo. El código completo está disponible en el
 repositorio
 
+\subsection{Resultados empíricos de la cuantificación de
+incertidumbre}\label{resultados-empuxedricos-de-la-cuantificaciuxf3n-de-incertidumbre}
+
+La aplicación del block bootstrap con \(B = 200\) réplicas generó
+intervalos de confianza del 90\% (\(p_{05}\)--\(p_{95}\)) para cada
+variable meteorológica en los 15 segmentos espaciales de la ruta
+Aeropuerto → Protección Civil. Los resultados principales se resumen en
+la Tabla 4.1.
+
 \section{Decisión para operaciones con drones: variables de estado,
 umbrales y función de decisión}\label{sec-drones}
 
@@ -3041,6 +3050,22 @@ Chiapas}\label{sec-apendice-municipios}
 
 El presente estudio consideró los siguientes 124 municipios del estado
 de Chiapas:
+
+\chapter{Apéndice}\label{apuxe9ndice-1}
+
+\section{Lista de municipios del estado de
+Chiapas}\label{sec-apendice-municipios}
+
+El presente estudio consideró los siguientes 124 municipios del estado
+de Chiapas:
+
+\begin{figure}
+
+\begin{minipage}{0.33\linewidth}
+
+\end{minipage}%
+%
+\begin{minipage}{0.33\linewidth}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3129,12 +3154,6 @@ de Chiapas:
   Honduras de la Sierra
 \item
   Huehuetán
-\end{enumerate}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{42}
-\tightlist
 \item
   Huitiupán
 \item
@@ -3301,7 +3320,11 @@ de Chiapas:
   Zinacantán
 \end{enumerate}
 
-\chapter{Apéndice}\label{apuxe9ndice-1}
+\end{minipage}%
+
+\end{figure}%
+
+\chapter{Apéndice}\label{apuxe9ndice-2}
 
 \section{Implementación computacional del block
 bootstrap}\label{sec-apendice-bootstrap}
@@ -3322,9 +3345,9 @@ optimizado para series con muestreo \(\Delta t = 10\) minutos:
 \CommentTok{    Parámetros:}
 \CommentTok{    {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
 \CommentTok{    df\_segments\_smooth : DataFrame}
-\CommentTok{        Serie temporal suavizada por segmentos (filas=tiempo, columnas=segmentos)}
+\CommentTok{     Serie temporal suavizada por segmentos (filas=tiempo, columnas=segmentos)}
 \CommentTok{    seg\_positions : array}
-\CommentTok{        Posiciones centroidales de los segmentos espaciales (metros)}
+\CommentTok{     Posiciones centroidales de los segmentos espaciales (metros)}
 \CommentTok{    B : int}
 \CommentTok{        Número de réplicas bootstrap (default: 200)}
 \CommentTok{    block\_minutes : int}
@@ -3363,7 +3386,7 @@ optimizado para series con muestreo \(\Delta t = 10\) minutos:
             \CommentTok{\# Reestimar velocidad (para viento)}
 \NormalTok{            v\_boot }\OperatorTok{=}\NormalTok{ estimate\_advection\_velocity(M\_boot, seg\_positions)}
         \ControlFlowTok{else}\NormalTok{:}
-            \CommentTok{\# Usar velocidad fija (para temperatura, humedad, precipitación)}
+            \CommentTok{\# Usar velocidad fija para temperatura, humedad, precipitación}
 \NormalTok{            v\_boot }\OperatorTok{=}\NormalTok{ v\_advection}
         
         \CommentTok{\# Generar pronóstico para cada segmento}
