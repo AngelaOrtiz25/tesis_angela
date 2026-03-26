@@ -148,6 +148,7 @@ El presente estudio consideró los siguientes 124 municipios del estado de Chiap
 
 ::: {.content-visible when-format="pdf"}
 
+```{=latex}
 \begin{multicols}{3}
 
 1. Acacoyagua
@@ -276,5 +277,5 @@ El presente estudio consideró los siguientes 124 municipios del estado de Chiap
 124. Zinacantán
 
 \end{multicols}
-
+```
 :::
