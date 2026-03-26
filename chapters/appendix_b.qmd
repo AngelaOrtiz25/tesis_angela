@@ -15,9 +15,10 @@ def block_bootstrap_forecasts(df_segments_smooth, seg_positions,
     Parámetros:
     -----------
     df_segments_smooth : DataFrame
-     Serie temporal suavizada por segmentos (filas=tiempo, columnas=segmentos)
+        Serie temporal suavizada por segmentos
+        (filas=tiempo, columnas=segmentos)
     seg_positions : array
-     Posiciones centroidales de los segmentos espaciales (metros)
+        Posiciones centroidales de los segmentos espaciales (metros)
     B : int
         Número de réplicas bootstrap (default: 200)
     block_minutes : int

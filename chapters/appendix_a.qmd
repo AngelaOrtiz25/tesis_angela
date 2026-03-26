@@ -8,8 +8,13 @@ El presente estudio consideró los siguientes 124 municipios del estado de Chiap
 
 El presente estudio consideró los siguientes 124 municipios del estado de Chiapas:
 
-::: {layout="[[33,33,33], [50,50]]" layout-ncol="3"}
-<!-- En HTML: 3 columnas; en PDF: 2 columnas -->
+# Apéndice {.appendix}
+## Lista de municipios del estado de Chiapas {#sec-apendice-municipios}
+
+El presente estudio consideró los siguientes 124 municipios del estado de Chiapas:
+
+::: {.columns}
+::: {.column width="33%"}
 1. Acacoyagua
 2. Acala
 3. Acapetahua
@@ -52,6 +57,9 @@ El presente estudio consideró los siguientes 124 municipios del estado de Chiap
 40. Frontera Hidalgo
 41. Honduras de la Sierra
 42. Huehuetán
+:::
+
+::: {.column width="33%"}
 43. Huitiupán
 44. Huixtán
 45. Huixtla
@@ -96,6 +104,9 @@ El presente estudio consideró los siguientes 124 municipios del estado de Chiap
 84. Rayón
 85. Reforma
 86. Rincón Chamula San Pedro
+:::
+
+::: {.column width="33%"}
 87. Sabanilla
 88. Salto de Agua
 89. San Andrés Duraznal
@@ -134,5 +145,5 @@ El presente estudio consideró los siguientes 124 municipios del estado de Chiap
 122. Villaflores
 123. Yajalón
 124. Zinacantán
-
+:::
 :::
