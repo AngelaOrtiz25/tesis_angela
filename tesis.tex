@@ -1263,7 +1263,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, arc=.35mm, toptitle=1mm, left=2mm, breakable, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, leftrule=.75mm, toprule=.15mm, coltitle=black, rightrule=.15mm, bottomtitle=1mm, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, coltitle=black, bottomtitle=1mm, colback=white, toprule=.15mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, left=2mm, arc=.35mm, titlerule=0mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -2969,8 +2969,8 @@ incertidumbre}\label{resultados-empuxedricos-de-la-cuantificaciuxf3n-de-incertid
 La aplicación del block bootstrap con \(B = 200\) réplicas generó
 intervalos de confianza del 90\% (\(p_{05}\)--\(p_{95}\)) para cada
 variable meteorológica en los 15 segmentos espaciales de la ruta
-Aeropuerto → Protección Civil. Los resultados principales se resumen en
-la Tabla 4.1.
+Aeropuerto hacia Protección Civil. Los resultados principales se resumen
+en la Tabla 4.1.
 
 \section{Decisión para operaciones con drones: variables de estado,
 umbrales y función de decisión}\label{sec-drones}
@@ -3050,22 +3050,6 @@ Chiapas}\label{sec-apendice-municipios}
 
 El presente estudio consideró los siguientes 124 municipios del estado
 de Chiapas:
-
-\chapter{Apéndice}\label{apuxe9ndice-1}
-
-\section{Lista de municipios del estado de
-Chiapas}\label{sec-apendice-municipios}
-
-El presente estudio consideró los siguientes 124 municipios del estado
-de Chiapas:
-
-\begin{figure}
-
-\begin{minipage}{0.33\linewidth}
-
-\end{minipage}%
-%
-\begin{minipage}{0.33\linewidth}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3154,6 +3138,12 @@ de Chiapas:
   Honduras de la Sierra
 \item
   Huehuetán
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{42}
+\tightlist
 \item
   Huitiupán
 \item
@@ -3242,6 +3232,12 @@ de Chiapas:
   Reforma
 \item
   Rincón Chamula San Pedro
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{86}
+\tightlist
 \item
   Sabanilla
 \item
@@ -3320,11 +3316,7 @@ de Chiapas:
   Zinacantán
 \end{enumerate}
 
-\end{minipage}%
-
-\end{figure}%
-
-\chapter{Apéndice}\label{apuxe9ndice-2}
+\chapter{Apéndice}\label{apuxe9ndice-1}
 
 \section{Implementación computacional del block
 bootstrap}\label{sec-apendice-bootstrap}
@@ -3345,9 +3337,10 @@ optimizado para series con muestreo \(\Delta t = 10\) minutos:
 \CommentTok{    Parámetros:}
 \CommentTok{    {-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
 \CommentTok{    df\_segments\_smooth : DataFrame}
-\CommentTok{     Serie temporal suavizada por segmentos (filas=tiempo, columnas=segmentos)}
+\CommentTok{        Serie temporal suavizada por segmentos}
+\CommentTok{        (filas=tiempo, columnas=segmentos)}
 \CommentTok{    seg\_positions : array}
-\CommentTok{     Posiciones centroidales de los segmentos espaciales (metros)}
+\CommentTok{        Posiciones centroidales de los segmentos espaciales (metros)}
 \CommentTok{    B : int}
 \CommentTok{        Número de réplicas bootstrap (default: 200)}
 \CommentTok{    block\_minutes : int}
