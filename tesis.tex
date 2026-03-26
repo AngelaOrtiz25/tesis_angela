@@ -214,7 +214,7 @@
     };
   \end{tikzpicture}
 }
-\usepackage{graphicx} \usepackage{float} \usepackage{amsmath}
+\usepackage{multicol} \usepackage{graphicx} \usepackage{float} \usepackage{amsmath}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
@@ -1263,7 +1263,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, bottomrule=.15mm, breakable, coltitle=black, bottomtitle=1mm, colback=white, toprule=.15mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, left=2mm, arc=.35mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, opacitybacktitle=0.6, rightrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, left=2mm, titlerule=0mm, bottomrule=.15mm, coltitle=black, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, arc=.35mm, bottomtitle=1mm, opacityback=0, breakable, colframe=quarto-callout-note-color-frame]
 
 \textbf{Características operativas de la ruta}
 
@@ -3051,270 +3051,134 @@ Chiapas}\label{sec-apendice-municipios}
 El presente estudio consideró los siguientes 124 municipios del estado
 de Chiapas:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Acacoyagua
-\item
-  Acala
-\item
-  Acapetahua
-\item
-  Aldama
-\item
-  Altamirano
-\item
-  Amatán
-\item
-  Amatenango de la Frontera
-\item
-  Amatenango del Valle
-\item
-  Ángel Albino Corzo
-\item
-  Arriaga
-\item
-  Bejucal de Ocampo
-\item
-  Bella Vista
-\item
-  Benemérito de las Américas
-\item
-  Berriozábal
-\item
-  Bochil
-\item
-  Cacahoatán
-\item
-  Capitán Luis Ángel Vidal
-\item
-  Catazajá
-\item
-  Chalchihuitán
-\item
-  Chamula
-\item
-  Chanal
-\item
-  Chapultenango
-\item
-  Chenalhó
-\item
-  Chiapa de Corzo
-\item
-  Chiapilla
-\item
-  Chicoasén
-\item
-  Chicomuselo
-\item
-  Chilón
-\item
-  Cintalapa de Figueroa
-\item
-  Coapilla
-\item
-  Comitán de Domínguez
-\item
-  Copainalá
-\item
-  El Bosque
-\item
-  El Parral
-\item
-  El Porvenir
-\item
-  Emiliano Zapata
-\item
-  Escuintla
-\item
-  Francisco León
-\item
-  Frontera Comalapa
-\item
-  Frontera Hidalgo
-\item
-  Honduras de la Sierra
-\item
-  Huehuetán
-\end{enumerate}
+\begin{multicols}{3}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{42}
-\tightlist
-\item
-  Huitiupán
-\item
-  Huixtán
-\item
-  Huixtla
-\item
-  Ixhuatán
-\item
-  Ixtacomitán
-\item
-  Ixtapa
-\item
-  Ixtapangajoya
-\item
-  Jiquipilas
-\item
-  Jitotol
-\item
-  Juárez
-\item
-  La Concordia
-\item
-  La Grandeza
-\item
-  La Independencia
-\item
-  La Libertad
-\item
-  La Trinitaria
-\item
-  Larráinzar
-\item
-  Las Margaritas
-\item
-  Las Rosas
-\item
-  Mapastepec
-\item
-  Maravilla Tenejapa
-\item
-  Marqués de Comillas
-\item
-  Mazapa de Madero
-\item
-  Mazatán
-\item
-  Metapa
-\item
-  Mezcalapa
-\item
-  Mitontic
-\item
-  Montecristo de Guerrero
-\item
-  Motozintla
-\item
-  Nicolás Ruíz
-\item
-  Ocosingo
-\item
-  Ocotepec
-\item
-  Ocozocoautla de Espinosa
-\item
-  Ostuacán
-\item
-  Osumacinta
-\item
-  Oxchuc
-\item
-  Palenque
-\item
-  Pantelhó
-\item
-  Pantepec
-\item
-  Pichucalco
-\item
-  Pijijiapan
-\item
-  Pueblo Nuevo Solistahuacán
-\item
-  Rayón
-\item
-  Reforma
-\item
-  Rincón Chamula San Pedro
-\end{enumerate}
+1. Acacoyagua
+2. Acala
+3. Acapetahua
+4. Aldama
+5. Altamirano
+6. Amatán
+7. Amatenango de la Frontera
+8. Amatenango del Valle
+9. Ángel Albino Corzo
+10. Arriaga
+11. Bejucal de Ocampo
+12. Bella Vista
+13. Benemérito de las Américas
+14. Berriozábal
+15. Bochil
+16. Cacahoatán
+17. Capitán Luis Ángel Vidal
+18. Catazajá
+19. Chalchihuitán
+20. Chamula
+21. Chanal
+22. Chapultenango
+23. Chenalhó
+24. Chiapa de Corzo
+25. Chiapilla
+26. Chicoasén
+27. Chicomuselo
+28. Chilón
+29. Cintalapa de Figueroa
+30. Coapilla
+31. Comitán de Domínguez
+32. Copainalá
+33. El Bosque
+34. El Parral
+35. El Porvenir
+36. Emiliano Zapata
+37. Escuintla
+38. Francisco León
+39. Frontera Comalapa
+40. Frontera Hidalgo
+41. Honduras de la Sierra
+42. Huehuetán
+43. Huitiupán
+44. Huixtán
+45. Huixtla
+46. Ixhuatán
+47. Ixtacomitán
+48. Ixtapa
+49. Ixtapangajoya
+50. Jiquipilas
+51. Jitotol
+52. Juárez
+53. La Concordia
+54. La Grandeza
+55. La Independencia
+56. La Libertad
+57. La Trinitaria
+58. Larráinzar
+59. Las Margaritas
+60. Las Rosas
+61. Mapastepec
+62. Maravilla Tenejapa
+63. Marqués de Comillas
+64. Mazapa de Madero
+65. Mazatán
+66. Metapa
+67. Mezcalapa
+68. Mitontic
+69. Montecristo de Guerrero
+70. Motozintla
+71. Nicolás Ruíz
+72. Ocosingo
+73. Ocotepec
+74. Ocozocoautla de Espinosa
+75. Ostuacán
+76. Osumacinta
+77. Oxchuc
+78. Palenque
+79. Pantelhó
+80. Pantepec
+81. Pichucalco
+82. Pijijiapan
+83. Pueblo Nuevo Solistahuacán
+84. Rayón
+85. Reforma
+86. Rincón Chamula San Pedro
+87. Sabanilla
+88. Salto de Agua
+89. San Andrés Duraznal
+90. San Cristóbal de las Casas
+91. San Fernando
+92. San Juan Cancuc
+93. San Lucas
+94. Santiago el Pinar
+95. Siltepec
+96. Simojovel
+97. Sitalá
+98. Socoltenango
+99. Solosuchiapa
+100. Soyaló
+101. Suchiapa
+102. Suchiate
+103. Sunuapa
+104. Tapachula
+105. Tapalapa
+106. Tapilula
+107. Tecpatán
+108. Tenejapa
+109. Teopisca
+110. Tila
+111. Tonalá
+112. Totolapa
+113. Tumbalá
+114. Tuxtla Chico
+115. Tuxtla Gutiérrez
+116. Tuzantán
+117. Tzimol
+118. Unión Juárez
+119. Venustiano Carranza
+120. Villa Comaltitlán
+121. Villa Corzo
+122. Villaflores
+123. Yajalón
+124. Zinacantán
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{86}
-\tightlist
-\item
-  Sabanilla
-\item
-  Salto de Agua
-\item
-  San Andrés Duraznal
-\item
-  San Cristóbal de las Casas
-\item
-  San Fernando
-\item
-  San Juan Cancuc
-\item
-  San Lucas
-\item
-  Santiago el Pinar
-\item
-  Siltepec
-\item
-  Simojovel
-\item
-  Sitalá
-\item
-  Socoltenango
-\item
-  Solosuchiapa
-\item
-  Soyaló
-\item
-  Suchiapa
-\item
-  Suchiate
-\item
-  Sunuapa
-\item
-  Tapachula
-\item
-  Tapalapa
-\item
-  Tapilula
-\item
-  Tecpatán
-\item
-  Tenejapa
-\item
-  Teopisca
-\item
-  Tila
-\item
-  Tonalá
-\item
-  Totolapa
-\item
-  Tumbalá
-\item
-  Tuxtla Chico
-\item
-  Tuxtla Gutiérrez
-\item
-  Tuzantán
-\item
-  Tzimol
-\item
-  Unión Juárez
-\item
-  Venustiano Carranza
-\item
-  Villa Comaltitlán
-\item
-  Villa Corzo
-\item
-  Villaflores
-\item
-  Yajalón
-\item
-  Zinacantán
-\end{enumerate}
+\end{multicols}
 
 \chapter{Apéndice}\label{apuxe9ndice-1}
 
