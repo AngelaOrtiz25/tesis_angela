@@ -37,7 +37,7 @@ book:
     - references.qmd
   appendices:
     - chapters/appendix_a.qmd
-
+    - chapters/appendix_b.qmd
 comments:
   hypothesis: true
 

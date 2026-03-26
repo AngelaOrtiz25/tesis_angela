@@ -1223,7 +1223,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, leftrule=.75mm, bottomrule=.15mm, coltitle=black, arc=.35mm, bottomtitle=1mm, opacityback=0, colframe=quarto-callout-note-color-frame, left=2mm, rightrule=.15mm, breakable, opacitybacktitle=0.6, titlerule=0mm, toprule=.15mm, colback=white, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, bottomrule=.15mm, colback=white, breakable, left=2mm, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, coltitle=black, opacitybacktitle=0.6, leftrule=.75mm, arc=.35mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, toprule=.15mm, opacityback=0]
 
 \textbf{Características operativas de la ruta}
 
@@ -2791,27 +2791,7 @@ decisión multicriterio descrito en la Sección~\ref{sec-drones} ,
 proporcionando una evaluación cuantitativa de su impacto en la
 viabilidad operativa de las misiones con drones.
 
-\section{Cuantificación de la incertidumbre mediante block
-bootstrap}\label{cuantificaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap}
-
-El pronóstico de variables meteorológicas a corto plazo está
-inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido
-de medición, variabilidad atmosférica intrínseca, error de modelo y
-parámetros estimados con error. Para cuantificar esta incertidumbre de
-manera rigurosa en el contexto de operaciones con drones, se emplea el
-método de \textbf{block bootstrap temporal}, una técnica de remuestreo
-especialmente diseñada para series temporales con dependencia serial.
-
-A diferencia del bootstrap estándar, que asume independencia entre
-observaciones, el block bootstrap preserva la estructura de correlación
-temporal al remuestrear bloques contiguos de datos en lugar de
-observaciones individuales. Esta propiedad resulta esencial para
-variables meteorológicas muestreadas cada \(\Delta t = 10\) minutos
-durante un período de 7 días (\(T = 1\,008\) observaciones), donde la
-dependencia temporal constituye una característica estructural del
-sistema atmosférico.
-
-\section{Formulación matemática del block bootstrap
+\subsection{Formulación matemática del block bootstrap
 adaptado}\label{formulaciuxf3n-matemuxe1tica-del-block-bootstrap-adaptado}
 
 Sea \(\{y_i(t_k)\}_{k=1}^T\) la serie temporal observada correspondiente
@@ -2819,7 +2799,7 @@ al segmento espacial \(i\), donde \(t_k = k \cdot \Delta t\) representa
 el instante de muestreo. El procedimiento de block bootstrap se define
 formalmente como sigue:
 
-\subsection{Definición de parámetros
+\subsubsection{Definición de parámetros
 operativos}\label{definiciuxf3n-de-paruxe1metros-operativos}
 
 \begin{itemize}
@@ -2837,7 +2817,7 @@ operativos}\label{definiciuxf3n-de-paruxe1metros-operativos}
   Bloque \(k\)-ésimo de observaciones contiguas
 \end{itemize}
 
-\subsection{Algoritmo de generación de
+\subsubsection{Algoritmo de generación de
 réplicas}\label{algoritmo-de-generaciuxf3n-de-ruxe9plicas}
 
 Para cada réplica bootstrap \(b = 1, \dots, B\):
@@ -2873,7 +2853,7 @@ Este procedimiento produce una distribución empírica de pronósticos: \[
 \mathcal{D}_i = \{\hat{y}_i^{(1)}(t+H), \hat{y}_i^{(2)}(t+H), \dots, \hat{y}_i^{(B)}(t+H)\}
 \]
 
-\section{Selección adaptativa de la longitud del
+\subsection{Selección adaptativa de la longitud del
 bloque}\label{selecciuxf3n-adaptativa-de-la-longitud-del-bloque}
 
 La elección de la longitud del bloque \(L\) constituye un compromiso

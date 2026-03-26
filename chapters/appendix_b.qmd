@@ -1,0 +1,75 @@
+# Apéndice {.appendix}
+
+## Implementación computacional del block bootstrap {#sec-apendice-bootstrap}
+La implementación del block bootstrap sigue el siguiente algoritmo optimizado para series con muestreo $\Delta t = 10$ minutos:
+
+```python
+#| echo: true
+#| eval: false
+def block_bootstrap_forecasts(df_segments_smooth, seg_positions, 
+                              B=200, block_minutes=60, 
+                              sampling_min=10, v_advection=None):
+    """
+    Genera intervalos de confianza mediante block bootstrap temporal.
+    
+    Parámetros:
+    -----------
+    df_segments_smooth : DataFrame
+        Serie temporal suavizada por segmentos (filas=tiempo, columnas=segmentos)
+    seg_positions : array
+        Posiciones centroidales de los segmentos espaciales (metros)
+    B : int
+        Número de réplicas bootstrap (default: 200)
+    block_minutes : int
+        Longitud del bloque en minutos (default: 60)
+    sampling_min : int
+        Intervalo de muestreo en minutos (default: 10)
+    v_advection : float
+        Velocidad de advección fija (None para reestimar en cada réplica)
+    
+    Retorna:
+    --------
+    boot_forecasts : ndarray (B x N)
+        Matriz de pronósticos bootstrap para cada réplica y segmento
+    """
+    n = df_segments_smooth.shape[0]  # número de observaciones temporales
+    block_size = max(1, int(block_minutes / sampling_min))
+    n_blocks = int(np.ceil(n / block_size))
+    boot_forecasts = np.zeros((B, len(seg_positions)))
+    rng = np.random.default_rng(12345)  # semilla para reproducibilidad
+    
+    for b in range(B):
+        # Remuestreo de bloques con reemplazo
+        idx_blocks = rng.integers(0, n_blocks, size=n_blocks)
+        indices = []
+        for bl in idx_blocks:
+            start = bl * block_size
+            end = min(n, start + block_size)
+            indices.extend(list(range(start, end)))
+        idxs = np.array(indices)[:n]  # ajustar a longitud exacta
+        
+        # Construir serie bootstrap
+        M_boot = df_segments_smooth.iloc[idxs, :].reset_index(drop=True)
+        
+        # Determinar velocidad de advección para esta réplica
+        if v_advection is None:
+            # Reestimar velocidad (para viento)
+            v_boot = estimate_advection_velocity(M_boot, seg_positions)
+        else:
+            # Usar velocidad fija (para temperatura, humedad, precipitación)
+            v_boot = v_advection
+        
+        # Generar pronóstico para cada segmento
+        last_vals_boot = M_boot.iloc[-1, :].values
+        for i in range(len(seg_positions)):
+            boot_forecasts[b, i] = advective_forecast(
+                segment_idx=i,
+                last_value=last_vals_boot[i],
+                positions=seg_positions,
+                data_matrix=M_boot,
+                velocity=v_boot,
+                horizon_minutes=60
+            )
+    
+    return boot_forecasts
+```  

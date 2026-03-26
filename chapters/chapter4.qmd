@@ -958,6 +958,11 @@ La aplicación del modelo advectivo a la precipitación presenta las siguientes 
 
 Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la @sec-drones  , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
 
+## Cuantificación de la incertidumbre mediante block bootstrap
+El pronóstico de variables meteorológicas a corto plazo está inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido de medición, variabilidad atmosférica intrínseca, error de modelo y parámetros estimados con error. Para cuantificar esta incertidumbre de manera rigurosa en el contexto de operaciones con drones, se emplea el método de **block bootstrap temporal**, una técnica de remuestreo especialmente diseñada para series temporales con dependencia serial.
+
+A diferencia del bootstrap estándar, que asume independencia entre observaciones, el block bootstrap preserva la estructura de correlación temporal al remuestrear bloques contiguos de datos en lugar de observaciones individuales. Esta propiedad resulta esencial para variables meteorológicas muestreadas cada $\Delta t = 10$ minutos durante un período de 7 días, donde la dependencia temporal es una característica estructural del sistema.
+
 ### Formulación matemática del block bootstrap adaptado
 
 Sea $\{y_i(t_k)\}_{k=1}^T$ la serie temporal observada correspondiente al segmento espacial $i$, donde $t_k = k \cdot \Delta t$ representa el instante de muestreo. El procedimiento de block bootstrap se define formalmente como sigue:
@@ -979,8 +984,8 @@ Para cada réplica bootstrap $b = 1, \dots, B$:
    $$
 
 2. **Construcción de la réplica**: Los bloques seleccionados se concatenan secuencialmente para formar la serie temporal bootstrap:
-   $$
-   \{y_i^{(b)}(t)\}_{t=1}^{KL/\Delta t} = \bigoplus_{m=1}^K \mathcal{B}_{k_m^{(b)}}
+    $$
+   \{y_i^{(b)}(t)\}_{t=1}^{KL/\Delta t} = \mathcal{B}_1^{(b)} \oplus \mathcal{B}_2^{(b)} \oplus \dots \oplus \mathcal{B}_K^{(b)}
    $$
    donde $\oplus$ denota la operación de concatenación.
 
@@ -1010,7 +1015,10 @@ La elección de la longitud del bloque $L$ constituye un compromiso entre preser
 
 Esta adaptación refleja que la escala temporal de correlación varía significativamente entre diferentes variables atmosféricas, y que bloques más largos son necesarios para variables con mayor inercia física. En la implementación, la longitud de bloque se especifica como parámetro al llamar a la función `block_bootstrap_forecasts()`, permitiendo así adaptar el método a las características de cada variable meteorológica.
 
-La implementación computacional del método se detalla en el Apéndice A, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio
+La implementación computacional del método se detalla en el @sec-apendice-bootstrap, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio
+
+
+
 
 
 
