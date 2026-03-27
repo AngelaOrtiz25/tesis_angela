@@ -956,7 +956,7 @@ La aplicación del modelo advectivo a la precipitación presenta las siguientes 
 
 4. **Consistencia física**: El modelo respeta la ecuación de advección unidimensional que gobierna el transporte de estructuras precipitantes en la atmósfera.
 
-Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la @sec-drones  , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
+Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la @sec-drones, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
 
 ## Cuantificación de la incertidumbre mediante block bootstrap
 El pronóstico de variables meteorológicas a corto plazo está inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido de medición, variabilidad atmosférica intrínseca, error de modelo y parámetros estimados con error. Para cuantificar esta incertidumbre de manera rigurosa en el contexto de operaciones con drones, se emplea el método de **block bootstrap temporal**, una técnica de remuestreo especialmente diseñada para series temporales con dependencia serial.
@@ -1112,7 +1112,7 @@ $$
 Esta aproximación asegura que la decisión operacional sea robusta frente a la variabilidad no modelada y los errores de pronóstico, priorizando la seguridad de la aeronave y la integridad de la carga humanitaria sobre la eficiencia operativa inmediata.
 
 
-## Decisión para operaciones con drones: variables de estado, umbrales y función de decisión {#sec-drones }
+## Decisión para operaciones con drones: variables de estado, umbrales y función de decisión {#sec-drones}
 
 La cuantificación de incertidumbre desarrollada en la Sección 4.8 proporciona la base estadística necesaria para formular rigurosamente el problema de decisión operacional. En esta sección se establece el marco de **teoría de decisión bajo incertidumbre** que transforma los pronósticos meteorológicos en recomendaciones operativas binarias para el vuelo del dron, implementando una política conservadora de tolerancia cero frente a condiciones adversas.
 
@@ -1419,18 +1419,6 @@ $$
 donde $w_i = \pi_i / \sum_j \pi_j$ son pesos normalizados basados en los scores PageRank de cada municipio.
 
 Esta formulación permite identificar centros de distribución secundarios que puedan activarse cuando las condiciones meteorológicas impidan el vuelo hacia Protección Civil principal, incrementando la resiliencia del sistema logístico.
-
-### Sensibilidad frente a condiciones meteorológicas adversas
-
-La robustez del sistema integrado se evalúa mediante un análisis de sensibilidad frente a la degradación de las condiciones meteorológicas. Sea $\theta \in [0,1]$ un parámetro de severidad meteorológica, donde $\theta = 0$ representa condiciones óptimas y $\theta = 1$ condiciones extremas. La probabilidad de vuelo operativo se modela como:
-
-$$
-p_{\text{vuelo}}(\theta) = p_0 \cdot (1 - \theta)^\kappa,
-$$
-
-con $p_0 = 0.94$ (probabilidad base) y $\kappa = 2.5$ (factor de sensibilidad empírico).
-
-La  ilustra la relación entre severidad meteorológica y eficiencia logística normalizada. Se observa que el sistema mantiene eficiencia superior al 80% para $\theta < 0.4$, degradándose gradualmente para condiciones más adversas. Esta característica es deseable, ya que refleja una transición suave entre modos operativos en lugar de fallos catastróficos.
 
 ### Integración computacional del sistema
 
