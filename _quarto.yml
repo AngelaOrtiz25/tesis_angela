@@ -51,7 +51,8 @@ crossref:
   fig-prefix: "Figura"
   tbl-prefix: "Tabla"
   sec-prefix: "Sección"
-  apx-prefix: "Apéndice"
+  appendix: 
+    prefix: "Apéndice"
 
 fig-cap-location: bottom
 tbl-cap-location: top
