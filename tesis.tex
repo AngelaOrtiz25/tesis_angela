@@ -1263,7 +1263,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, breakable, bottomtitle=1mm, left=2mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, colback=white, toprule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, toptitle=1mm, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, breakable, opacityback=0, bottomtitle=1mm, bottomrule=.15mm, colback=white, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, leftrule=.75mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, opacitybacktitle=0.6]
 
 \textbf{Características operativas de la ruta}
 
@@ -2827,7 +2827,7 @@ siguientes características distintivas:
 \end{enumerate}
 
 Esta formulación permite integrar la precipitación en el sistema de
-decisión multicriterio descrito en la Sección~\ref{sec-drones} ,
+decisión multicriterio descrito en la Sección~\ref{sec-drones},
 proporcionando una evaluación cuantitativa de su impacto en la
 viabilidad operativa de las misiones con drones.
 
@@ -3888,29 +3888,6 @@ Esta formulación permite identificar centros de distribución secundarios
 que puedan activarse cuando las condiciones meteorológicas impidan el
 vuelo hacia Protección Civil principal, incrementando la resiliencia del
 sistema logístico.
-
-\subsection{Sensibilidad frente a condiciones meteorológicas
-adversas}\label{sensibilidad-frente-a-condiciones-meteoroluxf3gicas-adversas}
-
-La robustez del sistema integrado se evalúa mediante un análisis de
-sensibilidad frente a la degradación de las condiciones meteorológicas.
-Sea \(\theta \in [0,1]\) un parámetro de severidad meteorológica, donde
-\(\theta = 0\) representa condiciones óptimas y \(\theta = 1\)
-condiciones extremas. La probabilidad de vuelo operativo se modela como:
-
-\[
-p_{\text{vuelo}}(\theta) = p_0 \cdot (1 - \theta)^\kappa,
-\]
-
-con \(p_0 = 0.94\) (probabilidad base) y \(\kappa = 2.5\) (factor de
-sensibilidad empírico).
-
-La ilustra la relación entre severidad meteorológica y eficiencia
-logística normalizada. Se observa que el sistema mantiene eficiencia
-superior al 80\% para \(\theta < 0.4\), degradándose gradualmente para
-condiciones más adversas. Esta característica es deseable, ya que
-refleja una transición suave entre modos operativos en lugar de fallos
-catastróficos.
 
 \subsection{Integración computacional del
 sistema}\label{integraciuxf3n-computacional-del-sistema}

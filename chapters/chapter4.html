@@ -1223,7 +1223,7 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 <li><p><strong>Conservadurismo operativo</strong>: La ponderación adaptativa prioriza la seguridad mediante una estrategia conservadora durante transiciones entre estados secos y húmedos.</p></li>
 <li><p><strong>Consistencia física</strong>: El modelo respeta la ecuación de advección unidimensional que gobierna el transporte de estructuras precipitantes en la atmósfera.</p></li>
 </ol>
-<p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span>Sección 3.9</span></a> , proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
+<p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span>Sección 3.9</span></a>, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
 </section>
 </section>
 <section id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap" class="level2" data-number="3.8">
@@ -2165,17 +2165,8 @@ Tabla&nbsp;3.7: Comparación de eficiencia logística entre escenarios operativo
 <p>donde <span class="math inline">\(w_i = \pi_i / \sum_j \pi_j\)</span> son pesos normalizados basados en los scores PageRank de cada municipio.</p>
 <p>Esta formulación permite identificar centros de distribución secundarios que puedan activarse cuando las condiciones meteorológicas impidan el vuelo hacia Protección Civil principal, incrementando la resiliencia del sistema logístico.</p>
 </section>
-<section id="sensibilidad-frente-a-condiciones-meteorológicas-adversas" class="level3" data-number="3.10.5">
-<h3 data-number="3.10.5" class="anchored" data-anchor-id="sensibilidad-frente-a-condiciones-meteorológicas-adversas"><span class="header-section-number">3.10.5</span> Sensibilidad frente a condiciones meteorológicas adversas</h3>
-<p>La robustez del sistema integrado se evalúa mediante un análisis de sensibilidad frente a la degradación de las condiciones meteorológicas. Sea <span class="math inline">\(\theta \in [0,1]\)</span> un parámetro de severidad meteorológica, donde <span class="math inline">\(\theta = 0\)</span> representa condiciones óptimas y <span class="math inline">\(\theta = 1\)</span> condiciones extremas. La probabilidad de vuelo operativo se modela como:</p>
-<p><span class="math display">\[
-p_{\text{vuelo}}(\theta) = p_0 \cdot (1 - \theta)^\kappa,
-\]</span></p>
-<p>con <span class="math inline">\(p_0 = 0.94\)</span> (probabilidad base) y <span class="math inline">\(\kappa = 2.5\)</span> (factor de sensibilidad empírico).</p>
-<p>La ilustra la relación entre severidad meteorológica y eficiencia logística normalizada. Se observa que el sistema mantiene eficiencia superior al 80% para <span class="math inline">\(\theta &lt; 0.4\)</span>, degradándose gradualmente para condiciones más adversas. Esta característica es deseable, ya que refleja una transición suave entre modos operativos en lugar de fallos catastróficos.</p>
-</section>
-<section id="integración-computacional-del-sistema" class="level3" data-number="3.10.6">
-<h3 data-number="3.10.6" class="anchored" data-anchor-id="integración-computacional-del-sistema"><span class="header-section-number">3.10.6</span> Integración computacional del sistema</h3>
+<section id="integración-computacional-del-sistema" class="level3" data-number="3.10.5">
+<h3 data-number="3.10.5" class="anchored" data-anchor-id="integración-computacional-del-sistema"><span class="header-section-number">3.10.5</span> Integración computacional del sistema</h3>
 <p>La implementación del sistema integrado requiere la coordinación de múltiples módulos computacionales:</p>
 <ol type="1">
 <li><p><strong>Módulo de adquisición de datos</strong>: Ingesta de observaciones meteorológicas en tiempo real desde estaciones terrestres y fuentes satelitales.</p></li>
@@ -2186,8 +2177,8 @@ p_{\text{vuelo}}(\theta) = p_0 \cdot (1 - \theta)^\kappa,
 </ol>
 <p>La arquitectura del sistema sigue un patrón de <strong>pipeline secuencial</strong>, donde la salida de cada módulo constituye la entrada del siguiente. Esta estructura garantiza trazabilidad completa y permite la auditoría de cada componente individualmente.</p>
 </section>
-<section id="consideraciones-de-escalabilidad" class="level3" data-number="3.10.7">
-<h3 data-number="3.10.7" class="anchored" data-anchor-id="consideraciones-de-escalabilidad"><span class="header-section-number">3.10.7</span> Consideraciones de escalabilidad</h3>
+<section id="consideraciones-de-escalabilidad" class="level3" data-number="3.10.6">
+<h3 data-number="3.10.6" class="anchored" data-anchor-id="consideraciones-de-escalabilidad"><span class="header-section-number">3.10.6</span> Consideraciones de escalabilidad</h3>
 <p>El sistema propuesto presenta las siguientes propiedades de escalabilidad:</p>
 <ol type="1">
 <li><p><strong>Complejidad computacional</strong>: El algoritmo PageRank tiene complejidad <span class="math inline">\(\mathcal{O}(N \cdot \text{iter})\)</span>, donde <span class="math inline">\(N = 124\)</span> es el número de municipios y <span class="math inline">\(\text{iter} \approx 50\)</span> es el número de iteraciones para convergencia. El modelo de pronóstico tiene complejidad <span class="math inline">\(\mathcal{O}(B \cdot N_{\text{seg}})\)</span>, donde <span class="math inline">\(B = 200\)</span> es el número de réplicas bootstrap y <span class="math inline">\(N_{\text{seg}} = 10\)</span> es el número de segmentos espaciales. Ambas componentes son computacionalmente triviales para hardware moderno.</p></li>
@@ -2195,8 +2186,8 @@ p_{\text{vuelo}}(\theta) = p_0 \cdot (1 - \theta)^\kappa,
 <li><p><strong>Adaptabilidad operacional</strong>: Los umbrales de decisión y pesos del modelo híbrido pueden recalibrarse para diferentes tipos de drones o requisitos de misión, manteniendo la estructura formal del sistema.</p></li>
 </ol>
 </section>
-<section id="limitaciones-y-direcciones-futuras" class="level3" data-number="3.10.8">
-<h3 data-number="3.10.8" class="anchored" data-anchor-id="limitaciones-y-direcciones-futuras"><span class="header-section-number">3.10.8</span> Limitaciones y direcciones futuras</h3>
+<section id="limitaciones-y-direcciones-futuras" class="level3" data-number="3.10.7">
+<h3 data-number="3.10.7" class="anchored" data-anchor-id="limitaciones-y-direcciones-futuras"><span class="header-section-number">3.10.7</span> Limitaciones y direcciones futuras</h3>
 <p>A pesar de las ventajas demostradas, el sistema integrado presenta limitaciones que constituyen direcciones para investigación futura:</p>
 <ol type="1">
 <li><p><strong>Dependencia de calidad de datos</strong>: La precisión del pronóstico advectivo depende críticamente de la densidad y calidad de las estaciones meteorológicas. Regiones con cobertura limitada pueden requerir interpolación espacial avanzada o asimilación de datos satelitales.</p></li>
