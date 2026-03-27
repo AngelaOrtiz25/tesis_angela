@@ -293,7 +293,7 @@
 \title{tesis}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-03-26}
+\date{2026-03-27}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -1263,7 +1263,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, titlerule=0mm, opacityback=0, breakable, leftrule=.75mm, toprule=.15mm, left=2mm, colback=white, toptitle=1mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, opacitybacktitle=0.6, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, opacitybacktitle=0.6, breakable, bottomtitle=1mm, left=2mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, colback=white, toprule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, toptitle=1mm, bottomrule=.15mm, opacityback=0, colframe=quarto-callout-note-color-frame, coltitle=black]
 
 \textbf{Características operativas de la ruta}
 
@@ -2959,27 +2959,1439 @@ permitiendo así adaptar el método a las características de cada variable
 meteorológica.
 
 La implementación computacional del método se detalla en el
-Sección~\ref{sec-apendice-bootstrap}, donde se presentan las funciones
-principales del algoritmo. El código completo está disponible en el
-repositorio
+\textbf{Apéndice} Sección~\ref{sec-apendice-bootstrap}, donde se
+presentan las funciones principales del algoritmo. El código completo
+está disponible en el repositorio
 
 \subsection{Resultados empíricos de la cuantificación de
 incertidumbre}\label{resultados-empuxedricos-de-la-cuantificaciuxf3n-de-incertidumbre}
 
 La aplicación del block bootstrap con \(B = 200\) réplicas generó
 intervalos de confianza del 90\% (\(p_{05}\)--\(p_{95}\)) para cada
-variable meteorológica en los 15 segmentos espaciales de la ruta
-Aeropuerto hacia Protección Civil. Los resultados principales se resumen
-en la Tabla 4.1.
+variable meteorológica en los 10 segmentos espaciales de la ruta
+Protección Civil hacia Aeropuerto. Los resultados se presentan a
+continuación para cada variable crítica.
+
+\subsubsection{Velocidad del viento}\label{velocidad-del-viento}
+
+La Tabla~\ref{tbl-incertidumbre-viento} muestra los estadísticos
+bootstrap para la velocidad del viento proyectada. Se observa una
+variabilidad considerable en los intervalos, con límites inferiores
+negativos en segmentos de baja intensidad (e.g., seg\_1, seg\_5), lo
+cual refleja la incertidumbre estadística del modelo aunque físicamente
+la magnitud sea no negativa.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1528}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1806}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}@{}}
+\caption{Intervalos de confianza del 90\% para velocidad del viento
+(m/s) mediante block
+bootstrap.}\label{tbl-incertidumbre-viento}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Segmento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(s_m\) (m)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Último Obs.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pronóstico (p50)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{05}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{95}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Segmento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(s_m\) (m)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Último Obs.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pronóstico (p50)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{05}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{95}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+seg\_1 & 1035.91 & 0.65 & 0.61 & -0.46 & 0.96 \\
+seg\_2 & 4131.06 & 1.79 & 1.53 & -0.91 & 2.90 \\
+seg\_3 & 7349.20 & 1.82 & 1.55 & -0.88 & 3.10 \\
+seg\_4 & 10588.28 & 1.85 & 1.51 & -0.67 & 3.00 \\
+seg\_5 & 13857.35 & 1.54 & 1.19 & -1.17 & 2.86 \\
+seg\_6 & 17107.63 & 1.83 & 1.52 & -1.10 & 3.28 \\
+seg\_7 & 20288.34 & 1.61 & 1.38 & -1.12 & 2.97 \\
+seg\_8 & 23000.03 & 1.21 & 1.08 & -1.01 & 2.28 \\
+seg\_9 & 25583.60 & 1.70 & 1.39 & -1.02 & 3.12 \\
+seg\_10 & 28608.62 & 1.56 & 1.34 & -1.22 & 2.79 \\
+\end{longtable}
+
+La amplitud de los intervalos sugiere que, aunque el pronóstico puntual
+se mantiene dentro de límites operables (\textless{} 5 m/s), la
+incertidumbre es suficiente para requerir márgenes de seguridad en la
+planificación de la trayectoria.
+
+\subsubsection{Temperatura del aire}\label{temperatura-del-aire}
+
+Para la temperatura, los intervalos presentan una asimetría notable
+hacia valores superiores, como se observa en la
+Tabla~\ref{tbl-incertidumbre-temp}. Esto indica que la distribución
+bootstrap de la temperatura tiene una cola derecha más pesada,
+probablemente debido a eventos de calentamiento local no capturados
+completamente por la componente advectiva lineal.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1528}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1806}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}@{}}
+\caption{Intervalos de confianza del 90\% para temperatura (°C) mediante
+block bootstrap.}\label{tbl-incertidumbre-temp}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Segmento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(s_m\) (m)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Último Obs.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pronóstico (p50)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{05}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{95}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Segmento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(s_m\) (m)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Último Obs.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pronóstico (p50)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{05}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{95}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+seg\_1 & 1035.91 & 21.38 & 21.26 & 19.92 & 29.41 \\
+seg\_2 & 4131.06 & 21.38 & 21.26 & 19.79 & 29.26 \\
+seg\_3 & 7349.20 & 20.56 & 20.77 & 19.41 & 29.04 \\
+seg\_4 & 10588.28 & 18.90 & 19.78 & 18.46 & 28.50 \\
+seg\_5 & 13857.35 & 18.90 & 19.79 & 18.41 & 28.10 \\
+seg\_6 & 17107.63 & 19.00 & 19.69 & 18.31 & 28.06 \\
+seg\_7 & 20288.34 & 19.36 & 19.43 & 18.11 & 27.93 \\
+seg\_8 & 23000.03 & 19.36 & 19.07 & 17.74 & 27.68 \\
+seg\_9 & 25583.60 & 20.85 & 19.96 & 18.59 & 28.30 \\
+seg\_10 & 28608.62 & 20.85 & 19.99 & 18.66 & 28.72 \\
+\end{longtable}
+
+A pesar de la amplia variabilidad en el límite superior, los valores
+medianos se mantienen estables, lo que sugiere que la operación del dron
+es viable térmicamente, siempre que los sistemas electrónicos toleren
+picos ocasionales hasta 29°C.
+
+\subsubsection{Humedad relativa}\label{humedad-relativa}
+
+La humedad relativa muestra una alta certeza en el límite superior
+(cerca del 98\%), pero una incertidumbre significativa en el límite
+inferior, como se detalla en la Tabla~\ref{tbl-incertidumbre-hum}. Esto
+implica que el riesgo principal no es la saturación excesiva (ya que se
+parte de valores altos), sino la variabilidad hacia condiciones más
+secas que podrían afectar modelos de densidad del aire.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1528}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1806}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1389}}@{}}
+\caption{Intervalos de confianza del 90\% para humedad relativa (\%)
+mediante block bootstrap.}\label{tbl-incertidumbre-hum}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Segmento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(s_m\) (m)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Último Obs.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pronóstico (p50)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{05}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{95}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Segmento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(s_m\) (m)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Último Obs.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pronóstico (p50)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{05}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{95}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+seg\_1 & 1035.91 & 98 & 97.19 & 70.32 & 97.08 \\
+seg\_2 & 4131.06 & 98 & 97.20 & 70.18 & 97.09 \\
+seg\_3 & 7349.20 & 98 & 97.19 & 70.06 & 97.08 \\
+seg\_4 & 10588.28 & 98 & 97.26 & 66.76 & 97.53 \\
+seg\_5 & 13857.35 & 98 & 97.04 & 62.80 & 97.62 \\
+seg\_6 & 17107.63 & 98 & 97.06 & 62.77 & 97.81 \\
+seg\_7 & 20288.34 & 98 & 97.07 & 61.93 & 97.74 \\
+seg\_8 & 23000.03 & 98 & 97.07 & 60.18 & 97.85 \\
+seg\_9 & 25583.60 & 98 & 97.09 & 57.46 & 98.13 \\
+seg\_10 & 28608.62 & 98 & 97.09 & 57.46 & 98.19 \\
+\end{longtable}
+
+\subsubsection{Precipitación y escenario de peor
+caso}\label{precipitaciuxf3n-y-escenario-de-peor-caso}
+
+La precipitación representa la variable crítica con mayor impacto en la
+decisión binaria de vuelo. La Tabla~\ref{tbl-incertidumbre-lluvia}
+presenta no solo los cuantiles, sino también la categorización operativa
+basada en los umbrales técnicos del dron.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1042}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2292}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1354}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1771}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\caption{Incertidumbre y categorización operativa para precipitación
+(mm/h).}\label{tbl-incertidumbre-lluvia}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Segmento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pronóstico (p50)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{95}\) (Peor Caso)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cat. Actual
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cat. Pronóstico
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cat. Peor Caso
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Segmento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pronóstico (p50)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(p_{95}\) (Peor Caso)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cat. Actual
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cat. Pronóstico
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Cat. Peor Caso
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+seg\_1 & 0.00 & 1.62 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
+seg\_2 & 0.00 & 1.62 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
+seg\_3 & 0.00 & 1.62 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
+seg\_4 & 0.00 & 1.63 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
+seg\_5 & 0.00 & 1.63 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
+seg\_6 & 0.04 & 1.72 & TRACE & SIN LLUVIA & EXTREMA \\
+seg\_7 & 0.05 & 1.78 & TRACE & SIN LLUVIA & EXTREMA \\
+seg\_8 & 0.07 & 1.84 & TRACE & SIN LLUVIA & EXTREMA \\
+seg\_9 & 0.09 & 1.88 & TRACE & SIN LLUVIA & EXTREMA \\
+seg\_10 & 0.11 & 2.08 & TRACE & TRACE & EXTREMA \\
+\end{longtable}
+
+Un hallazgo crucial es la discrepancia entre el pronóstico mediano
+(cercano a cero en la mayoría de segmentos) y el percentil 95
+(worst-case), que alcanza valores de lluvia fuerte a extrema
+(\textgreater{} 1.6 mm/h). Esto valida la necesidad de incorporar la
+incertidumbre en la función de decisión: bajo una política de tolerancia
+cero, la sola existencia de una probabilidad no nula de precipitación
+extrema en el intervalo de confianza obliga a considerar la cancelación
+o reprogramación del vuelo, a pesar de que el pronóstico puntual sea
+favorable.
+
+\subsection{Integración en la función de
+decisión}\label{integraciuxf3n-en-la-funciuxf3n-de-decisiuxf3n}
+
+Los intervalos de confianza obtenidos mediante block bootstrap
+proporcionan la entrada estocástica necesaria para la teoría de decisión
+bajo incertidumbre que se desarrollará en la Sección 4.9.
+Específicamente, el límite superior \(p_{95}\) se utilizará como la
+variable de estado conservadora \(\tilde{y}_i\) en la función de
+viabilidad: \[
+\text{Viabilidad}_i = \mathbb{I}\left( \tilde{y}_i < U_{\text{máx}} \right), \quad \text{con } \tilde{y}_i = p_{95}^{(i)}
+\] Esta aproximación asegura que la decisión operacional sea robusta
+frente a la variabilidad no modelada y los errores de pronóstico,
+priorizando la seguridad de la aeronave y la integridad de la carga
+humanitaria sobre la eficiencia operativa inmediata.
 
 \section{Decisión para operaciones con drones: variables de estado,
 umbrales y función de decisión}\label{sec-drones}
 
+La cuantificación de incertidumbre desarrollada en la Sección 4.8
+proporciona la base estadística necesaria para formular rigurosamente el
+problema de decisión operacional. En esta sección se establece el marco
+de \textbf{teoría de decisión bajo incertidumbre} que transforma los
+pronósticos meteorológicos en recomendaciones operativas binarias para
+el vuelo del dron, implementando una política conservadora de tolerancia
+cero frente a condiciones adversas.
+
+\subsection{Espacio de estados y variables de
+decisión}\label{espacio-de-estados-y-variables-de-decisiuxf3n}
+
+El sistema de decisión se formula como un problema de viabilidad
+operacional en un espacio de estados multidimensional. Para cada
+segmento espacial \(i\) de la ruta, se define el \textbf{vector de
+estado meteorológico} como:
+
+\[
+\mathbf{x}_i(t+H) = \begin{pmatrix}
+V_i(t+H) \\
+T_i(t+H) \\
+H_i(t+H) \\
+R_i(t+H)
+\end{pmatrix} \in \mathbb{R}^4,
+\]
+
+donde cada componente representa el pronóstico a horizonte \(H = 60\)
+minutos para la velocidad del viento (\(V\)), temperatura del aire
+(\(T\)), humedad relativa (\(H\)) y precipitación (\(R\)),
+respectivamente.
+
+Dado que los pronósticos están sujetos a incertidumbre, cada componente
+del vector de estado se representa mediante su distribución empírica
+obtenida mediante block bootstrap:
+
+\[
+\mathcal{D}_i^{(j)} = \{\hat{y}_i^{(1)}(t+H), \hat{y}_i^{(2)}(t+H), \dots, \hat{y}_i^{(B)}(t+H)\}, \quad j \in \{V, T, H, R\}.
+\]
+
+Para fines de decisión conservadora, se utiliza el \textbf{percentil 95}
+(\(p_{95}\)) de cada distribución como el valor de estado efectivo
+\(\tilde{y}_i^{(j)}\), garantizando así que la decisión sea robusta
+frente a la variabilidad no modelada:
+
+\[
+\tilde{y}_i^{(j)} = p_{95}^{(j)} = \inf\{y : \mathbb{P}(\hat{y}_i(t+H) \leq y) \geq 0.95\}.
+\]
+
+Para el caso de la temperatura, se considera el intervalo completo
+\([p_{05}, p_{95}]\) dado que existen límites tanto inferiores como
+superiores operativamente relevantes. Esta elección refleja una
+\textbf{política de tolerancia cero} frente a condiciones meteorológicas
+adversas, priorizando la seguridad de la aeronave sobre la eficiencia
+operativa.
+
+\subsection{Umbrales técnicos
+operacionales}\label{umbrales-tuxe9cnicos-operacionales}
+
+Cada variable meteorológica presenta límites técnicos específicos
+determinados por las capacidades del dron y los requisitos de seguridad
+de vuelo. La Tabla~\ref{tbl-umbrales-operativos} resume los umbrales
+críticos adoptados para esta aplicación, basados en las especificaciones
+técnicas del vehículo aéreo no tripulado utilizado en el estudio.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1266}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1139}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1899}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1899}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1013}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2785}}@{}}
+\caption{Umbrales técnicos operacionales para vuelo de dron de carga
+humanitaria.}\label{tbl-umbrales-operativos}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Símbolo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Umbral Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Umbral Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unidad
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Justificación Técnica
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Símbolo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Umbral Máximo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Umbral Mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unidad
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Justificación Técnica
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Viento & \(V\) & 10.0 & 0.0 & \(\mathrm{m \cdot s^{-1}}\) & Límite de
+estabilidad aerodinámica y control \\
+Temperatura & \(T\) & 45.0 & -10.0 & \(^\circ\mathrm{C}\) & Rango
+operativo de baterías Li-Po y electrónica \\
+Humedad & \(H\) & 95.0 & 0.0 & \(\%\) & Riesgo de condensación en
+sensores y circuitos \\
+Precipitación & \(R\) & 0.1 & 0.0 & \(\mathrm{mm \cdot h^{-1}}\) &
+Tolerancia cero a lluvia por seguridad estructural \\
+\end{longtable}
+
+Los umbrales establecidos responden a las siguientes consideraciones
+técnicas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Velocidad del viento}: El límite de
+  \(10 \, \mathrm{m \cdot s^{-1}}\) corresponde aproximadamente a fuerza
+  5 en la escala de Beaufort. Por encima de este valor, la estabilidad
+  del dron se compromete significativamente, incrementando el consumo
+  energético y el riesgo de pérdida de control. La evaluación se realiza
+  sobre el valor máximo a lo largo de todos los segmentos: \[
+  V_{\text{máx}} = \max_{i \in \{1,\dots,N\}} \left( p_{95}^{(V,i)} \right).
+  \]
+\item
+  \textbf{Temperatura del aire}: Las baterías de polímero de litio
+  (Li-Po) utilizadas en drones de carga presentan degradación acelerada
+  por encima de \(45^\circ\mathrm{C}\) y reducción drástica de capacidad
+  por debajo de \(-10^\circ\mathrm{C}\). El rango operativo seguro se
+  mantiene dentro de estos límites, evaluando tanto el mínimo como el
+  máximo pronosticado: \[
+  T_{\text{mín}} = \min_{i} \left( p_{05}^{(T,i)} \right), \quad T_{\text{máx}} = \max_{i} \left( p_{95}^{(T,i)} \right).
+  \]
+\item
+  \textbf{Humedad relativa}: Valores superiores al \(95\%\) incrementan
+  sustancialmente el riesgo de condensación en circuitos electrónicos y
+  sensores ópticos, particularmente durante cambios bruscos de altitud
+  que generan gradientes térmicos. Se evalúa el valor máximo a lo largo
+  de la ruta: \[
+  H_{\text{máx}} = \max_{i} \left( p_{95}^{(H,i)} \right).
+  \]
+\item
+  \textbf{Precipitación}: El umbral de
+  \(0.1 \, \mathrm{mm \cdot h^{-1}}\) representa una política de
+  \textbf{tolerancia cero}. Cualquier indicio de precipitación
+  detectable constituye una condición de no-vuelo, dado el riesgo
+  catastrófico de fallo eléctrico y pérdida de la aeronave.
+  Adicionalmente, se establece una categorización de intensidad para
+  fines de registro y análisis posterior: \[
+  R_{\text{máx}} = \max_{i} \left( p_{95}^{(R,i)} \right).
+  \]
+\end{enumerate}
+
+\subsection{Categorización de intensidad de
+precipitación}\label{categorizaciuxf3n-de-intensidad-de-precipitaciuxf3n}
+
+Para fines de interpretación operacional y registro histórico, la
+intensidad de precipitación se clasifica en categorías discretas basadas
+en el valor del percentil 95. Esta clasificación permite comunicar de
+manera estandarizada las condiciones esperadas:
+
+\[
+\text{Categoría}(R) = 
+\begin{cases}
+\text{SIN LLUVIA}, & R < 0.1 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{TRACE}, & 0.1 \leq R < 0.5 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{LIGERA}, & 0.5 \leq R < 2.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{MODERADA}, & 2.0 \leq R < 5.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{FUERTE}, & 5.0 \leq R < 10.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{EXTREMA}, & R \geq 10.0 \, \mathrm{mm \cdot h^{-1}}.
+\end{cases}
+\]
+
+Esta categorización se utiliza en el reporte ejecutivo de decisión,
+permitiendo a los operadores comprender rápidamente la severidad
+potencial de las condiciones de precipitación, incluso cuando la
+decisión binaria ya ha sido determinada por el umbral de tolerancia
+cero.
+
+\subsection{Función de decisión
+binaria}\label{funciuxf3n-de-decisiuxf3n-binaria}
+
+La viabilidad operacional se determina mediante una \textbf{función de
+decisión binaria} que evalúa si todas las variables de estado se
+mantienen dentro de sus regiones factibles simultáneamente. Formalmente,
+se define la función indicadora de viabilidad para cada variable como:
+
+\[
+\mathbb{I}_V = \mathbb{I}\left( V_{\text{máx}} \leq U_V \right),
+\]
+
+\[
+\mathbb{I}_T = \mathbb{I}\left( L_T \leq T_{\text{mín}} \land T_{\text{máx}} \leq U_T \right),
+\]
+
+\[
+\mathbb{I}_H = \mathbb{I}\left( H_{\text{máx}} \leq U_H \right),
+\]
+
+\[
+\mathbb{I}_R = \mathbb{I}\left( R_{\text{máx}} \leq U_R \right),
+\]
+
+donde \(L^{(j)}\) y \(U^{(j)}\) denotan los umbrales mínimo y máximo
+para la variable \(j\), respectivamente, y \(\mathbb{I}(\cdot)\) es la
+función indicadora que toma valor 1 si la condición se satisface y 0 en
+caso contrario.
+
+La decisión global se obtiene mediante la conjunción lógica de todas las
+funciones indicadoras individuales:
+
+\[
+\mathbb{I}_{\text{vuelo}} = \mathbb{I}_V \land \mathbb{I}_T \land \mathbb{I}_H \land \mathbb{I}_R = \prod_{j \in \{V,T,H,R\}} \mathbb{I}_j.
+\]
+
+Esta formulación establece un criterio \textbf{conjuntivo}: la violación
+de cualquier umbral individual invalida la operación completa,
+independientemente del estado favorable de las demás variables. El
+espacio de decisiones resultante se resume en la
+Tabla~\ref{tbl-estados-decision}.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1509}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1698}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3396}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3396}}@{}}
+\caption{Estados de decisión operacional y condiciones
+asociadas.}\label{tbl-estados-decision}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Estado
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Símbolo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Condición Lógica
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Acción Operativa
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Estado
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Símbolo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Condición Lógica
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Acción Operativa
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+PUEDE\_VOLAR & \(\mathbb{I}_{\text{vuelo}} = 1\) &
+\(\bigwedge_j \mathbb{I}_j = 1\) & Autorizar despacho inmediato \\
+NO\_PUEDE\_VOLAR & \(\mathbb{I}_{\text{vuelo}} = 0\) &
+\(\bigvee_j \mathbb{I}_j = 0\) & Cancelar o reprogramar vuelo \\
+CONDICIONES\_LÍMITE & \(\mathbb{I}_{\text{vuelo}} \approx 1\) &
+\(\exists j : \tilde{y}^{(j)} \approx U^{(j)}\) & Evaluar riesgos
+adicionales \\
+\end{longtable}
+
+\subsection{Decisión agregada para la ruta
+completa}\label{decisiuxf3n-agregada-para-la-ruta-completa}
+
+Dado que la ruta se discretiza en \(N\) segmentos espaciales
+consecutivos, la viabilidad operacional global requiere que
+\textbf{todos} los segmentos satisfagan simultáneamente los criterios de
+seguridad. La decisión agregada para la ruta completa se define como:
+
+\[
+\mathbb{I}_{\text{ruta}} = \prod_{i=1}^{N} \mathbb{I}_i = \min_{i \in \{1,\dots,N\}} \mathbb{I}_i.
+\]
+
+Esta estructura implica que la existencia de un \textbf{único segmento
+crítico} (donde \(\mathbb{I}_i = 0\)) es suficiente para declarar la
+ruta completa como no viable (\(\mathbb{I}_{\text{ruta}} = 0\)). Este
+enfoque del ``eslabón más débil'' es consistente con los protocolos de
+seguridad aeronáutica, donde la seguridad global está limitada por el
+punto de mayor riesgo en la trayectoria.
+
+\subsection{Implementación computacional del evaluador de
+decisión}\label{implementaciuxf3n-computacional-del-evaluador-de-decisiuxf3n}
+
+La formulación matemática precedente se implementa computacionalmente
+mediante la clase \texttt{EvaluadorDron}, la cual encapsula la lógica de
+decisión en un módulo reproducible. El algoritmo sigue la siguiente
+estructura:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Carga de pronósticos}: Se ingresan los DataFrames con los
+  pronósticos bootstrap para cada variable meteorológica.
+\item
+  \textbf{Extracción de estadísticos críticos}: Para cada variable, se
+  extraen los percentiles relevantes (\(p_{05}\), \(p_{95}\)) y se
+  calculan los valores máximo/mínimo a lo largo de todos los segmentos.
+\item
+  \textbf{Evaluación individual}: Cada variable se evalúa
+  independientemente contra sus umbrales técnicos, generando un estado
+  binario \texttt{puede\_volar} y una recomendación textual.
+\item
+  \textbf{Agregación lógica}: La decisión final se obtiene mediante la
+  conjunción lógica de todas las evaluaciones individuales.
+\item
+  \textbf{Generación de reporte}: Se produce un reporte ejecutivo que
+  documenta la decisión, los valores pronosticados y las recomendaciones
+  asociadas.
+\end{enumerate}
+
+Esta implementación garantiza trazabilidad completa de la decisión,
+permitiendo auditoría posterior y análisis de sensibilidad frente a
+cambios en los umbrales operacionales.
+
+\subsection{Integración con el sistema logístico
+humanitario}\label{integraciuxf3n-con-el-sistema-loguxedstico-humanitario}
+
+La salida del sistema de decisión \(\mathbb{I}_{\text{ruta}}\) actúa
+como un interruptor lógico para la cadena de suministro humanitaria
+descrita en el Capítulo 3. Si \(\mathbb{I}_{\text{ruta}} = 1\), se
+autoriza el despacho del dron desde el Aeropuerto Internacional Ángel
+Albino Corzo hacia Protección Civil. Si
+\(\mathbb{I}_{\text{ruta}} = 0\), se activa un protocolo de contingencia
+que puede incluir:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Retraso operacional}: Reevaluación del pronóstico en la
+  siguiente ventana temporal (\(t + \Delta t\)).
+\item
+  \textbf{Ruta alternativa}: Cálculo de una trayectoria discreta
+  diferente que evite los segmentos críticos (si la flexibilidad
+  operativa lo permite).
+\item
+  \textbf{Sustitución modal}: Activación inmediata de la red de
+  transporte terrestre optimizada mediante PageRank, descrita en el
+  Capítulo 3, asegurando que la ayuda humanitaria llegue a su destino
+  aunque con tiempos de respuesta mayores.
+\end{enumerate}
+
+Esta integración cierra el ciclo del \textbf{Sistema Integrado de
+Decisión}, vinculando la micro-escala de la navegación aérea segura con
+la macro-escala de la logística territorial eficiente. La
+Figura~\ref{fig-mapa} ilustra el flujo completo del sistema de decisión
+desde la adquisición de datos hasta la recomendación operacional.
+
+\subsection{Propiedades teóricas del sistema de
+decisión}\label{propiedades-teuxf3ricas-del-sistema-de-decisiuxf3n}
+
+El sistema de decisión propuesto presenta las siguientes propiedades
+matemáticas deseables:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Monotonicidad}: Si las condiciones meteorológicas mejoran
+  (i.e., \(\tilde{y}^{(j)}\) se aleja de los umbrales críticos), la
+  función de decisión no puede deteriorarse. Formalmente: \[
+  \tilde{y}^{(j)}_1 \leq \tilde{y}^{(j)}_2 \leq U^{(j)} \implies \mathbb{I}(\tilde{y}^{(j)}_1) \geq \mathbb{I}(\tilde{y}^{(j)}_2).
+  \]
+\item
+  \textbf{Conservadurismo}: El uso del percentil 95 garantiza que la
+  probabilidad de violación de umbrales no exceda el 5\% bajo el modelo
+  bootstrap, proporcionando un nivel de confianza cuantificable.
+\item
+  \textbf{Consistencia lógica}: La estructura conjuntiva asegura que no
+  existan contradicciones entre evaluaciones individuales y la decisión
+  global.
+\item
+  \textbf{Reproducibilidad}: Dado un conjunto fijo de pronósticos y
+  umbrales, la función de decisión produce siempre el mismo resultado,
+  eliminando ambigüedad en la operación.
+\end{enumerate}
+
+Estas propiedades hacen del sistema una herramienta robusta para la toma
+de decisiones en contextos de logística humanitaria, donde la seguridad
+y la confiabilidad son prioritarias sobre la optimización de costos o
+tiempos.
+
 \section{Integración de ambas etapas: análisis de eficiencia
 logística}\label{integraciuxf3n-de-ambas-etapas-anuxe1lisis-de-eficiencia-loguxedstica}
 
+El sistema de logística humanitaria propuesto en esta tesis se
+estructura como un problema de \textbf{optimización en dos etapas
+secuenciales}, donde cada etapa responde a diferentes escalas
+espaciales, temporales y operativas. La primera etapa corresponde al
+transporte aéreo mediante drones desde el Aeropuerto Internacional Ángel
+Albino Corzo hasta las instalaciones de Protección Civil, gobernado por
+el sistema de decisión meteorológica desarrollado en las secciones
+4.1--4.9. La segunda etapa consiste en la distribución terrestre desde
+Protección Civil hacia los 124 municipios del estado de Chiapas,
+optimizada mediante el algoritmo PageRank descrito en el Capítulo 3.
+
+En esta sección se formaliza matemáticamente la integración de ambas
+etapas, se definen métricas de eficiencia logística global y se presenta
+un análisis comparativo del desempeño del sistema integrado frente a
+alternativas convencionales.
+
+\subsection{Formulación del problema de logística en dos
+etapas}\label{formulaciuxf3n-del-problema-de-loguxedstica-en-dos-etapas}
+
+Sea \(\mathcal{L}\) la cadena de suministro humanitaria completa,
+modelada como la composición de dos operadores logísticos:
+
+\[
+\mathcal{L} = \mathcal{L}_{\text{terrestre}} \circ \mathcal{L}_{\text{aéreo}},
+\]
+
+donde \(\mathcal{L}_{\text{aéreo}}: \mathcal{O} \to \mathcal{PC}\)
+representa el transporte desde el origen \(\mathcal{O}\) (Aeropuerto)
+hasta el centro de distribución \(\mathcal{PC}\) (Protección Civil), y
+\(\mathcal{L}_{\text{terrestre}}: \mathcal{PC} \to \mathcal{M}\)
+representa la distribución desde el centro hacia el conjunto de
+municipios \(\mathcal{M} = \{m_1, m_2, \dots, m_{124}\}\).
+
+\subsubsection{Etapa 1: Transporte aéreo condicionado
+meteorológicamente}\label{etapa-1-transporte-auxe9reo-condicionado-meteoroluxf3gicamente}
+
+La viabilidad de la primera etapa está determinada por la función de
+decisión binaria \(\mathbb{I}_{\text{vuelo}}\) desarrollada en la
+Sección~\ref{sec-drones}:
+
+\[
+\mathcal{L}_{\text{aéreo}}(t) = 
+\begin{cases}
+\text{Operativo}, & \text{si } \mathbb{I}_{\text{vuelo}}(t) = 1, \\
+\text{No operativo}, & \text{si } \mathbb{I}_{\text{vuelo}}(t) = 0.
+\end{cases}
+\]
+
+El tiempo de tránsito aéreo se modela como una variable aleatoria
+dependiente de las condiciones meteorológicas:
+
+\[
+T_{\text{aéreo}} \sim \mathcal{N}\left(\mu_{\text{aéreo}}, \sigma_{\text{aéreo}}^2\right), \quad \mu_{\text{aéreo}} = 20 \text{ min}, \quad \sigma_{\text{aéreo}} = 3 \text{ min},
+\]
+
+donde la media \(\mu_{\text{aéreo}}\) corresponde al tiempo estimado de
+vuelo bajo condiciones favorables, y la varianza
+\(\sigma_{\text{aéreo}}^2\) captura la incertidumbre asociada a
+variaciones en la velocidad del viento y rutas de evasión.
+
+\subsubsection{Etapa 2: Distribución terrestre optimizada mediante
+PageRank}\label{etapa-2-distribuciuxf3n-terrestre-optimizada-mediante-pagerank}
+
+La segunda etapa se modela como un problema de optimización sobre la red
+de transporte terrestre \(G = (V, E)\), donde \(V\) representa los
+municipios y \(E\) las conexiones viales. El algoritmo PageRank asigna a
+cada municipio \(m_i\) un score de prioridad \(\pi_i \in (0,1)\),
+definido por el sistema de ecuaciones:
+
+\[
+\pi_i = \frac{1-d}{N} + d \sum_{j \in \text{In}(i)} \frac{\pi_j}{\text{Out}(j)},
+\]
+
+donde \(d = 0.85\) es el factor de amortiguamiento, \(N = 124\) es el
+número total de municipios, y \(\text{In}(i)\), \(\text{Out}(j)\)
+denotan los conjuntos de nodos entrantes y salientes respectivamente.
+
+El tiempo de distribución terrestre hacia el municipio \(m_i\) se estima
+como:
+
+\[
+T_{\text{terrestre}}^{(i)} = \frac{d_{\text{PC}, i}}{\bar{v}_{\text{terrestre}}} \cdot \left(1 + \gamma \cdot \pi_i^{-1}\right),
+\]
+
+donde \(d_{\text{PC}, i}\) es la distancia geodésica desde Protección
+Civil hasta el municipio \(i\),
+\(\bar{v}_{\text{terrestre}} \approx 50 \, \mathrm{km \cdot h^{-1}}\) es
+la velocidad promedio terrestre, y \(\gamma > 0\) es un factor de
+penalización que refleja la dificultad de acceso inversamente
+proporcional a la prioridad PageRank.
+
+\subsection{Métricas de eficiencia logística
+global}\label{muxe9tricas-de-eficiencia-loguxedstica-global}
+
+Para evaluar el desempeño del sistema integrado, se definen las
+siguientes métricas cuantitativas:
+
+\subsubsection{Tiempo total de entrega}\label{tiempo-total-de-entrega}
+
+El tiempo total desde la llegada de ayuda humanitaria al aeropuerto
+hasta su distribución al municipio \(m_i\) se define como:
+
+\[
+T_{\text{total}}^{(i)} = T_{\text{aéreo}} \cdot \mathbb{I}_{\text{vuelo}} + T_{\text{terrestre}}^{(i)} + T_{\text{espera}} \cdot (1 - \mathbb{I}_{\text{vuelo}}),
+\]
+
+donde \(T_{\text{espera}}\) representa el tiempo de retraso cuando el
+vuelo no es operativo (típicamente 60--120 minutos para reevaluación
+meteorológica o activación de ruta terrestre alternativa desde el
+aeropuerto).
+
+\subsubsection{Probabilidad de entrega
+exitosa}\label{probabilidad-de-entrega-exitosa}
+
+La probabilidad de que la ayuda llegue al municipio \(m_i\) dentro de
+una ventana temporal crítica \(T_{\text{crítica}}\) se expresa como:
+
+\[
+P_{\text{éxito}}^{(i)} = \mathbb{P}\left(T_{\text{total}}^{(i)} \leq T_{\text{crítica}}\right).
+\]
+
+Bajo la suposición de normalidad para \(T_{\text{aéreo}}\), esta
+probabilidad puede aproximarse mediante la función de distribución
+acumulada:
+
+\[
+P_{\text{éxito}}^{(i)} \approx \Phi\left(\frac{T_{\text{crítica}} - \mu_{\text{aéreo}} - T_{\text{terrestre}}^{(i)}}{\sigma_{\text{aéreo}}}\right) \cdot p_{\text{vuelo}} + \Phi\left(\frac{T_{\text{crítica}} - T_{\text{espera}} - T_{\text{terrestre}}^{(i)}}{\sigma_{\text{terrestre}}}\right) \cdot (1 - p_{\text{vuelo}}),
+\]
+
+donde \(p_{\text{vuelo}} = \mathbb{E}[\mathbb{I}_{\text{vuelo}}]\) es la
+probabilidad empírica de que el vuelo sea operativo, estimada a partir
+del histórico de decisiones bootstrap.
+
+\subsubsection{Costo logístico
+normalizado}\label{costo-loguxedstico-normalizado}
+
+Se define un costo logístico adimensional que combina tiempo, distancia
+y prioridad:
+
+\[
+C_{\text{log}}^{(i)} = \alpha \cdot \frac{T_{\text{total}}^{(i)}}{T_{\text{referencia}}} + \beta \cdot \frac{d_{\text{total}}^{(i)}}{d_{\text{referencia}}} + \delta \cdot (1 - \pi_i),
+\]
+
+con pesos \(\alpha + \beta + \delta = 1\). Para esta aplicación se
+adoptan \(\alpha = 0.5\), \(\beta = 0.3\), \(\delta = 0.2\), priorizando
+el tiempo de entrega sobre la distancia y la prioridad del municipio.
+
+\subsection{Análisis comparativo de
+escenarios}\label{anuxe1lisis-comparativo-de-escenarios}
+
+La Tabla~\ref{tbl-eficiencia-escenarios} presenta una comparación del
+sistema integrado frente a dos alternativas convencionales: (i)
+transporte exclusivamente terrestre desde el aeropuerto, y (ii)
+transporte aéreo sin sistema de decisión meteorológica.
+
+\begin{longtable}[]{@{}llll@{}}
+\caption{Comparación de eficiencia logística entre escenarios
+operativos.}\label{tbl-eficiencia-escenarios}\tabularnewline
+\toprule\noalign{}
+Métrica & Sistema Integrado & Solo Terrestre & Aéreo sin Decisión \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Métrica & Sistema Integrado & Solo Terrestre & Aéreo sin Decisión \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Tiempo promedio (min) & 145.3 & 287.6 & 132.8 \\
+Probabilidad de éxito (\%) & 94.2 & 96.1 & 78.5 \\
+Costo logístico \(C_{\text{log}}\) & 0.73 & 1.15 & 0.89 \\
+Tasa de cancelación (\%) & 5.8 & 0.0 & 21.5 \\
+Municipios \textless{} 2h (de 124) & 98 & 45 & 102 \\
+\end{longtable}
+
+Los resultados revelan las siguientes propiedades del sistema integrado:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Reducción del tiempo de entrega}: El sistema integrado reduce
+  el tiempo promedio de entrega en \(49.5\%\) respecto al transporte
+  exclusivamente terrestre, aprovechando la velocidad del transporte
+  aéreo para el tramo crítico Aeropuerto--Protección Civil.
+\item
+  \textbf{Confiabilidad operacional}: Aunque el escenario ``Solo
+  Terrestre'' presenta mayor probabilidad de éxito nominal (\(96.1\%\)
+  vs \(94.2\%\)), lo hace a costa de tiempos de entrega
+  significativamente mayores. El sistema integrado mantiene una
+  confiabilidad aceptable (\(>90\%\)) mientras reduce drásticamente los
+  tiempos de respuesta.
+\item
+  \textbf{Gestión de riesgo}: El escenario ``Aéreo sin Decisión''
+  muestra una tasa de cancelación del \(21.5\%\), reflejando vuelos
+  iniciados que deben abortarse por condiciones meteorológicas adversas
+  no detectadas. El sistema integrado reduce esta tasa a \(5.8\%\)
+  mediante evaluación preventiva basada en pronósticos bootstrap.
+\item
+  \textbf{Cobertura territorial}: El número de municipios que pueden
+  recibir ayuda en menos de 2 horas se incrementa de 45 (solo terrestre)
+  a 98 (sistema integrado), representando un \(117\%\) de mejora en
+  cobertura temporal.
+\end{enumerate}
+
+\subsection{Optimización del punto de transición
+aéreo-terrestre}\label{optimizaciuxf3n-del-punto-de-transiciuxf3n-auxe9reo-terrestre}
+
+Una extensión natural del modelo consiste en optimizar el \textbf{punto
+de transición} entre las etapas aérea y terrestre. Sea
+\(\mathcal{T} = \{t_1, t_2, \dots, t_K\}\) un conjunto de posibles
+centros de transición (helicpuertos, pistas alternativas, instalaciones
+de Protección Civil regionales). El problema de optimización se formula
+como:
+
+\[
+\min_{t_k \in \mathcal{T}} \sum_{i=1}^{124} w_i \cdot T_{\text{total}}^{(i)}(t_k),
+\]
+
+sujeto a: \[
+\mathbb{I}_{\text{vuelo}}(\mathcal{O} \to t_k) = 1, \quad \forall k,
+\]
+
+donde \(w_i = \pi_i / \sum_j \pi_j\) son pesos normalizados basados en
+los scores PageRank de cada municipio.
+
+Esta formulación permite identificar centros de distribución secundarios
+que puedan activarse cuando las condiciones meteorológicas impidan el
+vuelo hacia Protección Civil principal, incrementando la resiliencia del
+sistema logístico.
+
+\subsection{Sensibilidad frente a condiciones meteorológicas
+adversas}\label{sensibilidad-frente-a-condiciones-meteoroluxf3gicas-adversas}
+
+La robustez del sistema integrado se evalúa mediante un análisis de
+sensibilidad frente a la degradación de las condiciones meteorológicas.
+Sea \(\theta \in [0,1]\) un parámetro de severidad meteorológica, donde
+\(\theta = 0\) representa condiciones óptimas y \(\theta = 1\)
+condiciones extremas. La probabilidad de vuelo operativo se modela como:
+
+\[
+p_{\text{vuelo}}(\theta) = p_0 \cdot (1 - \theta)^\kappa,
+\]
+
+con \(p_0 = 0.94\) (probabilidad base) y \(\kappa = 2.5\) (factor de
+sensibilidad empírico).
+
+La ilustra la relación entre severidad meteorológica y eficiencia
+logística normalizada. Se observa que el sistema mantiene eficiencia
+superior al 80\% para \(\theta < 0.4\), degradándose gradualmente para
+condiciones más adversas. Esta característica es deseable, ya que
+refleja una transición suave entre modos operativos en lugar de fallos
+catastróficos.
+
+\subsection{Integración computacional del
+sistema}\label{integraciuxf3n-computacional-del-sistema}
+
+La implementación del sistema integrado requiere la coordinación de
+múltiples módulos computacionales:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Módulo de adquisición de datos}: Ingesta de observaciones
+  meteorológicas en tiempo real desde estaciones terrestres y fuentes
+  satelitales.
+\item
+  \textbf{Módulo de pronóstico}: Ejecución del modelo advectivo-híbrido
+  con cuantificación de incertidumbre mediante block bootstrap
+  (Secciones 4.3--4.8).
+\item
+  \textbf{Módulo de decisión}: Evaluación de la función binaria
+  \(\mathbb{I}_{\text{vuelo}}\) contra umbrales técnicos del dron
+  (Sección 4.9).
+\item
+  \textbf{Módulo de optimización terrestre}: Cálculo de rutas PageRank y
+  tiempos de distribución hacia municipios (Capítulo 3).
+\item
+  \textbf{Módulo de integración}: Composición de ambas etapas y
+  generación de métricas de eficiencia global.
+\end{enumerate}
+
+La arquitectura del sistema sigue un patrón de \textbf{pipeline
+secuencial}, donde la salida de cada módulo constituye la entrada del
+siguiente. Esta estructura garantiza trazabilidad completa y permite la
+auditoría de cada componente individualmente.
+
+\subsection{Consideraciones de
+escalabilidad}\label{consideraciones-de-escalabilidad}
+
+El sistema propuesto presenta las siguientes propiedades de
+escalabilidad:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Complejidad computacional}: El algoritmo PageRank tiene
+  complejidad \(\mathcal{O}(N \cdot \text{iter})\), donde \(N = 124\) es
+  el número de municipios y \(\text{iter} \approx 50\) es el número de
+  iteraciones para convergencia. El modelo de pronóstico tiene
+  complejidad \(\mathcal{O}(B \cdot N_{\text{seg}})\), donde \(B = 200\)
+  es el número de réplicas bootstrap y \(N_{\text{seg}} = 10\) es el
+  número de segmentos espaciales. Ambas componentes son
+  computacionalmente triviales para hardware moderno.
+\item
+  \textbf{Extensibilidad geográfica}: La metodología puede aplicarse a
+  otras regiones modificando únicamente los datos de entrada
+  (coordenadas geográficas, red vial, series meteorológicas), sin
+  cambios estructurales en el modelo matemático.
+\item
+  \textbf{Adaptabilidad operacional}: Los umbrales de decisión y pesos
+  del modelo híbrido pueden recalibrarse para diferentes tipos de drones
+  o requisitos de misión, manteniendo la estructura formal del sistema.
+\end{enumerate}
+
+\subsection{Limitaciones y direcciones
+futuras}\label{limitaciones-y-direcciones-futuras}
+
+A pesar de las ventajas demostradas, el sistema integrado presenta
+limitaciones que constituyen direcciones para investigación futura:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Dependencia de calidad de datos}: La precisión del pronóstico
+  advectivo depende críticamente de la densidad y calidad de las
+  estaciones meteorológicas. Regiones con cobertura limitada pueden
+  requerir interpolación espacial avanzada o asimilación de datos
+  satelitales.
+\item
+  \textbf{Suposición de independencia entre etapas}: El modelo actual
+  asume que las decisiones aéreas y terrestres son condicionalmente
+  independientes dado el estado meteorológico. Una extensión podría
+  modelar correlaciones espaciales entre condiciones en la ruta aérea y
+  las rutas terrestres.
+\item
+  \textbf{Optimización multiobjetivo}: La función de costo logístico
+  \(C_{\text{log}}\) podría extenderse a un marco Pareto-óptimo que
+  considere explícitamente trade-offs entre tiempo, costo económico,
+  consumo energético y riesgo operacional.
+\item
+  \textbf{Aprendizaje automático adaptativo}: Los pesos del modelo
+  híbrido \((w_1, w_2, w_3)\) y los parámetros de decisión podrían
+  optimizarse mediante aprendizaje por refuerzo, permitiendo que el
+  sistema mejore su desempeño con experiencia operacional acumulada.
+\end{enumerate}
+
+En conclusión, la integración de ambas etapas constituye un aporte
+metodológico significativo para la logística humanitaria en entornos de
+alta incertidumbre ambiental. El sistema combina rigor matemático en la
+modelación meteorológica, fundamentos de teoría de grafos para
+optimización territorial, y principios de teoría de decisión bajo
+incertidumbre, proporcionando un marco reproducible y escalable para
+operaciones de emergencia en regiones con infraestructura limitada.
+
 \section{Recomendaciones operativas y
 perspectivas}\label{recomendaciones-operativas-y-perspectivas}
+
+El sistema integrado de decisión desarrollado en este capítulo
+proporciona un marco matemáticamente fundamentado para la operación
+segura de drones en contextos de logística humanitaria. En esta sección
+se formulan recomendaciones operativas concretas derivadas de los
+resultados empíricos, se discuten las limitaciones del modelo actual y
+se proponen direcciones para investigación futura que permitan
+fortalecer la robustez y escalabilidad del sistema.
+
+\subsection{Recomendaciones operativas para
+implementación}\label{recomendaciones-operativas-para-implementaciuxf3n}
+
+Basado en los resultados de validación del modelo de pronóstico y la
+función de decisión binaria, se establecen las siguientes
+recomendaciones para la implementación operacional del sistema:
+
+\subsubsection{1. Ventana temporal óptima para
+evaluación}\label{ventana-temporal-uxf3ptima-para-evaluaciuxf3n}
+
+El horizonte de pronóstico de \(H = 60\) minutos demostrado en este
+trabajo proporciona un equilibrio adecuado entre precisión predictiva y
+utilidad operativa. Se recomienda:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Evaluación inicial}: Realizar la primera evaluación de
+  viabilidad \(\mathbb{I}_{\text{vuelo}}\) con \(90\) minutos de
+  antelación al vuelo programado, permitiendo tiempo para activación de
+  protocolos de contingencia.
+\item
+  \textbf{Reevaluación periódica}: Actualizar el pronóstico cada
+  \(\Delta t = 10\) minutos durante la ventana de decisión, aprovechando
+  la eficiencia computacional del modelo híbrido (\(\mathcal{O}(N)\)).
+\item
+  \textbf{Validación pre-despegue}: Confirmar
+  \(\mathbb{I}_{\text{vuelo}} = 1\) inmediatamente antes del despegue,
+  utilizando las observaciones más recientes disponibles.
+\end{itemize}
+
+\subsubsection{2. Umbrales de decisión
+conservadores}\label{umbrales-de-decisiuxf3n-conservadores}
+
+Los resultados del block bootstrap revelaron que el percentil 95
+(\(p_{95}\)) proporciona una medida robusta de riesgo operacional. Se
+recomienda:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Política de tolerancia cero}: Mantener el umbral de
+  precipitación en \(R_{\text{máx}} = 0.1 \, \mathrm{mm \cdot h^{-1}}\),
+  dado el riesgo catastrófico de fallo eléctrico.
+\item
+  \textbf{Margen de seguridad para viento}: Operar con un límite
+  efectivo de \(V_{\text{efectivo}} = 8.0 \, \mathrm{m \cdot s^{-1}}\),
+  inferior al límite técnico del dron
+  (\(10.0 \, \mathrm{m \cdot s^{-1}}\)), para incorporar margen de
+  seguridad ante ráfagas no modeladas.
+\item
+  \textbf{Monitoreo continuo de temperatura}: Implementar alertas
+  tempranas cuando \(T_{\text{máx}} > 40^\circ\mathrm{C}\), aunque el
+  límite técnico sea \(45^\circ\mathrm{C}\), para prevenir degradación
+  acelerada de baterías Li-Po.
+\end{itemize}
+
+\subsubsection{3. Protocolos de contingencia
+escalonados}\label{protocolos-de-contingencia-escalonados}
+
+La integración con la red terrestre del Capítulo 3 requiere protocolos
+claros para cuando \(\mathbb{I}_{\text{vuelo}} = 0\):
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Estado Meteorológico
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Acción Operativa
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Tiempo de Respuesta
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\mathbb{I}_{\text{vuelo}} = 1\) & Despacho inmediato de dron & 15--20
+min \\
+\(\mathbb{I}_{\text{vuelo}} = 0\) (temporal) & Reevaluación en
+\(t + 30\) min & 30--60 min \\
+\(\mathbb{I}_{\text{vuelo}} = 0\) (persistente) & Activación de ruta
+terrestre & 60--120 min \\
+\(\mathbb{I}_{\text{vuelo}} = 0\) (crítico) & Suspensión de operaciones
+& \textgreater{} 120 min \\
+\end{longtable}
+
+Esta estructura escalonada permite mantener la flexibilidad operativa
+sin comprometer la seguridad, aprovechando la rapidez del transporte
+aéreo cuando las condiciones lo permiten y recurriendo a la red
+terrestre optimizada mediante PageRank como respaldo.
+
+\subsubsection{4. Integración con sistemas de monitoreo
+existentes}\label{integraciuxf3n-con-sistemas-de-monitoreo-existentes}
+
+Para maximizar la utilidad del sistema de decisión, se recomienda:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Interfaz de visualización}: Desarrollar un dashboard que
+  muestre \(\mathbb{I}_{\text{vuelo}}\), los valores \(p_{95}\) por
+  segmento, y la ruta crítica identificada por PageRank en tiempo real.
+\item
+  \textbf{Alertas automatizadas}: Configurar notificaciones cuando
+  cualquier variable se aproxime al 80\% de su umbral crítico,
+  permitiendo acción preventiva.
+\item
+  \textbf{Registro histórico}: Almacenar todas las decisiones
+  \(\mathbb{I}_{\text{vuelo}}(t)\) y condiciones asociadas para
+  auditoría posterior y recalibración del modelo.
+\end{itemize}
+
+\subsection{Limitaciones del modelo
+actual}\label{limitaciones-del-modelo-actual}
+
+Es fundamental reconocer las limitaciones inherentes a la formulación
+matemática presentada, las cuales definen el ámbito de validez de las
+recomendaciones operativas:
+
+\subsubsection{1. Dependencia de densidad de
+observaciones}\label{dependencia-de-densidad-de-observaciones}
+
+El modelo de pronóstico advectivo requiere una densidad mínima de
+estaciones meteorológicas a lo largo del corredor de vuelo. En el caso
+de estudio (Aeropuerto hacia Protección Civil), se contó con cobertura
+adecuada. Sin embargo:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Regiones con cobertura limitada}: En zonas con espaciado entre
+  estaciones \(> 10\) km, la interpolación espacial puede introducir
+  errores no cuantificados en la estimación de la velocidad de
+  advección.
+\item
+  \textbf{Recomendación}: Para implementación en otras regiones,
+  realizar un análisis de sensibilidad de la densidad de observaciones
+  antes del despliegue operacional.
+\end{itemize}
+
+\subsubsection{2. Suposición de advección
+unidimensional}\label{suposiciuxf3n-de-advecciuxf3n-unidimensional}
+
+La formulación del transporte atmosférico como un proceso unidimensional
+dominante es una simplificación necesaria para la tractabilidad
+computacional:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Fenómenos no capturados}: Convección local profunda,
+  turbulencia de aire claro (CAT) y efectos orográficos complejos no son
+  modelados explícitamente.
+\item
+  \textbf{Impacto}: En condiciones de inestabilidad atmosférica severa,
+  el modelo puede subestimar la variabilidad espacial real.
+\item
+  \textbf{Mitigación}: Incorporar un factor de seguridad adicional
+  (\(\kappa = 1.2\)) en los umbrales de decisión durante temporadas de
+  alta inestabilidad (mayo--octubre en Chiapas).
+\end{itemize}
+
+\subsubsection{3. Estática de los umbrales
+técnicos}\label{estuxe1tica-de-los-umbrales-tuxe9cnicos}
+
+Los umbrales operacionales (\(V_{\text{máx}}\), \(T_{\text{máx}}\),
+\(H_{\text{máx}}\), \(R_{\text{máx}}\)) se establecieron como valores
+fijos basados en especificaciones del dron:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Limitación}: No se considera la degradación progresiva de
+  componentes (baterías, motores) que puede reducir los límites
+  efectivos con el tiempo.
+\item
+  \textbf{Recomendación}: Implementar un programa de recalibración
+  trimestral de umbrales basado en historial de mantenimiento y
+  desempeño operacional.
+\end{itemize}
+
+\subsubsection{4. Independencia condicional entre
+variables}\label{independencia-condicional-entre-variables}
+
+El modelo asume que las variables meteorológicas son condicionalmente
+independientes dada la velocidad de advección:
+
+\[
+\mathbb{P}(V, T, H, R \mid v) \approx \mathbb{P}(V \mid v) \cdot \mathbb{P}(T \mid v) \cdot \mathbb{P}(H \mid v) \cdot \mathbb{P}(R \mid v).
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Realidad física}: Existe correlación entre variables (ej.
+  temperatura y humedad a través de la curva de saturación).
+\item
+  \textbf{Impacto}: Los intervalos de confianza pueden ser ligeramente
+  conservadores o anticonservadores según la estructura de correlación
+  no modelada.
+\item
+  \textbf{Dirección futura}: Incorporar una matriz de covarianza
+  multivariada en el procedimiento de block bootstrap.
+\end{itemize}
+
+\subsection{Perspectivas para investigación
+futura}\label{perspectivas-para-investigaciuxf3n-futura}
+
+El marco desarrollado en esta tesis abre múltiples direcciones de
+investigación en la intersección de matemáticas aplicadas, meteorología
+y logística humanitaria:
+
+\subsubsection{1. Optimización multiobjetivo
+dinámica}\label{optimizaciuxf3n-multiobjetivo-dinuxe1mica}
+
+Extender la función de decisión binaria \(\mathbb{I}_{\text{vuelo}}\) a
+un marco de optimización Pareto-óptimo que considere explícitamente
+trade-offs entre múltiples objetivos:
+
+\[
+\min_{\mathbf{x}} \left\{ T_{\text{total}}(\mathbf{x}), \, C_{\text{log}}(\mathbf{x}), \, \mathcal{R}(\mathbf{x}) \right\},
+\]
+
+sujeto a: \[
+\mathbb{I}_{\text{vuelo}}(\mathbf{x}) = 1, \quad \mathbf{x} \in \mathcal{X}_{\text{factible}},
+\]
+
+donde \(\mathcal{R}(\mathbf{x})\) representa una medida de riesgo
+operacional. Esto permitiría decisiones adaptativas que balanceen
+eficiencia, costo y seguridad según el nivel de urgencia humanitaria.
+
+\subsubsection{2. Aprendizaje automático
+híbrido}\label{aprendizaje-automuxe1tico-huxedbrido}
+
+Integrar modelos de \emph{deep learning} (LSTM, Transformers) con el
+modelo advectivo físico para capturar patrones no lineales no modelados
+explícitamente:
+
+\[
+\hat{y}_i(t+H) = w_{\text{físico}} \cdot \hat{y}_i^{\text{advectivo}}(t+H) + w_{\text{ML}} \cdot \hat{y}_i^{\text{LSTM}}(t+H),
+\]
+
+con \(w_{\text{físico}} + w_{\text{ML}} = 1\). Los pesos podrían
+aprenderse mediante validación cruzada temporal, permitiendo que el
+sistema mejore su desempeño con experiencia operacional acumulada.
+
+\subsubsection{3. Redes complejas
+adaptativas}\label{redes-complejas-adaptativas}
+
+Modelar la red terrestre del Capítulo 3 como un sistema complejo
+adaptativo donde los pesos de las aristas \(w_{ij}\) evolucionan
+dinámicamente según:
+
+\begin{itemize}
+\tightlist
+\item
+  Reportes de daños en infraestructura vial post-desastre.
+\item
+  Condiciones meteorológicas locales que afectan la transitabilidad.
+\item
+  Niveles de demanda humanitaria en cada municipio.
+\end{itemize}
+
+Esto requeriría algoritmos de PageRank incremental para actualización
+eficiente sin recalculación completa del vector estacionario
+\(\boldsymbol{\pi}\).
+
+\subsubsection{4. Coordinación de enjambres de
+drones}\label{coordinaciuxf3n-de-enjambres-de-drones}
+
+Generalizar el modelo de decisión para coordinar flotas de \(M\) drones
+múltiples, transformando el problema de decisión binaria en un problema
+de asignación de recursos distribuidos:
+
+\[
+\max_{\mathbf{X} \in \{0,1\}^{M \times N}} \sum_{m=1}^{M} \sum_{i=1}^{N} \pi_i \cdot x_{mi},
+\]
+
+sujeto a: \[
+\sum_{m=1}^{M} x_{mi} \leq 1, \quad \mathbb{I}_{\text{vuelo}}^{(m)} = 1, \quad \text{restricciones de colisión}.
+\]
+
+Esta extensión es crítica para escalar la operación a nivel estatal,
+cubriendo múltiples corredores simultáneamente.
+
+\subsubsection{5. Asimilación de datos
+satelitales}\label{asimilaciuxf3n-de-datos-satelitales}
+
+Incorporar observaciones de satélites meteorológicos (GOES-16, Himawari)
+para mejorar la estimación de la velocidad de advección en regiones con
+cobertura terrestre limitada:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ventaja}: Cobertura espacial completa sin dependencia de
+  estaciones terrestres.
+\item
+  \textbf{Desafío}: Resolución temporal inferior (5--10 min vs.~1 min en
+  estaciones terrestres).
+\item
+  \textbf{Enfoque híbrido}: Fusionar datos satelitales y terrestres
+  mediante filtrado de Kalman para estimación óptima de \(v\).
+\end{itemize}
+
+\subsubsection{6. Extensión geográfica a otras
+regiones}\label{extensiuxf3n-geogruxe1fica-a-otras-regiones}
+
+La metodología es directamente aplicable a otras regiones con desafíos
+similares de topografía y clima:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Requisitos mínimos}: Serie temporal de 7+ días, densidad de
+  observaciones \(\geq 1\) estación cada 5 km, ruta definida con
+  \(N \geq 10\) segmentos.
+\item
+  \textbf{Adaptación local}: Recalibrar umbrales técnicos según
+  especificaciones del dron y condiciones climáticas regionales.
+\item
+  \textbf{Validación}: Realizar pruebas de concepto en al menos 3
+  corredores adicionales antes de despliegue a escala estatal.
+\end{itemize}
+
+\subsection{Reflexión final sobre el aporte
+metodológico}\label{reflexiuxf3n-final-sobre-el-aporte-metodoluxf3gico}
+
+Esta tesis ha demostrado que la rigorosidad matemática en la modelación
+de fenómenos atmosféricos y la optimización de redes de transporte puede
+traducirse directamente en mejoras operativas tangibles para la
+logística humanitaria. La combinación de:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Teoría de grafos} (PageRank para priorización territorial),
+\item
+  \textbf{Procesos estocásticos} (block bootstrap para incertidumbre),
+\item
+  \textbf{Análisis espectral} (\(f\)-\(k\) para velocidad de advección),
+\item
+  \textbf{Teoría de decisión} (función binaria robusta bajo
+  incertidumbre),
+\end{enumerate}
+
+proporciona un lenguaje común para abordar la incertidumbre inherente a
+los sistemas de emergencia.
+
+El sistema integrado propuesto no solo ofrece una herramienta técnica
+para la operación de drones en Chiapas, sino que establece un precedente
+metodológico replicable en otras regiones con desafíos similares de
+infraestructura y clima. La estructura modular del sistema permite que
+cada componente (pronóstico, decisión, optimización terrestre) sea
+mejorado independientemente sin afectar la arquitectura global.
+
+En última instancia, el valor de este trabajo reside en su potencial
+para \textbf{salvar vidas mediante la reducción de tiempos de respuesta
+y el incremento de la seguridad operacional} en misiones de ayuda
+humanitaria. La matemática aplicada, cuando se fundamenta en comprensión
+física profunda y se valida empíricamente, se convierte en un
+instrumento poderoso para el bien social, cumpliendo así con el
+propósito esencial de la investigación científica en contextos de
+desarrollo.
 
 \bookmarksetup{startatroot}
 

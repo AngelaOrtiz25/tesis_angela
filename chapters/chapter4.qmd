@@ -1266,7 +1266,7 @@ La salida del sistema de decisión $\mathbb{I}_{\text{ruta}}$ actúa como un int
 2.  **Ruta alternativa**: Cálculo de una trayectoria discreta diferente que evite los segmentos críticos (si la flexibilidad operativa lo permite).
 3.  **Sustitución modal**: Activación inmediata de la red de transporte terrestre optimizada mediante PageRank, descrita en el Capítulo 3, asegurando que la ayuda humanitaria llegue a su destino aunque con tiempos de respuesta mayores.
 
-Esta integración cierra el ciclo del **Sistema Integrado de Decisión**, vinculando la micro-escala de la navegación aérea segura con la macro-escala de la logística territorial eficiente. La @fig-flujo-decision ilustra el flujo completo del sistema de decisión desde la adquisición de datos hasta la recomendación operacional.
+Esta integración cierra el ciclo del **Sistema Integrado de Decisión**, vinculando la micro-escala de la navegación aérea segura con la macro-escala de la logística territorial eficiente. La @fig-mapa ilustra el flujo completo del sistema de decisión desde la adquisición de datos hasta la recomendación operacional.
 
 ### Propiedades teóricas del sistema de decisión
 
@@ -1430,7 +1430,7 @@ $$
 
 con $p_0 = 0.94$ (probabilidad base) y $\kappa = 2.5$ (factor de sensibilidad empírico).
 
-La @fig-sensibilidad-meteo ilustra la relación entre severidad meteorológica y eficiencia logística normalizada. Se observa que el sistema mantiene eficiencia superior al 80% para $\theta < 0.4$, degradándose gradualmente para condiciones más adversas. Esta característica es deseable, ya que refleja una transición suave entre modos operativos en lugar de fallos catastróficos.
+La  ilustra la relación entre severidad meteorológica y eficiencia logística normalizada. Se observa que el sistema mantiene eficiencia superior al 80% para $\theta < 0.4$, degradándose gradualmente para condiciones más adversas. Esta característica es deseable, ya que refleja una transición suave entre modos operativos en lugar de fallos catastróficos.
 
 ### Integración computacional del sistema
 
