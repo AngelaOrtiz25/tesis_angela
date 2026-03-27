@@ -1018,14 +1018,21 @@ Esta adaptación refleja que la escala temporal de correlación varía significa
 La implementación computacional del método se detalla en el @sec-apendice-bootstrap, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio
 
 ### Resultados empíricos de la cuantificación de incertidumbre
-La aplicación del block bootstrap con $B = 200$ réplicas generó intervalos de confianza del 90% ($p_{05}$–$p_{95}$) para cada variable meteorológica en los 15 segmentos espaciales de la ruta Aeropuerto hacia Protección Civil. Los resultados principales se resumen en la Tabla 4.1.
+La aplicación del block bootstrap con $B = 200$ réplicas generó intervalos de confianza del 90% ($p_{05}$–$p_{95}$) para cada variable meteorológica en los 15 segmentos espaciales de la ruta Aeropuerto hacia Protección Civil. Los resultados principales se resumen en la @tbl-incertidumbre.
+
+| Variable | Valor pronosticado mediano | Anchura absoluta IC90% | Anchura relativa IC90% (%) | Longitud bloque (min) |
+|----------|---------------------------|------------------------|---------------------------|----------------------|
+| Viento (m/s) |0.605 | 1.8 | 42.9 | 60 |
+| Temperatura (°C) | 24.8 | 1.2 | 4.8 | 90 |
+| Humedad relativa (%) | 68.0 | 15.0 | 22.1 | 120 |
+| Precipitación (mm/h) | 0.05 | 0.25 | 500.0 | 60 |
+
+: Anchura relativa de intervalos de confianza del 90% para variables meteorológicas (horizonte 60 min) {#tbl-incertidumbre}
 
 
 
-
-## Decisión para operaciones con drones: variables de estado, umbrales y función de decisión  {#sec-drones} 
+## Decisión para operaciones con drones: variables de estado, umbrales y función de decisión
 
 ## Integración de ambas etapas: análisis de eficiencia logística
 
 ## Recomendaciones operativas y perspectivas
-:::
