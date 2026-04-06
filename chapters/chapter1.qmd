@@ -1,0 +1,20 @@
+---
+title: "Teoría de Grafos, Cadenas de Markov y PageRank"
+lang: es
+format:
+    html: default
+    pdf: default  
+execute: 
+  freeze: auto 
+jupyter: python3
+---
+
+## Grafos dirigidos y no dirigidos, matrices de adyacencia
+## Redes ponderadas y aplicaciones a redes de transporte
+## Cadenas de Markov de tiempo discreto
+## Teorema de Perron-Frobenius y su aplicación al PageRank
+
+## Problemas en redes: nodos colgantes y subgrafos absorbentes
+
+## Factor de amortiguamiento y matriz de transición modificada
+

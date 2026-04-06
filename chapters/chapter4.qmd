@@ -193,9 +193,8 @@ donde $d(P_{k-1}, P_k)$ denota la distancia geodésica entre puntos consecutivos
 
 Esta discretización permite transformar el problema continuo de transporte atmosférico en un esquema discreto espacio-temporal adecuado para estimación y pronóstico numérico, facilitando tanto el análisis de coherencia espacial como la modelación del transporte advectivo unidimensional.
 
-## Estimación de la velocidad de advección mediante correlación cruzada y análisis $f$-$k$
+## Estimación de la velocidad de advección mediante correlación cruzada y análisis $f$-$k$ {#sec-analisisadveccion}
 ### Introducción al problema de estimación
-
 El pronóstico de variables meteorológicas a lo largo de la ruta de vuelo del dron requiere estimar la velocidad de advección dominante, entendida como la velocidad con la que las estructuras atmosféricas se propagan en la dirección de la trayectoria. Esta magnitud constituye un parámetro fundamental para el modelo de pronóstico advectivo, ya que determina la posición espacial desde donde se extrae información para predecir el estado futuro en cada segmento.
 
 En este trabajo se proponen dos metodologías complementarias para la estimación de la velocidad de advección:
@@ -818,7 +817,7 @@ La aplicación del modelo advectivo a la humedad relativa presenta las siguiente
 
 4. **Importancia operativa**: La humedad relativa constituye un factor crítico para la operación de drones, ya que valores elevados incrementan el riesgo de condensación en sensores y circuitos electrónicos.
 
-Esta formulación permite integrar la humedad relativa en el sistema de decisión multicriterio descrito en la Sección 4.9, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
+Esta formulación permite integrar la humedad relativa en el sistema de decisión multicriterio descrito en la @sec-drones, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
 
 ## Aplicación del modelo advectivo a la precipitación: esquema de persistencia ponderada adaptativa
 
