@@ -52,6 +52,7 @@ crossref:
   tbl-prefix: "Tabla"
   sec-prefix: "Sección"
 
+
 fig-cap-location: bottom
 tbl-cap-location: top
 

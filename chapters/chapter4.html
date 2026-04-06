@@ -642,8 +642,8 @@ s_i = \sum_{k=1}^{i} d(P_{k-1}, P_k),
 <p>Esta discretización permite transformar el problema continuo de transporte atmosférico en un esquema discreto espacio-temporal adecuado para estimación y pronóstico numérico, facilitando tanto el análisis de coherencia espacial como la modelación del transporte advectivo unidimensional.</p>
 </section>
 </section>
-<section id="estimación-de-la-velocidad-de-advección-mediante-correlación-cruzada-y-análisis-f-k" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="estimación-de-la-velocidad-de-advección-mediante-correlación-cruzada-y-análisis-f-k"><span class="header-section-number">3.3</span> Estimación de la velocidad de advección mediante correlación cruzada y análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span></h2>
+<section id="sec-analisisadveccion" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-analisisadveccion"><span class="header-section-number">3.3</span> Estimación de la velocidad de advección mediante correlación cruzada y análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span></h2>
 <section id="introducción-al-problema-de-estimación" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="introducción-al-problema-de-estimación"><span class="header-section-number">3.3.1</span> Introducción al problema de estimación</h3>
 <p>El pronóstico de variables meteorológicas a lo largo de la ruta de vuelo del dron requiere estimar la velocidad de advección dominante, entendida como la velocidad con la que las estructuras atmosféricas se propagan en la dirección de la trayectoria. Esta magnitud constituye un parámetro fundamental para el modelo de pronóstico advectivo, ya que determina la posición espacial desde donde se extrae información para predecir el estado futuro en cada segmento.</p>
@@ -1117,7 +1117,7 @@ w_1 + w_2 + w_3 = 1, \qquad w_k \ge 0.
 <li><p><strong>Sensibilidad a condiciones de contorno</strong>: La humedad es particularmente sensible a la presencia de cuerpos de agua, vegetación y cambios topográficos a lo largo de la ruta.</p></li>
 <li><p><strong>Importancia operativa</strong>: La humedad relativa constituye un factor crítico para la operación de drones, ya que valores elevados incrementan el riesgo de condensación en sensores y circuitos electrónicos.</p></li>
 </ol>
-<p>Esta formulación permite integrar la humedad relativa en el sistema de decisión multicriterio descrito en la Sección 4.9, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
+<p>Esta formulación permite integrar la humedad relativa en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span>Sección 3.9</span></a>, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
 </section>
 </section>
 <section id="aplicación-del-modelo-advectivo-a-la-precipitación-esquema-de-persistencia-ponderada-adaptativa" class="level2" data-number="3.7">
@@ -2395,7 +2395,7 @@ Tabla&nbsp;3.7: Comparación de eficiencia logística entre escenarios operativo
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-hayashi1973method" class="csl-entry" role="listitem">
-Hayashi, Yoshikazu. 1973. <span>«A method of analyzing transient waves by space-time cross spectra»</span>. <em>Journal of Applied Meteorology</em> 12 (3): 404-8. <a href="https://doi.org/10.1175/1520-0450(1973)012<0404:AMOATW>2.0.CO;2">https://doi.org/10.1175/1520-0450(1973)012&lt;0404:AMOATW&gt;2.0.CO;2</a>.
+Hayashi, Y. 1973. <span>«A generalized method for resolving disturbances into progressive and quasi-stationary waves by space Fourier and time cross-spectral analysis»</span>. <em>Journal of the Atmospheric Sciences</em> 30 (4): 623-33. <a href="https://doi.org/10.2151/jmsj1965.49.2_125">https://doi.org/10.2151/jmsj1965.49.2_125</a>.
 </div>
 <div id="ref-snyder1987map" class="csl-entry" role="listitem">
 Snyder, John P. 1987. <em>Map Projections: A Working Manual</em>. USGS Professional Paper 1395. Washington, DC: United States Geological Survey. <a href="https://doi.org/10.3133/pp1395">https://doi.org/10.3133/pp1395</a>.
