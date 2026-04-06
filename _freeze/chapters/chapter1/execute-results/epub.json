@@ -1,0 +1,20 @@
+{
+  "hash": "8342eac4f47f7a898844e20b7793854b",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Teoría de Grafos, Cadenas de Markov y PageRank\"\nlang: es\nformat:\n    html: default\n    pdf: default  \nexecute: \n  freeze: auto \njupyter: python3\n---\n\n## Grafos dirigidos y no dirigidos, matrices de adyacencia\n## Redes ponderadas y aplicaciones a redes de transporte\n## Cadenas de Markov de tiempo discreto\n## Teorema de Perron-Frobenius y su aplicación al PageRank\n\n## Problemas en redes: nodos colgantes y subgrafos absorbentes\n\n## Factor de amortiguamiento y matriz de transición modificada\n\n",
+    "supporting": [
+      "chapter1_files\\figure-epub"
+    ],
+    "filters": [],
+    "engineDependencies": {
+      "jupyter": [
+        {
+          "jsWidgets": false,
+          "jupyterWidgets": false,
+          "htmlLibraries": []
+        }
+      ]
+    }
+  }
+}

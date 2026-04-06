@@ -373,6 +373,1019 @@ bnkjb
 
 \bookmarksetup{startatroot}
 
+\chapter{Teoría de Grafos, Cadenas de Markov y
+PageRank}\label{teoruxeda-de-grafos-cadenas-de-markov-y-pagerank}
+
+\section{Grafos dirigidos y no dirigidos, matrices de
+adyacencia}\label{grafos-dirigidos-y-no-dirigidos-matrices-de-adyacencia}
+
+\section{Redes ponderadas y aplicaciones a redes de
+transporte}\label{redes-ponderadas-y-aplicaciones-a-redes-de-transporte}
+
+\section{Cadenas de Markov de tiempo
+discreto}\label{cadenas-de-markov-de-tiempo-discreto}
+
+\section{Teorema de Perron-Frobenius y su aplicación al
+PageRank}\label{teorema-de-perron-frobenius-y-su-aplicaciuxf3n-al-pagerank}
+
+\section{Problemas en redes: nodos colgantes y subgrafos
+absorbentes}\label{problemas-en-redes-nodos-colgantes-y-subgrafos-absorbentes}
+
+\section{Factor de amortiguamiento y matriz de transición
+modificada}\label{factor-de-amortiguamiento-y-matriz-de-transiciuxf3n-modificada}
+
+\bookmarksetup{startatroot}
+
+\chapter{Procesos Estocásticos y Modelos de
+Pronóstico}\label{procesos-estocuxe1sticos-y-modelos-de-pronuxf3stico}
+
+\section{\texorpdfstring{Procesos estocásticos de segundo orden y
+espacio de Hilbert
+\(L^2(\Omega,\mathcal{F},\mathbb{P})\)}{Procesos estocásticos de segundo orden y espacio de Hilbert L\^{}2(\textbackslash Omega,\textbackslash mathcal\{F\},\textbackslash mathbb\{P\})}}\label{procesos-estocuxe1sticos-de-segundo-orden-y-espacio-de-hilbert-l2omegamathcalfmathbbp}
+
+El análisis matemático de fenómenos meteorológicos y su aplicación al
+pronóstico operativo requieren un marco probabilístico riguroso que
+permita cuantificar la variabilidad inherente a las observaciones
+ambientales. En este contexto, los procesos estocásticos de segundo
+orden constituyen la base teórica sobre la cual se construyen los
+modelos de series de tiempo, las estimaciones de covarianza y los
+procedimientos de remuestreo utilizados en esta tesis. La exigencia de
+que las variables aleatorias posean momentos de segundo orden finitos no
+es una restricción arbitraria, sino una condición técnica fundamental
+que garantiza la existencia de la estructura geométrica del espacio de
+Hilbert, herramienta indispensable para el análisis de proyecciones
+ortogonales y descomposiciones espectrales.
+
+Sea \((\Omega, \mathcal{F}, \mathbb{P})\) un espacio de probabilidad,
+donde \(\Omega\) es el espacio muestral, \(\mathcal{F}\) es una
+\(\sigma\)-álgebra de eventos sobre \(\Omega\), y \(\mathbb{P}\) es una
+medida de probabilidad definida en \(\mathcal{F}\)
+(\citeproc{ref-durrett2019probability}{Durrett 2019}). Una variable
+aleatoria real es una función medible \(X: \Omega \to \mathbb{R}\). El
+conjunto de todas las variables aleatorias con valor esperado finito de
+su cuadrado se define como:
+
+\[
+L^2(\Omega, \mathcal{F}, \mathbb{P}) = \left\{ X : \Omega \to \mathbb{R} \ \text{medible} \ \bigg| \ \mathbb{E}[|X|^2] = \int_\Omega |X(\omega)|^2 \, d\mathbb{P}(\omega) < \infty \right\}.
+\]
+
+Este espacio, dotado de la operación de valor esperado del producto,
+posee una estructura algebraica y topológica fundamental. En particular,
+se puede definir el siguiente producto interno para cualesquiera
+\(X, Y \in L^2(\Omega, \mathcal{F}, \mathbb{P})\):
+
+\[
+\langle X, Y \rangle = \mathbb{E}[XY] = \int_\Omega X(\omega)Y(\omega) \, d\mathbb{P}(\omega).
+\]
+
+\textbf{Definición 2.1 (Norma y distancia en \(L^2\)).} La norma
+inducida por el producto interno anterior se define como
+\(\|X\|_2 = \sqrt{\langle X, X \rangle} = \sqrt{\mathbb{E}[X^2]}\). La
+distancia entre dos elementos se expresa como \(d(X,Y) = \|X - Y\|_2\).
+Bajo esta métrica, el espacio \(L^2(\Omega, \mathcal{F}, \mathbb{P})\)
+es completo; es decir, toda sucesión de Cauchy converge a un elemento
+del mismo espacio (\citeproc{ref-rudin1987real}{Rudin 1987}). Por tanto,
+\(L^2(\Omega, \mathcal{F}, \mathbb{P})\) constituye un \textbf{espacio
+de Hilbert separable} sobre el campo de los números reales.
+
+Esta estructura geométrica es crucial para el análisis de pronóstico, ya
+que permite interpretar la estimación de una variable futura como una
+proyección ortogonal sobre el subespacio generado por las observaciones
+pasadas. La desigualdad de Cauchy-Schwarz, derivada directamente de la
+estructura de producto interno, garantiza la acotación de la covarianza:
+
+\[
+|\operatorname{Cov}(X,Y)| = |\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]| \leq \sqrt{\operatorname{Var}(X)\operatorname{Var}(Y)},
+\]
+
+lo cual asegura la existencia y estabilidad numérica de los coeficientes
+de correlación utilizados en secciones posteriores.
+
+\textbf{Definición 2.2 (Proceso estocástico de segundo orden).} Sea
+\(\mathcal{T}\) un conjunto de índices (típicamente
+\(\mathcal{T} = \mathbb{N}\) o \(\mathcal{T} = \mathbb{R}\)). Un proceso
+estocástico \(\{X_t\}_{t \in \mathcal{T}}\) se denomina \emph{de segundo
+orden} si para todo \(t \in \mathcal{T}\) se cumple que
+\(X_t \in L^2(\Omega, \mathcal{F}, \mathbb{P})\), es decir:
+
+\[
+\mathbb{E}[|X_t|^2] < \infty, \quad \forall t \in \mathcal{T}.
+\]
+
+Esta condición implica automáticamente que la función media
+\(\mu(t) = \mathbb{E}[X_t]\) y la función de autocovarianza
+\(\gamma(t,s) = \operatorname{Cov}(X_t, X_s)\) están bien definidas y
+son finitas para todo par de índices
+\((t,s) \in \mathcal{T} \times \mathcal{T}\)
+(\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
+
+En el contexto de variables meteorológicas como la velocidad del viento,
+la temperatura o la precipitación, la suposición de segundo orden es
+físicamente razonable: las cantidades físicas observadas presentan
+fluctuaciones acotadas en escalas temporales cortas, y sus momentos
+cuadráticos reflejan la energía cinética o térmica del sistema
+atmosférico. Además, esta hipótesis habilita el uso de técnicas de
+análisis espectral, descomposición en componentes principales y filtrado
+lineal óptimo, todas ellas sustentadas en la geometría del espacio
+\(L^2\) (\citeproc{ref-williams1991martingales}{Williams 1991}).
+
+La completitud del espacio \(L^2\) garantiza, por el Teorema de
+Proyección de Hilbert, que para cualquier subespacio cerrado
+\(\mathcal{S} \subset L^2(\Omega, \mathcal{F}, \mathbb{P})\) y cualquier
+variable aleatoria \(Y \in L^2\), existe un único elemento
+\(\hat{Y} \in \mathcal{S}\) que minimiza el error cuadrático medio
+\(\mathbb{E}[(Y - \hat{Y})^2]\). Este resultado fundamenta
+matemáticamente la formulación de predictores lineales óptimos, base de
+los modelos autorregresivos que se desarrollarán en la
+Sección~\ref{sec-ar1}, y justifica la construcción de intervalos de
+confianza mediante métodos de remuestreo que preservan la estructura de
+covarianza, como el block bootstrap descrito en la
+Sección~\ref{sec-blockbootstrap}.
+
+\section{Estacionariedad débil y funciones de covarianza
+cruzada}\label{estacionariedad-duxe9bil-y-funciones-de-covarianza-cruzada}
+
+La modelación de series meteorológicas requiere supuestos estructurales
+que garanticen la estabilidad estadística de las propiedades del proceso
+a lo largo del tiempo. En particular, la noción de estacionariedad
+constituye un pilar fundamental en el análisis de series de tiempo, ya
+que permite inferir parámetros poblacionales a partir de una única
+trayectoria observada. Dado que el marco probabilístico desarrollado en
+la Sección 2.1 se restringe a procesos de segundo orden, la
+estacionariedad de interés es la \emph{débil} (o de covarianza), la cual
+solo exige invarianza en los dos primeros momentos estadísticos
+(\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
+
+\textbf{Definición 2.3 (Estacionariedad débil).} Sea
+\(\{X_t\}_{t \in \mathcal{T}}\) un proceso estocástico de segundo orden.
+Se dice que \(\{X_t\}\) es \emph{débilmente estacionario} si satisface
+las siguientes condiciones: 1. La función media es constante:
+\(\mathbb{E}[X_t] = \mu\), para todo \(t \in \mathcal{T}\). 2. La
+función de autocovarianza depende únicamente de la diferencia temporal
+(lag): \(\operatorname{Cov}(X_t, X_s) = \gamma(|t-s|)\), para todo
+\(t,s \in \mathcal{T}\). 3. La varianza es finita y constante:
+\(\gamma(0) = \operatorname{Var}(X_t) < \infty\).
+
+A diferencia de la estacionariedad estricta, que requiere invarianza en
+todas las distribuciones finito-dimensionales del proceso, la
+estacionariedad débil solo controla los momentos de orden uno y dos.
+Esta relajación es suficiente para el desarrollo de predictores lineales
+óptimos, análisis espectral y estimación por correlación, herramientas
+centrales en la metodología de nowcasting presentada en este trabajo
+(\citeproc{ref-priestley1981spectral}{Priestley 1981}).
+
+Bajo la hipótesis de estacionariedad débil, la función de autocovarianza
+\(\gamma(h)\) posee propiedades estructurales esenciales: -
+\(\gamma(0) \geq 0\) y representa la varianza marginal del proceso, -
+\(\gamma(h) = \gamma(-h)\) (simetría par), -
+\(|\gamma(h)| \leq \gamma(0)\) para todo \(h \in \mathbb{Z}\), - La
+matriz de covarianza \(\Gamma_n = [\gamma(i-j)]_{i,j=1}^n\) es
+semidefinida positiva para cualquier \(n \in \mathbb{N}\)
+(\citeproc{ref-hamilton1994time}{Hamilton 1994}).
+
+Estas propiedades garantizan que las estimaciones muestrales de la
+autocovarianza convergen en probabilidad a sus valores poblacionales
+bajo condiciones ergódicas, lo cual justifica el uso de promedios
+temporales en la práctica operacional.
+
+\subsection{Covarianza cruzada y dependencia entre
+variables}\label{covarianza-cruzada-y-dependencia-entre-variables}
+
+En el contexto multivariado, donde se analizan simultáneamente variables
+meteorológicas como viento, temperatura y humedad a lo largo de la ruta
+de vuelo, es necesario extender el concepto de autocovarianza a la
+\emph{covarianza cruzada}. Sean \(\{X_t\}\) y \(\{Y_t\}\) dos procesos
+estocásticos débilmente estacionarios, conjuntamente estacionarios. La
+función de covarianza cruzada se define como:
+
+\[
+\gamma_{XY}(h) = \operatorname{Cov}(X_{t+h}, Y_t) = \mathbb{E}\big[(X_{t+h} - \mu_X)(Y_t - \mu_Y)\big], \quad h \in \mathbb{Z}.
+\]
+
+A diferencia de la autocovarianza, \(\gamma_{XY}(h)\) no es
+necesariamente una función par, ya que la influencia de \(Y_t\) sobre
+\(X_{t+h}\) puede diferir de la influencia inversa. Sin embargo,
+satisface la relación de simetría cruzada:
+
+\[
+\gamma_{XY}(h) = \gamma_{YX}(-h), \quad \forall h \in \mathbb{Z}.
+\]
+
+Para obtener una medida adimensional y comparable entre distintas
+variables, se introduce la \emph{función de correlación cruzada}:
+
+\[
+\rho_{XY}(h) = \frac{\gamma_{XY}(h)}{\sqrt{\gamma_X(0)\,\gamma_Y(0)}}.
+\]
+
+Esta función cuantifica la dependencia lineal entre ambas series con un
+desfase \(h\) y está acotada por \(|\rho_{XY}(h)| \leq 1\). La
+identificación del retardo \(h^*\) que maximiza \(|\rho_{XY}(h)|\)
+constituye la base matemática del método de correlación cruzada entre
+segmentos espaciales adyacentes, descrito en la Sección 4.3, y permite
+estimar el tiempo de propagación de estructuras atmosféricas a lo largo
+del corredor de vuelo (\citeproc{ref-box2015time}{Box et~al. 2015}).
+
+\subsection{Consideraciones de ergodicidad y validez
+muestral}\label{consideraciones-de-ergodicidad-y-validez-muestral}
+
+La estacionariedad débil garantiza la existencia de \(\mu\) y
+\(\gamma(h)\), pero no asegura que puedan estimarse consistentemente a
+partir de una única realización temporal. Para ello, se requiere
+adicionalmente la propiedad de \textbf{ergodicidad en media y
+covarianza}, la cual establece que los promedios temporales convergen a
+los promedios espaciales (esperanzas):
+
+\[
+\lim_{T \to \infty} \frac{1}{T} \sum_{t=1}^{T} X_t = \mu \quad \text{c.s.}, \qquad 
+\lim_{T \to \infty} \frac{1}{T} \sum_{t=1}^{T-h} (X_t - \mu)(X_{t+h} - \mu) = \gamma(h) \quad \text{c.s.}
+\]
+
+Bajo esta condición, los estimadores muestrales
+\(\hat{\mu} = \frac{1}{T}\sum_{t=1}^T X_t\) y
+\(\hat{\gamma}(h) = \frac{1}{T-h}\sum_{t=1}^{T-h} (X_t-\hat{\mu})(X_{t+h}-\hat{\mu})\)
+son consistentes (\citeproc{ref-durrett2019probability}{Durrett 2019}).
+En la práctica, las series meteorológicas de corta duración (ej. 7 días
+con muestreo cada 10 minutos) pueden no satisfacer plenamente la
+ergodicidad asintótica; por ello, la cuantificación de incertidumbre
+mediante block bootstrap (Sección~\ref{sec-blockbootstrap}) actúa como
+mecanismo de validación empírica que no depende de supuestos ergódicos
+estrictos.
+
+Esta fundamentación teórica permite transitar de manera rigurosa hacia
+el análisis espectral y la modelación autorregresiva, desarrollados en
+las secciones siguientes, donde la estructura de covarianza estacionaria
+se explota explícitamente para generar pronósticos de corto horizonte
+con intervalos de confianza cuantificables.
+
+\section{Correlación cruzada y existencia del lag óptimo
+discreto}\label{correlaciuxf3n-cruzada-y-existencia-del-lag-uxf3ptimo-discreto}
+
+En la práctica operacional, solo se dispone de una trayectoria finita
+\(\{X_t\}_{t=1}^T\) y \(\{Y_t\}_{t=1}^T\) de longitud \(T < \infty\).
+Por tanto, las funciones teóricas \(\gamma_{XY}(h)\) y \(\rho_{XY}(h)\)
+deben aproximarse mediante sus contrapartes muestrales. Esta sección
+formaliza el estimador discreto de correlación cruzada, establece las
+condiciones matemáticas para la existencia del retardo óptimo y analiza
+sus propiedades estadísticas bajo el marco de procesos débilmente
+estacionarios.
+
+\textbf{Definición 2.4 (Correlación cruzada muestral).} Sean
+\(\{x_t\}_{t=1}^T\) y \(\{y_t\}_{t=1}^T\) dos realizaciones observadas
+de procesos estacionarios con medias muestrales
+\(\bar{x} = \frac{1}{T}\sum_{t=1}^T x_t\) y
+\(\bar{y} = \frac{1}{T}\sum_{t=1}^T y_t\). Para un retardo discreto
+\(k \in \mathbb{Z}\), el estimador de correlación cruzada se define
+como:
+
+\[
+\hat{\rho}_{xy}(k) = 
+\begin{cases}
+\dfrac{\sum_{t=1}^{T-k} (x_t - \bar{x})(y_{t+k} - \bar{y})}{\sqrt{\sum_{t=1}^T (x_t - \bar{x})^2 \sum_{t=1}^T (y_t - \bar{y})^2}}, & 0 \leq k < T, \\[12pt]
+\dfrac{\sum_{t=1}^{T+|k|} (x_{t-|k|} - \bar{x})(y_t - \bar{y})}{\sqrt{\sum_{t=1}^T (x_t - \bar{x})^2 \sum_{t=1}^T (y_t - \bar{y})^2}}, & -T < k < 0, \\[12pt]
+0, & |k| \geq T.
+\end{cases}
+\]
+
+Esta definición garantiza que \(\hat{\rho}_{xy}(k) \in [-1, 1]\) para
+todo \(k\), preservando la interpretación geométrica de similitud lineal
+entre series desplazadas temporalmente. En la literatura de
+procesamiento de señales discretos, esta forma normalizada corresponde
+al coeficiente de correlación de Pearson aplicado a vectores desplazados
+(\citeproc{ref-oppenheim2010discrete}{Oppenheim y Schafer 2010}).
+
+\subsection{Existencia del retardo óptimo
+discreto}\label{existencia-del-retardo-uxf3ptimo-discreto}
+
+En aplicaciones de transporte atmosférico, el interés se centra en
+identificar el desfase temporal \(k^*\) que maximiza la dependencia
+lineal entre dos señales. Formalmente, se define:
+
+\[
+k^* = \arg\max_{k \in \mathcal{K}} \left| \hat{\rho}_{xy}(k) \right|, \quad \mathcal{K} = \{-K, -K+1, \dots, K\} \subset \mathbb{Z},
+\]
+
+donde \(K < T\) es un parámetro de truncamiento que acota la búsqueda a
+retardos físicamente plausibles.
+
+\textbf{Proposición 2.1 (Existencia del máximo discreto).} Sea
+\(\mathcal{K} \subset \mathbb{Z}\) un conjunto finito no vacío. La
+aplicación \(k \mapsto |\hat{\rho}_{xy}(k)|\) alcanza su máximo en al
+menos un punto \(k^* \in \mathcal{K}\).
+
+\emph{Demostración.} Dado que \(\mathcal{K}\) es finito y la función
+toma valores en \(\mathbb{R}\), el conjunto de imágenes
+\(\{|\hat{\rho}_{xy}(k)| : k \in \mathcal{K}\}\) es finito. Por el
+principio del extremo en conjuntos finitos, existe al menos un elemento
+máximo. \(\square\)
+
+La unicidad de \(k^*\) no está garantizada en general; puede ocurrir en
+presencia de estructuras periódicas, ruido blanco o cuando múltiples
+retardos presentan correlaciones indistinguibles numéricamente. Sin
+embargo, bajo la hipótesis física de advección dominante con perfil
+espacial unimodal, la correlación cruzada suele exhibir un pico agudo y
+bien separado, lo que justifica la selección de un único \(k^*\)
+operativo (\citeproc{ref-priestley1981spectral}{Priestley 1981}).
+
+\subsection{Propiedades estadísticas y comportamiento
+asintótico}\label{propiedades-estaduxedsticas-y-comportamiento-asintuxf3tico}
+
+El estimador \(\hat{\rho}_{xy}(k)\) es sesgado para muestras finitas
+debido a la reducción progresiva del número de pares efectivos conforme
+\(|k|\) aumenta. No obstante, bajo condiciones de estacionariedad y
+dependencia decaída (mixing conditions), es un estimador consistente:
+
+\[
+\hat{\rho}_{xy}(k) \xrightarrow{p} \rho_{XY}(k) \quad \text{cuando } T \to \infty.
+\]
+
+Bajo la hipótesis nula de independencia entre \(\{X_t\}\) y \(\{Y_t\}\),
+Bartlett demostró que para \(|k| \ll T\) la distribución muestral es
+asintóticamente normal con varianza aproximada \(1/T\)
+(\citeproc{ref-bartlett1946theoretical}{Bartlett 1946}). Más
+precisamente, si \(\{X_t\}\) y \(\{Y_t\}\) son procesos gaussianos
+independientes:
+
+\[
+\sqrt{T} \, \hat{\rho}_{xy}(k) \xrightarrow{d} \mathcal{N}(0, 1), \quad T \to \infty.
+\]
+
+Esta propiedad permite construir intervalos de confianza aproximados
+para evaluar la significancia estadística de \(k^*\). En la práctica, se
+suele aplicar un umbral de detección
+\(\rho_{\min} \approx 1.96/\sqrt{T}\) al nivel de significancia
+\(\alpha = 0.05\), descartando retardos cuya correlación no supere el
+umbral de ruido aleatorio (\citeproc{ref-box2015time}{Box et~al. 2015}).
+
+\subsection{Implementación y consideraciones
+numéricas}\label{implementaciuxf3n-y-consideraciones-numuxe9ricas}
+
+En la estimación de velocidad de advección entre segmentos espaciales
+adyacentes (Sección~\ref{sec-analisisadveccion}), el lag óptimo \(k^*\)
+se interpreta directamente como el tiempo de transporte discreto entre
+estaciones virtuales. La relación física se expresa como:
+
+\[
+\hat{v} = \frac{\Delta s}{k^* \Delta t},
+\]
+
+donde \(\Delta s\) es la distancia geodésica entre centroides y
+\(\Delta t\) el intervalo de muestreo temporal. Para evitar estimaciones
+espurias en presencia de baja correlación, se introduce un criterio de
+aceptación basado en la fracción de pares adyacentes que superan
+\(\rho_{\min}\) simultáneamente con \(k^* \neq 0\), garantizando
+robustez frente a ruido de medición y fluctuaciones no advectivas
+(\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
+
+Esta fundamentación teórica justifica el uso de la correlación cruzada
+discreta como herramienta primaria de estimación de velocidad, y prepara
+el terreno para el análisis espectral frecuencia-espacio (\(f\)-\(k\))
+desarrollado en la Sección~\ref{sec-analisisfk}, donde la fase espectral
+reemplaza al dominio temporal para capturar estructuras de propagación
+en regímenes de baja coherencia temporal.
+
+\section{Análisis de series de tiempo: autocovarianza y transformada de
+Fourier}\label{sec-analisisseriestiempo}
+
+La caracterización completa de un proceso estocástico estacionario en el
+dominio del tiempo mediante su función de autocovarianza \(\gamma(h)\)
+resulta insuficiente cuando el objetivo es identificar frecuencias
+dominantes, ciclos ocultos o estructuras periódicas en series
+meteorológicas. El análisis espectral permite transformar la dependencia
+temporal en una distribución de energía por frecuencias, facilitando la
+detección de modos oscilatorios y la validación de supuestos de
+advección. Este cambio de perspectiva, del dominio temporal al dominio
+frecuencial, se fundamenta en la transformada de Fourier aplicada a
+secuencias de covarianza y constituye el puente matemático necesario
+para el análisis \(f\)-\(k\) desarrollado en la Sección 2.5.
+
+Sea \(\{X_t\}_{t \in \mathbb{Z}}\) un proceso débilmente estacionario
+con función de autocovarianza \(\gamma: \mathbb{Z} \to \mathbb{R}\). Una
+propiedad estructural esencial, derivada de la definición de varianza de
+combinaciones lineales, es que \(\gamma\) es una función \emph{definida
+no negativa} (positive semi-definite). Formalmente:
+
+\textbf{Proposición 2.2 (Definición no negativa de \(\gamma\)).} Para
+cualquier \(n \in \mathbb{N}\) y cualquier conjunto de coeficientes
+complejos \(c_1, \dots, c_n \in \mathbb{C}\), se cumple: \[
+\sum_{j=1}^n \sum_{k=1}^n c_j \overline{c_k} \, \gamma(j-k) \geq 0.
+\] Esta condición garantiza que las matrices de covarianza
+\(\Gamma_n = [\gamma(i-j)]_{i,j=1}^n\) sean semidefinidas positivas,
+requisito indispensable para la invertibilidad numérica en modelos
+autorregresivos y para la existencia de una representación espectral
+válida (\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
+
+\subsection{Teorema de Herglotz y representación
+espectral}\label{teorema-de-herglotz-y-representaciuxf3n-espectral}
+
+El teorema de Herglotz establece que toda función definida no negativa
+en \(\mathbb{Z}\) admite una representación integral única mediante una
+medida de distribución espectral \(F(\omega)\) en el intervalo
+\([-\pi, \pi]\):
+
+\textbf{Teorema 2.1 (Representación espectral de Herglotz).} Sea
+\(\gamma: \mathbb{Z} \to \mathbb{C}\) una función definida no negativa
+con \(\gamma(0) < \infty\). Entonces existe una función monótona no
+decreciente \(F: [-\pi, \pi] \to \mathbb{R}\), acotada y continua por la
+derecha, tal que: \[
+\gamma(h) = \int_{-\pi}^{\pi} e^{i h \omega} \, dF(\omega), \quad \forall h \in \mathbb{Z}.
+\] Si \(F\) es absolutamente continua respecto a la medida de Lebesgue,
+entonces existe una densidad \(f(\omega) \geq 0\) tal que
+\(dF(\omega) = f(\omega) \, d\omega\). A esta función se le denomina
+\emph{densidad espectral de potencia} (PSD) del proceso
+(\citeproc{ref-priestley1981spectral}{Priestley 1981}).
+
+La densidad espectral \(f(\omega)\) cuantifica la contribución de cada
+frecuencia angular \(\omega\) a la varianza total del proceso. En
+particular, al evaluar en \(h=0\) se obtiene: \[
+\gamma(0) = \operatorname{Var}(X_t) = \int_{-\pi}^{\pi} f(\omega) \, d\omega,
+\] lo que confirma que la varianza se distribuye a lo largo del espectro
+de frecuencias (\citeproc{ref-hamilton1994time}{Hamilton 1994}).
+
+\subsection{Teorema de Wiener-Khinchin y dualidad
+temporal-frecuencial}\label{teorema-de-wiener-khinchin-y-dualidad-temporal-frecuencial}
+
+La relación explícita entre la autocovarianza y la densidad espectral se
+formaliza mediante el teorema de Wiener-Khinchin, que para procesos de
+tiempo discreto establece:
+
+\textbf{Teorema 2.2 (Wiener-Khinchin discreto).} Si
+\(\sum_{h=-\infty}^{\infty} |\gamma(h)| < \infty\), entonces la densidad
+espectral existe, es continua y está dada por la transformada de Fourier
+discreta de la autocovarianza: \[
+f(\omega) = \frac{1}{2\pi} \sum_{h=-\infty}^{\infty} \gamma(h) e^{-i h \omega}, \quad \omega \in [-\pi, \pi].
+\] Recíprocamente, la autocovarianza se recupera mediante la
+transformada inversa: \[
+\gamma(h) = \int_{-\pi}^{\pi} e^{i h \omega} f(\omega) \, d\omega.
+\] Esta dualidad permite interpretar la estructura de dependencia
+temporal como una superposición de componentes oscilatorias ortogonales,
+cada una ponderada por su densidad espectral. En el contexto
+meteorológico, picos pronunciados en \(f(\omega)\) suelen asociarse a
+ciclos diurnos, patrones sinópticos recurrentes o modos de oscilación
+climática de baja frecuencia (\citeproc{ref-shumway2017time}{Shumway y
+Stoffer 2017}).
+
+\subsection{Estimación espectral para series
+finitas}\label{estimaciuxf3n-espectral-para-series-finitas}
+
+En la práctica operacional, solo se dispone de una trayectoria finita
+\(\{x_t\}_{t=1}^T\). El estimador no paramétrico más directo de la
+densidad espectral es el \emph{periodograma}, definido mediante la
+transformada discreta de Fourier (DFT) de los datos centrados: \[
+I_T(\omega) = \frac{1}{2\pi T} \left| \sum_{t=1}^T (x_t - \bar{x}) e^{-i t \omega} \right|^2, \quad \omega \in [-\pi, \pi].
+\] Aunque el periodograma es asintóticamente insesgado
+(\(\mathbb{E}[I_T(\omega)] \to f(\omega)\) cuando \(T \to \infty\)), no
+es consistente: su varianza no converge a cero, incluso para \(T\)
+grande. Para obtener estimadores consistentes se requiere suavizado
+espectral, ya sea mediante ventanas espectrales (Daniell, Parzen,
+Bartlett) o mediante promediado sobre frecuencias adyacentes
+(\citeproc{ref-priestley1981spectral}{Priestley 1981}).
+
+Alternativamente, los métodos paramétricos ajustan un modelo ARMA de
+orden finito a la serie y derivan \(f(\omega)\) analíticamente a partir
+de los coeficientes estimados. Estos enfoques son particularmente útiles
+cuando la longitud muestral es limitada, como ocurre en ventanas de
+nowcasting de 7 días con muestreo cada 10 minutos.
+
+\subsection{Integración con el sistema de
+pronóstico}\label{integraciuxf3n-con-el-sistema-de-pronuxf3stico}
+
+La representación espectral proporciona las bases matemáticas para dos
+componentes centrales de esta tesis: 1. \textbf{Validación de
+estacionariedad}: La inspección visual y cuantitativa de \(f(\omega)\)
+permite detectar tendencias no estacionarias o ciclos dominantes que
+deben eliminarse o modelarse explícitamente antes de aplicar métodos de
+correlación cruzada. 2. \textbf{Análisis \(f\)-\(k\)}: La extensión de
+la transformada de Fourier al dominio espacio-temporal \((s,t)\) permite
+estimar la velocidad de fase de estructuras atmosféricas mediante la
+pendiente de la fase espectral, metodología que se desarrolla en la
+Sección~\ref{sec-analisisfk} y se aplica operativamente en la estimación
+de velocidad de advección (Sección 4.3).
+
+En conjunto, la dualidad autocovarianza--transformada de Fourier cierra
+el círculo teórico entre la descripción temporal de la dependencia y la
+representación frecuencial de la energía del proceso, habilitando
+herramientas matemáticas robustas para el pronóstico de corto horizonte
+bajo incertidumbre.
+
+\section{\texorpdfstring{Análisis frecuencia-espacio (\(f\)-\(k\)) y
+velocidad de
+fase}{Análisis frecuencia-espacio (f-k) y velocidad de fase}}\label{sec-analisisfk}
+
+El análisis espectral unidimensional desarrollado en la
+Sección~\ref{sec-analisisseriestiempo} caracteriza la distribución de
+energía de un proceso estocástico únicamente en el dominio temporal. Sin
+embargo, los campos meteorológicos que interactúan con la trayectoria de
+un dron se propagan como estructuras espacio-temporales coherentes, cuya
+dinámica no puede capturarse adecuadamente sin considerar
+simultáneamente las dimensiones espacial y temporal. El análisis
+conjunto frecuencia-número de onda, conocido como análisis \(f\)-\(k\),
+constituye la extensión natural de la teoría espectral a procesos
+definidos sobre dominios discretos \((s,t)\) y permite estimar
+directamente la velocidad de fase de patrones dominantes
+(\citeproc{ref-hayashi1973method}{Hayashi 1973}).
+
+Sea \(\{X(s_i, t_n)\}\) un campo aleatorio observado en una malla
+discreta de \(N\) segmentos espaciales \(s_i = i\Delta s\) y \(T\)
+instantes temporales \(t_n = n\Delta t\). Bajo la hipótesis de
+estacionariedad débil en ambas dimensiones, se define la
+\textbf{transformada discreta de Fourier bidimensional (2D-DFT)} como:
+
+\[
+\hat{X}(\omega_m, \kappa_j) = \sum_{n=0}^{T-1} \sum_{i=0}^{N-1} X(s_i, t_n) \, e^{-i(\omega_m t_n + \kappa_j s_i)},
+\]
+
+donde \(\omega_m = 2\pi m / (T\Delta t)\) y
+\(\kappa_j = 2\pi j / (N\Delta s)\) representan las frecuencias
+angulares temporales y espaciales, respectivamente, con
+\(m \in \{0,\dots,T-1\}\) y \(j \in \{0,\dots,N-1\}\). El espectro de
+potencia espacio-temporal se define como:
+
+\[
+S(\omega_m, \kappa_j) = \frac{1}{NT} \left| \hat{X}(\omega_m, \kappa_j) \right|^2.
+\]
+
+Este objeto matemático cuantifica la energía asociada a cada par
+\((\omega, \kappa)\) y permite identificar modos de propagación
+dominantes como regiones de alta concentración espectral en el plano
+\(f\)-\(k\) (\citeproc{ref-brillinger1981time}{Brillinger 1981}).
+
+\subsection{Modelo de onda viajera y relación de
+fase}\label{modelo-de-onda-viajera-y-relaciuxf3n-de-fase}
+
+Para una estructura atmosférica que se propaga como una onda viajera
+unidimensional, el campo puede aproximarse localmente por:
+
+\[
+X(s,t) \approx A \cos(\kappa s - \omega t + \phi_0),
+\]
+
+donde \(A\) es la amplitud, \(\kappa\) el número de onda espacial,
+\(\omega\) la frecuencia angular y \(\phi_0\) una fase inicial
+constante. La transformada de Fourier temporal para un segmento fijo
+\(s_i\) produce un espectro complejo cuya fase satisface:
+
+\[
+\phi(s_i, \omega) = \arg\big(\hat{X}(s_i, \omega)\big) = \kappa(\omega) \, s_i + \phi_0(\omega).
+\]
+
+Esta relación lineal entre fase y posición espacial constituye el
+fundamento del método de \textbf{pendiente de fase} para estimar la
+velocidad de propagación. Si \(\phi(s_i, \omega)\) se desenvuelve
+adecuadamente (\emph{phase unwrapping}), el número de onda efectivo a
+frecuencia \(\omega\) se obtiene mediante regresión lineal:
+
+\[
+\hat{\kappa}(\omega) = \arg\min_{\alpha, \beta} \sum_{i=1}^{N} \big[ \phi_{\text{unwrapped}}(s_i, \omega) - (\alpha s_i + \beta) \big]^2.
+\]
+
+La velocidad de fase asociada a dicha frecuencia se define como:
+
+\[
+v_p(\omega) = \frac{\omega}{\hat{\kappa}(\omega)}.
+\]
+
+El signo de \(v_p\) indica la dirección de propagación relativa a la
+orientación espacial de la ruta: \(v_p > 0\) implica avance en sentido
+creciente de \(s\), mientras que \(v_p < 0\) indica retroceso. En el
+contexto de nowcasting advectivo, la convención se ajusta para que
+\(v > 0\) corresponda a la dirección dominante del flujo atmosférico
+(\citeproc{ref-emery2004data}{Emery y Thomson 2004}).
+
+\subsection{Estimación robusta y consideraciones
+prácticas}\label{estimaciuxf3n-robusta-y-consideraciones-pruxe1cticas}
+
+La aplicación directa de \(v_p(\omega)\) presenta dos desafíos
+numéricos: 1. \textbf{Desenvolvimiento de fase}: La función
+\(\arg(\cdot)\) retorna valores en \((-\pi, \pi]\), generando
+discontinuidades artificiales de \(2\pi\). El desenvolvimiento
+consistente requiere agregar o restar múltiplos de \(2\pi\) para
+garantizar continuidad espacial, algoritmo que es estable siempre que
+\(|\kappa| \Delta s < \pi\) (criterio de Nyquist espacial)
+(\citeproc{ref-oppenheim2010discrete}{Oppenheim y Schafer 2010}). 2.
+\textbf{Ponderación espectral}: Las frecuencias con baja energía
+presentan fases dominadas por ruido de medición, produciendo
+estimaciones de \(\hat{\kappa}\) inestables. Se introduce un peso
+proporcional a la densidad espectral: \[
+   w(\omega) = \frac{S(\omega, \hat{\kappa}(\omega))}{\sum_{m} S(\omega_m, \hat{\kappa}(\omega_m))},
+   \] y la velocidad final se calcula como la mediana ponderada de
+\(\{v_p(\omega_m)\}\) sobre una banda de interés fisico-meteorológico
+(\citeproc{ref-bendat2010random}{Bendat y Piersol 2010}).
+
+La mediana se prefiere sobre la media aritmética por su robustez frente
+a valores atípicos causados por modos estacionarios
+(\(\kappa \approx 0\)), reflexiones topográficas o estructuras
+convectivas no coherentes con la advección dominante.
+
+\subsection{Integración con el sistema de
+pronóstico}\label{integraciuxf3n-con-el-sistema-de-pronuxf3stico-1}
+
+El análisis \(f\)-\(k\) complementa la estimación por correlación
+cruzada (Sección 2.3) en regímenes donde la coherencia temporal entre
+segmentos adyacentes es baja pero existe estructura espectral clara. La
+velocidad estimada \(v = \operatorname{median}_{\omega}\{v_p(\omega)\}\)
+se incorpora directamente al operador de transporte advectivo discreto:
+\[
+s_i^{\text{up}} = s_i - v H,
+\]
+
+que constituye el núcleo del modelo híbrido de nowcasting desarrollado
+en la Sección 4.4. Esta cadena teórica, desde la transformada 2D hasta
+la regresión de fase, garantiza que el pronóstico respete la física de
+propagación observada, transformando observaciones espacio-temporales en
+parámetros operativos cuantificables y trazables.
+
+\section{Modelos autorregresivos AR(1) y persistencia
+temporal}\label{sec-ar1}
+
+Los modelos autorregresivos de orden uno constituyen la clase más simple
+y ampliamente utilizada de procesos estocásticos lineales. Su estructura
+recursiva captura la inercia temporal inherente a variables
+meteorológicas como la temperatura y la humedad relativa, permitiendo
+representar la persistencia observada en escalas de minutos a horas sin
+requerir parámetros adicionales. En el contexto de nowcasting, el modelo
+AR(1) proporciona el componente local del pronóstico híbrido descrito en
+la Sección 4.4, complementando el transporte advectivo con dinámica
+temporal intrínseca y garantizando estabilidad numérica frente a
+fluctuaciones de alta frecuencia
+(\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
+
+\textbf{Definición 2.5 (Proceso AR(1)).} Sea
+\(\{X_t\}_{t \in \mathbb{Z}}\) un proceso estocástico de tiempo
+discreto. Se dice que \(\{X_t\}\) sigue un \textbf{proceso
+autorregresivo de orden uno}, denotado AR(1), si satisface la ecuación
+en diferencias estocástica: \[
+X_t = \phi X_{t-1} + \varepsilon_t,
+\] donde \(\phi \in \mathbb{R}\) es el coeficiente autorregresivo y
+\(\{\varepsilon_t\}\) es un proceso de ruido blanco, es decir,
+\(\mathbb{E}[\varepsilon_t] = 0\),
+\(\operatorname{Var}(\varepsilon_t) = \sigma_\varepsilon^2 < \infty\), y
+\(\operatorname{Cov}(\varepsilon_t, \varepsilon_s) = 0\) para
+\(t \neq s\) (\citeproc{ref-hamilton1994time}{Hamilton 1994}). Cuando el
+proceso posee media no nula \(\mu\), la formulación se generaliza a
+\(X_t - \mu = \phi(X_{t-1} - \mu) + \varepsilon_t\).
+
+\subsection{Estacionariedad y momentos
+poblacionales}\label{estacionariedad-y-momentos-poblacionales}
+
+La existencia de una distribución estacionaria para el proceso AR(1)
+está condicionada estrictamente por la magnitud del parámetro \(\phi\).
+
+\textbf{Proposición 2.3 (Condiciones de estacionariedad y representación
+MA(\(\infty\))).} El proceso AR(1) es débilmente estacionario si y solo
+si \(|\phi| < 1\). Bajo esta condición, admite la representación de
+media móvil infinita: \[
+X_t = \sum_{j=0}^\infty \phi^j \varepsilon_{t-j},
+\] la cual converge en media cuadrática (\(L^2\)) dado que
+\(\sum_{j=0}^\infty |\phi|^j = (1-|\phi|)^{-1} < \infty\)
+(\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
+
+A partir de esta representación se obtienen directamente los momentos
+poblacionales: - \textbf{Media:} \(\mathbb{E}[X_t] = 0\) (para el
+proceso centrado). - \textbf{Varianza:}
+\(\gamma(0) = \operatorname{Var}(X_t) = \sigma_\varepsilon^2 \sum_{j=0}^\infty \phi^{2j} = \dfrac{\sigma_\varepsilon^2}{1-\phi^2}\).
+- \textbf{Autocovarianza:} Para \(h \in \mathbb{Z}\), se cumple
+\(\gamma(h) = \mathbb{E}[X_t X_{t-h}] = \phi^{|h|} \gamma(0)\).
+
+La estructura exponencial de la autocovarianza implica que la
+dependencia temporal decae monótonamente con el desfase \(h\). El
+parámetro \(\phi\) cuantifica directamente la \textbf{persistencia
+temporal}: valores cercanos a \(1\) indican alta inercia (variabilidad
+lenta), mientras que \(\phi \approx 0\) corresponde a comportamiento
+cercano al ruido blanco (\citeproc{ref-shumway2017time}{Shumway y
+Stoffer 2017}).
+
+\subsection{Pronóstico multipaso y decaimiento de la
+persistencia}\label{pronuxf3stico-multipaso-y-decaimiento-de-la-persistencia}
+
+Una de las propiedades operativas más relevantes del modelo AR(1) es la
+forma cerrada de sus predictores lineales óptimos. Dada la información
+disponible hasta el instante \(t\),
+\(\mathcal{F}_t = \sigma(\{X_s : s \leq t\})\), el pronóstico a \(k\)
+pasos adelante se obtiene iterando la ecuación del modelo y utilizando
+\(\mathbb{E}[\varepsilon_{t+j} \mid \mathcal{F}_t] = 0\) para
+\(j \geq 1\): \[
+\hat{X}_{t+k \mid t} = \mathbb{E}[X_{t+k} \mid \mathcal{F}_t] = \phi^k X_t.
+\] Este resultado muestra explícitamente cómo la influencia de la
+observación actual decae exponencialmente con el horizonte de pronóstico
+\(k\). En el límite \(k \to \infty\), \(\hat{X}_{t+k \mid t} \to 0\),
+reflejando el retorno a la media bajo condiciones estacionarias. Para
+variables no centradas con media \(\mu\), el pronóstico converge a
+\(\mu\): \[
+\hat{X}_{t+k \mid t} = \mu + \phi^k (X_t - \mu).
+\]
+
+En la implementación del sistema de nowcasting (Sección 4.4), esta
+expresión se utiliza directamente para calcular el componente
+autorregresivo: \[
+y_i^{\text{AR}}(t+H) = a_i^{n} y_i(t), \quad n = H/\Delta t,
+\] donde \(a_i\) es la estimación muestral de \(\phi\) para el segmento
+espacial \(i\).
+
+\subsection{Estimación por mínimos cuadrados
+ordinarios}\label{estimaciuxf3n-por-muxednimos-cuadrados-ordinarios}
+
+En la práctica, \(\phi\) y \(\sigma_\varepsilon^2\) son desconocidos y
+deben estimarse a partir de una trayectoria finita \(\{x_t\}_{t=1}^T\).
+El estimador por mínimos cuadrados ordinarios (MCO) minimiza la suma de
+residuos cuadráticos: \[
+\hat{\phi} = \arg\min_{\phi} \sum_{t=2}^T (x_t - \phi x_{t-1})^2 = \frac{\sum_{t=2}^T x_t x_{t-1}}{\sum_{t=1}^{T-1} x_{t-1}^2}.
+\] Bajo la hipótesis de estacionariedad y ruido blanco, \(\hat{\phi}\)
+es consistente y asintóticamente normal: \[
+\sqrt{T}(\hat{\phi} - \phi) \xrightarrow{d} \mathcal{N}\left(0, 1-\phi^2\right), \quad T \to \infty.
+\] Para series meteorológicas de longitud limitada, la varianza de
+\(\hat{\phi}\) se infla cuando \(|\phi|\) se aproxima a \(1\) (raíz
+unitaria cercana). Por esta razón, en segmentos con escasez de
+observaciones se aplica regularización mediante truncamiento o
+sustitución por la mediana espacial de coeficientes válidos,
+garantizando estabilidad operativa (\citeproc{ref-box2015time}{Box
+et~al. 2015}).
+
+\subsection{Integración con el sistema de
+decisión}\label{integraciuxf3n-con-el-sistema-de-decisiuxf3n}
+
+El modelo AR(1) no se emplea de forma aislada, sino como componente
+estructural dentro del esquema híbrido de nowcasting. Su contribución es
+particularmente crítica para: 1. \textbf{Temperatura del aire:} Donde la
+inercia termodinámica justifica \(\phi \approx 0.95\), reflejando alta
+coherencia temporal. 2. \textbf{Humedad relativa:} Con persistencia
+moderada (\(\phi \approx 0.85\)), capturando la dinámica higroscópica
+sin sobreajuste. 3. \textbf{Modelo de respaldo:} Cuando fallan los
+métodos advectivos, el AR(1) regularizado actúa como fallback
+conservador, evitando extrapolaciones físicamente inconsistentes.
+
+La combinación explícita de \(\phi^k\) (decaimiento autorregresivo) con
+\(s_i - vH\) (transporte espacial) produce un predictor que balancea
+memoria local y coherencia atmosférica, cumpliendo con los requisitos de
+trazabilidad matemática y robustez operacional exigidos en la logística
+humanitaria.
+
+\section{Métodos de remuestreo: Block Bootstrap
+temporal}\label{sec-blockbootstrap}
+
+El método bootstrap clásico, propuesto por Efron, constituye una
+herramienta poderosa para aproximar distribuciones muestrales bajo la
+hipótesis de independencia e idéntica distribución (i.i.d.)
+(\citeproc{ref-efron1979bootstrap}{Efron 1979}). Sin embargo, en el
+análisis de series meteorológicas y en la cuantificación de
+incertidumbre de pronósticos de corto horizonte, esta suposición es
+estructuralmente inválida: las observaciones presentan dependencia
+serial, ciclos diurnos y memoria termodinámica que deben preservarse en
+cualquier procedimiento de remuestreo. El \textbf{bootstrap de bloques}
+(\emph{block bootstrap}) surge como la extensión natural que mantiene la
+estructura de correlación temporal al remuestrear segmentos contiguos en
+lugar de observaciones aisladas
+(\citeproc{ref-kunsch1989jackknife}{Künsch 1989}).
+
+\subsection{Formulación matemática del Moving Block Bootstrap
+(MBB)}\label{formulaciuxf3n-matemuxe1tica-del-moving-block-bootstrap-mbb}
+
+Sea \(\{X_t\}_{t=1}^T\) una trayectoria observada de un proceso
+estacionario débilmente dependiente. Para una longitud de bloque fija
+\(L \in \mathbb{N}\) con \(L \ll T\), se definen los bloques
+superpuestos: \[
+B_j = \big(X_j, X_{j+1}, \dots, X_{j+L-1}\big), \quad j = 1, 2, \dots, T-L+1.
+\] Cada bloque \(B_j\) conserva la estructura de dependencia local de
+orden \(L\). El procedimiento de remuestreo se define como sigue:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Selección aleatoria}: Se extraen \(K = \lfloor T/L \rfloor\)
+  bloques con reemplazo de manera uniforme e independiente del conjunto
+  \(\{B_1, \dots, B_{T-L+1}\}\), obteniendo índices
+  \(\{j_1^*, j_2^*, \dots, j_K^*\}\).
+\item
+  \textbf{Reconstrucción}: Se concatena la secuencia de bloques
+  seleccionados para formar la réplica bootstrap: \[
+  \{X_t^*\}_{t=1}^{KL} = B_{j_1^*} \oplus B_{j_2^*} \oplus \dots \oplus B_{j_K^*},
+  \] donde \(\oplus\) denota la operación de concatenación temporal.
+\item
+  \textbf{Cálculo del estadístico}: Sobre la serie bootstrap se
+  recalcula el estimador de interés
+  \(\hat{\theta}^* = s(X_1^*, \dots, X_{KL}^*)\), generando así una
+  distribución empírica condicional
+  \(\hat{G}_n(x) = \mathbb{P}^*(\hat{\theta}^* \leq x)\)
+  (\citeproc{ref-liu1992moving}{Liu y Singh 1992}).
+\end{enumerate}
+
+\subsection{Consistencia asintótica y condiciones de
+dependencia}\label{consistencia-asintuxf3tica-y-condiciones-de-dependencia}
+
+La validez teórica del MBB no requiere supuestos gaussianos, sino
+condiciones de decaimiento de la dependencia. Sea \(\alpha(k)\) el
+coeficiente de mezcla fuerte (strong mixing) del proceso \(\{X_t\}\): \[
+\alpha(k) = \sup_{A \in \mathcal{F}_{-\infty}^0, \, B \in \mathcal{F}_k^\infty} \left| \mathbb{P}(A \cap B) - \mathbb{P}(A)\mathbb{P}(B) \right|.
+\] Bajo la condición
+\(\sum_{k=1}^\infty \alpha(k)^{\delta/(2+\delta)} < \infty\) para algún
+\(\delta > 0\), Künsch demostró que el MBB aproxima consistentemente la
+distribución límite de medias muestrales y estimadores suaves
+(\citeproc{ref-kunsch1989jackknife}{Künsch 1989}). Formalmente, si
+\(L \to \infty\) y \(L/T \to 0\) cuando \(T \to \infty\), entonces: \[
+\sup_{x \in \mathbb{R}} \left| \mathbb{P}^*\left( \sqrt{K}(\hat{\theta}^* - \hat{\theta}) \leq x \right) - \mathbb{P}\left( \sqrt{T}(\hat{\theta} - \theta) \leq x \right) \right| \xrightarrow{p} 0.
+\] Este resultado garantiza que los intervalos de confianza construidos
+a partir de cuantiles empíricos \(\{q_\alpha^*\}\) son asintóticamente
+válidos, incluso para procesos no gaussianos y no lineales comunes en
+meteorología.
+
+\subsection{\texorpdfstring{Selección de la longitud del bloque
+\(L\)}{Selección de la longitud del bloque L}}\label{selecciuxf3n-de-la-longitud-del-bloque-l}
+
+La elección de \(L\) determina el equilibrio entre sesgo y varianza del
+procedimiento: - Si \(L\) es demasiado pequeño, la estructura de
+dependencia se subestima y el bootstrap se comporta como i.i.d.,
+produciendo intervalos demasiado estrechos. - Si \(L\) es demasiado
+grande, se reducen el número de bloques disponibles (\(K \approx T/L\)),
+incrementando la varianza muestral del estimador bootstrap.
+
+Bajo condiciones de regularidad, la longitud óptima minimiza el error
+cuadrático medio del estimador de varianza bootstrap y escala como
+\(L_{\text{opt}} \propto T^{1/3}\) para medias muestrales
+(\citeproc{ref-hall1995optimal}{Hall, Horowitz, y Jing 1995}). En la
+práctica operacional, sin embargo, la selección de \(L\) se guía por
+escalas físicas del sistema atmosférico (ej. persistencia térmica,
+tiempo de correlación del viento), lo que justifica longitudes adaptadas
+por variable, como se detalla en la Sección 4.8.
+
+\subsection{Variante estacionaria y consideraciones
+numéricas}\label{variante-estacionaria-y-consideraciones-numuxe9ricas}
+
+El MBB con bloques fijos introduce discontinuidades artificiales en los
+puntos de unión entre bloques, lo que puede distorsionar estimadores de
+alta frecuencia. Para preservar estrictamente la estacionariedad,
+Politis y Romano propusieron el \textbf{bootstrap estacionario}, donde
+la longitud de cada bloque se muestrea de una distribución geométrica
+con parámetro \(p = 1/L\), garantizando que la serie reconstruida sea
+estrictamente estacionaria bajo la medida bootstrap
+(\citeproc{ref-politis1994large}{Politis y Romano 1994}).
+
+En implementaciones computacionales para nowcasting meteorológico, el
+MBB estándar suele preferirse por su simplicidad, determinismo en la
+longitud de la réplica y facilidad de paralelización. La elección de
+\(L\) se fija por validación cruzada temporal o por criterios de escala
+física, y el número de réplicas \(B\) se selecciona típicamente entre
+100 y 500 para estabilizar cuantiles extremos (\(p_{05}, p_{95}\)) con
+error de Monte Carlo menor al \(1\%\)
+(\citeproc{ref-lahiri2003resampling}{Lahiri 2003}).
+
+\subsection{Integración con la cuantificación de incertidumbre
+operativa}\label{integraciuxf3n-con-la-cuantificaciuxf3n-de-incertidumbre-operativa}
+
+En el marco de esta tesis, el block bootstrap se emplea para generar
+distribuciones empíricas de pronósticos
+\(\{\hat{y}_i^{(b)}(t+H)\}_{b=1}^B\) por segmento espacial y variable
+meteorológica. A partir de estas distribuciones se extraen los
+percentiles críticos: \[
+\text{p05}_i = q_{0.05}^*, \quad \text{p50}_i = q_{0.50}^*, \quad \text{p95}_i = q_{0.95}^*,
+\] los cuales alimentan directamente la función de decisión binaria
+desarrollada en la Sección 4.9. El uso del percentil 95 como cota
+conservadora \(\tilde{y}_i = \text{p95}_i\) implementa una política de
+tolerancia cero que cuantifica explícitamente el riesgo de violación de
+umbrales técnicos, cerrando el ciclo entre teoría de procesos
+estocásticos, remuestreo dependiente y toma de decisiones bajo
+incertidumbre.
+
+\section{Teoría de decisión bajo incertidumbre y regiones
+factibles}\label{teoruxeda-de-decisiuxf3n-bajo-incertidumbre-y-regiones-factibles}
+
+La transición de pronósticos meteorológicos cuantitativos a
+recomendaciones operativas binarias requiere un marco formal que
+estructure racionalmente la elección entre alternativas bajo condiciones
+no deterministas. En contextos de logística humanitaria y operaciones
+aéreas, el estado futuro del sistema atmosférico no es observable de
+antemano; solo se dispone de distribuciones predictivas o intervalos de
+confianza derivados de modelos estocásticos. La teoría de decisión bajo
+incertidumbre proporciona el lenguaje matemático para transformar
+información probabilística en acciones discretas, garantizando
+coherencia lógica, trazabilidad y alineación con los objetivos de
+seguridad operacional (\citeproc{ref-berger1985statistical}{Berger
+1985}).
+
+\subsection{Formulación formal del problema de
+decisión}\label{formulaciuxf3n-formal-del-problema-de-decisiuxf3n}
+
+Un problema de decisión se define mediante la tupla
+\((\Theta, \mathcal{A}, \mathcal{L})\), donde: - \(\Theta\) es el
+\textbf{espacio de estados de la naturaleza}, que en este contexto
+corresponde al vector de condiciones meteorológicas reales futuras
+\(\boldsymbol{\theta} = (V, T, H, R)^\top \in \mathbb{R}^4\). -
+\(\mathcal{A} = \{a_1, a_2\}\) es el \textbf{conjunto de acciones
+factibles}, con \(a_1 = \text{PUEDE\_VOLAR}\) y
+\(a_2 = \text{NO\_PUEDE\_VOLAR}\). -
+\(\mathcal{L}: \mathcal{A} \times \Theta \to \mathbb{R}\) es la
+\textbf{función de pérdida}, que cuantifica el costo asociado a elegir
+la acción \(a\) cuando el estado real es \(\boldsymbol{\theta}\).
+
+Bajo incertidumbre, \(\boldsymbol{\theta}\) es desconocido en el momento
+de la decisión. En lugar de conocer el estado exacto, se dispone de una
+distribución predictiva posterior
+\(\pi(\boldsymbol{\theta} \mid \mathcal{D})\) o, en enfoques no
+paramétricos, de una familia de conjuntos de credibilidad derivados de
+procedimientos de remuestreo (\citeproc{ref-french1988decision}{French
+1988}).
+
+\subsection{Criterios de decisión clásicos y conservadurismo
+operativo}\label{criterios-de-decisiuxf3n-cluxe1sicos-y-conservadurismo-operativo}
+
+Cuando la distribución de \(\boldsymbol{\theta}\) es incierta o se
+prefiere un enfoque robusto frente a errores de modelado, la
+investigación de operaciones establece criterios de decisión que no
+dependen de supuestos distribucionales completos. Entre los más
+utilizados se encuentran:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Criterio de Wald (Maximin)}: Selecciona la acción que minimiza
+  la máxima pérdida posible: \[
+  a^* = \arg\min_{a \in \mathcal{A}} \left\{ \sup_{\boldsymbol{\theta} \in \Theta} \mathcal{L}(a, \boldsymbol{\theta}) \right\}.
+  \] Este criterio es inherentemente conservador y resulta adecuado
+  cuando el costo de un error por acción (ej. volar en condiciones
+  adversas) es asimétrico y potencialmente catastrófico. En logística y
+  sistemas críticos, Taha enfatiza su aplicación para decisiones donde
+  la tolerancia al fallo es mínima
+  (\citeproc{ref-taha2017operations}{Taha 2017}).
+\item
+  \textbf{Criterio de Savage (Minimax Regret)}: Minimiza el máximo
+  arrepentimiento o costo de oportunidad respecto a la decisión óptima
+  ex-post: \[
+  a^* = \arg\min_{a \in \mathcal{A}} \left\{ \sup_{\boldsymbol{\theta} \in \Theta} \left[ \mathcal{L}(a, \boldsymbol{\theta}) - \min_{a' \in \mathcal{A}} \mathcal{L}(a', \boldsymbol{\theta}) \right] \right\}.
+  \]
+\item
+  \textbf{Criterio de Hurwicz}: Introduce un coeficiente de optimismo
+  \(\alpha \in [0,1]\) que pondera el mejor y peor escenario: \[
+  a^* = \arg\min_{a \in \mathcal{A}} \left\{ \alpha \inf_{\boldsymbol{\theta}} \mathcal{L}(a, \boldsymbol{\theta}) + (1-\alpha) \sup_{\boldsymbol{\theta}} \mathcal{L}(a, \boldsymbol{\theta}) \right\}.
+  \]
+\end{enumerate}
+
+En operaciones con drones de carga humanitaria, la asimetría de riesgos
+justifica la adopción de una política cercana al criterio de Wald, donde
+la seguridad prevalece sobre la eficiencia inmediata.
+
+\subsection{Regiones factibles y funciones indicadoras de
+viabilidad}\label{regiones-factibles-y-funciones-indicadoras-de-viabilidad}
+
+En problemas con restricciones técnicas explícitas, el espacio de
+decisiones se acota mediante una \textbf{región factible}
+\(\mathcal{F} \subset \Theta\), definida como el conjunto de estados que
+satisfacen simultáneamente todos los límites operacionales del sistema:
+\[
+\mathcal{F} = \bigcap_{j=1}^{m} \left\{ \boldsymbol{\theta} \in \Theta : g_j(\boldsymbol{\theta}) \leq u_j \right\},
+\] donde \(g_j: \Theta \to \mathbb{R}\) son funciones de restricción
+(ej. velocidad del viento, temperatura, humedad, precipitación) y
+\(u_j \in \mathbb{R}\) son umbrales técnicos máximos o mínimos. La
+viabilidad operacional se determina mediante la función indicadora: \[
+\mathbb{I}_{\mathcal{F}}(\boldsymbol{\theta}) = 
+\begin{cases}
+1, & \text{si } \boldsymbol{\theta} \in \mathcal{F}, \\
+0, & \text{en caso contrario}.
+\end{cases}
+\] Esta formulación transforma el problema de decisión en una evaluación
+de pertenencia a un conjunto definido por intersección de semiespacios,
+lo cual computacionalmente se resuelve mediante evaluaciones booleanas
+secuenciales (\citeproc{ref-hillier2015introduction}{Hillier y Lieberman
+2015}).
+
+\subsection{Integración con incertidumbre predictiva y política de
+tolerancia
+cero}\label{integraciuxf3n-con-incertidumbre-predictiva-y-poluxedtica-de-tolerancia-cero}
+
+Cuando \(\boldsymbol{\theta}\) es reemplazado por un pronóstico
+estocástico \(\hat{\boldsymbol{\theta}}\) con distribución empírica
+\(\mathcal{D}_{\text{boot}}\), la pertenencia a \(\mathcal{F}\) debe
+evaluarse de manera robusta. En lugar de usar la mediana o el valor
+esperado, se adopta un \textbf{estadístico conservador}
+\(\tilde{\boldsymbol{\theta}}\) que controla la probabilidad de
+violación de restricciones: \[
+\tilde{\theta}_j = \inf \left\{ x : \mathbb{P}(\hat{\theta}_j \leq x) \geq 1 - \alpha \right\}, \quad \alpha = 0.05.
+\] La decisión final se obtiene evaluando
+\(\mathbb{I}_{\mathcal{F}}(\tilde{\boldsymbol{\theta}})\), lo que
+garantiza que la probabilidad de operar fuera de la región factible no
+exceda el \(5\%\) bajo el modelo de remuestreo. Esta aproximación
+implementa de forma práctica un \textbf{criterio de decisión robusto}
+que alinea la teoría de probabilidad con los protocolos de seguridad
+aeronáutica, donde la tolerancia a fallos es mínima y las consecuencias
+de una decisión errónea son irreversibles
+(\citeproc{ref-taha2017operations}{Taha 2017}).
+
+\subsection{Conexión con el sistema de decisión del Capítulo
+4}\label{conexiuxf3n-con-el-sistema-de-decisiuxf3n-del-capuxedtulo-4}
+
+La estructura teórica presentada en esta sección constituye la base
+matemática de la función de decisión binaria
+\(\mathbb{I}_{\text{vuelo}}\) desarrollada en la Sección 4.9. Los
+umbrales técnicos \(u_j\) se derivan de las especificaciones del dron,
+la región factible \(\mathcal{F}\) se construye como intersección de
+restricciones univariadas, y el uso del percentil 95 (\(\alpha=0.05\))
+materializa el conservadurismo del criterio de Wald en un contexto
+estocástico. Esta formalización asegura que la recomendación operacional
+no sea un heurístico empírico, sino una regla de decisión rigurosa,
+trazable y alineada con los principios de la investigación de
+operaciones aplicada a sistemas críticos.
+
+\bookmarksetup{startatroot}
+
 \chapter{Optimización de Rutas Terrestres mediante
 PageRank}\label{optimizaciuxf3n-de-rutas-terrestres-mediante-pagerank}
 
@@ -1263,7 +2276,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, opacitybacktitle=0.6, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, bottomrule=.15mm, coltitle=black, left=2mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colframe=quarto-callout-note-color-frame, breakable, bottomtitle=1mm, arc=.35mm, rightrule=.15mm, leftrule=.75mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, arc=.35mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, bottomrule=.15mm, coltitle=black, breakable, left=2mm, opacityback=0, bottomtitle=1mm, colback=white, rightrule=.15mm, toptitle=1mm, titlerule=0mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -1761,7 +2774,7 @@ información sobre el desplazamiento espacial de las estructuras
 dominantes de la señal.
 
 \subsubsection{Modelo de onda viajera y relación de
-fase}\label{modelo-de-onda-viajera-y-relaciuxf3n-de-fase}
+fase}\label{modelo-de-onda-viajera-y-relaciuxf3n-de-fase-1}
 
 Bajo la hipótesis de que el campo meteorológico puede aproximarse
 localmente como una onda viajera unidimensional, se modela la señal
@@ -4379,17 +5392,89 @@ desarrollo.
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-bartlett1946theoretical}
+Bartlett, M. S. 1946. {«On the theoretical specification of sampling
+properties of autocorrelated time series»}. \emph{Journal of the Royal
+Statistical Society: Series B (Methodological)} 8 (1-2): 27-41.
+\url{https://doi.org/10.2307/2983611}.
+
+\bibitem[\citeproctext]{ref-bendat2010random}
+Bendat, Julius S., y Allan G. Piersol. 2010. \emph{Random Data: Analysis
+and Measurement Procedures}. 4.ª ed. Hoboken: Wiley.
+
+\bibitem[\citeproctext]{ref-berger1985statistical}
+Berger, James O. 1985. \emph{Statistical Decision Theory and Bayesian
+Analysis}. 2.ª ed. New York: Springer.
+
+\bibitem[\citeproctext]{ref-box2015time}
+Box, George E. P., Gwilym M. Jenkins, Gregory C. Reinsel, y Greta M.
+Ljung. 2015. \emph{Time Series Analysis: Forecasting and Control}. 5.ª
+ed. Hoboken: Wiley.
+
+\bibitem[\citeproctext]{ref-brillinger1981time}
+Brillinger, David R. 1981. \emph{Time Series: Data Analysis and Theory}.
+Revised. Philadelphia: SIAM. \url{https://doi.org/10.2307/1267927}.
+
 \bibitem[\citeproctext]{ref-brin1998anatomy}
 Brin, Sergey, y Lawrence Page. 1998. {«The Anatomy of a Large-Scale
 Hypertextual Web Search Engine»}. \emph{Computer Networks and ISDN
 Systems} 30 (1--7): 107-17.
 \url{https://doi.org/10.1016/S0169-7552(98)00110-X}.
 
+\bibitem[\citeproctext]{ref-brockwell2016time}
+Brockwell, Peter J., y Richard A. Davis. 2016. \emph{Introduction to
+Time Series and Forecasting}. 3.ª ed. Springer.
+
+\bibitem[\citeproctext]{ref-durrett2019probability}
+Durrett, Rick. 2019. \emph{Probability: Theory and Examples}. 5.ª ed.
+Cambridge: Cambridge University Press.
+
+\bibitem[\citeproctext]{ref-efron1979bootstrap}
+Efron, Bradley. 1979. {«Bootstrap methods: Another look at the
+jackknife»}. \emph{The Annals of Statistics} 7 (1): 1-26.
+\url{https://doi.org/10.1214/aos/1176344552}.
+
+\bibitem[\citeproctext]{ref-emery2004data}
+Emery, William J., y Richard E. Thomson. 2004. \emph{Data Analysis
+Methods in Physical Oceanography}. 2.ª ed. Amsterdam: Elsevier.
+\url{https://doi.org/10.1016/B978-0-12-387782-6.00005-3}.
+
+\bibitem[\citeproctext]{ref-french1988decision}
+French, Simon. 1988. \emph{Decision Theory: An Introduction to the
+Mathematics of Rationality}. Chichester: Ellis Horwood / Wiley.
+
+\bibitem[\citeproctext]{ref-hall1995optimal}
+Hall, Peter, Joel L. Horowitz, y Bing-Yi Jing. 1995. {«On blocking rules
+for the bootstrap with dependent data»}. \emph{Biometrika} 82 (3):
+561-74. \url{https://doi.org/10.1093/biomet/82.3.561}.
+
+\bibitem[\citeproctext]{ref-hamilton1994time}
+Hamilton, James D. 1994. \emph{Time Series Analysis}. Princeton:
+Princeton University Press.
+
 \bibitem[\citeproctext]{ref-hayashi1973method}
 Hayashi, Y. 1973. {«A generalized method for resolving disturbances into
 progressive and quasi-stationary waves by space Fourier and time
 cross-spectral analysis»}. \emph{Journal of the Atmospheric Sciences} 30
 (4): 623-33. \url{https://doi.org/10.2151/jmsj1965.49.2_125}.
+
+\bibitem[\citeproctext]{ref-hillier2015introduction}
+Hillier, Frederick S., y Gerald J. Lieberman. 2015. \emph{Introduction
+to Operations Research}. 10.ª ed. New York: McGraw-Hill Education.
+
+\bibitem[\citeproctext]{ref-kunsch1989jackknife}
+Künsch, Hans R. 1989. {«The jackknife and the bootstrap for general
+stationary observations»}. \emph{The Annals of Statistics} 17 (3):
+1217-41. \url{https://doi.org/10.1214/aos/1176347265}.
+
+\bibitem[\citeproctext]{ref-lahiri2003resampling}
+Lahiri, Soumendra N. 2003. \emph{Resampling Methods for Dependent Data}.
+New York: Springer.
+
+\bibitem[\citeproctext]{ref-liu1992moving}
+Liu, Regina Y., y Kesar Singh. 1992. {«Moving blocks jackknife and
+bootstrap capture weak dependence»}. \emph{Exploring the Limits of
+Bootstrap}, 225-48.
 
 \bibitem[\citeproctext]{ref-nasa_earthdata}
 NASA Earthdata. 2024. {«Shuttle Radar Topography Mission (SRTM) Data»}.
@@ -4406,9 +5491,31 @@ Geospatial-Intelligence Agency (NGA).
 OpenStreetMap Contributors. 2024. {«Nominatim API»}.
 \url{https://nominatim.openstreetmap.org/}.
 
+\bibitem[\citeproctext]{ref-oppenheim2010discrete}
+Oppenheim, Alan V., y Ronald W. Schafer. 2010. \emph{Discrete-Time
+Signal Processing}. 3.ª ed. Upper Saddle River: Pearson.
+
+\bibitem[\citeproctext]{ref-politis1994large}
+Politis, Dimitris N., y Joseph P. Romano. 1994. {«Large sample
+confidence regions based on subsamples under minimal assumptions»}.
+\emph{The Annals of Statistics} 22 (4): 2031-50.
+\url{https://doi.org/10.1214/aos/1176325770}.
+
+\bibitem[\citeproctext]{ref-priestley1981spectral}
+Priestley, M. B. 1981. \emph{Spectral Analysis and Time Series}. Vol. 1.
+London: Academic Press.
+
 \bibitem[\citeproctext]{ref-osrm}
 Project OSRM. 2024. {«Open Source Routing Machine (OSRM)»}.
 \url{https://project-osrm.org/}.
+
+\bibitem[\citeproctext]{ref-rudin1987real}
+Rudin, Walter. 1987. \emph{Real and Complex Analysis}. 3.ª ed.
+McGraw-Hill.
+
+\bibitem[\citeproctext]{ref-shumway2017time}
+Shumway, Robert H., y David S. Stoffer. 2017. \emph{Time Series Analysis
+and Its Applications: With R Examples}. 4.ª ed. Cham: Springer.
 
 \bibitem[\citeproctext]{ref-pyproj_library}
 Snow, Alan D. et~al. 2023. {«pyproj4/pyproj: 3.6.0»}. Zenodo.
@@ -4419,11 +5526,19 @@ Snyder, John P. 1987. \emph{Map Projections: A Working Manual}. USGS
 Professional Paper 1395. Washington, DC: United States Geological
 Survey. \url{https://doi.org/10.3133/pp1395}.
 
+\bibitem[\citeproctext]{ref-taha2017operations}
+Taha, Hamdy A. 2017. \emph{Investigación de operaciones}. 10.ª ed.
+Ciudad de México: Pearson Educación.
+
 \bibitem[\citeproctext]{ref-vincenty1975}
 Vincenty, Thaddeus. 1975. {«Direct and Inverse Solutions of Geodesics on
 the Ellipsoid with Application of Nested Equations»}. \emph{Survey
 Review} 23 (176): 88-93.
 \url{https://doi.org/10.1179/sre.1975.23.176.88}.
+
+\bibitem[\citeproctext]{ref-williams1991martingales}
+Williams, David. 1991. \emph{Probability with Martingales}. Cambridge
+University Press.
 
 \end{CSLReferences}
 

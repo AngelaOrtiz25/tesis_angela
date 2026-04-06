@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Procesos Estocásticos y Modelos de Pronóstico – tesis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/chapter3.html" rel="next">
+<link href="../chapters/chapter1.html" rel="prev">
+<link href="../logos/FCFM-UNACH.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fced259a1985fd972ecb57c7cd45153f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-732fb9ccd080a018ca85ca5d15770f52.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-fced259a1985fd972ecb57c7cd45153f.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-8214a2def84fb786748306236f71585f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-dedc67fb57f33d5f39d2824a25da7f7f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-8214a2def84fb786748306236f71585f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<script>
+
+window.MathJax = {
+
+  tex: {
+
+    tags: 'ams'   // Activa numeración AMS: (3.1), (3.2), …
+
+  }
+
+};
+
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos Estocásticos y Modelos de Pronóstico</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../logos/LOGO.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">tesis</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/AngelaOrtiz25/tesis_angela" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../tesis.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../tesis.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Alternar modo lector">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumen</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría de Grafos, Cadenas de Markov y PageRank</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos Estocásticos y Modelos de Pronóstico</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Optimización de Rutas Terrestres mediante PageRank</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistema Integrado de Decisión para Operaciones con Drones</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/appendix_a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apéndice</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/appendix_b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Apéndice</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#procesos-estocásticos-de-segundo-orden-y-espacio-de-hilbert-l2omegamathcalfmathbbp" id="toc-procesos-estocásticos-de-segundo-orden-y-espacio-de-hilbert-l2omegamathcalfmathbbp" class="nav-link active" data-scroll-target="#procesos-estocásticos-de-segundo-orden-y-espacio-de-hilbert-l2omegamathcalfmathbbp"><span class="header-section-number">3.1</span> Procesos estocásticos de segundo orden y espacio de Hilbert <span class="math inline">\(L^2(\Omega,\mathcal{F},\mathbb{P})\)</span></a></li>
+  <li><a href="#estacionariedad-débil-y-funciones-de-covarianza-cruzada" id="toc-estacionariedad-débil-y-funciones-de-covarianza-cruzada" class="nav-link" data-scroll-target="#estacionariedad-débil-y-funciones-de-covarianza-cruzada"><span class="header-section-number">3.2</span> Estacionariedad débil y funciones de covarianza cruzada</a>
+  <ul class="collapse">
+  <li><a href="#covarianza-cruzada-y-dependencia-entre-variables" id="toc-covarianza-cruzada-y-dependencia-entre-variables" class="nav-link" data-scroll-target="#covarianza-cruzada-y-dependencia-entre-variables"><span class="header-section-number">3.2.1</span> Covarianza cruzada y dependencia entre variables</a></li>
+  <li><a href="#consideraciones-de-ergodicidad-y-validez-muestral" id="toc-consideraciones-de-ergodicidad-y-validez-muestral" class="nav-link" data-scroll-target="#consideraciones-de-ergodicidad-y-validez-muestral"><span class="header-section-number">3.2.2</span> Consideraciones de ergodicidad y validez muestral</a></li>
+  </ul></li>
+  <li><a href="#correlación-cruzada-y-existencia-del-lag-óptimo-discreto" id="toc-correlación-cruzada-y-existencia-del-lag-óptimo-discreto" class="nav-link" data-scroll-target="#correlación-cruzada-y-existencia-del-lag-óptimo-discreto"><span class="header-section-number">3.3</span> Correlación cruzada y existencia del lag óptimo discreto</a>
+  <ul class="collapse">
+  <li><a href="#existencia-del-retardo-óptimo-discreto" id="toc-existencia-del-retardo-óptimo-discreto" class="nav-link" data-scroll-target="#existencia-del-retardo-óptimo-discreto"><span class="header-section-number">3.3.1</span> Existencia del retardo óptimo discreto</a></li>
+  <li><a href="#propiedades-estadísticas-y-comportamiento-asintótico" id="toc-propiedades-estadísticas-y-comportamiento-asintótico" class="nav-link" data-scroll-target="#propiedades-estadísticas-y-comportamiento-asintótico"><span class="header-section-number">3.3.2</span> Propiedades estadísticas y comportamiento asintótico</a></li>
+  <li><a href="#implementación-y-consideraciones-numéricas" id="toc-implementación-y-consideraciones-numéricas" class="nav-link" data-scroll-target="#implementación-y-consideraciones-numéricas"><span class="header-section-number">3.3.3</span> Implementación y consideraciones numéricas</a></li>
+  </ul></li>
+  <li><a href="#sec-analisisseriestiempo" id="toc-sec-analisisseriestiempo" class="nav-link" data-scroll-target="#sec-analisisseriestiempo"><span class="header-section-number">3.4</span> Análisis de series de tiempo: autocovarianza y transformada de Fourier</a>
+  <ul class="collapse">
+  <li><a href="#teorema-de-herglotz-y-representación-espectral" id="toc-teorema-de-herglotz-y-representación-espectral" class="nav-link" data-scroll-target="#teorema-de-herglotz-y-representación-espectral"><span class="header-section-number">3.4.1</span> Teorema de Herglotz y representación espectral</a></li>
+  <li><a href="#teorema-de-wiener-khinchin-y-dualidad-temporal-frecuencial" id="toc-teorema-de-wiener-khinchin-y-dualidad-temporal-frecuencial" class="nav-link" data-scroll-target="#teorema-de-wiener-khinchin-y-dualidad-temporal-frecuencial"><span class="header-section-number">3.4.2</span> Teorema de Wiener-Khinchin y dualidad temporal-frecuencial</a></li>
+  <li><a href="#estimación-espectral-para-series-finitas" id="toc-estimación-espectral-para-series-finitas" class="nav-link" data-scroll-target="#estimación-espectral-para-series-finitas"><span class="header-section-number">3.4.3</span> Estimación espectral para series finitas</a></li>
+  <li><a href="#integración-con-el-sistema-de-pronóstico" id="toc-integración-con-el-sistema-de-pronóstico" class="nav-link" data-scroll-target="#integración-con-el-sistema-de-pronóstico"><span class="header-section-number">3.4.4</span> Integración con el sistema de pronóstico</a></li>
+  </ul></li>
+  <li><a href="#sec-analisisfk" id="toc-sec-analisisfk" class="nav-link" data-scroll-target="#sec-analisisfk"><span class="header-section-number">3.5</span> Análisis frecuencia-espacio (<span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>) y velocidad de fase</a>
+  <ul class="collapse">
+  <li><a href="#modelo-de-onda-viajera-y-relación-de-fase" id="toc-modelo-de-onda-viajera-y-relación-de-fase" class="nav-link" data-scroll-target="#modelo-de-onda-viajera-y-relación-de-fase"><span class="header-section-number">3.5.1</span> Modelo de onda viajera y relación de fase</a></li>
+  <li><a href="#estimación-robusta-y-consideraciones-prácticas" id="toc-estimación-robusta-y-consideraciones-prácticas" class="nav-link" data-scroll-target="#estimación-robusta-y-consideraciones-prácticas"><span class="header-section-number">3.5.2</span> Estimación robusta y consideraciones prácticas</a></li>
+  <li><a href="#integración-con-el-sistema-de-pronóstico-1" id="toc-integración-con-el-sistema-de-pronóstico-1" class="nav-link" data-scroll-target="#integración-con-el-sistema-de-pronóstico-1"><span class="header-section-number">3.5.3</span> Integración con el sistema de pronóstico</a></li>
+  </ul></li>
+  <li><a href="#sec-ar1" id="toc-sec-ar1" class="nav-link" data-scroll-target="#sec-ar1"><span class="header-section-number">3.6</span> Modelos autorregresivos AR(1) y persistencia temporal</a>
+  <ul class="collapse">
+  <li><a href="#estacionariedad-y-momentos-poblacionales" id="toc-estacionariedad-y-momentos-poblacionales" class="nav-link" data-scroll-target="#estacionariedad-y-momentos-poblacionales"><span class="header-section-number">3.6.1</span> Estacionariedad y momentos poblacionales</a></li>
+  <li><a href="#pronóstico-multipaso-y-decaimiento-de-la-persistencia" id="toc-pronóstico-multipaso-y-decaimiento-de-la-persistencia" class="nav-link" data-scroll-target="#pronóstico-multipaso-y-decaimiento-de-la-persistencia"><span class="header-section-number">3.6.2</span> Pronóstico multipaso y decaimiento de la persistencia</a></li>
+  <li><a href="#estimación-por-mínimos-cuadrados-ordinarios" id="toc-estimación-por-mínimos-cuadrados-ordinarios" class="nav-link" data-scroll-target="#estimación-por-mínimos-cuadrados-ordinarios"><span class="header-section-number">3.6.3</span> Estimación por mínimos cuadrados ordinarios</a></li>
+  <li><a href="#integración-con-el-sistema-de-decisión" id="toc-integración-con-el-sistema-de-decisión" class="nav-link" data-scroll-target="#integración-con-el-sistema-de-decisión"><span class="header-section-number">3.6.4</span> Integración con el sistema de decisión</a></li>
+  </ul></li>
+  <li><a href="#sec-blockbootstrap" id="toc-sec-blockbootstrap" class="nav-link" data-scroll-target="#sec-blockbootstrap"><span class="header-section-number">3.7</span> Métodos de remuestreo: Block Bootstrap temporal</a>
+  <ul class="collapse">
+  <li><a href="#formulación-matemática-del-moving-block-bootstrap-mbb" id="toc-formulación-matemática-del-moving-block-bootstrap-mbb" class="nav-link" data-scroll-target="#formulación-matemática-del-moving-block-bootstrap-mbb"><span class="header-section-number">3.7.1</span> Formulación matemática del Moving Block Bootstrap (MBB)</a></li>
+  <li><a href="#consistencia-asintótica-y-condiciones-de-dependencia" id="toc-consistencia-asintótica-y-condiciones-de-dependencia" class="nav-link" data-scroll-target="#consistencia-asintótica-y-condiciones-de-dependencia"><span class="header-section-number">3.7.2</span> Consistencia asintótica y condiciones de dependencia</a></li>
+  <li><a href="#selección-de-la-longitud-del-bloque-l" id="toc-selección-de-la-longitud-del-bloque-l" class="nav-link" data-scroll-target="#selección-de-la-longitud-del-bloque-l"><span class="header-section-number">3.7.3</span> Selección de la longitud del bloque <span class="math inline">\(L\)</span></a></li>
+  <li><a href="#variante-estacionaria-y-consideraciones-numéricas" id="toc-variante-estacionaria-y-consideraciones-numéricas" class="nav-link" data-scroll-target="#variante-estacionaria-y-consideraciones-numéricas"><span class="header-section-number">3.7.4</span> Variante estacionaria y consideraciones numéricas</a></li>
+  <li><a href="#integración-con-la-cuantificación-de-incertidumbre-operativa" id="toc-integración-con-la-cuantificación-de-incertidumbre-operativa" class="nav-link" data-scroll-target="#integración-con-la-cuantificación-de-incertidumbre-operativa"><span class="header-section-number">3.7.5</span> Integración con la cuantificación de incertidumbre operativa</a></li>
+  </ul></li>
+  <li><a href="#teoría-de-decisión-bajo-incertidumbre-y-regiones-factibles" id="toc-teoría-de-decisión-bajo-incertidumbre-y-regiones-factibles" class="nav-link" data-scroll-target="#teoría-de-decisión-bajo-incertidumbre-y-regiones-factibles"><span class="header-section-number">3.8</span> Teoría de decisión bajo incertidumbre y regiones factibles</a>
+  <ul class="collapse">
+  <li><a href="#formulación-formal-del-problema-de-decisión" id="toc-formulación-formal-del-problema-de-decisión" class="nav-link" data-scroll-target="#formulación-formal-del-problema-de-decisión"><span class="header-section-number">3.8.1</span> Formulación formal del problema de decisión</a></li>
+  <li><a href="#criterios-de-decisión-clásicos-y-conservadurismo-operativo" id="toc-criterios-de-decisión-clásicos-y-conservadurismo-operativo" class="nav-link" data-scroll-target="#criterios-de-decisión-clásicos-y-conservadurismo-operativo"><span class="header-section-number">3.8.2</span> Criterios de decisión clásicos y conservadurismo operativo</a></li>
+  <li><a href="#regiones-factibles-y-funciones-indicadoras-de-viabilidad" id="toc-regiones-factibles-y-funciones-indicadoras-de-viabilidad" class="nav-link" data-scroll-target="#regiones-factibles-y-funciones-indicadoras-de-viabilidad"><span class="header-section-number">3.8.3</span> Regiones factibles y funciones indicadoras de viabilidad</a></li>
+  <li><a href="#integración-con-incertidumbre-predictiva-y-política-de-tolerancia-cero" id="toc-integración-con-incertidumbre-predictiva-y-política-de-tolerancia-cero" class="nav-link" data-scroll-target="#integración-con-incertidumbre-predictiva-y-política-de-tolerancia-cero"><span class="header-section-number">3.8.4</span> Integración con incertidumbre predictiva y política de tolerancia cero</a></li>
+  <li><a href="#conexión-con-el-sistema-de-decisión-del-capítulo-4" id="toc-conexión-con-el-sistema-de-decisión-del-capítulo-4" class="nav-link" data-scroll-target="#conexión-con-el-sistema-de-decisión-del-capítulo-4"><span class="header-section-number">3.8.5</span> Conexión con el sistema de decisión del Capítulo 4</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos Estocásticos y Modelos de Pronóstico</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="procesos-estocásticos-de-segundo-orden-y-espacio-de-hilbert-l2omegamathcalfmathbbp" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="procesos-estocásticos-de-segundo-orden-y-espacio-de-hilbert-l2omegamathcalfmathbbp"><span class="header-section-number">3.1</span> Procesos estocásticos de segundo orden y espacio de Hilbert <span class="math inline">\(L^2(\Omega,\mathcal{F},\mathbb{P})\)</span></h2>
+<p>El análisis matemático de fenómenos meteorológicos y su aplicación al pronóstico operativo requieren un marco probabilístico riguroso que permita cuantificar la variabilidad inherente a las observaciones ambientales. En este contexto, los procesos estocásticos de segundo orden constituyen la base teórica sobre la cual se construyen los modelos de series de tiempo, las estimaciones de covarianza y los procedimientos de remuestreo utilizados en esta tesis. La exigencia de que las variables aleatorias posean momentos de segundo orden finitos no es una restricción arbitraria, sino una condición técnica fundamental que garantiza la existencia de la estructura geométrica del espacio de Hilbert, herramienta indispensable para el análisis de proyecciones ortogonales y descomposiciones espectrales.</p>
+<p>Sea <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span> un espacio de probabilidad, donde <span class="math inline">\(\Omega\)</span> es el espacio muestral, <span class="math inline">\(\mathcal{F}\)</span> es una <span class="math inline">\(\sigma\)</span>-álgebra de eventos sobre <span class="math inline">\(\Omega\)</span>, y <span class="math inline">\(\mathbb{P}\)</span> es una medida de probabilidad definida en <span class="math inline">\(\mathcal{F}\)</span> <span class="citation" data-cites="durrett2019probability">(<a href="../references.html#ref-durrett2019probability" role="doc-biblioref">Durrett 2019</a>)</span>. Una variable aleatoria real es una función medible <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span>. El conjunto de todas las variables aleatorias con valor esperado finito de su cuadrado se define como:</p>
+<p><span class="math display">\[
+L^2(\Omega, \mathcal{F}, \mathbb{P}) = \left\{ X : \Omega \to \mathbb{R} \ \text{medible} \ \bigg| \ \mathbb{E}[|X|^2] = \int_\Omega |X(\omega)|^2 \, d\mathbb{P}(\omega) &lt; \infty \right\}.
+\]</span></p>
+<p>Este espacio, dotado de la operación de valor esperado del producto, posee una estructura algebraica y topológica fundamental. En particular, se puede definir el siguiente producto interno para cualesquiera <span class="math inline">\(X, Y \in L^2(\Omega, \mathcal{F}, \mathbb{P})\)</span>:</p>
+<p><span class="math display">\[
+\langle X, Y \rangle = \mathbb{E}[XY] = \int_\Omega X(\omega)Y(\omega) \, d\mathbb{P}(\omega).
+\]</span></p>
+<p><strong>Definición 2.1 (Norma y distancia en <span class="math inline">\(L^2\)</span>).</strong> La norma inducida por el producto interno anterior se define como <span class="math inline">\(\|X\|_2 = \sqrt{\langle X, X \rangle} = \sqrt{\mathbb{E}[X^2]}\)</span>. La distancia entre dos elementos se expresa como <span class="math inline">\(d(X,Y) = \|X - Y\|_2\)</span>. Bajo esta métrica, el espacio <span class="math inline">\(L^2(\Omega, \mathcal{F}, \mathbb{P})\)</span> es completo; es decir, toda sucesión de Cauchy converge a un elemento del mismo espacio <span class="citation" data-cites="rudin1987real">(<a href="../references.html#ref-rudin1987real" role="doc-biblioref">Rudin 1987</a>)</span>. Por tanto, <span class="math inline">\(L^2(\Omega, \mathcal{F}, \mathbb{P})\)</span> constituye un <strong>espacio de Hilbert separable</strong> sobre el campo de los números reales.</p>
+<p>Esta estructura geométrica es crucial para el análisis de pronóstico, ya que permite interpretar la estimación de una variable futura como una proyección ortogonal sobre el subespacio generado por las observaciones pasadas. La desigualdad de Cauchy-Schwarz, derivada directamente de la estructura de producto interno, garantiza la acotación de la covarianza:</p>
+<p><span class="math display">\[
+|\operatorname{Cov}(X,Y)| = |\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]| \leq \sqrt{\operatorname{Var}(X)\operatorname{Var}(Y)},
+\]</span></p>
+<p>lo cual asegura la existencia y estabilidad numérica de los coeficientes de correlación utilizados en secciones posteriores.</p>
+<p><strong>Definición 2.2 (Proceso estocástico de segundo orden).</strong> Sea <span class="math inline">\(\mathcal{T}\)</span> un conjunto de índices (típicamente <span class="math inline">\(\mathcal{T} = \mathbb{N}\)</span> o <span class="math inline">\(\mathcal{T} = \mathbb{R}\)</span>). Un proceso estocástico <span class="math inline">\(\{X_t\}_{t \in \mathcal{T}}\)</span> se denomina <em>de segundo orden</em> si para todo <span class="math inline">\(t \in \mathcal{T}\)</span> se cumple que <span class="math inline">\(X_t \in L^2(\Omega, \mathcal{F}, \mathbb{P})\)</span>, es decir:</p>
+<p><span class="math display">\[
+\mathbb{E}[|X_t|^2] &lt; \infty, \quad \forall t \in \mathcal{T}.
+\]</span></p>
+<p>Esta condición implica automáticamente que la función media <span class="math inline">\(\mu(t) = \mathbb{E}[X_t]\)</span> y la función de autocovarianza <span class="math inline">\(\gamma(t,s) = \operatorname{Cov}(X_t, X_s)\)</span> están bien definidas y son finitas para todo par de índices <span class="math inline">\((t,s) \in \mathcal{T} \times \mathcal{T}\)</span> <span class="citation" data-cites="brockwell2016time">(<a href="../references.html#ref-brockwell2016time" role="doc-biblioref">Brockwell y Davis 2016</a>)</span>.</p>
+<p>En el contexto de variables meteorológicas como la velocidad del viento, la temperatura o la precipitación, la suposición de segundo orden es físicamente razonable: las cantidades físicas observadas presentan fluctuaciones acotadas en escalas temporales cortas, y sus momentos cuadráticos reflejan la energía cinética o térmica del sistema atmosférico. Además, esta hipótesis habilita el uso de técnicas de análisis espectral, descomposición en componentes principales y filtrado lineal óptimo, todas ellas sustentadas en la geometría del espacio <span class="math inline">\(L^2\)</span> <span class="citation" data-cites="williams1991martingales">(<a href="../references.html#ref-williams1991martingales" role="doc-biblioref">Williams 1991</a>)</span>.</p>
+<p>La completitud del espacio <span class="math inline">\(L^2\)</span> garantiza, por el Teorema de Proyección de Hilbert, que para cualquier subespacio cerrado <span class="math inline">\(\mathcal{S} \subset L^2(\Omega, \mathcal{F}, \mathbb{P})\)</span> y cualquier variable aleatoria <span class="math inline">\(Y \in L^2\)</span>, existe un único elemento <span class="math inline">\(\hat{Y} \in \mathcal{S}\)</span> que minimiza el error cuadrático medio <span class="math inline">\(\mathbb{E}[(Y - \hat{Y})^2]\)</span>. Este resultado fundamenta matemáticamente la formulación de predictores lineales óptimos, base de los modelos autorregresivos que se desarrollarán en la <a href="#sec-ar1" class="quarto-xref"><span>Sección 3.6</span></a>, y justifica la construcción de intervalos de confianza mediante métodos de remuestreo que preservan la estructura de covarianza, como el block bootstrap descrito en la <a href="#sec-blockbootstrap" class="quarto-xref"><span>Sección 3.7</span></a>.</p>
+</section>
+<section id="estacionariedad-débil-y-funciones-de-covarianza-cruzada" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="estacionariedad-débil-y-funciones-de-covarianza-cruzada"><span class="header-section-number">3.2</span> Estacionariedad débil y funciones de covarianza cruzada</h2>
+<p>La modelación de series meteorológicas requiere supuestos estructurales que garanticen la estabilidad estadística de las propiedades del proceso a lo largo del tiempo. En particular, la noción de estacionariedad constituye un pilar fundamental en el análisis de series de tiempo, ya que permite inferir parámetros poblacionales a partir de una única trayectoria observada. Dado que el marco probabilístico desarrollado en la Sección 2.1 se restringe a procesos de segundo orden, la estacionariedad de interés es la <em>débil</em> (o de covarianza), la cual solo exige invarianza en los dos primeros momentos estadísticos <span class="citation" data-cites="brockwell2016time">(<a href="../references.html#ref-brockwell2016time" role="doc-biblioref">Brockwell y Davis 2016</a>)</span>.</p>
+<p><strong>Definición 2.3 (Estacionariedad débil).</strong> Sea <span class="math inline">\(\{X_t\}_{t \in \mathcal{T}}\)</span> un proceso estocástico de segundo orden. Se dice que <span class="math inline">\(\{X_t\}\)</span> es <em>débilmente estacionario</em> si satisface las siguientes condiciones: 1. La función media es constante: <span class="math inline">\(\mathbb{E}[X_t] = \mu\)</span>, para todo <span class="math inline">\(t \in \mathcal{T}\)</span>. 2. La función de autocovarianza depende únicamente de la diferencia temporal (lag): <span class="math inline">\(\operatorname{Cov}(X_t, X_s) = \gamma(|t-s|)\)</span>, para todo <span class="math inline">\(t,s \in \mathcal{T}\)</span>. 3. La varianza es finita y constante: <span class="math inline">\(\gamma(0) = \operatorname{Var}(X_t) &lt; \infty\)</span>.</p>
+<p>A diferencia de la estacionariedad estricta, que requiere invarianza en todas las distribuciones finito-dimensionales del proceso, la estacionariedad débil solo controla los momentos de orden uno y dos. Esta relajación es suficiente para el desarrollo de predictores lineales óptimos, análisis espectral y estimación por correlación, herramientas centrales en la metodología de nowcasting presentada en este trabajo <span class="citation" data-cites="priestley1981spectral">(<a href="../references.html#ref-priestley1981spectral" role="doc-biblioref">Priestley 1981</a>)</span>.</p>
+<p>Bajo la hipótesis de estacionariedad débil, la función de autocovarianza <span class="math inline">\(\gamma(h)\)</span> posee propiedades estructurales esenciales: - <span class="math inline">\(\gamma(0) \geq 0\)</span> y representa la varianza marginal del proceso, - <span class="math inline">\(\gamma(h) = \gamma(-h)\)</span> (simetría par), - <span class="math inline">\(|\gamma(h)| \leq \gamma(0)\)</span> para todo <span class="math inline">\(h \in \mathbb{Z}\)</span>, - La matriz de covarianza <span class="math inline">\(\Gamma_n = [\gamma(i-j)]_{i,j=1}^n\)</span> es semidefinida positiva para cualquier <span class="math inline">\(n \in \mathbb{N}\)</span> <span class="citation" data-cites="hamilton1994time">(<a href="../references.html#ref-hamilton1994time" role="doc-biblioref">Hamilton 1994</a>)</span>.</p>
+<p>Estas propiedades garantizan que las estimaciones muestrales de la autocovarianza convergen en probabilidad a sus valores poblacionales bajo condiciones ergódicas, lo cual justifica el uso de promedios temporales en la práctica operacional.</p>
+<section id="covarianza-cruzada-y-dependencia-entre-variables" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="covarianza-cruzada-y-dependencia-entre-variables"><span class="header-section-number">3.2.1</span> Covarianza cruzada y dependencia entre variables</h3>
+<p>En el contexto multivariado, donde se analizan simultáneamente variables meteorológicas como viento, temperatura y humedad a lo largo de la ruta de vuelo, es necesario extender el concepto de autocovarianza a la <em>covarianza cruzada</em>. Sean <span class="math inline">\(\{X_t\}\)</span> y <span class="math inline">\(\{Y_t\}\)</span> dos procesos estocásticos débilmente estacionarios, conjuntamente estacionarios. La función de covarianza cruzada se define como:</p>
+<p><span class="math display">\[
+\gamma_{XY}(h) = \operatorname{Cov}(X_{t+h}, Y_t) = \mathbb{E}\big[(X_{t+h} - \mu_X)(Y_t - \mu_Y)\big], \quad h \in \mathbb{Z}.
+\]</span></p>
+<p>A diferencia de la autocovarianza, <span class="math inline">\(\gamma_{XY}(h)\)</span> no es necesariamente una función par, ya que la influencia de <span class="math inline">\(Y_t\)</span> sobre <span class="math inline">\(X_{t+h}\)</span> puede diferir de la influencia inversa. Sin embargo, satisface la relación de simetría cruzada:</p>
+<p><span class="math display">\[
+\gamma_{XY}(h) = \gamma_{YX}(-h), \quad \forall h \in \mathbb{Z}.
+\]</span></p>
+<p>Para obtener una medida adimensional y comparable entre distintas variables, se introduce la <em>función de correlación cruzada</em>:</p>
+<p><span class="math display">\[
+\rho_{XY}(h) = \frac{\gamma_{XY}(h)}{\sqrt{\gamma_X(0)\,\gamma_Y(0)}}.
+\]</span></p>
+<p>Esta función cuantifica la dependencia lineal entre ambas series con un desfase <span class="math inline">\(h\)</span> y está acotada por <span class="math inline">\(|\rho_{XY}(h)| \leq 1\)</span>. La identificación del retardo <span class="math inline">\(h^*\)</span> que maximiza <span class="math inline">\(|\rho_{XY}(h)|\)</span> constituye la base matemática del método de correlación cruzada entre segmentos espaciales adyacentes, descrito en la Sección 4.3, y permite estimar el tiempo de propagación de estructuras atmosféricas a lo largo del corredor de vuelo <span class="citation" data-cites="box2015time">(<a href="../references.html#ref-box2015time" role="doc-biblioref">Box et&nbsp;al. 2015</a>)</span>.</p>
+</section>
+<section id="consideraciones-de-ergodicidad-y-validez-muestral" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="consideraciones-de-ergodicidad-y-validez-muestral"><span class="header-section-number">3.2.2</span> Consideraciones de ergodicidad y validez muestral</h3>
+<p>La estacionariedad débil garantiza la existencia de <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\gamma(h)\)</span>, pero no asegura que puedan estimarse consistentemente a partir de una única realización temporal. Para ello, se requiere adicionalmente la propiedad de <strong>ergodicidad en media y covarianza</strong>, la cual establece que los promedios temporales convergen a los promedios espaciales (esperanzas):</p>
+<p><span class="math display">\[
+\lim_{T \to \infty} \frac{1}{T} \sum_{t=1}^{T} X_t = \mu \quad \text{c.s.}, \qquad
+\lim_{T \to \infty} \frac{1}{T} \sum_{t=1}^{T-h} (X_t - \mu)(X_{t+h} - \mu) = \gamma(h) \quad \text{c.s.}
+\]</span></p>
+<p>Bajo esta condición, los estimadores muestrales <span class="math inline">\(\hat{\mu} = \frac{1}{T}\sum_{t=1}^T X_t\)</span> y <span class="math inline">\(\hat{\gamma}(h) = \frac{1}{T-h}\sum_{t=1}^{T-h} (X_t-\hat{\mu})(X_{t+h}-\hat{\mu})\)</span> son consistentes <span class="citation" data-cites="durrett2019probability">(<a href="../references.html#ref-durrett2019probability" role="doc-biblioref">Durrett 2019</a>)</span>. En la práctica, las series meteorológicas de corta duración (ej. 7 días con muestreo cada 10 minutos) pueden no satisfacer plenamente la ergodicidad asintótica; por ello, la cuantificación de incertidumbre mediante block bootstrap (<a href="#sec-blockbootstrap" class="quarto-xref"><span>Sección 3.7</span></a>) actúa como mecanismo de validación empírica que no depende de supuestos ergódicos estrictos.</p>
+<p>Esta fundamentación teórica permite transitar de manera rigurosa hacia el análisis espectral y la modelación autorregresiva, desarrollados en las secciones siguientes, donde la estructura de covarianza estacionaria se explota explícitamente para generar pronósticos de corto horizonte con intervalos de confianza cuantificables.</p>
+</section>
+</section>
+<section id="correlación-cruzada-y-existencia-del-lag-óptimo-discreto" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="correlación-cruzada-y-existencia-del-lag-óptimo-discreto"><span class="header-section-number">3.3</span> Correlación cruzada y existencia del lag óptimo discreto</h2>
+<p>En la práctica operacional, solo se dispone de una trayectoria finita <span class="math inline">\(\{X_t\}_{t=1}^T\)</span> y <span class="math inline">\(\{Y_t\}_{t=1}^T\)</span> de longitud <span class="math inline">\(T &lt; \infty\)</span>. Por tanto, las funciones teóricas <span class="math inline">\(\gamma_{XY}(h)\)</span> y <span class="math inline">\(\rho_{XY}(h)\)</span> deben aproximarse mediante sus contrapartes muestrales. Esta sección formaliza el estimador discreto de correlación cruzada, establece las condiciones matemáticas para la existencia del retardo óptimo y analiza sus propiedades estadísticas bajo el marco de procesos débilmente estacionarios.</p>
+<p><strong>Definición 2.4 (Correlación cruzada muestral).</strong> Sean <span class="math inline">\(\{x_t\}_{t=1}^T\)</span> y <span class="math inline">\(\{y_t\}_{t=1}^T\)</span> dos realizaciones observadas de procesos estacionarios con medias muestrales <span class="math inline">\(\bar{x} = \frac{1}{T}\sum_{t=1}^T x_t\)</span> y <span class="math inline">\(\bar{y} = \frac{1}{T}\sum_{t=1}^T y_t\)</span>. Para un retardo discreto <span class="math inline">\(k \in \mathbb{Z}\)</span>, el estimador de correlación cruzada se define como:</p>
+<p><span class="math display">\[
+\hat{\rho}_{xy}(k) =
+\begin{cases}
+\dfrac{\sum_{t=1}^{T-k} (x_t - \bar{x})(y_{t+k} - \bar{y})}{\sqrt{\sum_{t=1}^T (x_t - \bar{x})^2 \sum_{t=1}^T (y_t - \bar{y})^2}}, &amp; 0 \leq k &lt; T, \\[12pt]
+\dfrac{\sum_{t=1}^{T+|k|} (x_{t-|k|} - \bar{x})(y_t - \bar{y})}{\sqrt{\sum_{t=1}^T (x_t - \bar{x})^2 \sum_{t=1}^T (y_t - \bar{y})^2}}, &amp; -T &lt; k &lt; 0, \\[12pt]
+0, &amp; |k| \geq T.
+\end{cases}
+\]</span></p>
+<p>Esta definición garantiza que <span class="math inline">\(\hat{\rho}_{xy}(k) \in [-1, 1]\)</span> para todo <span class="math inline">\(k\)</span>, preservando la interpretación geométrica de similitud lineal entre series desplazadas temporalmente. En la literatura de procesamiento de señales discretos, esta forma normalizada corresponde al coeficiente de correlación de Pearson aplicado a vectores desplazados <span class="citation" data-cites="oppenheim2010discrete">(<a href="../references.html#ref-oppenheim2010discrete" role="doc-biblioref">Oppenheim y Schafer 2010</a>)</span>.</p>
+<section id="existencia-del-retardo-óptimo-discreto" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="existencia-del-retardo-óptimo-discreto"><span class="header-section-number">3.3.1</span> Existencia del retardo óptimo discreto</h3>
+<p>En aplicaciones de transporte atmosférico, el interés se centra en identificar el desfase temporal <span class="math inline">\(k^*\)</span> que maximiza la dependencia lineal entre dos señales. Formalmente, se define:</p>
+<p><span class="math display">\[
+k^* = \arg\max_{k \in \mathcal{K}} \left| \hat{\rho}_{xy}(k) \right|, \quad \mathcal{K} = \{-K, -K+1, \dots, K\} \subset \mathbb{Z},
+\]</span></p>
+<p>donde <span class="math inline">\(K &lt; T\)</span> es un parámetro de truncamiento que acota la búsqueda a retardos físicamente plausibles.</p>
+<p><strong>Proposición 2.1 (Existencia del máximo discreto).</strong> Sea <span class="math inline">\(\mathcal{K} \subset \mathbb{Z}\)</span> un conjunto finito no vacío. La aplicación <span class="math inline">\(k \mapsto |\hat{\rho}_{xy}(k)|\)</span> alcanza su máximo en al menos un punto <span class="math inline">\(k^* \in \mathcal{K}\)</span>.</p>
+<p><em>Demostración.</em> Dado que <span class="math inline">\(\mathcal{K}\)</span> es finito y la función toma valores en <span class="math inline">\(\mathbb{R}\)</span>, el conjunto de imágenes <span class="math inline">\(\{|\hat{\rho}_{xy}(k)| : k \in \mathcal{K}\}\)</span> es finito. Por el principio del extremo en conjuntos finitos, existe al menos un elemento máximo. <span class="math inline">\(\square\)</span></p>
+<p>La unicidad de <span class="math inline">\(k^*\)</span> no está garantizada en general; puede ocurrir en presencia de estructuras periódicas, ruido blanco o cuando múltiples retardos presentan correlaciones indistinguibles numéricamente. Sin embargo, bajo la hipótesis física de advección dominante con perfil espacial unimodal, la correlación cruzada suele exhibir un pico agudo y bien separado, lo que justifica la selección de un único <span class="math inline">\(k^*\)</span> operativo <span class="citation" data-cites="priestley1981spectral">(<a href="../references.html#ref-priestley1981spectral" role="doc-biblioref">Priestley 1981</a>)</span>.</p>
+</section>
+<section id="propiedades-estadísticas-y-comportamiento-asintótico" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="propiedades-estadísticas-y-comportamiento-asintótico"><span class="header-section-number">3.3.2</span> Propiedades estadísticas y comportamiento asintótico</h3>
+<p>El estimador <span class="math inline">\(\hat{\rho}_{xy}(k)\)</span> es sesgado para muestras finitas debido a la reducción progresiva del número de pares efectivos conforme <span class="math inline">\(|k|\)</span> aumenta. No obstante, bajo condiciones de estacionariedad y dependencia decaída (mixing conditions), es un estimador consistente:</p>
+<p><span class="math display">\[
+\hat{\rho}_{xy}(k) \xrightarrow{p} \rho_{XY}(k) \quad \text{cuando } T \to \infty.
+\]</span></p>
+<p>Bajo la hipótesis nula de independencia entre <span class="math inline">\(\{X_t\}\)</span> y <span class="math inline">\(\{Y_t\}\)</span>, Bartlett demostró que para <span class="math inline">\(|k| \ll T\)</span> la distribución muestral es asintóticamente normal con varianza aproximada <span class="math inline">\(1/T\)</span> <span class="citation" data-cites="bartlett1946theoretical">(<a href="../references.html#ref-bartlett1946theoretical" role="doc-biblioref">Bartlett 1946</a>)</span>. Más precisamente, si <span class="math inline">\(\{X_t\}\)</span> y <span class="math inline">\(\{Y_t\}\)</span> son procesos gaussianos independientes:</p>
+<p><span class="math display">\[
+\sqrt{T} \, \hat{\rho}_{xy}(k) \xrightarrow{d} \mathcal{N}(0, 1), \quad T \to \infty.
+\]</span></p>
+<p>Esta propiedad permite construir intervalos de confianza aproximados para evaluar la significancia estadística de <span class="math inline">\(k^*\)</span>. En la práctica, se suele aplicar un umbral de detección <span class="math inline">\(\rho_{\min} \approx 1.96/\sqrt{T}\)</span> al nivel de significancia <span class="math inline">\(\alpha = 0.05\)</span>, descartando retardos cuya correlación no supere el umbral de ruido aleatorio <span class="citation" data-cites="box2015time">(<a href="../references.html#ref-box2015time" role="doc-biblioref">Box et&nbsp;al. 2015</a>)</span>.</p>
+</section>
+<section id="implementación-y-consideraciones-numéricas" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="implementación-y-consideraciones-numéricas"><span class="header-section-number">3.3.3</span> Implementación y consideraciones numéricas</h3>
+<p>En la estimación de velocidad de advección entre segmentos espaciales adyacentes (<a href="chapter4.html#sec-analisisadveccion" class="quarto-xref"><span>Sección 5.3</span></a>), el lag óptimo <span class="math inline">\(k^*\)</span> se interpreta directamente como el tiempo de transporte discreto entre estaciones virtuales. La relación física se expresa como:</p>
+<p><span class="math display">\[
+\hat{v} = \frac{\Delta s}{k^* \Delta t},
+\]</span></p>
+<p>donde <span class="math inline">\(\Delta s\)</span> es la distancia geodésica entre centroides y <span class="math inline">\(\Delta t\)</span> el intervalo de muestreo temporal. Para evitar estimaciones espurias en presencia de baja correlación, se introduce un criterio de aceptación basado en la fracción de pares adyacentes que superan <span class="math inline">\(\rho_{\min}\)</span> simultáneamente con <span class="math inline">\(k^* \neq 0\)</span>, garantizando robustez frente a ruido de medición y fluctuaciones no advectivas <span class="citation" data-cites="brockwell2016time">(<a href="../references.html#ref-brockwell2016time" role="doc-biblioref">Brockwell y Davis 2016</a>)</span>.</p>
+<p>Esta fundamentación teórica justifica el uso de la correlación cruzada discreta como herramienta primaria de estimación de velocidad, y prepara el terreno para el análisis espectral frecuencia-espacio (<span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>) desarrollado en la <a href="#sec-analisisfk" class="quarto-xref"><span>Sección 3.5</span></a>, donde la fase espectral reemplaza al dominio temporal para capturar estructuras de propagación en regímenes de baja coherencia temporal.</p>
+</section>
+</section>
+<section id="sec-analisisseriestiempo" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-analisisseriestiempo"><span class="header-section-number">3.4</span> Análisis de series de tiempo: autocovarianza y transformada de Fourier</h2>
+<p>La caracterización completa de un proceso estocástico estacionario en el dominio del tiempo mediante su función de autocovarianza <span class="math inline">\(\gamma(h)\)</span> resulta insuficiente cuando el objetivo es identificar frecuencias dominantes, ciclos ocultos o estructuras periódicas en series meteorológicas. El análisis espectral permite transformar la dependencia temporal en una distribución de energía por frecuencias, facilitando la detección de modos oscilatorios y la validación de supuestos de advección. Este cambio de perspectiva, del dominio temporal al dominio frecuencial, se fundamenta en la transformada de Fourier aplicada a secuencias de covarianza y constituye el puente matemático necesario para el análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> desarrollado en la Sección 2.5.</p>
+<p>Sea <span class="math inline">\(\{X_t\}_{t \in \mathbb{Z}}\)</span> un proceso débilmente estacionario con función de autocovarianza <span class="math inline">\(\gamma: \mathbb{Z} \to \mathbb{R}\)</span>. Una propiedad estructural esencial, derivada de la definición de varianza de combinaciones lineales, es que <span class="math inline">\(\gamma\)</span> es una función <em>definida no negativa</em> (positive semi-definite). Formalmente:</p>
+<p><strong>Proposición 2.2 (Definición no negativa de <span class="math inline">\(\gamma\)</span>).</strong> Para cualquier <span class="math inline">\(n \in \mathbb{N}\)</span> y cualquier conjunto de coeficientes complejos <span class="math inline">\(c_1, \dots, c_n \in \mathbb{C}\)</span>, se cumple: <span class="math display">\[
+\sum_{j=1}^n \sum_{k=1}^n c_j \overline{c_k} \, \gamma(j-k) \geq 0.
+\]</span> Esta condición garantiza que las matrices de covarianza <span class="math inline">\(\Gamma_n = [\gamma(i-j)]_{i,j=1}^n\)</span> sean semidefinidas positivas, requisito indispensable para la invertibilidad numérica en modelos autorregresivos y para la existencia de una representación espectral válida <span class="citation" data-cites="brockwell2016time">(<a href="../references.html#ref-brockwell2016time" role="doc-biblioref">Brockwell y Davis 2016</a>)</span>.</p>
+<section id="teorema-de-herglotz-y-representación-espectral" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="teorema-de-herglotz-y-representación-espectral"><span class="header-section-number">3.4.1</span> Teorema de Herglotz y representación espectral</h3>
+<p>El teorema de Herglotz establece que toda función definida no negativa en <span class="math inline">\(\mathbb{Z}\)</span> admite una representación integral única mediante una medida de distribución espectral <span class="math inline">\(F(\omega)\)</span> en el intervalo <span class="math inline">\([-\pi, \pi]\)</span>:</p>
+<p><strong>Teorema 2.1 (Representación espectral de Herglotz).</strong> Sea <span class="math inline">\(\gamma: \mathbb{Z} \to \mathbb{C}\)</span> una función definida no negativa con <span class="math inline">\(\gamma(0) &lt; \infty\)</span>. Entonces existe una función monótona no decreciente <span class="math inline">\(F: [-\pi, \pi] \to \mathbb{R}\)</span>, acotada y continua por la derecha, tal que: <span class="math display">\[
+\gamma(h) = \int_{-\pi}^{\pi} e^{i h \omega} \, dF(\omega), \quad \forall h \in \mathbb{Z}.
+\]</span> Si <span class="math inline">\(F\)</span> es absolutamente continua respecto a la medida de Lebesgue, entonces existe una densidad <span class="math inline">\(f(\omega) \geq 0\)</span> tal que <span class="math inline">\(dF(\omega) = f(\omega) \, d\omega\)</span>. A esta función se le denomina <em>densidad espectral de potencia</em> (PSD) del proceso <span class="citation" data-cites="priestley1981spectral">(<a href="../references.html#ref-priestley1981spectral" role="doc-biblioref">Priestley 1981</a>)</span>.</p>
+<p>La densidad espectral <span class="math inline">\(f(\omega)\)</span> cuantifica la contribución de cada frecuencia angular <span class="math inline">\(\omega\)</span> a la varianza total del proceso. En particular, al evaluar en <span class="math inline">\(h=0\)</span> se obtiene: <span class="math display">\[
+\gamma(0) = \operatorname{Var}(X_t) = \int_{-\pi}^{\pi} f(\omega) \, d\omega,
+\]</span> lo que confirma que la varianza se distribuye a lo largo del espectro de frecuencias <span class="citation" data-cites="hamilton1994time">(<a href="../references.html#ref-hamilton1994time" role="doc-biblioref">Hamilton 1994</a>)</span>.</p>
+</section>
+<section id="teorema-de-wiener-khinchin-y-dualidad-temporal-frecuencial" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="teorema-de-wiener-khinchin-y-dualidad-temporal-frecuencial"><span class="header-section-number">3.4.2</span> Teorema de Wiener-Khinchin y dualidad temporal-frecuencial</h3>
+<p>La relación explícita entre la autocovarianza y la densidad espectral se formaliza mediante el teorema de Wiener-Khinchin, que para procesos de tiempo discreto establece:</p>
+<p><strong>Teorema 2.2 (Wiener-Khinchin discreto).</strong> Si <span class="math inline">\(\sum_{h=-\infty}^{\infty} |\gamma(h)| &lt; \infty\)</span>, entonces la densidad espectral existe, es continua y está dada por la transformada de Fourier discreta de la autocovarianza: <span class="math display">\[
+f(\omega) = \frac{1}{2\pi} \sum_{h=-\infty}^{\infty} \gamma(h) e^{-i h \omega}, \quad \omega \in [-\pi, \pi].
+\]</span> Recíprocamente, la autocovarianza se recupera mediante la transformada inversa: <span class="math display">\[
+\gamma(h) = \int_{-\pi}^{\pi} e^{i h \omega} f(\omega) \, d\omega.
+\]</span> Esta dualidad permite interpretar la estructura de dependencia temporal como una superposición de componentes oscilatorias ortogonales, cada una ponderada por su densidad espectral. En el contexto meteorológico, picos pronunciados en <span class="math inline">\(f(\omega)\)</span> suelen asociarse a ciclos diurnos, patrones sinópticos recurrentes o modos de oscilación climática de baja frecuencia <span class="citation" data-cites="shumway2017time">(<a href="../references.html#ref-shumway2017time" role="doc-biblioref">Shumway y Stoffer 2017</a>)</span>.</p>
+</section>
+<section id="estimación-espectral-para-series-finitas" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="estimación-espectral-para-series-finitas"><span class="header-section-number">3.4.3</span> Estimación espectral para series finitas</h3>
+<p>En la práctica operacional, solo se dispone de una trayectoria finita <span class="math inline">\(\{x_t\}_{t=1}^T\)</span>. El estimador no paramétrico más directo de la densidad espectral es el <em>periodograma</em>, definido mediante la transformada discreta de Fourier (DFT) de los datos centrados: <span class="math display">\[
+I_T(\omega) = \frac{1}{2\pi T} \left| \sum_{t=1}^T (x_t - \bar{x}) e^{-i t \omega} \right|^2, \quad \omega \in [-\pi, \pi].
+\]</span> Aunque el periodograma es asintóticamente insesgado (<span class="math inline">\(\mathbb{E}[I_T(\omega)] \to f(\omega)\)</span> cuando <span class="math inline">\(T \to \infty\)</span>), no es consistente: su varianza no converge a cero, incluso para <span class="math inline">\(T\)</span> grande. Para obtener estimadores consistentes se requiere suavizado espectral, ya sea mediante ventanas espectrales (Daniell, Parzen, Bartlett) o mediante promediado sobre frecuencias adyacentes <span class="citation" data-cites="priestley1981spectral">(<a href="../references.html#ref-priestley1981spectral" role="doc-biblioref">Priestley 1981</a>)</span>.</p>
+<p>Alternativamente, los métodos paramétricos ajustan un modelo ARMA de orden finito a la serie y derivan <span class="math inline">\(f(\omega)\)</span> analíticamente a partir de los coeficientes estimados. Estos enfoques son particularmente útiles cuando la longitud muestral es limitada, como ocurre en ventanas de nowcasting de 7 días con muestreo cada 10 minutos.</p>
+</section>
+<section id="integración-con-el-sistema-de-pronóstico" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="integración-con-el-sistema-de-pronóstico"><span class="header-section-number">3.4.4</span> Integración con el sistema de pronóstico</h3>
+<p>La representación espectral proporciona las bases matemáticas para dos componentes centrales de esta tesis: 1. <strong>Validación de estacionariedad</strong>: La inspección visual y cuantitativa de <span class="math inline">\(f(\omega)\)</span> permite detectar tendencias no estacionarias o ciclos dominantes que deben eliminarse o modelarse explícitamente antes de aplicar métodos de correlación cruzada. 2. <strong>Análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span></strong>: La extensión de la transformada de Fourier al dominio espacio-temporal <span class="math inline">\((s,t)\)</span> permite estimar la velocidad de fase de estructuras atmosféricas mediante la pendiente de la fase espectral, metodología que se desarrolla en la <a href="#sec-analisisfk" class="quarto-xref"><span>Sección 3.5</span></a> y se aplica operativamente en la estimación de velocidad de advección (Sección 4.3).</p>
+<p>En conjunto, la dualidad autocovarianza–transformada de Fourier cierra el círculo teórico entre la descripción temporal de la dependencia y la representación frecuencial de la energía del proceso, habilitando herramientas matemáticas robustas para el pronóstico de corto horizonte bajo incertidumbre.</p>
+</section>
+</section>
+<section id="sec-analisisfk" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-analisisfk"><span class="header-section-number">3.5</span> Análisis frecuencia-espacio (<span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>) y velocidad de fase</h2>
+<p>El análisis espectral unidimensional desarrollado en la <a href="#sec-analisisseriestiempo" class="quarto-xref"><span>Sección 3.4</span></a> caracteriza la distribución de energía de un proceso estocástico únicamente en el dominio temporal. Sin embargo, los campos meteorológicos que interactúan con la trayectoria de un dron se propagan como estructuras espacio-temporales coherentes, cuya dinámica no puede capturarse adecuadamente sin considerar simultáneamente las dimensiones espacial y temporal. El análisis conjunto frecuencia-número de onda, conocido como análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>, constituye la extensión natural de la teoría espectral a procesos definidos sobre dominios discretos <span class="math inline">\((s,t)\)</span> y permite estimar directamente la velocidad de fase de patrones dominantes <span class="citation" data-cites="hayashi1973method">(<a href="../references.html#ref-hayashi1973method" role="doc-biblioref">Hayashi 1973</a>)</span>.</p>
+<p>Sea <span class="math inline">\(\{X(s_i, t_n)\}\)</span> un campo aleatorio observado en una malla discreta de <span class="math inline">\(N\)</span> segmentos espaciales <span class="math inline">\(s_i = i\Delta s\)</span> y <span class="math inline">\(T\)</span> instantes temporales <span class="math inline">\(t_n = n\Delta t\)</span>. Bajo la hipótesis de estacionariedad débil en ambas dimensiones, se define la <strong>transformada discreta de Fourier bidimensional (2D-DFT)</strong> como:</p>
+<p><span class="math display">\[
+\hat{X}(\omega_m, \kappa_j) = \sum_{n=0}^{T-1} \sum_{i=0}^{N-1} X(s_i, t_n) \, e^{-i(\omega_m t_n + \kappa_j s_i)},
+\]</span></p>
+<p>donde <span class="math inline">\(\omega_m = 2\pi m / (T\Delta t)\)</span> y <span class="math inline">\(\kappa_j = 2\pi j / (N\Delta s)\)</span> representan las frecuencias angulares temporales y espaciales, respectivamente, con <span class="math inline">\(m \in \{0,\dots,T-1\}\)</span> y <span class="math inline">\(j \in \{0,\dots,N-1\}\)</span>. El espectro de potencia espacio-temporal se define como:</p>
+<p><span class="math display">\[
+S(\omega_m, \kappa_j) = \frac{1}{NT} \left| \hat{X}(\omega_m, \kappa_j) \right|^2.
+\]</span></p>
+<p>Este objeto matemático cuantifica la energía asociada a cada par <span class="math inline">\((\omega, \kappa)\)</span> y permite identificar modos de propagación dominantes como regiones de alta concentración espectral en el plano <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> <span class="citation" data-cites="brillinger1981time">(<a href="../references.html#ref-brillinger1981time" role="doc-biblioref">Brillinger 1981</a>)</span>.</p>
+<section id="modelo-de-onda-viajera-y-relación-de-fase" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="modelo-de-onda-viajera-y-relación-de-fase"><span class="header-section-number">3.5.1</span> Modelo de onda viajera y relación de fase</h3>
+<p>Para una estructura atmosférica que se propaga como una onda viajera unidimensional, el campo puede aproximarse localmente por:</p>
+<p><span class="math display">\[
+X(s,t) \approx A \cos(\kappa s - \omega t + \phi_0),
+\]</span></p>
+<p>donde <span class="math inline">\(A\)</span> es la amplitud, <span class="math inline">\(\kappa\)</span> el número de onda espacial, <span class="math inline">\(\omega\)</span> la frecuencia angular y <span class="math inline">\(\phi_0\)</span> una fase inicial constante. La transformada de Fourier temporal para un segmento fijo <span class="math inline">\(s_i\)</span> produce un espectro complejo cuya fase satisface:</p>
+<p><span class="math display">\[
+\phi(s_i, \omega) = \arg\big(\hat{X}(s_i, \omega)\big) = \kappa(\omega) \, s_i + \phi_0(\omega).
+\]</span></p>
+<p>Esta relación lineal entre fase y posición espacial constituye el fundamento del método de <strong>pendiente de fase</strong> para estimar la velocidad de propagación. Si <span class="math inline">\(\phi(s_i, \omega)\)</span> se desenvuelve adecuadamente (<em>phase unwrapping</em>), el número de onda efectivo a frecuencia <span class="math inline">\(\omega\)</span> se obtiene mediante regresión lineal:</p>
+<p><span class="math display">\[
+\hat{\kappa}(\omega) = \arg\min_{\alpha, \beta} \sum_{i=1}^{N} \big[ \phi_{\text{unwrapped}}(s_i, \omega) - (\alpha s_i + \beta) \big]^2.
+\]</span></p>
+<p>La velocidad de fase asociada a dicha frecuencia se define como:</p>
+<p><span class="math display">\[
+v_p(\omega) = \frac{\omega}{\hat{\kappa}(\omega)}.
+\]</span></p>
+<p>El signo de <span class="math inline">\(v_p\)</span> indica la dirección de propagación relativa a la orientación espacial de la ruta: <span class="math inline">\(v_p &gt; 0\)</span> implica avance en sentido creciente de <span class="math inline">\(s\)</span>, mientras que <span class="math inline">\(v_p &lt; 0\)</span> indica retroceso. En el contexto de nowcasting advectivo, la convención se ajusta para que <span class="math inline">\(v &gt; 0\)</span> corresponda a la dirección dominante del flujo atmosférico <span class="citation" data-cites="emery2004data">(<a href="../references.html#ref-emery2004data" role="doc-biblioref">Emery y Thomson 2004</a>)</span>.</p>
+</section>
+<section id="estimación-robusta-y-consideraciones-prácticas" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="estimación-robusta-y-consideraciones-prácticas"><span class="header-section-number">3.5.2</span> Estimación robusta y consideraciones prácticas</h3>
+<p>La aplicación directa de <span class="math inline">\(v_p(\omega)\)</span> presenta dos desafíos numéricos: 1. <strong>Desenvolvimiento de fase</strong>: La función <span class="math inline">\(\arg(\cdot)\)</span> retorna valores en <span class="math inline">\((-\pi, \pi]\)</span>, generando discontinuidades artificiales de <span class="math inline">\(2\pi\)</span>. El desenvolvimiento consistente requiere agregar o restar múltiplos de <span class="math inline">\(2\pi\)</span> para garantizar continuidad espacial, algoritmo que es estable siempre que <span class="math inline">\(|\kappa| \Delta s &lt; \pi\)</span> (criterio de Nyquist espacial) <span class="citation" data-cites="oppenheim2010discrete">(<a href="../references.html#ref-oppenheim2010discrete" role="doc-biblioref">Oppenheim y Schafer 2010</a>)</span>. 2. <strong>Ponderación espectral</strong>: Las frecuencias con baja energía presentan fases dominadas por ruido de medición, produciendo estimaciones de <span class="math inline">\(\hat{\kappa}\)</span> inestables. Se introduce un peso proporcional a la densidad espectral: <span class="math display">\[
+   w(\omega) = \frac{S(\omega, \hat{\kappa}(\omega))}{\sum_{m} S(\omega_m, \hat{\kappa}(\omega_m))},
+   \]</span> y la velocidad final se calcula como la mediana ponderada de <span class="math inline">\(\{v_p(\omega_m)\}\)</span> sobre una banda de interés fisico-meteorológico <span class="citation" data-cites="bendat2010random">(<a href="../references.html#ref-bendat2010random" role="doc-biblioref">Bendat y Piersol 2010</a>)</span>.</p>
+<p>La mediana se prefiere sobre la media aritmética por su robustez frente a valores atípicos causados por modos estacionarios (<span class="math inline">\(\kappa \approx 0\)</span>), reflexiones topográficas o estructuras convectivas no coherentes con la advección dominante.</p>
+</section>
+<section id="integración-con-el-sistema-de-pronóstico-1" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="integración-con-el-sistema-de-pronóstico-1"><span class="header-section-number">3.5.3</span> Integración con el sistema de pronóstico</h3>
+<p>El análisis <span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span> complementa la estimación por correlación cruzada (Sección 2.3) en regímenes donde la coherencia temporal entre segmentos adyacentes es baja pero existe estructura espectral clara. La velocidad estimada <span class="math inline">\(v = \operatorname{median}_{\omega}\{v_p(\omega)\}\)</span> se incorpora directamente al operador de transporte advectivo discreto: <span class="math display">\[
+s_i^{\text{up}} = s_i - v H,
+\]</span></p>
+<p>que constituye el núcleo del modelo híbrido de nowcasting desarrollado en la Sección 4.4. Esta cadena teórica, desde la transformada 2D hasta la regresión de fase, garantiza que el pronóstico respete la física de propagación observada, transformando observaciones espacio-temporales en parámetros operativos cuantificables y trazables.</p>
+</section>
+</section>
+<section id="sec-ar1" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="sec-ar1"><span class="header-section-number">3.6</span> Modelos autorregresivos AR(1) y persistencia temporal</h2>
+<p>Los modelos autorregresivos de orden uno constituyen la clase más simple y ampliamente utilizada de procesos estocásticos lineales. Su estructura recursiva captura la inercia temporal inherente a variables meteorológicas como la temperatura y la humedad relativa, permitiendo representar la persistencia observada en escalas de minutos a horas sin requerir parámetros adicionales. En el contexto de nowcasting, el modelo AR(1) proporciona el componente local del pronóstico híbrido descrito en la Sección 4.4, complementando el transporte advectivo con dinámica temporal intrínseca y garantizando estabilidad numérica frente a fluctuaciones de alta frecuencia <span class="citation" data-cites="brockwell2016time">(<a href="../references.html#ref-brockwell2016time" role="doc-biblioref">Brockwell y Davis 2016</a>)</span>.</p>
+<p><strong>Definición 2.5 (Proceso AR(1)).</strong> Sea <span class="math inline">\(\{X_t\}_{t \in \mathbb{Z}}\)</span> un proceso estocástico de tiempo discreto. Se dice que <span class="math inline">\(\{X_t\}\)</span> sigue un <strong>proceso autorregresivo de orden uno</strong>, denotado AR(1), si satisface la ecuación en diferencias estocástica: <span class="math display">\[
+X_t = \phi X_{t-1} + \varepsilon_t,
+\]</span> donde <span class="math inline">\(\phi \in \mathbb{R}\)</span> es el coeficiente autorregresivo y <span class="math inline">\(\{\varepsilon_t\}\)</span> es un proceso de ruido blanco, es decir, <span class="math inline">\(\mathbb{E}[\varepsilon_t] = 0\)</span>, <span class="math inline">\(\operatorname{Var}(\varepsilon_t) = \sigma_\varepsilon^2 &lt; \infty\)</span>, y <span class="math inline">\(\operatorname{Cov}(\varepsilon_t, \varepsilon_s) = 0\)</span> para <span class="math inline">\(t \neq s\)</span> <span class="citation" data-cites="hamilton1994time">(<a href="../references.html#ref-hamilton1994time" role="doc-biblioref">Hamilton 1994</a>)</span>. Cuando el proceso posee media no nula <span class="math inline">\(\mu\)</span>, la formulación se generaliza a <span class="math inline">\(X_t - \mu = \phi(X_{t-1} - \mu) + \varepsilon_t\)</span>.</p>
+<section id="estacionariedad-y-momentos-poblacionales" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="estacionariedad-y-momentos-poblacionales"><span class="header-section-number">3.6.1</span> Estacionariedad y momentos poblacionales</h3>
+<p>La existencia de una distribución estacionaria para el proceso AR(1) está condicionada estrictamente por la magnitud del parámetro <span class="math inline">\(\phi\)</span>.</p>
+<p><strong>Proposición 2.3 (Condiciones de estacionariedad y representación MA(<span class="math inline">\(\infty\)</span>)).</strong> El proceso AR(1) es débilmente estacionario si y solo si <span class="math inline">\(|\phi| &lt; 1\)</span>. Bajo esta condición, admite la representación de media móvil infinita: <span class="math display">\[
+X_t = \sum_{j=0}^\infty \phi^j \varepsilon_{t-j},
+\]</span> la cual converge en media cuadrática (<span class="math inline">\(L^2\)</span>) dado que <span class="math inline">\(\sum_{j=0}^\infty |\phi|^j = (1-|\phi|)^{-1} &lt; \infty\)</span> <span class="citation" data-cites="brockwell2016time">(<a href="../references.html#ref-brockwell2016time" role="doc-biblioref">Brockwell y Davis 2016</a>)</span>.</p>
+<p>A partir de esta representación se obtienen directamente los momentos poblacionales: - <strong>Media:</strong> <span class="math inline">\(\mathbb{E}[X_t] = 0\)</span> (para el proceso centrado). - <strong>Varianza:</strong> <span class="math inline">\(\gamma(0) = \operatorname{Var}(X_t) = \sigma_\varepsilon^2 \sum_{j=0}^\infty \phi^{2j} = \dfrac{\sigma_\varepsilon^2}{1-\phi^2}\)</span>. - <strong>Autocovarianza:</strong> Para <span class="math inline">\(h \in \mathbb{Z}\)</span>, se cumple <span class="math inline">\(\gamma(h) = \mathbb{E}[X_t X_{t-h}] = \phi^{|h|} \gamma(0)\)</span>.</p>
+<p>La estructura exponencial de la autocovarianza implica que la dependencia temporal decae monótonamente con el desfase <span class="math inline">\(h\)</span>. El parámetro <span class="math inline">\(\phi\)</span> cuantifica directamente la <strong>persistencia temporal</strong>: valores cercanos a <span class="math inline">\(1\)</span> indican alta inercia (variabilidad lenta), mientras que <span class="math inline">\(\phi \approx 0\)</span> corresponde a comportamiento cercano al ruido blanco <span class="citation" data-cites="shumway2017time">(<a href="../references.html#ref-shumway2017time" role="doc-biblioref">Shumway y Stoffer 2017</a>)</span>.</p>
+</section>
+<section id="pronóstico-multipaso-y-decaimiento-de-la-persistencia" class="level3" data-number="3.6.2">
+<h3 data-number="3.6.2" class="anchored" data-anchor-id="pronóstico-multipaso-y-decaimiento-de-la-persistencia"><span class="header-section-number">3.6.2</span> Pronóstico multipaso y decaimiento de la persistencia</h3>
+<p>Una de las propiedades operativas más relevantes del modelo AR(1) es la forma cerrada de sus predictores lineales óptimos. Dada la información disponible hasta el instante <span class="math inline">\(t\)</span>, <span class="math inline">\(\mathcal{F}_t = \sigma(\{X_s : s \leq t\})\)</span>, el pronóstico a <span class="math inline">\(k\)</span> pasos adelante se obtiene iterando la ecuación del modelo y utilizando <span class="math inline">\(\mathbb{E}[\varepsilon_{t+j} \mid \mathcal{F}_t] = 0\)</span> para <span class="math inline">\(j \geq 1\)</span>: <span class="math display">\[
+\hat{X}_{t+k \mid t} = \mathbb{E}[X_{t+k} \mid \mathcal{F}_t] = \phi^k X_t.
+\]</span> Este resultado muestra explícitamente cómo la influencia de la observación actual decae exponencialmente con el horizonte de pronóstico <span class="math inline">\(k\)</span>. En el límite <span class="math inline">\(k \to \infty\)</span>, <span class="math inline">\(\hat{X}_{t+k \mid t} \to 0\)</span>, reflejando el retorno a la media bajo condiciones estacionarias. Para variables no centradas con media <span class="math inline">\(\mu\)</span>, el pronóstico converge a <span class="math inline">\(\mu\)</span>: <span class="math display">\[
+\hat{X}_{t+k \mid t} = \mu + \phi^k (X_t - \mu).
+\]</span></p>
+<p>En la implementación del sistema de nowcasting (Sección 4.4), esta expresión se utiliza directamente para calcular el componente autorregresivo: <span class="math display">\[
+y_i^{\text{AR}}(t+H) = a_i^{n} y_i(t), \quad n = H/\Delta t,
+\]</span> donde <span class="math inline">\(a_i\)</span> es la estimación muestral de <span class="math inline">\(\phi\)</span> para el segmento espacial <span class="math inline">\(i\)</span>.</p>
+</section>
+<section id="estimación-por-mínimos-cuadrados-ordinarios" class="level3" data-number="3.6.3">
+<h3 data-number="3.6.3" class="anchored" data-anchor-id="estimación-por-mínimos-cuadrados-ordinarios"><span class="header-section-number">3.6.3</span> Estimación por mínimos cuadrados ordinarios</h3>
+<p>En la práctica, <span class="math inline">\(\phi\)</span> y <span class="math inline">\(\sigma_\varepsilon^2\)</span> son desconocidos y deben estimarse a partir de una trayectoria finita <span class="math inline">\(\{x_t\}_{t=1}^T\)</span>. El estimador por mínimos cuadrados ordinarios (MCO) minimiza la suma de residuos cuadráticos: <span class="math display">\[
+\hat{\phi} = \arg\min_{\phi} \sum_{t=2}^T (x_t - \phi x_{t-1})^2 = \frac{\sum_{t=2}^T x_t x_{t-1}}{\sum_{t=1}^{T-1} x_{t-1}^2}.
+\]</span> Bajo la hipótesis de estacionariedad y ruido blanco, <span class="math inline">\(\hat{\phi}\)</span> es consistente y asintóticamente normal: <span class="math display">\[
+\sqrt{T}(\hat{\phi} - \phi) \xrightarrow{d} \mathcal{N}\left(0, 1-\phi^2\right), \quad T \to \infty.
+\]</span> Para series meteorológicas de longitud limitada, la varianza de <span class="math inline">\(\hat{\phi}\)</span> se infla cuando <span class="math inline">\(|\phi|\)</span> se aproxima a <span class="math inline">\(1\)</span> (raíz unitaria cercana). Por esta razón, en segmentos con escasez de observaciones se aplica regularización mediante truncamiento o sustitución por la mediana espacial de coeficientes válidos, garantizando estabilidad operativa <span class="citation" data-cites="box2015time">(<a href="../references.html#ref-box2015time" role="doc-biblioref">Box et&nbsp;al. 2015</a>)</span>.</p>
+</section>
+<section id="integración-con-el-sistema-de-decisión" class="level3" data-number="3.6.4">
+<h3 data-number="3.6.4" class="anchored" data-anchor-id="integración-con-el-sistema-de-decisión"><span class="header-section-number">3.6.4</span> Integración con el sistema de decisión</h3>
+<p>El modelo AR(1) no se emplea de forma aislada, sino como componente estructural dentro del esquema híbrido de nowcasting. Su contribución es particularmente crítica para: 1. <strong>Temperatura del aire:</strong> Donde la inercia termodinámica justifica <span class="math inline">\(\phi \approx 0.95\)</span>, reflejando alta coherencia temporal. 2. <strong>Humedad relativa:</strong> Con persistencia moderada (<span class="math inline">\(\phi \approx 0.85\)</span>), capturando la dinámica higroscópica sin sobreajuste. 3. <strong>Modelo de respaldo:</strong> Cuando fallan los métodos advectivos, el AR(1) regularizado actúa como fallback conservador, evitando extrapolaciones físicamente inconsistentes.</p>
+<p>La combinación explícita de <span class="math inline">\(\phi^k\)</span> (decaimiento autorregresivo) con <span class="math inline">\(s_i - vH\)</span> (transporte espacial) produce un predictor que balancea memoria local y coherencia atmosférica, cumpliendo con los requisitos de trazabilidad matemática y robustez operacional exigidos en la logística humanitaria.</p>
+</section>
+</section>
+<section id="sec-blockbootstrap" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-blockbootstrap"><span class="header-section-number">3.7</span> Métodos de remuestreo: Block Bootstrap temporal</h2>
+<p>El método bootstrap clásico, propuesto por Efron, constituye una herramienta poderosa para aproximar distribuciones muestrales bajo la hipótesis de independencia e idéntica distribución (i.i.d.) <span class="citation" data-cites="efron1979bootstrap">(<a href="../references.html#ref-efron1979bootstrap" role="doc-biblioref">Efron 1979</a>)</span>. Sin embargo, en el análisis de series meteorológicas y en la cuantificación de incertidumbre de pronósticos de corto horizonte, esta suposición es estructuralmente inválida: las observaciones presentan dependencia serial, ciclos diurnos y memoria termodinámica que deben preservarse en cualquier procedimiento de remuestreo. El <strong>bootstrap de bloques</strong> (<em>block bootstrap</em>) surge como la extensión natural que mantiene la estructura de correlación temporal al remuestrear segmentos contiguos en lugar de observaciones aisladas <span class="citation" data-cites="kunsch1989jackknife">(<a href="../references.html#ref-kunsch1989jackknife" role="doc-biblioref">Künsch 1989</a>)</span>.</p>
+<section id="formulación-matemática-del-moving-block-bootstrap-mbb" class="level3" data-number="3.7.1">
+<h3 data-number="3.7.1" class="anchored" data-anchor-id="formulación-matemática-del-moving-block-bootstrap-mbb"><span class="header-section-number">3.7.1</span> Formulación matemática del Moving Block Bootstrap (MBB)</h3>
+<p>Sea <span class="math inline">\(\{X_t\}_{t=1}^T\)</span> una trayectoria observada de un proceso estacionario débilmente dependiente. Para una longitud de bloque fija <span class="math inline">\(L \in \mathbb{N}\)</span> con <span class="math inline">\(L \ll T\)</span>, se definen los bloques superpuestos: <span class="math display">\[
+B_j = \big(X_j, X_{j+1}, \dots, X_{j+L-1}\big), \quad j = 1, 2, \dots, T-L+1.
+\]</span> Cada bloque <span class="math inline">\(B_j\)</span> conserva la estructura de dependencia local de orden <span class="math inline">\(L\)</span>. El procedimiento de remuestreo se define como sigue:</p>
+<ol type="1">
+<li><strong>Selección aleatoria</strong>: Se extraen <span class="math inline">\(K = \lfloor T/L \rfloor\)</span> bloques con reemplazo de manera uniforme e independiente del conjunto <span class="math inline">\(\{B_1, \dots, B_{T-L+1}\}\)</span>, obteniendo índices <span class="math inline">\(\{j_1^*, j_2^*, \dots, j_K^*\}\)</span>.</li>
+<li><strong>Reconstrucción</strong>: Se concatena la secuencia de bloques seleccionados para formar la réplica bootstrap: <span class="math display">\[
+\{X_t^*\}_{t=1}^{KL} = B_{j_1^*} \oplus B_{j_2^*} \oplus \dots \oplus B_{j_K^*},
+\]</span> donde <span class="math inline">\(\oplus\)</span> denota la operación de concatenación temporal.</li>
+<li><strong>Cálculo del estadístico</strong>: Sobre la serie bootstrap se recalcula el estimador de interés <span class="math inline">\(\hat{\theta}^* = s(X_1^*, \dots, X_{KL}^*)\)</span>, generando así una distribución empírica condicional <span class="math inline">\(\hat{G}_n(x) = \mathbb{P}^*(\hat{\theta}^* \leq x)\)</span> <span class="citation" data-cites="liu1992moving">(<a href="../references.html#ref-liu1992moving" role="doc-biblioref">Liu y Singh 1992</a>)</span>.</li>
+</ol>
+</section>
+<section id="consistencia-asintótica-y-condiciones-de-dependencia" class="level3" data-number="3.7.2">
+<h3 data-number="3.7.2" class="anchored" data-anchor-id="consistencia-asintótica-y-condiciones-de-dependencia"><span class="header-section-number">3.7.2</span> Consistencia asintótica y condiciones de dependencia</h3>
+<p>La validez teórica del MBB no requiere supuestos gaussianos, sino condiciones de decaimiento de la dependencia. Sea <span class="math inline">\(\alpha(k)\)</span> el coeficiente de mezcla fuerte (strong mixing) del proceso <span class="math inline">\(\{X_t\}\)</span>: <span class="math display">\[
+\alpha(k) = \sup_{A \in \mathcal{F}_{-\infty}^0, \, B \in \mathcal{F}_k^\infty} \left| \mathbb{P}(A \cap B) - \mathbb{P}(A)\mathbb{P}(B) \right|.
+\]</span> Bajo la condición <span class="math inline">\(\sum_{k=1}^\infty \alpha(k)^{\delta/(2+\delta)} &lt; \infty\)</span> para algún <span class="math inline">\(\delta &gt; 0\)</span>, Künsch demostró que el MBB aproxima consistentemente la distribución límite de medias muestrales y estimadores suaves <span class="citation" data-cites="kunsch1989jackknife">(<a href="../references.html#ref-kunsch1989jackknife" role="doc-biblioref">Künsch 1989</a>)</span>. Formalmente, si <span class="math inline">\(L \to \infty\)</span> y <span class="math inline">\(L/T \to 0\)</span> cuando <span class="math inline">\(T \to \infty\)</span>, entonces: <span class="math display">\[
+\sup_{x \in \mathbb{R}} \left| \mathbb{P}^*\left( \sqrt{K}(\hat{\theta}^* - \hat{\theta}) \leq x \right) - \mathbb{P}\left( \sqrt{T}(\hat{\theta} - \theta) \leq x \right) \right| \xrightarrow{p} 0.
+\]</span> Este resultado garantiza que los intervalos de confianza construidos a partir de cuantiles empíricos <span class="math inline">\(\{q_\alpha^*\}\)</span> son asintóticamente válidos, incluso para procesos no gaussianos y no lineales comunes en meteorología.</p>
+</section>
+<section id="selección-de-la-longitud-del-bloque-l" class="level3" data-number="3.7.3">
+<h3 data-number="3.7.3" class="anchored" data-anchor-id="selección-de-la-longitud-del-bloque-l"><span class="header-section-number">3.7.3</span> Selección de la longitud del bloque <span class="math inline">\(L\)</span></h3>
+<p>La elección de <span class="math inline">\(L\)</span> determina el equilibrio entre sesgo y varianza del procedimiento: - Si <span class="math inline">\(L\)</span> es demasiado pequeño, la estructura de dependencia se subestima y el bootstrap se comporta como i.i.d., produciendo intervalos demasiado estrechos. - Si <span class="math inline">\(L\)</span> es demasiado grande, se reducen el número de bloques disponibles (<span class="math inline">\(K \approx T/L\)</span>), incrementando la varianza muestral del estimador bootstrap.</p>
+<p>Bajo condiciones de regularidad, la longitud óptima minimiza el error cuadrático medio del estimador de varianza bootstrap y escala como <span class="math inline">\(L_{\text{opt}} \propto T^{1/3}\)</span> para medias muestrales <span class="citation" data-cites="hall1995optimal">(<a href="../references.html#ref-hall1995optimal" role="doc-biblioref">Hall, Horowitz, y Jing 1995</a>)</span>. En la práctica operacional, sin embargo, la selección de <span class="math inline">\(L\)</span> se guía por escalas físicas del sistema atmosférico (ej. persistencia térmica, tiempo de correlación del viento), lo que justifica longitudes adaptadas por variable, como se detalla en la Sección 4.8.</p>
+</section>
+<section id="variante-estacionaria-y-consideraciones-numéricas" class="level3" data-number="3.7.4">
+<h3 data-number="3.7.4" class="anchored" data-anchor-id="variante-estacionaria-y-consideraciones-numéricas"><span class="header-section-number">3.7.4</span> Variante estacionaria y consideraciones numéricas</h3>
+<p>El MBB con bloques fijos introduce discontinuidades artificiales en los puntos de unión entre bloques, lo que puede distorsionar estimadores de alta frecuencia. Para preservar estrictamente la estacionariedad, Politis y Romano propusieron el <strong>bootstrap estacionario</strong>, donde la longitud de cada bloque se muestrea de una distribución geométrica con parámetro <span class="math inline">\(p = 1/L\)</span>, garantizando que la serie reconstruida sea estrictamente estacionaria bajo la medida bootstrap <span class="citation" data-cites="politis1994large">(<a href="../references.html#ref-politis1994large" role="doc-biblioref">Politis y Romano 1994</a>)</span>.</p>
+<p>En implementaciones computacionales para nowcasting meteorológico, el MBB estándar suele preferirse por su simplicidad, determinismo en la longitud de la réplica y facilidad de paralelización. La elección de <span class="math inline">\(L\)</span> se fija por validación cruzada temporal o por criterios de escala física, y el número de réplicas <span class="math inline">\(B\)</span> se selecciona típicamente entre 100 y 500 para estabilizar cuantiles extremos (<span class="math inline">\(p_{05}, p_{95}\)</span>) con error de Monte Carlo menor al <span class="math inline">\(1\%\)</span> <span class="citation" data-cites="lahiri2003resampling">(<a href="../references.html#ref-lahiri2003resampling" role="doc-biblioref">Lahiri 2003</a>)</span>.</p>
+</section>
+<section id="integración-con-la-cuantificación-de-incertidumbre-operativa" class="level3" data-number="3.7.5">
+<h3 data-number="3.7.5" class="anchored" data-anchor-id="integración-con-la-cuantificación-de-incertidumbre-operativa"><span class="header-section-number">3.7.5</span> Integración con la cuantificación de incertidumbre operativa</h3>
+<p>En el marco de esta tesis, el block bootstrap se emplea para generar distribuciones empíricas de pronósticos <span class="math inline">\(\{\hat{y}_i^{(b)}(t+H)\}_{b=1}^B\)</span> por segmento espacial y variable meteorológica. A partir de estas distribuciones se extraen los percentiles críticos: <span class="math display">\[
+\text{p05}_i = q_{0.05}^*, \quad \text{p50}_i = q_{0.50}^*, \quad \text{p95}_i = q_{0.95}^*,
+\]</span> los cuales alimentan directamente la función de decisión binaria desarrollada en la Sección 4.9. El uso del percentil 95 como cota conservadora <span class="math inline">\(\tilde{y}_i = \text{p95}_i\)</span> implementa una política de tolerancia cero que cuantifica explícitamente el riesgo de violación de umbrales técnicos, cerrando el ciclo entre teoría de procesos estocásticos, remuestreo dependiente y toma de decisiones bajo incertidumbre.</p>
+</section>
+</section>
+<section id="teoría-de-decisión-bajo-incertidumbre-y-regiones-factibles" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="teoría-de-decisión-bajo-incertidumbre-y-regiones-factibles"><span class="header-section-number">3.8</span> Teoría de decisión bajo incertidumbre y regiones factibles</h2>
+<p>La transición de pronósticos meteorológicos cuantitativos a recomendaciones operativas binarias requiere un marco formal que estructure racionalmente la elección entre alternativas bajo condiciones no deterministas. En contextos de logística humanitaria y operaciones aéreas, el estado futuro del sistema atmosférico no es observable de antemano; solo se dispone de distribuciones predictivas o intervalos de confianza derivados de modelos estocásticos. La teoría de decisión bajo incertidumbre proporciona el lenguaje matemático para transformar información probabilística en acciones discretas, garantizando coherencia lógica, trazabilidad y alineación con los objetivos de seguridad operacional <span class="citation" data-cites="berger1985statistical">(<a href="../references.html#ref-berger1985statistical" role="doc-biblioref">Berger 1985</a>)</span>.</p>
+<section id="formulación-formal-del-problema-de-decisión" class="level3" data-number="3.8.1">
+<h3 data-number="3.8.1" class="anchored" data-anchor-id="formulación-formal-del-problema-de-decisión"><span class="header-section-number">3.8.1</span> Formulación formal del problema de decisión</h3>
+<p>Un problema de decisión se define mediante la tupla <span class="math inline">\((\Theta, \mathcal{A}, \mathcal{L})\)</span>, donde: - <span class="math inline">\(\Theta\)</span> es el <strong>espacio de estados de la naturaleza</strong>, que en este contexto corresponde al vector de condiciones meteorológicas reales futuras <span class="math inline">\(\boldsymbol{\theta} = (V, T, H, R)^\top \in \mathbb{R}^4\)</span>. - <span class="math inline">\(\mathcal{A} = \{a_1, a_2\}\)</span> es el <strong>conjunto de acciones factibles</strong>, con <span class="math inline">\(a_1 = \text{PUEDE\_VOLAR}\)</span> y <span class="math inline">\(a_2 = \text{NO\_PUEDE\_VOLAR}\)</span>. - <span class="math inline">\(\mathcal{L}: \mathcal{A} \times \Theta \to \mathbb{R}\)</span> es la <strong>función de pérdida</strong>, que cuantifica el costo asociado a elegir la acción <span class="math inline">\(a\)</span> cuando el estado real es <span class="math inline">\(\boldsymbol{\theta}\)</span>.</p>
+<p>Bajo incertidumbre, <span class="math inline">\(\boldsymbol{\theta}\)</span> es desconocido en el momento de la decisión. En lugar de conocer el estado exacto, se dispone de una distribución predictiva posterior <span class="math inline">\(\pi(\boldsymbol{\theta} \mid \mathcal{D})\)</span> o, en enfoques no paramétricos, de una familia de conjuntos de credibilidad derivados de procedimientos de remuestreo <span class="citation" data-cites="french1988decision">(<a href="../references.html#ref-french1988decision" role="doc-biblioref">French 1988</a>)</span>.</p>
+</section>
+<section id="criterios-de-decisión-clásicos-y-conservadurismo-operativo" class="level3" data-number="3.8.2">
+<h3 data-number="3.8.2" class="anchored" data-anchor-id="criterios-de-decisión-clásicos-y-conservadurismo-operativo"><span class="header-section-number">3.8.2</span> Criterios de decisión clásicos y conservadurismo operativo</h3>
+<p>Cuando la distribución de <span class="math inline">\(\boldsymbol{\theta}\)</span> es incierta o se prefiere un enfoque robusto frente a errores de modelado, la investigación de operaciones establece criterios de decisión que no dependen de supuestos distribucionales completos. Entre los más utilizados se encuentran:</p>
+<ol type="1">
+<li><p><strong>Criterio de Wald (Maximin)</strong>: Selecciona la acción que minimiza la máxima pérdida posible: <span class="math display">\[
+a^* = \arg\min_{a \in \mathcal{A}} \left\{ \sup_{\boldsymbol{\theta} \in \Theta} \mathcal{L}(a, \boldsymbol{\theta}) \right\}.
+\]</span> Este criterio es inherentemente conservador y resulta adecuado cuando el costo de un error por acción (ej. volar en condiciones adversas) es asimétrico y potencialmente catastrófico. En logística y sistemas críticos, Taha enfatiza su aplicación para decisiones donde la tolerancia al fallo es mínima <span class="citation" data-cites="taha2017operations">(<a href="../references.html#ref-taha2017operations" role="doc-biblioref">Taha 2017</a>)</span>.</p></li>
+<li><p><strong>Criterio de Savage (Minimax Regret)</strong>: Minimiza el máximo arrepentimiento o costo de oportunidad respecto a la decisión óptima ex-post: <span class="math display">\[
+a^* = \arg\min_{a \in \mathcal{A}} \left\{ \sup_{\boldsymbol{\theta} \in \Theta} \left[ \mathcal{L}(a, \boldsymbol{\theta}) - \min_{a' \in \mathcal{A}} \mathcal{L}(a', \boldsymbol{\theta}) \right] \right\}.
+\]</span></p></li>
+<li><p><strong>Criterio de Hurwicz</strong>: Introduce un coeficiente de optimismo <span class="math inline">\(\alpha \in [0,1]\)</span> que pondera el mejor y peor escenario: <span class="math display">\[
+a^* = \arg\min_{a \in \mathcal{A}} \left\{ \alpha \inf_{\boldsymbol{\theta}} \mathcal{L}(a, \boldsymbol{\theta}) + (1-\alpha) \sup_{\boldsymbol{\theta}} \mathcal{L}(a, \boldsymbol{\theta}) \right\}.
+\]</span></p></li>
+</ol>
+<p>En operaciones con drones de carga humanitaria, la asimetría de riesgos justifica la adopción de una política cercana al criterio de Wald, donde la seguridad prevalece sobre la eficiencia inmediata.</p>
+</section>
+<section id="regiones-factibles-y-funciones-indicadoras-de-viabilidad" class="level3" data-number="3.8.3">
+<h3 data-number="3.8.3" class="anchored" data-anchor-id="regiones-factibles-y-funciones-indicadoras-de-viabilidad"><span class="header-section-number">3.8.3</span> Regiones factibles y funciones indicadoras de viabilidad</h3>
+<p>En problemas con restricciones técnicas explícitas, el espacio de decisiones se acota mediante una <strong>región factible</strong> <span class="math inline">\(\mathcal{F} \subset \Theta\)</span>, definida como el conjunto de estados que satisfacen simultáneamente todos los límites operacionales del sistema: <span class="math display">\[
+\mathcal{F} = \bigcap_{j=1}^{m} \left\{ \boldsymbol{\theta} \in \Theta : g_j(\boldsymbol{\theta}) \leq u_j \right\},
+\]</span> donde <span class="math inline">\(g_j: \Theta \to \mathbb{R}\)</span> son funciones de restricción (ej. velocidad del viento, temperatura, humedad, precipitación) y <span class="math inline">\(u_j \in \mathbb{R}\)</span> son umbrales técnicos máximos o mínimos. La viabilidad operacional se determina mediante la función indicadora: <span class="math display">\[
+\mathbb{I}_{\mathcal{F}}(\boldsymbol{\theta}) =
+\begin{cases}
+1, &amp; \text{si } \boldsymbol{\theta} \in \mathcal{F}, \\
+0, &amp; \text{en caso contrario}.
+\end{cases}
+\]</span> Esta formulación transforma el problema de decisión en una evaluación de pertenencia a un conjunto definido por intersección de semiespacios, lo cual computacionalmente se resuelve mediante evaluaciones booleanas secuenciales <span class="citation" data-cites="hillier2015introduction">(<a href="../references.html#ref-hillier2015introduction" role="doc-biblioref">Hillier y Lieberman 2015</a>)</span>.</p>
+</section>
+<section id="integración-con-incertidumbre-predictiva-y-política-de-tolerancia-cero" class="level3" data-number="3.8.4">
+<h3 data-number="3.8.4" class="anchored" data-anchor-id="integración-con-incertidumbre-predictiva-y-política-de-tolerancia-cero"><span class="header-section-number">3.8.4</span> Integración con incertidumbre predictiva y política de tolerancia cero</h3>
+<p>Cuando <span class="math inline">\(\boldsymbol{\theta}\)</span> es reemplazado por un pronóstico estocástico <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span> con distribución empírica <span class="math inline">\(\mathcal{D}_{\text{boot}}\)</span>, la pertenencia a <span class="math inline">\(\mathcal{F}\)</span> debe evaluarse de manera robusta. En lugar de usar la mediana o el valor esperado, se adopta un <strong>estadístico conservador</strong> <span class="math inline">\(\tilde{\boldsymbol{\theta}}\)</span> que controla la probabilidad de violación de restricciones: <span class="math display">\[
+\tilde{\theta}_j = \inf \left\{ x : \mathbb{P}(\hat{\theta}_j \leq x) \geq 1 - \alpha \right\}, \quad \alpha = 0.05.
+\]</span> La decisión final se obtiene evaluando <span class="math inline">\(\mathbb{I}_{\mathcal{F}}(\tilde{\boldsymbol{\theta}})\)</span>, lo que garantiza que la probabilidad de operar fuera de la región factible no exceda el <span class="math inline">\(5\%\)</span> bajo el modelo de remuestreo. Esta aproximación implementa de forma práctica un <strong>criterio de decisión robusto</strong> que alinea la teoría de probabilidad con los protocolos de seguridad aeronáutica, donde la tolerancia a fallos es mínima y las consecuencias de una decisión errónea son irreversibles <span class="citation" data-cites="taha2017operations">(<a href="../references.html#ref-taha2017operations" role="doc-biblioref">Taha 2017</a>)</span>.</p>
+</section>
+<section id="conexión-con-el-sistema-de-decisión-del-capítulo-4" class="level3" data-number="3.8.5">
+<h3 data-number="3.8.5" class="anchored" data-anchor-id="conexión-con-el-sistema-de-decisión-del-capítulo-4"><span class="header-section-number">3.8.5</span> Conexión con el sistema de decisión del Capítulo 4</h3>
+<p>La estructura teórica presentada en esta sección constituye la base matemática de la función de decisión binaria <span class="math inline">\(\mathbb{I}_{\text{vuelo}}\)</span> desarrollada en la Sección 4.9. Los umbrales técnicos <span class="math inline">\(u_j\)</span> se derivan de las especificaciones del dron, la región factible <span class="math inline">\(\mathcal{F}\)</span> se construye como intersección de restricciones univariadas, y el uso del percentil 95 (<span class="math inline">\(\alpha=0.05\)</span>) materializa el conservadurismo del criterio de Wald en un contexto estocástico. Esta formalización asegura que la recomendación operacional no sea un heurístico empírico, sino una regla de decisión rigurosa, trazable y alineada con los principios de la investigación de operaciones aplicada a sistemas críticos.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-bartlett1946theoretical" class="csl-entry" role="listitem">
+Bartlett, M. S. 1946. <span>«On the theoretical specification of sampling properties of autocorrelated time series»</span>. <em>Journal of the Royal Statistical Society: Series B (Methodological)</em> 8 (1-2): 27-41. <a href="https://doi.org/10.2307/2983611">https://doi.org/10.2307/2983611</a>.
+</div>
+<div id="ref-bendat2010random" class="csl-entry" role="listitem">
+Bendat, Julius S., y Allan G. Piersol. 2010. <em>Random Data: Analysis and Measurement Procedures</em>. 4.ª ed. Hoboken: Wiley.
+</div>
+<div id="ref-berger1985statistical" class="csl-entry" role="listitem">
+Berger, James O. 1985. <em>Statistical Decision Theory and Bayesian Analysis</em>. 2.ª ed. New York: Springer.
+</div>
+<div id="ref-box2015time" class="csl-entry" role="listitem">
+Box, George E. P., Gwilym M. Jenkins, Gregory C. Reinsel, y Greta M. Ljung. 2015. <em>Time Series Analysis: Forecasting and Control</em>. 5.ª ed. Hoboken: Wiley.
+</div>
+<div id="ref-brillinger1981time" class="csl-entry" role="listitem">
+Brillinger, David R. 1981. <em>Time Series: Data Analysis and Theory</em>. Revised. Philadelphia: SIAM. <a href="https://doi.org/10.2307/1267927">https://doi.org/10.2307/1267927</a>.
+</div>
+<div id="ref-brockwell2016time" class="csl-entry" role="listitem">
+Brockwell, Peter J., y Richard A. Davis. 2016. <em>Introduction to Time Series and Forecasting</em>. 3.ª ed. Springer.
+</div>
+<div id="ref-durrett2019probability" class="csl-entry" role="listitem">
+Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. 5.ª ed. Cambridge: Cambridge University Press.
+</div>
+<div id="ref-efron1979bootstrap" class="csl-entry" role="listitem">
+Efron, Bradley. 1979. <span>«Bootstrap methods: Another look at the jackknife»</span>. <em>The Annals of Statistics</em> 7 (1): 1-26. <a href="https://doi.org/10.1214/aos/1176344552">https://doi.org/10.1214/aos/1176344552</a>.
+</div>
+<div id="ref-emery2004data" class="csl-entry" role="listitem">
+Emery, William J., y Richard E. Thomson. 2004. <em>Data Analysis Methods in Physical Oceanography</em>. 2.ª ed. Amsterdam: Elsevier. <a href="https://doi.org/10.1016/B978-0-12-387782-6.00005-3">https://doi.org/10.1016/B978-0-12-387782-6.00005-3</a>.
+</div>
+<div id="ref-french1988decision" class="csl-entry" role="listitem">
+French, Simon. 1988. <em>Decision Theory: An Introduction to the Mathematics of Rationality</em>. Chichester: Ellis Horwood / Wiley.
+</div>
+<div id="ref-hall1995optimal" class="csl-entry" role="listitem">
+Hall, Peter, Joel L. Horowitz, y Bing-Yi Jing. 1995. <span>«On blocking rules for the bootstrap with dependent data»</span>. <em>Biometrika</em> 82 (3): 561-74. <a href="https://doi.org/10.1093/biomet/82.3.561">https://doi.org/10.1093/biomet/82.3.561</a>.
+</div>
+<div id="ref-hamilton1994time" class="csl-entry" role="listitem">
+Hamilton, James D. 1994. <em>Time Series Analysis</em>. Princeton: Princeton University Press.
+</div>
+<div id="ref-hayashi1973method" class="csl-entry" role="listitem">
+Hayashi, Y. 1973. <span>«A generalized method for resolving disturbances into progressive and quasi-stationary waves by space Fourier and time cross-spectral analysis»</span>. <em>Journal of the Atmospheric Sciences</em> 30 (4): 623-33. <a href="https://doi.org/10.2151/jmsj1965.49.2_125">https://doi.org/10.2151/jmsj1965.49.2_125</a>.
+</div>
+<div id="ref-hillier2015introduction" class="csl-entry" role="listitem">
+Hillier, Frederick S., y Gerald J. Lieberman. 2015. <em>Introduction to Operations Research</em>. 10.ª ed. New York: McGraw-Hill Education.
+</div>
+<div id="ref-kunsch1989jackknife" class="csl-entry" role="listitem">
+Künsch, Hans R. 1989. <span>«The jackknife and the bootstrap for general stationary observations»</span>. <em>The Annals of Statistics</em> 17 (3): 1217-41. <a href="https://doi.org/10.1214/aos/1176347265">https://doi.org/10.1214/aos/1176347265</a>.
+</div>
+<div id="ref-lahiri2003resampling" class="csl-entry" role="listitem">
+Lahiri, Soumendra N. 2003. <em>Resampling Methods for Dependent Data</em>. New York: Springer.
+</div>
+<div id="ref-liu1992moving" class="csl-entry" role="listitem">
+Liu, Regina Y., y Kesar Singh. 1992. <span>«Moving blocks jackknife and bootstrap capture weak dependence»</span>. <em>Exploring the Limits of Bootstrap</em>, 225-48.
+</div>
+<div id="ref-oppenheim2010discrete" class="csl-entry" role="listitem">
+Oppenheim, Alan V., y Ronald W. Schafer. 2010. <em>Discrete-Time Signal Processing</em>. 3.ª ed. Upper Saddle River: Pearson.
+</div>
+<div id="ref-politis1994large" class="csl-entry" role="listitem">
+Politis, Dimitris N., y Joseph P. Romano. 1994. <span>«Large sample confidence regions based on subsamples under minimal assumptions»</span>. <em>The Annals of Statistics</em> 22 (4): 2031-50. <a href="https://doi.org/10.1214/aos/1176325770">https://doi.org/10.1214/aos/1176325770</a>.
+</div>
+<div id="ref-priestley1981spectral" class="csl-entry" role="listitem">
+Priestley, M. B. 1981. <em>Spectral Analysis and Time Series</em>. Vol. 1. London: Academic Press.
+</div>
+<div id="ref-rudin1987real" class="csl-entry" role="listitem">
+Rudin, Walter. 1987. <em>Real and Complex Analysis</em>. 3.ª ed. McGraw-Hill.
+</div>
+<div id="ref-shumway2017time" class="csl-entry" role="listitem">
+Shumway, Robert H., y David S. Stoffer. 2017. <em>Time Series Analysis and Its Applications: With R Examples</em>. 4.ª ed. Cham: Springer.
+</div>
+<div id="ref-taha2017operations" class="csl-entry" role="listitem">
+Taha, Hamdy A. 2017. <em>Investigación de operaciones</em>. 10.ª ed. Ciudad de México: Pearson Educación.
+</div>
+<div id="ref-williams1991martingales" class="csl-entry" role="listitem">
+Williams, David. 1991. <em>Probability with Martingales</em>. Cambridge University Press.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/chapter1.html" class="pagination-link" aria-label="Teoría de Grafos, Cadenas de Markov y PageRank">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría de Grafos, Cadenas de Markov y PageRank</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/chapter3.html" class="pagination-link" aria-label="Optimización de Rutas Terrestres mediante PageRank">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Optimización de Rutas Terrestres mediante PageRank</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
