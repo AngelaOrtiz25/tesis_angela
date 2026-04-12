@@ -156,7 +156,7 @@ La metodología de recolección de datos presentada garantiza:
 
 Esta base de datos constituye el insumo fundamental para la construcción de la red territorial ponderada y la posterior aplicación del algoritmo PageRank descrita en la sección siguiente.
 
-## Cálculo de distancias geodésicas 2D y 3D
+## Cálculo de distancias geodésicas 2D y 3D {#sec-distancias3d}
 ### Formulación matemática de la distancia geodésica bidimensional
 
 Con el objetivo de estimar la longitud real de las rutas considerando la curvatura terrestre, se empleó la fórmula de Vincenty (@vincenty1975) sobre el elipsoide WGS84 (*World Geodetic System 1984*). Sea una ruta discretizada por $N$ puntos geográficos con coordenadas:

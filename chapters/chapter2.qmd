@@ -8,6 +8,8 @@ execute:
   freeze: auto 
 jupyter: python3
 ---
+:::{style="text-align: justify"}
+
 ## Procesos estocásticos de segundo orden y espacio de Hilbert $L^2(\Omega,\mathcal{F},\mathbb{P})$
 
 El análisis matemático de fenómenos meteorológicos y su aplicación al pronóstico operativo requieren un marco probabilístico riguroso que permita cuantificar la variabilidad inherente a las observaciones ambientales. En este contexto, los procesos estocásticos de segundo orden constituyen la base teórica sobre la cual se construyen los modelos de series de tiempo, las estimaciones de covarianza y los procedimientos de remuestreo utilizados en esta tesis. La exigencia de que las variables aleatorias posean momentos de segundo orden finitos no es una restricción arbitraria, sino una condición técnica fundamental que garantiza la existencia de la estructura geométrica del espacio de Hilbert, herramienta indispensable para el análisis de proyecciones ortogonales y descomposiciones espectrales.
@@ -467,3 +469,4 @@ La decisión final se obtiene evaluando $\mathbb{I}_{\mathcal{F}}(\tilde{\boldsy
 ### Conexión con el sistema de decisión del Capítulo 4
 
 La estructura teórica presentada en esta sección constituye la base matemática de la función de decisión binaria $\mathbb{I}_{\text{vuelo}}$ desarrollada en la Sección 4.9. Los umbrales técnicos $u_j$ se derivan de las especificaciones del dron, la región factible $\mathcal{F}$ se construye como intersección de restricciones univariadas, y el uso del percentil 95 ($\alpha=0.05$) materializa el conservadurismo del criterio de Wald en un contexto estocástico. Esta formalización asegura que la recomendación operacional no sea un heurístico empírico, sino una regla de decisión rigurosa, trazable y alineada con los principios de la investigación de operaciones aplicada a sistemas críticos.
+:::
