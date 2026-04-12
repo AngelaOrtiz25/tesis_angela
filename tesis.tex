@@ -293,7 +293,7 @@
 \title{tesis}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-04-06}
+\date{2026-04-12}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -379,14 +379,555 @@ PageRank}\label{teoruxeda-de-grafos-cadenas-de-markov-y-pagerank}
 \section{Grafos dirigidos y no dirigidos, matrices de
 adyacencia}\label{grafos-dirigidos-y-no-dirigidos-matrices-de-adyacencia}
 
+La modelación matemática de redes de transporte, sistemas logísticos y
+flujos de distribución requiere un lenguaje estructural que permita
+representar de manera abstracta las relaciones de conectividad entre
+entidades discretas. La teoría de grafos proporciona este marco formal,
+ofreciendo herramientas para analizar propiedades topológicas, optimizar
+rutas y caracterizar la dinámica de procesos definidos sobre redes
+(\citeproc{ref-bondy2008graph}{Bondy y Murty 2008}). En el contexto de
+la logística humanitaria en Chiapas, los grafos constituyen la base
+sobre la cual se construyen los algoritmos de priorización territorial y
+evaluación de accesibilidad desarrollados en este capítulo.
+
+\subsection{Definiciones
+fundamentales}\label{definiciones-fundamentales}
+
+\textbf{Definición 1.1 (Grafo no dirigido).} Un \emph{grafo no dirigido}
+es un par ordenado \(G = (V, E)\), donde: -
+\(V = \{v_1, v_2, \dots, v_n\}\) es un conjunto finito no vacío de
+\emph{vértices} o \emph{nodos}, -
+\(E \subseteq \{\{u,v\} : u, v \in V, u \neq v\}\) es un conjunto de
+\emph{aristas}, cada una representada como un par no ordenado de
+vértices distintos.
+
+Cuando \(\{u,v\} \in E\), se dice que \(u\) y \(v\) son
+\emph{adyacentes} o \emph{vecinos}, y que la arista es \emph{incidente}
+en ambos vértices. En aplicaciones de transporte terrestre, los vértices
+representan municipios, centros de distribución o intersecciones viales,
+mientras que las aristas modelan conexiones físicas bidireccionales
+entre ellos (\citeproc{ref-taha2017operations}{Taha 2017}).
+
+\textbf{Definición 1.2 (Grafo dirigido).} Un \emph{grafo dirigido} (o
+\emph{digrafo}) es un par ordenado \(D = (V, A)\), donde: - \(V\) es un
+conjunto finito no vacío de vértices, - \(A \subseteq V \times V\) es un
+conjunto de \emph{arcos}, cada uno representado como un par ordenado
+\((u,v)\) con \(u, v \in V\) y \(u \neq v\).
+
+El arco \((u,v)\) se interpreta como una conexión unidireccional desde
+el vértice origen \(u\) hacia el vértice destino \(v\). En redes
+logísticas, los grafos dirigidos permiten modelar restricciones de
+sentido único, pendientes pronunciadas que afectan la transitabilidad en
+una dirección, o flujos asimétricos de recursos
+(\citeproc{ref-newman2018networks}{Newman 2018}).
+
+\subsection{Matriz de adyacencia: representación algebraica de la
+conectividad}\label{matriz-de-adyacencia-representaciuxf3n-algebraica-de-la-conectividad}
+
+La estructura de un grafo finito puede codificarse de manera compacta
+mediante su \textbf{matriz de adyacencia}, objeto central en el análisis
+computacional de redes.
+
+\textbf{Definición 1.3 (Matriz de adyacencia no dirigida).} Sea
+\(G = (V, E)\) un grafo no dirigido con \(|V| = n\). La \emph{matriz de
+adyacencia} de \(G\) es la matriz \(A \in \{0,1\}^{n \times n}\)
+definida por: \[
+a_{ij} = 
+\begin{cases}
+1, & \text{si } \{v_i, v_j\} \in E, \\
+0, & \text{en caso contrario}.
+\end{cases}
+\] Dado que las aristas son no dirigidas, \(A\) es simétrica:
+\(a_{ij} = a_{ji}\) para todo \(i,j\)
+(\citeproc{ref-west2001introduction}{West 2017}).
+
+\textbf{Definición 1.4 (Matriz de adyacencia dirigida).} Sea
+\(D = (V, A)\) un grafo dirigido con \(|V| = n\). La \emph{matriz de
+adyacencia} de \(D\) es la matriz \(A \in \{0,1\}^{n \times n}\)
+definida por: \[
+a_{ij} = 
+\begin{cases}
+1, & \text{si } (v_i, v_j) \in A, \\
+0, & \text{en caso contrario}.
+\end{cases}
+\] En este caso, \(A\) no es necesariamente simétrica, reflejando la
+asimetría potencial en las conexiones de la red
+(\citeproc{ref-taha2017investigacion}{\textbf{taha2017investigacion?}}).
+
+\subsection{Propiedades algebraicas y su interpretación en
+redes}\label{propiedades-algebraicas-y-su-interpretaciuxf3n-en-redes}
+
+La matriz de adyacencia no solo codifica la conectividad inmediata, sino
+que sus potencias revelan información sobre caminos de longitud mayor.
+
+\textbf{Proposición 1.1 (Caminos y potencias de la matriz de
+adyacencia).} Sea \(A\) la matriz de adyacencia de un grafo (dirigido o
+no dirigido) con \(n\) vértices. Para cualquier entero \(k \geq 1\), la
+entrada \((i,j)\) de la matriz \(A^k\) satisface: \[
+(A^k)_{ij} = \text{número de caminos de longitud } k \text{ desde } v_i \text{ hasta } v_j.
+\] \emph{Demostración.} Por inducción sobre \(k\). Para \(k=1\) es la
+definición de adyacencia. Suponiendo válido para \(k\), se tiene: \[
+(A^{k+1})_{ij} = \sum_{\ell=1}^n (A^k)_{i\ell} \, a_{\ell j},
+\] que cuenta todos los caminos de longitud \(k\) desde \(v_i\) a
+\(v_\ell\), seguidos de un arco desde \(v_\ell\) a \(v_j\). \(\square\)
+
+Esta propiedad fundamenta algoritmos de alcanzabilidad, detección de
+componentes conexas y cálculo de centralidad, todos ellos relevantes
+para la planificación logística territorial
+(\citeproc{ref-bondy2008graph}{Bondy y Murty 2008}).
+
+\subsection{Grafos ponderados y aplicación a redes de
+transporte}\label{grafos-ponderados-y-aplicaciuxf3n-a-redes-de-transporte}
+
+En aplicaciones reales, las conexiones entre nodos poseen atributos
+cuantitativos (distancia, tiempo, costo, capacidad) que deben
+incorporarse al modelo.
+
+\textbf{Definición 1.5 (Grafo ponderado).} Un \emph{grafo ponderado} es
+una terna \(G = (V, E, w)\), donde \((V,E)\) es un grafo y
+\(w: E \to \mathbb{R}^+\) es una función de \emph{pesos} que asigna a
+cada arista un valor positivo. La \emph{matriz de pesos}
+\(W \in \mathbb{R}^{n \times n}\) se define como: \[
+w_{ij} = 
+\begin{cases}
+w(\{v_i,v_j\}), & \text{si } \{v_i,v_j\} \in E, \\
+0, & \text{en caso contrario}.
+\end{cases}
+\]
+
+En la red territorial de Chiapas, el peso \(w_{ij}\) representa la
+distancia tridimensional \(d_{ij}^{(3D)}\) entre municipios,
+incorporando explícitamente las variaciones topográficas del terreno.
+Esta métrica es fundamental para estimar con precisión los costos
+logísticos y los tiempos de respuesta en escenarios de emergencia.
+
+\subsection{Conexión con la optimización de
+rutas}\label{conexiuxf3n-con-la-optimizaciuxf3n-de-rutas}
+
+La representación matricial de grafos ponderados permite formular
+problemas de optimización de rutas como programas lineales o algoritmos
+de búsqueda en grafos. Por ejemplo, el problema de encontrar la ruta de
+menor costo entre un origen \(s\) y un destino \(t\) se expresa como: \[
+\min_{\mathbf{x}} \sum_{(i,j) \in E} w_{ij} x_{ij}, \quad \text{sujeto a restricciones de flujo},
+\] donde \(x_{ij} \in \{0,1\}\) indica si el arco \((i,j)\) pertenece a
+la ruta óptima. Algoritmos clásicos como Dijkstra o Bellman-Ford operan
+directamente sobre la estructura de adyacencia ponderada para resolver
+este problema en tiempo polinomial
+(\citeproc{ref-taha2017investigacion}{\textbf{taha2017investigacion?}};
+\citeproc{ref-cormen2009introduction}{Cormen et~al. 2022}).
+
+En el contexto de esta tesis, la matriz de pesos derivada de distancias
+3D constituye el insumo principal para la construcción de la matriz de
+transición estocástica utilizada en el algoritmo PageRank, cerrando así
+el vínculo entre la teoría de grafos, la modelación geométrica del
+terreno y la priorización logística territorial.
+
 \section{Redes ponderadas y aplicaciones a redes de
 transporte}\label{redes-ponderadas-y-aplicaciones-a-redes-de-transporte}
+
+La representación binaria de la conectividad mediante grafos no
+ponderados resulta insuficiente para modelar sistemas logísticos reales,
+donde las conexiones entre nodos poseen atributos cuantitativos que
+determinan la intensidad del flujo, la accesibilidad y la vulnerabilidad
+estructural. Las \textbf{redes ponderadas} extienden el marco de la
+teoría de grafos al incorporar funciones de peso que codifican
+distancias, tiempos de tránsito, costos operativos o dificultades de
+acceso, permitiendo así un análisis más realista de la topología
+territorial (\citeproc{ref-newman2018networks}{Newman 2018}). En el
+contexto de la distribución de ayuda humanitaria en Chiapas, la
+ponderación adecuada de la red es fundamental para priorizar municipios
+estratégicos y evaluar patrones de conectividad bajo restricciones
+topográficas.
+
+\subsection{Definición formal de redes
+ponderadas}\label{definiciuxf3n-formal-de-redes-ponderadas}
+
+\textbf{Definición 1.6 (Red ponderada dirigida).} Una \emph{red
+ponderada dirigida} es una cuaterna \(G = (V, A, w, \mathcal{W})\),
+donde: - \((V, A)\) es un grafo dirigido con \(|V| = n\) vértices y
+\(|A| = m\) arcos, - \(\mathcal{W} \subseteq \mathbb{R}^+\) es un
+conjunto de valores de peso admisibles, - \(w: A \to \mathcal{W}\) es
+una \emph{función de peso} que asigna a cada arco \((v_i, v_j) \in A\)
+un valor \(w_{ij} \in \mathcal{W}\).
+
+Cuando la red modela un sistema de transporte terrestre, el peso
+\(w_{ij}\) puede interpretarse como: - \textbf{Distancia física}:
+\(w_{ij} = d_{ij}^{(3D)}\) (kilómetros), incorporando variaciones
+topográficas, - \textbf{Tiempo de tránsito}: \(w_{ij} = t_{ij}\)
+(minutos), estimado a partir de velocidades promedio por tipo de vía, -
+\textbf{Dificultad de acceso}: \(w_{ij} = \delta_{ij}\) (índice
+adimensional), derivado de pendientes, estado de la vía o exposición a
+riesgos naturales
+(\citeproc{ref-taha2017investigacion}{\textbf{taha2017investigacion?}}).
+
+La elección de la métrica de peso determina el tipo de análisis
+estructural que puede realizarse sobre la red, y debe alinearse con los
+objetivos operativos del sistema logístico.
+
+\subsection{Representación matricial y transformación a probabilidades
+de
+transición}\label{representaciuxf3n-matricial-y-transformaciuxf3n-a-probabilidades-de-transiciuxf3n}
+
+La estructura de una red ponderada puede codificarse mediante su
+\textbf{matriz de pesos} \(W \in \mathbb{R}^{n \times n}\), definida
+como: \[
+w_{ij} = 
+\begin{cases}
+w(v_i, v_j), & \text{si } (v_i, v_j) \in A, \\
+0, & \text{en caso contrario}.
+\end{cases}
+\] A diferencia de la matriz de adyacencia binaria, \(W\) contiene
+información cuantitativa que habilita el análisis de flujos potenciales,
+centralidad y resiliencia estructural
+(\citeproc{ref-bondy2008graph}{Bondy y Murty 2008}).
+
+Para aplicar métodos basados en cadenas de Markov, como el algoritmo
+PageRank, es necesario transformar los pesos de distancia en
+probabilidades de transición. Una estrategia común consiste en utilizar
+el inverso de la distancia como medida de influencia o accesibilidad: \[
+\tilde{w}_{ij} = 
+\begin{cases}
+\displaystyle \frac{1}{w_{ij}}, & \text{si } (v_i, v_j) \in A, \\
+0, & \text{en caso contrario}.
+\end{cases}
+\] La matriz de transición estocástica \(Q\) se obtiene normalizando por
+columnas: \[
+q_{ij} = \frac{\tilde{w}_{ij}}{\sum_{k=1}^n \tilde{w}_{kj}}, \quad \text{si } \sum_{k} \tilde{w}_{kj} > 0.
+\] Esta transformación garantiza que \(Q\) sea una matriz estocástica
+por columnas (\(\sum_i q_{ij} = 1\)), condición necesaria para
+interpretarla como el núcleo de un proceso de Markov discreto
+(\citeproc{ref-brin1998anatomy}{Brin y Page 1998}).
+
+\subsection{Aplicaciones a redes de transporte
+terrestre}\label{aplicaciones-a-redes-de-transporte-terrestre}
+
+En logística humanitaria, las redes ponderadas permiten cuantificar
+propiedades estructurales que son críticas para la planificación
+estratégica:
+
+\subsubsection{1. Medición de centralidad e influencia
+estructural}\label{mediciuxf3n-de-centralidad-e-influencia-estructural}
+
+El peso de las aristas no solo refleja distancia física, sino también la
+intensidad de la interacción entre nodos. Municipios con múltiples
+conexiones de bajo peso (corta distancia, alta accesibilidad) tienden a
+acumular mayor flujo potencial, convirtiéndose en centros naturales de
+distribución. Esta propiedad se cuantifica mediante medidas de
+centralidad espectral, como el vector PageRank, que asigna a cada nodo
+una puntuación proporcional a su importancia relativa en la red
+(\citeproc{ref-borgatti2005centrality}{Borgatti 2005}).
+
+\subsubsection{2. Evaluación de vulnerabilidad y
+robustez}\label{evaluaciuxf3n-de-vulnerabilidad-y-robustez}
+
+La sensibilidad de la red ante la interrupción de arcos o nodos puede
+analizarse mediante variaciones en la distribución estacionaria. Sea
+\(\pi\) el vector de centralidad original y \(\pi^{(e)}\) el vector tras
+eliminar el arco \(e\). El impacto relativo se mide como: \[
+\Delta^{(e)} = \|\pi - \pi^{(e)}\|_1 = \sum_{i=1}^n |\pi_i - \pi_i^{(e)}|.
+\] Valores elevados de \(\Delta^{(e)}\) identifican enlaces críticos
+cuya falla redistribuye significativamente la importancia estructural de
+los municipios, guiando así prioridades de mantenimiento o rutas de
+contingencia (\citeproc{ref-barabasi2016network}{Barabási 2016}).
+
+\subsubsection{3. Accesibilidad ponderada y equidad
+territorial}\label{accesibilidad-ponderada-y-equidad-territorial}
+
+La distribución de pesos en la red refleja desigualdades geográficas en
+el acceso a servicios. Un análisis de los pesos de arista salientes por
+municipio permite identificar regiones con conectividad sistémicamente
+deficiente, incluso cuando la red es topológicamente conexa. Esta
+información es esencial para diseñar políticas de inclusión logística y
+localizar centros de almacenamiento intermedios.
+
+\subsection{Conexión con el algoritmo PageRank: centralidad
+estructural}\label{conexiuxf3n-con-el-algoritmo-pagerank-centralidad-estructural}
+
+El algoritmo PageRank opera exclusivamente como un \textbf{medidor de
+centralidad estructural}. Su propósito es cuantificar la importancia
+relativa de cada municipio dentro de la red territorial, basándose en su
+posición topológica y en la calidad de sus conexiones ponderadas.
+
+Matemáticamente, PageRank resuelve el sistema de ecuaciones en
+diferencias: \[
+\pi = P\pi, \quad \sum_{i=1}^n \pi_i = 1, \quad \pi_i > 0,
+\] donde \(P\) es la matriz de transición modificada con factor de
+amortiguamiento \(p \in (0,1)\). La componente \(\pi_i\) representa la
+probabilidad estacionaria de que un ``navegante aleatorio'' se encuentre
+en el municipio \(i\) en el largo plazo. Valores altos de \(\pi_i\)
+indican nodos que actúan como \textbf{concentradores naturales de
+flujo}, independientemente de que no sean necesariamente puntos de
+origen o destino en una misión específica.
+
+La transformación de pesos de distancia a probabilidades inversas
+(\(w_{ij}^{-1}\)) asegura que la proximidad geográfica y la facilidad de
+tránsito se traduzcan directamente en mayor influencia dentro del
+proceso estocástico. Municipios bien conectados a otros municipios
+igualmente bien conectados acumulan iterativamente mayor probabilidad
+estacionaria, revelando así la jerarquía implícita de la red
+territorial.
+
+En el estudio de caso de Chiapas, los pesos \(w_{ij}\) se definen como
+las distancias tridimensionales \(d_{ij}^{(3D)}\) calculadas en la
+Sección~\ref{sec-distancias3d}, garantizando que la priorización de
+municipios mediante PageRank incorpore explícitamente las barreras
+topográficas que caracterizan la región. Esta integración entre
+modelación geométrica, teoría de grafos ponderados y procesos
+estocásticos constituye el núcleo analítico sobre el cual se construye
+la estrategia logística territorial.
 
 \section{Cadenas de Markov de tiempo
 discreto}\label{cadenas-de-markov-de-tiempo-discreto}
 
+Las cadenas de Markov de tiempo discreto constituyen uno de los pilares
+fundamentales de la teoría de procesos estocásticos, proporcionando un
+marco matemático riguroso para modelar sistemas que evolucionan en pasos
+temporales discretos con la propiedad de falta de memoria. En el
+contexto de la priorización territorial y el análisis de redes de
+transporte, estas cadenas permiten representar el movimiento de un
+agente aleatorio a través de los nodos de una red, donde la probabilidad
+de transición entre municipios depende exclusivamente del estado actual
+y de la estructura de conectividad ponderada
+(\citeproc{ref-blanco2013procesos}{Blanco Castañeda 2013}).
+
+\subsection{Definición formal y propiedad de
+Markov}\label{definiciuxf3n-formal-y-propiedad-de-markov}
+
+\textbf{Definición 1.7 (Cadena de Markov de tiempo discreto).} Sea
+\(\{X_n\}_{n \geq 0}\) una sucesión de variables aleatorias definidas
+sobre un espacio de probabilidad \((\Omega, \mathcal{F}, \mathbb{P})\),
+que toman valores en un espacio de estados finito
+\(\mathcal{S} = \{1, 2, \dots, N\}\). Se dice que \(\{X_n\}\) es una
+\emph{cadena de Markov de tiempo discreto} si satisface la propiedad de
+Markov: \[
+\mathbb{P}(X_{n+1} = j \mid X_n = i, X_{n-1} = i_{n-1}, \dots, X_0 = i_0) = \mathbb{P}(X_{n+1} = j \mid X_n = i),
+\] para todo \(n \geq 0\) y toda secuencia de estados
+\(i_0, \dots, i_{n-1}, i, j \in \mathcal{S}\). Esta propiedad establece
+que la distribución condicional del estado futuro depende únicamente del
+estado presente, siendo condicionalmente independiente de la trayectoria
+pasada (\citeproc{ref-rincon2016procesos}{Rincón 2012}).
+
+Cuando las probabilidades de transición no dependen del instante \(n\),
+la cadena se denomina \emph{homogénea}. En este caso, se definen las
+probabilidades de transición en un paso como: \[
+p_{ij} = \mathbb{P}(X_{n+1} = j \mid X_n = i), \quad i,j \in \mathcal{S}.
+\]
+
+\subsection{Matriz de transición y ecuaciones de
+Chapman-Kolmogorov}\label{matriz-de-transiciuxf3n-y-ecuaciones-de-chapman-kolmogorov}
+
+Las probabilidades \(p_{ij}\) se organizan en la \textbf{matriz de
+transición}
+\(P = [p_{ij}]_{i,j \in \mathcal{S}} \in \mathbb{R}^{N \times N}\), la
+cual satisface: 1. \(p_{ij} \geq 0\) para todo \(i,j\), 2.
+\(\sum_{j=1}^{N} p_{ij} = 1\) para todo \(i\) (matriz estocástica por
+filas).
+
+La probabilidad de transición en \(n\) pasos, denotada
+\(p_{ij}^{(n)} = \mathbb{P}(X_n = j \mid X_0 = i)\), satisface las
+ecuaciones de Chapman-Kolmogorov: \[
+p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \geq 0.
+\] En notación matricial, esto implica que
+\(P^{(m+n)} = P^{(m)} P^{(n)}\), y en particular \(P^{(n)} = P^n\). Esta
+propiedad algebraica es fundamental para el cálculo de distribuciones a
+múltiples pasos y constituye la base teórica de los algoritmos
+iterativos de cálculo de centralidad en redes
+(\citeproc{ref-grinstead2012introduction}{Grinstead y Snell 2009}).
+
+\subsection{Clasificación de estados y propiedades
+estructurales}\label{clasificaciuxf3n-de-estados-y-propiedades-estructurales}
+
+La topología de la matriz de transición determina el comportamiento
+asintótico de la cadena. Se introducen las siguientes nociones
+estructurales:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Accesibilidad y comunicación}: Un estado \(j\) es
+  \emph{accesible} desde \(i\) (denotado \(i \to j\)) si existe
+  \(n \geq 0\) tal que \(p_{ij}^{(n)} > 0\). Dos estados \(i\) y \(j\)
+  \emph{comunican} (\(i \leftrightarrow j\)) si \(i \to j\) y
+  \(j \to i\). Esta relación es de equivalencia y particiona
+  \(\mathcal{S}\) en clases de comunicación.
+\item
+  \textbf{Irreducibilidad}: La cadena es \emph{irreducible} si todos sus
+  estados comunican entre sí, es decir, existe una única clase de
+  comunicación igual a \(\mathcal{S}\).
+\item
+  \textbf{Periodicidad}: El período de un estado \(i\) se define como
+  \(d(i) = \gcd\{n \geq 1 : p_{ii}^{(n)} > 0\}\). Si \(d(i) = 1\), el
+  estado es \emph{aperiódico}. En cadenas irreducibles, todos los
+  estados comparten el mismo período
+  (\citeproc{ref-norris1998markov}{Norris 1998}).
+\item
+  \textbf{Recurrencia y transitoriedad}: Un estado \(i\) es
+  \emph{recurrente} si \(\sum_{n=1}^\infty p_{ii}^{(n)} = \infty\), y
+  \emph{transiente} en caso contrario. En espacios de estados finitos,
+  la irreducibilidad implica que todos los estados son recurrentes
+  positivos.
+\end{itemize}
+
+\subsection{Distribución estacionaria y convergencia
+ergódica}\label{distribuciuxf3n-estacionaria-y-convergencia-erguxf3dica}
+
+El comportamiento a largo plazo de una cadena irreducible y aperiódica
+se caracteriza por la existencia de una \textbf{distribución
+estacionaria} \(\pi = (\pi_1, \dots, \pi_N)\), que satisface el sistema
+lineal: \[
+\pi = \pi P, \quad \sum_{i=1}^{N} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
+\] El teorema ergódico para cadenas de Markov finitas establece que,
+bajo irreducibilidad y aperiodicidad, la distribución del estado
+converge a \(\pi\) independientemente de la distribución inicial
+\(\pi^{(0)}\): \[
+\lim_{n \to \infty} \pi^{(0)} P^n = \pi.
+\] Además, \(\pi_i\) posee una interpretación frecuencia robusta:
+representa la fracción de tiempo que la cadena ocupa el estado \(i\) en
+el límite \(n \to \infty\)
+(\citeproc{ref-durrett2019probability}{Durrett 2019}).
+
+\subsection{Conexión con el algoritmo
+PageRank}\label{conexiuxf3n-con-el-algoritmo-pagerank}
+
+La estructura matemática desarrollada en esta sección es exactamente la
+que sustenta el algoritmo PageRank. En la red territorial de Chiapas,
+los municipios se interpretan como estados de una cadena de Markov
+discreta finita, y la matriz de transición \(P\) se construye a partir
+de los pesos de conectividad vial transformados mediante el inverso de
+la distancia tridimensional y normalizados por columnas (convención
+computacional equivalente a la transposición de la formulación teórica
+por filas).
+
+La introducción del factor de amortiguamiento \(p \in (0,1)\) garantiza
+que la matriz resultante sea estrictamente positiva, asegurando así
+irreducibilidad y aperiodicidad. Bajo estas condiciones, el teorema
+ergódico valida la convergencia del método de potencias
+\(\pi^{(k+1)} = P \pi^{(k)}\) hacia un único vector estacionario
+\(\pi\), el cual cuantifica la importancia relativa de cada municipio
+dentro de la red. Esta conexión formal entre teoría de cadenas de Markov
+y centralidad espectral proporciona el sustento matemático riguroso para
+la priorización logística desarrollada en los capítulos siguientes.
+
 \section{Teorema de Perron-Frobenius y su aplicación al
 PageRank}\label{teorema-de-perron-frobenius-y-su-aplicaciuxf3n-al-pagerank}
+
+El análisis espectral de matrices no negativas constituye el fundamento
+algebraico que garantiza la existencia, unicidad y convergencia numérica
+del vector de centralidad en redes complejas. El teorema de
+Perron-Frobenius, originalmente formulado para matrices con entradas
+estrictamente positivas y extendido posteriormente a matrices
+irreducibles, proporciona las condiciones necesarias y suficientes para
+asegurar que una matriz de transición estocástica posea un único vector
+propio dominante con componentes estrictamente positivas. Esta propiedad
+es la piedra angular matemática que valida el algoritmo PageRank y
+justifica el uso del método de potencias para su cálculo computacional
+(\citeproc{ref-meyer2000matrix}{Meyer 2023}).
+
+\subsection{Notación y clases de matrices no
+negativas}\label{notaciuxf3n-y-clases-de-matrices-no-negativas}
+
+Sea \(A \in \mathbb{R}^{n \times n}\) una matriz con entradas reales. Se
+establecen las siguientes definiciones estructurales:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Matriz no negativa}: \(A \geq 0\) si \(a_{ij} \geq 0\) para
+  todo \(i,j \in \{1,\dots,n\}\).
+\item
+  \textbf{Matriz positiva}: \(A > 0\) si \(a_{ij} > 0\) para todo
+  \(i,j\).
+\item
+  \textbf{Matriz irreducible}: \(A\) es irreducible si para cada par
+  \((i,j)\) existe un entero \(k \geq 1\) tal que \((A^k)_{ij} > 0\).
+  Esta condición equivale a que el grafo dirigido asociado sea
+  fuertemente conexo.
+\item
+  \textbf{Matriz primitiva}: \(A\) es primitiva si existe
+  \(m \in \mathbb{N}\) tal que \(A^m > 0\). En el contexto de cadenas de
+  Markov, la primitividad garantiza aperiodicidad y convergencia
+  geométrica de las potencias de la matriz
+  (\citeproc{ref-horn2012matrix}{Horn y Johnson 2012}).
+\end{itemize}
+
+\subsection{Enunciado del teorema}\label{enunciado-del-teorema}
+
+\phantomsection\label{teo-perron-frobenius}
+Sea \(P \in \mathbb{R}^{n \times n}\) una matriz estocástica por
+columnas (\(P \geq 0\), \(\sum_{i=1}^n p_{ij} = 1\)) que es primitiva.
+Entonces se cumplen las siguientes propiedades: 1. El radio espectral es
+\(\rho(P) = 1\). 2. El valor propio \(\lambda = 1\) es algebraicamente
+simple y domina estrictamente al resto del espectro: \(|\lambda_i| < 1\)
+para todo \(\lambda_i \in \sigma(P) \setminus \{1\}\). 3. Existe un
+único vector propio derecho \(\pi \in \mathbb{R}^n\) asociado a
+\(\lambda = 1\), con componentes estrictamente positivas \(\pi_i > 0\) y
+normalizado tal que \(\sum_{i=1}^n \pi_i = 1\). 4. Para cualquier vector
+inicial \(\pi^{(0)} \in \mathbb{R}^n\) con \(\sum \pi_i^{(0)} = 1\), se
+verifica la convergencia: \[
+   \lim_{k \to \infty} P^k \pi^{(0)} = \pi.
+   \]
+
+\emph{Esbozo de demostración.} La igualdad \(\rho(P)=1\) se deduce de la
+conservación de la norma \(\ell_1\) bajo multiplicación por matrices
+estocásticas. La positividad estricta de \(P^m\) implica, por el lema de
+Gelfand y propiedades de conos invariantes, que el subespacio propio
+asociado a \(\lambda=1\) es unidimensional y que ningún otro valor
+propio puede alcanzar módulo 1. La convergencia de \(P^k\) sigue de la
+descomposición de Jordan, donde el bloque asociado a \(\lambda=1\)
+domina asintóticamente a los bloques contractivos correspondientes a
+\(|\lambda_i| < 1\) (\citeproc{ref-meyer2000matrix}{Meyer 2023}).
+\(\square\)
+
+\subsection{Aplicación directa al algoritmo
+PageRank}\label{aplicaciuxf3n-directa-al-algoritmo-pagerank}
+
+En el algoritmo PageRank, la matriz de transición modificada (conocida
+como \emph{matriz de Google}) se construye a partir de la matriz de
+conectividad normalizada \(Q\) mediante: \[
+G = pQ + (1-p)\mathbf{1}\mathbf{v}^\top,
+\] donde: - \(p \in (0,1)\) es el factor de amortiguamiento (típicamente
+\(p=0.85\)), - \(\mathbf{1} \in \mathbb{R}^n\) es el vector columna de
+unos, - \(\mathbf{v} \in \mathbb{R}^n\) es un vector de probabilidad
+personalización (\(\mathbf{v} > 0\), \(\sum v_i = 1\); usualmente
+\(\mathbf{v} = \frac{1}{n}\mathbf{1}\)).
+
+Dado que \(Q \geq 0\), \(p \in (0,1)\) y \(\mathbf{v} > 0\), toda
+entrada de \(G\) satisface: \[
+g_{ij} = p q_{ij} + (1-p) v_j \geq (1-p)v_j > 0.
+\] Por tanto, \(G\) es una \textbf{matriz estrictamente positiva} y, en
+consecuencia, primitiva. La aplicación directa del
+(\citeproc{ref-teo-perron-frobenius}{\textbf{teo-perron-frobenius?}})
+garantiza que: 1. Existe un único vector estacionario \(\pi > 0\) tal
+que \(G\pi = \pi\). 2. El método de potencias
+\(\pi^{(k+1)} = G\pi^{(k)}\) converge linealmente a \(\pi\) con tasa de
+convergencia acotada por \(|\lambda_2(G)| \leq p\). 3. La distribución
+inicial \(\pi^{(0)}\) es irrelevante para el límite, lo que confiere
+robustez numérica al algoritmo frente a perturbaciones en la
+inicialización (\citeproc{ref-langville2006googles}{Langville y Meyer
+2009}).
+
+\subsection{Interpretación en la red territorial de
+Chiapas}\label{interpretaciuxf3n-en-la-red-territorial-de-chiapas}
+
+La estructura algebraica de \(G\) no solo valida matemáticamente la
+existencia del PageRank, sino que explica por qué el factor \(p=0.85\)
+es óptimo en la práctica: equilibra la fidelidad a la topología de la
+red vial (\(p\) alto) con una brecha espectral suficientemente amplia
+(\(1-p\)) para garantizar convergencia rápida en redes de escala
+municipal. La brecha espectral \(\sigma = 1 - |\lambda_2(G)| \geq 1-p\)
+determina directamente el número de iteraciones requeridas para alcanzar
+una tolerancia \(\varepsilon\): \[
+\|\pi^{(k)} - \pi\|_1 \leq C \, p^k,
+\] lo que explica la convergencia observada en menos de 50 iteraciones
+para la red de 124 municipios.
+
+Este resultado cierra el círculo entre la teoría espectral de matrices
+no negativas, la ergodicidad de cadenas de Markov y la implementación
+práctica de algoritmos de centralidad. En el contexto de la logística
+humanitaria, garantiza que la priorización de municipios sea única,
+estable y computacionalmente alcanzable, proporcionando una base
+matemáticamente irreprochable para la toma de decisiones estratégicas en
+la distribución territorial de ayuda.
 
 \section{Problemas en redes: nodos colgantes y subgrafos
 absorbentes}\label{problemas-en-redes-nodos-colgantes-y-subgrafos-absorbentes}
@@ -1692,7 +2233,7 @@ de la red territorial ponderada y la posterior aplicación del algoritmo
 PageRank descrita en la sección siguiente.
 
 \section{Cálculo de distancias geodésicas 2D y
-3D}\label{cuxe1lculo-de-distancias-geoduxe9sicas-2d-y-3d}
+3D}\label{sec-distancias3d}
 
 \subsection{Formulación matemática de la distancia geodésica
 bidimensional}\label{formulaciuxf3n-matemuxe1tica-de-la-distancia-geoduxe9sica-bidimensional}
@@ -2276,7 +2817,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, arc=.35mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, bottomrule=.15mm, coltitle=black, breakable, left=2mm, opacityback=0, bottomtitle=1mm, colback=white, rightrule=.15mm, toptitle=1mm, titlerule=0mm]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, opacitybacktitle=0.6, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, opacityback=0, breakable, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, arc=.35mm, bottomtitle=1mm, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white]
 
 \textbf{Características operativas de la ruta}
 
@@ -5392,6 +5933,10 @@ desarrollo.
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-barabasi2016network}
+Barabási, Albert-László. 2016. \emph{Network Science}. Cambridge:
+Cambridge University Press.
+
 \bibitem[\citeproctext]{ref-bartlett1946theoretical}
 Bartlett, M. S. 1946. {«On the theoretical specification of sampling
 properties of autocorrelated time series»}. \emph{Journal of the Royal
@@ -5405,6 +5950,21 @@ and Measurement Procedures}. 4.ª ed. Hoboken: Wiley.
 \bibitem[\citeproctext]{ref-berger1985statistical}
 Berger, James O. 1985. \emph{Statistical Decision Theory and Bayesian
 Analysis}. 2.ª ed. New York: Springer.
+
+\bibitem[\citeproctext]{ref-blanco2013procesos}
+Blanco Castañeda, Liliana. 2013. \emph{Introducción a los procesos
+estocásticos}. Ciudad de México: Universidad Nacional Autónoma de
+México.
+
+\bibitem[\citeproctext]{ref-bondy2008graph}
+Bondy, J. A., y U. S. R. Murty. 2008. \emph{Graph Theory}. Vol. 244.
+Graduate Texts en Mathematics. London: Springer.
+\url{https://doi.org/10.1007/978-1-349-03521-2}.
+
+\bibitem[\citeproctext]{ref-borgatti2005centrality}
+Borgatti, Stephen P. 2005. {«Centrality and network flow»}. \emph{Social
+Networks} 27 (1): 55-71.
+\url{https://doi.org/10.1016/j.socnet.2004.11.008}.
 
 \bibitem[\citeproctext]{ref-box2015time}
 Box, George E. P., Gwilym M. Jenkins, Gregory C. Reinsel, y Greta M.
@@ -5425,6 +5985,11 @@ Systems} 30 (1--7): 107-17.
 Brockwell, Peter J., y Richard A. Davis. 2016. \emph{Introduction to
 Time Series and Forecasting}. 3.ª ed. Springer.
 
+\bibitem[\citeproctext]{ref-cormen2009introduction}
+Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, y Clifford
+Stein. 2022. \emph{Introduction to Algorithms}. 4.ª ed. Cambridge: MIT
+Press.
+
 \bibitem[\citeproctext]{ref-durrett2019probability}
 Durrett, Rick. 2019. \emph{Probability: Theory and Examples}. 5.ª ed.
 Cambridge: Cambridge University Press.
@@ -5442,6 +6007,10 @@ Methods in Physical Oceanography}. 2.ª ed. Amsterdam: Elsevier.
 \bibitem[\citeproctext]{ref-french1988decision}
 French, Simon. 1988. \emph{Decision Theory: An Introduction to the
 Mathematics of Rationality}. Chichester: Ellis Horwood / Wiley.
+
+\bibitem[\citeproctext]{ref-grinstead2012introduction}
+Grinstead, Charles M., y J. Laurie Snell. 2009. \emph{Introduction to
+Probability}. 2.ª ed. Providence: American Mathematical Society.
 
 \bibitem[\citeproctext]{ref-hall1995optimal}
 Hall, Peter, Joel L. Horowitz, y Bing-Yi Jing. 1995. {«On blocking rules
@@ -5462,6 +6031,11 @@ cross-spectral analysis»}. \emph{Journal of the Atmospheric Sciences} 30
 Hillier, Frederick S., y Gerald J. Lieberman. 2015. \emph{Introduction
 to Operations Research}. 10.ª ed. New York: McGraw-Hill Education.
 
+\bibitem[\citeproctext]{ref-horn2012matrix}
+Horn, Roger A., y Charles R. Johnson. 2012. \emph{Matrix Analysis}. 2.ª
+ed. Cambridge: Cambridge University Press.
+\url{https://doi.org/10.1017/CBO9780511810817}.
+
 \bibitem[\citeproctext]{ref-kunsch1989jackknife}
 Künsch, Hans R. 1989. {«The jackknife and the bootstrap for general
 stationary observations»}. \emph{The Annals of Statistics} 17 (3):
@@ -5471,10 +6045,19 @@ stationary observations»}. \emph{The Annals of Statistics} 17 (3):
 Lahiri, Soumendra N. 2003. \emph{Resampling Methods for Dependent Data}.
 New York: Springer.
 
+\bibitem[\citeproctext]{ref-langville2006googles}
+Langville, Amy N., y Carl D. Meyer. 2009. \emph{Google's PageRank and
+Beyond: The Science of Search Engine Rankings}. Princeton: Princeton
+University Press.
+
 \bibitem[\citeproctext]{ref-liu1992moving}
 Liu, Regina Y., y Kesar Singh. 1992. {«Moving blocks jackknife and
 bootstrap capture weak dependence»}. \emph{Exploring the Limits of
 Bootstrap}, 225-48.
+
+\bibitem[\citeproctext]{ref-meyer2000matrix}
+Meyer, Carl D. 2023. \emph{Matrix Analysis and Applied Linear Algebra}.
+Philadelphia: Society for Industrial; Applied Mathematics (SIAM).
 
 \bibitem[\citeproctext]{ref-nasa_earthdata}
 NASA Earthdata. 2024. {«Shuttle Radar Topography Mission (SRTM) Data»}.
@@ -5486,6 +6069,15 @@ World Geodetic System 1984: Its Definition and Relationships with Local
 Geodetic Systems»}. NGA.STND.0036\_1.0.0\_WGS84. National
 Geospatial-Intelligence Agency (NGA).
 \url{https://earth-info.nga.mil/GandG/wgs84/index.html}.
+
+\bibitem[\citeproctext]{ref-newman2018networks}
+Newman, Mark. 2018. \emph{Networks}. 2.ª ed. Oxford: Oxford University
+Press. \url{https://doi.org/10.1093/oso/9780199206650.001.0001}.
+
+\bibitem[\citeproctext]{ref-norris1998markov}
+Norris, James R. 1998. \emph{Markov Chains}. Cambridge Series en
+Statistical y Probabilistic Mathematics. Cambridge: Cambridge University
+Press. \url{https://doi.org/10.1017/CBO9780511810633}.
 
 \bibitem[\citeproctext]{ref-nominatim}
 OpenStreetMap Contributors. 2024. {«Nominatim API»}.
@@ -5508,6 +6100,10 @@ London: Academic Press.
 \bibitem[\citeproctext]{ref-osrm}
 Project OSRM. 2024. {«Open Source Routing Machine (OSRM)»}.
 \url{https://project-osrm.org/}.
+
+\bibitem[\citeproctext]{ref-rincon2016procesos}
+Rincón, Luis. 2012. {«Introducción a los Procesos Estocásticos»}.
+Instituto de Matemáticas, UNAM.
 
 \bibitem[\citeproctext]{ref-rudin1987real}
 Rudin, Walter. 1987. \emph{Real and Complex Analysis}. 3.ª ed.
@@ -5535,6 +6131,10 @@ Vincenty, Thaddeus. 1975. {«Direct and Inverse Solutions of Geodesics on
 the Ellipsoid with Application of Nested Equations»}. \emph{Survey
 Review} 23 (176): 88-93.
 \url{https://doi.org/10.1179/sre.1975.23.176.88}.
+
+\bibitem[\citeproctext]{ref-west2001introduction}
+West, Douglas B. 2017. \emph{Introduction to Graph Theory}. 2.ª ed.
+Upper Saddle River: Prentice Hall.
 
 \bibitem[\citeproctext]{ref-williams1991martingales}
 Williams, David. 1991. \emph{Probability with Martingales}. Cambridge
