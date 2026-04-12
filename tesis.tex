@@ -452,7 +452,7 @@ a_{ij} =
 \end{cases}
 \] En este caso, \(A\) no es necesariamente simétrica, reflejando la
 asimetría potencial en las conexiones de la red
-(\citeproc{ref-taha2017investigacion}{\textbf{taha2017investigacion?}}).
+(\citeproc{ref-taha2017operations}{Taha 2017}).
 
 \subsection{Propiedades algebraicas y su interpretación en
 redes}\label{propiedades-algebraicas-y-su-interpretaciuxf3n-en-redes}
@@ -513,7 +513,7 @@ menor costo entre un origen \(s\) y un destino \(t\) se expresa como: \[
 la ruta óptima. Algoritmos clásicos como Dijkstra o Bellman-Ford operan
 directamente sobre la estructura de adyacencia ponderada para resolver
 este problema en tiempo polinomial
-(\citeproc{ref-taha2017investigacion}{\textbf{taha2017investigacion?}};
+(\citeproc{ref-taha2017operations}{Taha 2017};
 \citeproc{ref-cormen2009introduction}{Cormen et~al. 2022}).
 
 En el contexto de esta tesis, la matriz de pesos derivada de distancias
@@ -557,8 +557,7 @@ topográficas, - \textbf{Tiempo de tránsito}: \(w_{ij} = t_{ij}\)
 (minutos), estimado a partir de velocidades promedio por tipo de vía, -
 \textbf{Dificultad de acceso}: \(w_{ij} = \delta_{ij}\) (índice
 adimensional), derivado de pendientes, estado de la vía o exposición a
-riesgos naturales
-(\citeproc{ref-taha2017investigacion}{\textbf{taha2017investigacion?}}).
+riesgos naturales (\citeproc{ref-taha2017operations}{Taha 2017}).
 
 La elección de la métrica de peso determina el tipo de análisis
 estructural que puede realizarse sobre la red, y debe alinearse con los
@@ -852,18 +851,19 @@ establecen las siguientes definiciones estructurales:
 
 \subsection{Enunciado del teorema}\label{enunciado-del-teorema}
 
-\phantomsection\label{teo-perron-frobenius}
-Sea \(P \in \mathbb{R}^{n \times n}\) una matriz estocástica por
-columnas (\(P \geq 0\), \(\sum_{i=1}^n p_{ij} = 1\)) que es primitiva.
-Entonces se cumplen las siguientes propiedades: 1. El radio espectral es
-\(\rho(P) = 1\). 2. El valor propio \(\lambda = 1\) es algebraicamente
-simple y domina estrictamente al resto del espectro: \(|\lambda_i| < 1\)
-para todo \(\lambda_i \in \sigma(P) \setminus \{1\}\). 3. Existe un
-único vector propio derecho \(\pi \in \mathbb{R}^n\) asociado a
-\(\lambda = 1\), con componentes estrictamente positivas \(\pi_i > 0\) y
-normalizado tal que \(\sum_{i=1}^n \pi_i = 1\). 4. Para cualquier vector
-inicial \(\pi^{(0)} \in \mathbb{R}^n\) con \(\sum \pi_i^{(0)} = 1\), se
-verifica la convergencia: \[
+\textbf{Teorema 1.1 (Perron-Frobenius para matrices estocásticas
+primitivas).} Sea \(P \in \mathbb{R}^{n \times n}\) una matriz
+estocástica por columnas (\(P \geq 0\), \(\sum_{i=1}^n p_{ij} = 1\)) que
+es primitiva. Entonces se cumplen las siguientes propiedades: 1. El
+radio espectral es \(\rho(P) = 1\). 2. El valor propio \(\lambda = 1\)
+es algebraicamente simple y domina estrictamente al resto del espectro:
+\(|\lambda_i| < 1\) para todo
+\(\lambda_i \in \sigma(P) \setminus \{1\}\). 3. Existe un único vector
+propio derecho \(\pi \in \mathbb{R}^n\) asociado a \(\lambda = 1\), con
+componentes estrictamente positivas \(\pi_i > 0\) y normalizado tal que
+\(\sum_{i=1}^n \pi_i = 1\). 4. Para cualquier vector inicial
+\(\pi^{(0)} \in \mathbb{R}^n\) con \(\sum \pi_i^{(0)} = 1\), se verifica
+la convergencia: \[
    \lim_{k \to \infty} P^k \pi^{(0)} = \pi.
    \]
 
@@ -895,16 +895,14 @@ Dado que \(Q \geq 0\), \(p \in (0,1)\) y \(\mathbf{v} > 0\), toda
 entrada de \(G\) satisface: \[
 g_{ij} = p q_{ij} + (1-p) v_j \geq (1-p)v_j > 0.
 \] Por tanto, \(G\) es una \textbf{matriz estrictamente positiva} y, en
-consecuencia, primitiva. La aplicación directa del
-(\citeproc{ref-teo-perron-frobenius}{\textbf{teo-perron-frobenius?}})
-garantiza que: 1. Existe un único vector estacionario \(\pi > 0\) tal
-que \(G\pi = \pi\). 2. El método de potencias
-\(\pi^{(k+1)} = G\pi^{(k)}\) converge linealmente a \(\pi\) con tasa de
-convergencia acotada por \(|\lambda_2(G)| \leq p\). 3. La distribución
-inicial \(\pi^{(0)}\) es irrelevante para el límite, lo que confiere
-robustez numérica al algoritmo frente a perturbaciones en la
-inicialización (\citeproc{ref-langville2006googles}{Langville y Meyer
-2009}).
+consecuencia, primitiva. La aplicación directa del Teorema 2.1 garantiza
+que: 1. Existe un único vector estacionario \(\pi > 0\) tal que
+\(G\pi = \pi\). 2. El método de potencias \(\pi^{(k+1)} = G\pi^{(k)}\)
+converge linealmente a \(\pi\) con tasa de convergencia acotada por
+\(|\lambda_2(G)| \leq p\). 3. La distribución inicial \(\pi^{(0)}\) es
+irrelevante para el límite, lo que confiere robustez numérica al
+algoritmo frente a perturbaciones en la inicialización
+(\citeproc{ref-langville2006googles}{Langville y Meyer 2009}).
 
 \subsection{Interpretación en la red territorial de
 Chiapas}\label{interpretaciuxf3n-en-la-red-territorial-de-chiapas}
@@ -932,8 +930,198 @@ la distribución territorial de ayuda.
 \section{Problemas en redes: nodos colgantes y subgrafos
 absorbentes}\label{problemas-en-redes-nodos-colgantes-y-subgrafos-absorbentes}
 
+La aplicación de cadenas de Markov y algoritmos de centralidad sobre
+redes reales enfrenta obstáculos estructurales que, de no tratarse
+adecuadamente, comprometen la existencia de una distribución
+estacionaria única y la convergencia numérica del método de potencias.
+Dos patologías topológicas recurrentes son los nodos colgantes y los
+subgrafos absorbentes, los cuales violan las hipótesis de
+irreducibilidad y estocasticidad estricta requeridas para la aplicación
+del teorema de Perron-Frobenius
+(\citeproc{ref-langville2006googles}{Langville y Meyer 2009}).
+
+\textbf{Definición (Nodo colgante).} Sea \(G = (V, A)\) un grafo
+dirigido con \(|V| = n\) y matriz de transición
+\(Q \in \mathbb{R}^{n \times n}\). Un vértice \(v_j \in V\) se denomina
+\emph{nodo colgante} (o \emph{dangling node}) si su grado de salida es
+cero, es decir, no existe ningún arco \((v_j, v_k) \in A\).
+Equivalentemente, la columna \(j\)-ésima de la matriz de adyacencia es
+idénticamente nula.
+
+En la construcción de la matriz de transición estocástica por columnas,
+la normalización \(q_{ij} = w_{ij} / \sum_k w_{kj}\) queda indefinida
+cuando \(\sum_k w_{kj} = 0\). Si se asigna arbitrariamente
+\(q_{ij} = 0\) para todo \(i\), la matriz deja de ser estocástica:
+\(\sum_{i=1}^n q_{ij} = 0 < 1\). Esto implica que cada vez que el
+caminante aleatorio visita \(v_j\), una fracción de probabilidad se
+``pierde'' del sistema, y la norma \(\ell_1\) del vector de estado decae
+geométricamente: \[
+\|\pi^{(k+1)}\|_1 = \sum_{i=1}^n \left| \sum_{j=1}^n q_{ij} \pi_j^{(k)} \right| < \|\pi^{(k)}\|_1.
+\] La consecuencia teórica es que el radio espectral satisfará
+\(\rho(Q) < 1\), y el límite
+\(\lim_{k \to \infty} Q^k \pi^{(0)} = \mathbf{0}\), destruyendo la
+interpretación probabilística de largo plazo. La corrección estándar en
+el contexto de PageRank consiste en reemplazar cada columna nula por un
+vector uniforme \(\mathbf{1}/n\), redistribuyendo equitativamente la
+probabilidad atrapada hacia todos los nodos de la red
+(\citeproc{ref-brin1998anatomy}{Brin y Page 1998}).
+
+\textbf{Definición (Subgrafo absorbente).} Un subconjunto propio no
+vacío \(S \subset V\) se denomina \emph{subgrafo absorbente} (o
+\emph{clase cerrada}) si para todo \(v_i \in S\) y
+\(v_k \in V \setminus S\) se cumple \(q_{ki} = 0\). Es decir, no existen
+arcos salientes de \(S\) hacia el complemento \(V \setminus S\).
+
+Esta estructura implica que la cadena de Markov es \textbf{reducible}.
+Una vez que el proceso ingresa a \(S\), la probabilidad queda confinada
+indefinidamente en dicho subconjunto. Desde el punto de vista espectral,
+la matriz de transición puede permutarse a forma de bloque triangular
+superior: \[
+P = \begin{pmatrix}
+P_{SS} & P_{S\bar{S}} \\
+\mathbf{0} & P_{\bar{S}\bar{S}}
+\end{pmatrix},
+\] donde \(P_{SS}\) es estocástica y \(\mathbf{0}\) refleja la ausencia
+de flujos hacia el exterior. El teorema de Perron-Frobenius aplicado a
+\(P\) ya no garantiza un vector estacionario estrictamente positivo
+sobre \(V\); en su lugar, existen infinitas distribuciones estacionarias
+soportadas exclusivamente en \(S\), y la convergencia del método de
+potencias depende críticamente de la distribución inicial \(\pi^{(0)}\)
+(\citeproc{ref-meyer2000matrix}{Meyer 2023}). En logística territorial,
+esto se traduce en que municipios fuera del subgrafo absorbente
+recibirían puntuación de centralidad nula, distorsionando la
+priorización operativa.
+
+\subsection{Corrección unificada mediante el factor de
+amortiguamiento}\label{correcciuxf3n-unificada-mediante-el-factor-de-amortiguamiento}
+
+Para garantizar convergencia global y unicidad del vector de
+centralidad, se introduce un mecanismo de \emph{teleportación}
+controlado por un parámetro \(p \in (0,1)\). La matriz de Google se
+define formalmente como: \[
+G = pQ' + (1-p)\mathbf{1}\mathbf{v}^\top,
+\] donde: - \(Q'\) es la matriz de transición corregida (columnas nulas
+reemplazadas por \(\mathbf{1}/n\)), - \(\mathbf{v} \in \mathbb{R}^n\) es
+un vector de probabilidad estrictamente positivo (\(\mathbf{v} > 0\),
+\(\sum v_i = 1\)), - \(\mathbf{1}\mathbf{v}^\top\) es la matriz de rango
+uno con columnas idénticas a \(\mathbf{v}\).
+
+El término \((1-p)\mathbf{1}\mathbf{v}^\top\) actúa como un operador de
+perturbación positiva que rompe simultáneamente nodos colgantes y
+subgrafos absorbentes, asegurando \(g_{ij} \geq (1-p)v_j > 0\) para todo
+\(i,j\). Por tanto, \(G\) es una matriz estrictamente positiva y, en
+consecuencia, primitiva. Las hipótesis del teorema de Perron-Frobenius
+se restauran completamente: existe un único \(\pi > 0\) tal que
+\(G\pi = \pi\), y la convergencia es lineal con tasa acotada por \(p\)
+(\citeproc{ref-langville2006googles}{Langville y Meyer 2009}).
+
+\subsection{Implicaciones para la red territorial de
+Chiapas}\label{implicaciones-para-la-red-territorial-de-chiapas}
+
+En el análisis empírico de la red vial de los 124 municipios de Chiapas,
+se verificó la ausencia de nodos colgantes y subgrafos absorbentes,
+coherente con la conectividad histórica y la estructura radial de la
+infraestructura estatal. Sin embargo, la incorporación formal del factor
+de amortiguamiento \(p = 0.85\) en el algoritmo PageRank no es
+redundante: proporciona \textbf{robustez estructural} frente a
+escenarios dinámicos como cierres viales por desastres naturales,
+expansión de la malla municipal o restricciones operativas temporales.
+Bajo cualquier perturbación que modifique la matriz de adyacencia, la
+matriz \(G\) mantiene sus propiedades ergódicas, garantizando que la
+priorización de municipios permanezca matemáticamente consistente y
+computacionalmente estable.
+
+Esta sección sienta las bases teóricas para el análisis explícito del
+parámetro \(p\), su impacto en la tasa de convergencia y su
+interpretación como compromiso entre fidelidad topológica y exploración
+aleatoria, desarrollado en la siguiente sección.
+
 \section{Factor de amortiguamiento y matriz de transición
 modificada}\label{factor-de-amortiguamiento-y-matriz-de-transiciuxf3n-modificada}
+
+La matriz de transición estocástica derivada directamente de la
+topología de una red real presenta limitaciones teóricas y numéricas que
+impiden garantizar la convergencia hacia un único vector de centralidad.
+Para superar estas deficiencias, el algoritmo PageRank introduce el
+\textbf{factor de amortiguamiento} \(p \in (0,1)\), un parámetro escalar
+que modifica la dinámica del proceso estocástico mediante un mecanismo
+de mezcla entre la estructura de conectividad observada y un salto
+aleatorio uniforme. Esta sección formaliza la construcción algebraica de
+la matriz modificada, analiza su impacto en el espectro de valores
+propios y justifica la selección del valor estándar desde la perspectiva
+del análisis numérico y la teoría de grafos.
+
+Sea \(Q \in \mathbb{R}^{n \times n}\) la matriz de transición
+normalizada por columnas, obtenida a partir de la matriz de pesos
+inversos de la red territorial. La \textbf{matriz de transición
+modificada} (conocida en la literatura como \emph{matriz de Google}) se
+define como: \[
+P = pQ + (1-p)E,
+\] donde \(E = \mathbf{1}\mathbf{v}^\top\) es una matriz de rango uno
+con columnas idénticas al vector de personalización
+\(\mathbf{v} \in \mathbb{R}^n\), tal que \(\mathbf{v} > 0\) y
+\(\sum_{i=1}^n v_i = 1\). En la formulación original de Brin y Page, se
+adopta la distribución uniforme \(\mathbf{v} = \frac{1}{n}\mathbf{1}\),
+lo que refleja la hipótesis de un navegante aleatorio que, con
+probabilidad \(1-p\), reinicia su trayectoria seleccionando cualquier
+nodo de la red con igual probabilidad
+(\citeproc{ref-brin1998anatomy}{Brin y Page 1998}).
+
+La perturbación aditiva \((1-p)E\) transforma radicalmente las
+propiedades espectrales de \(Q\). Mientras que \(Q\) puede presentar
+valores propios de módulo unitario, ser reducible o contener nodos
+colgantes, la matriz \(P\) satisface estrictamente \(P > 0\) para
+cualquier \(p \in (0,1)\). Por el teorema de Perron-Frobenius, esto
+garantiza que \(\lambda_1 = 1\) es un valor propio simple, dominante y
+asociado a un vector propio estrictamente positivo. El resto del
+espectro se contrae hacia el origen, cumpliendo la cota: \[
+|\lambda_k(P)| \leq p, \quad k = 2, \dots, n.
+\] Esta desigualdad es fundamental para la eficiencia computacional, ya
+que determina la tasa de convergencia del método de potencias. El error
+en la iteración \(k\) decae geométricamente como
+\(\|\pi^{(k)} - \pi\|_1 \leq C \, p^k\), donde \(C\) depende únicamente
+de la distribución inicial y de la norma del subespacio invariante
+asociado a los valores propios no dominantes. Por tanto, el parámetro
+\(p\) controla directamente el compromiso entre velocidad de
+convergencia y fidelidad a la topología original de la red
+(\citeproc{ref-langville2006googles}{Langville y Meyer 2009}).
+
+La elección del valor \(p = 0.85\) responde a un equilibrio empírico y
+teórico ampliamente validado. Valores de \(p\) cercanos a \(1\)
+preservan con mayor precisión la estructura de conectividad real, pero
+reducen la brecha espectral \(1 - |\lambda_2(P)|\), incrementando el
+número de iteraciones requeridas y volviendo el algoritmo sensible a
+perturbaciones en los pesos de las aristas. Por el contrario, valores
+pequeños de \(p\) aceleran la convergencia pero diluyen la influencia de
+la red, haciendo que el vector estacionario se aproxime asintóticamente
+a \(\mathbf{v}\) y pierda capacidad discriminante entre nodos. El valor
+\(0.85\) proporciona una brecha espectral de \(0.15\), suficiente para
+garantizar convergencia en menos de 50 iteraciones en redes de escala
+municipal, manteniendo simultáneamente una alta correlación con la
+centralidad estructural real del grafo
+(\citeproc{ref-gleich2015pagerank}{Gleich 2015}).
+
+En el contexto de la red de transporte de Chiapas, la matriz \(P\)
+modela un proceso híbrido: en el \(85\%\) de los pasos, el flujo
+logístico sigue las rutas viales ponderadas por distancia
+tridimensional; en el \(15\%\) restante, se considera una reasignación
+probabilística que simula la posibilidad de redirigir recursos hacia
+cualquier municipio independientemente de la conectividad inmediata.
+Esta interpretación justifica el uso de PageRank no como un simulador de
+tráfico determinista, sino como un \textbf{indicador de robustez
+estructural}, capaz de identificar municipios estratégicos incluso ante
+fallos parciales de la infraestructura vial o variaciones estacionales
+en la transitabilidad.
+
+La formalización de la matriz de transición modificada cierra el marco
+teórico del Capítulo 1, integrando teoría de grafos, álgebra lineal
+matricial y procesos estocásticos en un modelo coherente y
+computacionalmente viable. Los conceptos desarrollados en estas
+secciones se aplican directamente en el Capítulo 3, donde se construye
+la red territorial de los 124 municipios de Chiapas, se calcula el
+vector de priorización estructural y se identifican los nodos críticos
+que guiarán la planificación logística de ayuda humanitaria en
+escenarios de emergencia. :::
 
 \bookmarksetup{startatroot}
 
@@ -2817,7 +3005,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, rightrule=.15mm, opacitybacktitle=0.6, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, left=2mm, opacityback=0, breakable, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, arc=.35mm, bottomtitle=1mm, toprule=.15mm, colbacktitle=quarto-callout-note-color!10!white]
+\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, opacitybacktitle=0.6, coltitle=black, toprule=.15mm, breakable, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, titlerule=0mm, left=2mm, leftrule=.75mm, bottomtitle=1mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white]
 
 \textbf{Características operativas de la ruta}
 
@@ -6007,6 +6195,10 @@ Methods in Physical Oceanography}. 2.ª ed. Amsterdam: Elsevier.
 \bibitem[\citeproctext]{ref-french1988decision}
 French, Simon. 1988. \emph{Decision Theory: An Introduction to the
 Mathematics of Rationality}. Chichester: Ellis Horwood / Wiley.
+
+\bibitem[\citeproctext]{ref-gleich2015pagerank}
+Gleich, David F. 2015. {«PageRank beyond the Web»}. \emph{SIAM Review}
+57 (3): 321-63. \url{https://doi.org/10.1137/140976649}.
 
 \bibitem[\citeproctext]{ref-grinstead2012introduction}
 Grinstead, Charles M., y J. Laurie Snell. 2009. \emph{Introduction to
