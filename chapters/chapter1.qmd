@@ -101,11 +101,13 @@ La representación binaria de la conectividad mediante grafos no ponderados resu
 ### Definición formal de redes ponderadas
 
 **Definición 1.6 (Red ponderada dirigida).** Una *red ponderada dirigida* es una cuaterna $G = (V, A, w, \mathcal{W})$, donde:
+
 - $(V, A)$ es un grafo dirigido con $|V| = n$ vértices y $|A| = m$ arcos,
 - $\mathcal{W} \subseteq \mathbb{R}^+$ es un conjunto de valores de peso admisibles,
 - $w: A \to \mathcal{W}$ es una *función de peso* que asigna a cada arco $(v_i, v_j) \in A$ un valor $w_{ij} \in \mathcal{W}$.
 
 Cuando la red modela un sistema de transporte terrestre, el peso $w_{ij}$ puede interpretarse como:
+
 - **Distancia física**: $w_{ij} = d_{ij}^{(3D)}$ (kilómetros), incorporando variaciones topográficas,
 - **Tiempo de tránsito**: $w_{ij} = t_{ij}$ (minutos), estimado a partir de velocidades promedio por tipo de vía,
 - **Dificultad de acceso**: $w_{ij} = \delta_{ij}$ (índice adimensional), derivado de pendientes, estado de la vía o exposición a riesgos naturales [@taha2017operations].
