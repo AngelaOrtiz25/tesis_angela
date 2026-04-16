@@ -173,7 +173,7 @@ En el estudio de caso de Chiapas, los pesos $w_{ij}$ se definen como las distanc
 
 ## Cadenas de Markov de tiempo discreto
 
-Las cadenas de Markov de tiempo discreto constituyen uno de los pilares fundamentales de la teoría de procesos estocásticos, proporcionando un marco matemático riguroso para modelar sistemas que evolucionan en pasos temporales discretos con la propiedad de falta de memoria. En el contexto de la priorización territorial y el análisis de redes de transporte, estas cadenas permiten representar el movimiento de un agente aleatorio a través de los nodos de una red, donde la probabilidad de transición entre municipios depende exclusivamente del estado actual y de la estructura de conectividad ponderada [@blanco2013procesos].
+Las cadenas de Markov de tiempo discreto constituyen uno de los pilares fundamentales de la teoría de procesos estocásticos, proporcionando un marco matemático riguroso para modelar sistemas que evolucionan en pasos temporales discretos con la propiedad de falta de memoria. En el contexto de la priorización territorial y el análisis de redes de transporte, estas cadenas permiten representar el movimiento de un agente aleatorio a través de los nodos de una red, donde la probabilidad de transición entre municipios depende exclusivamente del estado actual y de la estructura de conectividad ponderada. Para más dettalles, [@blanco2013procesos, @rincon2012procesos].
 
 ### Definición formal y propiedad de Markov
 
@@ -250,7 +250,7 @@ Sea $A \in \mathbb{R}^{n \times n}$ una matriz con entradas reales. Se establece
    $$
    \lim_{k \to \infty} P^k \pi^{(0)} = \pi.
    $$
-:::
+   
 
 *Esbozo de demostración.* La igualdad $\rho(P)=1$ se deduce de la conservación de la norma $\ell_1$ bajo multiplicación por matrices estocásticas. La positividad estricta de $P^m$ implica, por el lema de Gelfand y propiedades de conos invariantes, que el subespacio propio asociado a $\lambda=1$ es unidimensional y que ningún otro valor propio puede alcanzar módulo 1. La convergencia de $P^k$ sigue de la descomposición de Jordan, donde el bloque asociado a $\lambda=1$ domina asintóticamente a los bloques contractivos correspondientes a $|\lambda_i| < 1$ [@meyer2000matrix]. $\square$
 
