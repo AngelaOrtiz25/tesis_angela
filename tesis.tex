@@ -902,11 +902,20 @@ En el algoritmo PageRank, la matriz de transición modificada (conocida
 como \emph{matriz de Google}) se construye a partir de la matriz de
 conectividad normalizada \(Q\) mediante: \[
 G = pQ + (1-p)\mathbf{1}\mathbf{v}^\top,
-\] donde: - \(p \in (0,1)\) es el factor de amortiguamiento (típicamente
-\(p=0.85\)), - \(\mathbf{1} \in \mathbb{R}^n\) es el vector columna de
-unos, - \(\mathbf{v} \in \mathbb{R}^n\) es un vector de probabilidad
-personalización (\(\mathbf{v} > 0\), \(\sum v_i = 1\); usualmente
-\(\mathbf{v} = \frac{1}{n}\mathbf{1}\)).
+\] donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(p \in (0,1)\) es el factor de amortiguamiento (típicamente
+  \(p=0.85\)),
+\item
+  \(\mathbf{1} \in \mathbb{R}^n\) es el vector columna de unos,
+\item
+  \(\mathbf{v} \in \mathbb{R}^n\) es un vector de probabilidad
+  personalización (\(\mathbf{v} > 0\), \(\sum v_i = 1\); usualmente
+  \(\mathbf{v} = \frac{1}{n}\mathbf{1}\)).
+\end{itemize}
 
 Dado que \(Q \geq 0\), \(p \in (0,1)\) y \(\mathbf{v} > 0\), toda
 entrada de \(G\) satisface: \[
@@ -1446,7 +1455,7 @@ dependencia decaída (mixing conditions), es un estimador consistente:
 \]
 
 Bajo la hipótesis nula de independencia entre \(\{X_t\}\) y \(\{Y_t\}\),
-Bartlett demostró que para \(|k| \ll T\) la distribución muestral es
+Bartlett demostró que para \(|k| < T\) la distribución muestral es
 asintóticamente normal con varianza aproximada \(1/T\)
 (\citeproc{ref-bartlett1946theoretical}{Bartlett 1946}). Más
 precisamente, si \(\{X_t\}\) y \(\{Y_t\}\) son procesos gaussianos
@@ -1477,7 +1486,7 @@ estaciones virtuales. La relación física se expresa como:
 
 donde \(\Delta s\) es la distancia geodésica entre centroides y
 \(\Delta t\) el intervalo de muestreo temporal. Para evitar estimaciones
-espurias en presencia de baja correlación, se introduce un criterio de
+engañosas en presencia de baja correlación, se introduce un criterio de
 aceptación basado en la fracción de pares adyacentes que superan
 \(\rho_{\min}\) simultáneamente con \(k^* \neq 0\), garantizando
 robustez frente a ruido de medición y fluctuaciones no advectivas
@@ -1503,7 +1512,8 @@ detección de modos oscilatorios y la validación de supuestos de
 advección. Este cambio de perspectiva, del dominio temporal al dominio
 frecuencial, se fundamenta en la transformada de Fourier aplicada a
 secuencias de covarianza y constituye el puente matemático necesario
-para el análisis \(f\)-\(k\) desarrollado en la Sección 2.5.
+para el análisis \(f\)-\(k\) desarrollado en la
+Sección~\ref{sec-analisisfk}.
 
 Sea \(\{X_t\}_{t \in \mathbb{Z}}\) un proceso débilmente estacionario
 con función de autocovarianza \(\gamma: \mathbb{Z} \to \mathbb{R}\). Una
@@ -3022,7 +3032,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, bottomrule=.15mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, leftrule=.75mm, colframe=quarto-callout-note-color-frame, arc=.35mm, opacityback=0, toptitle=1mm, titlerule=0mm, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, colback=white, toprule=.15mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, breakable, toptitle=1mm, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, coltitle=black, opacityback=0, colback=white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, bottomrule=.15mm, toprule=.15mm, leftrule=.75mm, left=2mm]
 
 \textbf{Características operativas de la ruta}
 
