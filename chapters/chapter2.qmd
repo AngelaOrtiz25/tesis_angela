@@ -142,7 +142,7 @@ $$
 \hat{\rho}_{xy}(k) \xrightarrow{p} \rho_{XY}(k) \quad \text{cuando } T \to \infty.
 $$
 
-Bajo la hipótesis nula de independencia entre $\{X_t\}$ y $\{Y_t\}$, Bartlett demostró que para $|k| \ll T$ la distribución muestral es asintóticamente normal con varianza aproximada $1/T$ [@bartlett1946theoretical]. Más precisamente, si $\{X_t\}$ y $\{Y_t\}$ son procesos gaussianos independientes:
+Bajo la hipótesis nula de independencia entre $\{X_t\}$ y $\{Y_t\}$, Bartlett demostró que para $|k| < T$ la distribución muestral es asintóticamente normal con varianza aproximada $1/T$ [@bartlett1946theoretical]. Más precisamente, si $\{X_t\}$ y $\{Y_t\}$ son procesos gaussianos independientes:
 
 $$
 \sqrt{T} \, \hat{\rho}_{xy}(k) \xrightarrow{d} \mathcal{N}(0, 1), \quad T \to \infty.
@@ -158,12 +158,12 @@ $$
 \hat{v} = \frac{\Delta s}{k^* \Delta t},
 $$
 
-donde $\Delta s$ es la distancia geodésica entre centroides y $\Delta t$ el intervalo de muestreo temporal. Para evitar estimaciones espurias en presencia de baja correlación, se introduce un criterio de aceptación basado en la fracción de pares adyacentes que superan $\rho_{\min}$ simultáneamente con $k^* \neq 0$, garantizando robustez frente a ruido de medición y fluctuaciones no advectivas [@brockwell2016time].
+donde $\Delta s$ es la distancia geodésica entre centroides y $\Delta t$ el intervalo de muestreo temporal. Para evitar estimaciones engañosas en presencia de baja correlación, se introduce un criterio de aceptación basado en la fracción de pares adyacentes que superan $\rho_{\min}$ simultáneamente con $k^* \neq 0$, garantizando robustez frente a ruido de medición y fluctuaciones no advectivas [@brockwell2016time].
 
 Esta fundamentación teórica justifica el uso de la correlación cruzada discreta como herramienta primaria de estimación de velocidad, y prepara el terreno para el análisis espectral frecuencia-espacio ($f$-$k$) desarrollado en la @sec-analisisfk, donde la fase espectral reemplaza al dominio temporal para capturar estructuras de propagación en regímenes de baja coherencia temporal.
          
 ## Análisis de series de tiempo: autocovarianza y transformada de Fourier {#sec-analisisseriestiempo}
-La caracterización completa de un proceso estocástico estacionario en el dominio del tiempo mediante su función de autocovarianza $\gamma(h)$ resulta insuficiente cuando el objetivo es identificar frecuencias dominantes, ciclos ocultos o estructuras periódicas en series meteorológicas. El análisis espectral permite transformar la dependencia temporal en una distribución de energía por frecuencias, facilitando la detección de modos oscilatorios y la validación de supuestos de advección. Este cambio de perspectiva, del dominio temporal al dominio frecuencial, se fundamenta en la transformada de Fourier aplicada a secuencias de covarianza y constituye el puente matemático necesario para el análisis $f$-$k$ desarrollado en la Sección 2.5.
+La caracterización completa de un proceso estocástico estacionario en el dominio del tiempo mediante su función de autocovarianza $\gamma(h)$ resulta insuficiente cuando el objetivo es identificar frecuencias dominantes, ciclos ocultos o estructuras periódicas en series meteorológicas. El análisis espectral permite transformar la dependencia temporal en una distribución de energía por frecuencias, facilitando la detección de modos oscilatorios y la validación de supuestos de advección. Este cambio de perspectiva, del dominio temporal al dominio frecuencial, se fundamenta en la transformada de Fourier aplicada a secuencias de covarianza y constituye el puente matemático necesario para el análisis $f$-$k$ desarrollado en la @sec-analisisfk.
 
 Sea $\{X_t\}_{t \in \mathbb{Z}}$ un proceso débilmente estacionario con función de autocovarianza $\gamma: \mathbb{Z} \to \mathbb{R}$. Una propiedad estructural esencial, derivada de la definición de varianza de combinaciones lineales, es que $\gamma$ es una función *definida no negativa* (positive semi-definite). Formalmente:
 

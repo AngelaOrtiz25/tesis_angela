@@ -250,7 +250,7 @@ Sea $A \in \mathbb{R}^{n \times n}$ una matriz con entradas reales. Se establece
    $$
    \lim_{k \to \infty} P^k \pi^{(0)} = \pi.
    $$
-   
+
 
 *Esbozo de demostración.* La igualdad $\rho(P)=1$ se deduce de la conservación de la norma $\ell_1$ bajo multiplicación por matrices estocásticas. La positividad estricta de $P^m$ implica, por el lema de Gelfand y propiedades de conos invariantes, que el subespacio propio asociado a $\lambda=1$ es unidimensional y que ningún otro valor propio puede alcanzar módulo 1. La convergencia de $P^k$ sigue de la descomposición de Jordan, donde el bloque asociado a $\lambda=1$ domina asintóticamente a los bloques contractivos correspondientes a $|\lambda_i| < 1$ [@meyer2000matrix]. $\square$
 
@@ -261,6 +261,7 @@ $$
 G = pQ + (1-p)\mathbf{1}\mathbf{v}^\top,
 $$
 donde:
+
 - $p \in (0,1)$ es el factor de amortiguamiento (típicamente $p=0.85$),
 - $\mathbf{1} \in \mathbb{R}^n$ es el vector columna de unos,
 - $\mathbf{v} \in \mathbb{R}^n$ es un vector de probabilidad personalización ($\mathbf{v} > 0$, $\sum v_i = 1$; usualmente $\mathbf{v} = \frac{1}{n}\mathbf{1}$).
