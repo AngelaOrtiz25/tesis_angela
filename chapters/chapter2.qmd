@@ -235,7 +235,7 @@ donde $\omega_m = 2\pi m / (T\Delta t)$ y $\kappa_j = 2\pi j / (N\Delta s)$ repr
 
 $$
 S(\omega_m, \kappa_j) := \frac{1}{NT} \left| \hat{X}(\omega_m, \kappa_j) \right|^2.
-$${#eq-espectropotencia}
+$${#eq-espectro}
 
 Este objeto matemático cuantifica la energía asociada a cada par $(\omega, \kappa)$ y permite identificar modos de propagación dominantes como regiones de alta concentración espectral en el plano $f$-$k$, ver [@brillinger1981time] para más detalles.
 
@@ -276,7 +276,7 @@ La aplicación directa de $v_p(\omega)$ presenta dos desafíos numéricos:
    $$
    w(\omega) := \frac{S(\omega, \hat{\kappa}(\omega))}{\sum_{m} S(\omega_m, \hat{\kappa}(\omega_m))},
    $$
-    donde $S$ esta definido en la ecuación @espectropotencia y la velocidad final se calcula como la mediana ponderada de $\{v_p(\omega_m)\}$ sobre una banda de interés fisico-meteorológico [@bendat2010random].
+    donde $S$ esta definido en la ecuación @espectro y la velocidad final se calcula como la mediana ponderada de $\{v_p(\omega_m)\}$ sobre una banda de interés fisico-meteorológico [@bendat2010random].
 
 La mediana se prefiere sobre la media aritmética por su robustez frente a valores atípicos causados por modos estacionarios ($\kappa \approx 0$), reflexiones topográficas o estructuras convectivas no coherentes con la advección dominante.
 
