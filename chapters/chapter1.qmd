@@ -173,7 +173,7 @@ En el estudio de caso de Chiapas, los pesos $w_{ij}$ se definen como las distanc
 
 ## Cadenas de Markov de tiempo discreto
 
-Las cadenas de Markov de tiempo discreto constituyen uno de los pilares fundamentales de la teoría de procesos estocásticos, proporcionando un marco matemático riguroso para modelar sistemas que evolucionan en pasos temporales discretos con la propiedad de falta de memoria. En el contexto de la priorización territorial y el análisis de redes de transporte, estas cadenas permiten representar el movimiento de un agente aleatorio a través de los nodos de una red, donde la probabilidad de transición entre municipios depende exclusivamente del estado actual y de la estructura de conectividad ponderada. Para más detalles, [@blanco2013procesos; @rincon2012procesos].
+Las cadenas de Markov de tiempo discreto constituyen uno de los pilares fundamentales de la teoría de procesos estocásticos, proporcionando un marco matemático riguroso para modelar sistemas que evolucionan en pasos temporales discretos con la propiedad de falta de memoria. En el contexto de la priorización territorial y el análisis de redes de transporte, estas cadenas permiten representar el movimiento de un agente aleatorio a través de los nodos de una red, donde la probabilidad de transición entre municipios depende exclusivamente del estado actual y de la estructura de conectividad ponderada. Para más detalles, [@blanco2013procesos; @rincon2016procesos].
 
 ### Definición formal y propiedad de Markov
 
