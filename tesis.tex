@@ -1599,7 +1599,7 @@ finitas}\label{estimaciuxf3n-espectral-para-series-finitas}
 En la práctica operacional, solo se dispone de una trayectoria finita
 \(\{x_t\}_{t=1}^T\). El estimador no paramétrico más directo de la
 densidad espectral es el \emph{periodograma}, definido mediante la
-transformada discreta de Fourier (DFT) de los datos centrados: \[
+Transformada Discreta de Fourier (DFT) de los datos centrados: \[
 I_T(\omega) = \frac{1}{2\pi T} \left| \sum_{t=1}^T (x_t - \bar{x}) e^{-i t \omega} \right|^2, \quad \omega \in [-\pi, \pi].
 \] Aunque el periodograma es asintóticamente insesgado
 (\(\mathbb{E}[I_T(\omega)] \to f(\omega)\) cuando \(T \to \infty\)), no
@@ -1657,7 +1657,7 @@ Sea \(\{X(s_i, t_n)\}\) un campo aleatorio observado en una malla
 discreta de \(N\) segmentos espaciales \(s_i = i\Delta s\) y \(T\)
 instantes temporales \(t_n = n\Delta t\). Bajo la hipótesis de
 estacionariedad débil en ambas dimensiones, se define la
-\textbf{transformada discreta de Fourier bidimensional (2D-DFT)} como:
+\textbf{Transformada Discreta de Fourier Bidimensional (2D-DFT)} como:
 
 \[
 \hat{X}(\omega_m, \kappa_j) = \sum_{n=0}^{T-1} \sum_{i=0}^{N-1} X(s_i, t_n) \, e^{-i(\omega_m t_n + \kappa_j s_i)},
@@ -1670,13 +1670,14 @@ angulares temporales y espaciales, respectivamente, con
 potencia espacio-temporal se define como:
 
 \[
-S(\omega_m, \kappa_j) = \frac{1}{NT} \left| \hat{X}(\omega_m, \kappa_j) \right|^2.
-\]
+S(\omega_m, \kappa_j) := \frac{1}{NT} \left| \hat{X}(\omega_m, \kappa_j) \right|^2.
+\] \{\#eq:espectro-potencia\}
 
 Este objeto matemático cuantifica la energía asociada a cada par
 \((\omega, \kappa)\) y permite identificar modos de propagación
 dominantes como regiones de alta concentración espectral en el plano
-\(f\)-\(k\) (\citeproc{ref-brillinger1981time}{Brillinger 1981}).
+\(f\)-\(k\), ver (\citeproc{ref-brillinger1981time}{Brillinger 1981})
+para más detalles.
 
 \subsection{Modelo de onda viajera y relación de
 fase}\label{modelo-de-onda-viajera-y-relaciuxf3n-de-fase}
@@ -1690,7 +1691,7 @@ X(s,t) \approx A \cos(\kappa s - \omega t + \phi_0),
 
 donde \(A\) es la amplitud, \(\kappa\) el número de onda espacial,
 \(\omega\) la frecuencia angular y \(\phi_0\) una fase inicial
-constante. La transformada de Fourier temporal para un segmento fijo
+constante. La Transformada de Fourier temporal para un segmento fijo
 \(s_i\) produce un espectro complejo cuya fase satisface:
 
 \[
@@ -1699,9 +1700,15 @@ constante. La transformada de Fourier temporal para un segmento fijo
 
 Esta relación lineal entre fase y posición espacial constituye el
 fundamento del método de \textbf{pendiente de fase} para estimar la
-velocidad de propagación. Si \(\phi(s_i, \omega)\) se desenvuelve
-adecuadamente (\emph{phase unwrapping}), el número de onda efectivo a
-frecuencia \(\omega\) se obtiene mediante regresión lineal:
+velocidad de propagación. Si la fase \(\phi(s_i, \omega)\) se
+\textbf{desenvuelve adecuadamente} (\emph{phase unwrapping}), es decir,
+si se corrige para eliminar las discontinuidades artificiales
+introducidas por la periodicidad de la función argumento (que limita la
+fase al intervalo \((-\pi, \pi]\)), entonces se recupera una versión
+continua \(\phi_{\text{unwrapped}}(s_i, \omega)\) que refleja fielmente
+la variación lineal con la posición espacial. Bajo esta condición, el
+número de onda efectivo a frecuencia \(\omega\) se obtiene mediante
+regresión lineal:
 
 \[
 \hat{\kappa}(\omega) = \arg\min_{\alpha, \beta} \sum_{i=1}^{N} \big[ \phi_{\text{unwrapped}}(s_i, \omega) - (\alpha s_i + \beta) \big]^2.
@@ -1710,35 +1717,46 @@ frecuencia \(\omega\) se obtiene mediante regresión lineal:
 La velocidad de fase asociada a dicha frecuencia se define como:
 
 \[
-v_p(\omega) = \frac{\omega}{\hat{\kappa}(\omega)}.
+v_p(\omega) := \frac{\omega}{\hat{\kappa}(\omega)}.
 \]
 
 El signo de \(v_p\) indica la dirección de propagación relativa a la
 orientación espacial de la ruta: \(v_p > 0\) implica avance en sentido
 creciente de \(s\), mientras que \(v_p < 0\) indica retroceso. En el
 contexto de nowcasting advectivo, la convención se ajusta para que
-\(v > 0\) corresponda a la dirección dominante del flujo atmosférico
-(\citeproc{ref-emery2004data}{Emery y Thomson 2004}).
+\(v > 0\) corresponda a la dirección dominante del flujo atmosférico,
+para más detalles puede consultarse (\citeproc{ref-emery2004data}{Emery
+y Thomson 2004}).
 
 \subsection{Estimación robusta y consideraciones
 prácticas}\label{estimaciuxf3n-robusta-y-consideraciones-pruxe1cticas}
 
 La aplicación directa de \(v_p(\omega)\) presenta dos desafíos
-numéricos: 1. \textbf{Desenvolvimiento de fase}: La función
-\(\arg(\cdot)\) retorna valores en \((-\pi, \pi]\), generando
-discontinuidades artificiales de \(2\pi\). El desenvolvimiento
-consistente requiere agregar o restar múltiplos de \(2\pi\) para
-garantizar continuidad espacial, algoritmo que es estable siempre que
-\(|\kappa| \Delta s < \pi\) (criterio de Nyquist espacial)
-(\citeproc{ref-oppenheim2010discrete}{Oppenheim y Schafer 2010}). 2.
-\textbf{Ponderación espectral}: Las frecuencias con baja energía
-presentan fases dominadas por ruido de medición, produciendo
-estimaciones de \(\hat{\kappa}\) inestables. Se introduce un peso
-proporcional a la densidad espectral: \[
-   w(\omega) = \frac{S(\omega, \hat{\kappa}(\omega))}{\sum_{m} S(\omega_m, \hat{\kappa}(\omega_m))},
-   \] y la velocidad final se calcula como la mediana ponderada de
-\(\{v_p(\omega_m)\}\) sobre una banda de interés fisico-meteorológico
-(\citeproc{ref-bendat2010random}{Bendat y Piersol 2010}).
+numéricos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Desenvolvimiento de fase}: La función \(\arg(\cdot)\) retorna
+  valores en \((-\pi, \pi]\), generando discontinuidades artificiales de
+  \(2\pi\). El desenvolvimiento consistente requiere agregar o restar
+  múltiplos de \(2\pi\) para garantizar continuidad espacial, algoritmo
+  que es estable siempre que \(|\kappa| \Delta s < \pi\) (criterio de
+  Nyquist espacial) (\citeproc{ref-oppenheim2010discrete}{Oppenheim y
+  Schafer 2010}).
+\item
+  \textbf{Ponderación espectral}: Las frecuencias con baja energía
+  presentan fases dominadas por ruido de medición, produciendo
+  estimaciones de \(\hat{\kappa}\) inestables. Se introduce un peso
+  proporcional a la densidad espectral: \[
+  w(\omega) := \frac{S(\omega, \hat{\kappa}(\omega))}{\sum_{m} S(\omega_m, \hat{\kappa}(\omega_m))},
+  \] donde \(S\) esta definido en la ecuación
+  (\citeproc{ref-espectro-potencia}{\textbf{espectro-potencia?}}) y la
+  velocidad final se calcula como la mediana ponderada de
+  \(\{v_p(\omega_m)\}\) sobre una banda de interés fisico-meteorológico
+  (\citeproc{ref-bendat2010random}{Bendat y Piersol 2010}).
+\end{enumerate}
 
 La mediana se prefiere sobre la media aritmética por su robustez frente
 a valores atípicos causados por modos estacionarios
@@ -3044,7 +3062,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, leftrule=.75mm, breakable, opacityback=0, colframe=quarto-callout-note-color-frame, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, coltitle=black, bottomrule=.15mm, bottomtitle=1mm, opacitybacktitle=0.6, colback=white, rightrule=.15mm, left=2mm, titlerule=0mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, rightrule=.15mm, left=2mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, breakable, colback=white, bottomtitle=1mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, bottomrule=.15mm, opacityback=0, leftrule=.75mm, coltitle=black, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}]
 
 \textbf{Características operativas de la ruta}
 

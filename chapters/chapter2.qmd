@@ -205,7 +205,7 @@ Esta dualidad permite interpretar la estructura de dependencia temporal como una
 
 ### Estimación espectral para series finitas
 
-En la práctica operacional, solo se dispone de una trayectoria finita $\{x_t\}_{t=1}^T$. El estimador no paramétrico más directo de la densidad espectral es el *periodograma*, definido mediante la transformada discreta de Fourier (DFT) de los datos centrados:
+En la práctica operacional, solo se dispone de una trayectoria finita $\{x_t\}_{t=1}^T$. El estimador no paramétrico más directo de la densidad espectral es el *periodograma*, definido mediante la Transformada Discreta de Fourier (DFT) de los datos centrados:
 $$
 I_T(\omega) = \frac{1}{2\pi T} \left| \sum_{t=1}^T (x_t - \bar{x}) e^{-i t \omega} \right|^2, \quad \omega \in [-\pi, \pi].
 $$
@@ -225,7 +225,7 @@ En conjunto, la dualidad autocovarianza–transformada de Fourier cierra el cír
 
 El análisis espectral unidimensional desarrollado en la @sec-analisisseriestiempo caracteriza la distribución de energía de un proceso estocástico únicamente en el dominio temporal. Sin embargo, los campos meteorológicos que interactúan con la trayectoria de un dron se propagan como estructuras espacio-temporales coherentes, cuya dinámica no puede capturarse adecuadamente sin considerar simultáneamente las dimensiones espacial y temporal. El análisis conjunto frecuencia-número de onda, conocido como análisis $f$-$k$, constituye la extensión natural de la teoría espectral a procesos definidos sobre dominios discretos $(s,t)$ y permite estimar directamente la velocidad de fase de patrones dominantes [@hayashi1973method].
 
-Sea $\{X(s_i, t_n)\}$ un campo aleatorio observado en una malla discreta de $N$ segmentos espaciales $s_i = i\Delta s$ y $T$ instantes temporales $t_n = n\Delta t$. Bajo la hipótesis de estacionariedad débil en ambas dimensiones, se define la **transformada discreta de Fourier bidimensional (2D-DFT)** como:
+Sea $\{X(s_i, t_n)\}$ un campo aleatorio observado en una malla discreta de $N$ segmentos espaciales $s_i = i\Delta s$ y $T$ instantes temporales $t_n = n\Delta t$. Bajo la hipótesis de estacionariedad débil en ambas dimensiones, se define la **Transformada Discreta de Fourier Bidimensional (2D-DFT)** como:
 
 $$
 \hat{X}(\omega_m, \kappa_j) = \sum_{n=0}^{T-1} \sum_{i=0}^{N-1} X(s_i, t_n) \, e^{-i(\omega_m t_n + \kappa_j s_i)},
@@ -234,10 +234,10 @@ $$
 donde $\omega_m = 2\pi m / (T\Delta t)$ y $\kappa_j = 2\pi j / (N\Delta s)$ representan las frecuencias angulares temporales y espaciales, respectivamente, con $m \in \{0,\dots,T-1\}$ y $j \in \{0,\dots,N-1\}$. El espectro de potencia espacio-temporal se define como:
 
 $$
-S(\omega_m, \kappa_j) = \frac{1}{NT} \left| \hat{X}(\omega_m, \kappa_j) \right|^2.
-$$
+S(\omega_m, \kappa_j) := \frac{1}{NT} \left| \hat{X}(\omega_m, \kappa_j) \right|^2.
+$$ {#eq:espectro-potencia}
 
-Este objeto matemático cuantifica la energía asociada a cada par $(\omega, \kappa)$ y permite identificar modos de propagación dominantes como regiones de alta concentración espectral en el plano $f$-$k$ [@brillinger1981time].
+Este objeto matemático cuantifica la energía asociada a cada par $(\omega, \kappa)$ y permite identificar modos de propagación dominantes como regiones de alta concentración espectral en el plano $f$-$k$, ver [@brillinger1981time] para más detalles.
 
 ### Modelo de onda viajera y relación de fase
 
@@ -247,13 +247,13 @@ $$
 X(s,t) \approx A \cos(\kappa s - \omega t + \phi_0),
 $$
 
-donde $A$ es la amplitud, $\kappa$ el número de onda espacial, $\omega$ la frecuencia angular y $\phi_0$ una fase inicial constante. La transformada de Fourier temporal para un segmento fijo $s_i$ produce un espectro complejo cuya fase satisface:
+donde $A$ es la amplitud, $\kappa$ el número de onda espacial, $\omega$ la frecuencia angular y $\phi_0$ una fase inicial constante. La Transformada de Fourier temporal para un segmento fijo $s_i$ produce un espectro complejo cuya fase satisface:
 
 $$
 \phi(s_i, \omega) = \arg\big(\hat{X}(s_i, \omega)\big) = \kappa(\omega) \, s_i + \phi_0(\omega).
 $$
 
-Esta relación lineal entre fase y posición espacial constituye el fundamento del método de **pendiente de fase** para estimar la velocidad de propagación. Si $\phi(s_i, \omega)$ se desenvuelve adecuadamente (*phase unwrapping*), el número de onda efectivo a frecuencia $\omega$ se obtiene mediante regresión lineal:
+Esta relación lineal entre fase y posición espacial constituye el fundamento del método de **pendiente de fase** para estimar la velocidad de propagación. Si la fase $\phi(s_i, \omega)$ se **desenvuelve adecuadamente** (*phase unwrapping*), es decir, si se corrige para eliminar las discontinuidades artificiales introducidas por la periodicidad de la función argumento (que limita la fase al intervalo $(-\pi, \pi]$), entonces se recupera una versión continua $\phi_{\text{unwrapped}}(s_i, \omega)$ que refleja fielmente la variación lineal con la posición espacial. Bajo esta condición, el número de onda efectivo a frecuencia $\omega$ se obtiene mediante regresión lineal:
 
 $$
 \hat{\kappa}(\omega) = \arg\min_{\alpha, \beta} \sum_{i=1}^{N} \big[ \phi_{\text{unwrapped}}(s_i, \omega) - (\alpha s_i + \beta) \big]^2.
@@ -262,20 +262,21 @@ $$
 La velocidad de fase asociada a dicha frecuencia se define como:
 
 $$
-v_p(\omega) = \frac{\omega}{\hat{\kappa}(\omega)}.
+v_p(\omega) := \frac{\omega}{\hat{\kappa}(\omega)}.
 $$
 
-El signo de $v_p$ indica la dirección de propagación relativa a la orientación espacial de la ruta: $v_p > 0$ implica avance en sentido creciente de $s$, mientras que $v_p < 0$ indica retroceso. En el contexto de nowcasting advectivo, la convención se ajusta para que $v > 0$ corresponda a la dirección dominante del flujo atmosférico [@emery2004data].
+El signo de $v_p$ indica la dirección de propagación relativa a la orientación espacial de la ruta: $v_p > 0$ implica avance en sentido creciente de $s$, mientras que $v_p < 0$ indica retroceso. En el contexto de nowcasting advectivo, la convención se ajusta para que $v > 0$ corresponda a la dirección dominante del flujo atmosférico, para más detalles puede consultarse [@emery2004data].
 
 ### Estimación robusta y consideraciones prácticas
 
 La aplicación directa de $v_p(\omega)$ presenta dos desafíos numéricos:
+
 1. **Desenvolvimiento de fase**: La función $\arg(\cdot)$ retorna valores en $(-\pi, \pi]$, generando discontinuidades artificiales de $2\pi$. El desenvolvimiento consistente requiere agregar o restar múltiplos de $2\pi$ para garantizar continuidad espacial, algoritmo que es estable siempre que $|\kappa| \Delta s < \pi$ (criterio de Nyquist espacial) [@oppenheim2010discrete].
 2. **Ponderación espectral**: Las frecuencias con baja energía presentan fases dominadas por ruido de medición, produciendo estimaciones de $\hat{\kappa}$ inestables. Se introduce un peso proporcional a la densidad espectral:
    $$
-   w(\omega) = \frac{S(\omega, \hat{\kappa}(\omega))}{\sum_{m} S(\omega_m, \hat{\kappa}(\omega_m))},
+   w(\omega) := \frac{S(\omega, \hat{\kappa}(\omega))}{\sum_{m} S(\omega_m, \hat{\kappa}(\omega_m))},
    $$
-   y la velocidad final se calcula como la mediana ponderada de $\{v_p(\omega_m)\}$ sobre una banda de interés fisico-meteorológico [@bendat2010random].
+    donde $S$ esta definido en la ecuación @espectro-potencia y la velocidad final se calcula como la mediana ponderada de $\{v_p(\omega_m)\}$ sobre una banda de interés fisico-meteorológico [@bendat2010random].
 
 La mediana se prefiere sobre la media aritmética por su robustez frente a valores atípicos causados por modos estacionarios ($\kappa \approx 0$), reflexiones topográficas o estructuras convectivas no coherentes con la advección dominante.
 
