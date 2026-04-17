@@ -276,7 +276,7 @@ La aplicación directa de $v_p(\omega)$ presenta dos desafíos numéricos:
    $$
    w(\omega) := \frac{S(\omega, \hat{\kappa}(\omega))}{\sum_{m} S(\omega_m, \hat{\kappa}(\omega_m))},
    $$
-    donde $S$ esta definido en la ecuación @espectro y la velocidad final se calcula como la mediana ponderada de $\{v_p(\omega_m)\}$ sobre una banda de interés fisico-meteorológico [@bendat2010random].
+    donde $S$ esta definido en la ecuación @eq-espectro y la velocidad final se calcula como la mediana ponderada de $\{v_p(\omega_m)\}$ sobre una banda de interés fisico-meteorológico [@bendat2010random].
 
 La mediana se prefiere sobre la media aritmética por su robustez frente a valores atípicos causados por modos estacionarios ($\kappa \approx 0$), reflexiones topográficas o estructuras convectivas no coherentes con la advección dominante.
 
