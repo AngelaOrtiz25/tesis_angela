@@ -235,7 +235,7 @@ donde $\omega_m = 2\pi m / (T\Delta t)$ y $\kappa_j = 2\pi j / (N\Delta s)$ repr
 
 $$
 S(\omega_m, \kappa_j) := \frac{1}{NT} \left| \hat{X}(\omega_m, \kappa_j) \right|^2.
-$$ {#eq-espectropotencia}
+$${#eq-espectropotencia}
 
 Este objeto matemático cuantifica la energía asociada a cada par $(\omega, \kappa)$ y permite identificar modos de propagación dominantes como regiones de alta concentración espectral en el plano $f$-$k$, ver [@brillinger1981time] para más detalles.
 
