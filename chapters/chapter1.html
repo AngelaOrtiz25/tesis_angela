@@ -661,7 +661,12 @@ G = pQ + (1-p)\mathbf{1}\mathbf{v}^\top,
 </ul>
 <p>Dado que <span class="math inline">\(Q \geq 0\)</span>, <span class="math inline">\(p \in (0,1)\)</span> y <span class="math inline">\(\mathbf{v} &gt; 0\)</span>, toda entrada de <span class="math inline">\(G\)</span> satisface: <span class="math display">\[
 g_{ij} = p q_{ij} + (1-p) v_j \geq (1-p)v_j &gt; 0.
-\]</span> Por tanto, <span class="math inline">\(G\)</span> es una <strong>matriz estrictamente positiva</strong> y, en consecuencia, primitiva. La aplicación directa del Teorema 2.1 garantiza que: 1. Existe un único vector estacionario <span class="math inline">\(\pi &gt; 0\)</span> tal que <span class="math inline">\(G\pi = \pi\)</span>. 2. El método de potencias <span class="math inline">\(\pi^{(k+1)} = G\pi^{(k)}\)</span> converge linealmente a <span class="math inline">\(\pi\)</span> con tasa de convergencia acotada por <span class="math inline">\(|\lambda_2(G)| \leq p\)</span>. 3. La distribución inicial <span class="math inline">\(\pi^{(0)}\)</span> es irrelevante para el límite, lo que confiere robustez numérica al algoritmo frente a perturbaciones en la inicialización <span class="citation" data-cites="langville2006googles">(<a href="../references.html#ref-langville2006googles" role="doc-biblioref">Langville y Meyer 2009</a>)</span>.</p>
+\]</span> Por tanto, <span class="math inline">\(G\)</span> es una <strong>matriz estrictamente positiva</strong> y, en consecuencia, primitiva. La aplicación directa del Teorema 2.1 garantiza que:</p>
+<ol type="1">
+<li>Existe un único vector estacionario <span class="math inline">\(\pi &gt; 0\)</span> tal que <span class="math inline">\(G\pi = \pi\)</span>.</li>
+<li>El método de potencias <span class="math inline">\(\pi^{(k+1)} = G\pi^{(k)}\)</span> converge linealmente a <span class="math inline">\(\pi\)</span> con tasa de convergencia acotada por <span class="math inline">\(|\lambda_2(G)| \leq p\)</span>.</li>
+<li>La distribución inicial <span class="math inline">\(\pi^{(0)}\)</span> es irrelevante para el límite, lo que confiere robustez numérica al algoritmo frente a perturbaciones en la inicialización <span class="citation" data-cites="langville2006googles">(<a href="../references.html#ref-langville2006googles" role="doc-biblioref">Langville y Meyer 2009</a>)</span>.</li>
+</ol>
 </section>
 <section id="interpretación-en-la-red-territorial-de-chiapas" class="level3" data-number="2.4.4">
 <h3 data-number="2.4.4" class="anchored" data-anchor-id="interpretación-en-la-red-territorial-de-chiapas"><span class="header-section-number">2.4.4</span> Interpretación en la red territorial de Chiapas</h3>
