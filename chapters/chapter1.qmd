@@ -271,6 +271,7 @@ $$
 g_{ij} = p q_{ij} + (1-p) v_j \geq (1-p)v_j > 0.
 $$
 Por tanto, $G$ es una **matriz estrictamente positiva** y, en consecuencia, primitiva. La aplicación directa del Teorema 2.1 garantiza que:
+
 1. Existe un único vector estacionario $\pi > 0$ tal que $G\pi = \pi$.
 2. El método de potencias $\pi^{(k+1)} = G\pi^{(k)}$ converge linealmente a $\pi$ con tasa de convergencia acotada por $|\lambda_2(G)| \leq p$.
 3. La distribución inicial $\pi^{(0)}$ es irrelevante para el límite, lo que confiere robustez numérica al algoritmo frente a perturbaciones en la inicialización [@langville2006googles].
