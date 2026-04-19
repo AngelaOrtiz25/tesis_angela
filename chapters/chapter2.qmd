@@ -102,7 +102,7 @@ Bajo esta condición, los estimadores muestrales $\hat{\mu} = \frac{1}{T}\sum_{t
 
 Esta fundamentación teórica permite transitar de manera rigurosa hacia el análisis espectral y la modelación autorregresiva, desarrollados en las secciones siguientes, donde la estructura de covarianza estacionaria se explota explícitamente para generar pronósticos de corto horizonte con intervalos de confianza cuantificables.
 
-## Correlación cruzada y existencia del lag óptimo discreto
+## Correlación cruzada y existencia del lag óptimo discreto {#sec-correlacioncruzada}
 En la práctica operacional, solo se dispone de una trayectoria finita $\{X_t\}_{t=1}^T$ y $\{Y_t\}_{t=1}^T$ de longitud $T < \infty$. Por tanto, las funciones teóricas $\gamma_{XY}(h)$ y $\rho_{XY}(h)$ deben aproximarse mediante sus contrapartes muestrales. Esta sección formaliza el estimador discreto de correlación cruzada, establece las condiciones matemáticas para la existencia del retardo óptimo y analiza sus propiedades estadísticas bajo el marco de procesos débilmente estacionarios.
 
 **Definición 2.4 (Correlación cruzada muestral).** Sean $\{x_t\}_{t=1}^T$ y $\{y_t\}_{t=1}^T$ dos realizaciones observadas de procesos estacionarios con medias muestrales $\bar{x} = \frac{1}{T}\sum_{t=1}^T x_t$ y $\bar{y} = \frac{1}{T}\sum_{t=1}^T y_t$. Para un retardo discreto $k \in \mathbb{Z}$, el estimador de correlación cruzada se define como:
@@ -162,8 +162,8 @@ donde $\Delta s$ es la distancia geodésica entre centroides y $\Delta t$ el int
 
 Esta fundamentación teórica justifica el uso de la correlación cruzada discreta como herramienta primaria de estimación de velocidad, y prepara el terreno para el análisis espectral frecuencia-espacio ($f$-$k$) desarrollado en la @sec-analisisfk, donde la fase espectral reemplaza al dominio temporal para capturar estructuras de propagación en regímenes de baja coherencia temporal.
          
-## Análisis de series de tiempo: autocovarianza y transformada de Fourier {#sec-analisisseriestiempo}
-La caracterización completa de un proceso estocástico estacionario en el dominio del tiempo mediante su función de autocovarianza $\gamma(h)$ resulta insuficiente cuando el objetivo es identificar frecuencias dominantes, ciclos ocultos o estructuras periódicas en series meteorológicas. El análisis espectral permite transformar la dependencia temporal en una distribución de energía por frecuencias, facilitando la detección de modos oscilatorios y la validación de supuestos de advección. Este cambio de perspectiva, del dominio temporal al dominio frecuencial, se fundamenta en la transformada de Fourier aplicada a secuencias de covarianza y constituye el puente matemático necesario para el análisis $f$-$k$ desarrollado en la @sec-analisisfk.
+## Análisis de series de tiempo: autocovarianza y Transformada de Fourier {#sec-analisisseriestiempo}
+La caracterización completa de un proceso estocástico estacionario en el dominio del tiempo mediante su función de autocovarianza $\gamma(h)$ resulta insuficiente cuando el objetivo es identificar frecuencias dominantes, ciclos ocultos o estructuras periódicas en series meteorológicas. El análisis espectral permite transformar la dependencia temporal en una distribución de energía por frecuencias, facilitando la detección de modos oscilatorios y la validación de supuestos de advección. Este cambio de perspectiva, del dominio temporal al dominio frecuencial, se fundamenta en la Transformada de Fourier aplicada a secuencias de covarianza y constituye el puente matemático necesario para el análisis $f$-$k$ desarrollado en la @sec-analisisfk.
 
 Sea $\{X_t\}_{t \in \mathbb{Z}}$ un proceso débilmente estacionario con función de autocovarianza $\gamma: \mathbb{Z} \to \mathbb{R}$. Una propiedad estructural esencial, derivada de la definición de varianza de combinaciones lineales, es que $\gamma$ es una función *definida no negativa* (positive semi-definite). Formalmente:
 
@@ -193,7 +193,7 @@ lo que confirma que la varianza se distribuye a lo largo del espectro de frecuen
 
 La relación explícita entre la autocovarianza y la densidad espectral se formaliza mediante el teorema de Wiener-Khinchin, que para procesos de tiempo discreto establece:
 
-**Teorema 2.2 (Wiener-Khinchin discreto).** Si $\sum_{h=-\infty}^{\infty} |\gamma(h)| < \infty$, entonces la densidad espectral existe, es continua y está dada por la transformada de Fourier discreta de la autocovarianza:
+**Teorema 2.2 (Wiener-Khinchin discreto).** Si $\sum_{h=-\infty}^{\infty} |\gamma(h)| < \infty$, entonces la densidad espectral existe, es continua y está dada por la Transformada de Fourier discreta de la autocovarianza:
 $$
 f(\omega) = \frac{1}{2\pi} \sum_{h=-\infty}^{\infty} \gamma(h) e^{-i h \omega}, \quad \omega \in [-\pi, \pi].
 $$
@@ -201,7 +201,7 @@ Recíprocamente, la autocovarianza se recupera mediante la transformada inversa:
 $$
 \gamma(h) = \int_{-\pi}^{\pi} e^{i h \omega} f(\omega) \, d\omega.
 $$
-Esta dualidad permite interpretar la estructura de dependencia temporal como una superposición de componentes oscilatorias ortogonales, cada una ponderada por su densidad espectral. En el contexto meteorológico, picos pronunciados en $f(\omega)$ suelen asociarse a ciclos diurnos, patrones sinópticos recurrentes o modos de oscilación climática de baja frecuencia [@shumway2017time].
+Esta dualidad permite interpretar la estructura de dependencia temporal como una superposición de componentes oscilatorias ortogonales, cada una ponderada por su densidad espectral. En el contexto meteorológico, picos pronunciados en $f(\omega)$ suelen asociarse a ciclos diurnos, patrones sinópticos recurrentes o modos de oscilación climática de baja frecuencia, para más detalles [@shumway2017time].
 
 ### Estimación espectral para series finitas
 
@@ -209,17 +209,18 @@ En la práctica operacional, solo se dispone de una trayectoria finita $\{x_t\}_
 $$
 I_T(\omega) = \frac{1}{2\pi T} \left| \sum_{t=1}^T (x_t - \bar{x}) e^{-i t \omega} \right|^2, \quad \omega \in [-\pi, \pi].
 $$
-Aunque el periodograma es asintóticamente insesgado ($\mathbb{E}[I_T(\omega)] \to f(\omega)$ cuando $T \to \infty$), no es consistente: su varianza no converge a cero, incluso para $T$ grande. Para obtener estimadores consistentes se requiere suavizado espectral, ya sea mediante ventanas espectrales (Daniell, Parzen, Bartlett) o mediante promediado sobre frecuencias adyacentes [@priestley1981spectral].
+Aunque el periodograma es asintóticamente insesgado ($\mathbb{E}[I_T(\omega)] \to f(\omega)$ cuando $T \to \infty$), no es estadísticamente consistente: su varianza no converge a cero, incluso para $T$ grande. Para obtener estimadores consistentes se requiere suavizado espectral, ya sea mediante ventanas espectrales (Daniell, Parzen, Bartlett) o mediante promediado sobre frecuencias adyacentes [@priestley1981spectral].
 
-Alternativamente, los métodos paramétricos ajustan un modelo ARMA de orden finito a la serie y derivan $f(\omega)$ analíticamente a partir de los coeficientes estimados. Estos enfoques son particularmente útiles cuando la longitud muestral es limitada, como ocurre en ventanas de nowcasting de 7 días con muestreo cada 10 minutos.
+Alternativamente, los métodos paramétricos ajustan un modelo AR de orden finito a la serie y derivan $f(\omega)$ analíticamente a partir de los coeficientes estimados y que se definirá más adelante [@]. Estos enfoques son particularmente útiles cuando la longitud muestral es limitada, como ocurre en ventanas de nowcasting de 7 días con muestreo cada 10 minutos.
 
 ### Integración con el sistema de pronóstico
 
 La representación espectral proporciona las bases matemáticas para dos componentes centrales de esta tesis:
-1. **Validación de estacionariedad**: La inspección visual y cuantitativa de $f(\omega)$ permite detectar tendencias no estacionarias o ciclos dominantes que deben eliminarse o modelarse explícitamente antes de aplicar métodos de correlación cruzada.
-2. **Análisis $f$-$k$**: La extensión de la transformada de Fourier al dominio espacio-temporal $(s,t)$ permite estimar la velocidad de fase de estructuras atmosféricas mediante la pendiente de la fase espectral, metodología que se desarrolla en la @sec-analisisfk y se aplica operativamente en la estimación de velocidad de advección (Sección 4.3).
 
-En conjunto, la dualidad autocovarianza–transformada de Fourier cierra el círculo teórico entre la descripción temporal de la dependencia y la representación frecuencial de la energía del proceso, habilitando herramientas matemáticas robustas para el pronóstico de corto horizonte bajo incertidumbre.
+1. **Validación de estacionariedad**: La inspección visual y cuantitativa de $f(\omega)$ permite detectar tendencias no estacionarias o ciclos dominantes que deben eliminarse o modelarse explícitamente antes de aplicar métodos de correlación cruzada.
+2. **Análisis $f$-$k$**: La extensión de la Transformada de Fourier al dominio espacio-temporal $(s,t)$ permite estimar la velocidad de fase de estructuras atmosféricas mediante la pendiente de la fase espectral, metodología que se desarrolla en la @sec-analisisfk y se aplica operativamente en la estimación de velocidad de advección [@sec-analisisadveccion].
+
+En conjunto, la dualidad autocovarianza–Transformada de Fourier cierra el círculo teórico entre la descripción temporal de la dependencia y la representación frecuencial de la energía del proceso, habilitando herramientas matemáticas robustas para el pronóstico de corto horizonte bajo incertidumbre.
 
 ## Análisis frecuencia-espacio ($f$-$k$) y velocidad de fase {#sec-analisisfk}
 
@@ -282,16 +283,16 @@ La mediana se prefiere sobre la media aritmética por su robustez frente a valor
 
 ### Integración con el sistema de pronóstico
 
-El análisis $f$-$k$ complementa la estimación por correlación cruzada (Sección 2.3) en regímenes donde la coherencia temporal entre segmentos adyacentes es baja pero existe estructura espectral clara. La velocidad estimada $v = \operatorname{median}_{\omega}\{v_p(\omega)\}$ se incorpora directamente al operador de transporte advectivo discreto:
+El análisis $f$-$k$ complementa la estimación por correlación cruzada (@sec-correlacioncruzada) en regímenes donde la coherencia temporal entre segmentos adyacentes es baja pero existe estructura espectral clara. La velocidad estimada $v = \operatorname{median}_{\omega}\{v_p(\omega)\}$ se incorpora directamente al operador de transporte advectivo discreto:
 $$
-s_i^{\text{up}} = s_i - v H,
+s_i^{\text{up}} := s_i - v H,
 $$
 
-que constituye el núcleo del modelo híbrido de nowcasting desarrollado en la Sección 4.4. Esta cadena teórica, desde la transformada 2D hasta la regresión de fase, garantiza que el pronóstico respete la física de propagación observada, transformando observaciones espacio-temporales en parámetros operativos cuantificables y trazables.
+que constituye el núcleo del modelo híbrido de nowcasting desarrollado en la @sec-pronosticoadvectivo. Esta cadena teórica, desde la transformada 2D hasta la regresión de fase, garantiza que el pronóstico respete la física de propagación observada, transformando observaciones espacio-temporales en parámetros operativos cuantificables y trazables.
 
 ## Modelos autorregresivos AR(1) y persistencia temporal {#sec-ar1}
 
-Los modelos autorregresivos de orden uno constituyen la clase más simple y ampliamente utilizada de procesos estocásticos lineales. Su estructura recursiva captura la inercia temporal inherente a variables meteorológicas como la temperatura y la humedad relativa, permitiendo representar la persistencia observada en escalas de minutos a horas sin requerir parámetros adicionales. En el contexto de nowcasting, el modelo AR(1) proporciona el componente local del pronóstico híbrido descrito en la Sección 4.4, complementando el transporte advectivo con dinámica temporal intrínseca y garantizando estabilidad numérica frente a fluctuaciones de alta frecuencia [@brockwell2016time].
+Los modelos autorregresivos de orden uno constituyen la clase más simple y ampliamente utilizada de procesos estocásticos lineales. Su estructura recursiva captura la inercia temporal inherente a variables meteorológicas como la temperatura y la humedad relativa, permitiendo representar la persistencia observada en escalas de minutos a horas sin requerir parámetros adicionales. En el contexto de nowcasting, el modelo AR(1) proporciona el componente local del pronóstico híbrido descrito en la @sec-pronosticoadvectivo, complementando el transporte advectivo con dinámica temporal intrínseca y garantizando estabilidad numérica frente a fluctuaciones de alta frecuencia [@brockwell2016time].
 
 **Definición 2.5 (Proceso AR(1)).** Sea $\{X_t\}_{t \in \mathbb{Z}}$ un proceso estocástico de tiempo discreto. Se dice que $\{X_t\}$ sigue un **proceso autorregresivo de orden uno**, denotado AR(1), si satisface la ecuación en diferencias estocástica:
 $$
@@ -307,14 +308,15 @@ La existencia de una distribución estacionaria para el proceso AR(1) está cond
 $$
 X_t = \sum_{j=0}^\infty \phi^j \varepsilon_{t-j},
 $$
-la cual converge en media cuadrática ($L^2$) dado que $\sum_{j=0}^\infty |\phi|^j = (1-|\phi|)^{-1} < \infty$ [@brockwell2016time].
+Según @brockwell2016time, esta representación converge en media cuadrática ($L^2$), ya que $\sum_{j=0}^\infty |\phi|^j = (1-|\phi|)^{-1} < \infty$ .
 
 A partir de esta representación se obtienen directamente los momentos poblacionales:
+
 - **Media:** $\mathbb{E}[X_t] = 0$ (para el proceso centrado).
 - **Varianza:** $\gamma(0) = \operatorname{Var}(X_t) = \sigma_\varepsilon^2 \sum_{j=0}^\infty \phi^{2j} = \dfrac{\sigma_\varepsilon^2}{1-\phi^2}$.
 - **Autocovarianza:** Para $h \in \mathbb{Z}$, se cumple $\gamma(h) = \mathbb{E}[X_t X_{t-h}] = \phi^{|h|} \gamma(0)$.
 
-La estructura exponencial de la autocovarianza implica que la dependencia temporal decae monótonamente con el desfase $h$. El parámetro $\phi$ cuantifica directamente la **persistencia temporal**: valores cercanos a $1$ indican alta inercia (variabilidad lenta), mientras que $\phi \approx 0$ corresponde a comportamiento cercano al ruido blanco [@shumway2017time].
+La estructura exponencial de la autocovarianza implica que la dependencia temporal decae monótonamente con el desfase $h$. El parámetro $\phi$ cuantifica directamente la **persistencia temporal**: valores cercanos a $1$ indican alta inercia (variabilidad lenta), mientras que $\phi \approx 0$ corresponde a comportamiento cercano al ruido blanco, para más detalles [@shumway2017time].
 
 ### Pronóstico multipaso y decaimiento de la persistencia
 
@@ -327,7 +329,7 @@ $$
 \hat{X}_{t+k \mid t} = \mu + \phi^k (X_t - \mu).
 $$
 
-En la implementación del sistema de nowcasting (Sección 4.4), esta expresión se utiliza directamente para calcular el componente autorregresivo:
+En la implementación del sistema de nowcasting [@sec-sec-pronosticoadvectivo], esta expresión se utiliza directamente para calcular el componente autorregresivo:
 $$
 y_i^{\text{AR}}(t+H) = a_i^{n} y_i(t), \quad n = H/\Delta t,
 $$
@@ -335,19 +337,20 @@ donde $a_i$ es la estimación muestral de $\phi$ para el segmento espacial $i$.
 
 ### Estimación por mínimos cuadrados ordinarios
 
-En la práctica, $\phi$ y $\sigma_\varepsilon^2$ son desconocidos y deben estimarse a partir de una trayectoria finita $\{x_t\}_{t=1}^T$. El estimador por mínimos cuadrados ordinarios (MCO) minimiza la suma de residuos cuadráticos:
+En la práctica, $\phi$ y $\sigma_\varepsilon^2$ son desconocidos y deben estimarse a partir de una trayectoria finita $\{x_t\}_{t=1}^T$. El estimador por Mínimos Cuadrados Ordinarios (MCO) minimiza la suma de residuos cuadráticos:
 $$
 \hat{\phi} = \arg\min_{\phi} \sum_{t=2}^T (x_t - \phi x_{t-1})^2 = \frac{\sum_{t=2}^T x_t x_{t-1}}{\sum_{t=1}^{T-1} x_{t-1}^2}.
 $$
-Bajo la hipótesis de estacionariedad y ruido blanco, $\hat{\phi}$ es consistente y asintóticamente normal:
+Bajo la hipótesis de estacionariedad y ruido blanco, $\hat{\phi}$ es es un estimador estadísticamente consistente y asintóticamente normal:
 $$
 \sqrt{T}(\hat{\phi} - \phi) \xrightarrow{d} \mathcal{N}\left(0, 1-\phi^2\right), \quad T \to \infty.
 $$
-Para series meteorológicas de longitud limitada, la varianza de $\hat{\phi}$ se infla cuando $|\phi|$ se aproxima a $1$ (raíz unitaria cercana). Por esta razón, en segmentos con escasez de observaciones se aplica regularización mediante truncamiento o sustitución por la mediana espacial de coeficientes válidos, garantizando estabilidad operativa [@box2015time].
+Para series meteorológicas de longitud limitada, la varianza de $\hat{\phi}$ es muy grande cuando $|\phi|$ se aproxima a $1$ (raíz unitaria cercana). Por esta razón, en segmentos con escasez de observaciones se aplica regularización mediante truncamiento o sustitución por la mediana espacial de coeficientes válidos, garantizando estabilidad operativa [@box2015time].
 
 ### Integración con el sistema de decisión
 
 El modelo AR(1) no se emplea de forma aislada, sino como componente estructural dentro del esquema híbrido de nowcasting. Su contribución es particularmente crítica para:
+
 1. **Temperatura del aire:** Donde la inercia termodinámica justifica $\phi \approx 0.95$, reflejando alta coherencia temporal.
 2. **Humedad relativa:** Con persistencia moderada ($\phi \approx 0.85$), capturando la dinámica higroscópica sin sobreajuste.
 3. **Modelo de respaldo:** Cuando fallan los métodos advectivos, el AR(1) regularizado actúa como fallback conservador, evitando extrapolaciones físicamente inconsistentes.

@@ -412,7 +412,7 @@ donde $\lambda > 0$ es un factor de regularización pequeño que atenúa la magn
 
 Este modelo de respaldo garantiza que siempre se disponga de una estimación de la velocidad de advección, aunque sea conservadora, permitiendo la generación de pronósticos incluso en condiciones de baja coherencia espacial.
 
-## Pronóstico advectivo a corto plazo (nowcasting)
+## Pronóstico advectivo a corto plazo (nowcasting) {#sec-pronosticoadvectivo}
 ### Formulación del problema de pronóstico
 
 Una vez estimada la velocidad advectiva dominante $v$ a lo largo de la ruta, se utiliza un modelo de pronóstico determinista a corto plazo (*nowcast*) con horizonte $H$. El objetivo consiste en predecir la evolución temporal de las variables climáticas en cada segmento espacial $s_i$ durante el período de interés.
