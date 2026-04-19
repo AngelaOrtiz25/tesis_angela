@@ -293,7 +293,7 @@
 \title{tesis}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-04-16}
+\date{2026-04-18}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -1386,7 +1386,7 @@ se explota explícitamente para generar pronósticos de corto horizonte
 con intervalos de confianza cuantificables.
 
 \section{Correlación cruzada y existencia del lag óptimo
-discreto}\label{correlaciuxf3n-cruzada-y-existencia-del-lag-uxf3ptimo-discreto}
+discreto}\label{sec-correlacioncruzada}
 
 En la práctica operacional, solo se dispone de una trayectoria finita
 \(\{X_t\}_{t=1}^T\) y \(\{Y_t\}_{t=1}^T\) de longitud \(T < \infty\).
@@ -1511,7 +1511,7 @@ desarrollado en la Sección~\ref{sec-analisisfk}, donde la fase espectral
 reemplaza al dominio temporal para capturar estructuras de propagación
 en regímenes de baja coherencia temporal.
 
-\section{Análisis de series de tiempo: autocovarianza y transformada de
+\section{Análisis de series de tiempo: autocovarianza y Transformada de
 Fourier}\label{sec-analisisseriestiempo}
 
 La caracterización completa de un proceso estocástico estacionario en el
@@ -1522,7 +1522,7 @@ meteorológicas. El análisis espectral permite transformar la dependencia
 temporal en una distribución de energía por frecuencias, facilitando la
 detección de modos oscilatorios y la validación de supuestos de
 advección. Este cambio de perspectiva, del dominio temporal al dominio
-frecuencial, se fundamenta en la transformada de Fourier aplicada a
+frecuencial, se fundamenta en la Transformada de Fourier aplicada a
 secuencias de covarianza y constituye el puente matemático necesario
 para el análisis \(f\)-\(k\) desarrollado en la
 Sección~\ref{sec-analisisfk}.
@@ -1579,7 +1579,7 @@ tiempo discreto establece:
 
 \textbf{Teorema 2.2 (Wiener-Khinchin discreto).} Si
 \(\sum_{h=-\infty}^{\infty} |\gamma(h)| < \infty\), entonces la densidad
-espectral existe, es continua y está dada por la transformada de Fourier
+espectral existe, es continua y está dada por la Transformada de Fourier
 discreta de la autocovarianza: \[
 f(\omega) = \frac{1}{2\pi} \sum_{h=-\infty}^{\infty} \gamma(h) e^{-i h \omega}, \quad \omega \in [-\pi, \pi].
 \] Recíprocamente, la autocovarianza se recupera mediante la
@@ -1590,8 +1590,8 @@ temporal como una superposición de componentes oscilatorias ortogonales,
 cada una ponderada por su densidad espectral. En el contexto
 meteorológico, picos pronunciados en \(f(\omega)\) suelen asociarse a
 ciclos diurnos, patrones sinópticos recurrentes o modos de oscilación
-climática de baja frecuencia (\citeproc{ref-shumway2017time}{Shumway y
-Stoffer 2017}).
+climática de baja frecuencia, para más detalles
+(\citeproc{ref-shumway2017time}{Shumway y Stoffer 2017}).
 
 \subsection{Estimación espectral para series
 finitas}\label{estimaciuxf3n-espectral-para-series-finitas}
@@ -1603,34 +1603,44 @@ Transformada Discreta de Fourier (DFT) de los datos centrados: \[
 I_T(\omega) = \frac{1}{2\pi T} \left| \sum_{t=1}^T (x_t - \bar{x}) e^{-i t \omega} \right|^2, \quad \omega \in [-\pi, \pi].
 \] Aunque el periodograma es asintóticamente insesgado
 (\(\mathbb{E}[I_T(\omega)] \to f(\omega)\) cuando \(T \to \infty\)), no
-es consistente: su varianza no converge a cero, incluso para \(T\)
-grande. Para obtener estimadores consistentes se requiere suavizado
-espectral, ya sea mediante ventanas espectrales (Daniell, Parzen,
-Bartlett) o mediante promediado sobre frecuencias adyacentes
+es estadísticamente consistente: su varianza no converge a cero, incluso
+para \(T\) grande. Para obtener estimadores consistentes se requiere
+suavizado espectral, ya sea mediante ventanas espectrales (Daniell,
+Parzen, Bartlett) o mediante promediado sobre frecuencias adyacentes
 (\citeproc{ref-priestley1981spectral}{Priestley 1981}).
 
-Alternativamente, los métodos paramétricos ajustan un modelo ARMA de
-orden finito a la serie y derivan \(f(\omega)\) analíticamente a partir
-de los coeficientes estimados. Estos enfoques son particularmente útiles
-cuando la longitud muestral es limitada, como ocurre en ventanas de
-nowcasting de 7 días con muestreo cada 10 minutos.
+Alternativamente, los métodos paramétricos ajustan un modelo AR de orden
+finito a la serie y derivan \(f(\omega)\) analíticamente a partir de los
+coeficientes estimados y que se definirá más adelante {[}@{]}. Estos
+enfoques son particularmente útiles cuando la longitud muestral es
+limitada, como ocurre en ventanas de nowcasting de 7 días con muestreo
+cada 10 minutos.
 
 \subsection{Integración con el sistema de
 pronóstico}\label{integraciuxf3n-con-el-sistema-de-pronuxf3stico}
 
 La representación espectral proporciona las bases matemáticas para dos
-componentes centrales de esta tesis: 1. \textbf{Validación de
-estacionariedad}: La inspección visual y cuantitativa de \(f(\omega)\)
-permite detectar tendencias no estacionarias o ciclos dominantes que
-deben eliminarse o modelarse explícitamente antes de aplicar métodos de
-correlación cruzada. 2. \textbf{Análisis \(f\)-\(k\)}: La extensión de
-la transformada de Fourier al dominio espacio-temporal \((s,t)\) permite
-estimar la velocidad de fase de estructuras atmosféricas mediante la
-pendiente de la fase espectral, metodología que se desarrolla en la
-Sección~\ref{sec-analisisfk} y se aplica operativamente en la estimación
-de velocidad de advección (Sección 4.3).
+componentes centrales de esta tesis:
 
-En conjunto, la dualidad autocovarianza--transformada de Fourier cierra
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Validación de estacionariedad}: La inspección visual y
+  cuantitativa de \(f(\omega)\) permite detectar tendencias no
+  estacionarias o ciclos dominantes que deben eliminarse o modelarse
+  explícitamente antes de aplicar métodos de correlación cruzada.
+\item
+  \textbf{Análisis \(f\)-\(k\)}: La extensión de la Transformada de
+  Fourier al dominio espacio-temporal \((s,t)\) permite estimar la
+  velocidad de fase de estructuras atmosféricas mediante la pendiente de
+  la fase espectral, metodología que se desarrolla en la
+  Sección~\ref{sec-analisisfk} y se aplica operativamente en la
+  estimación de velocidad de advección
+  Sección~\ref{sec-analisisadveccion}.
+\end{enumerate}
+
+En conjunto, la dualidad autocovarianza--Transformada de Fourier cierra
 el círculo teórico entre la descripción temporal de la dependencia y la
 representación frecuencial de la energía del proceso, habilitando
 herramientas matemáticas robustas para el pronóstico de corto horizonte
@@ -1766,19 +1776,20 @@ convectivas no coherentes con la advección dominante.
 pronóstico}\label{integraciuxf3n-con-el-sistema-de-pronuxf3stico-1}
 
 El análisis \(f\)-\(k\) complementa la estimación por correlación
-cruzada (Sección 2.3) en regímenes donde la coherencia temporal entre
-segmentos adyacentes es baja pero existe estructura espectral clara. La
-velocidad estimada \(v = \operatorname{median}_{\omega}\{v_p(\omega)\}\)
-se incorpora directamente al operador de transporte advectivo discreto:
-\[
-s_i^{\text{up}} = s_i - v H,
+cruzada (Sección~\ref{sec-correlacioncruzada}) en regímenes donde la
+coherencia temporal entre segmentos adyacentes es baja pero existe
+estructura espectral clara. La velocidad estimada
+\(v = \operatorname{median}_{\omega}\{v_p(\omega)\}\) se incorpora
+directamente al operador de transporte advectivo discreto: \[
+s_i^{\text{up}} := s_i - v H,
 \]
 
 que constituye el núcleo del modelo híbrido de nowcasting desarrollado
-en la Sección 4.4. Esta cadena teórica, desde la transformada 2D hasta
-la regresión de fase, garantiza que el pronóstico respete la física de
-propagación observada, transformando observaciones espacio-temporales en
-parámetros operativos cuantificables y trazables.
+en la Sección~\ref{sec-pronosticoadvectivo}. Esta cadena teórica, desde
+la transformada 2D hasta la regresión de fase, garantiza que el
+pronóstico respete la física de propagación observada, transformando
+observaciones espacio-temporales en parámetros operativos cuantificables
+y trazables.
 
 \section{Modelos autorregresivos AR(1) y persistencia
 temporal}\label{sec-ar1}
@@ -1790,9 +1801,9 @@ meteorológicas como la temperatura y la humedad relativa, permitiendo
 representar la persistencia observada en escalas de minutos a horas sin
 requerir parámetros adicionales. En el contexto de nowcasting, el modelo
 AR(1) proporciona el componente local del pronóstico híbrido descrito en
-la Sección 4.4, complementando el transporte advectivo con dinámica
-temporal intrínseca y garantizando estabilidad numérica frente a
-fluctuaciones de alta frecuencia
+la Sección~\ref{sec-pronosticoadvectivo}, complementando el transporte
+advectivo con dinámica temporal intrínseca y garantizando estabilidad
+numérica frente a fluctuaciones de alta frecuencia
 (\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
 
 \textbf{Definición 2.5 (Proceso AR(1)).} Sea
@@ -1821,24 +1832,32 @@ MA(\(\infty\))).} El proceso AR(1) es débilmente estacionario si y solo
 si \(|\phi| < 1\). Bajo esta condición, admite la representación de
 media móvil infinita: \[
 X_t = \sum_{j=0}^\infty \phi^j \varepsilon_{t-j},
-\] la cual converge en media cuadrática (\(L^2\)) dado que
-\(\sum_{j=0}^\infty |\phi|^j = (1-|\phi|)^{-1} < \infty\)
-(\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
+\] Según Brockwell y Davis (\citeproc{ref-brockwell2016time}{2016}),
+esta representación converge en media cuadrática (\(L^2\)), ya que
+\(\sum_{j=0}^\infty |\phi|^j = (1-|\phi|)^{-1} < \infty\) .
 
 A partir de esta representación se obtienen directamente los momentos
-poblacionales: - \textbf{Media:} \(\mathbb{E}[X_t] = 0\) (para el
-proceso centrado). - \textbf{Varianza:}
-\(\gamma(0) = \operatorname{Var}(X_t) = \sigma_\varepsilon^2 \sum_{j=0}^\infty \phi^{2j} = \dfrac{\sigma_\varepsilon^2}{1-\phi^2}\).
-- \textbf{Autocovarianza:} Para \(h \in \mathbb{Z}\), se cumple
-\(\gamma(h) = \mathbb{E}[X_t X_{t-h}] = \phi^{|h|} \gamma(0)\).
+poblacionales:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Media:} \(\mathbb{E}[X_t] = 0\) (para el proceso centrado).
+\item
+  \textbf{Varianza:}
+  \(\gamma(0) = \operatorname{Var}(X_t) = \sigma_\varepsilon^2 \sum_{j=0}^\infty \phi^{2j} = \dfrac{\sigma_\varepsilon^2}{1-\phi^2}\).
+\item
+  \textbf{Autocovarianza:} Para \(h \in \mathbb{Z}\), se cumple
+  \(\gamma(h) = \mathbb{E}[X_t X_{t-h}] = \phi^{|h|} \gamma(0)\).
+\end{itemize}
 
 La estructura exponencial de la autocovarianza implica que la
 dependencia temporal decae monótonamente con el desfase \(h\). El
 parámetro \(\phi\) cuantifica directamente la \textbf{persistencia
 temporal}: valores cercanos a \(1\) indican alta inercia (variabilidad
 lenta), mientras que \(\phi \approx 0\) corresponde a comportamiento
-cercano al ruido blanco (\citeproc{ref-shumway2017time}{Shumway y
-Stoffer 2017}).
+cercano al ruido blanco, para más detalles
+(\citeproc{ref-shumway2017time}{Shumway y Stoffer 2017}).
 
 \subsection{Pronóstico multipaso y decaimiento de la
 persistencia}\label{pronuxf3stico-multipaso-y-decaimiento-de-la-persistencia}
@@ -1860,9 +1879,9 @@ variables no centradas con media \(\mu\), el pronóstico converge a
 \hat{X}_{t+k \mid t} = \mu + \phi^k (X_t - \mu).
 \]
 
-En la implementación del sistema de nowcasting (Sección 4.4), esta
-expresión se utiliza directamente para calcular el componente
-autorregresivo: \[
+En la implementación del sistema de nowcasting
+\textbf{?@sec-sec-pronosticoadvectivo}, esta expresión se utiliza
+directamente para calcular el componente autorregresivo: \[
 y_i^{\text{AR}}(t+H) = a_i^{n} y_i(t), \quad n = H/\Delta t,
 \] donde \(a_i\) es la estimación muestral de \(\phi\) para el segmento
 espacial \(i\).
@@ -1872,14 +1891,15 @@ ordinarios}\label{estimaciuxf3n-por-muxednimos-cuadrados-ordinarios}
 
 En la práctica, \(\phi\) y \(\sigma_\varepsilon^2\) son desconocidos y
 deben estimarse a partir de una trayectoria finita \(\{x_t\}_{t=1}^T\).
-El estimador por mínimos cuadrados ordinarios (MCO) minimiza la suma de
+El estimador por Mínimos Cuadrados Ordinarios (MCO) minimiza la suma de
 residuos cuadráticos: \[
 \hat{\phi} = \arg\min_{\phi} \sum_{t=2}^T (x_t - \phi x_{t-1})^2 = \frac{\sum_{t=2}^T x_t x_{t-1}}{\sum_{t=1}^{T-1} x_{t-1}^2}.
 \] Bajo la hipótesis de estacionariedad y ruido blanco, \(\hat{\phi}\)
-es consistente y asintóticamente normal: \[
+es es un estimador estadísticamente consistente y asintóticamente
+normal: \[
 \sqrt{T}(\hat{\phi} - \phi) \xrightarrow{d} \mathcal{N}\left(0, 1-\phi^2\right), \quad T \to \infty.
 \] Para series meteorológicas de longitud limitada, la varianza de
-\(\hat{\phi}\) se infla cuando \(|\phi|\) se aproxima a \(1\) (raíz
+\(\hat{\phi}\) es muy grande cuando \(|\phi|\) se aproxima a \(1\) (raíz
 unitaria cercana). Por esta razón, en segmentos con escasez de
 observaciones se aplica regularización mediante truncamiento o
 sustitución por la mediana espacial de coeficientes válidos,
@@ -1891,13 +1911,23 @@ decisión}\label{integraciuxf3n-con-el-sistema-de-decisiuxf3n}
 
 El modelo AR(1) no se emplea de forma aislada, sino como componente
 estructural dentro del esquema híbrido de nowcasting. Su contribución es
-particularmente crítica para: 1. \textbf{Temperatura del aire:} Donde la
-inercia termodinámica justifica \(\phi \approx 0.95\), reflejando alta
-coherencia temporal. 2. \textbf{Humedad relativa:} Con persistencia
-moderada (\(\phi \approx 0.85\)), capturando la dinámica higroscópica
-sin sobreajuste. 3. \textbf{Modelo de respaldo:} Cuando fallan los
-métodos advectivos, el AR(1) regularizado actúa como fallback
-conservador, evitando extrapolaciones físicamente inconsistentes.
+particularmente crítica para:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Temperatura del aire:} Donde la inercia termodinámica
+  justifica \(\phi \approx 0.95\), reflejando alta coherencia temporal.
+\item
+  \textbf{Humedad relativa:} Con persistencia moderada
+  (\(\phi \approx 0.85\)), capturando la dinámica higroscópica sin
+  sobreajuste.
+\item
+  \textbf{Modelo de respaldo:} Cuando fallan los métodos advectivos, el
+  AR(1) regularizado actúa como fallback conservador, evitando
+  extrapolaciones físicamente inconsistentes.
+\end{enumerate}
 
 La combinación explícita de \(\phi^k\) (decaimiento autorregresivo) con
 \(s_i - vH\) (transporte espacial) produce un predictor que balancea
@@ -3061,7 +3091,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, coltitle=black, breakable, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, left=2mm, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, arc=.35mm, opacitybacktitle=0.6, opacityback=0, leftrule=.75mm, rightrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, leftrule=.75mm, breakable, left=2mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, coltitle=black, bottomtitle=1mm, opacityback=0, toprule=.15mm, toptitle=1mm, rightrule=.15mm, arc=.35mm, titlerule=0mm, bottomrule=.15mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white]
 
 \textbf{Características operativas de la ruta}
 
@@ -3711,7 +3741,7 @@ permitiendo la generación de pronósticos incluso en condiciones de baja
 coherencia espacial.
 
 \section{Pronóstico advectivo a corto plazo
-(nowcasting)}\label{pronuxf3stico-advectivo-a-corto-plazo-nowcasting}
+(nowcasting)}\label{sec-pronosticoadvectivo}
 
 \subsection{Formulación del problema de
 pronóstico}\label{formulaciuxf3n-del-problema-de-pronuxf3stico}
