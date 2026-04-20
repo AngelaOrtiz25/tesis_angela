@@ -329,7 +329,7 @@ $$
 \hat{X}_{t+k \mid t} = \mu + \phi^k (X_t - \mu).
 $$
 
-En la implementación del sistema de nowcasting [@sec-sec-pronosticoadvectivo], esta expresión se utiliza directamente para calcular el componente autorregresivo:
+En la implementación del sistema de nowcasting [@sec-pronosticoadvectivo], esta expresión se utiliza directamente para calcular el componente autorregresivo:
 $$
 y_i^{\text{AR}}(t+H) = a_i^{n} y_i(t), \quad n = H/\Delta t,
 $$
