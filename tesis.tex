@@ -293,7 +293,7 @@
 \title{tesis}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-04-20}
+\date{2026-04-22}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -1168,7 +1168,7 @@ Pronóstico}\label{procesos-estocuxe1sticos-y-modelos-de-pronuxf3stico}
 
 \section{\texorpdfstring{Procesos estocásticos de segundo orden y
 espacio de Hilbert
-\(L^2(\Omega,\mathcal{F},\mathbb{P})\)}{Procesos estocásticos de segundo orden y espacio de Hilbert L\^{}2(\textbackslash Omega,\textbackslash mathcal\{F\},\textbackslash mathbb\{P\})}}\label{procesos-estocuxe1sticos-de-segundo-orden-y-espacio-de-hilbert-l2omegamathcalfmathbbp}
+\(L^2(\Omega,\mathcal{F},\mathbb{P})\)}{Procesos estocásticos de segundo orden y espacio de Hilbert L\^{}2(\textbackslash Omega,\textbackslash mathcal\{F\},\textbackslash mathbb\{P\})}}\label{sec-estocasticossegundo}
 
 El análisis matemático de fenómenos meteorológicos y su aplicación al
 pronóstico operativo requieren un marco probabilístico riguroso que
@@ -1278,9 +1278,10 @@ a lo largo del tiempo. En particular, la noción de estacionariedad
 constituye un pilar fundamental en el análisis de series de tiempo, ya
 que permite inferir parámetros poblacionales a partir de una única
 trayectoria observada. Dado que el marco probabilístico desarrollado en
-la Sección 2.1 se restringe a procesos de segundo orden, la
-estacionariedad de interés es la \emph{débil} (o de covarianza), la cual
-solo exige invarianza en los dos primeros momentos estadísticos
+la Sección~\ref{sec-estocasticossegundo} se restringe a procesos de
+segundo orden, la estacionariedad de interés es la \emph{débil} (o de
+covarianza), la cual solo exige invarianza en los dos primeros momentos
+estadísticos, para más detalles consultar
 (\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
 
 \textbf{Definición 2.3 (Estacionariedad débil).} Sea
@@ -1349,9 +1350,10 @@ Esta función cuantifica la dependencia lineal entre ambas series con un
 desfase \(h\) y está acotada por \(|\rho_{XY}(h)| \leq 1\). La
 identificación del retardo \(h^*\) que maximiza \(|\rho_{XY}(h)|\)
 constituye la base matemática del método de correlación cruzada entre
-segmentos espaciales adyacentes, descrito en la Sección 4.3, y permite
-estimar el tiempo de propagación de estructuras atmosféricas a lo largo
-del corredor de vuelo (\citeproc{ref-box2015time}{Box et~al. 2015}).
+segmentos espaciales adyacentes, descrito en la
+Sección~\ref{sec-analisisadveccion}, y permite estimar el tiempo de
+propagación de estructuras atmosféricas a lo largo del corredor de vuelo
+(\citeproc{ref-box2015time}{Box et~al. 2015}).
 
 \subsection{Consideraciones de ergodicidad y validez
 muestral}\label{consideraciones-de-ergodicidad-y-validez-muestral}
@@ -1880,7 +1882,7 @@ variables no centradas con media \(\mu\), el pronóstico converge a
 \]
 
 En la implementación del sistema de nowcasting
-\textbf{?@sec-sec-pronosticoadvectivo}, esta expresión se utiliza
+Sección~\ref{sec-pronosticoadvectivo}, esta expresión se utiliza
 directamente para calcular el componente autorregresivo: \[
 y_i^{\text{AR}}(t+H) = a_i^{n} y_i(t), \quad n = H/\Delta t,
 \] donde \(a_i\) es la estimación muestral de \(\phi\) para el segmento
@@ -3091,7 +3093,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colframe=quarto-callout-note-color-frame, rightrule=.15mm, coltitle=black, bottomtitle=1mm, left=2mm, opacityback=0, colback=white, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, titlerule=0mm, toprule=.15mm, breakable, leftrule=.75mm, toptitle=1mm, opacitybacktitle=0.6]
+\begin{tcolorbox}[enhanced jigsaw, breakable, left=2mm, bottomrule=.15mm, coltitle=black, leftrule=.75mm, rightrule=.15mm, colback=white, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, opacitybacktitle=0.6, opacityback=0, arc=.35mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm]
 
 \textbf{Características operativas de la ruta}
 
