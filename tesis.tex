@@ -1652,7 +1652,7 @@ componentes centrales de esta tesis:
   Sección~\ref{sec-analisisadveccion}.
 \end{enumerate}
 
-En conjunto, la dualidad Atocovarianza--Transformada de Fourier cierra
+En conjunto, la dualidad Autocovarianza--Transformada de Fourier cierra
 el círculo teórico entre la descripción temporal de la dependencia y la
 representación frecuencial de la energía del proceso, habilitando
 herramientas matemáticas robustas para el pronóstico de corto horizonte
@@ -1815,7 +1815,7 @@ requerir parámetros adicionales. En el contexto de nowcasting, el modelo
 AR(1) proporciona el componente local del pronóstico híbrido descrito en
 la Sección~\ref{sec-pronosticoadvectivo}, complementando el transporte
 advectivo con dinámica temporal intrínseca y garantizando estabilidad
-numérica frente a fluctuaciones de alta frecuencia, paara más detalles
+numérica frente a fluctuaciones de alta frecuencia, para más detalles
 (\citeproc{ref-brockwell2016time}{Brockwell y Davis 2016}).
 
 \textbf{Definición 2.5 (Proceso AR(1)).} Sea
@@ -2137,8 +2137,9 @@ dependencia}\label{consistencia-asintuxf3tica-y-condiciones-de-dependencia}
 
 La validez teórica del MBB no requiere supuestos gaussianos, sino
 condiciones de decaimiento de la dependencia. Sea \(\alpha(k)\) el
-coeficiente de mezcla fuerte (strong mixing) del proceso \(\{X_t\}\): \[
-\alpha(k) = \sup_{A \in \mathcal{F}_{-\infty}^0, \, B \in \mathcal{F}_k^\infty} \left| \mathbb{P}(A \cap B) - \mathbb{P}(A)\mathbb{P}(B) \right|.
+\textbf{coeficiente de mezcla fuerte} (strong mixing) del proceso
+\(\{X_t\}\): \[
+\alpha(k) := \sup_{A \in \mathcal{F}_{-\infty}^0, \, B \in \mathcal{F}_k^\infty} \left| \mathbb{P}(A \cap B) - \mathbb{P}(A)\mathbb{P}(B) \right|.
 \] Bajo la condición
 \(\sum_{k=1}^\infty \alpha(k)^{\delta/(2+\delta)} < \infty\) para algún
 \(\delta > 0\), Künsch demostró que el MBB aproxima consistentemente la
@@ -2149,26 +2150,74 @@ distribución límite de medias muestrales y estimadores suaves
 \] Este resultado garantiza que los intervalos de confianza construidos
 a partir de cuantiles empíricos \(\{q_\alpha^*\}\) son asintóticamente
 válidos, incluso para procesos no gaussianos y no lineales comunes en
-meteorología.
+meteorología. \#\#\#\# Definición de las σ-álgebras de pasado y futuro
+
+Para completar la formulación teórica del coeficiente de mezcla fuerte,
+es necesario especificar la estructura de información representada por
+las σ-álgebras \(\mathcal{F}_{-\infty}^0\) y \(\mathcal{F}_k^\infty\).
+Sea \(\{X_t\}_{t \in \mathbb{Z}}\) el proceso estocástico definido sobre
+un espacio de probabilidad \((\Omega, \mathcal{F}, \mathbb{P})\).
+
+\textbf{Definición 4.2 (σ-álgebra generada por un subconjunto de
+variables).} Para cualquier conjunto de índices
+\(I \subseteq \mathbb{Z}\), denotamos por \(\mathcal{F}_I\) a la
+σ-álgebra generada por las variables aleatorias \(\{X_t : t \in I\}\),
+definida como la mínima σ-álgebra que hace medibles a todas las
+variables en dicho conjunto: \[
+\mathcal{F}_I = \sigma\left(\{X_t : t \in I\}\right) = \sigma\left(\bigcup_{t \in I} X_t^{-1}(\mathcal{B}(\mathbb{R}))\right),
+\] donde \(\mathcal{B}(\mathbb{R})\) denota la σ-álgebra de Borel sobre
+los reales.
+
+Bajo esta notación, las σ-álgebras que aparecen en el coeficiente de
+mezcla se definen específicamente como:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{σ-álgebra del pasado (\(\mathcal{F}_{-\infty}^0\)):}
+  Representa toda la información histórica disponible hasta el tiempo
+  \(t=0\): \[
+  \mathcal{F}_{-\infty}^0 := \sigma\left(\dots, X_{-1}, X_0\right) = \sigma\left(\{X_t : t \leq 0\}\right).
+  \]
+\item
+  \textbf{σ-álgebra del futuro (\(\mathcal{F}_k^\infty\)):} Representa
+  la información generada por el proceso desde el tiempo \(t=k\) en
+  adelante: \[
+  \mathcal{F}_k^\infty := \sigma\left(X_k, X_{k+1}, \dots\right) = \sigma\left(\{X_t : t \geq k\}\right).
+  \]
+\end{enumerate}
+
+\textbf{Interpretación probabilística:} El coeficiente \(\alpha(k)\)
+cuantifica la dependencia máxima entre cualquier evento \(A\)
+determinado exclusivamente por el pasado remoto y cualquier evento \(B\)
+determinado exclusivamente por el futuro distante separado por un lag
+\(k\). La condición de mezcla fuerte \(\alpha(k) \to 0\) cuando
+\(k \to \infty\) asegura que la influencia del pasado sobre el futuro se
+desvanece asintóticamente, permitiendo que el procedimiento de block
+bootstrap aproxime correctamente la distribución muestral aun en
+presencia de dependencia serial
+(\citeproc{ref-politis1994stationary}{Politis y Romano 1994b}).
 
 \subsection{\texorpdfstring{Selección de la longitud del bloque
 \(L\)}{Selección de la longitud del bloque L}}\label{selecciuxf3n-de-la-longitud-del-bloque-l}
 
 La elección de \(L\) determina el equilibrio entre sesgo y varianza del
-procedimiento: - Si \(L\) es demasiado pequeño, la estructura de
+procedimiento: Si \(L\) es demasiado pequeño, la estructura de
 dependencia se subestima y el bootstrap se comporta como i.i.d.,
-produciendo intervalos demasiado estrechos. - Si \(L\) es demasiado
+produciendo intervalos demasiado estrechos. Si \(L\) es demasiado
 grande, se reducen el número de bloques disponibles (\(K \approx T/L\)),
 incrementando la varianza muestral del estimador bootstrap.
 
 Bajo condiciones de regularidad, la longitud óptima minimiza el error
 cuadrático medio del estimador de varianza bootstrap y escala como
-\(L_{\text{opt}} \propto T^{1/3}\) para medias muestrales
+\(L_{\text{opt}} \propto T^{1/3}\) para medias muestrales, para más
+detalles de este resultado, consultar
 (\citeproc{ref-hall1995optimal}{Hall, Horowitz, y Jing 1995}). En la
 práctica operacional, sin embargo, la selección de \(L\) se guía por
 escalas físicas del sistema atmosférico (ej. persistencia térmica,
 tiempo de correlación del viento), lo que justifica longitudes adaptadas
-por variable, como se detalla en la Sección 4.8.
+por variable, como se detalla en la
+Sección~\ref{sec-cuantificacionbotstrap}.
 
 \subsection{Variante estacionaria y consideraciones
 numéricas}\label{variante-estacionaria-y-consideraciones-numuxe9ricas}
@@ -2180,7 +2229,7 @@ Politis y Romano propusieron el \textbf{bootstrap estacionario}, donde
 la longitud de cada bloque se muestrea de una distribución geométrica
 con parámetro \(p = 1/L\), garantizando que la serie reconstruida sea
 estrictamente estacionaria bajo la medida bootstrap
-(\citeproc{ref-politis1994large}{Politis y Romano 1994}).
+(\citeproc{ref-politis1994large}{Politis y Romano 1994a}).
 
 En implementaciones computacionales para nowcasting meteorológico, el
 MBB estándar suele preferirse por su simplicidad, determinismo en la
@@ -2188,8 +2237,8 @@ longitud de la réplica y facilidad de paralelización. La elección de
 \(L\) se fija por validación cruzada temporal o por criterios de escala
 física, y el número de réplicas \(B\) se selecciona típicamente entre
 100 y 500 para estabilizar cuantiles extremos (\(p_{05}, p_{95}\)) con
-error de Monte Carlo menor al \(1\%\)
-(\citeproc{ref-lahiri2003resampling}{Lahiri 2003}).
+error de Monte Carlo menor al \(1\%\), más detalles de esta técnica,
+consultar (\citeproc{ref-lahiri2003resampling}{Lahiri 2003}).
 
 \subsection{Integración con la cuantificación de incertidumbre
 operativa}\label{integraciuxf3n-con-la-cuantificaciuxf3n-de-incertidumbre-operativa}
@@ -2201,11 +2250,11 @@ meteorológica. A partir de estas distribuciones se extraen los
 percentiles críticos: \[
 \text{p05}_i = q_{0.05}^*, \quad \text{p50}_i = q_{0.50}^*, \quad \text{p95}_i = q_{0.95}^*,
 \] los cuales alimentan directamente la función de decisión binaria
-desarrollada en la Sección 4.9. El uso del percentil 95 como cota
-conservadora \(\tilde{y}_i = \text{p95}_i\) implementa una política de
-tolerancia cero que cuantifica explícitamente el riesgo de violación de
-umbrales técnicos, cerrando el ciclo entre teoría de procesos
-estocásticos, remuestreo dependiente y toma de decisiones bajo
+desarrollada en la Sección~\ref{sec-drones}. El uso del percentil 95
+como cota conservadora \(\tilde{y}_i = \text{p95}_i\) implementa una
+política de tolerancia cero que cuantifica explícitamente el riesgo de
+violación de umbrales técnicos, cerrando el ciclo entre teoría de
+procesos estocásticos, remuestreo dependiente y toma de decisiones bajo
 incertidumbre.
 
 \section{Teoría de decisión bajo incertidumbre y regiones
@@ -2221,31 +2270,40 @@ confianza derivados de modelos estocásticos. La teoría de decisión bajo
 incertidumbre proporciona el lenguaje matemático para transformar
 información probabilística en acciones discretas, garantizando
 coherencia lógica, trazabilidad y alineación con los objetivos de
-seguridad operacional (\citeproc{ref-berger1985statistical}{Berger
-1985}).
+seguridad operacional, para más detalles sobre teoría de la decisión
+véase (\citeproc{ref-berger1985statistical}{Berger 1985}).
 
 \subsection{Formulación formal del problema de
 decisión}\label{formulaciuxf3n-formal-del-problema-de-decisiuxf3n}
 
 Un problema de decisión se define mediante la tupla
-\((\Theta, \mathcal{A}, \mathcal{L})\), donde: - \(\Theta\) es el
-\textbf{espacio de estados de la naturaleza}, que en este contexto
-corresponde al vector de condiciones meteorológicas reales futuras
-\(\boldsymbol{\theta} = (V, T, H, R)^\top \in \mathbb{R}^4\). -
-\(\mathcal{A} = \{a_1, a_2\}\) es el \textbf{conjunto de acciones
-factibles}, con \(a_1 = \text{PUEDE\_VOLAR}\) y
-\(a_2 = \text{NO\_PUEDE\_VOLAR}\). -
-\(\mathcal{L}: \mathcal{A} \times \Theta \to \mathbb{R}\) es la
-\textbf{función de pérdida}, que cuantifica el costo asociado a elegir
-la acción \(a\) cuando el estado real es \(\boldsymbol{\theta}\).
+\((\Theta, \mathcal{A}, \mathcal{L})\), donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\Theta\) es el \textbf{espacio de estados de la naturaleza}, que en
+  este contexto corresponde al vector de condiciones meteorológicas
+  reales futuras
+  \(\boldsymbol{\theta} = (V, T, H, R)^\top \in \mathbb{R}^4\).
+\item
+  \(\mathcal{A} = \{a_1, a_2\}\) es el \textbf{conjunto de acciones
+  factibles}, con \(a_1 = \text{PUEDE\_VOLAR}\) y
+  \(a_2 = \text{NO\_PUEDE\_VOLAR}\).
+\item
+  \(\mathcal{L}: \mathcal{A} \times \Theta \to \mathbb{R}\) es la
+  \textbf{función de pérdida}, que cuantifica el costo asociado a elegir
+  la acción \(a\) cuando el estado real es \(\boldsymbol{\theta}\).
+\end{itemize}
 
 Bajo incertidumbre, \(\boldsymbol{\theta}\) es desconocido en el momento
-de la decisión. En lugar de conocer el estado exacto, se dispone de una
+de la decisión. En lugar de conocer el estado exacto, se dispone del
+conjunto de datos observados \(\mathcal{D}\) , que permite construir una
 distribución predictiva posterior
 \(\pi(\boldsymbol{\theta} \mid \mathcal{D})\) o, en enfoques no
 paramétricos, de una familia de conjuntos de credibilidad derivados de
-procedimientos de remuestreo (\citeproc{ref-french1988decision}{French
-1988}).
+procedimientos de remuestreo. Más detalles de esta distribución,
+consultar (\citeproc{ref-french1988decision}{French 1988}).
 
 \subsection{Criterios de decisión clásicos y conservadurismo
 operativo}\label{criterios-de-decisiuxf3n-cluxe1sicos-y-conservadurismo-operativo}
@@ -2304,10 +2362,8 @@ viabilidad operacional se determina mediante la función indicadora: \[
 0, & \text{en caso contrario}.
 \end{cases}
 \] Esta formulación transforma el problema de decisión en una evaluación
-de pertenencia a un conjunto definido por intersección de semiespacios,
-lo cual computacionalmente se resuelve mediante evaluaciones booleanas
-secuenciales (\citeproc{ref-hillier2015introduction}{Hillier y Lieberman
-2015}).
+de pertenencia a la región factible, lo cual computacionalmente se
+resuelve mediante evaluaciones booleanas secuenciales.
 
 \subsection{Integración con incertidumbre predictiva y política de
 tolerancia
@@ -2336,15 +2392,15 @@ de una decisión errónea son irreversibles
 
 La estructura teórica presentada en esta sección constituye la base
 matemática de la función de decisión binaria
-\(\mathbb{I}_{\text{vuelo}}\) desarrollada en la Sección 4.9. Los
-umbrales técnicos \(u_j\) se derivan de las especificaciones del dron,
-la región factible \(\mathcal{F}\) se construye como intersección de
-restricciones univariadas, y el uso del percentil 95 (\(\alpha=0.05\))
-materializa el conservadurismo del criterio de Wald en un contexto
-estocástico. Esta formalización asegura que la recomendación operacional
-no sea un heurístico empírico, sino una regla de decisión rigurosa,
-trazable y alineada con los principios de la investigación de
-operaciones aplicada a sistemas críticos.
+\(\mathbb{I}_{\text{vuelo}}\) desarrollada en la
+Sección~\ref{sec-drones}. Los umbrales técnicos \(u_j\) se derivan de
+las especificaciones del dron, la región factible \(\mathcal{F}\) se
+construye como intersección de restricciones univariadas, y el uso del
+percentil 95 (\(\alpha=0.05\)) materializa el conservadurismo del
+criterio de Wald en un contexto estocástico. Esta formalización asegura
+que la recomendación operacional no sea un heurístico empírico, sino una
+regla de decisión rigurosa, trazable y alineada con los principios de la
+investigación de operaciones aplicada a sistemas críticos.
 
 \bookmarksetup{startatroot}
 
@@ -3238,7 +3294,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, colback=white, opacitybacktitle=0.6, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, breakable, left=2mm, leftrule=.75mm, titlerule=0mm, coltitle=black, toprule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, arc=.35mm, rightrule=.15mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, bottomrule=.15mm, rightrule=.15mm, left=2mm, toprule=.15mm, colback=white, opacitybacktitle=0.6, coltitle=black, arc=.35mm, bottomtitle=1mm, breakable, leftrule=.75mm, colframe=quarto-callout-note-color-frame, opacityback=0, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, titlerule=0mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -4807,7 +4863,7 @@ proporcionando una evaluación cuantitativa de su impacto en la
 viabilidad operativa de las misiones con drones.
 
 \section{Cuantificación de la incertidumbre mediante block
-bootstrap}\label{cuantificaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap}
+bootstrap}\label{sec-cuantificacionbotstrap}
 
 El pronóstico de variables meteorológicas a corto plazo está
 inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido
@@ -6452,10 +6508,6 @@ progressive and quasi-stationary waves by space Fourier and time
 cross-spectral analysis»}. \emph{Journal of the Atmospheric Sciences} 30
 (4): 623-33. \url{https://doi.org/10.2151/jmsj1965.49.2_125}.
 
-\bibitem[\citeproctext]{ref-hillier2015introduction}
-Hillier, Frederick S., y Gerald J. Lieberman. 2015. \emph{Introduction
-to Operations Research}. 10.ª ed. New York: McGraw-Hill Education.
-
 \bibitem[\citeproctext]{ref-horn2012matrix}
 Horn, Roger A., y Charles R. Johnson. 2012. \emph{Matrix Analysis}. 2.ª
 ed. Cambridge: Cambridge University Press.
@@ -6476,8 +6528,8 @@ Beyond: The Science of Search Engine Rankings}. Princeton: Princeton
 University Press.
 
 \bibitem[\citeproctext]{ref-liu1992moving}
-Liu, Regina Y., y Kesar Singh. 1992. {«Moving blocks jackknife and
-bootstrap capture weak dependence»}. \emph{Exploring the Limits of
+Liu, Regina Y., y Kesar Singh. 1992. {«Moving block jackknife and block
+bootstrap for dependent data»}. \emph{Exploring the Limits of
 Bootstrap}, 225-48.
 
 \bibitem[\citeproctext]{ref-meyer2000matrix}
@@ -6513,10 +6565,15 @@ Oppenheim, Alan V., y Ronald W. Schafer. 2010. \emph{Discrete-Time
 Signal Processing}. 3.ª ed. Upper Saddle River: Pearson.
 
 \bibitem[\citeproctext]{ref-politis1994large}
-Politis, Dimitris N., y Joseph P. Romano. 1994. {«Large sample
+Politis, Dimitris N., y Joseph P. Romano. 1994a. {«Large sample
 confidence regions based on subsamples under minimal assumptions»}.
 \emph{The Annals of Statistics} 22 (4): 2031-50.
 \url{https://doi.org/10.1214/aos/1176325770}.
+
+\bibitem[\citeproctext]{ref-politis1994stationary}
+---------. 1994b. {«The stationary bootstrap»}. \emph{Journal of the
+American Statistical Association} 89 (428): 1303-13.
+\url{https://doi.org/10.1080/01621459.1994.10476870}.
 
 \bibitem[\citeproctext]{ref-priestley1981spectral}
 Priestley, M. B. 1981. \emph{Spectral Analysis and Time Series}. Vol. 1.

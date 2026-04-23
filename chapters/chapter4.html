@@ -1238,8 +1238,8 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 <p>Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la <a href="#sec-drones" class="quarto-xref"><span>Sección 5.9</span></a>, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.</p>
 </section>
 </section>
-<section id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="cuantificación-de-la-incertidumbre-mediante-block-bootstrap"><span class="header-section-number">5.8</span> Cuantificación de la incertidumbre mediante block bootstrap</h2>
+<section id="sec-cuantificacionbotstrap" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="sec-cuantificacionbotstrap"><span class="header-section-number">5.8</span> Cuantificación de la incertidumbre mediante block bootstrap</h2>
 <p>El pronóstico de variables meteorológicas a corto plazo está inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido de medición, variabilidad atmosférica intrínseca, error de modelo y parámetros estimados con error. Para cuantificar esta incertidumbre de manera rigurosa en el contexto de operaciones con drones, se emplea el método de <strong>block bootstrap temporal</strong>, una técnica de remuestreo especialmente diseñada para series temporales con dependencia serial.</p>
 <p>A diferencia del bootstrap estándar, que asume independencia entre observaciones, el block bootstrap preserva la estructura de correlación temporal al remuestrear bloques contiguos de datos en lugar de observaciones individuales. Esta propiedad resulta esencial para variables meteorológicas muestreadas cada <span class="math inline">\(\Delta t = 10\)</span> minutos durante un período de 7 días, donde la dependencia temporal es una característica estructural del sistema.</p>
 <section id="formulación-matemática-del-block-bootstrap-adaptado" class="level3" data-number="5.8.1">
