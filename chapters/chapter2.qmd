@@ -221,7 +221,7 @@ La representación espectral proporciona las bases matemáticas para dos compone
 1. **Validación de estacionariedad**: La inspección visual y cuantitativa de $f(\omega)$ permite detectar tendencias no estacionarias o ciclos dominantes que deben eliminarse o modelarse explícitamente antes de aplicar métodos de correlación cruzada.
 2. **Análisis $f$-$k$**: La extensión de la Transformada de Fourier al dominio espacio-temporal $(s,t)$ permite estimar la velocidad de fase de estructuras atmosféricas mediante la pendiente de la fase espectral, metodología que se desarrolla en la @sec-analisisfk y se aplica operativamente en la estimación de velocidad de advección [@sec-analisisadveccion].
 
-En conjunto, la dualidad Atocovarianza–Transformada de Fourier cierra el círculo teórico entre la descripción temporal de la dependencia y la representación frecuencial de la energía del proceso, habilitando herramientas matemáticas robustas para el pronóstico de corto horizonte bajo incertidumbre.
+En conjunto, la dualidad Autocovarianza–Transformada de Fourier cierra el círculo teórico entre la descripción temporal de la dependencia y la representación frecuencial de la energía del proceso, habilitando herramientas matemáticas robustas para el pronóstico de corto horizonte bajo incertidumbre.
 
 ## Análisis frecuencia-espacio ($f$-$k$) y velocidad de fase {#sec-analisisfk}
 
@@ -293,7 +293,7 @@ que constituye el núcleo del modelo híbrido de nowcasting desarrollado en la @
 
 ## Modelos autorregresivos AR(1) y persistencia temporal {#sec-ar1}
 
-Los modelos autorregresivos de orden uno constituyen la clase más simple y ampliamente utilizada de procesos estocásticos lineales. Su estructura recursiva captura la inercia temporal inherente a variables meteorológicas como la temperatura y la humedad relativa, permitiendo representar la persistencia observada en escalas de minutos a horas sin requerir parámetros adicionales. En el contexto de nowcasting, el modelo AR(1) proporciona el componente local del pronóstico híbrido descrito en la @sec-pronosticoadvectivo, complementando el transporte advectivo con dinámica temporal intrínseca y garantizando estabilidad numérica frente a fluctuaciones de alta frecuencia, paara más detalles [@brockwell2016time].
+Los modelos autorregresivos de orden uno constituyen la clase más simple y ampliamente utilizada de procesos estocásticos lineales. Su estructura recursiva captura la inercia temporal inherente a variables meteorológicas como la temperatura y la humedad relativa, permitiendo representar la persistencia observada en escalas de minutos a horas sin requerir parámetros adicionales. En el contexto de nowcasting, el modelo AR(1) proporciona el componente local del pronóstico híbrido descrito en la @sec-pronosticoadvectivo, complementando el transporte advectivo con dinámica temporal intrínseca y garantizando estabilidad numérica frente a fluctuaciones de alta frecuencia, para más detalles [@brockwell2016time].
 
 **Definición 2.5 (Proceso AR(1)).** Sea $\{X_t\}_{t \in \mathbb{Z}}$ un proceso estocástico de tiempo discreto. Se dice que $\{X_t\}$ sigue un **proceso autorregresivo de orden uno**, denotado AR(1), si satisface la ecuación en diferencias estocástica:
 $$
@@ -470,29 +470,50 @@ En el contexto de esta tesis, con $T \approx 1008$ observaciones (7 días con mu
 
 ### Consistencia asintótica y condiciones de dependencia
 
-La validez teórica del MBB no requiere supuestos gaussianos, sino condiciones de decaimiento de la dependencia. Sea $\alpha(k)$ el coeficiente de mezcla fuerte (strong mixing) del proceso $\{X_t\}$:
+La validez teórica del MBB no requiere supuestos gaussianos, sino condiciones de decaimiento de la dependencia. Sea $\alpha(k)$ el **coeficiente de mezcla fuerte** (strong mixing) del proceso $\{X_t\}$:
 $$
-\alpha(k) = \sup_{A \in \mathcal{F}_{-\infty}^0, \, B \in \mathcal{F}_k^\infty} \left| \mathbb{P}(A \cap B) - \mathbb{P}(A)\mathbb{P}(B) \right|.
+\alpha(k) := \sup_{A \in \mathcal{F}_{-\infty}^0, \, B \in \mathcal{F}_k^\infty} \left| \mathbb{P}(A \cap B) - \mathbb{P}(A)\mathbb{P}(B) \right|.
 $$
 Bajo la condición $\sum_{k=1}^\infty \alpha(k)^{\delta/(2+\delta)} < \infty$ para algún $\delta > 0$, Künsch demostró que el MBB aproxima consistentemente la distribución límite de medias muestrales y estimadores suaves [@kunsch1989jackknife]. Formalmente, si $L \to \infty$ y $L/T \to 0$ cuando $T \to \infty$, entonces:
 $$
 \sup_{x \in \mathbb{R}} \left| \mathbb{P}^*\left( \sqrt{K}(\hat{\theta}^* - \hat{\theta}) \leq x \right) - \mathbb{P}\left( \sqrt{T}(\hat{\theta} - \theta) \leq x \right) \right| \xrightarrow{p} 0.
 $$
 Este resultado garantiza que los intervalos de confianza construidos a partir de cuantiles empíricos $\{q_\alpha^*\}$ son asintóticamente válidos, incluso para procesos no gaussianos y no lineales comunes en meteorología.
+#### Definición de las σ-álgebras de pasado y futuro
+
+Para completar la formulación teórica del coeficiente de mezcla fuerte, es necesario especificar la estructura de información representada por las σ-álgebras $\mathcal{F}_{-\infty}^0$ y $\mathcal{F}_k^\infty$. Sea $\{X_t\}_{t \in \mathbb{Z}}$ el proceso estocástico definido sobre un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$.
+
+**Definición 4.2 (σ-álgebra generada por un subconjunto de variables).** Para cualquier conjunto de índices $I \subseteq \mathbb{Z}$, denotamos por $\mathcal{F}_I$ a la σ-álgebra generada por las variables aleatorias $\{X_t : t \in I\}$, definida como la mínima σ-álgebra que hace medibles a todas las variables en dicho conjunto:
+$$
+\mathcal{F}_I = \sigma\left(\{X_t : t \in I\}\right) = \sigma\left(\bigcup_{t \in I} X_t^{-1}(\mathcal{B}(\mathbb{R}))\right),
+$$
+donde $\mathcal{B}(\mathbb{R})$ denota la σ-álgebra de Borel sobre los reales.
+
+Bajo esta notación, las σ-álgebras que aparecen en el coeficiente de mezcla se definen específicamente como:
+
+1.  **σ-álgebra del pasado ($\mathcal{F}_{-\infty}^0$):** Representa toda la información histórica disponible hasta el tiempo $t=0$:
+    $$
+    \mathcal{F}_{-\infty}^0 := \sigma\left(\dots, X_{-1}, X_0\right) = \sigma\left(\{X_t : t \leq 0\}\right).
+    $$
+
+2.  **σ-álgebra del futuro ($\mathcal{F}_k^\infty$):** Representa la información generada por el proceso desde el tiempo $t=k$ en adelante:
+    $$
+    \mathcal{F}_k^\infty := \sigma\left(X_k, X_{k+1}, \dots\right) = \sigma\left(\{X_t : t \geq k\}\right).
+    $$
+
+**Interpretación probabilística:** El coeficiente $\alpha(k)$ cuantifica la dependencia máxima entre cualquier evento $A$ determinado exclusivamente por el pasado remoto y cualquier evento $B$ determinado exclusivamente por el futuro distante separado por un lag $k$. La condición de mezcla fuerte $\alpha(k) \to 0$ cuando $k \to \infty$ asegura que la influencia del pasado sobre el futuro se desvanece asintóticamente, permitiendo que el procedimiento de block bootstrap aproxime correctamente la distribución muestral aun en presencia de dependencia serial [@politis1994stationary].
 
 ### Selección de la longitud del bloque $L$
 
-La elección de $L$ determina el equilibrio entre sesgo y varianza del procedimiento:
-- Si $L$ es demasiado pequeño, la estructura de dependencia se subestima y el bootstrap se comporta como i.i.d., produciendo intervalos demasiado estrechos.
-- Si $L$ es demasiado grande, se reducen el número de bloques disponibles ($K \approx T/L$), incrementando la varianza muestral del estimador bootstrap.
+La elección de $L$ determina el equilibrio entre sesgo y varianza del procedimiento: Si $L$ es demasiado pequeño, la estructura de dependencia se subestima y el bootstrap se comporta como i.i.d., produciendo intervalos demasiado estrechos. Si $L$ es demasiado grande, se reducen el número de bloques disponibles ($K \approx T/L$), incrementando la varianza muestral del estimador bootstrap.
 
-Bajo condiciones de regularidad, la longitud óptima minimiza el error cuadrático medio del estimador de varianza bootstrap y escala como $L_{\text{opt}} \propto T^{1/3}$ para medias muestrales [@hall1995optimal]. En la práctica operacional, sin embargo, la selección de $L$ se guía por escalas físicas del sistema atmosférico (ej. persistencia térmica, tiempo de correlación del viento), lo que justifica longitudes adaptadas por variable, como se detalla en la Sección 4.8.
+Bajo condiciones de regularidad, la longitud óptima minimiza el error cuadrático medio del estimador de varianza bootstrap y escala como $L_{\text{opt}} \propto T^{1/3}$ para medias muestrales, para más detalles de este resultado, consultar [@hall1995optimal]. En la práctica operacional, sin embargo, la selección de $L$ se guía por escalas físicas del sistema atmosférico (ej. persistencia térmica, tiempo de correlación del viento), lo que justifica longitudes adaptadas por variable, como se detalla en la @sec-cuantificacionbotstrap.
 
 ### Variante estacionaria y consideraciones numéricas
 
 El MBB con bloques fijos introduce discontinuidades artificiales en los puntos de unión entre bloques, lo que puede distorsionar estimadores de alta frecuencia. Para preservar estrictamente la estacionariedad, Politis y Romano propusieron el **bootstrap estacionario**, donde la longitud de cada bloque se muestrea de una distribución geométrica con parámetro $p = 1/L$, garantizando que la serie reconstruida sea estrictamente estacionaria bajo la medida bootstrap [@politis1994large].
 
-En implementaciones computacionales para nowcasting meteorológico, el MBB estándar suele preferirse por su simplicidad, determinismo en la longitud de la réplica y facilidad de paralelización. La elección de $L$ se fija por validación cruzada temporal o por criterios de escala física, y el número de réplicas $B$ se selecciona típicamente entre 100 y 500 para estabilizar cuantiles extremos ($p_{05}, p_{95}$) con error de Monte Carlo menor al $1\%$ [@lahiri2003resampling].
+En implementaciones computacionales para nowcasting meteorológico, el MBB estándar suele preferirse por su simplicidad, determinismo en la longitud de la réplica y facilidad de paralelización. La elección de $L$ se fija por validación cruzada temporal o por criterios de escala física, y el número de réplicas $B$ se selecciona típicamente entre 100 y 500 para estabilizar cuantiles extremos ($p_{05}, p_{95}$) con error de Monte Carlo menor al $1\%$, más detalles de esta técnica, consultar [@lahiri2003resampling].
 
 ### Integración con la cuantificación de incertidumbre operativa
 
@@ -500,20 +521,21 @@ En el marco de esta tesis, el block bootstrap se emplea para generar distribucio
 $$
 \text{p05}_i = q_{0.05}^*, \quad \text{p50}_i = q_{0.50}^*, \quad \text{p95}_i = q_{0.95}^*,
 $$
-los cuales alimentan directamente la función de decisión binaria desarrollada en la Sección 4.9. El uso del percentil 95 como cota conservadora $\tilde{y}_i = \text{p95}_i$ implementa una política de tolerancia cero que cuantifica explícitamente el riesgo de violación de umbrales técnicos, cerrando el ciclo entre teoría de procesos estocásticos, remuestreo dependiente y toma de decisiones bajo incertidumbre.
+los cuales alimentan directamente la función de decisión binaria desarrollada en la @sec-drones. El uso del percentil 95 como cota conservadora $\tilde{y}_i = \text{p95}_i$ implementa una política de tolerancia cero que cuantifica explícitamente el riesgo de violación de umbrales técnicos, cerrando el ciclo entre teoría de procesos estocásticos, remuestreo dependiente y toma de decisiones bajo incertidumbre.
 
 ## Teoría de decisión bajo incertidumbre y regiones factibles
 
-La transición de pronósticos meteorológicos cuantitativos a recomendaciones operativas binarias requiere un marco formal que estructure racionalmente la elección entre alternativas bajo condiciones no deterministas. En contextos de logística humanitaria y operaciones aéreas, el estado futuro del sistema atmosférico no es observable de antemano; solo se dispone de distribuciones predictivas o intervalos de confianza derivados de modelos estocásticos. La teoría de decisión bajo incertidumbre proporciona el lenguaje matemático para transformar información probabilística en acciones discretas, garantizando coherencia lógica, trazabilidad y alineación con los objetivos de seguridad operacional [@berger1985statistical].
+La transición de pronósticos meteorológicos cuantitativos a recomendaciones operativas binarias requiere un marco formal que estructure racionalmente la elección entre alternativas bajo condiciones no deterministas. En contextos de logística humanitaria y operaciones aéreas, el estado futuro del sistema atmosférico no es observable de antemano; solo se dispone de distribuciones predictivas o intervalos de confianza derivados de modelos estocásticos. La teoría de decisión bajo incertidumbre proporciona el lenguaje matemático para transformar información probabilística en acciones discretas, garantizando coherencia lógica, trazabilidad y alineación con los objetivos de seguridad operacional, para más detalles sobre teoría de la decisión véase [@berger1985statistical].
 
 ### Formulación formal del problema de decisión
 
 Un problema de decisión se define mediante la tupla $(\Theta, \mathcal{A}, \mathcal{L})$, donde:
+
 - $\Theta$ es el **espacio de estados de la naturaleza**, que en este contexto corresponde al vector de condiciones meteorológicas reales futuras $\boldsymbol{\theta} = (V, T, H, R)^\top \in \mathbb{R}^4$.
 - $\mathcal{A} = \{a_1, a_2\}$ es el **conjunto de acciones factibles**, con $a_1 = \text{PUEDE\_VOLAR}$ y $a_2 = \text{NO\_PUEDE\_VOLAR}$.
 - $\mathcal{L}: \mathcal{A} \times \Theta \to \mathbb{R}$ es la **función de pérdida**, que cuantifica el costo asociado a elegir la acción $a$ cuando el estado real es $\boldsymbol{\theta}$.
 
-Bajo incertidumbre, $\boldsymbol{\theta}$ es desconocido en el momento de la decisión. En lugar de conocer el estado exacto, se dispone de una distribución predictiva posterior $\pi(\boldsymbol{\theta} \mid \mathcal{D})$ o, en enfoques no paramétricos, de una familia de conjuntos de credibilidad derivados de procedimientos de remuestreo [@french1988decision].
+Bajo incertidumbre, $\boldsymbol{\theta}$ es desconocido en el momento de la decisión. En lugar de conocer el estado exacto, se dispone del conjunto de datos observados $\mathcal{D}$ , que permite construir una distribución predictiva posterior $\pi(\boldsymbol{\theta} \mid \mathcal{D})$ o, en enfoques no paramétricos, de una familia de conjuntos de credibilidad derivados de procedimientos de remuestreo. Más detalles de esta distribución, consultar [@french1988decision].
 
 ### Criterios de decisión clásicos y conservadurismo operativo
 
@@ -551,7 +573,7 @@ $$
 0, & \text{en caso contrario}.
 \end{cases}
 $$
-Esta formulación transforma el problema de decisión en una evaluación de pertenencia a un conjunto definido por intersección de semiespacios, lo cual computacionalmente se resuelve mediante evaluaciones booleanas secuenciales [@hillier2015introduction].
+Esta formulación transforma el problema de decisión en una evaluación de pertenencia a la región factible, lo cual computacionalmente se resuelve mediante evaluaciones booleanas secuenciales.
 
 ### Integración con incertidumbre predictiva y política de tolerancia cero
 
@@ -563,5 +585,5 @@ La decisión final se obtiene evaluando $\mathbb{I}_{\mathcal{F}}(\tilde{\boldsy
 
 ### Conexión con el sistema de decisión del Capítulo 4
 
-La estructura teórica presentada en esta sección constituye la base matemática de la función de decisión binaria $\mathbb{I}_{\text{vuelo}}$ desarrollada en la Sección 4.9. Los umbrales técnicos $u_j$ se derivan de las especificaciones del dron, la región factible $\mathcal{F}$ se construye como intersección de restricciones univariadas, y el uso del percentil 95 ($\alpha=0.05$) materializa el conservadurismo del criterio de Wald en un contexto estocástico. Esta formalización asegura que la recomendación operacional no sea un heurístico empírico, sino una regla de decisión rigurosa, trazable y alineada con los principios de la investigación de operaciones aplicada a sistemas críticos.
+La estructura teórica presentada en esta sección constituye la base matemática de la función de decisión binaria $\mathbb{I}_{\text{vuelo}}$ desarrollada en la @sec-drones. Los umbrales técnicos $u_j$ se derivan de las especificaciones del dron, la región factible $\mathcal{F}$ se construye como intersección de restricciones univariadas, y el uso del percentil 95 ($\alpha=0.05$) materializa el conservadurismo del criterio de Wald en un contexto estocástico. Esta formalización asegura que la recomendación operacional no sea un heurístico empírico, sino una regla de decisión rigurosa, trazable y alineada con los principios de la investigación de operaciones aplicada a sistemas críticos.
 :::

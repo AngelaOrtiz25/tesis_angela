@@ -957,7 +957,7 @@ La aplicación del modelo advectivo a la precipitación presenta las siguientes 
 
 Esta formulación permite integrar la precipitación en el sistema de decisión multicriterio descrito en la @sec-drones, proporcionando una evaluación cuantitativa de su impacto en la viabilidad operativa de las misiones con drones.
 
-## Cuantificación de la incertidumbre mediante block bootstrap
+## Cuantificación de la incertidumbre mediante block bootstrap {#sec-cuantificacionbotstrap}
 El pronóstico de variables meteorológicas a corto plazo está inherentemente sujeto a incertidumbre debido a múltiples fuentes: ruido de medición, variabilidad atmosférica intrínseca, error de modelo y parámetros estimados con error. Para cuantificar esta incertidumbre de manera rigurosa en el contexto de operaciones con drones, se emplea el método de **block bootstrap temporal**, una técnica de remuestreo especialmente diseñada para series temporales con dependencia serial.
 
 A diferencia del bootstrap estándar, que asume independencia entre observaciones, el block bootstrap preserva la estructura de correlación temporal al remuestrear bloques contiguos de datos en lugar de observaciones individuales. Esta propiedad resulta esencial para variables meteorológicas muestreadas cada $\Delta t = 10$ minutos durante un período de 7 días, donde la dependencia temporal es una característica estructural del sistema.
@@ -1284,7 +1284,7 @@ El sistema de decisión propuesto presenta las siguientes propiedades matemátic
 
 Estas propiedades hacen del sistema una herramienta robusta para la toma de decisiones en contextos de logística humanitaria, donde la seguridad y la confiabilidad son prioritarias sobre la optimización de costos o tiempos.
 
-## Integración de ambas etapas: análisis de eficiencia logística
+## Integración de ambas etapas: análisis de eficiencia logística 
 
 El sistema de logística humanitaria propuesto en esta tesis se estructura como un problema de **optimización en dos etapas secuenciales**, donde cada etapa responde a diferentes escalas espaciales, temporales y operativas. La primera etapa corresponde al transporte aéreo mediante drones desde el Aeropuerto Internacional Ángel Albino Corzo hasta las instalaciones de Protección Civil, gobernado por el sistema de decisión meteorológica desarrollado en las secciones 4.1–4.9. La segunda etapa consiste en la distribución terrestre desde Protección Civil hacia los 124 municipios del estado de Chiapas, optimizada mediante el algoritmo PageRank descrito en el Capítulo 3.
 
