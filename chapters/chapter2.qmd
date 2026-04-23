@@ -53,6 +53,7 @@ La completitud del espacio $L^2$ garantiza, por el Teorema de Proyección de Hil
 La modelación de series meteorológicas requiere supuestos estructurales que garanticen la estabilidad estadística de las propiedades del proceso a lo largo del tiempo. En particular, la noción de estacionariedad constituye un pilar fundamental en el análisis de series de tiempo, ya que permite inferir parámetros poblacionales a partir de una única trayectoria observada. Dado que el marco probabilístico desarrollado en la @sec-estocasticossegundo se restringe a procesos de segundo orden, la estacionariedad de interés es la *débil* (o de covarianza), la cual solo exige invarianza en los dos primeros momentos estadísticos, para más detalles consultar [@brockwell2016time].
 
 **Definición 2.3 (Estacionariedad débil).** Sea $\{X_t\}_{t \in \mathcal{T}}$ un proceso estocástico de segundo orden. Se dice que $\{X_t\}$ es *débilmente estacionario* si satisface las siguientes condiciones:
+
 1. La función media es constante: $\mathbb{E}[X_t] = \mu$, para todo $t \in \mathcal{T}$.
 2. La función de autocovarianza depende únicamente de la diferencia temporal (lag): $\operatorname{Cov}(X_t, X_s) = \gamma(|t-s|)$, para todo $t,s \in \mathcal{T}$.
 3. La varianza es finita y constante: $\gamma(0) = \operatorname{Var}(X_t) < \infty$.
@@ -211,7 +212,7 @@ I_T(\omega) = \frac{1}{2\pi T} \left| \sum_{t=1}^T (x_t - \bar{x}) e^{-i t \omeg
 $$
 Aunque el periodograma es asintóticamente insesgado ($\mathbb{E}[I_T(\omega)] \to f(\omega)$ cuando $T \to \infty$), no es estadísticamente consistente: su varianza no converge a cero, incluso para $T$ grande. Para obtener estimadores consistentes se requiere suavizado espectral, ya sea mediante ventanas espectrales (Daniell, Parzen, Bartlett) o mediante promediado sobre frecuencias adyacentes [@priestley1981spectral].
 
-Alternativamente, los métodos paramétricos ajustan un modelo AR de orden finito a la serie y derivan $f(\omega)$ analíticamente a partir de los coeficientes estimados y que se definirá más adelante [@]. Estos enfoques son particularmente útiles cuando la longitud muestral es limitada, como ocurre en ventanas de nowcasting de 7 días con muestreo cada 10 minutos.
+Alternativamente, los métodos paramétricos ajustan un modelo AR de orden finito a la serie y derivan $f(\omega)$ analíticamente a partir de los coeficientes estimados y que se definirá más adelante [@sec-ar1]. Estos enfoques son particularmente útiles cuando la longitud muestral es limitada, como ocurre en ventanas de nowcasting de 7 días con muestreo cada 10 minutos.
 
 ### Integración con el sistema de pronóstico
 
@@ -220,7 +221,7 @@ La representación espectral proporciona las bases matemáticas para dos compone
 1. **Validación de estacionariedad**: La inspección visual y cuantitativa de $f(\omega)$ permite detectar tendencias no estacionarias o ciclos dominantes que deben eliminarse o modelarse explícitamente antes de aplicar métodos de correlación cruzada.
 2. **Análisis $f$-$k$**: La extensión de la Transformada de Fourier al dominio espacio-temporal $(s,t)$ permite estimar la velocidad de fase de estructuras atmosféricas mediante la pendiente de la fase espectral, metodología que se desarrolla en la @sec-analisisfk y se aplica operativamente en la estimación de velocidad de advección [@sec-analisisadveccion].
 
-En conjunto, la dualidad autocovarianza–Transformada de Fourier cierra el círculo teórico entre la descripción temporal de la dependencia y la representación frecuencial de la energía del proceso, habilitando herramientas matemáticas robustas para el pronóstico de corto horizonte bajo incertidumbre.
+En conjunto, la dualidad Atocovarianza–Transformada de Fourier cierra el círculo teórico entre la descripción temporal de la dependencia y la representación frecuencial de la energía del proceso, habilitando herramientas matemáticas robustas para el pronóstico de corto horizonte bajo incertidumbre.
 
 ## Análisis frecuencia-espacio ($f$-$k$) y velocidad de fase {#sec-analisisfk}
 
@@ -292,7 +293,7 @@ que constituye el núcleo del modelo híbrido de nowcasting desarrollado en la @
 
 ## Modelos autorregresivos AR(1) y persistencia temporal {#sec-ar1}
 
-Los modelos autorregresivos de orden uno constituyen la clase más simple y ampliamente utilizada de procesos estocásticos lineales. Su estructura recursiva captura la inercia temporal inherente a variables meteorológicas como la temperatura y la humedad relativa, permitiendo representar la persistencia observada en escalas de minutos a horas sin requerir parámetros adicionales. En el contexto de nowcasting, el modelo AR(1) proporciona el componente local del pronóstico híbrido descrito en la @sec-pronosticoadvectivo, complementando el transporte advectivo con dinámica temporal intrínseca y garantizando estabilidad numérica frente a fluctuaciones de alta frecuencia [@brockwell2016time].
+Los modelos autorregresivos de orden uno constituyen la clase más simple y ampliamente utilizada de procesos estocásticos lineales. Su estructura recursiva captura la inercia temporal inherente a variables meteorológicas como la temperatura y la humedad relativa, permitiendo representar la persistencia observada en escalas de minutos a horas sin requerir parámetros adicionales. En el contexto de nowcasting, el modelo AR(1) proporciona el componente local del pronóstico híbrido descrito en la @sec-pronosticoadvectivo, complementando el transporte advectivo con dinámica temporal intrínseca y garantizando estabilidad numérica frente a fluctuaciones de alta frecuencia, paara más detalles [@brockwell2016time].
 
 **Definición 2.5 (Proceso AR(1)).** Sea $\{X_t\}_{t \in \mathbb{Z}}$ un proceso estocástico de tiempo discreto. Se dice que $\{X_t\}$ sigue un **proceso autorregresivo de orden uno**, denotado AR(1), si satisface la ecuación en diferencias estocástica:
 $$
@@ -359,11 +360,11 @@ La combinación explícita de $\phi^k$ (decaimiento autorregresivo) con $s_i - v
 
 ## Métodos de remuestreo: Block Bootstrap temporal {#sec-blockbootstrap}
 
-El método bootstrap clásico, propuesto por Efron, constituye una herramienta poderosa para aproximar distribuciones muestrales bajo la hipótesis de independencia e idéntica distribución (i.i.d.) [@efron1979bootstrap]. Sin embargo, en el análisis de series meteorológicas y en la cuantificación de incertidumbre de pronósticos de corto horizonte, esta suposición es estructuralmente inválida: las observaciones presentan dependencia serial, ciclos diurnos y memoria termodinámica que deben preservarse en cualquier procedimiento de remuestreo. El **bootstrap de bloques** (*block bootstrap*) surge como la extensión natural que mantiene la estructura de correlación temporal al remuestrear segmentos contiguos en lugar de observaciones aisladas [@kunsch1989jackknife].
+El método bootstrap clásico, propuesto por Efron, constituye una herramienta poderosa para aproximar distribuciones muestrales bajo la hipótesis de independencia e idéntica distribución (i.i.d.) [@efron1979bootstrap]. Sin embargo, en el análisis de series meteorológicas y en la cuantificación de incertidumbre de pronósticos de corto horizonte, esta suposición es estructuralmente inválida: las observaciones presentan dependencia serial, ciclos diurnos y memoria termodinámica que deben preservarse en cualquier procedimiento de remuestreo. El **bootstrap de bloques** (*block bootstrap*) surge como la extensión natural que mantiene la estructura de correlación temporal al remuestrear segmentos contiguos en lugar de observaciones aisladas, para más detalles [@kunsch1989jackknife].
 
 ### Formulación matemática del Moving Block Bootstrap (MBB)
 
-Sea $\{X_t\}_{t=1}^T$ una trayectoria observada de un proceso estacionario débilmente dependiente. Para una longitud de bloque fija $L \in \mathbb{N}$ con $L \ll T$, se definen los bloques superpuestos:
+Sea $\{X_t\}_{t=1}^T$ una trayectoria observada de un proceso estacionario débilmente dependiente. Para una longitud de bloque fija $L \in \mathbb{N}$ con $L < T$, se definen los bloques superpuestos:
 $$
 B_j = \big(X_j, X_{j+1}, \dots, X_{j+L-1}\big), \quad j = 1, 2, \dots, T-L+1.
 $$
@@ -376,6 +377,96 @@ Cada bloque $B_j$ conserva la estructura de dependencia local de orden $L$. El p
    $$
    donde $\oplus$ denota la operación de concatenación temporal.
 3. **Cálculo del estadístico**: Sobre la serie bootstrap se recalcula el estimador de interés $\hat{\theta}^* = s(X_1^*, \dots, X_{KL}^*)$, generando así una distribución empírica condicional $\hat{G}_n(x) = \mathbb{P}^*(\hat{\theta}^* \leq x)$ [@liu1992moving].
+
+#### Definición formal de la operación de concatenación
+
+La operación $\oplus$ constituye el elemento estructural fundamental del procedimiento MBB. A continuación se formaliza su definición y propiedades matemáticas:
+
+**Definición 4.1 (Concatenación de bloques temporales).** Sean dos bloques temporales $B_a, B_b \in \mathbb{R}^L$ definidos como:
+$$
+B_a = \big(x_1^{(a)}, x_2^{(a)}, \dots, x_L^{(a)}\big), \quad B_b = \big(x_1^{(b)}, x_2^{(b)}, \dots, x_L^{(b)}\big).
+$$
+La operación de concatenación $\oplus: \mathbb{R}^L \times \mathbb{R}^L \to \mathbb{R}^{2L}$ se define como:
+$$
+B_a \oplus B_b = \big(x_1^{(a)}, \dots, x_L^{(a)}, x_1^{(b)}, \dots, x_L^{(b)}\big).
+$$
+
+Para una secuencia de $K$ bloques $\{B_{j_k^*}\}_{k=1}^K$, la concatenación múltiple se define recursivamente:
+$$
+\bigoplus_{k=1}^K B_{j_k^*} = B_{j_1^*} \oplus \left(\bigoplus_{k=2}^K B_{j_k^*}\right),
+$$
+produciendo un vector en $\mathbb{R}^{KL}$.
+
+**Proposición 4.1 (Propiedades algebraicas de $\oplus$).** La operación de concatenación satisface las siguientes propiedades:
+
+1. **Cerradura:** Para todo $B_a \in \mathbb{R}^{L_a}$, $B_b \in \mathbb{R}^{L_b}$, se cumple que $B_a \oplus B_b \in \mathbb{R}^{L_a + L_b}$.
+
+2. **Asociatividad:** Para todo $B_a, B_b, B_c$, se verifica:
+   $$
+   (B_a \oplus B_b) \oplus B_c = B_a \oplus (B_b \oplus B_c).
+   $$
+
+3. **No conmutatividad:** En general, $B_a \oplus B_b \neq B_b \oplus B_a$, ya que el orden temporal de las observaciones es preservado.
+
+4. **Elemento neutro:** Existe un bloque vacío $\emptyset$ tal que $B \oplus \emptyset = \emptyset \oplus B = B$ para todo $B$.
+
+5. **Aditividad de longitud:** Si $\ell(B)$ denota la longitud del bloque $B$, entonces:
+   $$
+   \ell(B_a \oplus B_b) = \ell(B_a) + \ell(B_b).
+   $$
+
+*Demostración.* Las propiedades 1, 2, 4 y 5 se siguen directamente de la definición constructiva de la concatenación como apilamiento secuencial de componentes. La propiedad 3 es consecuencia de que el orden temporal codifica información de dependencia serial; intercambiar el orden de los bloques altera la estructura temporal de la serie resultante. $\square$
+
+#### Representación matricial de la concatenación
+
+Alternativamente, la operación $\oplus$ puede expresarse mediante notación matricial. Si cada bloque se representa como un vector columna $B_j \in \mathbb{R}^{L \times 1}$, entonces:
+$$
+B_{j_1^*} \oplus B_{j_2^*} \oplus \dots \oplus B_{j_K^*} = \begin{pmatrix} B_{j_1^*} \\ B_{j_2^*} \\ \vdots \\ B_{j_K^*} \end{pmatrix} \in \mathbb{R}^{KL \times 1}.
+$$
+
+Esta representación facilita la implementación computacional mediante operaciones de apilamiento vertical (*vertical stacking*) disponibles en entornos numéricos estándar (e.g., `numpy.vstack`, `rbind`).
+
+#### Ejemplo ilustrativo
+
+Considere una serie temporal observada de longitud $T = 10$:
+$$
+\{X_t\}_{t=1}^{10} = (3, 5, 2, 8, 1, 9, 4, 7, 6, 2).
+$$
+
+Para una longitud de bloque $L = 3$, los bloques superpuestos son:
+$$
+\begin{aligned}
+B_1 &= (3, 5, 2), & B_2 &= (5, 2, 8), & B_3 &= (2, 8, 1), \\
+B_4 &= (8, 1, 9), & B_5 &= (1, 9, 4), & B_6 &= (9, 4, 7), \\
+B_7 &= (4, 7, 6), & B_8 &= (7, 6, 2).
+\end{aligned}
+$$
+
+Suponga que el muestreo aleatorio con reemplazo selecciona los índices $\{j_1^*, j_2^*, j_3^*\} = \{2, 5, 1\}$. La réplica bootstrap se construye como:
+$$
+\begin{aligned}
+\{X_t^*\}_{t=1}^{9} &= B_2 \oplus B_5 \oplus B_1 \\
+&= (5, 2, 8) \oplus (1, 9, 4) \oplus (3, 5, 2) \\
+&= (5, 2, 8, 1, 9, 4, 3, 5, 2).
+\end{aligned}
+$$
+
+Este ejemplo ilustra cómo la concatenación preserva la estructura de dependencia intra-bloque mientras introduce discontinuidades controladas en las uniones inter-bloque.
+
+#### Consideraciones sobre discontinuidades en las uniones
+
+Una propiedad inherente del MBB es la posible aparición de **discontinuidades artificiales** en los puntos de unión entre bloques consecutivos. Formalmente, para dos bloques adyacentes $B_a$ y $B_b$ en la réplica bootstrap, el salto en la unión se cuantifica como:
+$$
+\Delta_{a,b} = \left| x_L^{(a)} - x_1^{(b)} \right|.
+$$
+
+Estas discontinuidades son el precio a pagar por preservar la dependencia serial intra-bloque. Sin embargo, bajo las siguientes condiciones, su impacto en los estadísticos de interés es asintóticamente despreciable [@kuensch1989jackknife]:
+
+1. **Longitud de bloque creciente:** $L \to \infty$ cuando $T \to \infty$, con $L/T \to 0$.
+2. **Estacionariedad débil:** El proceso subyacente satisface condiciones de mezcla que garantizan decaimiento de correlaciones a largas distancias temporales.
+3. **Número suficiente de bloques:** $K \to \infty$ para garantizar convergencia de la distribución empírica bootstrap.
+
+En el contexto de esta tesis, con $T \approx 1008$ observaciones (7 días con muestreo cada 10 minutos) y $L \in \{6, 9, 12\}$ bloques de observaciones, las condiciones anteriores se satisfacen empíricamente, validando el uso del MBB para la cuantificación de incertidumbre en pronósticos meteorológicos de corto plazo.
 
 ### Consistencia asintótica y condiciones de dependencia
 
