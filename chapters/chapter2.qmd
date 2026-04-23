@@ -10,7 +10,7 @@ jupyter: python3
 ---
 :::{style="text-align: justify"}
 
-## Procesos estocásticos de segundo orden y espacio de Hilbert $L^2(\Omega,\mathcal{F},\mathbb{P})$
+## Procesos estocásticos de segundo orden y espacio de Hilbert $L^2(\Omega,\mathcal{F},\mathbb{P})$ {#sec-estocasticossegundo}
 
 El análisis matemático de fenómenos meteorológicos y su aplicación al pronóstico operativo requieren un marco probabilístico riguroso que permita cuantificar la variabilidad inherente a las observaciones ambientales. En este contexto, los procesos estocásticos de segundo orden constituyen la base teórica sobre la cual se construyen los modelos de series de tiempo, las estimaciones de covarianza y los procedimientos de remuestreo utilizados en esta tesis. La exigencia de que las variables aleatorias posean momentos de segundo orden finitos no es una restricción arbitraria, sino una condición técnica fundamental que garantiza la existencia de la estructura geométrica del espacio de Hilbert, herramienta indispensable para el análisis de proyecciones ortogonales y descomposiciones espectrales.
 
@@ -48,9 +48,9 @@ En el contexto de variables meteorológicas como la velocidad del viento, la tem
 
 La completitud del espacio $L^2$ garantiza, por el Teorema de Proyección de Hilbert, que para cualquier subespacio cerrado $\mathcal{S} \subset L^2(\Omega, \mathcal{F}, \mathbb{P})$ y cualquier variable aleatoria $Y \in L^2$, existe un único elemento $\hat{Y} \in \mathcal{S}$ que minimiza el error cuadrático medio $\mathbb{E}[(Y - \hat{Y})^2]$. Este resultado fundamenta matemáticamente la formulación de predictores lineales óptimos, base de los modelos autorregresivos que se desarrollarán en la @sec-ar1, y justifica la construcción de intervalos de confianza mediante métodos de remuestreo que preservan la estructura de covarianza, como el block bootstrap descrito en la @sec-blockbootstrap.
 
-## Estacionariedad débil y funciones de covarianza cruzada
+## Estacionariedad débil y funciones de covarianza cruzada 
 
-La modelación de series meteorológicas requiere supuestos estructurales que garanticen la estabilidad estadística de las propiedades del proceso a lo largo del tiempo. En particular, la noción de estacionariedad constituye un pilar fundamental en el análisis de series de tiempo, ya que permite inferir parámetros poblacionales a partir de una única trayectoria observada. Dado que el marco probabilístico desarrollado en la Sección 2.1 se restringe a procesos de segundo orden, la estacionariedad de interés es la *débil* (o de covarianza), la cual solo exige invarianza en los dos primeros momentos estadísticos [@brockwell2016time].
+La modelación de series meteorológicas requiere supuestos estructurales que garanticen la estabilidad estadística de las propiedades del proceso a lo largo del tiempo. En particular, la noción de estacionariedad constituye un pilar fundamental en el análisis de series de tiempo, ya que permite inferir parámetros poblacionales a partir de una única trayectoria observada. Dado que el marco probabilístico desarrollado en la @sec-estocasticossegundo se restringe a procesos de segundo orden, la estacionariedad de interés es la *débil* (o de covarianza), la cual solo exige invarianza en los dos primeros momentos estadísticos, para más detalles consultar [@brockwell2016time].
 
 **Definición 2.3 (Estacionariedad débil).** Sea $\{X_t\}_{t \in \mathcal{T}}$ un proceso estocástico de segundo orden. Se dice que $\{X_t\}$ es *débilmente estacionario* si satisface las siguientes condiciones:
 1. La función media es constante: $\mathbb{E}[X_t] = \mu$, para todo $t \in \mathcal{T}$.
@@ -87,7 +87,7 @@ $$
 \rho_{XY}(h) = \frac{\gamma_{XY}(h)}{\sqrt{\gamma_X(0)\,\gamma_Y(0)}}.
 $$
 
-Esta función cuantifica la dependencia lineal entre ambas series con un desfase $h$ y está acotada por $|\rho_{XY}(h)| \leq 1$. La identificación del retardo $h^*$ que maximiza $|\rho_{XY}(h)|$ constituye la base matemática del método de correlación cruzada entre segmentos espaciales adyacentes, descrito en la Sección 4.3, y permite estimar el tiempo de propagación de estructuras atmosféricas a lo largo del corredor de vuelo [@box2015time].
+Esta función cuantifica la dependencia lineal entre ambas series con un desfase $h$ y está acotada por $|\rho_{XY}(h)| \leq 1$. La identificación del retardo $h^*$ que maximiza $|\rho_{XY}(h)|$ constituye la base matemática del método de correlación cruzada entre segmentos espaciales adyacentes, descrito en la @sec-analisisadveccion, y permite estimar el tiempo de propagación de estructuras atmosféricas a lo largo del corredor de vuelo [@box2015time].
 
 ### Consideraciones de ergodicidad y validez muestral
 
