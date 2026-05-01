@@ -1008,7 +1008,7 @@ w_1 + w_2 + w_3 = 1, \qquad w_k \ge 0.
 </section>
 <section id="estimación-de-la-incertidumbre-mediante-block-bootstrap" class="level3" data-number="5.5.6">
 <h3 data-number="5.5.6" class="anchored" data-anchor-id="estimación-de-la-incertidumbre-mediante-block-bootstrap"><span class="header-section-number">5.5.6</span> Estimación de la incertidumbre mediante block bootstrap</h3>
-<p>La incertidumbre del pronóstico se cuantificó mediante un procedimiento de <strong>block bootstrap temporal</strong>, que preserva la dependencia serial de las observaciones.</p>
+<p>La incertidumbre del pronóstico se cuantificó mediante un procedimiento de <strong>block bootstrap temporal</strong> (<a href="chapter2.html#sec-blockbootstrap" class="quarto-xref"><span>Sección 3.7</span></a>), que preserva la dependencia serial de las observaciones.</p>
 <p>Sea <span class="math inline">\(\{T_i(t)\}_{t=1}^T\)</span> la serie observada. Se generan <span class="math inline">\(B\)</span> réplicas bootstrap mediante remuestreo con reemplazo de bloques temporales de longitud <span class="math inline">\(L\)</span>. Para cada réplica <span class="math inline">\(b\)</span>, se calcula un pronóstico:</p>
 <p><span class="math display">\[
 \hat{T}_i^{(b)}(t+H).
@@ -2182,8 +2182,8 @@ Tabla&nbsp;5.7: Comparación de eficiencia logística entre escenarios operativo
 <p>La implementación del sistema integrado requiere la coordinación de múltiples módulos computacionales:</p>
 <ol type="1">
 <li><p><strong>Módulo de adquisición de datos</strong>: Ingesta de observaciones meteorológicas en tiempo real desde estaciones terrestres y fuentes satelitales.</p></li>
-<li><p><strong>Módulo de pronóstico</strong>: Ejecución del modelo advectivo-híbrido con cuantificación de incertidumbre mediante block bootstrap (Secciones 4.3–4.8).</p></li>
-<li><p><strong>Módulo de decisión</strong>: Evaluación de la función binaria <span class="math inline">\(\mathbb{I}_{\text{vuelo}}\)</span> contra umbrales técnicos del dron (Sección 4.9).</p></li>
+<li><p><strong>Módulo de pronóstico</strong>: Ejecución del modelo advectivo-híbrido con cuantificación de incertidumbre mediante block bootstrap <a href="#sec-analisisadveccion" class="quarto-xref"><span>Sección 5.3</span></a> – <span class="quarto-unresolved-ref">?sec-cuantificacionbotstra</span>).</p></li>
+<li><p><strong>Módulo de decisión</strong>: Evaluación de la función binaria <span class="math inline">\(\mathbb{I}_{\text{vuelo}}\)</span> contra umbrales técnicos del dron (<a href="#sec-drones" class="quarto-xref"><span>Sección 5.9</span></a>).</p></li>
 <li><p><strong>Módulo de optimización terrestre</strong>: Cálculo de rutas PageRank y tiempos de distribución hacia municipios (Capítulo 3).</p></li>
 <li><p><strong>Módulo de integración</strong>: Composición de ambas etapas y generación de métricas de eficiencia global.</p></li>
 </ol>

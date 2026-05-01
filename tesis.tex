@@ -3350,7 +3350,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, arc=.35mm, toptitle=1mm, left=2mm, leftrule=.75mm, coltitle=black, opacitybacktitle=0.6, breakable, opacityback=0, bottomtitle=1mm, bottomrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, colback=white, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, breakable, coltitle=black, colback=white, opacityback=0, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, arc=.35mm, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, left=2mm, leftrule=.75mm, titlerule=0mm, bottomrule=.15mm, toprule=.15mm, toptitle=1mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -4401,8 +4401,8 @@ ponderación refleja que la temperatura del aire presenta:
 bootstrap}\label{estimaciuxf3n-de-la-incertidumbre-mediante-block-bootstrap}
 
 La incertidumbre del pronóstico se cuantificó mediante un procedimiento
-de \textbf{block bootstrap temporal}, que preserva la dependencia serial
-de las observaciones.
+de \textbf{block bootstrap temporal} (Sección~\ref{sec-blockbootstrap}),
+que preserva la dependencia serial de las observaciones.
 
 Sea \(\{T_i(t)\}_{t=1}^T\) la serie observada. Se generan \(B\) réplicas
 bootstrap mediante remuestreo con reemplazo de bloques temporales de
@@ -5993,11 +5993,12 @@ múltiples módulos computacionales:
 \item
   \textbf{Módulo de pronóstico}: Ejecución del modelo advectivo-híbrido
   con cuantificación de incertidumbre mediante block bootstrap
-  (Secciones 4.3--4.8).
+  Sección~\ref{sec-analisisadveccion} --
+  \textbf{?@sec-cuantificacionbotstra}).
 \item
   \textbf{Módulo de decisión}: Evaluación de la función binaria
   \(\mathbb{I}_{\text{vuelo}}\) contra umbrales técnicos del dron
-  (Sección 4.9).
+  (Sección~\ref{sec-drones}).
 \item
   \textbf{Módulo de optimización terrestre}: Cálculo de rutas PageRank y
   tiempos de distribución hacia municipios (Capítulo 3).
