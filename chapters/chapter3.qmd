@@ -327,7 +327,7 @@ $$
 
 El vector $\pi$ constituye la base matemática para la clasificación de los municipios según su importancia relativa dentro de la red territorial, tal como se detalla en la sección siguiente.   
 
-## Aplicación del algoritmo PageRank y convergencia
+## Aplicación del algoritmo PageRank y convergencia {#sec-aplicaionpagerank}
 
 ### Fundamentos matemáticos del algoritmo PageRank
 
@@ -387,17 +387,17 @@ La aplicación del algoritmo PageRank a la red territorial de Chiapas produjo un
         
 ## Rutas óptimas desde Protección Civil hacia municipios prioritarios
 
-## Punto de almacenamiento y municipios estratégicos
+### Punto de almacenamiento y municipios estratégicos
 
-El punto de almacenamiento central para operaciones de ayuda humanitaria se establece en las instalaciones de Protección Civil ubicadas en Tuxtla Gutiérrez, capital del estado de Chiapas. Esta localización responde a criterios operativos fundamentales:
+El punto de almacenamiento central para operaciones de ayuda humanitaria se establece en las instalaciones de la Secretaria de Protección Civil ubicadas en Tuxtla Gutiérrez, capital del estado de Chiapas (https://maps.app.goo.gl/fRNWcaote5heu1Qp9). Esta localización responde a criterios operativos fundamentales:
 
-1. **Accesibilidad desde el aeropuerto**: Conexión directa con el Aeropuerto Internacional Ángel Albino Corzo mediante vía terrestre de alta capacidad.
+1. **Accesibilidad desde el aeropuerto**: Conexión directa con el Aeropuerto Internacional Ángel Albino Corzo (https://maps.app.goo.gl/kip9Nrw984oCGX7ZA) mediante vía terrestre de alta capacidad.
 2. **Infraestructura logística**: Disponibilidad de almacenes, personal capacitado y sistemas de coordinación operativa.
 3. **Centralidad geográfica**: Posición privilegiada que minimiza las distancias promedio hacia la mayoría de los municipios del estado.
 
-A partir de la aplicación del algoritmo PageRank descrita en la sección anterior, se identificaron los 15 municipios con mayor importancia relativa ($\pi_i$) dentro de la red territorial. Estos municipios constituyen los nodos estratégicos hacia los cuales se dirigen las rutas de distribución prioritaria en escenarios de emergencia.
+A partir de la aplicación del algoritmo PageRank descrita en la @sec-aplicaionpagerank, se identificaron los 15 municipios con mayor importancia relativa ($\pi_i$) dentro de la red territorial. Estos municipios constituyen los nodos estratégicos hacia los cuales se dirigen las rutas de distribución prioritaria en escenarios de emergencia.
 
-## Análisis de rutas óptimas
+### Análisis de rutas óptimas
 
 Para cada municipio prioritario $v_j$, se determinó la ruta óptima $\mathcal{R}_{0j}$ que conecta el punto de almacenamiento $v_0$ (Protección Civil, Tuxtla Gutiérrez) con $v_j$. Matemáticamente, esta ruta se define como:
 
@@ -409,7 +409,7 @@ donde $\mathcal{P}_{0j}$ denota el conjunto de todas las rutas posibles entre $v
 
 El cálculo de rutas óptimas se implementó mediante el algoritmo de Dijkstra sobre el grafo ponderado $G = (V, E, W)$, utilizando las distancias 3D como métrica de costo. Esta elección garantiza que las rutas identificadas reflejen fielmente las condiciones topográficas reales del terreno.
 
-## Resultados cuantitativos
+### Resultados cuantitativos
 
 La Tabla 3.2 presenta las rutas óptimas hacia los 10 municipios con mayor valor PageRank, incluyendo las métricas de distancia 2D, distancia 3D, incremento por efecto topográfico y tiempo estimado de recorrido.
 
