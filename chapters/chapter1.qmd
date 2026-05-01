@@ -15,7 +15,7 @@ jupyter: python3
 
 La modelación matemática de redes de transporte, sistemas logísticos y flujos de distribución requiere un lenguaje estructural que permita representar de manera abstracta las relaciones de conectividad entre entidades discretas. La teoría de grafos proporciona este marco formal, ofreciendo herramientas para analizar propiedades topológicas, optimizar rutas y caracterizar la dinámica de procesos definidos sobre redes [@bondy2008graph]. En el contexto de la logística humanitaria en Chiapas, los grafos constituyen la base sobre la cual se construyen los algoritmos de priorización territorial y evaluación de accesibilidad desarrollados en este capítulo.
 
-### Definiciones fundamentales
+### Definiciones fundamentales {#sec-grafos}
 
 **Definición 1.1 (Grafo no dirigido).** Un *grafo no dirigido* es un par ordenado $G = (V, E)$, donde:
 
@@ -115,7 +115,7 @@ Cuando la red modela un sistema de transporte terrestre, el peso $w_{ij}$ puede 
 
 La elección de la métrica de peso determina el tipo de análisis estructural que puede realizarse sobre la red, y debe alinearse con los objetivos operativos del sistema logístico.
 
-### Representación matricial y transformación a probabilidades de transición
+### Representación matricial y transformación a probabilidades de transición {#sec-transicion}
 
 La estructura de una red ponderada puede codificarse mediante su **matriz de pesos** $W \in \mathbb{R}^{n \times n}$, definida como:
 $$
@@ -172,7 +172,7 @@ La transformación de pesos de distancia a probabilidades inversas ($w_{ij}^{-1}
 
 En el estudio de caso de Chiapas, los pesos $w_{ij}$ se definen como las distancias tridimensionales $d_{ij}^{(3D)}$ calculadas en la @sec-distancias3d, garantizando que la priorización de municipios mediante PageRank incorpore explícitamente las barreras topográficas que caracterizan la región. Esta integración entre modelación geométrica, teoría de grafos ponderados y procesos estocásticos constituye el núcleo analítico sobre el cual se construye la estrategia logística territorial.
 
-## Cadenas de Markov de tiempo discreto
+## Cadenas de Markov de tiempo discreto {#sec-markov}
 
 Las cadenas de Markov de tiempo discreto constituyen uno de los pilares fundamentales de la teoría de procesos estocásticos, proporcionando un marco matemático riguroso para modelar sistemas que evolucionan en pasos temporales discretos con la propiedad de falta de memoria. En el contexto de la priorización territorial y el análisis de redes de transporte, estas cadenas permiten representar el movimiento de un agente aleatorio a través de los nodos de una red, donde la probabilidad de transición entre municipios depende exclusivamente del estado actual y de la estructura de conectividad ponderada. Para más detalles, [@blanco2013procesos; @rincon2016procesos].
 
@@ -210,7 +210,7 @@ La topología de la matriz de transición determina el comportamiento asintótic
 - **Periodicidad**: El período de un estado $i$ se define como $d(i) = \gcd\{n \geq 1 : p_{ii}^{(n)} > 0\}$. Si $d(i) = 1$, el estado es *aperiódico*. En cadenas irreducibles, todos los estados comparten el mismo período [@norris1998markov].
 - **Recurrencia y transitoriedad**: Un estado $i$ es *recurrente* si $\sum_{n=1}^\infty p_{ii}^{(n)} = \infty$, y *transiente* en caso contrario. En espacios de estados finitos, la irreducibilidad implica que todos los estados son recurrentes positivos.
 
-### Distribución estacionaria y convergencia ergódica
+### Distribución estacionaria y convergencia ergódica {#sec-ergodicidad}
 
 El comportamiento a largo plazo de una cadena irreducible y aperiódica se caracteriza por la existencia de una **distribución estacionaria** $\pi = (\pi_1, \dots, \pi_N)$, que satisface el sistema lineal:
 $$

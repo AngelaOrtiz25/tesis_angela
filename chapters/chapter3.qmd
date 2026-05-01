@@ -22,15 +22,15 @@ En situaciones de emergencia, como desastres naturales o crisis humanitarias, la
 
 El estado de Chiapas, presenta una configuración geográfica predominantemente montañosa. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.
 
-Para abordar este problema de optimización logística, se propone la aplicación del algoritmo PageRank a la red territorial del estado (@sec-pagerank). Originalmente desarrollado por @brin1998anatomy para el ordenamiento de páginas web, este algoritmo fundamenta su operación en la teoría de cadenas de Markov de tiempo discreto, proporcionando una medida de centralidad que identifica nodos estratégicos dentro de una red compleja.
+Para abordar este problema de optimización logística, se propone la aplicación del algoritmo PageRank a la red territorial del estado (@sec-pagerank). Originalmente desarrollado por @brin1998anatomy para el ordenamiento de páginas web, este algoritmo fundamenta su operación en la teoría de cadenas de Markov de tiempo discreto (@sec-markov), proporcionando una medida de centralidad que identifica nodos estratégicos dentro de una red compleja.
 
-Matemáticamente, sea $G = (V, E, W)$ un grafo dirigido ponderado que representa la red territorial, donde $V$ denota el conjunto de vértices (municipios), $E \subseteq V \times V$ el conjunto de aristas (conexiones viales), y $W: E \to \mathbb{R}^+$ una función que asigna a cada arista $(v_i, v_j)$ la distancia tridimensional $d_{ij}^{(3D)}$ entre los municipios $i$ y $j$. El algoritmo PageRank calcula el vector estacionario $\pi \in \mathbb{R}^{124}$ que satisface:
+Matemáticamente, sea $G = (V, E, W)$ un grafo dirigido ponderado que representa la red territorial (@sec-grafos), donde $V$ denota el conjunto de vértices (municipios), $E \subseteq V \times V$ el conjunto de aristas (conexiones viales), y $W: E \to \mathbb{R}^+$ una función que asigna a cada arista $(v_i, v_j)$ la distancia tridimensional $d_{ij}^{(3D)}$ entre los municipios $i$ y $j$. El algoritmo PageRank calcula el vector estacionario $\pi \in \mathbb{R}^{124}$ que satisface:
 
 $$
 \pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i,
 $$
 
-donde $P$ es la matriz de transición modificada que incorpora un factor de amortiguamiento $p = 0.85$ para garantizar la ergodicidad de la cadena. El valor $\pi_i$ representa la importancia relativa del municipio $i$ dentro de la red, permitiendo identificar aquellos nodos que actúan como centros de distribución naturales.
+donde $P$ es la matriz de transición (@sec-transicion) modificada que incorpora un factor de amortiguamiento $p = 0.85$ para garantizar la ergodicidad de la cadena (@sec-ergodicidad). El valor $\pi_i$ representa la importancia relativa del municipio $i$ dentro de la red, permitiendo identificar aquellos nodos que actúan como centros de distribución naturales.
 
 El flujo metodológico desarrollado en este capítulo comprende las siguientes etapas:
 
