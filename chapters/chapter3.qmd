@@ -318,11 +318,7 @@ La matriz $P$ resultante posee las siguientes propiedades fundamentales:
 Estas propiedades garantizan, por el teorema de Perron-Frobenius (@sec-teroemafrobenius) para matrices estocásticas primitivas, la existencia de un único vector estacionario $\pi \in \mathbb{R}^{124}$ que satisface:
 
 $$
-\pi = P\pi 
-$${#eq-pi}
-
-$$
-\sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
+\pi = P\pi \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
 $$
 
 El vector $\pi$ constituye la base matemática para la clasificación de los municipios según su importancia relativa dentro de la red territorial, tal como se detalla en la sección siguiente.   
@@ -338,7 +334,11 @@ Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo
 El vector PageRank $\pi \in \mathbb{R}^{124}$ se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones:
 
 $$
-\pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
+\pi = P\pi
+$${#eq-pi}
+
+$$
+\sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
 $$
 
 El valor $\pi_i$ representa la fracción de tiempo que, en el largo plazo, un navegante aleatorio permanece en el municipio $i$. Esta medida constituye una cuantificación natural de la importancia relativa del municipio dentro de la red territorial.
