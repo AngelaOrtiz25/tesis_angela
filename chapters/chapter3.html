@@ -535,10 +535,7 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 </ul>
 <p>Estas propiedades garantizan, por el teorema de Perron-Frobenius (<a href="chapter1.html#sec-teroemafrobenius" class="quarto-xref"><span>Sección 2.4.2</span></a>) para matrices estocásticas primitivas, la existencia de un único vector estacionario <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> que satisface:</p>
 <p><span class="math display">\[
-\pi = P\pi
-\]</span> (eq-pi)</p>
-<p><span class="math display">\[
-\sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
+\pi = P\pi \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
 \]</span></p>
 <p>El vector <span class="math inline">\(\pi\)</span> constituye la base matemática para la clasificación de los municipios según su importancia relativa dentro de la red territorial, tal como se detalla en la sección siguiente.</p>
 </section>
@@ -550,8 +547,11 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <p>El algoritmo PageRank, proporciona una medida de centralidad para los nodos de una red basada en su estructura de conectividad global. En el contexto de la red territorial de Chiapas, el algoritmo permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, actúan como centros naturales de distribución logística.</p>
 <p>Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto <span class="math inline">\(\{X_n\}_{n \geq 0}\)</span> con espacio de estados finito <span class="math inline">\(S = \{1, 2, \dots, 124\}\)</span>, donde cada estado representa un municipio. La matriz de transición modificada <span class="math inline">\(P \in \mathbb{R}^{124 \times 124}\)</span>, construida según la metodología descrita en la <a href="#sec-transicion" class="quarto-xref"><span>Sección 4.4.5</span></a>, define las probabilidades de transición entre municipios.</p>
 <p>El vector PageRank <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones:</p>
+<p><span id="eq-pi"><span class="math display">\[
+\pi = P\pi
+\tag{4.1}\]</span></span></p>
 <p><span class="math display">\[
-\pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
+\sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
 \]</span></p>
 <p>El valor <span class="math inline">\(\pi_i\)</span> representa la fracción de tiempo que, en el largo plazo, un navegante aleatorio permanece en el municipio <span class="math inline">\(i\)</span>. Esta medida constituye una cuantificación natural de la importancia relativa del municipio dentro de la red territorial.</p>
 </section>

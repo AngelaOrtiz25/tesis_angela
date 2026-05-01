@@ -319,7 +319,7 @@ Estas propiedades garantizan, por el teorema de Perron-Frobenius (@sec-teroemafr
 
 $$
 \pi = P\pi \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
-$$
+$${#eq-pi}
 
 El vector $\pi$ constituye la base matemática para la clasificación de los municipios según su importancia relativa dentro de la red territorial, tal como se detalla en la sección siguiente.   
 
@@ -331,15 +331,7 @@ El algoritmo PageRank, proporciona una medida de centralidad para los nodos de u
 
 Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto $\{X_n\}_{n \geq 0}$ con espacio de estados finito $S = \{1, 2, \dots, 124\}$, donde cada estado representa un municipio. La matriz de transición modificada $P \in \mathbb{R}^{124 \times 124}$, construida según la metodología descrita en la @sec-transicion, define las probabilidades de transición entre municipios.
 
-El vector PageRank $\pi \in \mathbb{R}^{124}$ se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones:
-
-$$
-\pi = P\pi
-$${#eq-pi}
-
-$$
-\sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
-$$
+El vector PageRank $\pi \in \mathbb{R}^{124}$ se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones @eq-pi
 
 El valor $\pi_i$ representa la fracción de tiempo que, en el largo plazo, un navegante aleatorio permanece en el municipio $i$. Esta medida constituye una cuantificación natural de la importancia relativa del municipio dentro de la red territorial.
 
