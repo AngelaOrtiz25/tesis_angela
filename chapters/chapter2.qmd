@@ -61,6 +61,7 @@ La modelación de series meteorológicas requiere supuestos estructurales que ga
 A diferencia de la estacionariedad estricta, que requiere invarianza en todas las distribuciones finito-dimensionales del proceso, la estacionariedad débil solo controla los momentos de orden uno y dos. Esta relajación es suficiente para el desarrollo de predictores lineales óptimos, análisis espectral y estimación por correlación, herramientas centrales en la metodología de nowcasting presentada en este trabajo [@priestley1981spectral].
 
 Bajo la hipótesis de estacionariedad débil, la función de autocovarianza $\gamma(h)$ posee propiedades estructurales esenciales:
+
 - $\gamma(0) \geq 0$ y representa la varianza marginal del proceso,
 - $\gamma(h) = \gamma(-h)$ (simetría par),
 - $|\gamma(h)| \leq \gamma(0)$ para todo $h \in \mathbb{Z}$,
@@ -378,7 +379,7 @@ Cada bloque $B_j$ conserva la estructura de dependencia local de orden $L$. El p
    donde $\oplus$ denota la operación de concatenación temporal.
 3. **Cálculo del estadístico**: Sobre la serie bootstrap se recalcula el estimador de interés $\hat{\theta}^* = s(X_1^*, \dots, X_{KL}^*)$, generando así una distribución empírica condicional $\hat{G}_n(x) = \mathbb{P}^*(\hat{\theta}^* \leq x)$ [@liu1992moving].
 
-#### Definición formal de la operación de concatenación
+#### Definición de la operación de concatenación
 
 La operación $\oplus$ constituye el elemento estructural fundamental del procedimiento MBB. A continuación se formaliza su definición y propiedades matemáticas:
 
@@ -460,7 +461,7 @@ $$
 \Delta_{a,b} = \left| x_L^{(a)} - x_1^{(b)} \right|.
 $$
 
-Estas discontinuidades son el precio a pagar por preservar la dependencia serial intra-bloque. Sin embargo, bajo las siguientes condiciones, su impacto en los estadísticos de interés es asintóticamente despreciable [@kuensch1989jackknife]:
+Estas discontinuidades son el precio a pagar por preservar la dependencia serial intra-bloque. Sin embargo, bajo las siguientes condiciones, su impacto en los estadísticos de interés es asintóticamente despreciable [@kunsch1989jackknife]:
 
 1. **Longitud de bloque creciente:** $L \to \infty$ cuando $T \to \infty$, con $L/T \to 0$.
 2. **Estacionariedad débil:** El proceso subyacente satisface condiciones de mezcla que garantizan decaimiento de correlaciones a largas distancias temporales.
@@ -479,6 +480,7 @@ $$
 \sup_{x \in \mathbb{R}} \left| \mathbb{P}^*\left( \sqrt{K}(\hat{\theta}^* - \hat{\theta}) \leq x \right) - \mathbb{P}\left( \sqrt{T}(\hat{\theta} - \theta) \leq x \right) \right| \xrightarrow{p} 0.
 $$
 Este resultado garantiza que los intervalos de confianza construidos a partir de cuantiles empíricos $\{q_\alpha^*\}$ son asintóticamente válidos, incluso para procesos no gaussianos y no lineales comunes en meteorología.
+
 #### Definición de las σ-álgebras de pasado y futuro
 
 Para completar la formulación teórica del coeficiente de mezcla fuerte, es necesario especificar la estructura de información representada por las σ-álgebras $\mathcal{F}_{-\infty}^0$ y $\mathcal{F}_k^\infty$. Sea $\{X_t\}_{t \in \mathbb{Z}}$ el proceso estocástico definido sobre un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$.
@@ -501,7 +503,7 @@ Bajo esta notación, las σ-álgebras que aparecen en el coeficiente de mezcla s
     \mathcal{F}_k^\infty := \sigma\left(X_k, X_{k+1}, \dots\right) = \sigma\left(\{X_t : t \geq k\}\right).
     $$
 
-**Interpretación probabilística:** El coeficiente $\alpha(k)$ cuantifica la dependencia máxima entre cualquier evento $A$ determinado exclusivamente por el pasado remoto y cualquier evento $B$ determinado exclusivamente por el futuro distante separado por un lag $k$. La condición de mezcla fuerte $\alpha(k) \to 0$ cuando $k \to \infty$ asegura que la influencia del pasado sobre el futuro se desvanece asintóticamente, permitiendo que el procedimiento de block bootstrap aproxime correctamente la distribución muestral aun en presencia de dependencia serial [@politis1994stationary].
+**Interpretación probabilística:** El coeficiente $\alpha(k)$ cuantifica la dependencia máxima entre cualquier evento $A$ determinado exclusivamente por el pasado remoto y cualquier evento $B$ determinado exclusivamente por el futuro distante separado por un lag $k$. La condición de mezcla fuerte $\alpha(k) \to 0$ cuando $k \to \infty$ asegura que la influencia del pasado sobre el futuro se desvanece asintóticamente, permitiendo que el procedimiento de block bootstrap aproxime correctamente la distribución muestral aun en presencia de dependencia serial,  para más detalles consultar [@politis1994stationary].
 
 ### Selección de la longitud del bloque $L$
 
@@ -532,7 +534,7 @@ La transición de pronósticos meteorológicos cuantitativos a recomendaciones o
 Un problema de decisión se define mediante la tupla $(\Theta, \mathcal{A}, \mathcal{L})$, donde:
 
 - $\Theta$ es el **espacio de estados de la naturaleza**, que en este contexto corresponde al vector de condiciones meteorológicas reales futuras $\boldsymbol{\theta} = (V, T, H, R)^\top \in \mathbb{R}^4$.
-- $\mathcal{A} = \{a_1, a_2\}$ es el **conjunto de acciones factibles**, con $a_1 = \text{PUEDE\_VOLAR}$ y $a_2 = \text{NO\_PUEDE\_VOLAR}$.
+- $\mathcal{A} = \{a_1, a_2\}$ es el **conjunto de acciones factibles**, con $a_1 = \text{Puede\_Volar}$ y $a_2 = \text{No\_Puede\_Volar}$.
 - $\mathcal{L}: \mathcal{A} \times \Theta \to \mathbb{R}$ es la **función de pérdida**, que cuantifica el costo asociado a elegir la acción $a$ cuando el estado real es $\boldsymbol{\theta}$.
 
 Bajo incertidumbre, $\boldsymbol{\theta}$ es desconocido en el momento de la decisión. En lugar de conocer el estado exacto, se dispone del conjunto de datos observados $\mathcal{D}$ , que permite construir una distribución predictiva posterior $\pi(\boldsymbol{\theta} \mid \mathcal{D})$ o, en enfoques no paramétricos, de una familia de conjuntos de credibilidad derivados de procedimientos de remuestreo. Más detalles de esta distribución, consultar [@french1988decision].
