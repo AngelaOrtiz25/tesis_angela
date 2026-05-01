@@ -1329,13 +1329,21 @@ centrales en la metodología de nowcasting presentada en este trabajo
 (\citeproc{ref-priestley1981spectral}{Priestley 1981}).
 
 Bajo la hipótesis de estacionariedad débil, la función de autocovarianza
-\(\gamma(h)\) posee propiedades estructurales esenciales: -
-\(\gamma(0) \geq 0\) y representa la varianza marginal del proceso, -
-\(\gamma(h) = \gamma(-h)\) (simetría par), -
-\(|\gamma(h)| \leq \gamma(0)\) para todo \(h \in \mathbb{Z}\), - La
-matriz de covarianza \(\Gamma_n = [\gamma(i-j)]_{i,j=1}^n\) es
-semidefinida positiva para cualquier \(n \in \mathbb{N}\)
-(\citeproc{ref-hamilton1994time}{Hamilton 1994}).
+\(\gamma(h)\) posee propiedades estructurales esenciales:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\gamma(0) \geq 0\) y representa la varianza marginal del proceso,
+\item
+  \(\gamma(h) = \gamma(-h)\) (simetría par),
+\item
+  \(|\gamma(h)| \leq \gamma(0)\) para todo \(h \in \mathbb{Z}\),
+\item
+  La matriz de covarianza \(\Gamma_n = [\gamma(i-j)]_{i,j=1}^n\) es
+  semidefinida positiva para cualquier \(n \in \mathbb{N}\)
+  (\citeproc{ref-hamilton1994time}{Hamilton 1994}).
+\end{itemize}
 
 Estas propiedades garantizan que las estimaciones muestrales de la
 autocovarianza convergen en probabilidad a sus valores poblacionales
@@ -2013,8 +2021,8 @@ orden \(L\). El procedimiento de remuestreo se define como sigue:
   (\citeproc{ref-liu1992moving}{Liu y Singh 1992}).
 \end{enumerate}
 
-\subsubsection{Definición formal de la operación de
-concatenación}\label{definiciuxf3n-formal-de-la-operaciuxf3n-de-concatenaciuxf3n}
+\subsubsection{Definición de la operación de
+concatenación}\label{definiciuxf3n-de-la-operaciuxf3n-de-concatenaciuxf3n}
 
 La operación \(\oplus\) constituye el elemento estructural fundamental
 del procedimiento MBB. A continuación se formaliza su definición y
@@ -2124,8 +2132,8 @@ como: \[
 Estas discontinuidades son el precio a pagar por preservar la
 dependencia serial intra-bloque. Sin embargo, bajo las siguientes
 condiciones, su impacto en los estadísticos de interés es
-asintóticamente despreciable
-(\citeproc{ref-kuensch1989jackknife}{\textbf{kuensch1989jackknife?}}):
+asintóticamente despreciable (\citeproc{ref-kunsch1989jackknife}{Künsch
+1989}):
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2166,7 +2174,10 @@ distribución límite de medias muestrales y estimadores suaves
 \] Este resultado garantiza que los intervalos de confianza construidos
 a partir de cuantiles empíricos \(\{q_\alpha^*\}\) son asintóticamente
 válidos, incluso para procesos no gaussianos y no lineales comunes en
-meteorología. \#\#\#\# Definición de las σ-álgebras de pasado y futuro
+meteorología.
+
+\subsubsection{Definición de las σ-álgebras de pasado y
+futuro}\label{definiciuxf3n-de-las-ux3c3-uxe1lgebras-de-pasado-y-futuro}
 
 Para completar la formulación teórica del coeficiente de mezcla fuerte,
 es necesario especificar la estructura de información representada por
@@ -2211,7 +2222,7 @@ determinado exclusivamente por el futuro distante separado por un lag
 \(k \to \infty\) asegura que la influencia del pasado sobre el futuro se
 desvanece asintóticamente, permitiendo que el procedimiento de block
 bootstrap aproxime correctamente la distribución muestral aun en
-presencia de dependencia serial
+presencia de dependencia serial, para más detalles consultar
 (\citeproc{ref-politis1994stationary}{Politis y Romano 1994b}).
 
 \subsection{\texorpdfstring{Selección de la longitud del bloque
@@ -2305,8 +2316,8 @@ Un problema de decisión se define mediante la tupla
   \(\boldsymbol{\theta} = (V, T, H, R)^\top \in \mathbb{R}^4\).
 \item
   \(\mathcal{A} = \{a_1, a_2\}\) es el \textbf{conjunto de acciones
-  factibles}, con \(a_1 = \text{PUEDE\_VOLAR}\) y
-  \(a_2 = \text{NO\_PUEDE\_VOLAR}\).
+  factibles}, con \(a_1 = \text{Puede\_Volar}\) y
+  \(a_2 = \text{No\_Puede\_Volar}\).
 \item
   \(\mathcal{L}: \mathcal{A} \times \Theta \to \mathbb{R}\) es la
   \textbf{función de pérdida}, que cuantifica el costo asociado a elegir
@@ -3311,7 +3322,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacitybacktitle=0.6, leftrule=.75mm, left=2mm, breakable, toptitle=1mm, arc=.35mm, colframe=quarto-callout-note-color-frame, opacityback=0, bottomtitle=1mm, bottomrule=.15mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, left=2mm, colframe=quarto-callout-note-color-frame, arc=.35mm, leftrule=.75mm, breakable, colback=white, opacitybacktitle=0.6, toptitle=1mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, bottomtitle=1mm, titlerule=0mm, rightrule=.15mm, bottomrule=.15mm, coltitle=black, toprule=.15mm]
 
 \textbf{Características operativas de la ruta}
 
