@@ -293,7 +293,7 @@
 \title{tesis}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-04-22}
+\date{2026-04-30}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -394,19 +394,26 @@ evaluación de accesibilidad desarrollados en este capítulo.
 fundamentales}\label{definiciones-fundamentales}
 
 \textbf{Definición 1.1 (Grafo no dirigido).} Un \emph{grafo no dirigido}
-es un par ordenado \(G = (V, E)\), donde: -
-\(V = \{v_1, v_2, \dots, v_n\}\) es un conjunto finito no vacío de
-\emph{vértices} o \emph{nodos}, -
-\(E \subseteq \{\{u,v\} : u, v \in V, u \neq v\}\) es un conjunto de
-\emph{aristas}, cada una representada como un par no ordenado de
-vértices distintos.
+es un par ordenado \(G = (V, E)\), donde:
+
+\begin{itemize}
+\tightlist
+\item
+  \(V = \{v_1, v_2, \dots, v_n\}\) es un conjunto finito no vacío de
+  \emph{vértices} o \emph{nodos},
+\item
+  \(E \subseteq \{\{u,v\} : u, v \in V, u \neq v\}\) es un conjunto de
+  \emph{aristas}, cada una representada como un par no ordenado de
+  vértices distintos.
+\end{itemize}
 
 Cuando \(\{u,v\} \in E\), se dice que \(u\) y \(v\) son
 \emph{adyacentes} o \emph{vecinos}, y que la arista es \emph{incidente}
 en ambos vértices. En aplicaciones de transporte terrestre, los vértices
 representan municipios, centros de distribución o intersecciones viales,
 mientras que las aristas modelan conexiones físicas bidireccionales
-entre ellos (\citeproc{ref-taha2017operations}{Taha 2017}).
+entre ellos. Para más detalles, puede constultarse
+(\citeproc{ref-taha2017operations}{Taha 2017}).
 
 \textbf{Definición 1.2 (Grafo dirigido).} Un \emph{grafo dirigido} (o
 \emph{digrafo}) es un par ordenado \(D = (V, A)\), donde: - \(V\) es un
@@ -872,18 +879,27 @@ establecen las siguientes definiciones estructurales:
 \textbf{Teorema 1.1 (Perron-Frobenius para matrices estocásticas
 primitivas).} Sea \(P \in \mathbb{R}^{n \times n}\) una matriz
 estocástica por columnas (\(P \geq 0\), \(\sum_{i=1}^n p_{ij} = 1\)) que
-es primitiva. Entonces se cumplen las siguientes propiedades: 1. El
-radio espectral es \(\rho(P) = 1\). 2. El valor propio \(\lambda = 1\)
-es algebraicamente simple y domina estrictamente al resto del espectro:
-\(|\lambda_i| < 1\) para todo
-\(\lambda_i \in \sigma(P) \setminus \{1\}\). 3. Existe un único vector
-propio derecho \(\pi \in \mathbb{R}^n\) asociado a \(\lambda = 1\), con
-componentes estrictamente positivas \(\pi_i > 0\) y normalizado tal que
-\(\sum_{i=1}^n \pi_i = 1\). 4. Para cualquier vector inicial
-\(\pi^{(0)} \in \mathbb{R}^n\) con \(\sum \pi_i^{(0)} = 1\), se verifica
-la convergencia: \[
-   \lim_{k \to \infty} P^k \pi^{(0)} = \pi.
-   \]
+es primitiva. Entonces se cumplen las siguientes propiedades:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  El radio espectral es \(\rho(P) = 1\).
+\item
+  El valor propio \(\lambda = 1\) es algebraicamente simple y domina
+  estrictamente al resto del espectro: \(|\lambda_i| < 1\) para todo
+  \(\lambda_i \in \sigma(P) \setminus \{1\}\).
+\item
+  Existe un único vector propio derecho \(\pi \in \mathbb{R}^n\)
+  asociado a \(\lambda = 1\), con componentes estrictamente positivas
+  \(\pi_i > 0\) y normalizado tal que \(\sum_{i=1}^n \pi_i = 1\).
+\item
+  Para cualquier vector inicial \(\pi^{(0)} \in \mathbb{R}^n\) con
+  \(\sum \pi_i^{(0)} = 1\), se verifica la convergencia: \[
+  \lim_{k \to \infty} P^k \pi^{(0)} = \pi.
+  \]
+\end{enumerate}
 
 \emph{Esbozo de demostración.} La igualdad \(\rho(P)=1\) se deduce de la
 conservación de la norma \(\ell_1\) bajo multiplicación por matrices
@@ -1152,10 +1168,10 @@ fallos parciales de la infraestructura vial o variaciones estacionales
 en la transitabilidad.
 
 La formalización de la matriz de transición modificada cierra el marco
-teórico del Capítulo 1, integrando teoría de grafos, álgebra lineal
+teórico del Capítulo 2, integrando teoría de grafos, álgebra lineal
 matricial y procesos estocásticos en un modelo coherente y
 computacionalmente viable. Los conceptos desarrollados en estas
-secciones se aplican directamente en el Capítulo 3, donde se construye
+secciones se aplican directamente en el Capítulo 4, donde se construye
 la red territorial de los 124 municipios de Chiapas, se calcula el
 vector de priorización estructural y se identifican los nodos críticos
 que guiarán la planificación logística de ayuda humanitaria en
@@ -2228,8 +2244,9 @@ alta frecuencia. Para preservar estrictamente la estacionariedad,
 Politis y Romano propusieron el \textbf{bootstrap estacionario}, donde
 la longitud de cada bloque se muestrea de una distribución geométrica
 con parámetro \(p = 1/L\), garantizando que la serie reconstruida sea
-estrictamente estacionaria bajo la medida bootstrap
-(\citeproc{ref-politis1994large}{Politis y Romano 1994a}).
+estrictamente estacionaria bajo la medida bootstrap. Esta afirmación
+puede consultarse en (\citeproc{ref-politis1994large}{Politis y Romano
+1994a}).
 
 En implementaciones computacionales para nowcasting meteorológico, el
 MBB estándar suele preferirse por su simplicidad, determinismo en la
@@ -3294,7 +3311,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, bottomrule=.15mm, leftrule=.75mm, toptitle=1mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, colback=white, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black, rightrule=.15mm, arc=.35mm, breakable, toprule=.15mm, bottomtitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, opacitybacktitle=0.6, leftrule=.75mm, left=2mm, breakable, toptitle=1mm, arc=.35mm, colframe=quarto-callout-note-color-frame, opacityback=0, bottomtitle=1mm, bottomrule=.15mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, colbacktitle=quarto-callout-note-color!10!white, rightrule=.15mm, coltitle=black]
 
 \textbf{Características operativas de la ruta}
 
