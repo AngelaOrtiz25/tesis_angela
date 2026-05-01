@@ -511,7 +511,7 @@ Bajo condiciones de regularidad, la longitud óptima minimiza el error cuadráti
 
 ### Variante estacionaria y consideraciones numéricas
 
-El MBB con bloques fijos introduce discontinuidades artificiales en los puntos de unión entre bloques, lo que puede distorsionar estimadores de alta frecuencia. Para preservar estrictamente la estacionariedad, Politis y Romano propusieron el **bootstrap estacionario**, donde la longitud de cada bloque se muestrea de una distribución geométrica con parámetro $p = 1/L$, garantizando que la serie reconstruida sea estrictamente estacionaria bajo la medida bootstrap [@politis1994large].
+El MBB con bloques fijos introduce discontinuidades artificiales en los puntos de unión entre bloques, lo que puede distorsionar estimadores de alta frecuencia. Para preservar estrictamente la estacionariedad, Politis y Romano propusieron el **bootstrap estacionario**, donde la longitud de cada bloque se muestrea de una distribución geométrica con parámetro $p = 1/L$, garantizando que la serie reconstruida sea estrictamente estacionaria bajo la medida bootstrap. Esta afirmación puede consultarse en [@politis1994large].
 
 En implementaciones computacionales para nowcasting meteorológico, el MBB estándar suele preferirse por su simplicidad, determinismo en la longitud de la réplica y facilidad de paralelización. La elección de $L$ se fija por validación cruzada temporal o por criterios de escala física, y el número de réplicas $B$ se selecciona típicamente entre 100 y 500 para estabilizar cuantiles extremos ($p_{05}, p_{95}$) con error de Monte Carlo menor al $1\%$, más detalles de esta técnica, consultar [@lahiri2003resampling].
 
