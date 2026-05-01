@@ -1114,7 +1114,7 @@ Esta aproximación asegura que la decisión operacional sea robusta frente a la 
 
 ## Decisión para operaciones con drones: variables de estado, umbrales y función de decisión {#sec-drones}
 
-La cuantificación de incertidumbre desarrollada en la Sección 4.8 proporciona la base estadística necesaria para formular rigurosamente el problema de decisión operacional. En esta sección se establece el marco de **teoría de decisión bajo incertidumbre** que transforma los pronósticos meteorológicos en recomendaciones operativas binarias para el vuelo del dron, implementando una política conservadora de tolerancia cero frente a condiciones adversas.
+La cuantificación de incertidumbre desarrollada en la @sec-cuantificacionbotstrap proporciona la base estadística necesaria para formular rigurosamente el problema de decisión operacional. En esta sección se establece el marco de **teoría de decisión bajo incertidumbre** que transforma los pronósticos meteorológicos en recomendaciones operativas binarias para el vuelo del dron, implementando una política conservadora de tolerancia cero frente a condiciones adversas.
 
 ### Espacio de estados y variables de decisión
 
