@@ -656,7 +656,7 @@ asignando mayor relevancia al transporte advectivo y a la persistencia temporal,
 
 ### Estimación de la incertidumbre mediante block bootstrap
 
-La incertidumbre del pronóstico se cuantificó mediante un procedimiento de **block bootstrap temporal**, que preserva la dependencia serial de las observaciones.
+La incertidumbre del pronóstico se cuantificó mediante un procedimiento de **block bootstrap temporal** (@sec-blockbootstrap), que preserva la dependencia serial de las observaciones.
 
 Sea $\{T_i(t)\}_{t=1}^T$ la serie observada. Se generan $B$ réplicas bootstrap mediante remuestreo con reemplazo de bloques temporales de longitud $L$. Para cada réplica $b$, se calcula un pronóstico:
 
@@ -1426,9 +1426,9 @@ La implementación del sistema integrado requiere la coordinación de múltiples
 
 1.  **Módulo de adquisición de datos**: Ingesta de observaciones meteorológicas en tiempo real desde estaciones terrestres y fuentes satelitales.
 
-2.  **Módulo de pronóstico**: Ejecución del modelo advectivo-híbrido con cuantificación de incertidumbre mediante block bootstrap (Secciones 4.3–4.8).
+2.  **Módulo de pronóstico**: Ejecución del modelo advectivo-híbrido con cuantificación de incertidumbre mediante block bootstrap @sec-analisisadveccion – @sec-cuantificacionbotstra).
 
-3.  **Módulo de decisión**: Evaluación de la función binaria $\mathbb{I}_{\text{vuelo}}$ contra umbrales técnicos del dron (Sección 4.9).
+3.  **Módulo de decisión**: Evaluación de la función binaria $\mathbb{I}_{\text{vuelo}}$ contra umbrales técnicos del dron (@sec-drones).
 
 4.  **Módulo de optimización terrestre**: Cálculo de rutas PageRank y tiempos de distribución hacia municipios (Capítulo 3).
 
