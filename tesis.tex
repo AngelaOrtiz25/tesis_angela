@@ -377,7 +377,7 @@ bnkjb
 PageRank}\label{teoruxeda-de-grafos-cadenas-de-markov-y-pagerank}
 
 \section{Grafos dirigidos y no dirigidos, matrices de
-adyacencia}\label{grafos-dirigidos-y-no-dirigidos-matrices-de-adyacencia}
+adyacencia}\label{sec-grafosadyacencia}
 
 La modelación matemática de redes de transporte, sistemas logísticos y
 flujos de distribución requiere un lenguaje estructural que permita
@@ -3350,7 +3350,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, breakable, bottomrule=.15mm, bottomtitle=1mm, left=2mm, coltitle=black, rightrule=.15mm, toprule=.15mm, arc=.35mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, titlerule=0mm, colback=white, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacitybacktitle=0.6, opacityback=0, colbacktitle=quarto-callout-note-color!10!white]
+\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, coltitle=black, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toprule=.15mm, breakable, colback=white, leftrule=.75mm, colframe=quarto-callout-note-color-frame, rightrule=.15mm, bottomtitle=1mm, titlerule=0mm, bottomrule=.15mm, left=2mm, opacitybacktitle=0.6, opacityback=0, colbacktitle=quarto-callout-note-color!10!white]
 
 \textbf{Características operativas de la ruta}
 
@@ -3837,7 +3837,7 @@ caracterizado por su posición centroidal \(s_i\), y cada columna a un
 instante temporal muestreado uniformemente con paso \(\Delta t\).
 
 Para cada segmento \(s_i\), se calcula la transformada de Fourier
-temporal:
+temporal():
 
 \[
 \hat{M}(s_i,\omega) = \int M(s_i,t) e^{-i\omega t} dt,
@@ -5313,16 +5313,16 @@ Cat. Peor Caso
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-seg\_1 & 0.00 & 1.62 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
-seg\_2 & 0.00 & 1.62 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
-seg\_3 & 0.00 & 1.62 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
-seg\_4 & 0.00 & 1.63 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
-seg\_5 & 0.00 & 1.63 & SIN LLUVIA & SIN LLUVIA & FUERTE \\
-seg\_6 & 0.04 & 1.72 & TRACE & SIN LLUVIA & EXTREMA \\
-seg\_7 & 0.05 & 1.78 & TRACE & SIN LLUVIA & EXTREMA \\
-seg\_8 & 0.07 & 1.84 & TRACE & SIN LLUVIA & EXTREMA \\
-seg\_9 & 0.09 & 1.88 & TRACE & SIN LLUVIA & EXTREMA \\
-seg\_10 & 0.11 & 2.08 & TRACE & TRACE & EXTREMA \\
+seg\_1 & 0.00 & 1.62 & Sin Lluvia & Sin Lluvia & Fuerte \\
+seg\_2 & 0.00 & 1.62 & Sin Lluvia & Sin Lluvia & Fuerte \\
+seg\_3 & 0.00 & 1.62 & Sin Lluvia & Sin Lluvia & Fuerte \\
+seg\_4 & 0.00 & 1.63 & Sin Lluvia & Sin Lluvia & Fuerte \\
+seg\_5 & 0.00 & 1.63 & Sin Lluvia & Sin Lluvia & Fuerte \\
+seg\_6 & 0.04 & 1.72 & Trace & Sin Lluvia & Extrema \\
+seg\_7 & 0.05 & 1.78 & Trace & Sin Lluvia & Extrema \\
+seg\_8 & 0.07 & 1.84 & Trace & Sin Lluvia & Extrema \\
+seg\_9 & 0.09 & 1.88 & Trace & Sin Lluvia & Extrema \\
+seg\_10 & 0.11 & 2.08 & Trace & Trace & Extrema \\
 \end{longtable}
 
 Un hallazgo crucial es la discrepancia entre el pronóstico mediano
@@ -5340,7 +5340,7 @@ decisión}\label{integraciuxf3n-en-la-funciuxf3n-de-decisiuxf3n}
 
 Los intervalos de confianza obtenidos mediante block bootstrap
 proporcionan la entrada estocástica necesaria para la teoría de decisión
-bajo incertidumbre que se desarrollará en la Sección 4.9.
+bajo incertidumbre que se desarrollará en la Sección~\ref{sec-drones}.
 Específicamente, el límite superior \(p_{95}\) se utilizará como la
 variable de estado conservadora \(\tilde{y}_i\) en la función de
 viabilidad: \[
@@ -5523,12 +5523,12 @@ manera estandarizada las condiciones esperadas:
 \[
 \text{Categoría}(R) = 
 \begin{cases}
-\text{SIN LLUVIA}, & R < 0.1 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{TRACE}, & 0.1 \leq R < 0.5 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{LIGERA}, & 0.5 \leq R < 2.0 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{MODERADA}, & 2.0 \leq R < 5.0 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{FUERTE}, & 5.0 \leq R < 10.0 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{EXTREMA}, & R \geq 10.0 \, \mathrm{mm \cdot h^{-1}}.
+\text{Sin Lluvia}, & R < 0.1 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Trace}, & 0.1 \leq R < 0.5 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Ligera}, & 0.5 \leq R < 2.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Moderada}, & 2.0 \leq R < 5.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Fuerte}, & 5.0 \leq R < 10.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Extrema}, & R \geq 10.0 \, \mathrm{mm \cdot h^{-1}}.
 \end{cases}
 \]
 
@@ -5809,11 +5809,12 @@ variaciones en la velocidad del viento y rutas de evasión.
 \subsubsection{Etapa 2: Distribución terrestre optimizada mediante
 PageRank}\label{etapa-2-distribuciuxf3n-terrestre-optimizada-mediante-pagerank}
 
-La segunda etapa se modela como un problema de optimización sobre la red
-de transporte terrestre \(G = (V, E)\), donde \(V\) representa los
-municipios y \(E\) las conexiones viales. El algoritmo PageRank asigna a
-cada municipio \(m_i\) un score de prioridad \(\pi_i \in (0,1)\),
-definido por el sistema de ecuaciones:
+Como se menciono en la Sección~\ref{sec-grafosadyacencia} se modela como
+un problema de optimización sobre la red de transporte terrestre
+\(G = (V, E)\), donde \(V\) representa los municipios y \(E\) las
+conexiones viales. El algoritmo PageRank asigna a cada municipio \(m_i\)
+un score de prioridad \(\pi_i \in (0,1)\), definido por el sistema de
+ecuaciones:
 
 \[
 \pi_i = \frac{1-d}{N} + d \sum_{j \in \text{In}(i)} \frac{\pi_j}{\text{Out}(j)},
@@ -6095,7 +6096,7 @@ Basado en los resultados de validación del modelo de pronóstico y la
 función de decisión binaria, se establecen las siguientes
 recomendaciones para la implementación operacional del sistema:
 
-\subsubsection{1. Ventana temporal óptima para
+\subsubsection{Ventana temporal óptima para
 evaluación}\label{ventana-temporal-uxf3ptima-para-evaluaciuxf3n}
 
 El horizonte de pronóstico de \(H = 60\) minutos demostrado en este
@@ -6119,7 +6120,7 @@ utilidad operativa. Se recomienda:
   utilizando las observaciones más recientes disponibles.
 \end{itemize}
 
-\subsubsection{2. Umbrales de decisión
+\subsubsection{Umbrales de decisión
 conservadores}\label{umbrales-de-decisiuxf3n-conservadores}
 
 Los resultados del block bootstrap revelaron que el percentil 95
@@ -6145,7 +6146,7 @@ recomienda:
   acelerada de baterías Li-Po.
 \end{itemize}
 
-\subsubsection{3. Protocolos de contingencia
+\subsubsection{Protocolos de contingencia
 escalonados}\label{protocolos-de-contingencia-escalonados}
 
 La integración con la red terrestre del Capítulo 3 requiere protocolos
@@ -6182,7 +6183,7 @@ sin comprometer la seguridad, aprovechando la rapidez del transporte
 aéreo cuando las condiciones lo permiten y recurriendo a la red
 terrestre optimizada mediante PageRank como respaldo.
 
-\subsubsection{4. Integración con sistemas de monitoreo
+\subsubsection{Integración con sistemas de monitoreo
 existentes}\label{integraciuxf3n-con-sistemas-de-monitoreo-existentes}
 
 Para maximizar la utilidad del sistema de decisión, se recomienda:
@@ -6210,7 +6211,7 @@ Es fundamental reconocer las limitaciones inherentes a la formulación
 matemática presentada, las cuales definen el ámbito de validez de las
 recomendaciones operativas:
 
-\subsubsection{1. Dependencia de densidad de
+\subsubsection{Dependencia de densidad de
 observaciones}\label{dependencia-de-densidad-de-observaciones}
 
 El modelo de pronóstico advectivo requiere una densidad mínima de
@@ -6231,7 +6232,7 @@ adecuada. Sin embargo:
   antes del despliegue operacional.
 \end{itemize}
 
-\subsubsection{2. Suposición de advección
+\subsubsection{Suposición de advección
 unidimensional}\label{suposiciuxf3n-de-advecciuxf3n-unidimensional}
 
 La formulación del transporte atmosférico como un proceso unidimensional
@@ -6253,7 +6254,7 @@ computacional:
   alta inestabilidad (mayo--octubre en Chiapas).
 \end{itemize}
 
-\subsubsection{3. Estática de los umbrales
+\subsubsection{Estática de los umbrales
 técnicos}\label{estuxe1tica-de-los-umbrales-tuxe9cnicos}
 
 Los umbrales operacionales (\(V_{\text{máx}}\), \(T_{\text{máx}}\),
@@ -6272,7 +6273,7 @@ fijos basados en especificaciones del dron:
   desempeño operacional.
 \end{itemize}
 
-\subsubsection{4. Independencia condicional entre
+\subsubsection{Independencia condicional entre
 variables}\label{independencia-condicional-entre-variables}
 
 El modelo asume que las variables meteorológicas son condicionalmente
@@ -6303,7 +6304,7 @@ El marco desarrollado en esta tesis abre múltiples direcciones de
 investigación en la intersección de matemáticas aplicadas, meteorología
 y logística humanitaria:
 
-\subsubsection{1. Optimización multiobjetivo
+\subsubsection{Optimización multiobjetivo
 dinámica}\label{optimizaciuxf3n-multiobjetivo-dinuxe1mica}
 
 Extender la función de decisión binaria \(\mathbb{I}_{\text{vuelo}}\) a
@@ -6322,7 +6323,7 @@ donde \(\mathcal{R}(\mathbf{x})\) representa una medida de riesgo
 operacional. Esto permitiría decisiones adaptativas que balanceen
 eficiencia, costo y seguridad según el nivel de urgencia humanitaria.
 
-\subsubsection{2. Aprendizaje automático
+\subsubsection{Aprendizaje automático
 híbrido}\label{aprendizaje-automuxe1tico-huxedbrido}
 
 Integrar modelos de \emph{deep learning} (LSTM, Transformers) con el
@@ -6337,7 +6338,7 @@ con \(w_{\text{físico}} + w_{\text{ML}} = 1\). Los pesos podrían
 aprenderse mediante validación cruzada temporal, permitiendo que el
 sistema mejore su desempeño con experiencia operacional acumulada.
 
-\subsubsection{3. Redes complejas
+\subsubsection{Redes complejas
 adaptativas}\label{redes-complejas-adaptativas}
 
 Modelar la red terrestre del Capítulo 3 como un sistema complejo
@@ -6358,7 +6359,7 @@ Esto requeriría algoritmos de PageRank incremental para actualización
 eficiente sin recalculación completa del vector estacionario
 \(\boldsymbol{\pi}\).
 
-\subsubsection{4. Coordinación de enjambres de
+\subsubsection{Coordinación de enjambres de
 drones}\label{coordinaciuxf3n-de-enjambres-de-drones}
 
 Generalizar el modelo de decisión para coordinar flotas de \(M\) drones
@@ -6376,7 +6377,7 @@ sujeto a: \[
 Esta extensión es crítica para escalar la operación a nivel estatal,
 cubriendo múltiples corredores simultáneamente.
 
-\subsubsection{5. Asimilación de datos
+\subsubsection{Asimilación de datos
 satelitales}\label{asimilaciuxf3n-de-datos-satelitales}
 
 Incorporar observaciones de satélites meteorológicos (GOES-16, Himawari)
@@ -6396,7 +6397,7 @@ cobertura terrestre limitada:
   mediante filtrado de Kalman para estimación óptima de \(v\).
 \end{itemize}
 
-\subsubsection{6. Extensión geográfica a otras
+\subsubsection{Extensión geográfica a otras
 regiones}\label{extensiuxf3n-geogruxe1fica-a-otras-regiones}
 
 La metodología es directamente aplicable a otras regiones con desafíos
