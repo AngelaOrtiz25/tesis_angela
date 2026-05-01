@@ -659,8 +659,8 @@ p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \ge
 </ol>
 <p><em>Esbozo de demostración.</em> La igualdad <span class="math inline">\(\rho(P)=1\)</span> se deduce de la conservación de la norma <span class="math inline">\(\ell_1\)</span> bajo multiplicación por matrices estocásticas. La positividad estricta de <span class="math inline">\(P^m\)</span> implica, por el lema de Gelfand y propiedades de conos invariantes, que el subespacio propio asociado a <span class="math inline">\(\lambda=1\)</span> es unidimensional y que ningún otro valor propio puede alcanzar módulo 1. La convergencia de <span class="math inline">\(P^k\)</span> sigue de la descomposición de Jordan, donde el bloque asociado a <span class="math inline">\(\lambda=1\)</span> domina asintóticamente a los bloques contractivos correspondientes a <span class="math inline">\(|\lambda_i| &lt; 1\)</span> <span class="citation" data-cites="meyer2000matrix">(<a href="../references.html#ref-meyer2000matrix" role="doc-biblioref">Meyer 2023</a>)</span>. <span class="math inline">\(\square\)</span></p>
 </section>
-<section id="aplicación-directa-al-algoritmo-pagerank" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="aplicación-directa-al-algoritmo-pagerank"><span class="header-section-number">2.4.3</span> Aplicación directa al algoritmo PageRank</h3>
+<section id="sec-pagerank" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="sec-pagerank"><span class="header-section-number">2.4.3</span> Aplicación directa al algoritmo PageRank</h3>
 <p>En el algoritmo PageRank, la matriz de transición modificada (conocida como <em>matriz de Google</em>) se construye a partir de la matriz de conectividad normalizada <span class="math inline">\(Q\)</span> mediante: <span class="math display">\[
 G = pQ + (1-p)\mathbf{1}\mathbf{v}^\top,
 \]</span> donde:</p>
