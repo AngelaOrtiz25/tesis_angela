@@ -448,7 +448,7 @@ D^{(3D)} := \sum_{i=1}^{N-1} d_i^{(3D)}.
 </section>
 <section id="validación-metodológica" class="level3" data-number="4.3.5">
 <h3 data-number="4.3.5" class="anchored" data-anchor-id="validación-metodológica"><span class="header-section-number">4.3.5</span> Validación metodológica</h3>
-<p>Se realizó una validación cruzada comparando las distancias 2D calculadas con mediciones oficiales del Instituto Nacional de Estadística y Geografía (INEGI) pueden consultar en https://gaia.inegi.org.mx/mdm6/ , obteniendo una discrepancia media inferior al <span class="math inline">\(1.2\%\)</span>. Las distancias 3D no pudieron validarse directamente con fuentes externas (ningún servicio público proporciona esta métrica), pero se verificó la coherencia física mediante:</p>
+<p>Se realizó una validación cruzada comparando las distancias 2D calculadas con mediciones oficiales del Instituto Nacional de Estadística y Geografía (INEGI) pueden consultar en el sitio oficial https://gaia.inegi.org.mx/mdm6/ , obteniendo una discrepancia media inferior al <span class="math inline">\(1.2\%\)</span>. Las distancias 3D no pudieron validarse directamente con fuentes externas (ningún servicio público proporciona esta métrica), pero se verificó la coherencia física mediante:</p>
 <ul>
 <li>Análisis de sensibilidad a la resolución del DEM</li>
 <li>Comparación con perfiles altimétricos de Google Earth</li>
@@ -474,7 +474,7 @@ w_{ij} = \begin{cases}
 0 &amp; \text{en caso contrario},
 \end{cases}
 \]</span></p>
-<p>donde <span class="math inline">\(d_{ij}^{(3D)}\)</span> denota la distancia tridimensional calculada según la metodología descrita en la sección anterior. Esta formulación refleja la intuición de que municipios más cercanos ejercen una mayor influencia mutua dentro de la red, mientras que distancias mayores corresponden a una conectividad efectiva reducida.</p>
+<p>donde <span class="math inline">\(d_{ij}^{(3D)}\)</span> denota la distancia tridimensional calculada según la metodología descrita en la <a href="#sec-distancias3d" class="quarto-xref"><span>Sección 4.3</span></a>. Esta formulación refleja la intuición de que municipios más cercanos ejercen una mayor influencia mutua dentro de la red, mientras que distancias mayores corresponden a una conectividad efectiva reducida.</p>
 </section>
 <section id="matriz-de-adyacencia-y-normalización" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="matriz-de-adyacencia-y-normalización"><span class="header-section-number">4.4.2</span> Matriz de adyacencia y normalización</h3>
@@ -507,13 +507,13 @@ q_{ij} = \frac{1}{124}, \quad \forall i = 1,\dots,124.
 <ol type="1">
 <li><p><strong>Conectividad fuerte</strong>: La red es <strong>fuertemente conexa</strong>, es decir, para cualquier par de municipios <span class="math inline">\((i,j)\)</span> existe al menos una secuencia de rutas que permite transitar de <span class="math inline">\(i\)</span> a <span class="math inline">\(j\)</span>. Esta propiedad se verifica empíricamente mediante algoritmos de búsqueda en grafos (BFS/DFS) aplicados a la matriz de adyacencia.</p></li>
 <li><p><strong>Ausencia de subgrafos absorbentes</strong>: No existen subconjuntos propios <span class="math inline">\(S \subset V\)</span> tales que todas las transiciones desde nodos en <span class="math inline">\(S\)</span> permanezcan dentro de <span class="math inline">\(S\)</span>. Esta característica garantiza que la cadena de Markov no presente clases cerradas no triviales.</p></li>
-<li><p><strong>Distribución de grados</strong>: El grado de salida promedio es <span class="math inline">\(\bar{d}_{\text{out}} \approx 61.8\)</span>, mientras que el grado de entrada promedio es <span class="math inline">\(\bar{d}_{\text{in}} \approx 61.8\)</span>, reflejando la naturaleza aproximadamente simétrica de la red vial estatal.</p></li>
-<li><p><strong>Diámetro de la red</strong>: La distancia geodésica máxima (en número de saltos) entre cualquier par de municipios es 4, lo cual indica una alta conectividad global del sistema territorial.</p></li>
+<li><p><strong>Distribución de grados</strong>: El grado de salida promedio es <span class="math inline">\(\bar{d}_{\text{out}} \approx 61.8\)</span>, mientras que el grado de entrada promedio es <span class="math inline">\(\bar{d}_{\text{in}} \approx 61.8\)</span>, reflejando la naturaleza aproximadamente simétrica de la red vial estatal. Cabe precisar que el grado de salida de un nodo representa el número de aristas que emergen desde él hacia otros nodos, mientras que el grado de entrada corresponde al número de aristas que llegan a él desde otros nodos; en este contexto, el grado de salida cuantifica cuántas conexiones directas tiene un municipio hacia otros municipios a través de la red vial, y el grado de entrada indica cuántos municipios tienen rutas directas hacia él. El promedio se calcula sumando todos los grados (de salida o de entrada) y dividiendo entre el número total de municipios, lo que ofrece una medida de la densidad de conexiones típica del sistema, ya sea salientes o entrantes.</p></li>
+<li><p><strong>Diámetro de la red</strong>:La distancia máxima en el grafo, es decir, la longitud del camino más corto medida en número de aristas o “saltos” entre cualquier par de municipios es 4, lo cual indica una alta conectividad global del sistema territorial. Este indicador corresponde al concepto de <strong>diámetro de la red</strong> en teoría de grafos, el cual se define como la mayor de todas las distancias mínimas entre pares de nodos; un valor reducido como 4 sugiere que, independientemente del origen y destino, siempre es posible alcanzar cualquier municipio recorriendo a lo sumo cuatro conexiones intermedias a través de la infraestructura vial disponible.</p></li>
 </ol>
 </section>
 <section id="sec-transicion" class="level3" data-number="4.4.5">
 <h3 data-number="4.4.5" class="anchored" data-anchor-id="sec-transicion"><span class="header-section-number">4.4.5</span> Matriz de transición modificada para PageRank</h3>
-<p>A pesar de las propiedades favorables mencionadas, la matriz <span class="math inline">\(Q\)</span> puede presentar convergencia hacia la distribución estacionaria. Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>, típicamente <span class="math inline">\(p = 0.85\)</span>.</p>
+<p>A pesar de las propiedades favorables mencionadas, la matriz <span class="math inline">\(Q\)</span> puede presentar convergencia hacia la distribución estacionaria (<a href="chapter1.html#sec-ergodicidad" class="quarto-xref"><span>Sección 2.3.4</span></a>). Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>, típicamente <span class="math inline">\(p = 0.85\)</span>.</p>
 <p>La matriz de transición modificada <span class="math inline">\(P \in \mathbb{R}^{124 \times 124}\)</span> se define como:</p>
 <p><span class="math display">\[
 P = pQ + (1-p)A,
@@ -533,9 +533,12 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <li><strong>Irreducibilidad</strong>: <span class="math inline">\(p_{ij} &gt; 0\)</span> para todo par <span class="math inline">\((i,j)\)</span>, lo cual garantiza que cualquier estado sea alcanzable desde cualquier otro en un número finito de pasos,</li>
 <li><strong>Aperiodicidad</strong>: La existencia de saltos aleatorios elimina ciclos deterministas, asegurando que el período de todos los estados sea igual a 1.</li>
 </ul>
-<p>Estas propiedades garantizan, por el teorema de Perron-Frobenius para matrices estocásticas primitivas, la existencia de un único vector estacionario <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> que satisface:</p>
+<p>Estas propiedades garantizan, por el teorema de Perron-Frobenius (<a href="chapter1.html#sec-teroemafrobenius" class="quarto-xref"><span>Sección 2.4.2</span></a>) para matrices estocásticas primitivas, la existencia de un único vector estacionario <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> que satisface:</p>
 <p><span class="math display">\[
-\pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
+\pi = P\pi
+\]</span> (eq-pi)</p>
+<p><span class="math display">\[
+\sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
 \]</span></p>
 <p>El vector <span class="math inline">\(\pi\)</span> constituye la base matemática para la clasificación de los municipios según su importancia relativa dentro de la red territorial, tal como se detalla en la sección siguiente.</p>
 </section>

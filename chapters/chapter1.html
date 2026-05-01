@@ -476,8 +476,8 @@ window.Quarto = {
 <p><strong>Definición 1.2 (Grafo dirigido).</strong> Un <em>grafo dirigido</em> (o <em>digrafo</em>) es un par ordenado <span class="math inline">\(D = (V, A)\)</span>, donde: - <span class="math inline">\(V\)</span> es un conjunto finito no vacío de vértices, - <span class="math inline">\(A \subseteq V \times V\)</span> es un conjunto de <em>arcos</em>, cada uno representado como un par ordenado <span class="math inline">\((u,v)\)</span> con <span class="math inline">\(u, v \in V\)</span> y <span class="math inline">\(u \neq v\)</span>.</p>
 <p>El arco <span class="math inline">\((u,v)\)</span> se interpreta como una conexión unidireccional desde el vértice origen <span class="math inline">\(u\)</span> hacia el vértice destino <span class="math inline">\(v\)</span>. En redes logísticas, los grafos dirigidos permiten modelar restricciones de sentido único, pendientes pronunciadas que afectan la transitabilidad en una dirección, o flujos asimétricos de recursos <span class="citation" data-cites="newman2018networks">(<a href="../references.html#ref-newman2018networks" role="doc-biblioref">Newman 2018</a>)</span>.</p>
 </section>
-<section id="matriz-de-adyacencia-representación-algebraica-de-la-conectividad" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="matriz-de-adyacencia-representación-algebraica-de-la-conectividad"><span class="header-section-number">2.1.2</span> Matriz de adyacencia: representación algebraica de la conectividad</h3>
+<section id="sec-adyacencia" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-adyacencia"><span class="header-section-number">2.1.2</span> Matriz de adyacencia: representación algebraica de la conectividad</h3>
 <p>La estructura de un grafo finito puede codificarse de manera compacta mediante su <strong>matriz de adyacencia</strong>, objeto central en el análisis computacional de redes.</p>
 <p><strong>Definición 1.3 (Matriz de adyacencia no dirigida).</strong> Sea <span class="math inline">\(G = (V, E)\)</span> un grafo no dirigido con <span class="math inline">\(|V| = n\)</span>. La <em>matriz de adyacencia</em> de <span class="math inline">\(G\)</span> es la matriz <span class="math inline">\(A \in \{0,1\}^{n \times n}\)</span> definida por: <span class="math display">\[
 a_{ij} =
@@ -543,8 +543,8 @@ w(\{v_i,v_j\}), &amp; \text{si } \{v_i,v_j\} \in E, \\
 </ul>
 <p>La elección de la métrica de peso determina el tipo de análisis estructural que puede realizarse sobre la red, y debe alinearse con los objetivos operativos del sistema logístico.</p>
 </section>
-<section id="sec-transicion" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="sec-transicion"><span class="header-section-number">2.2.2</span> Representación matricial y transformación a probabilidades de transición</h3>
+<section id="representación-matricial-y-transformación-a-probabilidades-de-transición" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="representación-matricial-y-transformación-a-probabilidades-de-transición"><span class="header-section-number">2.2.2</span> Representación matricial y transformación a probabilidades de transición</h3>
 <p>La estructura de una red ponderada puede codificarse mediante su <strong>matriz de pesos</strong> <span class="math inline">\(W \in \mathbb{R}^{n \times n}\)</span>, definida como: <span class="math display">\[
 w_{ij} =
 \begin{cases}
@@ -602,9 +602,13 @@ q_{ij} = \frac{\tilde{w}_{ij}}{\sum_{k=1}^n \tilde{w}_{kj}}, \quad \text{si } \s
 p_{ij} = \mathbb{P}(X_{n+1} = j \mid X_n = i), \quad i,j \in \mathcal{S}.
 \]</span></p>
 </section>
-<section id="matriz-de-transición-y-ecuaciones-de-chapman-kolmogorov" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="matriz-de-transición-y-ecuaciones-de-chapman-kolmogorov"><span class="header-section-number">2.3.2</span> Matriz de transición y ecuaciones de Chapman-Kolmogorov</h3>
-<p>Las probabilidades <span class="math inline">\(p_{ij}\)</span> se organizan en la <strong>matriz de transición</strong> <span class="math inline">\(P = [p_{ij}]_{i,j \in \mathcal{S}} \in \mathbb{R}^{N \times N}\)</span>, la cual satisface: 1. <span class="math inline">\(p_{ij} \geq 0\)</span> para todo <span class="math inline">\(i,j\)</span>, 2. <span class="math inline">\(\sum_{j=1}^{N} p_{ij} = 1\)</span> para todo <span class="math inline">\(i\)</span> (matriz estocástica por filas).</p>
+<section id="sec-transicion" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="sec-transicion"><span class="header-section-number">2.3.2</span> Matriz de transición y ecuaciones de Chapman-Kolmogorov</h3>
+<p>Las probabilidades <span class="math inline">\(p_{ij}\)</span> se organizan en la <strong>matriz de transición</strong> <span class="math inline">\(P = [p_{ij}]_{i,j \in \mathcal{S}} \in \mathbb{R}^{N \times N}\)</span>, la cual satisface:</p>
+<ol type="1">
+<li><span class="math inline">\(p_{ij} \geq 0\)</span> para todo <span class="math inline">\(i,j\)</span>,</li>
+<li><span class="math inline">\(\sum_{j=1}^{N} p_{ij} = 1\)</span> para todo <span class="math inline">\(i\)</span> (matriz estocástica por filas).</li>
+</ol>
 <p>La probabilidad de transición en <span class="math inline">\(n\)</span> pasos, denotada <span class="math inline">\(p_{ij}^{(n)} = \mathbb{P}(X_n = j \mid X_0 = i)\)</span>, satisface las ecuaciones de Chapman-Kolmogorov: <span class="math display">\[
 p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \geq 0.
 \]</span> En notación matricial, esto implica que <span class="math inline">\(P^{(m+n)} = P^{(m)} P^{(n)}\)</span>, y en particular <span class="math inline">\(P^{(n)} = P^n\)</span>. Esta propiedad algebraica es fundamental para el cálculo de distribuciones a múltiples pasos y constituye la base teórica de los algoritmos iterativos de cálculo de centralidad en redes <span class="citation" data-cites="grinstead2012introduction">(<a href="../references.html#ref-grinstead2012introduction" role="doc-biblioref">Grinstead y Snell 2009</a>)</span>.</p>
@@ -646,8 +650,8 @@ p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \ge
 <li><strong>Matriz primitiva</strong>: <span class="math inline">\(A\)</span> es primitiva si existe <span class="math inline">\(m \in \mathbb{N}\)</span> tal que <span class="math inline">\(A^m &gt; 0\)</span>. En el contexto de cadenas de Markov, la primitividad garantiza aperiodicidad y convergencia geométrica de las potencias de la matriz <span class="citation" data-cites="horn2012matrix">(<a href="../references.html#ref-horn2012matrix" role="doc-biblioref">Horn y Johnson 2012</a>)</span>.</li>
 </ul>
 </section>
-<section id="enunciado-del-teorema" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="enunciado-del-teorema"><span class="header-section-number">2.4.2</span> Enunciado del teorema</h3>
+<section id="sec-teroemafrobenius" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="sec-teroemafrobenius"><span class="header-section-number">2.4.2</span> Enunciado del teorema</h3>
 <p><strong>Teorema 1.1 (Perron-Frobenius para matrices estocásticas primitivas).</strong> Sea <span class="math inline">\(P \in \mathbb{R}^{n \times n}\)</span> una matriz estocástica por columnas (<span class="math inline">\(P \geq 0\)</span>, <span class="math inline">\(\sum_{i=1}^n p_{ij} = 1\)</span>) que es primitiva. Entonces se cumplen las siguientes propiedades:</p>
 <ol type="1">
 <li>El radio espectral es <span class="math inline">\(\rho(P) = 1\)</span>.</li>

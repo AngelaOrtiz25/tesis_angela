@@ -428,7 +428,7 @@ una dirección, o flujos asimétricos de recursos
 (\citeproc{ref-newman2018networks}{Newman 2018}).
 
 \subsection{Matriz de adyacencia: representación algebraica de la
-conectividad}\label{matriz-de-adyacencia-representaciuxf3n-algebraica-de-la-conectividad}
+conectividad}\label{sec-adyacencia}
 
 La estructura de un grafo finito puede codificarse de manera compacta
 mediante su \textbf{matriz de adyacencia}, objeto central en el análisis
@@ -587,7 +587,8 @@ estructural que puede realizarse sobre la red, y debe alinearse con los
 objetivos operativos del sistema logístico.
 
 \subsection{Representación matricial y transformación a probabilidades
-de transición}\label{sec-transicion}
+de
+transición}\label{representaciuxf3n-matricial-y-transformaciuxf3n-a-probabilidades-de-transiciuxf3n}
 
 La estructura de una red ponderada puede codificarse mediante su
 \textbf{matriz de pesos} \(W \in \mathbb{R}^{n \times n}\), definida
@@ -735,14 +736,22 @@ p_{ij} = \mathbb{P}(X_{n+1} = j \mid X_n = i), \quad i,j \in \mathcal{S}.
 \]
 
 \subsection{Matriz de transición y ecuaciones de
-Chapman-Kolmogorov}\label{matriz-de-transiciuxf3n-y-ecuaciones-de-chapman-kolmogorov}
+Chapman-Kolmogorov}\label{sec-transicion}
 
 Las probabilidades \(p_{ij}\) se organizan en la \textbf{matriz de
 transición}
 \(P = [p_{ij}]_{i,j \in \mathcal{S}} \in \mathbb{R}^{N \times N}\), la
-cual satisface: 1. \(p_{ij} \geq 0\) para todo \(i,j\), 2.
-\(\sum_{j=1}^{N} p_{ij} = 1\) para todo \(i\) (matriz estocástica por
-filas).
+cual satisface:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(p_{ij} \geq 0\) para todo \(i,j\),
+\item
+  \(\sum_{j=1}^{N} p_{ij} = 1\) para todo \(i\) (matriz estocástica por
+  filas).
+\end{enumerate}
 
 La probabilidad de transición en \(n\) pasos, denotada
 \(p_{ij}^{(n)} = \mathbb{P}(X_n = j \mid X_0 = i)\), satisface las
@@ -871,7 +880,7 @@ establecen las siguientes definiciones estructurales:
   (\citeproc{ref-horn2012matrix}{Horn y Johnson 2012}).
 \end{itemize}
 
-\subsection{Enunciado del teorema}\label{enunciado-del-teorema}
+\subsection{Enunciado del teorema}\label{sec-teroemafrobenius}
 
 \textbf{Teorema 1.1 (Perron-Frobenius para matrices estocásticas
 primitivas).} Sea \(P \in \mathbb{R}^{n \times n}\) una matriz
@@ -2838,7 +2847,7 @@ metodológica}\label{validaciuxf3n-metodoluxf3gica}
 
 Se realizó una validación cruzada comparando las distancias 2D
 calculadas con mediciones oficiales del Instituto Nacional de
-Estadística y Geografía (INEGI) pueden consultar en
+Estadística y Geografía (INEGI) pueden consultar en el sitio oficial
 https://gaia.inegi.org.mx/mdm6/ , obteniendo una discrepancia media
 inferior al \(1.2\%\). Las distancias 3D no pudieron validarse
 directamente con fuentes externas (ningún servicio público proporciona
@@ -2898,10 +2907,10 @@ w_{ij} = \begin{cases}
 \]
 
 donde \(d_{ij}^{(3D)}\) denota la distancia tridimensional calculada
-según la metodología descrita en la sección anterior. Esta formulación
-refleja la intuición de que municipios más cercanos ejercen una mayor
-influencia mutua dentro de la red, mientras que distancias mayores
-corresponden a una conectividad efectiva reducida.
+según la metodología descrita en la Sección~\ref{sec-distancias3d}. Esta
+formulación refleja la intuición de que municipios más cercanos ejercen
+una mayor influencia mutua dentro de la red, mientras que distancias
+mayores corresponden a una conectividad efectiva reducida.
 
 \subsection{Matriz de adyacencia y
 normalización}\label{matriz-de-adyacencia-y-normalizaciuxf3n}
@@ -2980,21 +2989,39 @@ estructurales relevantes:
   \textbf{Distribución de grados}: El grado de salida promedio es
   \(\bar{d}_{\text{out}} \approx 61.8\), mientras que el grado de
   entrada promedio es \(\bar{d}_{\text{in}} \approx 61.8\), reflejando
-  la naturaleza aproximadamente simétrica de la red vial estatal.
+  la naturaleza aproximadamente simétrica de la red vial estatal. Cabe
+  precisar que el grado de salida de un nodo representa el número de
+  aristas que emergen desde él hacia otros nodos, mientras que el grado
+  de entrada corresponde al número de aristas que llegan a él desde
+  otros nodos; en este contexto, el grado de salida cuantifica cuántas
+  conexiones directas tiene un municipio hacia otros municipios a través
+  de la red vial, y el grado de entrada indica cuántos municipios tienen
+  rutas directas hacia él. El promedio se calcula sumando todos los
+  grados (de salida o de entrada) y dividiendo entre el número total de
+  municipios, lo que ofrece una medida de la densidad de conexiones
+  típica del sistema, ya sea salientes o entrantes.
 \item
-  \textbf{Diámetro de la red}: La distancia geodésica máxima (en número
-  de saltos) entre cualquier par de municipios es 4, lo cual indica una
-  alta conectividad global del sistema territorial.
+  \textbf{Diámetro de la red}:La distancia máxima en el grafo, es decir,
+  la longitud del camino más corto medida en número de aristas o
+  ``saltos'' entre cualquier par de municipios es 4, lo cual indica una
+  alta conectividad global del sistema territorial. Este indicador
+  corresponde al concepto de \textbf{diámetro de la red} en teoría de
+  grafos, el cual se define como la mayor de todas las distancias
+  mínimas entre pares de nodos; un valor reducido como 4 sugiere que,
+  independientemente del origen y destino, siempre es posible alcanzar
+  cualquier municipio recorriendo a lo sumo cuatro conexiones
+  intermedias a través de la infraestructura vial disponible.
 \end{enumerate}
 
 \subsection{Matriz de transición modificada para
 PageRank}\label{sec-transicion}
 
 A pesar de las propiedades favorables mencionadas, la matriz \(Q\) puede
-presentar convergencia hacia la distribución estacionaria. Para
-garantizar la ergodicidad de la cadena de Markov y asegurar la
-existencia y unicidad de la distribución estacionaria, se introduce el
-factor de amortiguamiento \(p \in (0,1)\), típicamente \(p = 0.85\).
+presentar convergencia hacia la distribución estacionaria
+(Sección~\ref{sec-ergodicidad}). Para garantizar la ergodicidad de la
+cadena de Markov y asegurar la existencia y unicidad de la distribución
+estacionaria, se introduce el factor de amortiguamiento \(p \in (0,1)\),
+típicamente \(p = 0.85\).
 
 La matriz de transición modificada \(P \in \mathbb{R}^{124 \times 124}\)
 se define como:
@@ -3040,12 +3067,17 @@ fundamentales:
   sea igual a 1.
 \end{itemize}
 
-Estas propiedades garantizan, por el teorema de Perron-Frobenius para
-matrices estocásticas primitivas, la existencia de un único vector
-estacionario \(\pi \in \mathbb{R}^{124}\) que satisface:
+Estas propiedades garantizan, por el teorema de Perron-Frobenius
+(Sección~\ref{sec-teroemafrobenius}) para matrices estocásticas
+primitivas, la existencia de un único vector estacionario
+\(\pi \in \mathbb{R}^{124}\) que satisface:
 
 \[
-\pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
+\pi = P\pi 
+\] (eq-pi)
+
+\[
+\sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
 \]
 
 El vector \(\pi\) constituye la base matemática para la clasificación de
@@ -3322,7 +3354,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, leftrule=.75mm, arc=.35mm, toprule=.15mm, opacityback=0, toptitle=1mm, left=2mm, breakable, coltitle=black, opacitybacktitle=0.6, titlerule=0mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame]
+\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, toprule=.15mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, bottomtitle=1mm, left=2mm, titlerule=0mm, colframe=quarto-callout-note-color-frame, coltitle=black, leftrule=.75mm, colback=white, breakable, bottomrule=.15mm, opacitybacktitle=0.6]
 
 \textbf{Características operativas de la ruta}
 
