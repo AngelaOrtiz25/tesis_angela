@@ -465,8 +465,8 @@ window.Quarto = {
 <section id="grafos-dirigidos-y-no-dirigidos-matrices-de-adyacencia" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="grafos-dirigidos-y-no-dirigidos-matrices-de-adyacencia"><span class="header-section-number">2.1</span> Grafos dirigidos y no dirigidos, matrices de adyacencia</h2>
 <p>La modelación matemática de redes de transporte, sistemas logísticos y flujos de distribución requiere un lenguaje estructural que permita representar de manera abstracta las relaciones de conectividad entre entidades discretas. La teoría de grafos proporciona este marco formal, ofreciendo herramientas para analizar propiedades topológicas, optimizar rutas y caracterizar la dinámica de procesos definidos sobre redes <span class="citation" data-cites="bondy2008graph">(<a href="../references.html#ref-bondy2008graph" role="doc-biblioref">Bondy y Murty 2008</a>)</span>. En el contexto de la logística humanitaria en Chiapas, los grafos constituyen la base sobre la cual se construyen los algoritmos de priorización territorial y evaluación de accesibilidad desarrollados en este capítulo.</p>
-<section id="definiciones-fundamentales" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="definiciones-fundamentales"><span class="header-section-number">2.1.1</span> Definiciones fundamentales</h3>
+<section id="sec-grafos" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="sec-grafos"><span class="header-section-number">2.1.1</span> Definiciones fundamentales</h3>
 <p><strong>Definición 1.1 (Grafo no dirigido).</strong> Un <em>grafo no dirigido</em> es un par ordenado <span class="math inline">\(G = (V, E)\)</span>, donde:</p>
 <ul>
 <li><span class="math inline">\(V = \{v_1, v_2, \dots, v_n\}\)</span> es un conjunto finito no vacío de <em>vértices</em> o <em>nodos</em>,</li>
@@ -543,8 +543,8 @@ w(\{v_i,v_j\}), &amp; \text{si } \{v_i,v_j\} \in E, \\
 </ul>
 <p>La elección de la métrica de peso determina el tipo de análisis estructural que puede realizarse sobre la red, y debe alinearse con los objetivos operativos del sistema logístico.</p>
 </section>
-<section id="representación-matricial-y-transformación-a-probabilidades-de-transición" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="representación-matricial-y-transformación-a-probabilidades-de-transición"><span class="header-section-number">2.2.2</span> Representación matricial y transformación a probabilidades de transición</h3>
+<section id="sec-transicion" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="sec-transicion"><span class="header-section-number">2.2.2</span> Representación matricial y transformación a probabilidades de transición</h3>
 <p>La estructura de una red ponderada puede codificarse mediante su <strong>matriz de pesos</strong> <span class="math inline">\(W \in \mathbb{R}^{n \times n}\)</span>, definida como: <span class="math display">\[
 w_{ij} =
 \begin{cases}
@@ -590,8 +590,8 @@ q_{ij} = \frac{\tilde{w}_{ij}}{\sum_{k=1}^n \tilde{w}_{kj}}, \quad \text{si } \s
 <p>En el estudio de caso de Chiapas, los pesos <span class="math inline">\(w_{ij}\)</span> se definen como las distancias tridimensionales <span class="math inline">\(d_{ij}^{(3D)}\)</span> calculadas en la <a href="chapter3.html#sec-distancias3d" class="quarto-xref"><span>Sección 4.3</span></a>, garantizando que la priorización de municipios mediante PageRank incorpore explícitamente las barreras topográficas que caracterizan la región. Esta integración entre modelación geométrica, teoría de grafos ponderados y procesos estocásticos constituye el núcleo analítico sobre el cual se construye la estrategia logística territorial.</p>
 </section>
 </section>
-<section id="cadenas-de-markov-de-tiempo-discreto" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="cadenas-de-markov-de-tiempo-discreto"><span class="header-section-number">2.3</span> Cadenas de Markov de tiempo discreto</h2>
+<section id="sec-markov" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-markov"><span class="header-section-number">2.3</span> Cadenas de Markov de tiempo discreto</h2>
 <p>Las cadenas de Markov de tiempo discreto constituyen uno de los pilares fundamentales de la teoría de procesos estocásticos, proporcionando un marco matemático riguroso para modelar sistemas que evolucionan en pasos temporales discretos con la propiedad de falta de memoria. En el contexto de la priorización territorial y el análisis de redes de transporte, estas cadenas permiten representar el movimiento de un agente aleatorio a través de los nodos de una red, donde la probabilidad de transición entre municipios depende exclusivamente del estado actual y de la estructura de conectividad ponderada. Para más detalles, <span class="citation" data-cites="blanco2013procesos rincon2016procesos">(<a href="../references.html#ref-blanco2013procesos" role="doc-biblioref">Blanco Castañeda 2013</a>; <a href="../references.html#ref-rincon2016procesos" role="doc-biblioref">Rincón 2012</a>)</span>.</p>
 <section id="definición-formal-y-propiedad-de-markov" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="definición-formal-y-propiedad-de-markov"><span class="header-section-number">2.3.1</span> Definición formal y propiedad de Markov</h3>
@@ -619,8 +619,8 @@ p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \ge
 <li><strong>Recurrencia y transitoriedad</strong>: Un estado <span class="math inline">\(i\)</span> es <em>recurrente</em> si <span class="math inline">\(\sum_{n=1}^\infty p_{ii}^{(n)} = \infty\)</span>, y <em>transiente</em> en caso contrario. En espacios de estados finitos, la irreducibilidad implica que todos los estados son recurrentes positivos.</li>
 </ul>
 </section>
-<section id="distribución-estacionaria-y-convergencia-ergódica" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="distribución-estacionaria-y-convergencia-ergódica"><span class="header-section-number">2.3.4</span> Distribución estacionaria y convergencia ergódica</h3>
+<section id="sec-ergodicidad" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="sec-ergodicidad"><span class="header-section-number">2.3.4</span> Distribución estacionaria y convergencia ergódica</h3>
 <p>El comportamiento a largo plazo de una cadena irreducible y aperiódica se caracteriza por la existencia de una <strong>distribución estacionaria</strong> <span class="math inline">\(\pi = (\pi_1, \dots, \pi_N)\)</span>, que satisface el sistema lineal: <span class="math display">\[
 \pi = \pi P, \quad \sum_{i=1}^{N} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
 \]</span> El teorema ergódico para cadenas de Markov finitas establece que, bajo irreducibilidad y aperiodicidad, la distribución del estado converge a <span class="math inline">\(\pi\)</span> independientemente de la distribución inicial <span class="math inline">\(\pi^{(0)}\)</span>: <span class="math display">\[

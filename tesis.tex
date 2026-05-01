@@ -390,8 +390,7 @@ la logística humanitaria en Chiapas, los grafos constituyen la base
 sobre la cual se construyen los algoritmos de priorización territorial y
 evaluación de accesibilidad desarrollados en este capítulo.
 
-\subsection{Definiciones
-fundamentales}\label{definiciones-fundamentales}
+\subsection{Definiciones fundamentales}\label{sec-grafos}
 
 \textbf{Definición 1.1 (Grafo no dirigido).} Un \emph{grafo no dirigido}
 es un par ordenado \(G = (V, E)\), donde:
@@ -588,8 +587,7 @@ estructural que puede realizarse sobre la red, y debe alinearse con los
 objetivos operativos del sistema logístico.
 
 \subsection{Representación matricial y transformación a probabilidades
-de
-transición}\label{representaciuxf3n-matricial-y-transformaciuxf3n-a-probabilidades-de-transiciuxf3n}
+de transición}\label{sec-transicion}
 
 La estructura de una red ponderada puede codificarse mediante su
 \textbf{matriz de pesos} \(W \in \mathbb{R}^{n \times n}\), definida
@@ -699,8 +697,7 @@ modelación geométrica, teoría de grafos ponderados y procesos
 estocásticos constituye el núcleo analítico sobre el cual se construye
 la estrategia logística territorial.
 
-\section{Cadenas de Markov de tiempo
-discreto}\label{cadenas-de-markov-de-tiempo-discreto}
+\section{Cadenas de Markov de tiempo discreto}\label{sec-markov}
 
 Las cadenas de Markov de tiempo discreto constituyen uno de los pilares
 fundamentales de la teoría de procesos estocásticos, proporcionando un
@@ -793,7 +790,7 @@ estructurales:
 \end{itemize}
 
 \subsection{Distribución estacionaria y convergencia
-ergódica}\label{distribuciuxf3n-estacionaria-y-convergencia-erguxf3dica}
+ergódica}\label{sec-ergodicidad}
 
 El comportamiento a largo plazo de una cadena irreducible y aperiódica
 se caracteriza por la existencia de una \textbf{distribución
@@ -2455,27 +2452,29 @@ aplicación del algoritmo PageRank a la red territorial del estado
 (Sección~\ref{sec-pagerank}). Originalmente desarrollado por Brin y Page
 (\citeproc{ref-brin1998anatomy}{1998}) para el ordenamiento de páginas
 web, este algoritmo fundamenta su operación en la teoría de cadenas de
-Markov de tiempo discreto, proporcionando una medida de centralidad que
-identifica nodos estratégicos dentro de una red compleja.
+Markov de tiempo discreto (Sección~\ref{sec-markov}), proporcionando una
+medida de centralidad que identifica nodos estratégicos dentro de una
+red compleja.
 
 Matemáticamente, sea \(G = (V, E, W)\) un grafo dirigido ponderado que
-representa la red territorial, donde \(V\) denota el conjunto de
-vértices (municipios), \(E \subseteq V \times V\) el conjunto de aristas
-(conexiones viales), y \(W: E \to \mathbb{R}^+\) una función que asigna
-a cada arista \((v_i, v_j)\) la distancia tridimensional
-\(d_{ij}^{(3D)}\) entre los municipios \(i\) y \(j\). El algoritmo
-PageRank calcula el vector estacionario \(\pi \in \mathbb{R}^{124}\) que
-satisface:
+representa la red territorial (Sección~\ref{sec-grafos}), donde \(V\)
+denota el conjunto de vértices (municipios), \(E \subseteq V \times V\)
+el conjunto de aristas (conexiones viales), y \(W: E \to \mathbb{R}^+\)
+una función que asigna a cada arista \((v_i, v_j)\) la distancia
+tridimensional \(d_{ij}^{(3D)}\) entre los municipios \(i\) y \(j\). El
+algoritmo PageRank calcula el vector estacionario
+\(\pi \in \mathbb{R}^{124}\) que satisface:
 
 \[
 \pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i,
 \]
 
-donde \(P\) es la matriz de transición modificada que incorpora un
-factor de amortiguamiento \(p = 0.85\) para garantizar la ergodicidad de
-la cadena. El valor \(\pi_i\) representa la importancia relativa del
-municipio \(i\) dentro de la red, permitiendo identificar aquellos nodos
-que actúan como centros de distribución naturales.
+donde \(P\) es la matriz de transición (Sección~\ref{sec-transicion})
+modificada que incorpora un factor de amortiguamiento \(p = 0.85\) para
+garantizar la ergodicidad de la cadena (Sección~\ref{sec-ergodicidad}).
+El valor \(\pi_i\) representa la importancia relativa del municipio
+\(i\) dentro de la red, permitiendo identificar aquellos nodos que
+actúan como centros de distribución naturales.
 
 El flujo metodológico desarrollado en este capítulo comprende las
 siguientes etapas:
@@ -3322,7 +3321,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, coltitle=black, opacityback=0, colback=white, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, breakable, arc=.35mm, left=2mm, bottomrule=.15mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, breakable, opacityback=0, bottomrule=.15mm, toprule=.15mm, left=2mm, opacitybacktitle=0.6, colback=white, bottomtitle=1mm, coltitle=black, toptitle=1mm, titlerule=0mm, leftrule=.75mm, rightrule=.15mm, colframe=quarto-callout-note-color-frame, colbacktitle=quarto-callout-note-color!10!white]
 
 \textbf{Características operativas de la ruta}
 
