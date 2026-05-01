@@ -256,7 +256,7 @@ Sea $A \in \mathbb{R}^{n \times n}$ una matriz con entradas reales. Se establece
 
 *Esbozo de demostración.* La igualdad $\rho(P)=1$ se deduce de la conservación de la norma $\ell_1$ bajo multiplicación por matrices estocásticas. La positividad estricta de $P^m$ implica, por el lema de Gelfand y propiedades de conos invariantes, que el subespacio propio asociado a $\lambda=1$ es unidimensional y que ningún otro valor propio puede alcanzar módulo 1. La convergencia de $P^k$ sigue de la descomposición de Jordan, donde el bloque asociado a $\lambda=1$ domina asintóticamente a los bloques contractivos correspondientes a $|\lambda_i| < 1$ [@meyer2000matrix]. $\square$
 
-### Aplicación directa al algoritmo PageRank
+### Aplicación directa al algoritmo PageRank {#sec-pagerank}
 
 En el algoritmo PageRank, la matriz de transición modificada (conocida como *matriz de Google*) se construye a partir de la matriz de conectividad normalizada $Q$ mediante:
 $$
