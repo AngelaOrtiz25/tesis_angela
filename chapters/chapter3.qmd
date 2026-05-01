@@ -319,7 +319,7 @@ Estas propiedades garantizan, por el teorema de Perron-Frobenius (@sec-teroemafr
 
 $$
 \pi = P\pi 
-$$ (eq-pi)
+$$ {eq-pi}
 
 $$
 \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
