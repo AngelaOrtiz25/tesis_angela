@@ -543,8 +543,8 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <p>El vector <span class="math inline">\(\pi\)</span> constituye la base matemática para la clasificación de los municipios según su importancia relativa dentro de la red territorial, tal como se detalla en la sección siguiente.</p>
 </section>
 </section>
-<section id="aplicación-del-algoritmo-pagerank-y-convergencia" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="aplicación-del-algoritmo-pagerank-y-convergencia"><span class="header-section-number">4.5</span> Aplicación del algoritmo PageRank y convergencia</h2>
+<section id="sec-aplicaionpagerank" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-aplicaionpagerank"><span class="header-section-number">4.5</span> Aplicación del algoritmo PageRank y convergencia</h2>
 <section id="fundamentos-matemáticos-del-algoritmo-pagerank" class="level3" data-number="4.5.1">
 <h3 data-number="4.5.1" class="anchored" data-anchor-id="fundamentos-matemáticos-del-algoritmo-pagerank"><span class="header-section-number">4.5.1</span> Fundamentos matemáticos del algoritmo PageRank</h3>
 <p>El algoritmo PageRank, proporciona una medida de centralidad para los nodos de una red basada en su estructura de conectividad global. En el contexto de la red territorial de Chiapas, el algoritmo permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, actúan como centros naturales de distribución logística.</p>
@@ -590,19 +590,18 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 </section>
 <section id="rutas-óptimas-desde-protección-civil-hacia-municipios-prioritarios" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="rutas-óptimas-desde-protección-civil-hacia-municipios-prioritarios"><span class="header-section-number">4.6</span> Rutas óptimas desde Protección Civil hacia municipios prioritarios</h2>
-</section>
-<section id="punto-de-almacenamiento-y-municipios-estratégicos" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="punto-de-almacenamiento-y-municipios-estratégicos"><span class="header-section-number">4.7</span> Punto de almacenamiento y municipios estratégicos</h2>
-<p>El punto de almacenamiento central para operaciones de ayuda humanitaria se establece en las instalaciones de Protección Civil ubicadas en Tuxtla Gutiérrez, capital del estado de Chiapas. Esta localización responde a criterios operativos fundamentales:</p>
+<section id="punto-de-almacenamiento-y-municipios-estratégicos" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="punto-de-almacenamiento-y-municipios-estratégicos"><span class="header-section-number">4.6.1</span> Punto de almacenamiento y municipios estratégicos</h3>
+<p>El punto de almacenamiento central para operaciones de ayuda humanitaria se establece en las instalaciones de la Secretaria de Protección Civil ubicadas en Tuxtla Gutiérrez, capital del estado de Chiapas (https://maps.app.goo.gl/fRNWcaote5heu1Qp9). Esta localización responde a criterios operativos fundamentales:</p>
 <ol type="1">
-<li><strong>Accesibilidad desde el aeropuerto</strong>: Conexión directa con el Aeropuerto Internacional Ángel Albino Corzo mediante vía terrestre de alta capacidad.</li>
+<li><strong>Accesibilidad desde el aeropuerto</strong>: Conexión directa con el Aeropuerto Internacional Ángel Albino Corzo (https://maps.app.goo.gl/kip9Nrw984oCGX7ZA) mediante vía terrestre de alta capacidad.</li>
 <li><strong>Infraestructura logística</strong>: Disponibilidad de almacenes, personal capacitado y sistemas de coordinación operativa.</li>
 <li><strong>Centralidad geográfica</strong>: Posición privilegiada que minimiza las distancias promedio hacia la mayoría de los municipios del estado.</li>
 </ol>
-<p>A partir de la aplicación del algoritmo PageRank descrita en la sección anterior, se identificaron los 15 municipios con mayor importancia relativa (<span class="math inline">\(\pi_i\)</span>) dentro de la red territorial. Estos municipios constituyen los nodos estratégicos hacia los cuales se dirigen las rutas de distribución prioritaria en escenarios de emergencia.</p>
+<p>A partir de la aplicación del algoritmo PageRank descrita en la <a href="#sec-aplicaionpagerank" class="quarto-xref"><span>Sección 4.5</span></a>, se identificaron los 15 municipios con mayor importancia relativa (<span class="math inline">\(\pi_i\)</span>) dentro de la red territorial. Estos municipios constituyen los nodos estratégicos hacia los cuales se dirigen las rutas de distribución prioritaria en escenarios de emergencia.</p>
 </section>
-<section id="análisis-de-rutas-óptimas" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="análisis-de-rutas-óptimas"><span class="header-section-number">4.8</span> Análisis de rutas óptimas</h2>
+<section id="análisis-de-rutas-óptimas" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="análisis-de-rutas-óptimas"><span class="header-section-number">4.6.2</span> Análisis de rutas óptimas</h3>
 <p>Para cada municipio prioritario <span class="math inline">\(v_j\)</span>, se determinó la ruta óptima <span class="math inline">\(\mathcal{R}_{0j}\)</span> que conecta el punto de almacenamiento <span class="math inline">\(v_0\)</span> (Protección Civil, Tuxtla Gutiérrez) con <span class="math inline">\(v_j\)</span>. Matemáticamente, esta ruta se define como:</p>
 <p><span class="math display">\[
 \mathcal{R}_{0j}^* = \arg\min_{\mathcal{R} \in \mathcal{P}_{0j}} \sum_{(v_k,v_{k+1}) \in \mathcal{R}} d_{k,k+1}^{(3D)},
@@ -610,10 +609,11 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <p>donde <span class="math inline">\(\mathcal{P}_{0j}\)</span> denota el conjunto de todas las rutas posibles entre <span class="math inline">\(v_0\)</span> y <span class="math inline">\(v_j\)</span>, y <span class="math inline">\(d_{k,k+1}^{(3D)}\)</span> representa la distancia tridimensional entre municipios consecutivos en la ruta.</p>
 <p>El cálculo de rutas óptimas se implementó mediante el algoritmo de Dijkstra sobre el grafo ponderado <span class="math inline">\(G = (V, E, W)\)</span>, utilizando las distancias 3D como métrica de costo. Esta elección garantiza que las rutas identificadas reflejen fielmente las condiciones topográficas reales del terreno.</p>
 </section>
-<section id="resultados-cuantitativos" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="resultados-cuantitativos"><span class="header-section-number">4.9</span> Resultados cuantitativos</h2>
+<section id="resultados-cuantitativos" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="resultados-cuantitativos"><span class="header-section-number">4.6.3</span> Resultados cuantitativos</h3>
 <p>La Tabla 3.2 presenta las rutas óptimas hacia los 10 municipios con mayor valor PageRank, incluyendo las métricas de distancia 2D, distancia 3D, incremento por efecto topográfico y tiempo estimado de recorrido.</p>
 <p><strong>FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION</strong></p>
+</section>
 </section>
 </div>
 
