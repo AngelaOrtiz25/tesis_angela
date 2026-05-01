@@ -529,7 +529,7 @@ los cuales alimentan directamente la función de decisión binaria desarrollada 
 
 La transición de pronósticos meteorológicos cuantitativos a recomendaciones operativas binarias requiere un marco formal que estructure racionalmente la elección entre alternativas bajo condiciones no deterministas. En contextos de logística humanitaria y operaciones aéreas, el estado futuro del sistema atmosférico no es observable de antemano; solo se dispone de distribuciones predictivas o intervalos de confianza derivados de modelos estocásticos. La teoría de decisión bajo incertidumbre proporciona el lenguaje matemático para transformar información probabilística en acciones discretas, garantizando coherencia lógica, trazabilidad y alineación con los objetivos de seguridad operacional, para más detalles sobre teoría de la decisión véase [@berger1985statistical].
 
-### Formulación formal del problema de decisión
+### Formulación del problema de decisión
 
 Un problema de decisión se define mediante la tupla $(\Theta, \mathcal{A}, \mathcal{L})$, donde:
 
