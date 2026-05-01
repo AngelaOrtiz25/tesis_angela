@@ -212,7 +212,7 @@ El código completo de procesamiento, incluyendo las funciones para carga de tes
 
 ### Validación metodológica
 
-Se realizó una validación cruzada comparando las distancias 2D calculadas con mediciones oficiales del Instituto Nacional de Estadística y Geografía (INEGI), obteniendo una discrepancia media inferior al $1.2\%$. Las distancias 3D no pudieron validarse directamente con fuentes externas (ningún servicio público proporciona esta métrica), pero se verificó la coherencia física mediante:
+Se realizó una validación cruzada comparando las distancias 2D calculadas con mediciones oficiales del Instituto Nacional de Estadística y Geografía (INEGI) pueden consultar en https://gaia.inegi.org.mx/mdm6/ , obteniendo una discrepancia media inferior al $1.2\%$. Las distancias 3D no pudieron validarse directamente con fuentes externas (ningún servicio público proporciona esta métrica), pero se verificó la coherencia física mediante:
 
 - Análisis de sensibilidad a la resolución del DEM
 - Comparación con perfiles altimétricos de Google Earth
