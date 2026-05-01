@@ -3,7 +3,8 @@ title: "Sistema Integrado de Decisión para Operaciones con Drones"
 lang: es
 format:
     html: default
-    pdf: default  
+    pdf: 
+        number-sections: true
 execute: 
   freeze: auto 
 jupyter: python3
@@ -300,7 +301,7 @@ Cuando el análisis de correlación cruzada entre segmentos adyacentes no propor
 
 Sea $M(s,t)$ una matriz de datos obtenida a partir de los valores suavizados de una variable meteorológica, donde $s$ representa la coordenada longitudinal a lo largo de la ruta de navegación y $t$ el tiempo. Cada fila de la matriz $M$ corresponde a un segmento espacial, caracterizado por su posición centroidal $s_i$, y cada columna a un instante temporal muestreado uniformemente con paso $\Delta t$.
 
-Para cada segmento $s_i$, se calcula la transformada de Fourier temporal:
+Para cada segmento $s_i$, se calcula la transformada de Fourier temporal():
 
 $$
 \hat{M}(s_i,\omega) = \int M(s_i,t) e^{-i\omega t} dt,
@@ -1088,23 +1089,23 @@ La precipitación representa la variable crítica con mayor impacto en la decisi
 ::: {#tbl-incertidumbre-lluvia tbl-cap="Incertidumbre y categorización operativa para precipitación (mm/h)."}
 | Segmento | Pronóstico (p50) | $p_{95}$ (Peor Caso) | Cat. Actual | Cat. Pronóstico | Cat. Peor Caso |
 |----------|------------------|----------------------|-------------|-----------------|----------------|
-| seg_1 | 0.00 | 1.62 | SIN LLUVIA | SIN LLUVIA | FUERTE |
-| seg_2 | 0.00 | 1.62 | SIN LLUVIA | SIN LLUVIA | FUERTE |
-| seg_3 | 0.00 | 1.62 | SIN LLUVIA | SIN LLUVIA | FUERTE |
-| seg_4 | 0.00 | 1.63 | SIN LLUVIA | SIN LLUVIA | FUERTE |
-| seg_5 | 0.00 | 1.63 | SIN LLUVIA | SIN LLUVIA | FUERTE |
-| seg_6 | 0.04 | 1.72 | TRACE | SIN LLUVIA | EXTREMA |
-| seg_7 | 0.05 | 1.78 | TRACE | SIN LLUVIA | EXTREMA |
-| seg_8 | 0.07 | 1.84 | TRACE | SIN LLUVIA | EXTREMA |
-| seg_9 | 0.09 | 1.88 | TRACE | SIN LLUVIA | EXTREMA |
-| seg_10 | 0.11 | 2.08 | TRACE | TRACE | EXTREMA |
+| seg_1 | 0.00 | 1.62 | Sin Lluvia | Sin Lluvia | Fuerte |
+| seg_2 | 0.00 | 1.62 | Sin Lluvia | Sin Lluvia | Fuerte |
+| seg_3 | 0.00 | 1.62 | Sin Lluvia | Sin Lluvia | Fuerte |
+| seg_4 | 0.00 | 1.63 | Sin Lluvia | Sin Lluvia | Fuerte |
+| seg_5 | 0.00 | 1.63 | Sin Lluvia | Sin Lluvia | Fuerte |
+| seg_6 | 0.04 | 1.72 | Trace | Sin Lluvia | Extrema |
+| seg_7 | 0.05 | 1.78 | Trace | Sin Lluvia | Extrema |
+| seg_8 | 0.07 | 1.84 | Trace | Sin Lluvia | Extrema |
+| seg_9 | 0.09 | 1.88 | Trace | Sin Lluvia | Extrema |
+| seg_10 | 0.11 | 2.08 | Trace | Trace | Extrema |
 :::
 
 Un hallazgo crucial es la discrepancia entre el pronóstico mediano (cercano a cero en la mayoría de segmentos) y el percentil 95 (worst-case), que alcanza valores de lluvia fuerte a extrema (> 1.6 mm/h). Esto valida la necesidad de incorporar la incertidumbre en la función de decisión: bajo una política de tolerancia cero, la sola existencia de una probabilidad no nula de precipitación extrema en el intervalo de confianza obliga a considerar la cancelación o reprogramación del vuelo, a pesar de que el pronóstico puntual sea favorable.
 
 ### Integración en la función de decisión
 
-Los intervalos de confianza obtenidos mediante block bootstrap proporcionan la entrada estocástica necesaria para la teoría de decisión bajo incertidumbre que se desarrollará en la Sección 4.9. Específicamente, el límite superior $p_{95}$ se utilizará como la variable de estado conservadora $\tilde{y}_i$ en la función de viabilidad:
+Los intervalos de confianza obtenidos mediante block bootstrap proporcionan la entrada estocástica necesaria para la teoría de decisión bajo incertidumbre que se desarrollará en la @sec-drones. Específicamente, el límite superior $p_{95}$ se utilizará como la variable de estado conservadora $\tilde{y}_i$ en la función de viabilidad:
 $$
 \text{Viabilidad}_i = \mathbb{I}\left( \tilde{y}_i < U_{\text{máx}} \right), \quad \text{con } \tilde{y}_i = p_{95}^{(i)}
 $$
@@ -1186,12 +1187,12 @@ Para fines de interpretación operacional y registro histórico, la intensidad d
 $$
 \text{Categoría}(R) = 
 \begin{cases}
-\text{SIN LLUVIA}, & R < 0.1 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{TRACE}, & 0.1 \leq R < 0.5 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{LIGERA}, & 0.5 \leq R < 2.0 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{MODERADA}, & 2.0 \leq R < 5.0 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{FUERTE}, & 5.0 \leq R < 10.0 \, \mathrm{mm \cdot h^{-1}}, \\
-\text{EXTREMA}, & R \geq 10.0 \, \mathrm{mm \cdot h^{-1}}.
+\text{Sin Lluvia}, & R < 0.1 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Trace}, & 0.1 \leq R < 0.5 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Ligera}, & 0.5 \leq R < 2.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Moderada}, & 2.0 \leq R < 5.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Fuerte}, & 5.0 \leq R < 10.0 \, \mathrm{mm \cdot h^{-1}}, \\
+\text{Extrema}, & R \geq 10.0 \, \mathrm{mm \cdot h^{-1}}.
 \end{cases}
 $$
 
@@ -1322,7 +1323,7 @@ donde la media $\mu_{\text{aéreo}}$ corresponde al tiempo estimado de vuelo baj
 
 #### Etapa 2: Distribución terrestre optimizada mediante PageRank
 
-La segunda etapa se modela como un problema de optimización sobre la red de transporte terrestre $G = (V, E)$, donde $V$ representa los municipios y $E$ las conexiones viales. El algoritmo PageRank asigna a cada municipio $m_i$ un score de prioridad $\pi_i \in (0,1)$, definido por el sistema de ecuaciones:
+Como se menciono en la @sec-grafosadyacencia se modela como un problema de optimización sobre la red de transporte terrestre $G = (V, E)$, donde $V$ representa los municipios y $E$ las conexiones viales. El algoritmo PageRank asigna a cada municipio $m_i$ un score de prioridad $\pi_i \in (0,1)$, definido por el sistema de ecuaciones:
 
 $$
 \pi_i = \frac{1-d}{N} + d \sum_{j \in \text{In}(i)} \frac{\pi_j}{\text{Out}(j)},
@@ -1467,7 +1468,7 @@ El sistema integrado de decisión desarrollado en este capítulo proporciona un 
 
 Basado en los resultados de validación del modelo de pronóstico y la función de decisión binaria, se establecen las siguientes recomendaciones para la implementación operacional del sistema:
 
-#### 1. Ventana temporal óptima para evaluación
+#### Ventana temporal óptima para evaluación
 
 El horizonte de pronóstico de $H = 60$ minutos demostrado en este trabajo proporciona un equilibrio adecuado entre precisión predictiva y utilidad operativa. Se recomienda:
 
@@ -1475,7 +1476,7 @@ El horizonte de pronóstico de $H = 60$ minutos demostrado en este trabajo propo
 - **Reevaluación periódica**: Actualizar el pronóstico cada $\Delta t = 10$ minutos durante la ventana de decisión, aprovechando la eficiencia computacional del modelo híbrido ($\mathcal{O}(N)$).
 - **Validación pre-despegue**: Confirmar $\mathbb{I}_{\text{vuelo}} = 1$ inmediatamente antes del despegue, utilizando las observaciones más recientes disponibles.
 
-#### 2. Umbrales de decisión conservadores
+#### Umbrales de decisión conservadores
 
 Los resultados del block bootstrap revelaron que el percentil 95 ($p_{95}$) proporciona una medida robusta de riesgo operacional. Se recomienda:
 
@@ -1483,7 +1484,7 @@ Los resultados del block bootstrap revelaron que el percentil 95 ($p_{95}$) prop
 - **Margen de seguridad para viento**: Operar con un límite efectivo de $V_{\text{efectivo}} = 8.0 \, \mathrm{m \cdot s^{-1}}$, inferior al límite técnico del dron ($10.0 \, \mathrm{m \cdot s^{-1}}$), para incorporar margen de seguridad ante ráfagas no modeladas.
 - **Monitoreo continuo de temperatura**: Implementar alertas tempranas cuando $T_{\text{máx}} > 40^\circ\mathrm{C}$, aunque el límite técnico sea $45^\circ\mathrm{C}$, para prevenir degradación acelerada de baterías Li-Po.
 
-#### 3. Protocolos de contingencia escalonados
+#### Protocolos de contingencia escalonados
 
 La integración con la red terrestre del Capítulo 3 requiere protocolos claros para cuando $\mathbb{I}_{\text{vuelo}} = 0$:
 
@@ -1496,7 +1497,7 @@ La integración con la red terrestre del Capítulo 3 requiere protocolos claros 
 
 Esta estructura escalonada permite mantener la flexibilidad operativa sin comprometer la seguridad, aprovechando la rapidez del transporte aéreo cuando las condiciones lo permiten y recurriendo a la red terrestre optimizada mediante PageRank como respaldo.
 
-#### 4. Integración con sistemas de monitoreo existentes
+#### Integración con sistemas de monitoreo existentes
 
 Para maximizar la utilidad del sistema de decisión, se recomienda:
 
@@ -1508,14 +1509,14 @@ Para maximizar la utilidad del sistema de decisión, se recomienda:
 
 Es fundamental reconocer las limitaciones inherentes a la formulación matemática presentada, las cuales definen el ámbito de validez de las recomendaciones operativas:
 
-#### 1. Dependencia de densidad de observaciones
+#### Dependencia de densidad de observaciones
 
 El modelo de pronóstico advectivo requiere una densidad mínima de estaciones meteorológicas a lo largo del corredor de vuelo. En el caso de estudio (Aeropuerto hacia Protección Civil), se contó con cobertura adecuada. Sin embargo:
 
 - **Regiones con cobertura limitada**: En zonas con espaciado entre estaciones $> 10$ km, la interpolación espacial puede introducir errores no cuantificados en la estimación de la velocidad de advección.
 - **Recomendación**: Para implementación en otras regiones, realizar un análisis de sensibilidad de la densidad de observaciones antes del despliegue operacional.
 
-#### 2. Suposición de advección unidimensional
+#### Suposición de advección unidimensional
 
 La formulación del transporte atmosférico como un proceso unidimensional dominante es una simplificación necesaria para la tractabilidad computacional:
 
@@ -1523,14 +1524,14 @@ La formulación del transporte atmosférico como un proceso unidimensional domin
 - **Impacto**: En condiciones de inestabilidad atmosférica severa, el modelo puede subestimar la variabilidad espacial real.
 - **Mitigación**: Incorporar un factor de seguridad adicional ($\kappa = 1.2$) en los umbrales de decisión durante temporadas de alta inestabilidad (mayo–octubre en Chiapas).
 
-#### 3. Estática de los umbrales técnicos
+#### Estática de los umbrales técnicos
 
 Los umbrales operacionales ($V_{\text{máx}}$, $T_{\text{máx}}$, $H_{\text{máx}}$, $R_{\text{máx}}$) se establecieron como valores fijos basados en especificaciones del dron:
 
 - **Limitación**: No se considera la degradación progresiva de componentes (baterías, motores) que puede reducir los límites efectivos con el tiempo.
 - **Recomendación**: Implementar un programa de recalibración trimestral de umbrales basado en historial de mantenimiento y desempeño operacional.
 
-#### 4. Independencia condicional entre variables
+#### Independencia condicional entre variables
 
 El modelo asume que las variables meteorológicas son condicionalmente independientes dada la velocidad de advección:
 
@@ -1546,7 +1547,7 @@ $$
 
 El marco desarrollado en esta tesis abre múltiples direcciones de investigación en la intersección de matemáticas aplicadas, meteorología y logística humanitaria:
 
-#### 1. Optimización multiobjetivo dinámica
+#### Optimización multiobjetivo dinámica
 
 Extender la función de decisión binaria $\mathbb{I}_{\text{vuelo}}$ a un marco de optimización Pareto-óptimo que considere explícitamente trade-offs entre múltiples objetivos:
 
@@ -1561,7 +1562,7 @@ $$
 
 donde $\mathcal{R}(\mathbf{x})$ representa una medida de riesgo operacional. Esto permitiría decisiones adaptativas que balanceen eficiencia, costo y seguridad según el nivel de urgencia humanitaria.
 
-#### 2. Aprendizaje automático híbrido
+#### Aprendizaje automático híbrido
 
 Integrar modelos de *deep learning* (LSTM, Transformers) con el modelo advectivo físico para capturar patrones no lineales no modelados explícitamente:
 
@@ -1571,7 +1572,7 @@ $$
 
 con $w_{\text{físico}} + w_{\text{ML}} = 1$. Los pesos podrían aprenderse mediante validación cruzada temporal, permitiendo que el sistema mejore su desempeño con experiencia operacional acumulada.
 
-#### 3. Redes complejas adaptativas
+#### Redes complejas adaptativas
 
 Modelar la red terrestre del Capítulo 3 como un sistema complejo adaptativo donde los pesos de las aristas $w_{ij}$ evolucionan dinámicamente según:
 
@@ -1581,7 +1582,7 @@ Modelar la red terrestre del Capítulo 3 como un sistema complejo adaptativo don
 
 Esto requeriría algoritmos de PageRank incremental para actualización eficiente sin recalculación completa del vector estacionario $\boldsymbol{\pi}$.
 
-#### 4. Coordinación de enjambres de drones
+#### Coordinación de enjambres de drones
 
 Generalizar el modelo de decisión para coordinar flotas de $M$ drones múltiples, transformando el problema de decisión binaria en un problema de asignación de recursos distribuidos:
 
@@ -1596,7 +1597,7 @@ $$
 
 Esta extensión es crítica para escalar la operación a nivel estatal, cubriendo múltiples corredores simultáneamente.
 
-#### 5. Asimilación de datos satelitales
+#### Asimilación de datos satelitales
 
 Incorporar observaciones de satélites meteorológicos (GOES-16, Himawari) para mejorar la estimación de la velocidad de advección en regiones con cobertura terrestre limitada:
 
@@ -1604,7 +1605,7 @@ Incorporar observaciones de satélites meteorológicos (GOES-16, Himawari) para 
 - **Desafío**: Resolución temporal inferior (5–10 min vs. 1 min en estaciones terrestres).
 - **Enfoque híbrido**: Fusionar datos satelitales y terrestres mediante filtrado de Kalman para estimación óptima de $v$.
 
-#### 6. Extensión geográfica a otras regiones
+#### Extensión geográfica a otras regiones
 
 La metodología es directamente aplicable a otras regiones con desafíos similares de topografía y clima:
 

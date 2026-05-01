@@ -11,7 +11,7 @@ jupyter: python3
 ---
 :::{style="text-align: justify"}
 
-## Grafos dirigidos y no dirigidos, matrices de adyacencia
+## Grafos dirigidos y no dirigidos, matrices de adyacencia {#sec-grafosadyacencia}
 
 La modelación matemática de redes de transporte, sistemas logísticos y flujos de distribución requiere un lenguaje estructural que permita representar de manera abstracta las relaciones de conectividad entre entidades discretas. La teoría de grafos proporciona este marco formal, ofreciendo herramientas para analizar propiedades topológicas, optimizar rutas y caracterizar la dinámica de procesos definidos sobre redes [@bondy2008graph]. En el contexto de la logística humanitaria en Chiapas, los grafos constituyen la base sobre la cual se construyen los algoritmos de priorización territorial y evaluación de accesibilidad desarrollados en este capítulo.
 

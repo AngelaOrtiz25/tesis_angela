@@ -1,5 +1,5 @@
 ---
-title: "Optimización de Rutas Terrestres mediante PageRank"
+title: "Optimización de Rutas Terrestres mediante PageRank" 
 lang: es
 format:
   html: 
@@ -42,7 +42,7 @@ El flujo metodológico desarrollado en este capítulo comprende las siguientes e
 
 Esta metodología proporciona una base matemáticamente rigurosa para la toma de decisiones en la planificación logística de emergencias, permitiendo optimizar la distribución de recursos mediante la identificación de puntos estratégicos dentro de la red territorial estatal.
 
-## Contexto humanitario y desafíos logísticos en Chiapas
+## Contexto humanitario y desafíos logísticos en Chiapas 
 
 En situaciones de emergencia, como desastres naturales o crisis humanitarias, resulta fundamental contar con mecanismos eficientes para distribuir ayuda y recursos a la población afectada. En regiones como el estado de Chiapas, que de acuerdo con el Instituto Nacional de Estadística y Geografía (INEGI) cuenta con 124 municipios, las condiciones geográficas montañosas y la dispersión territorial dificultan significativamente la conectividad y el acceso a comunidades vulnerables.
 
@@ -383,8 +383,7 @@ La aplicación del algoritmo PageRank a la red territorial de Chiapas produjo un
 
 El punto de almacenamiento central para operaciones de ayuda humanitaria se establece en las instalaciones de la [Secretaria de Protección Civil](https://maps.app.goo.gl/fRNWcaote5heu1Qp9) ubicadas en Tuxtla Gutiérrez, capital del estado de Chiapas. Esta localización responde a criterios operativos fundamentales:
 
-1. **Accesibilidad desde el aeropuerto**: Conexión directa con el [Aeropuerto Internacional Ángel Albino Corzo](
-  https://maps.app.goo.gl/kip9Nrw984oCGX7ZA) mediante vía terrestre de alta capacidad.
+1. **Accesibilidad desde el aeropuerto**: Conexión directa con el [Aeropuerto Internacional Ángel Albino Corzo](https://maps.app.goo.gl/kip9Nrw984oCGX7ZA) mediante vía terrestre de alta capacidad.
 2. **Infraestructura logística**: Disponibilidad de almacenes, personal capacitado y sistemas de coordinación operativa.
 3. **Centralidad geográfica**: Posición privilegiada que minimiza las distancias promedio hacia la mayoría de los municipios del estado.
 
