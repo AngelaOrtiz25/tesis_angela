@@ -381,9 +381,10 @@ La aplicación del algoritmo PageRank a la red territorial de Chiapas produjo un
 
 ### Punto de almacenamiento y municipios estratégicos
 
-El punto de almacenamiento central para operaciones de ayuda humanitaria se establece en las instalaciones de la Secretaria de Protección Civil ubicadas en Tuxtla Gutiérrez, capital del estado de Chiapas (https://maps.app.goo.gl/fRNWcaote5heu1Qp9). Esta localización responde a criterios operativos fundamentales:
+El punto de almacenamiento central para operaciones de ayuda humanitaria se establece en las instalaciones de la [Secretaria de Protección Civil](https://maps.app.goo.gl/fRNWcaote5heu1Qp9) ubicadas en Tuxtla Gutiérrez, capital del estado de Chiapas. Esta localización responde a criterios operativos fundamentales:
 
-1. **Accesibilidad desde el aeropuerto**: Conexión directa con el Aeropuerto Internacional Ángel Albino Corzo (https://maps.app.goo.gl/kip9Nrw984oCGX7ZA) mediante vía terrestre de alta capacidad.
+1. **Accesibilidad desde el aeropuerto**: Conexión directa con el [Aeropuerto Internacional Ángel Albino Corzo](
+  https://maps.app.goo.gl/kip9Nrw984oCGX7ZA) mediante vía terrestre de alta capacidad.
 2. **Infraestructura logística**: Disponibilidad de almacenes, personal capacitado y sistemas de coordinación operativa.
 3. **Centralidad geográfica**: Posición privilegiada que minimiza las distancias promedio hacia la mayoría de los municipios del estado.
 
