@@ -239,7 +239,7 @@ w_{ij} = \begin{cases}
 \end{cases}
 $$
 
-donde $d_{ij}^{(3D)}$ denota la distancia tridimensional calculada según la metodología descrita en la sección anterior. Esta formulación refleja la intuición de que municipios más cercanos ejercen una mayor influencia mutua dentro de la red, mientras que distancias mayores corresponden a una conectividad efectiva reducida.
+donde $d_{ij}^{(3D)}$ denota la distancia tridimensional calculada según la metodología descrita en la @sec-distancias3d. Esta formulación refleja la intuición de que municipios más cercanos ejercen una mayor influencia mutua dentro de la red, mientras que distancias mayores corresponden a una conectividad efectiva reducida.
 
 ### Matriz de adyacencia y normalización
 
