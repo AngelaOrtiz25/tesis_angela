@@ -30,7 +30,7 @@ Cuando $\{u,v\} \in E$, se dice que $u$ y $v$ son *adyacentes* o *vecinos*, y qu
 
 El arco $(u,v)$ se interpreta como una conexión unidireccional desde el vértice origen $u$ hacia el vértice destino $v$. En redes logísticas, los grafos dirigidos permiten modelar restricciones de sentido único, pendientes pronunciadas que afectan la transitabilidad en una dirección, o flujos asimétricos de recursos [@newman2018networks].
 
-### Matriz de adyacencia: representación algebraica de la conectividad
+### Matriz de adyacencia: representación algebraica de la conectividad {#sec-adyacencia}
 
 La estructura de un grafo finito puede codificarse de manera compacta mediante su **matriz de adyacencia**, objeto central en el análisis computacional de redes.
 
@@ -115,7 +115,7 @@ Cuando la red modela un sistema de transporte terrestre, el peso $w_{ij}$ puede 
 
 La elección de la métrica de peso determina el tipo de análisis estructural que puede realizarse sobre la red, y debe alinearse con los objetivos operativos del sistema logístico.
 
-### Representación matricial y transformación a probabilidades de transición {#sec-transicion}
+### Representación matricial y transformación a probabilidades de transición 
 
 La estructura de una red ponderada puede codificarse mediante su **matriz de pesos** $W \in \mathbb{R}^{n \times n}$, definida como:
 $$
@@ -189,9 +189,10 @@ $$
 p_{ij} = \mathbb{P}(X_{n+1} = j \mid X_n = i), \quad i,j \in \mathcal{S}.
 $$
 
-### Matriz de transición y ecuaciones de Chapman-Kolmogorov
+### Matriz de transición y ecuaciones de Chapman-Kolmogorov  {#sec-transicion}
 
 Las probabilidades $p_{ij}$ se organizan en la **matriz de transición** $P = [p_{ij}]_{i,j \in \mathcal{S}} \in \mathbb{R}^{N \times N}$, la cual satisface:
+
 1. $p_{ij} \geq 0$ para todo $i,j$,
 2. $\sum_{j=1}^{N} p_{ij} = 1$ para todo $i$ (matriz estocástica por filas).
 
@@ -241,7 +242,7 @@ Sea $A \in \mathbb{R}^{n \times n}$ una matriz con entradas reales. Se establece
 - **Matriz irreducible**: $A$ es irreducible si para cada par $(i,j)$ existe un entero $k \geq 1$ tal que $(A^k)_{ij} > 0$. Esta condición equivale a que el grafo dirigido asociado sea fuertemente conexo.
 - **Matriz primitiva**: $A$ es primitiva si existe $m \in \mathbb{N}$ tal que $A^m > 0$. En el contexto de cadenas de Markov, la primitividad garantiza aperiodicidad y convergencia geométrica de las potencias de la matriz [@horn2012matrix].
 
-### Enunciado del teorema
+### Enunciado del teorema {#sec-teroemafrobenius}
 
 **Teorema 1.1 (Perron-Frobenius para matrices estocásticas primitivas).** Sea $P \in \mathbb{R}^{n \times n}$ una matriz estocástica por columnas ($P \geq 0$, $\sum_{i=1}^n p_{ij} = 1$) que es primitiva. Entonces se cumplen las siguientes propiedades:
 

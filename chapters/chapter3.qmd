@@ -212,7 +212,7 @@ El código completo de procesamiento, incluyendo las funciones para carga de tes
 
 ### Validación metodológica
 
-Se realizó una validación cruzada comparando las distancias 2D calculadas con mediciones oficiales del Instituto Nacional de Estadística y Geografía (INEGI) pueden consultar en https://gaia.inegi.org.mx/mdm6/ , obteniendo una discrepancia media inferior al $1.2\%$. Las distancias 3D no pudieron validarse directamente con fuentes externas (ningún servicio público proporciona esta métrica), pero se verificó la coherencia física mediante:
+Se realizó una validación cruzada comparando las distancias 2D calculadas con mediciones oficiales del Instituto Nacional de Estadística y Geografía (INEGI) pueden consultar en el sitio oficial https://gaia.inegi.org.mx/mdm6/ , obteniendo una discrepancia media inferior al $1.2\%$. Las distancias 3D no pudieron validarse directamente con fuentes externas (ningún servicio público proporciona esta métrica), pero se verificó la coherencia física mediante:
 
 - Análisis de sensibilidad a la resolución del DEM
 - Comparación con perfiles altimétricos de Google Earth
@@ -284,12 +284,13 @@ La red territorial construida presenta las siguientes propiedades estructurales 
 2. **Ausencia de subgrafos absorbentes**: No existen subconjuntos propios $S \subset V$ tales que todas las transiciones desde nodos en $S$ permanezcan dentro de $S$. Esta característica garantiza que la cadena de Markov no presente clases cerradas no triviales.
 
 3. **Distribución de grados**: El grado de salida promedio es $\bar{d}_{\text{out}} \approx 61.8$, mientras que el grado de entrada promedio es $\bar{d}_{\text{in}} \approx 61.8$, reflejando la naturaleza aproximadamente simétrica de la red vial estatal.
+Cabe precisar que el grado de salida de un nodo representa el número de aristas que emergen desde él hacia otros nodos, mientras que el grado de entrada corresponde al número de aristas que llegan a él desde otros nodos; en este contexto, el grado de salida cuantifica cuántas conexiones directas tiene un municipio hacia otros municipios a través de la red vial, y el grado de entrada indica cuántos municipios tienen rutas directas hacia él. El promedio se calcula sumando todos los grados (de salida o de entrada) y dividiendo entre el número total de municipios, lo que ofrece una medida de la densidad de conexiones típica del sistema, ya sea salientes o entrantes.
 
-4. **Diámetro de la red**: La distancia geodésica máxima (en número de saltos) entre cualquier par de municipios es 4, lo cual indica una alta conectividad global del sistema territorial.
+4. **Diámetro de la red**:La distancia máxima en el grafo, es decir, la longitud del camino más corto medida en número de aristas o "saltos" entre cualquier par de municipios es 4, lo cual indica una alta conectividad global del sistema territorial. Este indicador corresponde al concepto de **diámetro de la red** en teoría de grafos, el cual se define como la mayor de todas las distancias mínimas entre pares de nodos; un valor reducido como 4 sugiere que, independientemente del origen y destino, siempre es posible alcanzar cualquier municipio recorriendo a lo sumo cuatro conexiones intermedias a través de la infraestructura vial disponible.
 
 ### Matriz de transición modificada para PageRank {#sec-transicion}
 
-A pesar de las propiedades favorables mencionadas, la matriz $Q$ puede presentar convergencia hacia la distribución estacionaria. Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento $p \in (0,1)$, típicamente $p = 0.85$.
+A pesar de las propiedades favorables mencionadas, la matriz $Q$ puede presentar convergencia hacia la distribución estacionaria (@sec-ergodicidad). Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento $p \in (0,1)$, típicamente $p = 0.85$.
 
 La matriz de transición modificada $P \in \mathbb{R}^{124 \times 124}$ se define como:
 
@@ -314,10 +315,14 @@ La matriz $P$ resultante posee las siguientes propiedades fundamentales:
 - **Irreducibilidad**: $p_{ij} > 0$ para todo par $(i,j)$, lo cual garantiza que cualquier estado sea alcanzable desde cualquier otro en un número finito de pasos,
 - **Aperiodicidad**: La existencia de saltos aleatorios elimina ciclos deterministas, asegurando que el período de todos los estados sea igual a 1.
 
-Estas propiedades garantizan, por el teorema de Perron-Frobenius para matrices estocásticas primitivas, la existencia de un único vector estacionario $\pi \in \mathbb{R}^{124}$ que satisface:
+Estas propiedades garantizan, por el teorema de Perron-Frobenius (@sec-teroemafrobenius) para matrices estocásticas primitivas, la existencia de un único vector estacionario $\pi \in \mathbb{R}^{124}$ que satisface:
 
 $$
-\pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
+\pi = P\pi 
+$$ (eq-pi)
+
+$$
+\sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i.
 $$
 
 El vector $\pi$ constituye la base matemática para la clasificación de los municipios según su importancia relativa dentro de la red territorial, tal como se detalla en la sección siguiente.   
