@@ -18,10 +18,11 @@ La modelación matemática de redes de transporte, sistemas logísticos y flujos
 ### Definiciones fundamentales
 
 **Definición 1.1 (Grafo no dirigido).** Un *grafo no dirigido* es un par ordenado $G = (V, E)$, donde:
+
 - $V = \{v_1, v_2, \dots, v_n\}$ es un conjunto finito no vacío de *vértices* o *nodos*,
 - $E \subseteq \{\{u,v\} : u, v \in V, u \neq v\}$ es un conjunto de *aristas*, cada una representada como un par no ordenado de vértices distintos.
 
-Cuando $\{u,v\} \in E$, se dice que $u$ y $v$ son *adyacentes* o *vecinos*, y que la arista es *incidente* en ambos vértices. En aplicaciones de transporte terrestre, los vértices representan municipios, centros de distribución o intersecciones viales, mientras que las aristas modelan conexiones físicas bidireccionales entre ellos [@taha2017operations].
+Cuando $\{u,v\} \in E$, se dice que $u$ y $v$ son *adyacentes* o *vecinos*, y que la arista es *incidente* en ambos vértices. En aplicaciones de transporte terrestre, los vértices representan municipios, centros de distribución o intersecciones viales, mientras que las aristas modelan conexiones físicas bidireccionales entre ellos. Para más detalles, puede constultarse [@taha2017operations].
 
 **Definición 1.2 (Grafo dirigido).** Un *grafo dirigido* (o *digrafo*) es un par ordenado $D = (V, A)$, donde:
 - $V$ es un conjunto finito no vacío de vértices,
@@ -243,6 +244,7 @@ Sea $A \in \mathbb{R}^{n \times n}$ una matriz con entradas reales. Se establece
 ### Enunciado del teorema
 
 **Teorema 1.1 (Perron-Frobenius para matrices estocásticas primitivas).** Sea $P \in \mathbb{R}^{n \times n}$ una matriz estocástica por columnas ($P \geq 0$, $\sum_{i=1}^n p_{ij} = 1$) que es primitiva. Entonces se cumplen las siguientes propiedades:
+
 1. El radio espectral es $\rho(P) = 1$.
 2. El valor propio $\lambda = 1$ es algebraicamente simple y domina estrictamente al resto del espectro: $|\lambda_i| < 1$ para todo $\lambda_i \in \sigma(P) \setminus \{1\}$.
 3. Existe un único vector propio derecho $\pi \in \mathbb{R}^n$ asociado a $\lambda = 1$, con componentes estrictamente positivas $\pi_i > 0$ y normalizado tal que $\sum_{i=1}^n \pi_i = 1$.
@@ -349,5 +351,5 @@ La elección del valor $p = 0.85$ responde a un equilibrio empírico y teórico 
 
 En el contexto de la red de transporte de Chiapas, la matriz $P$ modela un proceso híbrido: en el $85\%$ de los pasos, el flujo logístico sigue las rutas viales ponderadas por distancia tridimensional; en el $15\%$ restante, se considera una reasignación probabilística que simula la posibilidad de redirigir recursos hacia cualquier municipio independientemente de la conectividad inmediata. Esta interpretación justifica el uso de PageRank no como un simulador de tráfico determinista, sino como un **indicador de robustez estructural**, capaz de identificar municipios estratégicos incluso ante fallos parciales de la infraestructura vial o variaciones estacionales en la transitabilidad.
 
-La formalización de la matriz de transición modificada cierra el marco teórico del Capítulo 1, integrando teoría de grafos, álgebra lineal matricial y procesos estocásticos en un modelo coherente y computacionalmente viable. Los conceptos desarrollados en estas secciones se aplican directamente en el Capítulo 3, donde se construye la red territorial de los 124 municipios de Chiapas, se calcula el vector de priorización estructural y se identifican los nodos críticos que guiarán la planificación logística de ayuda humanitaria en escenarios de emergencia.
+La formalización de la matriz de transición modificada cierra el marco teórico del Capítulo 2, integrando teoría de grafos, álgebra lineal matricial y procesos estocásticos en un modelo coherente y computacionalmente viable. Los conceptos desarrollados en estas secciones se aplican directamente en el Capítulo 4, donde se construye la red territorial de los 124 municipios de Chiapas, se calcula el vector de priorización estructural y se identifican los nodos críticos que guiarán la planificación logística de ayuda humanitaria en escenarios de emergencia.
 :::
