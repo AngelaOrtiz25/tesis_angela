@@ -2837,13 +2837,11 @@ computacional}\label{implementaciuxf3n-computacional-1}
 
 El cálculo de distancias se implementó utilizando la librería
 \texttt{pyproj} (Snow et~al. (\citeproc{ref-pyproj_library}{2023})) una
-interfaz de Python para la biblioteca de proyecciones cartográficas PROJ
-cuya documentación completa y ejemplos de uso pueden consultarse en su
-sitio oficial: {[}https://pyproj4.github.io/pyproj/stable/{]}. Esta
-librería proporciona proporciona funciones optimizadas para geodesia
-elipsoidal. La implementación garantiza consistencia numérica y
-reproducibilidad, aspectos fundamentales para la validación científica
-de los resultados.
+interfaz de Python para la biblioteca de proyecciones cartográficas
+\href{https://pyproj4.github.io/pyproj/stable/}{PROJ}. Esta librería
+proporciona proporciona funciones optimizadas para geodesia elipsoidal.
+La implementación garantiza consistencia numérica y reproducibilidad,
+aspectos fundamentales para la validación científica de los resultados.
 
 El código completo de procesamiento, incluyendo las funciones para carga
 de teselas SRTM, obtención de coordenadas mediante Nominatim, consulta
@@ -2856,10 +2854,11 @@ metodológica}\label{validaciuxf3n-metodoluxf3gica}
 Se realizó una validación cruzada comparando las distancias 2D
 calculadas con mediciones oficiales del Instituto Nacional de
 Estadística y Geografía (INEGI) pueden consultar en el sitio oficial
-{[}https://gaia.inegi.org.mx/mdm6/{]} , obteniendo una discrepancia
-media inferior al \(1.2\%\). Las distancias 3D no pudieron validarse
-directamente con fuentes externas (ningún servicio público proporciona
-esta métrica), pero se verificó la coherencia física mediante:
+\href{https://gaia.inegi.org.mx/mdm6/}{Mapa Digital de México} ,
+obteniendo una discrepancia media inferior al \(1.2\%\). Las distancias
+3D no pudieron validarse directamente con fuentes externas (ningún
+servicio público proporciona esta métrica), pero se verificó la
+coherencia física mediante:
 
 \begin{itemize}
 \tightlist
@@ -3358,7 +3357,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, breakable, colbacktitle=quarto-callout-note-color!10!white, colback=white, colframe=quarto-callout-note-color-frame, opacitybacktitle=0.6, coltitle=black, bottomtitle=1mm, titlerule=0mm, leftrule=.75mm, arc=.35mm, toprule=.15mm, rightrule=.15mm, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, toptitle=1mm, colback=white, bottomrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, opacityback=0, rightrule=.15mm, arc=.35mm, breakable, coltitle=black, colframe=quarto-callout-note-color-frame, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, leftrule=.75mm, bottomtitle=1mm, left=2mm]
 
 \textbf{Características operativas de la ruta}
 
