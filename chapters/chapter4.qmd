@@ -1426,7 +1426,7 @@ La implementación del sistema integrado requiere la coordinación de múltiples
 
 1.  **Módulo de adquisición de datos**: Ingesta de observaciones meteorológicas en tiempo real desde estaciones terrestres y fuentes satelitales.
 
-2.  **Módulo de pronóstico**: Ejecución del modelo advectivo-híbrido con cuantificación de incertidumbre mediante block bootstrap @sec-analisisadveccion – @sec-cuantificacionbotstra).
+2.  **Módulo de pronóstico**: Ejecución del modelo advectivo-híbrido con cuantificación de incertidumbre mediante block bootstrap @sec-analisisadveccion – @sec-cuantificacionbotstrap).
 
 3.  **Módulo de decisión**: Evaluación de la función binaria $\mathbb{I}_{\text{vuelo}}$ contra umbrales técnicos del dron (@sec-drones).
 
