@@ -25,6 +25,7 @@ La modelación matemática de redes de transporte, sistemas logísticos y flujos
 Cuando $\{u,v\} \in E$, se dice que $u$ y $v$ son *adyacentes* o *vecinos*, y que la arista es *incidente* en ambos vértices. En aplicaciones de transporte terrestre, los vértices representan municipios, centros de distribución o intersecciones viales, mientras que las aristas modelan conexiones físicas bidireccionales entre ellos. Para más detalles, puede constultarse [@taha2017operations].
 
 **Definición 1.2 (Grafo dirigido).** Un *grafo dirigido* (o *digrafo*) es un par ordenado $D = (V, A)$, donde:
+
 - $V$ es un conjunto finito no vacío de vértices,
 - $A \subseteq V \times V$ es un conjunto de *arcos*, cada uno representado como un par ordenado $(u,v)$ con $u, v \in V$ y $u \neq v$.
 
