@@ -273,7 +273,7 @@ $$
 q_{ij} = \frac{1}{124}, \quad \forall i = 1,\dots,124.
 $$
 
-Esta modificación asegura que desde cualquier nodo colgante exista una probabilidad positiva de transitar hacia cualquier otro municipio de la red, preservando así la conservación de la probabilidad total en cada paso del proceso estocástico, tal como ocurre en los proceso estocásticos descritos en el [Capítulo 3]( @sec-estocasticossegundo )
+Esta modificación asegura que desde cualquier nodo colgante exista una probabilidad positiva de transitar hacia cualquier otro municipio de la red, preservando así la conservación de la probabilidad total en cada paso del proceso estocástico, tal como ocurre en los proceso estocásticos descritos en el [Capítulo 3](@sec-estocasticossegundo)
 
 ### Propiedades estructurales de la red
 
