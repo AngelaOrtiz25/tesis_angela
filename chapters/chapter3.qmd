@@ -206,13 +206,13 @@ En el estado de Chiapas, el incremento $\delta$ presenta una distribución asim�
 
 ### Implementación computacional
 
-El cálculo de distancias se implementó utilizando la librería `pyproj` (@pyproj_library) una interfaz de Python para la biblioteca de proyecciones cartográficas PROJ cuya documentación completa y ejemplos de uso pueden consultarse en su sitio oficial: [https://pyproj4.github.io/pyproj/stable/]. Esta librería proporciona  proporciona funciones optimizadas para geodesia elipsoidal. La implementación garantiza consistencia numérica y reproducibilidad, aspectos fundamentales para la validación científica de los resultados.
+El cálculo de distancias se implementó utilizando la librería `pyproj` (@pyproj_library) una interfaz de Python para la biblioteca de proyecciones cartográficas [PROJ](https://pyproj4.github.io/pyproj/stable/). Esta librería proporciona  proporciona funciones optimizadas para geodesia elipsoidal. La implementación garantiza consistencia numérica y reproducibilidad, aspectos fundamentales para la validación científica de los resultados.
 
 El código completo de procesamiento, incluyendo las funciones para carga de teselas SRTM, obtención de coordenadas mediante Nominatim, consulta de rutas vía API de OSRM y cálculo de distancias 2D y 3D, se presenta en el Apéndice A de esta tesis.
 
 ### Validación metodológica
 
-Se realizó una validación cruzada comparando las distancias 2D calculadas con mediciones oficiales del Instituto Nacional de Estadística y Geografía (INEGI) pueden consultar en el sitio oficial [https://gaia.inegi.org.mx/mdm6/] , obteniendo una discrepancia media inferior al $1.2\%$. Las distancias 3D no pudieron validarse directamente con fuentes externas (ningún servicio público proporciona esta métrica), pero se verificó la coherencia física mediante:
+Se realizó una validación cruzada comparando las distancias 2D calculadas con mediciones oficiales del Instituto Nacional de Estadística y Geografía (INEGI) pueden consultar en el sitio oficial [Mapa Digital de México](https://gaia.inegi.org.mx/mdm6/) , obteniendo una discrepancia media inferior al $1.2\%$. Las distancias 3D no pudieron validarse directamente con fuentes externas (ningún servicio público proporciona esta métrica), pero se verificó la coherencia física mediante:
 
 - Análisis de sensibilidad a la resolución del DEM
 - Comparación con perfiles altimétricos de Google Earth
