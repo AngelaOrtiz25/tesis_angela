@@ -3359,7 +3359,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, opacitybacktitle=0.6, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, left=2mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, coltitle=black, titlerule=0mm, breakable, toprule=.15mm, arc=.35mm, rightrule=.15mm, bottomrule=.15mm, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, arc=.35mm, bottomrule=.15mm, breakable, toprule=.15mm, opacitybacktitle=0.6, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, leftrule=.75mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacityback=0, toptitle=1mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -5819,12 +5819,12 @@ variaciones en la velocidad del viento y rutas de evasión.
 \subsubsection{Etapa 2: Distribución terrestre optimizada mediante
 PageRank}\label{etapa-2-distribuciuxf3n-terrestre-optimizada-mediante-pagerank}
 
-Como se menciono en la Sección~\ref{sec-grafosadyacencia} se modela como
-un problema de optimización sobre la red de transporte terrestre
-\(G = (V, E)\), donde \(V\) representa los municipios y \(E\) las
-conexiones viales. El algoritmo PageRank asigna a cada municipio \(m_i\)
-un score de prioridad \(\pi_i \in (0,1)\), definido por el sistema de
-ecuaciones:
+Como se mencionó en la Sección~\ref{sec-grafosadyacencia} se modela como
+un problema de optimización sobre la red (definido en la
+Ecuación~\ref{eq-pi}) de transporte terrestre \(G = (V, E)\), donde
+\(V\) representa los municipios y \(E\) las conexiones viales. El
+algoritmo PageRank asigna a cada municipio \(m_i\) un score de prioridad
+\(\pi_i \in (0,1)\), definido por el sistema de ecuaciones:
 
 \[
 \pi_i = \frac{1-d}{N} + d \sum_{j \in \text{In}(i)} \frac{\pi_j}{\text{Out}(j)},

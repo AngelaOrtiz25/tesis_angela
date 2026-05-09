@@ -243,7 +243,7 @@ $${#eq-espectro}
 Este objeto matemático cuantifica la energía asociada a cada par $(\omega, \kappa)$ y permite identificar modos de propagación dominantes como regiones de alta concentración espectral en el plano $f$-$k$, ver [@brillinger1981time] para más detalles.
 
 ### Modelo de onda viajera y relación de fase
-
+Etapa 2
 Para una estructura atmosférica que se propaga como una onda viajera unidimensional, el campo puede aproximarse localmente por:
 
 $$

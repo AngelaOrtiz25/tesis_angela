@@ -1323,7 +1323,7 @@ donde la media $\mu_{\text{aéreo}}$ corresponde al tiempo estimado de vuelo baj
 
 #### Etapa 2: Distribución terrestre optimizada mediante PageRank
 
-Como se menciono en la @sec-grafosadyacencia se modela como un problema de optimización sobre la red de transporte terrestre $G = (V, E)$, donde $V$ representa los municipios y $E$ las conexiones viales. El algoritmo PageRank asigna a cada municipio $m_i$ un score de prioridad $\pi_i \in (0,1)$, definido por el sistema de ecuaciones:
+Como se mencionó en la @sec-grafosadyacencia se modela como un problema de optimización sobre la red (definido en la @eq-pi) de transporte terrestre $G = (V, E)$, donde $V$ representa los municipios y $E$ las conexiones viales. El algoritmo PageRank asigna a cada municipio $m_i$ un score de prioridad $\pi_i \in (0,1)$, definido por el sistema de ecuaciones:
 
 $$
 \pi_i = \frac{1-d}{N} + d \sum_{j \in \text{In}(i)} \frac{\pi_j}{\text{Out}(j)},
