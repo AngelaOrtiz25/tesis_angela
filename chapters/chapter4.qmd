@@ -301,7 +301,7 @@ Cuando el análisis de correlación cruzada entre segmentos adyacentes no propor
 
 Sea $M(s,t)$ una matriz de datos obtenida a partir de los valores suavizados de una variable meteorológica, donde $s$ representa la coordenada longitudinal a lo largo de la ruta de navegación y $t$ el tiempo. Cada fila de la matriz $M$ corresponde a un segmento espacial, caracterizado por su posición centroidal $s_i$, y cada columna a un instante temporal muestreado uniformemente con paso $\Delta t$.
 
-Para cada segmento $s_i$, se calcula la transformada de Fourier temporal():
+Para cada segmento $s_i$, se calcula la transformada de Fourier temporal [@sec-analisisfk]:
 
 $$
 \hat{M}(s_i,\omega) = \int M(s_i,t) e^{-i\omega t} dt,
