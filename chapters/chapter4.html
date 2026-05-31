@@ -2329,8 +2329,8 @@ Tabla&nbsp;5.7: Comparación de eficiencia logística entre escenarios operativo
 <section id="perspectivas-para-investigación-futura" class="level3" data-number="5.11.2">
 <h3 data-number="5.11.2" class="anchored" data-anchor-id="perspectivas-para-investigación-futura"><span class="header-section-number">5.11.2</span> Perspectivas para investigación futura</h3>
 <p>El marco desarrollado en esta tesis abre múltiples direcciones de investigación en la intersección de matemáticas aplicadas, meteorología y logística humanitaria:</p>
-<section id="optimización-multiobjetivo-dinámica" class="level4" data-number="5.11.2.1">
-<h4 data-number="5.11.2.1" class="anchored" data-anchor-id="optimización-multiobjetivo-dinámica"><span class="header-section-number">5.11.2.1</span> Optimización multiobjetivo dinámica</h4>
+<section id="optimización-multiobjetivo-dinámica" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="optimización-multiobjetivo-dinámica">Optimización multiobjetivo dinámica</h4>
 <p>Extender la función de decisión binaria <span class="math inline">\(\mathbb{I}_{\text{vuelo}}\)</span> a un marco de optimización Pareto-óptimo que considere explícitamente trade-offs entre múltiples objetivos:</p>
 <p><span class="math display">\[
 \min_{\mathbf{x}} \left\{ T_{\text{total}}(\mathbf{x}), \, C_{\text{log}}(\mathbf{x}), \, \mathcal{R}(\mathbf{x}) \right\},
@@ -2340,16 +2340,16 @@ Tabla&nbsp;5.7: Comparación de eficiencia logística entre escenarios operativo
 \]</span></p>
 <p>donde <span class="math inline">\(\mathcal{R}(\mathbf{x})\)</span> representa una medida de riesgo operacional. Esto permitiría decisiones adaptativas que balanceen eficiencia, costo y seguridad según el nivel de urgencia humanitaria.</p>
 </section>
-<section id="aprendizaje-automático-híbrido" class="level4" data-number="5.11.2.2">
-<h4 data-number="5.11.2.2" class="anchored" data-anchor-id="aprendizaje-automático-híbrido"><span class="header-section-number">5.11.2.2</span> Aprendizaje automático híbrido</h4>
+<section id="aprendizaje-automático-híbrido" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="aprendizaje-automático-híbrido">Aprendizaje automático híbrido</h4>
 <p>Integrar modelos de <em>deep learning</em> (LSTM, Transformers) con el modelo advectivo físico para capturar patrones no lineales no modelados explícitamente:</p>
 <p><span class="math display">\[
 \hat{y}_i(t+H) = w_{\text{físico}} \cdot \hat{y}_i^{\text{advectivo}}(t+H) + w_{\text{ML}} \cdot \hat{y}_i^{\text{LSTM}}(t+H),
 \]</span></p>
 <p>con <span class="math inline">\(w_{\text{físico}} + w_{\text{ML}} = 1\)</span>. Los pesos podrían aprenderse mediante validación cruzada temporal, permitiendo que el sistema mejore su desempeño con experiencia operacional acumulada.</p>
 </section>
-<section id="redes-complejas-adaptativas" class="level4" data-number="5.11.2.3">
-<h4 data-number="5.11.2.3" class="anchored" data-anchor-id="redes-complejas-adaptativas"><span class="header-section-number">5.11.2.3</span> Redes complejas adaptativas</h4>
+<section id="redes-complejas-adaptativas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="redes-complejas-adaptativas">Redes complejas adaptativas</h4>
 <p>Modelar la red terrestre del Capítulo 3 como un sistema complejo adaptativo donde los pesos de las aristas <span class="math inline">\(w_{ij}\)</span> evolucionan dinámicamente según:</p>
 <ul>
 <li>Reportes de daños en infraestructura vial post-desastre.</li>
@@ -2358,8 +2358,8 @@ Tabla&nbsp;5.7: Comparación de eficiencia logística entre escenarios operativo
 </ul>
 <p>Esto requeriría algoritmos de PageRank incremental para actualización eficiente sin recalculación completa del vector estacionario <span class="math inline">\(\boldsymbol{\pi}\)</span>.</p>
 </section>
-<section id="coordinación-de-enjambres-de-drones" class="level4" data-number="5.11.2.4">
-<h4 data-number="5.11.2.4" class="anchored" data-anchor-id="coordinación-de-enjambres-de-drones"><span class="header-section-number">5.11.2.4</span> Coordinación de enjambres de drones</h4>
+<section id="coordinación-de-enjambres-de-drones" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="coordinación-de-enjambres-de-drones">Coordinación de enjambres de drones</h4>
 <p>Generalizar el modelo de decisión para coordinar flotas de <span class="math inline">\(M\)</span> drones múltiples, transformando el problema de decisión binaria en un problema de asignación de recursos distribuidos:</p>
 <p><span class="math display">\[
 \max_{\mathbf{X} \in \{0,1\}^{M \times N}} \sum_{m=1}^{M} \sum_{i=1}^{N} \pi_i \cdot x_{mi},
@@ -2369,8 +2369,8 @@ Tabla&nbsp;5.7: Comparación de eficiencia logística entre escenarios operativo
 \]</span></p>
 <p>Esta extensión es crítica para escalar la operación a nivel estatal, cubriendo múltiples corredores simultáneamente.</p>
 </section>
-<section id="asimilación-de-datos-satelitales" class="level4" data-number="5.11.2.5">
-<h4 data-number="5.11.2.5" class="anchored" data-anchor-id="asimilación-de-datos-satelitales"><span class="header-section-number">5.11.2.5</span> Asimilación de datos satelitales</h4>
+<section id="asimilación-de-datos-satelitales" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="asimilación-de-datos-satelitales">Asimilación de datos satelitales</h4>
 <p>Incorporar observaciones de satélites meteorológicos (GOES-16, Himawari) para mejorar la estimación de la velocidad de advección en regiones con cobertura terrestre limitada:</p>
 <ul>
 <li><strong>Ventaja</strong>: Cobertura espacial completa sin dependencia de estaciones terrestres.</li>
@@ -2378,8 +2378,8 @@ Tabla&nbsp;5.7: Comparación de eficiencia logística entre escenarios operativo
 <li><strong>Enfoque híbrido</strong>: Fusionar datos satelitales y terrestres mediante filtrado de Kalman para estimación óptima de <span class="math inline">\(v\)</span>.</li>
 </ul>
 </section>
-<section id="extensión-geográfica-a-otras-regiones" class="level4" data-number="5.11.2.6">
-<h4 data-number="5.11.2.6" class="anchored" data-anchor-id="extensión-geográfica-a-otras-regiones"><span class="header-section-number">5.11.2.6</span> Extensión geográfica a otras regiones</h4>
+<section id="extensión-geográfica-a-otras-regiones" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="extensión-geográfica-a-otras-regiones">Extensión geográfica a otras regiones</h4>
 <p>La metodología es directamente aplicable a otras regiones con desafíos similares de topografía y clima:</p>
 <ul>
 <li><strong>Requisitos mínimos</strong>: Serie temporal de 7+ días, densidad de observaciones <span class="math inline">\(\geq 1\)</span> estación cada 5 km, ruta definida con <span class="math inline">\(N \geq 10\)</span> segmentos.</li>

@@ -3359,7 +3359,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, opacityback=0, left=2mm, opacitybacktitle=0.6, leftrule=.75mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, breakable, coltitle=black, titlerule=0mm, bottomrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, bottomtitle=1mm, toptitle=1mm, rightrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toptitle=1mm, opacitybacktitle=0.6, leftrule=.75mm, coltitle=black, colback=white, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, breakable, bottomtitle=1mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, titlerule=0mm, arc=.35mm, left=2mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -6331,8 +6331,10 @@ El marco desarrollado en esta tesis abre múltiples direcciones de
 investigación en la intersección de matemáticas aplicadas, meteorología
 y logística humanitaria:
 
-\subsubsection{Optimización multiobjetivo
+\subsubsection*{Optimización multiobjetivo
 dinámica}\label{optimizaciuxf3n-multiobjetivo-dinuxe1mica}
+\addcontentsline{toc}{subsubsection}{Optimización multiobjetivo
+dinámica}
 
 Extender la función de decisión binaria \(\mathbb{I}_{\text{vuelo}}\) a
 un marco de optimización Pareto-óptimo que considere explícitamente
@@ -6350,8 +6352,9 @@ donde \(\mathcal{R}(\mathbf{x})\) representa una medida de riesgo
 operacional. Esto permitiría decisiones adaptativas que balanceen
 eficiencia, costo y seguridad según el nivel de urgencia humanitaria.
 
-\subsubsection{Aprendizaje automático
+\subsubsection*{Aprendizaje automático
 híbrido}\label{aprendizaje-automuxe1tico-huxedbrido}
+\addcontentsline{toc}{subsubsection}{Aprendizaje automático híbrido}
 
 Integrar modelos de \emph{deep learning} (LSTM, Transformers) con el
 modelo advectivo físico para capturar patrones no lineales no modelados
@@ -6365,8 +6368,9 @@ con \(w_{\text{físico}} + w_{\text{ML}} = 1\). Los pesos podrían
 aprenderse mediante validación cruzada temporal, permitiendo que el
 sistema mejore su desempeño con experiencia operacional acumulada.
 
-\subsubsection{Redes complejas
+\subsubsection*{Redes complejas
 adaptativas}\label{redes-complejas-adaptativas}
+\addcontentsline{toc}{subsubsection}{Redes complejas adaptativas}
 
 Modelar la red terrestre del Capítulo 3 como un sistema complejo
 adaptativo donde los pesos de las aristas \(w_{ij}\) evolucionan
@@ -6386,8 +6390,10 @@ Esto requeriría algoritmos de PageRank incremental para actualización
 eficiente sin recalculación completa del vector estacionario
 \(\boldsymbol{\pi}\).
 
-\subsubsection{Coordinación de enjambres de
+\subsubsection*{Coordinación de enjambres de
 drones}\label{coordinaciuxf3n-de-enjambres-de-drones}
+\addcontentsline{toc}{subsubsection}{Coordinación de enjambres de
+drones}
 
 Generalizar el modelo de decisión para coordinar flotas de \(M\) drones
 múltiples, transformando el problema de decisión binaria en un problema
@@ -6404,8 +6410,9 @@ sujeto a: \[
 Esta extensión es crítica para escalar la operación a nivel estatal,
 cubriendo múltiples corredores simultáneamente.
 
-\subsubsection{Asimilación de datos
+\subsubsection*{Asimilación de datos
 satelitales}\label{asimilaciuxf3n-de-datos-satelitales}
+\addcontentsline{toc}{subsubsection}{Asimilación de datos satelitales}
 
 Incorporar observaciones de satélites meteorológicos (GOES-16, Himawari)
 para mejorar la estimación de la velocidad de advección en regiones con
@@ -6424,8 +6431,10 @@ cobertura terrestre limitada:
   mediante filtrado de Kalman para estimación óptima de \(v\).
 \end{itemize}
 
-\subsubsection{Extensión geográfica a otras
+\subsubsection*{Extensión geográfica a otras
 regiones}\label{extensiuxf3n-geogruxe1fica-a-otras-regiones}
+\addcontentsline{toc}{subsubsection}{Extensión geográfica a otras
+regiones}
 
 La metodología es directamente aplicable a otras regiones con desafíos
 similares de topografía y clima:
