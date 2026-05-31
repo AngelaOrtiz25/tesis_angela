@@ -1547,7 +1547,7 @@ $$
 
 El marco desarrollado en esta tesis abre múltiples direcciones de investigación en la intersección de matemáticas aplicadas, meteorología y logística humanitaria:
 
-#### Optimización multiobjetivo dinámica
+#### Optimización multiobjetivo dinámica {.unnumbered}
 
 Extender la función de decisión binaria $\mathbb{I}_{\text{vuelo}}$ a un marco de optimización Pareto-óptimo que considere explícitamente trade-offs entre múltiples objetivos:
 
@@ -1562,7 +1562,7 @@ $$
 
 donde $\mathcal{R}(\mathbf{x})$ representa una medida de riesgo operacional. Esto permitiría decisiones adaptativas que balanceen eficiencia, costo y seguridad según el nivel de urgencia humanitaria.
 
-#### Aprendizaje automático híbrido
+#### Aprendizaje automático híbrido {.unnumbered}
 
 Integrar modelos de *deep learning* (LSTM, Transformers) con el modelo advectivo físico para capturar patrones no lineales no modelados explícitamente:
 
@@ -1572,7 +1572,7 @@ $$
 
 con $w_{\text{físico}} + w_{\text{ML}} = 1$. Los pesos podrían aprenderse mediante validación cruzada temporal, permitiendo que el sistema mejore su desempeño con experiencia operacional acumulada.
 
-#### Redes complejas adaptativas
+#### Redes complejas adaptativas {.unnumbered}
 
 Modelar la red terrestre del Capítulo 3 como un sistema complejo adaptativo donde los pesos de las aristas $w_{ij}$ evolucionan dinámicamente según:
 
@@ -1582,7 +1582,7 @@ Modelar la red terrestre del Capítulo 3 como un sistema complejo adaptativo don
 
 Esto requeriría algoritmos de PageRank incremental para actualización eficiente sin recalculación completa del vector estacionario $\boldsymbol{\pi}$.
 
-#### Coordinación de enjambres de drones
+#### Coordinación de enjambres de drones {.unnumbered}
 
 Generalizar el modelo de decisión para coordinar flotas de $M$ drones múltiples, transformando el problema de decisión binaria en un problema de asignación de recursos distribuidos:
 
@@ -1597,7 +1597,7 @@ $$
 
 Esta extensión es crítica para escalar la operación a nivel estatal, cubriendo múltiples corredores simultáneamente.
 
-#### Asimilación de datos satelitales
+#### Asimilación de datos satelitales {.unnumbered}
 
 Incorporar observaciones de satélites meteorológicos (GOES-16, Himawari) para mejorar la estimación de la velocidad de advección en regiones con cobertura terrestre limitada:
 
@@ -1605,7 +1605,7 @@ Incorporar observaciones de satélites meteorológicos (GOES-16, Himawari) para 
 - **Desafío**: Resolución temporal inferior (5–10 min vs. 1 min en estaciones terrestres).
 - **Enfoque híbrido**: Fusionar datos satelitales y terrestres mediante filtrado de Kalman para estimación óptima de $v$.
 
-#### Extensión geográfica a otras regiones
+#### Extensión geográfica a otras regiones {.unnumbered}
 
 La metodología es directamente aplicable a otras regiones con desafíos similares de topografía y clima:
 
