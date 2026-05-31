@@ -2216,26 +2216,24 @@ Tabla&nbsp;5.7: Comparación de eficiencia logística entre escenarios operativo
 <section id="recomendaciones-operativas-para-implementación" class="level3" data-number="5.11.1">
 <h3 data-number="5.11.1" class="anchored" data-anchor-id="recomendaciones-operativas-para-implementación"><span class="header-section-number">5.11.1</span> Recomendaciones operativas para implementación</h3>
 <p>Basado en los resultados de validación del modelo de pronóstico y la función de decisión binaria, se establecen las siguientes recomendaciones para la implementación operacional del sistema:</p>
-<section id="ventana-temporal-óptima-para-evaluación" class="level4" data-number="5.11.1.1">
-<h4 data-number="5.11.1.1" class="anchored" data-anchor-id="ventana-temporal-óptima-para-evaluación"><span class="header-section-number">5.11.1.1</span> Ventana temporal óptima para evaluación</h4>
+<ul>
+<li><strong>Ventana temporal óptima para evaluación</strong></li>
+</ul>
 <p>El horizonte de pronóstico de <span class="math inline">\(H = 60\)</span> minutos demostrado en este trabajo proporciona un equilibrio adecuado entre precisión predictiva y utilidad operativa. Se recomienda:</p>
 <ul>
-<li><strong>Evaluación inicial</strong>: Realizar la primera evaluación de viabilidad <span class="math inline">\(\mathbb{I}_{\text{vuelo}}\)</span> con <span class="math inline">\(90\)</span> minutos de antelación al vuelo programado, permitiendo tiempo para activación de protocolos de contingencia.</li>
-<li><strong>Reevaluación periódica</strong>: Actualizar el pronóstico cada <span class="math inline">\(\Delta t = 10\)</span> minutos durante la ventana de decisión, aprovechando la eficiencia computacional del modelo híbrido (<span class="math inline">\(\mathcal{O}(N)\)</span>).</li>
-<li><strong>Validación pre-despegue</strong>: Confirmar <span class="math inline">\(\mathbb{I}_{\text{vuelo}} = 1\)</span> inmediatamente antes del despegue, utilizando las observaciones más recientes disponibles.</li>
+<li><p><strong>Evaluación inicial</strong>: Realizar la primera evaluación de viabilidad <span class="math inline">\(\mathbb{I}_{\text{vuelo}}\)</span> con <span class="math inline">\(90\)</span> minutos de antelación al vuelo programado, permitiendo tiempo para activación de protocolos de contingencia.</p></li>
+<li><p><strong>Reevaluación periódica</strong>: Actualizar el pronóstico cada <span class="math inline">\(\Delta t = 10\)</span> minutos durante la ventana de decisión, aprovechando la eficiencia computacional del modelo híbrido (<span class="math inline">\(\mathcal{O}(N)\)</span>).</p></li>
+<li><p><strong>Validación pre-despegue</strong>: Confirmar <span class="math inline">\(\mathbb{I}_{\text{vuelo}} = 1\)</span> inmediatamente antes del despegue, utilizando las observaciones más recientes disponibles.</p></li>
+<li><p><strong>Umbrales de decisión conservadores</strong></p></li>
 </ul>
-</section>
-<section id="umbrales-de-decisión-conservadores" class="level4" data-number="5.11.1.2">
-<h4 data-number="5.11.1.2" class="anchored" data-anchor-id="umbrales-de-decisión-conservadores"><span class="header-section-number">5.11.1.2</span> Umbrales de decisión conservadores</h4>
 <p>Los resultados del block bootstrap revelaron que el percentil 95 (<span class="math inline">\(p_{95}\)</span>) proporciona una medida robusta de riesgo operacional. Se recomienda:</p>
 <ul>
 <li><strong>Política de tolerancia cero</strong>: Mantener el umbral de precipitación en <span class="math inline">\(R_{\text{máx}} = 0.1 \, \mathrm{mm \cdot h^{-1}}\)</span>, dado el riesgo catastrófico de fallo eléctrico.</li>
 <li><strong>Margen de seguridad para viento</strong>: Operar con un límite efectivo de <span class="math inline">\(V_{\text{efectivo}} = 8.0 \, \mathrm{m \cdot s^{-1}}\)</span>, inferior al límite técnico del dron (<span class="math inline">\(10.0 \, \mathrm{m \cdot s^{-1}}\)</span>), para incorporar margen de seguridad ante ráfagas no modeladas.</li>
 <li><strong>Monitoreo continuo de temperatura</strong>: Implementar alertas tempranas cuando <span class="math inline">\(T_{\text{máx}} &gt; 40^\circ\mathrm{C}\)</span>, aunque el límite técnico sea <span class="math inline">\(45^\circ\mathrm{C}\)</span>, para prevenir degradación acelerada de baterías Li-Po.</li>
 </ul>
-</section>
-<section id="protocolos-de-contingencia-escalonados" class="level4" data-number="5.11.1.3">
-<h4 data-number="5.11.1.3" class="anchored" data-anchor-id="protocolos-de-contingencia-escalonados"><span class="header-section-number">5.11.1.3</span> Protocolos de contingencia escalonados</h4>
+<section id="protocolos-de-contingencia-escalonados" class="level4" data-number="5.11.1.1">
+<h4 data-number="5.11.1.1" class="anchored" data-anchor-id="protocolos-de-contingencia-escalonados"><span class="header-section-number">5.11.1.1</span> Protocolos de contingencia escalonados</h4>
 <p>La integración con la red terrestre del Capítulo 3 requiere protocolos claros para cuando <span class="math inline">\(\mathbb{I}_{\text{vuelo}} = 0\)</span>:</p>
 <table class="caption-top table">
 <colgroup>
@@ -2275,8 +2273,8 @@ Tabla&nbsp;5.7: Comparación de eficiencia logística entre escenarios operativo
 </table>
 <p>Esta estructura escalonada permite mantener la flexibilidad operativa sin comprometer la seguridad, aprovechando la rapidez del transporte aéreo cuando las condiciones lo permiten y recurriendo a la red terrestre optimizada mediante PageRank como respaldo.</p>
 </section>
-<section id="integración-con-sistemas-de-monitoreo-existentes" class="level4" data-number="5.11.1.4">
-<h4 data-number="5.11.1.4" class="anchored" data-anchor-id="integración-con-sistemas-de-monitoreo-existentes"><span class="header-section-number">5.11.1.4</span> Integración con sistemas de monitoreo existentes</h4>
+<section id="integración-con-sistemas-de-monitoreo-existentes" class="level4" data-number="5.11.1.2">
+<h4 data-number="5.11.1.2" class="anchored" data-anchor-id="integración-con-sistemas-de-monitoreo-existentes"><span class="header-section-number">5.11.1.2</span> Integración con sistemas de monitoreo existentes</h4>
 <p>Para maximizar la utilidad del sistema de decisión, se recomienda:</p>
 <ul>
 <li><strong>Interfaz de visualización</strong>: Desarrollar un dashboard que muestre <span class="math inline">\(\mathbb{I}_{\text{vuelo}}\)</span>, los valores <span class="math inline">\(p_{95}\)</span> por segmento, y la ruta crítica identificada por PageRank en tiempo real.</li>
