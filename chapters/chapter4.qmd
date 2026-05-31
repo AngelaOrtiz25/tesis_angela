@@ -1484,7 +1484,7 @@ Los resultados del block bootstrap revelaron que el percentil 95 ($p_{95}$) prop
 - **Margen de seguridad para viento**: Operar con un límite efectivo de $V_{\text{efectivo}} = 8.0 \, \mathrm{m \cdot s^{-1}}$, inferior al límite técnico del dron ($10.0 \, \mathrm{m \cdot s^{-1}}$), para incorporar margen de seguridad ante ráfagas no modeladas.
 - **Monitoreo continuo de temperatura**: Implementar alertas tempranas cuando $T_{\text{máx}} > 40^\circ\mathrm{C}$, aunque el límite técnico sea $45^\circ\mathrm{C}$, para prevenir degradación acelerada de baterías Li-Po.
 
-#### Protocolos de contingencia escalonados
+#### Protocolos de contingencia escalonados {.unnumbered}
 
 La integración con la red terrestre del Capítulo 3 requiere protocolos claros para cuando $\mathbb{I}_{\text{vuelo}} = 0$:
 
@@ -1497,7 +1497,7 @@ La integración con la red terrestre del Capítulo 3 requiere protocolos claros 
 
 Esta estructura escalonada permite mantener la flexibilidad operativa sin comprometer la seguridad, aprovechando la rapidez del transporte aéreo cuando las condiciones lo permiten y recurriendo a la red terrestre optimizada mediante PageRank como respaldo.
 
-#### Integración con sistemas de monitoreo existentes
+#### Integración con sistemas de monitoreo existentes {.unnumbered}
 
 Para maximizar la utilidad del sistema de decisión, se recomienda:
 
