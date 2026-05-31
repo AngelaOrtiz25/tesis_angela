@@ -1468,7 +1468,7 @@ El sistema integrado de decisión desarrollado en este capítulo proporciona un 
 
 Basado en los resultados de validación del modelo de pronóstico y la función de decisión binaria, se establecen las siguientes recomendaciones para la implementación operacional del sistema:
 
-#### Ventana temporal óptima para evaluación
+- **Ventana temporal óptima para evaluación**
 
 El horizonte de pronóstico de $H = 60$ minutos demostrado en este trabajo proporciona un equilibrio adecuado entre precisión predictiva y utilidad operativa. Se recomienda:
 
@@ -1476,7 +1476,7 @@ El horizonte de pronóstico de $H = 60$ minutos demostrado en este trabajo propo
 - **Reevaluación periódica**: Actualizar el pronóstico cada $\Delta t = 10$ minutos durante la ventana de decisión, aprovechando la eficiencia computacional del modelo híbrido ($\mathcal{O}(N)$).
 - **Validación pre-despegue**: Confirmar $\mathbb{I}_{\text{vuelo}} = 1$ inmediatamente antes del despegue, utilizando las observaciones más recientes disponibles.
 
-#### Umbrales de decisión conservadores
+- **Umbrales de decisión conservadores**
 
 Los resultados del block bootstrap revelaron que el percentil 95 ($p_{95}$) proporciona una medida robusta de riesgo operacional. Se recomienda:
 

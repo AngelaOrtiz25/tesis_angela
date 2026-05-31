@@ -30,7 +30,7 @@ $$
 \pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i,
 $$
 
-donde $P$ es la matriz de transición (@sec-transicion2) modificada que incorpora un factor de amortiguamiento $p = 0.85$ para garantizar la ergodicidad de la cadena (@sec-ergodicidad). El valor $\pi_i$ representa la importancia relativa del municipio $i$ dentro de la red, permitiendo identificar aquellos nodos que actúan como centros de distribución naturales.
+donde $P$ es la matriz de transición (@sec-transicion) modificada que incorpora un factor de amortiguamiento $p = 0.85$ para garantizar la ergodicidad de la cadena (@sec-ergodicidad). El valor $\pi_i$ representa la importancia relativa del municipio $i$ dentro de la red, permitiendo identificar aquellos nodos que actúan como centros de distribución naturales.
 
 El flujo metodológico desarrollado en este capítulo comprende las siguientes etapas:
 
