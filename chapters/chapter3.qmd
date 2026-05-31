@@ -30,7 +30,7 @@ $$
 \pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i,
 $$
 
-donde $P$ es la matriz de transición (@sec-transicion) modificada que incorpora un factor de amortiguamiento $p = 0.85$ para garantizar la ergodicidad de la cadena (@sec-ergodicidad). El valor $\pi_i$ representa la importancia relativa del municipio $i$ dentro de la red, permitiendo identificar aquellos nodos que actúan como centros de distribución naturales.
+donde $P$ es la matriz de transición (@sec-transicion2) modificada que incorpora un factor de amortiguamiento $p = 0.85$ para garantizar la ergodicidad de la cadena (@sec-ergodicidad). El valor $\pi_i$ representa la importancia relativa del municipio $i$ dentro de la red, permitiendo identificar aquellos nodos que actúan como centros de distribución naturales.
 
 El flujo metodológico desarrollado en este capítulo comprende las siguientes etapas:
 
@@ -288,7 +288,7 @@ Cabe precisar que el grado de salida de un nodo representa el número de aristas
 
 4. **Diámetro de la red**:La distancia máxima en el grafo, es decir, la longitud del camino más corto medida en número de aristas o "saltos" entre cualquier par de municipios es 4, lo cual indica una alta conectividad global del sistema territorial. Este indicador corresponde al concepto de **diámetro de la red** en teoría de grafos, el cual se define como la mayor de todas las distancias mínimas entre pares de nodos; un valor reducido como 4 sugiere que, independientemente del origen y destino, siempre es posible alcanzar cualquier municipio recorriendo a lo sumo cuatro conexiones intermedias a través de la infraestructura vial disponible.
 
-### Matriz de transición modificada para PageRank {#sec-transicion}
+### Matriz de transición modificada para PageRank {#sec-transicion2}
 
 A pesar de las propiedades favorables mencionadas, la matriz $Q$ puede presentar convergencia hacia la distribución estacionaria (@sec-ergodicidad). Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento $p \in (0,1)$, típicamente $p = 0.85$.
 
@@ -329,7 +329,7 @@ El vector $\pi$ constituye la base matemática para la clasificación de los mun
 
 El algoritmo PageRank, proporciona una medida de centralidad para los nodos de una red basada en su estructura de conectividad global. En el contexto de la red territorial de Chiapas, el algoritmo permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, actúan como centros naturales de distribución logística.
 
-Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto $\{X_n\}_{n \geq 0}$ con espacio de estados finito $S = \{1, 2, \dots, 124\}$, donde cada estado representa un municipio. La matriz de transición modificada $P \in \mathbb{R}^{124 \times 124}$, construida según la metodología descrita en la @sec-transicion, define las probabilidades de transición entre municipios.
+Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto $\{X_n\}_{n \geq 0}$ con espacio de estados finito $S = \{1, 2, \dots, 124\}$, donde cada estado representa un municipio. La matriz de transición modificada $P \in \mathbb{R}^{124 \times 124}$, construida según la metodología descrita en la @sec-transicion2, define las probabilidades de transición entre municipios.
 
 El vector PageRank $\pi \in \mathbb{R}^{124}$ se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones @eq-pi
 
@@ -351,7 +351,7 @@ Los subgrafos absorbentes son subconjuntos de municipios interconectados entre s
 
 Para evitar esta situación, PageRank introduce el factor de amortiguamiento $p \in (0,1)$, que modela la probabilidad de que un navegante aleatorio siga un enlace real de la red. Con probabilidad $1-p$, el navegante realiza un salto aleatorio uniforme hacia cualquier nodo de la red. En la práctica, se adopta el valor estándar $p = 0.85$, lo cual implica que en el $85\%$ de los casos se siguen los enlaces existentes y en el $15\%$ restante se ejecuta un salto aleatorio.
 
-Con estos ajustes, la matriz de transición mantiene la misma estructura ya mencionada en la @sec-transicion.
+Con estos ajustes, la matriz de transición mantiene la misma estructura ya mencionada en la @sec-transicion2.
 
 ### Implementación numérica mediante el método de potencias
 

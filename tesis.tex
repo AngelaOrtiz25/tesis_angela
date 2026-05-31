@@ -293,7 +293,7 @@
 \title{tesis}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-05-08}
+\date{2026-05-30}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -1741,8 +1741,8 @@ para más detalles.
 \subsection{Modelo de onda viajera y relación de
 fase}\label{modelo-de-onda-viajera-y-relaciuxf3n-de-fase}
 
-Para una estructura atmosférica que se propaga como una onda viajera
-unidimensional, el campo puede aproximarse localmente por:
+Etapa 2 Para una estructura atmosférica que se propaga como una onda
+viajera unidimensional, el campo puede aproximarse localmente por:
 
 \[
 X(s,t) \approx A \cos(\kappa s - \omega t + \phi_0),
@@ -2485,7 +2485,7 @@ algoritmo PageRank calcula el vector estacionario
 \pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i > 0 \; \forall i,
 \]
 
-donde \(P\) es la matriz de transición (Sección~\ref{sec-transicion})
+donde \(P\) es la matriz de transición (Sección~\ref{sec-transicion2})
 modificada que incorpora un factor de amortiguamiento \(p = 0.85\) para
 garantizar la ergodicidad de la cadena (Sección~\ref{sec-ergodicidad}).
 El valor \(\pi_i\) representa la importancia relativa del municipio
@@ -3023,7 +3023,7 @@ estructurales relevantes:
 \end{enumerate}
 
 \subsection{Matriz de transición modificada para
-PageRank}\label{sec-transicion}
+PageRank}\label{sec-transicion2}
 
 A pesar de las propiedades favorables mencionadas, la matriz \(Q\) puede
 presentar convergencia hacia la distribución estacionaria
@@ -3107,7 +3107,7 @@ tiempo discreto \(\{X_n\}_{n \geq 0}\) con espacio de estados finito
 \(S = \{1, 2, \dots, 124\}\), donde cada estado representa un municipio.
 La matriz de transición modificada
 \(P \in \mathbb{R}^{124 \times 124}\), construida según la metodología
-descrita en la Sección~\ref{sec-transicion}, define las probabilidades
+descrita en la Sección~\ref{sec-transicion2}, define las probabilidades
 de transición entre municipios.
 
 El vector PageRank \(\pi \in \mathbb{R}^{124}\) se define como el vector
@@ -3160,7 +3160,7 @@ los enlaces existentes y en el \(15\%\) restante se ejecuta un salto
 aleatorio.
 
 Con estos ajustes, la matriz de transición mantiene la misma estructura
-ya mencionada en la Sección~\ref{sec-transicion}.
+ya mencionada en la Sección~\ref{sec-transicion2}.
 
 \subsection{Implementación numérica mediante el método de
 potencias}\label{implementaciuxf3n-numuxe9rica-mediante-el-muxe9todo-de-potencias}
@@ -3359,7 +3359,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, arc=.35mm, bottomrule=.15mm, breakable, toprule=.15mm, opacitybacktitle=0.6, rightrule=.15mm, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, left=2mm, leftrule=.75mm, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacityback=0, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, left=2mm, titlerule=0mm, opacityback=0, colback=white, bottomtitle=1mm, opacitybacktitle=0.6, coltitle=black, breakable, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, bottomrule=.15mm, rightrule=.15mm, toprule=.15mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -3846,7 +3846,7 @@ caracterizado por su posición centroidal \(s_i\), y cada columna a un
 instante temporal muestreado uniformemente con paso \(\Delta t\).
 
 Para cada segmento \(s_i\), se calcula la transformada de Fourier
-temporal():
+temporal Sección~\ref{sec-analisisfk}:
 
 \[
 \hat{M}(s_i,\omega) = \int M(s_i,t) e^{-i\omega t} dt,
