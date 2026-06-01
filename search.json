@@ -23,8 +23,8 @@
     "objectID": "chapters/objetivo.html#objetivo-general",
     "href": "chapters/objetivo.html#objetivo-general",
     "title": "Objetivos",
-    "section": "*Objetivo general**",
-    "text": "*Objetivo general**",
+    "section": "Objetivo General",
+    "text": "Objetivo General\nDesarrollar un sistema integrado de apoyo a la decisión que combine modelación de redes territoriales, pronóstico meteorológico de corto plazo y teoría de decisión bajo incertidumbre, con el fin de optimizar la distribución logística de ayuda humanitaria y garantizar la seguridad operacional de drones en el estado de Chiapas, México.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Objetivos</span>"
     ]
@@ -33,8 +33,8 @@
     "objectID": "chapters/objetivo.html#objetivos-específicos",
     "href": "chapters/objetivo.html#objetivos-específicos",
     "title": "Objetivos",
-    "section": "Objetivos específicos",
-    "text": "Objetivos específicos",
+    "section": "Objetivos Específicos",
+    "text": "Objetivos Específicos\n\nModelar la red vial de los 124 municipios de Chiapas como un grafo dirigido ponderado mediante distancias tridimensionales, aplicar el algoritmo PageRank para identificar centros estratégicos de distribución logística y determinar las rutas terrestres óptimas desde el almacén central mediante el algoritmo de Dijkstra.\nConstruir un sistema híbrido de nowcasting para variables meteorológicas críticas (viento, temperatura, humedad y precipitación) a lo largo de corredores de vuelo, combinando estimación de velocidad de advección mediante correlación cruzada y análisis espectral frecuencia-espacio (\\(f\\)-\\(k\\)), con dinámica temporal modelada mediante procesos autorregresivos AR(1).\nCuantificar la incertidumbre predictiva mediante el método Moving Block Bootstrap y formalizar una regla de decisión binaria bajo incertidumbre basada en el criterio de Wald y regiones factibles operativas, implementando una política de tolerancia cero mediante el percentil 95 para transformar distribuciones empíricas en acciones seguras de vuelo.\nIntegrar los componentes espacial y operacional en un marco logístico unificado, evaluar su eficiencia mediante métricas de tiempo de entrega, cobertura territorial y gestión de riesgo, y validar su aplicabilidad y escalabilidad para la gestión de emergencias en entornos de topografía compleja.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Objetivos</span>"
     ]

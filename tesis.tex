@@ -443,10 +443,46 @@ Markov chains (MSC 60J10), Statistical decision theory (MSC 62C05).
 
 \chapter{Objetivos}\label{objetivos}
 
-\section{*Objetivo general**}\label{objetivo-general}
+\section{Objetivo General}\label{objetivo-general}
 
-\section{\texorpdfstring{\textbf{Objetivos
-específicos}}{Objetivos específicos}}\label{objetivos-especuxedficos}
+Desarrollar un sistema integrado de apoyo a la decisión que combine
+modelación de redes territoriales, pronóstico meteorológico de corto
+plazo y teoría de decisión bajo incertidumbre, con el fin de optimizar
+la distribución logística de ayuda humanitaria y garantizar la seguridad
+operacional de drones en el estado de Chiapas, México.
+
+\section{Objetivos Específicos}\label{objetivos-especuxedficos}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Modelar} la red vial de los 124 municipios de Chiapas como un
+  grafo dirigido ponderado mediante distancias tridimensionales, aplicar
+  el algoritmo PageRank para identificar centros estratégicos de
+  distribución logística y determinar las rutas terrestres óptimas desde
+  el almacén central mediante el algoritmo de Dijkstra.
+\item
+  \textbf{Construir} un sistema híbrido de \emph{nowcasting} para
+  variables meteorológicas críticas (viento, temperatura, humedad y
+  precipitación) a lo largo de corredores de vuelo, combinando
+  estimación de velocidad de advección mediante correlación cruzada y
+  análisis espectral frecuencia-espacio (\(f\)-\(k\)), con dinámica
+  temporal modelada mediante procesos autorregresivos AR(1).
+\item
+  \textbf{Cuantificar} la incertidumbre predictiva mediante el método
+  \emph{Moving Block Bootstrap} y formalizar una regla de decisión
+  binaria bajo incertidumbre basada en el criterio de Wald y regiones
+  factibles operativas, implementando una política de tolerancia cero
+  mediante el percentil 95 para transformar distribuciones empíricas en
+  acciones seguras de vuelo.
+\item
+  \textbf{Integrar} los componentes espacial y operacional en un marco
+  logístico unificado, evaluar su eficiencia mediante métricas de tiempo
+  de entrega, cobertura territorial y gestión de riesgo, y validar su
+  aplicabilidad y escalabilidad para la gestión de emergencias en
+  entornos de topografía compleja.
+\end{enumerate}
 
 \bookmarksetup{startatroot}
 
@@ -3445,7 +3481,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, titlerule=0mm, toptitle=1mm, bottomrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colbacktitle=quarto-callout-note-color!10!white, opacityback=0, breakable, bottomtitle=1mm, arc=.35mm, left=2mm, leftrule=.75mm, colback=white, rightrule=.15mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, opacityback=0, colback=white, leftrule=.75mm, arc=.35mm, toptitle=1mm, breakable, left=2mm, bottomtitle=1mm, bottomrule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacitybacktitle=0.6, rightrule=.15mm, toprule=.15mm, titlerule=0mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white]
 
 \textbf{Características operativas de la ruta}
 

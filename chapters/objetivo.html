@@ -94,6 +94,35 @@ window.MathJax = {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -420,14 +449,21 @@ window.MathJax = {
 
 <div style="text-align: justify">
 <section id="objetivo-general" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo-general">*Objetivo general**</h2>
+<h2 class="anchored" data-anchor-id="objetivo-general">Objetivo General</h2>
+<p>Desarrollar un sistema integrado de apoyo a la decisión que combine modelación de redes territoriales, pronóstico meteorológico de corto plazo y teoría de decisión bajo incertidumbre, con el fin de optimizar la distribución logística de ayuda humanitaria y garantizar la seguridad operacional de drones en el estado de Chiapas, México.</p>
 </section>
 <section id="objetivos-específicos" class="level2">
-<h2 class="anchored" data-anchor-id="objetivos-específicos"><strong>Objetivos específicos</strong></h2>
-
-
+<h2 class="anchored" data-anchor-id="objetivos-específicos">Objetivos Específicos</h2>
+<ol type="1">
+<li><strong>Modelar</strong> la red vial de los 124 municipios de Chiapas como un grafo dirigido ponderado mediante distancias tridimensionales, aplicar el algoritmo PageRank para identificar centros estratégicos de distribución logística y determinar las rutas terrestres óptimas desde el almacén central mediante el algoritmo de Dijkstra.</li>
+<li><strong>Construir</strong> un sistema híbrido de <em>nowcasting</em> para variables meteorológicas críticas (viento, temperatura, humedad y precipitación) a lo largo de corredores de vuelo, combinando estimación de velocidad de advección mediante correlación cruzada y análisis espectral frecuencia-espacio (<span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>), con dinámica temporal modelada mediante procesos autorregresivos AR(1).</li>
+<li><strong>Cuantificar</strong> la incertidumbre predictiva mediante el método <em>Moving Block Bootstrap</em> y formalizar una regla de decisión binaria bajo incertidumbre basada en el criterio de Wald y regiones factibles operativas, implementando una política de tolerancia cero mediante el percentil 95 para transformar distribuciones empíricas en acciones seguras de vuelo.</li>
+<li><strong>Integrar</strong> los componentes espacial y operacional en un marco logístico unificado, evaluar su eficiencia mediante métricas de tiempo de entrega, cobertura territorial y gestión de riesgo, y validar su aplicabilidad y escalabilidad para la gestión de emergencias en entornos de topografía compleja.</li>
+</ol>
 </section>
 </div>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
