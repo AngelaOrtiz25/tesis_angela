@@ -320,6 +320,7 @@ $$
 G = pQ' + (1-p)\mathbf{1}\mathbf{v}^\top,
 $$
 donde:
+
 - $Q'$ es la matriz de transición corregida (columnas nulas reemplazadas por $\mathbf{1}/n$),
 - $\mathbf{v} \in \mathbb{R}^n$ es un vector de probabilidad estrictamente positivo ($\mathbf{v} > 0$, $\sum v_i = 1$),
 - $\mathbf{1}\mathbf{v}^\top$ es la matriz de rango uno con columnas idénticas a $\mathbf{v}$.
