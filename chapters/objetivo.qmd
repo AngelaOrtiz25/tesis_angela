@@ -10,11 +10,11 @@ jupyter: python3
 ---
 :::{style="text-align: justify"}
 
-## Objetivo General
+## Objetivo General {-}
 
 Desarrollar un sistema integrado de apoyo a la decisión que combine modelación de redes territoriales, pronóstico meteorológico de corto plazo y teoría de decisión bajo incertidumbre, con el fin de optimizar la distribución logística de ayuda humanitaria y garantizar la seguridad operacional de drones en el estado de Chiapas, México.
 
-## Objetivos Específicos
+## Objetivos Específicos {-}
 
 - **Modelar** la red vial de los 124 municipios de Chiapas como un grafo dirigido ponderado mediante distancias tridimensionales, aplicar el algoritmo PageRank para identificar centros estratégicos de distribución logística y determinar las rutas terrestres óptimas desde el almacén central mediante el algoritmo de Dijkstra.
 - **Construir** un sistema híbrido de *nowcasting* para variables meteorológicas críticas (viento, temperatura, humedad y precipitación) a lo largo de corredores de vuelo, combinando estimación de velocidad de advección mediante correlación cruzada y análisis espectral frecuencia-espacio ($f$-$k$), con dinámica temporal modelada mediante procesos autorregresivos AR(1).
