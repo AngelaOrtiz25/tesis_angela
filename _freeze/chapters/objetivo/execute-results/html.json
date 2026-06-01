@@ -1,0 +1,12 @@
+{
+  "hash": "2685fc43c8d13e143520db498dd422db",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Objetivos\nlang: es\nformat:\n  html: default\n  pdf: default\nexecute:\n  freeze: auto\n---\n\n:::{style=\"text-align: justify\"}\n\n## *Objetivo general**\n\n## **Objetivos específicos** \n\n",
+    "supporting": [
+      "objetivo_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

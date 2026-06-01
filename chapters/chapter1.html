@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Teoría de Grafos, Cadenas de Markov y PageRank – tesis</title>
+<title>3&nbsp; Teoría de Grafos, Cadenas de Markov y PageRank – tesis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -51,7 +51,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/chapter2.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../chapters/objetivo.html" rel="prev">
 <link href="../logos/FCFM-UNACH.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -317,7 +317,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter1.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría de Grafos, Cadenas de Markov y PageRank</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter1.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Teoría de Grafos, Cadenas de Markov y PageRank</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -379,26 +379,32 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/objetivo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Objetivos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/chapter1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría de Grafos, Cadenas de Markov y PageRank</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Teoría de Grafos, Cadenas de Markov y PageRank</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/chapter2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos Estocásticos y Modelos de Pronóstico</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Procesos Estocásticos y Modelos de Pronóstico</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/chapter3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Optimización de Rutas Terrestres mediante PageRank</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Optimización de Rutas Terrestres mediante PageRank</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/chapter4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistema Integrado de Decisión para Operaciones con Drones</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Sistema Integrado de Decisión para Operaciones con Drones</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -444,7 +450,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Teoría de Grafos, Cadenas de Markov y PageRank</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Teoría de Grafos, Cadenas de Markov y PageRank</span></h1>
 </div>
 
 
@@ -462,11 +468,11 @@ window.Quarto = {
 
 
 <div style="text-align: justify">
-<section id="sec-grafosadyacencia" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sec-grafosadyacencia"><span class="header-section-number">2.1</span> Grafos dirigidos y no dirigidos, matrices de adyacencia</h2>
+<section id="sec-grafosadyacencia" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-grafosadyacencia"><span class="header-section-number">3.1</span> Grafos dirigidos y no dirigidos, matrices de adyacencia</h2>
 <p>La modelación matemática de redes de transporte, sistemas logísticos y flujos de distribución requiere un lenguaje estructural que permita representar de manera abstracta las relaciones de conectividad entre entidades discretas. La teoría de grafos proporciona este marco formal, ofreciendo herramientas para analizar propiedades topológicas, optimizar rutas y caracterizar la dinámica de procesos definidos sobre redes <span class="citation" data-cites="bondy2008graph">(<a href="../references.html#ref-bondy2008graph" role="doc-biblioref">Bondy y Murty 2008</a>)</span>. En el contexto de la logística humanitaria en Chiapas, los grafos constituyen la base sobre la cual se construyen los algoritmos de priorización territorial y evaluación de accesibilidad desarrollados en este capítulo.</p>
-<section id="sec-grafos" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="sec-grafos"><span class="header-section-number">2.1.1</span> Definiciones fundamentales</h3>
+<section id="sec-grafos" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="sec-grafos"><span class="header-section-number">3.1.1</span> Definiciones fundamentales</h3>
 <p><strong>Definición 1.1 (Grafo no dirigido).</strong> Un <em>grafo no dirigido</em> es un par ordenado <span class="math inline">\(G = (V, E)\)</span>, donde:</p>
 <ul>
 <li><span class="math inline">\(V = \{v_1, v_2, \dots, v_n\}\)</span> es un conjunto finito no vacío de <em>vértices</em> o <em>nodos</em>,</li>
@@ -480,8 +486,8 @@ window.Quarto = {
 </ul>
 <p>El arco <span class="math inline">\((u,v)\)</span> se interpreta como una conexión unidireccional desde el vértice origen <span class="math inline">\(u\)</span> hacia el vértice destino <span class="math inline">\(v\)</span>. En redes logísticas, los grafos dirigidos permiten modelar restricciones de sentido único, pendientes pronunciadas que afectan la transitabilidad en una dirección, o flujos asimétricos de recursos <span class="citation" data-cites="newman2018networks">(<a href="../references.html#ref-newman2018networks" role="doc-biblioref">Newman 2018</a>)</span>.</p>
 </section>
-<section id="sec-adyacencia" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="sec-adyacencia"><span class="header-section-number">2.1.2</span> Matriz de adyacencia: representación algebraica de la conectividad</h3>
+<section id="sec-adyacencia" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="sec-adyacencia"><span class="header-section-number">3.1.2</span> Matriz de adyacencia: representación algebraica de la conectividad</h3>
 <p>La estructura de un grafo finito puede codificarse de manera compacta mediante su <strong>matriz de adyacencia</strong>, objeto central en el análisis computacional de redes.</p>
 <p><strong>Definición 1.3 (Matriz de adyacencia no dirigida).</strong> Sea <span class="math inline">\(G = (V, E)\)</span> un grafo no dirigido con <span class="math inline">\(|V| = n\)</span>. La <em>matriz de adyacencia</em> de <span class="math inline">\(G\)</span> es la matriz <span class="math inline">\(A \in \{0,1\}^{n \times n}\)</span> definida por: <span class="math display">\[
 a_{ij} =
@@ -498,8 +504,8 @@ a_{ij} =
 \end{cases}
 \]</span> En este caso, <span class="math inline">\(A\)</span> no es necesariamente simétrica, reflejando la asimetría potencial en las conexiones de la red <span class="citation" data-cites="taha2017operations">(<a href="../references.html#ref-taha2017operations" role="doc-biblioref">Taha 2017</a>)</span>.</p>
 </section>
-<section id="propiedades-algebraicas-y-su-interpretación-en-redes" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="propiedades-algebraicas-y-su-interpretación-en-redes"><span class="header-section-number">2.1.3</span> Propiedades algebraicas y su interpretación en redes</h3>
+<section id="propiedades-algebraicas-y-su-interpretación-en-redes" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="propiedades-algebraicas-y-su-interpretación-en-redes"><span class="header-section-number">3.1.3</span> Propiedades algebraicas y su interpretación en redes</h3>
 <p>La matriz de adyacencia no solo codifica la conectividad inmediata, sino que sus potencias revelan información sobre caminos de longitud mayor.</p>
 <p><strong>Proposición 1.1 (Caminos y potencias de la matriz de adyacencia).</strong> Sea <span class="math inline">\(A\)</span> la matriz de adyacencia de un grafo (dirigido o no dirigido) con <span class="math inline">\(n\)</span> vértices. Para cualquier entero <span class="math inline">\(k \geq 1\)</span>, la entrada <span class="math inline">\((i,j)\)</span> de la matriz <span class="math inline">\(A^k\)</span> satisface: <span class="math display">\[
 (A^k)_{ij} = \text{número de caminos de longitud } k \text{ desde } v_i \text{ hasta } v_j.
@@ -508,8 +514,8 @@ a_{ij} =
 \]</span> que cuenta todos los caminos de longitud <span class="math inline">\(k\)</span> desde <span class="math inline">\(v_i\)</span> a <span class="math inline">\(v_\ell\)</span>, seguidos de un arco desde <span class="math inline">\(v_\ell\)</span> a <span class="math inline">\(v_j\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>Esta propiedad fundamenta algoritmos de alcanzabilidad, detección de componentes conexas y cálculo de centralidad, todos ellos relevantes para la planificación logística territorial <span class="citation" data-cites="bondy2008graph">(<a href="../references.html#ref-bondy2008graph" role="doc-biblioref">Bondy y Murty 2008</a>)</span>.</p>
 </section>
-<section id="grafos-ponderados-y-aplicación-a-redes-de-transporte" class="level3" data-number="2.1.4">
-<h3 data-number="2.1.4" class="anchored" data-anchor-id="grafos-ponderados-y-aplicación-a-redes-de-transporte"><span class="header-section-number">2.1.4</span> Grafos ponderados y aplicación a redes de transporte</h3>
+<section id="grafos-ponderados-y-aplicación-a-redes-de-transporte" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="grafos-ponderados-y-aplicación-a-redes-de-transporte"><span class="header-section-number">3.1.4</span> Grafos ponderados y aplicación a redes de transporte</h3>
 <p>En aplicaciones reales, las conexiones entre nodos poseen atributos cuantitativos (distancia, tiempo, costo, capacidad) que deben incorporarse al modelo.</p>
 <p><strong>Definición 1.5 (Grafo ponderado).</strong> Un <em>grafo ponderado</em> es una terna <span class="math inline">\(G = (V, E, w)\)</span>, donde <span class="math inline">\((V,E)\)</span> es un grafo y <span class="math inline">\(w: E \to \mathbb{R}^+\)</span> es una función de <em>pesos</em> que asigna a cada arista un valor positivo. La <em>matriz de pesos</em> <span class="math inline">\(W \in \mathbb{R}^{n \times n}\)</span> se define como: <span class="math display">\[
 w_{ij} =
@@ -520,19 +526,19 @@ w(\{v_i,v_j\}), &amp; \text{si } \{v_i,v_j\} \in E, \\
 \]</span></p>
 <p>En la red territorial de Chiapas, el peso <span class="math inline">\(w_{ij}\)</span> representa la distancia tridimensional <span class="math inline">\(d_{ij}^{(3D)}\)</span> entre municipios, incorporando explícitamente las variaciones topográficas del terreno. Esta métrica es fundamental para estimar con precisión los costos logísticos y los tiempos de respuesta en escenarios de emergencia.</p>
 </section>
-<section id="conexión-con-la-optimización-de-rutas" class="level3" data-number="2.1.5">
-<h3 data-number="2.1.5" class="anchored" data-anchor-id="conexión-con-la-optimización-de-rutas"><span class="header-section-number">2.1.5</span> Conexión con la optimización de rutas</h3>
+<section id="conexión-con-la-optimización-de-rutas" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="conexión-con-la-optimización-de-rutas"><span class="header-section-number">3.1.5</span> Conexión con la optimización de rutas</h3>
 <p>La representación matricial de grafos ponderados permite formular problemas de optimización de rutas como programas lineales o algoritmos de búsqueda en grafos. Por ejemplo, el problema de encontrar la ruta de menor costo entre un origen <span class="math inline">\(s\)</span> y un destino <span class="math inline">\(t\)</span> se expresa como: <span class="math display">\[
 \min_{\mathbf{x}} \sum_{(i,j) \in E} w_{ij} x_{ij}, \quad \text{sujeto a restricciones de flujo},
 \]</span> donde <span class="math inline">\(x_{ij} \in \{0,1\}\)</span> indica si el arco <span class="math inline">\((i,j)\)</span> pertenece a la ruta óptima. Algoritmos clásicos como Dijkstra o Bellman-Ford operan directamente sobre la estructura de adyacencia ponderada para resolver este problema en tiempo polinomial <span class="citation" data-cites="taha2017operations cormen2009introduction">(<a href="../references.html#ref-taha2017operations" role="doc-biblioref">Taha 2017</a>; <a href="../references.html#ref-cormen2009introduction" role="doc-biblioref">Cormen et&nbsp;al. 2022</a>)</span>.</p>
 <p>En el contexto de esta tesis, la matriz de pesos derivada de distancias 3D constituye el insumo principal para la construcción de la matriz de transición estocástica utilizada en el algoritmo PageRank, cerrando así el vínculo entre la teoría de grafos, la modelación geométrica del terreno y la priorización logística territorial.</p>
 </section>
 </section>
-<section id="redes-ponderadas-y-aplicaciones-a-redes-de-transporte" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="redes-ponderadas-y-aplicaciones-a-redes-de-transporte"><span class="header-section-number">2.2</span> Redes ponderadas y aplicaciones a redes de transporte</h2>
+<section id="redes-ponderadas-y-aplicaciones-a-redes-de-transporte" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="redes-ponderadas-y-aplicaciones-a-redes-de-transporte"><span class="header-section-number">3.2</span> Redes ponderadas y aplicaciones a redes de transporte</h2>
 <p>La representación binaria de la conectividad mediante grafos no ponderados resulta insuficiente para modelar sistemas logísticos reales, donde las conexiones entre nodos poseen atributos cuantitativos que determinan la intensidad del flujo, la accesibilidad y la vulnerabilidad estructural. Las <strong>redes ponderadas</strong> extienden el marco de la teoría de grafos al incorporar funciones de peso que codifican distancias, tiempos de tránsito, costos operativos o dificultades de acceso, permitiendo así un análisis más realista de la topología territorial <span class="citation" data-cites="newman2018networks">(<a href="../references.html#ref-newman2018networks" role="doc-biblioref">Newman 2018</a>)</span>. En el contexto de la distribución de ayuda humanitaria en Chiapas, la ponderación adecuada de la red es fundamental para priorizar municipios estratégicos y evaluar patrones de conectividad bajo restricciones topográficas.</p>
-<section id="definición-formal-de-redes-ponderadas" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="definición-formal-de-redes-ponderadas"><span class="header-section-number">2.2.1</span> Definición formal de redes ponderadas</h3>
+<section id="definición-formal-de-redes-ponderadas" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="definición-formal-de-redes-ponderadas"><span class="header-section-number">3.2.1</span> Definición formal de redes ponderadas</h3>
 <p><strong>Definición 1.6 (Red ponderada dirigida).</strong> Una <em>red ponderada dirigida</em> es una cuaterna <span class="math inline">\(G = (V, A, w, \mathcal{W})\)</span>, donde:</p>
 <ul>
 <li><span class="math inline">\((V, A)\)</span> es un grafo dirigido con <span class="math inline">\(|V| = n\)</span> vértices y <span class="math inline">\(|A| = m\)</span> arcos,</li>
@@ -547,8 +553,8 @@ w(\{v_i,v_j\}), &amp; \text{si } \{v_i,v_j\} \in E, \\
 </ul>
 <p>La elección de la métrica de peso determina el tipo de análisis estructural que puede realizarse sobre la red, y debe alinearse con los objetivos operativos del sistema logístico.</p>
 </section>
-<section id="representación-matricial-y-transformación-a-probabilidades-de-transición" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="representación-matricial-y-transformación-a-probabilidades-de-transición"><span class="header-section-number">2.2.2</span> Representación matricial y transformación a probabilidades de transición</h3>
+<section id="representación-matricial-y-transformación-a-probabilidades-de-transición" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="representación-matricial-y-transformación-a-probabilidades-de-transición"><span class="header-section-number">3.2.2</span> Representación matricial y transformación a probabilidades de transición</h3>
 <p>La estructura de una red ponderada puede codificarse mediante su <strong>matriz de pesos</strong> <span class="math inline">\(W \in \mathbb{R}^{n \times n}\)</span>, definida como: <span class="math display">\[
 w_{ij} =
 \begin{cases}
@@ -566,39 +572,39 @@ w(v_i, v_j), &amp; \text{si } (v_i, v_j) \in A, \\
 q_{ij} = \frac{\tilde{w}_{ij}}{\sum_{k=1}^n \tilde{w}_{kj}}, \quad \text{si } \sum_{k} \tilde{w}_{kj} &gt; 0.
 \]</span> Esta transformación garantiza que <span class="math inline">\(Q\)</span> sea una matriz estocástica por columnas (<span class="math inline">\(\sum_i q_{ij} = 1\)</span>), condición necesaria para interpretarla como el núcleo de un proceso de Markov discreto <span class="citation" data-cites="brin1998anatomy">(<a href="../references.html#ref-brin1998anatomy" role="doc-biblioref">Brin y Page 1998</a>)</span>.</p>
 </section>
-<section id="aplicaciones-a-redes-de-transporte-terrestre" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="aplicaciones-a-redes-de-transporte-terrestre"><span class="header-section-number">2.2.3</span> Aplicaciones a redes de transporte terrestre</h3>
+<section id="aplicaciones-a-redes-de-transporte-terrestre" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="aplicaciones-a-redes-de-transporte-terrestre"><span class="header-section-number">3.2.3</span> Aplicaciones a redes de transporte terrestre</h3>
 <p>En logística humanitaria, las redes ponderadas permiten cuantificar propiedades estructurales que son críticas para la planificación estratégica:</p>
-<section id="medición-de-centralidad-e-influencia-estructural" class="level4" data-number="2.2.3.1">
-<h4 data-number="2.2.3.1" class="anchored" data-anchor-id="medición-de-centralidad-e-influencia-estructural"><span class="header-section-number">2.2.3.1</span> 1. Medición de centralidad e influencia estructural</h4>
+<section id="medición-de-centralidad-e-influencia-estructural" class="level4" data-number="3.2.3.1">
+<h4 data-number="3.2.3.1" class="anchored" data-anchor-id="medición-de-centralidad-e-influencia-estructural"><span class="header-section-number">3.2.3.1</span> 1. Medición de centralidad e influencia estructural</h4>
 <p>El peso de las aristas no solo refleja distancia física, sino también la intensidad de la interacción entre nodos. Municipios con múltiples conexiones de bajo peso (corta distancia, alta accesibilidad) tienden a acumular mayor flujo potencial, convirtiéndose en centros naturales de distribución. Esta propiedad se cuantifica mediante medidas de centralidad espectral, como el vector PageRank, que asigna a cada nodo una puntuación proporcional a su importancia relativa en la red <span class="citation" data-cites="borgatti2005centrality">(<a href="../references.html#ref-borgatti2005centrality" role="doc-biblioref">Borgatti 2005</a>)</span>.</p>
 </section>
-<section id="evaluación-de-vulnerabilidad-y-robustez" class="level4" data-number="2.2.3.2">
-<h4 data-number="2.2.3.2" class="anchored" data-anchor-id="evaluación-de-vulnerabilidad-y-robustez"><span class="header-section-number">2.2.3.2</span> 2. Evaluación de vulnerabilidad y robustez</h4>
+<section id="evaluación-de-vulnerabilidad-y-robustez" class="level4" data-number="3.2.3.2">
+<h4 data-number="3.2.3.2" class="anchored" data-anchor-id="evaluación-de-vulnerabilidad-y-robustez"><span class="header-section-number">3.2.3.2</span> 2. Evaluación de vulnerabilidad y robustez</h4>
 <p>La sensibilidad de la red ante la interrupción de arcos o nodos puede analizarse mediante variaciones en la distribución estacionaria. Sea <span class="math inline">\(\pi\)</span> el vector de centralidad original y <span class="math inline">\(\pi^{(e)}\)</span> el vector tras eliminar el arco <span class="math inline">\(e\)</span>. El impacto relativo se mide como: <span class="math display">\[
 \Delta^{(e)} = \|\pi - \pi^{(e)}\|_1 = \sum_{i=1}^n |\pi_i - \pi_i^{(e)}|.
 \]</span> Valores elevados de <span class="math inline">\(\Delta^{(e)}\)</span> identifican enlaces críticos cuya falla redistribuye significativamente la importancia estructural de los municipios, guiando así prioridades de mantenimiento o rutas de contingencia <span class="citation" data-cites="barabasi2016network">(<a href="../references.html#ref-barabasi2016network" role="doc-biblioref">Barabási 2016</a>)</span>.</p>
 </section>
-<section id="accesibilidad-ponderada-y-equidad-territorial" class="level4" data-number="2.2.3.3">
-<h4 data-number="2.2.3.3" class="anchored" data-anchor-id="accesibilidad-ponderada-y-equidad-territorial"><span class="header-section-number">2.2.3.3</span> 3. Accesibilidad ponderada y equidad territorial</h4>
+<section id="accesibilidad-ponderada-y-equidad-territorial" class="level4" data-number="3.2.3.3">
+<h4 data-number="3.2.3.3" class="anchored" data-anchor-id="accesibilidad-ponderada-y-equidad-territorial"><span class="header-section-number">3.2.3.3</span> 3. Accesibilidad ponderada y equidad territorial</h4>
 <p>La distribución de pesos en la red refleja desigualdades geográficas en el acceso a servicios. Un análisis de los pesos de arista salientes por municipio permite identificar regiones con conectividad sistémicamente deficiente, incluso cuando la red es topológicamente conexa. Esta información es esencial para diseñar políticas de inclusión logística y localizar centros de almacenamiento intermedios.</p>
 </section>
 </section>
-<section id="conexión-con-el-algoritmo-pagerank-centralidad-estructural" class="level3" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="conexión-con-el-algoritmo-pagerank-centralidad-estructural"><span class="header-section-number">2.2.4</span> Conexión con el algoritmo PageRank: centralidad estructural</h3>
+<section id="conexión-con-el-algoritmo-pagerank-centralidad-estructural" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="conexión-con-el-algoritmo-pagerank-centralidad-estructural"><span class="header-section-number">3.2.4</span> Conexión con el algoritmo PageRank: centralidad estructural</h3>
 <p>El algoritmo PageRank opera exclusivamente como un <strong>medidor de centralidad estructural</strong>. Su propósito es cuantificar la importancia relativa de cada municipio dentro de la red territorial, basándose en su posición topológica y en la calidad de sus conexiones ponderadas.</p>
 <p>Matemáticamente, PageRank resuelve el sistema de ecuaciones en diferencias: <span class="math display">\[
 \pi = P\pi, \quad \sum_{i=1}^n \pi_i = 1, \quad \pi_i &gt; 0,
 \]</span> donde <span class="math inline">\(P\)</span> es la matriz de transición modificada con factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>. La componente <span class="math inline">\(\pi_i\)</span> representa la probabilidad estacionaria de que un “navegante aleatorio” se encuentre en el municipio <span class="math inline">\(i\)</span> en el largo plazo. Valores altos de <span class="math inline">\(\pi_i\)</span> indican nodos que actúan como <strong>concentradores naturales de flujo</strong>, independientemente de que no sean necesariamente puntos de origen o destino en una misión específica.</p>
 <p>La transformación de pesos de distancia a probabilidades inversas (<span class="math inline">\(w_{ij}^{-1}\)</span>) asegura que la proximidad geográfica y la facilidad de tránsito se traduzcan directamente en mayor influencia dentro del proceso estocástico. Municipios bien conectados a otros municipios igualmente bien conectados acumulan iterativamente mayor probabilidad estacionaria, revelando así la jerarquía implícita de la red territorial.</p>
-<p>En el estudio de caso de Chiapas, los pesos <span class="math inline">\(w_{ij}\)</span> se definen como las distancias tridimensionales <span class="math inline">\(d_{ij}^{(3D)}\)</span> calculadas en la <a href="chapter3.html#sec-distancias3d" class="quarto-xref"><span>Sección 4.3</span></a>, garantizando que la priorización de municipios mediante PageRank incorpore explícitamente las barreras topográficas que caracterizan la región. Esta integración entre modelación geométrica, teoría de grafos ponderados y procesos estocásticos constituye el núcleo analítico sobre el cual se construye la estrategia logística territorial.</p>
+<p>En el estudio de caso de Chiapas, los pesos <span class="math inline">\(w_{ij}\)</span> se definen como las distancias tridimensionales <span class="math inline">\(d_{ij}^{(3D)}\)</span> calculadas en la <a href="chapter3.html#sec-distancias3d" class="quarto-xref"><span>Sección 5.3</span></a>, garantizando que la priorización de municipios mediante PageRank incorpore explícitamente las barreras topográficas que caracterizan la región. Esta integración entre modelación geométrica, teoría de grafos ponderados y procesos estocásticos constituye el núcleo analítico sobre el cual se construye la estrategia logística territorial.</p>
 </section>
 </section>
-<section id="sec-markov" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="sec-markov"><span class="header-section-number">2.3</span> Cadenas de Markov de tiempo discreto</h2>
+<section id="sec-markov" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-markov"><span class="header-section-number">3.3</span> Cadenas de Markov de tiempo discreto</h2>
 <p>Las cadenas de Markov de tiempo discreto constituyen uno de los pilares fundamentales de la teoría de procesos estocásticos, proporcionando un marco matemático riguroso para modelar sistemas que evolucionan en pasos temporales discretos con la propiedad de falta de memoria. En el contexto de la priorización territorial y el análisis de redes de transporte, estas cadenas permiten representar el movimiento de un agente aleatorio a través de los nodos de una red, donde la probabilidad de transición entre municipios depende exclusivamente del estado actual y de la estructura de conectividad ponderada. Para más detalles, <span class="citation" data-cites="blanco2013procesos rincon2016procesos">(<a href="../references.html#ref-blanco2013procesos" role="doc-biblioref">Blanco Castañeda 2013</a>; <a href="../references.html#ref-rincon2016procesos" role="doc-biblioref">Rincón 2012</a>)</span>.</p>
-<section id="definición-formal-y-propiedad-de-markov" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="definición-formal-y-propiedad-de-markov"><span class="header-section-number">2.3.1</span> Definición formal y propiedad de Markov</h3>
+<section id="definición-formal-y-propiedad-de-markov" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="definición-formal-y-propiedad-de-markov"><span class="header-section-number">3.3.1</span> Definición formal y propiedad de Markov</h3>
 <p><strong>Definición 1.7 (Cadena de Markov de tiempo discreto).</strong> Sea <span class="math inline">\(\{X_n\}_{n \geq 0}\)</span> una sucesión de variables aleatorias definidas sobre un espacio de probabilidad <span class="math inline">\((\Omega, \mathcal{F}, \mathbb{P})\)</span>, que toman valores en un espacio de estados finito <span class="math inline">\(\mathcal{S} = \{1, 2, \dots, N\}\)</span>. Se dice que <span class="math inline">\(\{X_n\}\)</span> es una <em>cadena de Markov de tiempo discreto</em> si satisface la propiedad de Markov: <span class="math display">\[
 \mathbb{P}(X_{n+1} = j \mid X_n = i, X_{n-1} = i_{n-1}, \dots, X_0 = i_0) = \mathbb{P}(X_{n+1} = j \mid X_n = i),
 \]</span> para todo <span class="math inline">\(n \geq 0\)</span> y toda secuencia de estados <span class="math inline">\(i_0, \dots, i_{n-1}, i, j \in \mathcal{S}\)</span>. Esta propiedad establece que la distribución condicional del estado futuro depende únicamente del estado presente, siendo condicionalmente independiente de la trayectoria pasada <span class="citation" data-cites="rincon2016procesos">(<a href="../references.html#ref-rincon2016procesos" role="doc-biblioref">Rincón 2012</a>)</span>.</p>
@@ -606,8 +612,8 @@ q_{ij} = \frac{\tilde{w}_{ij}}{\sum_{k=1}^n \tilde{w}_{kj}}, \quad \text{si } \s
 p_{ij} = \mathbb{P}(X_{n+1} = j \mid X_n = i), \quad i,j \in \mathcal{S}.
 \]</span></p>
 </section>
-<section id="sec-transicion" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="sec-transicion"><span class="header-section-number">2.3.2</span> Matriz de transición y ecuaciones de Chapman-Kolmogorov</h3>
+<section id="sec-transicion" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="sec-transicion"><span class="header-section-number">3.3.2</span> Matriz de transición y ecuaciones de Chapman-Kolmogorov</h3>
 <p>Las probabilidades <span class="math inline">\(p_{ij}\)</span> se organizan en la <strong>matriz de transición</strong> <span class="math inline">\(P = [p_{ij}]_{i,j \in \mathcal{S}} \in \mathbb{R}^{N \times N}\)</span>, la cual satisface:</p>
 <ol type="1">
 <li><span class="math inline">\(p_{ij} \geq 0\)</span> para todo <span class="math inline">\(i,j\)</span>,</li>
@@ -617,8 +623,8 @@ p_{ij} = \mathbb{P}(X_{n+1} = j \mid X_n = i), \quad i,j \in \mathcal{S}.
 p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \geq 0.
 \]</span> En notación matricial, esto implica que <span class="math inline">\(P^{(m+n)} = P^{(m)} P^{(n)}\)</span>, y en particular <span class="math inline">\(P^{(n)} = P^n\)</span>. Esta propiedad algebraica es fundamental para el cálculo de distribuciones a múltiples pasos y constituye la base teórica de los algoritmos iterativos de cálculo de centralidad en redes <span class="citation" data-cites="grinstead2012introduction">(<a href="../references.html#ref-grinstead2012introduction" role="doc-biblioref">Grinstead y Snell 2009</a>)</span>.</p>
 </section>
-<section id="clasificación-de-estados-y-propiedades-estructurales" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="clasificación-de-estados-y-propiedades-estructurales"><span class="header-section-number">2.3.3</span> Clasificación de estados y propiedades estructurales</h3>
+<section id="clasificación-de-estados-y-propiedades-estructurales" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="clasificación-de-estados-y-propiedades-estructurales"><span class="header-section-number">3.3.3</span> Clasificación de estados y propiedades estructurales</h3>
 <p>La topología de la matriz de transición determina el comportamiento asintótico de la cadena. Se introducen las siguientes nociones estructurales:</p>
 <ul>
 <li><strong>Accesibilidad y comunicación</strong>: Un estado <span class="math inline">\(j\)</span> es <em>accesible</em> desde <span class="math inline">\(i\)</span> (denotado <span class="math inline">\(i \to j\)</span>) si existe <span class="math inline">\(n \geq 0\)</span> tal que <span class="math inline">\(p_{ij}^{(n)} &gt; 0\)</span>. Dos estados <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> <em>comunican</em> (<span class="math inline">\(i \leftrightarrow j\)</span>) si <span class="math inline">\(i \to j\)</span> y <span class="math inline">\(j \to i\)</span>. Esta relación es de equivalencia y particiona <span class="math inline">\(\mathcal{S}\)</span> en clases de comunicación.</li>
@@ -627,25 +633,25 @@ p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \ge
 <li><strong>Recurrencia y transitoriedad</strong>: Un estado <span class="math inline">\(i\)</span> es <em>recurrente</em> si <span class="math inline">\(\sum_{n=1}^\infty p_{ii}^{(n)} = \infty\)</span>, y <em>transiente</em> en caso contrario. En espacios de estados finitos, la irreducibilidad implica que todos los estados son recurrentes positivos.</li>
 </ul>
 </section>
-<section id="sec-ergodicidad" class="level3" data-number="2.3.4">
-<h3 data-number="2.3.4" class="anchored" data-anchor-id="sec-ergodicidad"><span class="header-section-number">2.3.4</span> Distribución estacionaria y convergencia ergódica</h3>
+<section id="sec-ergodicidad" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="sec-ergodicidad"><span class="header-section-number">3.3.4</span> Distribución estacionaria y convergencia ergódica</h3>
 <p>El comportamiento a largo plazo de una cadena irreducible y aperiódica se caracteriza por la existencia de una <strong>distribución estacionaria</strong> <span class="math inline">\(\pi = (\pi_1, \dots, \pi_N)\)</span>, que satisface el sistema lineal: <span class="math display">\[
 \pi = \pi P, \quad \sum_{i=1}^{N} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
 \]</span> El teorema ergódico para cadenas de Markov finitas establece que, bajo irreducibilidad y aperiodicidad, la distribución del estado converge a <span class="math inline">\(\pi\)</span> independientemente de la distribución inicial <span class="math inline">\(\pi^{(0)}\)</span>: <span class="math display">\[
 \lim_{n \to \infty} \pi^{(0)} P^n = \pi.
 \]</span> Además, <span class="math inline">\(\pi_i\)</span> posee una interpretación frecuencia robusta: representa la fracción de tiempo que la cadena ocupa el estado <span class="math inline">\(i\)</span> en el límite <span class="math inline">\(n \to \infty\)</span> <span class="citation" data-cites="durrett2019probability">(<a href="../references.html#ref-durrett2019probability" role="doc-biblioref">Durrett 2019</a>)</span>.</p>
 </section>
-<section id="conexión-con-el-algoritmo-pagerank" class="level3" data-number="2.3.5">
-<h3 data-number="2.3.5" class="anchored" data-anchor-id="conexión-con-el-algoritmo-pagerank"><span class="header-section-number">2.3.5</span> Conexión con el algoritmo PageRank</h3>
+<section id="conexión-con-el-algoritmo-pagerank" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="conexión-con-el-algoritmo-pagerank"><span class="header-section-number">3.3.5</span> Conexión con el algoritmo PageRank</h3>
 <p>La estructura matemática desarrollada en esta sección es exactamente la que sustenta el algoritmo PageRank. En la red territorial de Chiapas, los municipios se interpretan como estados de una cadena de Markov discreta finita, y la matriz de transición <span class="math inline">\(P\)</span> se construye a partir de los pesos de conectividad vial transformados mediante el inverso de la distancia tridimensional y normalizados por columnas (convención computacional equivalente a la transposición de la formulación teórica por filas).</p>
 <p>La introducción del factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span> garantiza que la matriz resultante sea estrictamente positiva, asegurando así irreducibilidad y aperiodicidad. Bajo estas condiciones, el teorema ergódico valida la convergencia del método de potencias <span class="math inline">\(\pi^{(k+1)} = P \pi^{(k)}\)</span> hacia un único vector estacionario <span class="math inline">\(\pi\)</span>, el cual cuantifica la importancia relativa de cada municipio dentro de la red. Esta conexión formal entre teoría de cadenas de Markov y centralidad espectral proporciona el sustento matemático riguroso para la priorización logística desarrollada en los capítulos siguientes.</p>
 </section>
 </section>
-<section id="teorema-de-perron-frobenius-y-su-aplicación-al-pagerank" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="teorema-de-perron-frobenius-y-su-aplicación-al-pagerank"><span class="header-section-number">2.4</span> Teorema de Perron-Frobenius y su aplicación al PageRank</h2>
+<section id="teorema-de-perron-frobenius-y-su-aplicación-al-pagerank" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="teorema-de-perron-frobenius-y-su-aplicación-al-pagerank"><span class="header-section-number">3.4</span> Teorema de Perron-Frobenius y su aplicación al PageRank</h2>
 <p>El análisis espectral de matrices no negativas constituye el fundamento algebraico que garantiza la existencia, unicidad y convergencia numérica del vector de centralidad en redes complejas. El teorema de Perron-Frobenius, originalmente formulado para matrices con entradas estrictamente positivas y extendido posteriormente a matrices irreducibles, proporciona las condiciones necesarias y suficientes para asegurar que una matriz de transición estocástica posea un único vector propio dominante con componentes estrictamente positivas. Esta propiedad es la piedra angular matemática que valida el algoritmo PageRank y justifica el uso del método de potencias para su cálculo computacional <span class="citation" data-cites="meyer2000matrix">(<a href="../references.html#ref-meyer2000matrix" role="doc-biblioref">Meyer 2023</a>)</span>.</p>
-<section id="notación-y-clases-de-matrices-no-negativas" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="notación-y-clases-de-matrices-no-negativas"><span class="header-section-number">2.4.1</span> Notación y clases de matrices no negativas</h3>
+<section id="notación-y-clases-de-matrices-no-negativas" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="notación-y-clases-de-matrices-no-negativas"><span class="header-section-number">3.4.1</span> Notación y clases de matrices no negativas</h3>
 <p>Sea <span class="math inline">\(A \in \mathbb{R}^{n \times n}\)</span> una matriz con entradas reales. Se establecen las siguientes definiciones estructurales:</p>
 <ul>
 <li><strong>Matriz no negativa</strong>: <span class="math inline">\(A \geq 0\)</span> si <span class="math inline">\(a_{ij} \geq 0\)</span> para todo <span class="math inline">\(i,j \in \{1,\dots,n\}\)</span>.</li>
@@ -654,8 +660,8 @@ p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \ge
 <li><strong>Matriz primitiva</strong>: <span class="math inline">\(A\)</span> es primitiva si existe <span class="math inline">\(m \in \mathbb{N}\)</span> tal que <span class="math inline">\(A^m &gt; 0\)</span>. En el contexto de cadenas de Markov, la primitividad garantiza aperiodicidad y convergencia geométrica de las potencias de la matriz <span class="citation" data-cites="horn2012matrix">(<a href="../references.html#ref-horn2012matrix" role="doc-biblioref">Horn y Johnson 2012</a>)</span>.</li>
 </ul>
 </section>
-<section id="sec-teroemafrobenius" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="sec-teroemafrobenius"><span class="header-section-number">2.4.2</span> Enunciado del teorema</h3>
+<section id="sec-teroemafrobenius" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="sec-teroemafrobenius"><span class="header-section-number">3.4.2</span> Enunciado del teorema</h3>
 <p><strong>Teorema 1.1 (Perron-Frobenius para matrices estocásticas primitivas).</strong> Sea <span class="math inline">\(P \in \mathbb{R}^{n \times n}\)</span> una matriz estocástica por columnas (<span class="math inline">\(P \geq 0\)</span>, <span class="math inline">\(\sum_{i=1}^n p_{ij} = 1\)</span>) que es primitiva. Entonces se cumplen las siguientes propiedades:</p>
 <ol type="1">
 <li>El radio espectral es <span class="math inline">\(\rho(P) = 1\)</span>.</li>
@@ -667,8 +673,8 @@ p_{ij}^{(m+n)} = \sum_{k=1}^{N} p_{ik}^{(m)} p_{kj}^{(n)}, \quad \forall m,n \ge
 </ol>
 <p><em>Esbozo de demostración.</em> La igualdad <span class="math inline">\(\rho(P)=1\)</span> se deduce de la conservación de la norma <span class="math inline">\(\ell_1\)</span> bajo multiplicación por matrices estocásticas. La positividad estricta de <span class="math inline">\(P^m\)</span> implica, por el lema de Gelfand y propiedades de conos invariantes, que el subespacio propio asociado a <span class="math inline">\(\lambda=1\)</span> es unidimensional y que ningún otro valor propio puede alcanzar módulo 1. La convergencia de <span class="math inline">\(P^k\)</span> sigue de la descomposición de Jordan, donde el bloque asociado a <span class="math inline">\(\lambda=1\)</span> domina asintóticamente a los bloques contractivos correspondientes a <span class="math inline">\(|\lambda_i| &lt; 1\)</span> <span class="citation" data-cites="meyer2000matrix">(<a href="../references.html#ref-meyer2000matrix" role="doc-biblioref">Meyer 2023</a>)</span>. <span class="math inline">\(\square\)</span></p>
 </section>
-<section id="sec-pagerank" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="sec-pagerank"><span class="header-section-number">2.4.3</span> Aplicación directa al algoritmo PageRank</h3>
+<section id="sec-pagerank" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="sec-pagerank"><span class="header-section-number">3.4.3</span> Aplicación directa al algoritmo PageRank</h3>
 <p>En el algoritmo PageRank, la matriz de transición modificada (conocida como <em>matriz de Google</em>) se construye a partir de la matriz de conectividad normalizada <span class="math inline">\(Q\)</span> mediante: <span class="math display">\[
 G = pQ + (1-p)\mathbf{1}\mathbf{v}^\top,
 \]</span> donde:</p>
@@ -686,16 +692,16 @@ g_{ij} = p q_{ij} + (1-p) v_j \geq (1-p)v_j &gt; 0.
 <li>La distribución inicial <span class="math inline">\(\pi^{(0)}\)</span> es irrelevante para el límite, lo que confiere robustez numérica al algoritmo frente a perturbaciones en la inicialización <span class="citation" data-cites="langville2006googles">(<a href="../references.html#ref-langville2006googles" role="doc-biblioref">Langville y Meyer 2009</a>)</span>.</li>
 </ol>
 </section>
-<section id="interpretación-en-la-red-territorial-de-chiapas" class="level3" data-number="2.4.4">
-<h3 data-number="2.4.4" class="anchored" data-anchor-id="interpretación-en-la-red-territorial-de-chiapas"><span class="header-section-number">2.4.4</span> Interpretación en la red territorial de Chiapas</h3>
+<section id="interpretación-en-la-red-territorial-de-chiapas" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="interpretación-en-la-red-territorial-de-chiapas"><span class="header-section-number">3.4.4</span> Interpretación en la red territorial de Chiapas</h3>
 <p>La estructura algebraica de <span class="math inline">\(G\)</span> no solo valida matemáticamente la existencia del PageRank, sino que explica por qué el factor <span class="math inline">\(p=0.85\)</span> es óptimo en la práctica: equilibra la fidelidad a la topología de la red vial (<span class="math inline">\(p\)</span> alto) con una brecha espectral suficientemente amplia (<span class="math inline">\(1-p\)</span>) para garantizar convergencia rápida en redes de escala municipal. La brecha espectral <span class="math inline">\(\sigma = 1 - |\lambda_2(G)| \geq 1-p\)</span> determina directamente el número de iteraciones requeridas para alcanzar una tolerancia <span class="math inline">\(\varepsilon\)</span>: <span class="math display">\[
 \|\pi^{(k)} - \pi\|_1 \leq C \, p^k,
 \]</span> lo que explica la convergencia observada en menos de 50 iteraciones para la red de 124 municipios.</p>
 <p>Este resultado cierra el círculo entre la teoría espectral de matrices no negativas, la ergodicidad de cadenas de Markov y la implementación práctica de algoritmos de centralidad. En el contexto de la logística humanitaria, garantiza que la priorización de municipios sea única, estable y computacionalmente alcanzable, proporcionando una base matemáticamente irreprochable para la toma de decisiones estratégicas en la distribución territorial de ayuda.</p>
 </section>
 </section>
-<section id="problemas-en-redes-nodos-colgantes-y-subgrafos-absorbentes" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="problemas-en-redes-nodos-colgantes-y-subgrafos-absorbentes"><span class="header-section-number">2.5</span> Problemas en redes: nodos colgantes y subgrafos absorbentes</h2>
+<section id="problemas-en-redes-nodos-colgantes-y-subgrafos-absorbentes" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="problemas-en-redes-nodos-colgantes-y-subgrafos-absorbentes"><span class="header-section-number">3.5</span> Problemas en redes: nodos colgantes y subgrafos absorbentes</h2>
 <p>La aplicación de cadenas de Markov y algoritmos de centralidad sobre redes reales enfrenta obstáculos estructurales que, de no tratarse adecuadamente, comprometen la existencia de una distribución estacionaria única y la convergencia numérica del método de potencias. Dos patologías topológicas recurrentes son los nodos colgantes y los subgrafos absorbentes, los cuales violan las hipótesis de irreducibilidad y estocasticidad estricta requeridas para la aplicación del teorema de Perron-Frobenius <span class="citation" data-cites="langville2006googles">(<a href="../references.html#ref-langville2006googles" role="doc-biblioref">Langville y Meyer 2009</a>)</span>.</p>
 <p><strong>Definición (Nodo colgante).</strong> Sea <span class="math inline">\(G = (V, A)\)</span> un grafo dirigido con <span class="math inline">\(|V| = n\)</span> y matriz de transición <span class="math inline">\(Q \in \mathbb{R}^{n \times n}\)</span>. Un vértice <span class="math inline">\(v_j \in V\)</span> se denomina <em>nodo colgante</em> (o <em>dangling node</em>) si su grado de salida es cero, es decir, no existe ningún arco <span class="math inline">\((v_j, v_k) \in A\)</span>. Equivalentemente, la columna <span class="math inline">\(j\)</span>-ésima de la matriz de adyacencia es idénticamente nula.</p>
 <p>En la construcción de la matriz de transición estocástica por columnas, la normalización <span class="math inline">\(q_{ij} = w_{ij} / \sum_k w_{kj}\)</span> queda indefinida cuando <span class="math inline">\(\sum_k w_{kj} = 0\)</span>. Si se asigna arbitrariamente <span class="math inline">\(q_{ij} = 0\)</span> para todo <span class="math inline">\(i\)</span>, la matriz deja de ser estocástica: <span class="math inline">\(\sum_{i=1}^n q_{ij} = 0 &lt; 1\)</span>. Esto implica que cada vez que el caminante aleatorio visita <span class="math inline">\(v_j\)</span>, una fracción de probabilidad se “pierde” del sistema, y la norma <span class="math inline">\(\ell_1\)</span> del vector de estado decae geométricamente: <span class="math display">\[
@@ -708,8 +714,8 @@ P_{SS} &amp; P_{S\bar{S}} \\
 \mathbf{0} &amp; P_{\bar{S}\bar{S}}
 \end{pmatrix},
 \]</span> donde <span class="math inline">\(P_{SS}\)</span> es estocástica y <span class="math inline">\(\mathbf{0}\)</span> refleja la ausencia de flujos hacia el exterior. El teorema de Perron-Frobenius aplicado a <span class="math inline">\(P\)</span> ya no garantiza un vector estacionario estrictamente positivo sobre <span class="math inline">\(V\)</span>; en su lugar, existen infinitas distribuciones estacionarias soportadas exclusivamente en <span class="math inline">\(S\)</span>, y la convergencia del método de potencias depende críticamente de la distribución inicial <span class="math inline">\(\pi^{(0)}\)</span> <span class="citation" data-cites="meyer2000matrix">(<a href="../references.html#ref-meyer2000matrix" role="doc-biblioref">Meyer 2023</a>)</span>. En logística territorial, esto se traduce en que municipios fuera del subgrafo absorbente recibirían puntuación de centralidad nula, distorsionando la priorización operativa.</p>
-<section id="corrección-unificada-mediante-el-factor-de-amortiguamiento" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="corrección-unificada-mediante-el-factor-de-amortiguamiento"><span class="header-section-number">2.5.1</span> Corrección unificada mediante el factor de amortiguamiento</h3>
+<section id="corrección-unificada-mediante-el-factor-de-amortiguamiento" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="corrección-unificada-mediante-el-factor-de-amortiguamiento"><span class="header-section-number">3.5.1</span> Corrección unificada mediante el factor de amortiguamiento</h3>
 <p>Para garantizar convergencia global y unicidad del vector de centralidad, se introduce un mecanismo de <em>teleportación</em> controlado por un parámetro <span class="math inline">\(p \in (0,1)\)</span>. La matriz de Google se define formalmente como: <span class="math display">\[
 G = pQ' + (1-p)\mathbf{1}\mathbf{v}^\top,
 \]</span> donde:</p>
@@ -720,14 +726,14 @@ G = pQ' + (1-p)\mathbf{1}\mathbf{v}^\top,
 </ul>
 <p>El término <span class="math inline">\((1-p)\mathbf{1}\mathbf{v}^\top\)</span> actúa como un operador de perturbación positiva que rompe simultáneamente nodos colgantes y subgrafos absorbentes, asegurando <span class="math inline">\(g_{ij} \geq (1-p)v_j &gt; 0\)</span> para todo <span class="math inline">\(i,j\)</span>. Por tanto, <span class="math inline">\(G\)</span> es una matriz estrictamente positiva y, en consecuencia, primitiva. Las hipótesis del teorema de Perron-Frobenius se restauran completamente: existe un único <span class="math inline">\(\pi &gt; 0\)</span> tal que <span class="math inline">\(G\pi = \pi\)</span>, y la convergencia es lineal con tasa acotada por <span class="math inline">\(p\)</span> <span class="citation" data-cites="langville2006googles">(<a href="../references.html#ref-langville2006googles" role="doc-biblioref">Langville y Meyer 2009</a>)</span>.</p>
 </section>
-<section id="implicaciones-para-la-red-territorial-de-chiapas" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="implicaciones-para-la-red-territorial-de-chiapas"><span class="header-section-number">2.5.2</span> Implicaciones para la red territorial de Chiapas</h3>
+<section id="implicaciones-para-la-red-territorial-de-chiapas" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="implicaciones-para-la-red-territorial-de-chiapas"><span class="header-section-number">3.5.2</span> Implicaciones para la red territorial de Chiapas</h3>
 <p>En el análisis empírico de la red vial de los 124 municipios de Chiapas, se verificó la ausencia de nodos colgantes y subgrafos absorbentes, coherente con la conectividad histórica y la estructura radial de la infraestructura estatal. Sin embargo, la incorporación formal del factor de amortiguamiento <span class="math inline">\(p = 0.85\)</span> en el algoritmo PageRank no es redundante: proporciona <strong>robustez estructural</strong> frente a escenarios dinámicos como cierres viales por desastres naturales, expansión de la malla municipal o restricciones operativas temporales. Bajo cualquier perturbación que modifique la matriz de adyacencia, la matriz <span class="math inline">\(G\)</span> mantiene sus propiedades ergódicas, garantizando que la priorización de municipios permanezca matemáticamente consistente y computacionalmente estable.</p>
 <p>Esta sección sienta las bases teóricas para el análisis explícito del parámetro <span class="math inline">\(p\)</span>, su impacto en la tasa de convergencia y su interpretación como compromiso entre fidelidad topológica y exploración aleatoria, desarrollado en la siguiente sección.</p>
 </section>
 </section>
-<section id="factor-de-amortiguamiento-y-matriz-de-transición-modificada" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="factor-de-amortiguamiento-y-matriz-de-transición-modificada"><span class="header-section-number">2.6</span> Factor de amortiguamiento y matriz de transición modificada</h2>
+<section id="factor-de-amortiguamiento-y-matriz-de-transición-modificada" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="factor-de-amortiguamiento-y-matriz-de-transición-modificada"><span class="header-section-number">3.6</span> Factor de amortiguamiento y matriz de transición modificada</h2>
 <p>La matriz de transición estocástica derivada directamente de la topología de una red real presenta limitaciones teóricas y numéricas que impiden garantizar la convergencia hacia un único vector de centralidad. Para superar estas deficiencias, el algoritmo PageRank introduce el <strong>factor de amortiguamiento</strong> <span class="math inline">\(p \in (0,1)\)</span>, un parámetro escalar que modifica la dinámica del proceso estocástico mediante un mecanismo de mezcla entre la estructura de conectividad observada y un salto aleatorio uniforme. Esta sección formaliza la construcción algebraica de la matriz modificada, analiza su impacto en el espectro de valores propios y justifica la selección del valor estándar desde la perspectiva del análisis numérico y la teoría de grafos.</p>
 <p>Sea <span class="math inline">\(Q \in \mathbb{R}^{n \times n}\)</span> la matriz de transición normalizada por columnas, obtenida a partir de la matriz de pesos inversos de la red territorial. La <strong>matriz de transición modificada</strong> (conocida en la literatura como <em>matriz de Google</em>) se define como: <span class="math display">\[
 P = pQ + (1-p)E,
@@ -1211,13 +1217,13 @@ West, Douglas B. 2017. <em>Introduction to Graph Theory</em>. 2.ª ed. Upper Sad
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Resumen">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumen</span></span>
+      <a href="../chapters/objetivo.html" class="pagination-link" aria-label="Objetivos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Objetivos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../chapters/chapter2.html" class="pagination-link" aria-label="Procesos Estocásticos y Modelos de Pronóstico">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos Estocásticos y Modelos de Pronóstico</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Procesos Estocásticos y Modelos de Pronóstico</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
