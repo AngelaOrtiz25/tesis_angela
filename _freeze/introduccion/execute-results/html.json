@@ -1,10 +1,10 @@
 {
-  "hash": "33e5da0a3e09c19ac6a8d548abcecb7a",
+  "hash": "aad36c4acf17b9894a41d4788e6682e2",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: Introducción\nlang: es\nformat:\n  html: default\n  pdf: default\nexecute:\n  freeze: auto\n---\n\n:::{style=\"text-align: justify\"}\n\n:::\n\n",
+    "markdown": "---\ntitle: Introducción {-}\nlang: es\nformat:\n  html: default\n  pdf: default\nexecute:\n  freeze: auto\n---\n\n:::{style=\"text-align: justify\"}\n\n:::\n\n",
     "supporting": [
-      "introduccion_files"
+      "introduccion_files\\figure-html"
     ],
     "filters": [],
     "includes": {}

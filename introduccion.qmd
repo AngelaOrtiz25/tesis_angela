@@ -1,5 +1,5 @@
 ---
-title: Introducción
+title: Introducción {-}
 lang: es
 format:
   html: default
