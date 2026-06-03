@@ -838,7 +838,7 @@ B_7 &amp;= (4, 7, 6), &amp; B_8 &amp;= (7, 6, 2).
 \mathcal{F}_k^\infty := \sigma\left(X_k, X_{k+1}, \dots\right) = \sigma\left(\{X_t : t \geq k\}\right).
 \]</span></p></li>
 </ol>
-<p><strong>Interpretación probabilística:</strong> El coeficiente <span class="math inline">\(\alpha(k)\)</span> cuantifica la dependencia máxima entre cualquier evento <span class="math inline">\(A\)</span> determinado exclusivamente por el pasado remoto y cualquier evento <span class="math inline">\(B\)</span> determinado exclusivamente por el futuro distante separado por un lag <span class="math inline">\(k\)</span>. La condición de mezcla fuerte <span class="math inline">\(\alpha(k) \to 0\)</span> cuando <span class="math inline">\(k \to \infty\)</span> asegura que la influencia del pasado sobre el futuro se desvanece asintóticamente, permitiendo que el procedimiento de block bootstrap aproxime correctamente la distribución muestral aun en presencia de dependencia serial, para más detalles consultar <span class="citation" data-cites="politis1994stationary">(<a href="../references.html#ref-politis1994stationary" role="doc-biblioref">Politis y Romano 1994b</a>)</span>.</p>
+<p><strong>Interpretación probabilística:</strong> El coeficiente <span class="math inline">\(\alpha(k)\)</span> cuantifica la dependencia máxima entre cualquier evento <span class="math inline">\(A\)</span> determinado exclusivamente por el pasado remoto y cualquier evento <span class="math inline">\(B\)</span> determinado exclusivamente por el futuro distante separado por un lag <span class="math inline">\(k\)</span>. La condición de mezcla fuerte <span class="math inline">\(\alpha(k) \to 0\)</span> cuando <span class="math inline">\(k \to \infty\)</span> asegura que la influencia del pasado sobre el futuro se desvanece asintóticamente, permitiendo que el procedimiento de block bootstrap aproxime correctamente la distribución muestral aun en presencia de dependencia serial, para más detalles consultar <span class="citation" data-cites="politis1994stationary">(<a href="../references.html#ref-politis1994stationary" role="doc-biblioref">Politis y Romano 1994a</a>)</span>.</p>
 </section>
 </section>
 <section id="selección-de-la-longitud-del-bloque-l" class="level3" data-number="5.7.3">
@@ -848,7 +848,7 @@ B_7 &amp;= (4, 7, 6), &amp; B_8 &amp;= (7, 6, 2).
 </section>
 <section id="variante-estacionaria-y-consideraciones-numéricas" class="level3" data-number="5.7.4">
 <h3 data-number="5.7.4" class="anchored" data-anchor-id="variante-estacionaria-y-consideraciones-numéricas"><span class="header-section-number">5.7.4</span> Variante estacionaria y consideraciones numéricas</h3>
-<p>El MBB con bloques fijos introduce discontinuidades artificiales en los puntos de unión entre bloques, lo que puede distorsionar estimadores de alta frecuencia. Para preservar estrictamente la estacionariedad, Politis y Romano propusieron el <strong>bootstrap estacionario</strong>, donde la longitud de cada bloque se muestrea de una distribución geométrica con parámetro <span class="math inline">\(p = 1/L\)</span>, garantizando que la serie reconstruida sea estrictamente estacionaria bajo la medida bootstrap. Esta afirmación puede consultarse en <span class="citation" data-cites="politis1994large">(<a href="../references.html#ref-politis1994large" role="doc-biblioref">Politis y Romano 1994a</a>)</span>.</p>
+<p>El MBB con bloques fijos introduce discontinuidades artificiales en los puntos de unión entre bloques, lo que puede distorsionar estimadores de alta frecuencia. Para preservar estrictamente la estacionariedad, Politis y Romano propusieron el <strong>bootstrap estacionario</strong>, donde la longitud de cada bloque se muestrea de una distribución geométrica con parámetro <span class="math inline">\(p = 1/L\)</span>, garantizando que la serie reconstruida sea estrictamente estacionaria bajo la medida bootstrap. Esta afirmación puede consultarse en <span class="citation" data-cites="politis1994large">(<a href="../references.html#ref-politis1994large" role="doc-biblioref">Politis y Romano 1994b</a>)</span>.</p>
 <p>En implementaciones computacionales para nowcasting meteorológico, el MBB estándar suele preferirse por su simplicidad, determinismo en la longitud de la réplica y facilidad de paralelización. La elección de <span class="math inline">\(L\)</span> se fija por validación cruzada temporal o por criterios de escala física, y el número de réplicas <span class="math inline">\(B\)</span> se selecciona típicamente entre 100 y 500 para estabilizar cuantiles extremos (<span class="math inline">\(p_{05}, p_{95}\)</span>) con error de Monte Carlo menor al <span class="math inline">\(1\%\)</span>, más detalles de esta técnica, consultar <span class="citation" data-cites="lahiri2003resampling">(<a href="../references.html#ref-lahiri2003resampling" role="doc-biblioref">Lahiri 2003</a>)</span>.</p>
 </section>
 <section id="integración-con-la-cuantificación-de-incertidumbre-operativa" class="level3" data-number="5.7.5">
@@ -921,7 +921,7 @@ Bartlett, M. S. 1946. <span>«On the theoretical specification of sampling prope
 Bendat, Julius S., y Allan G. Piersol. 2010. <em>Random Data: Analysis and Measurement Procedures</em>. 4.ª ed. Hoboken: Wiley.
 </div>
 <div id="ref-berger1985statistical" class="csl-entry" role="listitem">
-Berger, James O. 1985. <em>Statistical Decision Theory and Bayesian Analysis</em>. 2.ª ed. New York: Springer.
+Berger, James O. 1985. <em>Statistical Decision Theory and Bayesian Analysis</em>. 2nd ed. Springer Series en Statistics. New York, NY, USA: Springer.
 </div>
 <div id="ref-box2015time" class="csl-entry" role="listitem">
 Box, George E. P., Gwilym M. Jenkins, Gregory C. Reinsel, y Greta M. Ljung. 2015. <em>Time Series Analysis: Forecasting and Control</em>. 5.ª ed. Hoboken: Wiley.
@@ -930,7 +930,7 @@ Box, George E. P., Gwilym M. Jenkins, Gregory C. Reinsel, y Greta M. Ljung. 2015
 Brillinger, David R. 1981. <em>Time Series: Data Analysis and Theory</em>. Revised. Philadelphia: SIAM. <a href="https://doi.org/10.2307/1267927">https://doi.org/10.2307/1267927</a>.
 </div>
 <div id="ref-brockwell2016time" class="csl-entry" role="listitem">
-Brockwell, Peter J., y Richard A. Davis. 2016. <em>Introduction to Time Series and Forecasting</em>. 3.ª ed. Springer.
+Brockwell, Peter J., y Richard A. Davis. 2016. <em>Introduction to Time Series and Forecasting</em>. 3rd ed. Springer Texts en Statistics. Cham, Switzerland: Springer.
 </div>
 <div id="ref-durrett2019probability" class="csl-entry" role="listitem">
 Durrett, Rick. 2019. <em>Probability: Theory and Examples</em>. 5.ª ed. Cambridge: Cambridge University Press.
@@ -951,10 +951,10 @@ Hall, Peter, Joel L. Horowitz, y Bing-Yi Jing. 1995. <span>«On blocking rules f
 Hamilton, James D. 1994. <em>Time Series Analysis</em>. Princeton: Princeton University Press.
 </div>
 <div id="ref-hayashi1973method" class="csl-entry" role="listitem">
-Hayashi, Y. 1973. <span>«A generalized method for resolving disturbances into progressive and quasi-stationary waves by space Fourier and time cross-spectral analysis»</span>. <em>Journal of the Atmospheric Sciences</em> 30 (4): 623-33. <a href="https://doi.org/10.2151/jmsj1965.49.2_125">https://doi.org/10.2151/jmsj1965.49.2_125</a>.
+Hayashi, Takio. 1973. <span>«A Method of Estimating the Horizontal Phase Velocity of Atmospheric Waves from the Phase Difference of Spectral Components»</span>. <em>Journal of the Meteorological Society of Japan</em> 51 (4): 299-308. <a href="https://doi.org/10.2151/jmsj1965.51.4_299">https://doi.org/10.2151/jmsj1965.51.4_299</a>.
 </div>
 <div id="ref-kunsch1989jackknife" class="csl-entry" role="listitem">
-Künsch, Hans R. 1989. <span>«The jackknife and the bootstrap for general stationary observations»</span>. <em>The Annals of Statistics</em> 17 (3): 1217-41. <a href="https://doi.org/10.1214/aos/1176347265">https://doi.org/10.1214/aos/1176347265</a>.
+Künsch, Hans R. 1989. <span>«The Jackknife and the Bootstrap for General Stationary Observations»</span>. <em>The Annals of Statistics</em> 17 (3): 1217-41. <a href="https://doi.org/10.1214/aos/1176347265">https://doi.org/10.1214/aos/1176347265</a>.
 </div>
 <div id="ref-lahiri2003resampling" class="csl-entry" role="listitem">
 Lahiri, Soumendra N. 2003. <em>Resampling Methods for Dependent Data</em>. New York: Springer.
@@ -963,16 +963,16 @@ Lahiri, Soumendra N. 2003. <em>Resampling Methods for Dependent Data</em>. New Y
 Liu, Regina Y., y Kesar Singh. 1992. <span>«Moving block jackknife and block bootstrap for dependent data»</span>. <em>Exploring the Limits of Bootstrap</em>, 225-48.
 </div>
 <div id="ref-oppenheim2010discrete" class="csl-entry" role="listitem">
-Oppenheim, Alan V., y Ronald W. Schafer. 2010. <em>Discrete-Time Signal Processing</em>. 3.ª ed. Upper Saddle River: Pearson.
-</div>
-<div id="ref-politis1994large" class="csl-entry" role="listitem">
-Politis, Dimitris N., y Joseph P. Romano. 1994a. <span>«Large sample confidence regions based on subsamples under minimal assumptions»</span>. <em>The Annals of Statistics</em> 22 (4): 2031-50. <a href="https://doi.org/10.1214/aos/1176325770">https://doi.org/10.1214/aos/1176325770</a>.
+Oppenheim, Alan V., y Ronald W. Schafer. 2010. <em>Discrete-Time Signal Processing</em>. 3rd ed. Upper Saddle River, NJ, USA: Prentice Hall.
 </div>
 <div id="ref-politis1994stationary" class="csl-entry" role="listitem">
-———. 1994b. <span>«The stationary bootstrap»</span>. <em>Journal of the American Statistical Association</em> 89 (428): 1303-13. <a href="https://doi.org/10.1080/01621459.1994.10476870">https://doi.org/10.1080/01621459.1994.10476870</a>.
+Politis, Dimitris N., y Joseph P. Romano. 1994a. <span>«The stationary bootstrap»</span>. <em>Journal of the American Statistical Association</em> 89 (428): 1303-13. <a href="https://doi.org/10.1080/01621459.1994.10476870">https://doi.org/10.1080/01621459.1994.10476870</a>.
+</div>
+<div id="ref-politis1994large" class="csl-entry" role="listitem">
+———. 1994b. <span>«The Stationary Bootstrap»</span>. <em>Journal of the American Statistical Association</em> 89 (428): 1303-13. <a href="https://doi.org/10.1080/01621459.1994.10476870">https://doi.org/10.1080/01621459.1994.10476870</a>.
 </div>
 <div id="ref-priestley1981spectral" class="csl-entry" role="listitem">
-Priestley, M. B. 1981. <em>Spectral Analysis and Time Series</em>. Vol. 1. London: Academic Press.
+Priestley, Maurice B. 1981. <em>Spectral Analysis and Time Series</em>. Vol. 1–2. London, UK: Academic Press.
 </div>
 <div id="ref-rudin1987real" class="csl-entry" role="listitem">
 Rudin, Walter. 1987. <em>Real and Complex Analysis</em>. 3.ª ed. McGraw-Hill.
@@ -981,7 +981,7 @@ Rudin, Walter. 1987. <em>Real and Complex Analysis</em>. 3.ª ed. McGraw-Hill.
 Shumway, Robert H., y David S. Stoffer. 2017. <em>Time Series Analysis and Its Applications: With R Examples</em>. 4.ª ed. Cham: Springer.
 </div>
 <div id="ref-taha2017operations" class="csl-entry" role="listitem">
-Taha, Hamdy A. 2017. <em>Investigación de operaciones</em>. 10.ª ed. Ciudad de México: Pearson Educación.
+Taha, Hamdy A. 2017. <em>Operations Research: An Introduction</em>. 10th ed. London, UK: Pearson.
 </div>
 <div id="ref-williams1991martingales" class="csl-entry" role="listitem">
 Williams, David. 1991. <em>Probability with Martingales</em>. Cambridge University Press.

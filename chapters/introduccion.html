@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -94,6 +114,35 @@ window.MathJax = {
 
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -425,10 +474,55 @@ window.MathJax = {
 
 
 <div style="text-align: justify">
-
+<p>La distribución de ayuda humanitaria en contextos de emergencia constituye uno de los desafíos logísticos más complejos, particularmente en regiones con topografía accidentada y alta exposición a desastres naturales. En el estado de Chiapas, México, la fragmentación de la red vial, las barreras altimétricas y la vulnerabilidad infraestructural frente a fenómenos hidrometeorológicos limitan severamente los tiempos de respuesta y encarecen la distribución territorial de recursos <span class="citation" data-cites="taha2017operations newman2018networks">(<a href="../references.html#ref-taha2017operations" role="doc-biblioref">Taha 2017</a>; <a href="../references.html#ref-newman2018networks" role="doc-biblioref">Newman 2018</a>)</span>. Ante estas limitaciones, el uso de aeronaves no tripuladas (drones) se perfila como una alternativa estratégica para el transporte rápido de insumos críticos en corredores de acceso restringido. Sin embargo, la operación segura de estos sistemas depende directamente de la dinámica atmosférica local, cuya variabilidad espaciotemporal puede comprometer la estabilidad aerodinámica, la integridad de los sensores y la autonomía de vuelo <span class="citation" data-cites="oppenheim2010discrete brockwell2016time">(<a href="../references.html#ref-oppenheim2010discrete" role="doc-biblioref">Oppenheim y Schafer 2010</a>; <a href="../references.html#ref-brockwell2016time" role="doc-biblioref">Brockwell y Davis 2016</a>)</span>.</p>
+<p>La literatura científica actual aborda de manera fragmentada la optimización de redes de transporte, el pronóstico meteorológico de corto plazo y la evaluación de riesgos operacionales. Existe una brecha metodológica significativa en la integración explícita de la centralidad estructural territorial, la cuantificación no paramétrica de la incertidumbre predictiva y la teoría de decisión bajo condiciones de tolerancia cero al fallo <span class="citation" data-cites="langville2006googles berger1985statistical">(<a href="../references.html#ref-langville2006googles" role="doc-biblioref">Langville y Meyer 2006</a>; <a href="../references.html#ref-berger1985statistical" role="doc-biblioref">Berger 1985</a>)</span>. Esta disociación limita la capacidad de generar protocolos logísticos unificados que garanticen simultáneamente eficiencia en la distribución y seguridad en la navegación aérea.</p>
+<p>Esta tesis responde a dicha brecha mediante el desarrollo de un <strong>sistema integrado de apoyo a la decisión</strong> que combina teoría de grafos ponderados, procesos estocásticos y modelación advectiva para optimizar la logística humanitaria en Chiapas. El enfoque reconoce que la planificación territorial y la viabilidad operacional meteorológica deben tratarse como un problema secuencial acoplado, donde la priorización espacial de nodos estratégicos y la evaluación robusta de riesgos atmosféricos determinan conjuntamente el éxito de la cadena de suministro en escenarios de emergencia.</p>
+<p>La metodología se estructura en tres ejes analíticos complementarios. En el ámbito espacial, la infraestructura vial se representa como un grafo dirigido ponderado mediante distancias tridimensionales calculadas con la fórmula de Vincenty <span class="citation" data-cites="vincenty1975">(<a href="../references.html#ref-vincenty1975" role="doc-biblioref">Vincenty 1975</a>)</span> y el Modelo Digital de Elevación SRTM, superando las distorsiones de las métricas planas en zonas montañosas. Sobre esta red, se aplica el algoritmo PageRank con factor de amortiguamiento <span class="citation" data-cites="brin1998anatomy">(<a href="../references.html#ref-brin1998anatomy" role="doc-biblioref">Brin y Page 1998</a>)</span>, cuya convergencia y unicidad están garantizadas por el teorema de Perron-Frobenius para matrices estocásticas primitivas <span class="citation" data-cites="meyer2000matrix langville2006googles">(<a href="../references.html#ref-meyer2000matrix" role="doc-biblioref">Meyer 2000</a>; <a href="../references.html#ref-langville2006googles" role="doc-biblioref">Langville y Meyer 2006</a>)</span>. En el ámbito temporal y operacional, se construye un modelo híbrido de <em>nowcasting</em> que estima la velocidad de advección mediante correlación cruzada y análisis frecuencia-espacio (<span class="math inline">\(f\)</span>-<span class="math inline">\(k\)</span>) <span class="citation" data-cites="hayashi1973method priestley1981spectral">(<a href="../references.html#ref-hayashi1973method" role="doc-biblioref">Hayashi 1973</a>; <a href="../references.html#ref-priestley1981spectral" role="doc-biblioref">Priestley 1981</a>)</span>, complementado con dinámica local autorregresiva AR(1). La incertidumbre estructural se cuantifica mediante <em>Moving Block Bootstrap</em> <span class="citation" data-cites="kunsch1989jackknife politis1994large">(<a href="../references.html#ref-kunsch1989jackknife" role="doc-biblioref">Künsch 1989</a>; <a href="../references.html#ref-politis1994large" role="doc-biblioref">Politis y Romano 1994</a>)</span>, preservando la dependencia serial sin asumir normalidad. Finalmente, el ciclo se cierra con una regla de decisión binaria basada en el criterio de Wald y regiones factibles técnicas <span class="citation" data-cites="berger1985statistical taha2017operations">(<a href="../references.html#ref-berger1985statistical" role="doc-biblioref">Berger 1985</a>; <a href="../references.html#ref-taha2017operations" role="doc-biblioref">Taha 2017</a>)</span>, implementando una política de tolerancia cero mediante el percentil 95 para transformar distribuciones predictivas en acciones operativas seguras.</p>
+<p>La principal contribución de este trabajo reside en la integración matemáticamente coherente de estos dominios, demostrando que la logística humanitaria en entornos adversos puede optimizarse mediante un marco cuantitativo, reproducible y escalable. Los resultados validan que el sistema reduce significativamente los tiempos de respuesta, incrementa la cobertura territorial y gestiona proactivamente el riesgo meteorológico. El documento se organiza de la siguiente manera: el <strong>Capítulo 1</strong> establece los fundamentos de teoría de grafos, cadenas de Markov y PageRank; el <strong>Capítulo 2</strong> desarrolla el marco de procesos estocásticos, análisis espectral, modelación AR(1) y teoría de decisión bajo incertidumbre; el <strong>Capítulo 3</strong> aplica estos conceptos a la red territorial de Chiapas, detallando la construcción del grafo 3D, la implementación de PageRank y el cálculo de rutas óptimas; y el <strong>Capítulo 4</strong> presenta el sistema integrado para operaciones con drones, incluyendo el modelo de <em>nowcasting</em>, la cuantificación de incertidumbre, la función de decisión binaria y el análisis de eficiencia logística en dos etapas.</p>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-berger1985statistical" class="csl-entry" role="listitem">
+Berger, James O. 1985. <em>Statistical Decision Theory and Bayesian Analysis</em>. 2nd ed. Springer Series en Statistics. New York, NY, USA: Springer.
+</div>
+<div id="ref-brin1998anatomy" class="csl-entry" role="listitem">
+Brin, Sergey, y Lawrence Page. 1998. <span>«The Anatomy of a Large-Scale Hypertextual Web Search Engine»</span>. En <em>Proceedings of the Seventh International World Wide Web Conference (WWW7)</em>, 107-17. Brisbane, Australia: Elsevier.
+</div>
+<div id="ref-brockwell2016time" class="csl-entry" role="listitem">
+Brockwell, Peter J., y Richard A. Davis. 2016. <em>Introduction to Time Series and Forecasting</em>. 3rd ed. Springer Texts en Statistics. Cham, Switzerland: Springer.
+</div>
+<div id="ref-hayashi1973method" class="csl-entry" role="listitem">
+Hayashi, Takio. 1973. <span>«A Method of Estimating the Horizontal Phase Velocity of Atmospheric Waves from the Phase Difference of Spectral Components»</span>. <em>Journal of the Meteorological Society of Japan</em> 51 (4): 299-308. <a href="https://doi.org/10.2151/jmsj1965.51.4_299">https://doi.org/10.2151/jmsj1965.51.4_299</a>.
+</div>
+<div id="ref-kunsch1989jackknife" class="csl-entry" role="listitem">
+Künsch, Hans R. 1989. <span>«The Jackknife and the Bootstrap for General Stationary Observations»</span>. <em>The Annals of Statistics</em> 17 (3): 1217-41. <a href="https://doi.org/10.1214/aos/1176347265">https://doi.org/10.1214/aos/1176347265</a>.
+</div>
+<div id="ref-langville2006googles" class="csl-entry" role="listitem">
+Langville, Amy N., y Carl D. Meyer. 2006. <em>Google’s PageRank and Beyond: The Science of Search Engine Rankings</em>. Princeton, NJ, USA: Princeton University Press.
+</div>
+<div id="ref-meyer2000matrix" class="csl-entry" role="listitem">
+Meyer, Carl D. 2000. <em>Matrix Analysis and Applied Linear Algebra</em>. Philadelphia, PA, USA: Society for Industrial; Applied Mathematics (SIAM).
+</div>
+<div id="ref-newman2018networks" class="csl-entry" role="listitem">
+Newman, Mark. 2018. <em>Networks</em>. 2nd ed. Oxford, UK: Oxford University Press.
+</div>
+<div id="ref-oppenheim2010discrete" class="csl-entry" role="listitem">
+Oppenheim, Alan V., y Ronald W. Schafer. 2010. <em>Discrete-Time Signal Processing</em>. 3rd ed. Upper Saddle River, NJ, USA: Prentice Hall.
+</div>
+<div id="ref-politis1994large" class="csl-entry" role="listitem">
+Politis, Dimitris N., y Joseph P. Romano. 1994. <span>«The Stationary Bootstrap»</span>. <em>Journal of the American Statistical Association</em> 89 (428): 1303-13. <a href="https://doi.org/10.1080/01621459.1994.10476870">https://doi.org/10.1080/01621459.1994.10476870</a>.
+</div>
+<div id="ref-priestley1981spectral" class="csl-entry" role="listitem">
+Priestley, Maurice B. 1981. <em>Spectral Analysis and Time Series</em>. Vol. 1–2. London, UK: Academic Press.
+</div>
+<div id="ref-taha2017operations" class="csl-entry" role="listitem">
+Taha, Hamdy A. 2017. <em>Operations Research: An Introduction</em>. 10th ed. London, UK: Pearson.
+</div>
+<div id="ref-vincenty1975" class="csl-entry" role="listitem">
+Vincenty, Thaddeus. 1975. <span>«Direct and Inverse Solutions of Geodesics on the Ellipsoid with Application of Nested Equations»</span>. <em>Survey Review</em> 23 (176): 88-93. <a href="https://doi.org/10.1179/sre.1975.23.176.88">https://doi.org/10.1179/sre.1975.23.176.88</a>.
+</div>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
