@@ -1,0 +1,11 @@
+{
+  "hash": "33e5da0a3e09c19ac6a8d548abcecb7a",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Introducción\nlang: es\nformat:\n  html: default\n  pdf: default\nexecute:\n  freeze: auto\n---\n\n:::{style=\"text-align: justify\"}\n\n:::\n\n",
+    "supporting": [
+      "introduccion_files\\figure-pdf"
+    ],
+    "filters": []
+  }
+}
