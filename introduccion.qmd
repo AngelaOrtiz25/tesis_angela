@@ -1,5 +1,5 @@
 ---
-title: Introducción 
+title: Objetivos
 lang: es
 format:
   html: default
@@ -8,6 +8,7 @@ execute:
   freeze: auto 
 jupyter: python3
 ---
+
 :::{style="text-align: justify"}
 
 :::
