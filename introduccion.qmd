@@ -1,0 +1,13 @@
+---
+title: Introducción
+lang: es
+format:
+  html: default
+  pdf: default  
+execute: 
+  freeze: auto 
+jupyter: python3
+---
+:::{style="text-align: justify"}
+
+:::

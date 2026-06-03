@@ -32,6 +32,7 @@ book:
   page-navigation: true
   chapters:
     - index.qmd
+    - introduccion.qmd
     - chapters\objetivo.qmd
     - chapters/chapter1.qmd
     - chapters/chapter2.qmd
