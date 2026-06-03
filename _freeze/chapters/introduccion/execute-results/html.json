@@ -1,0 +1,12 @@
+{
+  "hash": "950dd4941009ad20b87395c91ae56762",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Introduccion\nlang: es\nformat:\n  html: default\n  pdf: default  \nexecute: \n  freeze: auto \njupyter: python3\n---\n\n:::{style=\"text-align: justify\"}\n\n:::\n\n",
+    "supporting": [
+      "introduccion_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
