@@ -1,8 +1,8 @@
 {
-  "hash": "382f870fd0352677c1b7ee1114d2f757",
+  "hash": "bc4f141d7a7f0b33fea4ea7d17ce0d1b",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: Introducción\nlang: es\nformat:\n  html: default\n  pdf: default\nexecute:\n  freeze: auto\n---\n\n:::{style=\"text-align: justify\"}\n\n:::\n\n",
+    "markdown": "---\ntitle: Objetivos\nlang: es\nformat:\n  html: default\n  pdf: default  \nexecute: \n  freeze: auto \njupyter: python3\n---\n\n:::{style=\"text-align: justify\"}\n\n:::\n\n",
     "supporting": [
       "introduccion_files\\figure-pdf"
     ],
