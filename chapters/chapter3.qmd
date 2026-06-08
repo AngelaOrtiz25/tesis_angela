@@ -361,7 +361,7 @@ $$
 \pi^{(0)}_i = \frac{1}{124}, \quad i = 1, \dots, 124.
 $$
 
-El criterio de convergencia se basa en la norma $\ell_1$ entre iteraciones consecutivas:
+El criterio de convergencia se basa en la norma $\ell_1$ [@meyer2000matrix,@kreyszig1989introductory] entre iteraciones consecutivas:
 
 $$
 \|\pi^{(k+1)} - \pi^{(k)}\|_1 = \sum_{i=1}^{124} |\pi^{(k+1)}_i - \pi^{(k)}_i| < \varepsilon,
