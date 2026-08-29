@@ -1,0 +1,11 @@
+{
+  "hash": "dbd7284d128b73146d7df432934ac89f",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Conclusiones\nlang: es\nformat:\n  html: default\n  pdf: default  \nexecute: \n  freeze: auto \njupyter: python3\n---\n\n:::{style=\"text-align: justify\"}\n:::\n\n",
+    "supporting": [
+      "conclusiones_files\\figure-pdf"
+    ],
+    "filters": []
+  }
+}
