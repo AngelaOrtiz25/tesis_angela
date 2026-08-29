@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Sistema integrado de decisión bajo inertidumbre para dstribución de ayuda humanitaria mediante dronesÑredes de transporte, centralidad pagerank y pronóstico advectivo en Chiapas"
 unnumbered: true
 
 author:
