@@ -295,7 +295,7 @@ de ayuda humanitaria mediante drones: redes de transporte, centralidad
 pagerank y pronóstico advectivo en Chiapas}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-08-28}
+\date{2026-08-30}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -3422,8 +3422,83 @@ Chiapas}\label{resultados-obtenidos-para-la-red-de-chiapas}
 La aplicación del algoritmo PageRank a la red territorial de Chiapas
 produjo un vector estacionario \(\pi\) cuyas componentes reflejan la
 importancia relativa de cada municipio. Los diez municipios con mayor
-valor PageRank se presentan en la Tabla 3.1. \textbf{FALTA PONER LA
-TABLE DE LOS RESULTADOS Y LA EXPLICACION}
+valor PageRank se presentan en la Tabla 3.1.
+
+\subsection{Resultados obtenidos para la red de
+Chiapas}\label{resultados-obtenidos-para-la-red-de-chiapas-1}
+
+La aplicación del algoritmo PageRank a la red territorial de Chiapas
+produjo un vector estacionario \(\pi\) cuyas componentes reflejan la
+importancia relativa de cada municipio. Los quince municipios con mayor
+valor PageRank se presentan en la Tabla~\ref{tbl-pagerank}.
+
+\begin{longtable}[]{@{}rlrl@{}}
+\caption{Municipios con mayor centralidad según
+PageRank}\label{tbl-pagerank}\tabularnewline
+\toprule\noalign{}
+Pos. & Municipio & Score (πᵢ) & Región \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Pos. & Municipio & Score (πᵢ) & Región \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & San Cristóbal de las Casas & 0.0112 & Los Altos \\
+2 & Rayón & 0.0112 & Norte \\
+3 & Chamula & 0.0111 & Los Altos \\
+4 & Chiapilla & 0.0110 & Centro \\
+5 & Pueblo Nuevo Solistahuacán & 0.0109 & Norte \\
+6 & Aldama & 0.0109 & Los Altos \\
+7 & Rincón Chamula San Pedro & 0.0108 & Los Altos \\
+8 & Pantepec & 0.0107 & Norte \\
+9 & Santiago el Pinar & 0.0106 & Los Altos \\
+10 & Larráinzar & 0.0105 & Los Altos \\
+11 & Teopisca & 0.0104 & Los Altos \\
+12 & Totolapa & 0.0104 & Los Altos \\
+13 & Tapilula & 0.0103 & Norte \\
+14 & Acala & 0.0102 & Centro \\
+15 & Mitontic & 0.0102 & Los Altos \\
+\end{longtable}
+
+Del análisis de la Tabla~\ref{tbl-pagerank} se desprenden tres hallazgos
+fundamentales.
+
+\textbf{Primero}, once de los quince municipios con mayor centralidad
+pertenecen a la región de Los Altos de Chiapas. Este resultado se
+explica por la alta densidad municipal de dicha región, donde numerosos
+municipios de pequeña extensión territorial se encuentran separados por
+distancias cortas (10--40 km). Al ponderar las aristas con el inverso de
+la distancia tridimensional (\(w_{ij} = 1/d_{ij}^{(3D)}\)), estas
+conexiones generan pesos elevados que, acumulados a través de múltiples
+vecinos, producen una alta probabilidad estacionaria para los nodos de
+esta región.
+
+\textbf{Segundo}, Tuxtla Gutiérrez, a pesar de ser la capital estatal y
+sede del almacén central de Protección Civil, se ubica en la posición 17
+con un score de \(\pi = 0.0100\). Este resultado, aparentemente
+contraintuitivo, valida la metodología al demostrar que el algoritmo
+captura la estructura real de conectividad vial sin sesgo por criterios
+administrativos o demográficos. La posición de Tuxtla se debe a su
+patrón de conectividad radial: sus conexiones hacia otras regiones del
+estado son predominantemente de larga distancia (40--120 km), lo que
+reduce los pesos individuales de sus aristas en comparación con los
+municipios de Los Altos, cuyas múltiples conexiones cortas generan mayor
+acumulación de probabilidad estacionaria.
+
+\textbf{Tercero}, desde la perspectiva logística, los municipios con
+mayor centralidad identificada por PageRank funcionan como hubs
+naturales de redistribución regional. En un escenario de emergencia, una
+estrategia eficiente consistiría en enviar ayuda desde el almacén
+central de Tuxtla Gutiérrez hacia estos municipios prioritarios, los
+cuales, por su alta conectividad local, pueden redistribuir los recursos
+hacia comunidades adyacentes de manera rápida y con menor costo
+operativo.
+
+El vector estacionario \(\pi\) constituye así el insumo fundamental para
+la etapa siguiente, donde se determinarán las rutas óptimas desde Tuxtla
+Gutiérrez hacia cada uno de los municipios prioritarios identificados.
 
 \section{Rutas óptimas desde Protección Civil hacia municipios
 prioritarios}\label{rutas-uxf3ptimas-desde-protecciuxf3n-civil-hacia-municipios-prioritarios}
@@ -3583,7 +3658,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, colback=white, colframe=quarto-callout-note-color-frame, left=2mm, breakable, opacityback=0, rightrule=.15mm, coltitle=black, titlerule=0mm, arc=.35mm, toptitle=1mm, bottomrule=.15mm, leftrule=.75mm, toprule=.15mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, coltitle=black, bottomtitle=1mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, leftrule=.75mm, left=2mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, breakable, colback=white, toptitle=1mm, arc=.35mm, rightrule=.15mm, toprule=.15mm]
 
 \textbf{Características operativas de la ruta}
 
