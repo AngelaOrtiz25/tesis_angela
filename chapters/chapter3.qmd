@@ -374,7 +374,40 @@ La complejidad computacional del método es $\mathcal{O}(n^2 k)$, donde $n = 124
 ### Resultados obtenidos para la red de Chiapas
 
 La aplicación del algoritmo PageRank a la red territorial de Chiapas produjo un vector estacionario $\pi$ cuyas componentes reflejan la importancia relativa de cada municipio. Los diez municipios con mayor valor PageRank se presentan en la Tabla 3.1.
-**FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION**
+
+### Resultados obtenidos para la red de Chiapas
+
+La aplicación del algoritmo PageRank a la red territorial de Chiapas produjo un vector estacionario $\pi$ cuyas componentes reflejan la importancia relativa de cada municipio. Los quince municipios con mayor valor PageRank se presentan en la @tbl-pagerank.
+
+| Pos. | Municipio | Score (πᵢ) | Región |
+|-----:|:----------|-----------:|:-------|
+| 1 | San Cristóbal de las Casas | 0.0112 | Los Altos |
+| 2 | Rayón | 0.0112 | Norte |
+| 3 | Chamula | 0.0111 | Los Altos |
+| 4 | Chiapilla | 0.0110 | Centro |
+| 5 | Pueblo Nuevo Solistahuacán | 0.0109 | Norte |
+| 6 | Aldama | 0.0109 | Los Altos |
+| 7 | Rincón Chamula San Pedro | 0.0108 | Los Altos |
+| 8 | Pantepec | 0.0107 | Norte |
+| 9 | Santiago el Pinar | 0.0106 | Los Altos |
+| 10 | Larráinzar | 0.0105 | Los Altos |
+| 11 | Teopisca | 0.0104 | Los Altos |
+| 12 | Totolapa | 0.0104 | Los Altos |
+| 13 | Tapilula | 0.0103 | Norte |
+| 14 | Acala | 0.0102 | Centro |
+| 15 | Mitontic | 0.0102 | Los Altos |
+
+: Municipios con mayor centralidad según PageRank {#tbl-pagerank}
+
+Del análisis de la @tbl-pagerank se desprenden tres hallazgos fundamentales.
+
+**Primero**, once de los quince municipios con mayor centralidad pertenecen a la región de Los Altos de Chiapas. Este resultado se explica por la alta densidad municipal de dicha región, donde numerosos municipios de pequeña extensión territorial se encuentran separados por distancias cortas (10--40 km). Al ponderar las aristas con el inverso de la distancia tridimensional ($w_{ij} = 1/d_{ij}^{(3D)}$), estas conexiones generan pesos elevados que, acumulados a través de múltiples vecinos, producen una alta probabilidad estacionaria para los nodos de esta región.
+
+**Segundo**, Tuxtla Gutiérrez, a pesar de ser la capital estatal y sede del almacén central de Protección Civil, se ubica en la posición 17 con un score de $\pi = 0.0100$. Este resultado, aparentemente contraintuitivo, valida la metodología al demostrar que el algoritmo captura la estructura real de conectividad vial sin sesgo por criterios administrativos o demográficos. La posición de Tuxtla se debe a su patrón de conectividad radial: sus conexiones hacia otras regiones del estado son predominantemente de larga distancia (40--120 km), lo que reduce los pesos individuales de sus aristas en comparación con los municipios de Los Altos, cuyas múltiples conexiones cortas generan mayor acumulación de probabilidad estacionaria.
+
+**Tercero**, desde la perspectiva logística, los municipios con mayor centralidad identificada por PageRank funcionan como hubs naturales de redistribución regional. En un escenario de emergencia, una estrategia eficiente consistiría en enviar ayuda desde el almacén central de Tuxtla Gutiérrez hacia estos municipios prioritarios, los cuales, por su alta conectividad local, pueden redistribuir los recursos hacia comunidades adyacentes de manera rápida y con menor costo operativo.
+
+El vector estacionario $\pi$ constituye así el insumo fundamental para la etapa siguiente, donde se determinarán las rutas óptimas desde Tuxtla Gutiérrez hacia cada uno de los municipios prioritarios identificados.
 
         
 ## Rutas óptimas desde Protección Civil hacia municipios prioritarios
