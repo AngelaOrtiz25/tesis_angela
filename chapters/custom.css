@@ -1,5 +1,0 @@
-.grid-leyendas {
-    display: grid;
-    grid-template-columns: 1fr 1fr;  /* Dos columnas iguales */
-    gap: 15px;  /* Espacio horizontal de 15px (aproximadamente 4mm) */
-}
