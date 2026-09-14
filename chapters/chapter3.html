@@ -718,7 +718,7 @@ Tabla&nbsp;6.1: Municipios con mayor centralidad según PageRank
 </section>
 <section id="rutas-óptimas-desde-protección-civil-hacia-municipios-prioritarios" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="rutas-óptimas-desde-protección-civil-hacia-municipios-prioritarios"><span class="header-section-number">6.6</span> Rutas óptimas desde Protección Civil hacia municipios prioritarios</h2>
-<p>Podría cuestionarse la elección de Tuxtla Gutiérrez como punto de almacenamiento central dado que no ocupa los primeros lugares del ranking PageRank. Sin embargo, esta decisión responde a criterios operativos y logísticos independientes de la centralidad en la red vial. En primer lugar, Tuxtla concentra la infraestructura necesaria para la recepción de ayuda externa: el Aeropuerto Internacional Ángel Albino Corzo, la sede estatal de Protección Civil y almacenes con capacidad operativa. En segundo lugar, la ayuda humanitaria en situaciones de emergencia proviene predominantemente de fuentes externas al estado (gobierno federal, organismos internacionales, donaciones nacionales), por lo que el punto de almacenamiento debe ubicarse en el nodo de entrada natural de estos recursos, no necesariamente en el nodo más central de la red interna. Finalmente, la metodología propuesta opera bajo una logística jerárquica de dos niveles: Tuxtla funciona como centro principal de recepción y despacho, mientras que los municipios con mayor PageRank (San Cristóbal, Chamula, Rayón, entre otros) funcionan como centros secundarios de redistribución regional. Esta separación de funciones resuelve la aparente contradicción y refleja la práctica real de los centros de coordinación de emergencias.</p>
+<p>La elección de Tuxtla Gutiérrez como punto de almacenamiento central a pesar de no ocupar los primeros lugares del ranking PageRank, Responde a criterios operativos y logísticos fundamentales que complementan el análisis de centralidad de la red.. En primer lugar, Tuxtla concentra la infraestructura necesaria para la recepción de ayuda externa: el Aeropuerto Internacional Ángel Albino Corzo, la sede estatal de Protección Civil y almacenes con capacidad operativa. En segundo lugar, la ayuda humanitaria en situaciones de emergencia proviene predominantemente de fuentes externas al estado (gobierno federal, organismos internacionales, donaciones nacionales), por lo que el punto de almacenamiento debe ubicarse en el nodo de entrada natural de estos recursos, no necesariamente en el nodo más central de la red interna. Finalmente, la metodología propuesta opera bajo una logística jerárquica de dos niveles: Tuxtla funciona como centro principal de recepción y despacho, mientras que los municipios con mayor PageRank (San Cristóbal, Chamula, Rayón, entre otros) funcionan como centros secundarios de redistribución regional. Esta separación de funciones resuelve la aparente contradicción y refleja la práctica real de los centros de coordinación de emergencias.</p>
 <section id="punto-de-almacenamiento-y-municipios-estratégicos" class="level3" data-number="6.6.1">
 <h3 data-number="6.6.1" class="anchored" data-anchor-id="punto-de-almacenamiento-y-municipios-estratégicos"><span class="header-section-number">6.6.1</span> Punto de almacenamiento y municipios estratégicos</h3>
 <p>El punto de almacenamiento central para operaciones de ayuda humanitaria se establece en las instalaciones de la <a href="https://maps.app.goo.gl/fRNWcaote5heu1Qp9">Secretaria de Protección Civil</a> ubicadas en Tuxtla Gutiérrez, capital del estado de Chiapas. Esta localización responde a criterios operativos fundamentales:</p>
@@ -740,8 +740,169 @@ Tabla&nbsp;6.1: Municipios con mayor centralidad según PageRank
 </section>
 <section id="resultados-cuantitativos" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="resultados-cuantitativos"><span class="header-section-number">6.6.3</span> Resultados cuantitativos</h3>
-<p>La Tabla 3.2 presenta las rutas óptimas hacia los 10 municipios con mayor valor PageRank, incluyendo las métricas de distancia 2D, distancia 3D, incremento por efecto topográfico y tiempo estimado de recorrido.</p>
-<p><strong>FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION</strong></p>
+<p>La <a href="#tbl-rutas-optimas" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> presenta las rutas óptimas calculadas desde Tuxtla Gutiérrez hacia los 15 municipios con mayor valor PageRank. Para cada destino, se detalla la secuencia de municipios que conforman el camino de menor costo, así como las métricas de distancia bidimensional (2D), distancia tridimensional (3D), el incremento porcentual debido al relieve y el tiempo estimado de recorrido.</p>
+<div id="tbl-rutas-optimas" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rutas-optimas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;6.2: Rutas óptimas desde Protección Civil (Tuxtla Gutiérrez) hacia los 15 municipios con mayor centralidad PageRank.
+</figcaption>
+<div aria-describedby="tbl-rutas-optimas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Municipio Destino</th>
+<th style="text-align: left;">Ruta Óptima</th>
+<th style="text-align: right;">Distancia 2D (km)</th>
+<th style="text-align: right;">Distancia 3D (km)</th>
+<th style="text-align: right;">Incremento Topográfico (%)</th>
+<th style="text-align: right;">Tiempo Est. (min)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">San Cristobal de las Casas</td>
+<td style="text-align: left;">Tuxtla Gutierrez → San Cristobal de las Casas</td>
+<td style="text-align: right;">61.4</td>
+<td style="text-align: right;">61.9</td>
+<td style="text-align: right;">0.8</td>
+<td style="text-align: right;">56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rayon</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Copainala → Rayon</td>
+<td style="text-align: right;">126.5</td>
+<td style="text-align: right;">128.3</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">162</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chamula</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Chamula</td>
+<td style="text-align: right;">76.1</td>
+<td style="text-align: right;">76.7</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">78</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chiapilla</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Chiapilla</td>
+<td style="text-align: right;">67.8</td>
+<td style="text-align: right;">68.1</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">76</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pueblo Nuevo Solistahuacan</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Pueblo Nuevo Solistahuacan</td>
+<td style="text-align: right;">121.1</td>
+<td style="text-align: right;">122.3</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">116</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aldama</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Aldama</td>
+<td style="text-align: right;">94.2</td>
+<td style="text-align: right;">95.3</td>
+<td style="text-align: right;">1.1</td>
+<td style="text-align: right;">110</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rincon Chamula San Pedro</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Rincon Chamula San Pedro</td>
+<td style="text-align: right;">129.6</td>
+<td style="text-align: right;">130.9</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">125</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pantepec</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Copainala → Pantepec</td>
+<td style="text-align: right;">117.8</td>
+<td style="text-align: right;">119.6</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">151</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Santiago el Pinar</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Ixtapa → Santiago el Pinar</td>
+<td style="text-align: right;">97.6</td>
+<td style="text-align: right;">98.6</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">134</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Larrainzar</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Larrainzar</td>
+<td style="text-align: right;">92.5</td>
+<td style="text-align: right;">93.4</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">119</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Teopisca</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Teopisca</td>
+<td style="text-align: right;">86.9</td>
+<td style="text-align: right;">87.5</td>
+<td style="text-align: right;">0.7</td>
+<td style="text-align: right;">87</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Totolapa</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Totolapa</td>
+<td style="text-align: right;">75.8</td>
+<td style="text-align: right;">76.1</td>
+<td style="text-align: right;">0.4</td>
+<td style="text-align: right;">88</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tapilula</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Copainala → Tapilula</td>
+<td style="text-align: right;">135.4</td>
+<td style="text-align: right;">137.4</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">171</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Acala</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Acala</td>
+<td style="text-align: right;">52.8</td>
+<td style="text-align: right;">52.9</td>
+<td style="text-align: right;">0.2</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Mitontic</td>
+<td style="text-align: left;">Tuxtla Gutierrez → Mitontic</td>
+<td style="text-align: right;">97.9</td>
+<td style="text-align: right;">99.4</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">105</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="análisis-de-los-resultados-de-optimización" class="level4" data-number="6.6.3.1">
+<h4 data-number="6.6.3.1" class="anchored" data-anchor-id="análisis-de-los-resultados-de-optimización"><span class="header-section-number">6.6.3.1</span> Análisis de los resultados de optimización</h4>
+<p>De la <a href="#tbl-rutas-optimas" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> se desprenden observaciones operativas cruciales para la logística humanitaria en Chiapas:</p>
+<ol type="1">
+<li><p><strong>Impacto real de la topografía</strong>: El incremento topográfico oscila entre el <span class="math inline">\(0.2\%\)</span> (Acala) y el <span class="math inline">\(1.5\%\)</span> (Rayon, Pantepec, Tapilula, Mitontic). Aunque estos porcentajes parecen modestos, representan kilómetros adicionales de recorrido real que impactan directamente en el consumo de combustible, el desgaste de frenos y la fatiga del conductor. Planificar con distancias 2D subestimaría sistemáticamente los costos operativos reales.</p></li>
+<li><p><strong>Corredores de dependencia logística</strong>: Se observa la formación de cuellos de botella estratégicos. El municipio de <strong>Copainalá</strong> actúa como nodo de transición obligatorio para alcanzar tres de los municipios prioritarios: Rayon, Pantepec y Tapilula. De manera similar, <strong>Ixtapa</strong> funciona como punto de paso hacia Santiago el Pinar. Estos nodos intermedios son puntos críticos de vulnerabilidad: cualquier interrupción en las carreteras que los atraviesan (por deslaves o daños) aislaría simultáneamente a múltiples destinos prioritarios.</p></li>
+<li><p><strong>Estructura radial vs.&nbsp;conexiones directas</strong>: Las rutas hacia municipios como Chamula, Aldama y Mitontic son conexiones directas desde Tuxtla Gutiérrez, lo que indica que el algoritmo identificó carreteras eficientes entre estos pares. En contraste, las rutas hacia la zona Norte requieren pasar por Copainalá, reflejando la estructura radial y jerárquica de la red vial en esa región montañosa.</p></li>
+<li><p><strong>Realismo en la estimación del tiempo</strong>: El tiempo estimado de recorrido varía significativamente, desde 56 minutos (San Cristobal) hasta 171 minutos (Tapilula). Es fundamental destacar que este tiempo no se calculó dividiendo la distancia por una velocidad promedio constante. En su lugar, es la <strong>suma acumulativa de los tiempos por tramo</strong> proporcionados por el motor OSRM, los cuales consideran variables reales como el tipo de superficie (pavimento/terracería), límites de velocidad legales y curvatura de la carretera. Esto ofrece una estimación de la duración del viaje mucho más fiable que los modelos tradicionales.</p></li>
+</ol>
+<p>En conclusión, la combinación del algoritmo PageRank (para la selección estratégica de destinos basada en centralidad) y el algoritmo de Dijkstra con métrica 3D (para la planificación táctica de rutas) proporciona un modelo de distribución de ayuda humanitaria que es matemáticamente robusto, computacionalmente eficiente y geográficamente realista para las complejas condiciones del estado de Chiapas.</p>
+</section>
 </section>
 </section>
 </div>

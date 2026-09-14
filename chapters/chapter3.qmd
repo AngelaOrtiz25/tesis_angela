@@ -407,7 +407,7 @@ El vector estacionario $\pi$ constituye así el insumo fundamental para la etapa
 
         
 ## Rutas óptimas desde Protección Civil hacia municipios prioritarios
-Podría cuestionarse la elección de Tuxtla Gutiérrez como punto de almacenamiento central dado que no ocupa los primeros lugares del ranking PageRank. Sin embargo, esta decisión responde a criterios operativos y logísticos independientes de la centralidad en la red vial. En primer lugar, Tuxtla concentra la infraestructura necesaria para la recepción de ayuda externa: el Aeropuerto Internacional Ángel Albino Corzo, la sede estatal de Protección Civil y almacenes con capacidad operativa. En segundo lugar, la ayuda humanitaria en situaciones de emergencia proviene predominantemente de fuentes externas al estado (gobierno federal, organismos internacionales, donaciones nacionales), por lo que el punto de almacenamiento debe ubicarse en el nodo de entrada natural de estos recursos, no necesariamente en el nodo más central de la red interna. Finalmente, la metodología propuesta opera bajo una logística jerárquica de dos niveles: Tuxtla funciona como centro principal de recepción y despacho, mientras que los municipios con mayor PageRank (San Cristóbal, Chamula, Rayón, entre otros) funcionan como centros secundarios de redistribución regional. Esta separación de funciones resuelve la aparente contradicción y refleja la práctica real de los centros de coordinación de emergencias.
+La elección de Tuxtla Gutiérrez como punto de almacenamiento central a pesar de no ocupar los primeros lugares del ranking PageRank, Responde a criterios operativos y logísticos fundamentales que complementan el análisis de centralidad de la red.. En primer lugar, Tuxtla concentra la infraestructura necesaria para la recepción de ayuda externa: el Aeropuerto Internacional Ángel Albino Corzo, la sede estatal de Protección Civil y almacenes con capacidad operativa. En segundo lugar, la ayuda humanitaria en situaciones de emergencia proviene predominantemente de fuentes externas al estado (gobierno federal, organismos internacionales, donaciones nacionales), por lo que el punto de almacenamiento debe ubicarse en el nodo de entrada natural de estos recursos, no necesariamente en el nodo más central de la red interna. Finalmente, la metodología propuesta opera bajo una logística jerárquica de dos niveles: Tuxtla funciona como centro principal de recepción y despacho, mientras que los municipios con mayor PageRank (San Cristóbal, Chamula, Rayón, entre otros) funcionan como centros secundarios de redistribución regional. Esta separación de funciones resuelve la aparente contradicción y refleja la práctica real de los centros de coordinación de emergencias.
 
 ### Punto de almacenamiento y municipios estratégicos
 
@@ -433,9 +433,40 @@ El cálculo de rutas óptimas se implementó mediante el algoritmo de Dijkstra s
 
 ### Resultados cuantitativos
 
-La Tabla 3.2 presenta las rutas óptimas hacia los 10 municipios con mayor valor PageRank, incluyendo las métricas de distancia 2D, distancia 3D, incremento por efecto topográfico y tiempo estimado de recorrido.
+La @tbl-rutas-optimas presenta las rutas óptimas calculadas desde Tuxtla Gutiérrez hacia los 15 municipios con mayor valor PageRank. Para cada destino, se detalla la secuencia de municipios que conforman el camino de menor costo, así como las métricas de distancia bidimensional (2D), distancia tridimensional (3D), el incremento porcentual debido al relieve y el tiempo estimado de recorrido.
 
+| Municipio Destino | Ruta Óptima | Distancia 2D (km) | Distancia 3D (km) | Incremento Topográfico (%) | Tiempo Est. (min) |
+|:---|:---|---:|---:|---:|---:|
+| San Cristobal de las Casas | Tuxtla Gutierrez → San Cristobal de las Casas | 61.4 | 61.9 | 0.8 | 56 |
+| Rayon | Tuxtla Gutierrez → Copainala → Rayon | 126.5 | 128.3 | 1.5 | 162 |
+| Chamula | Tuxtla Gutierrez → Chamula | 76.1 | 76.7 | 0.9 | 78 |
+| Chiapilla | Tuxtla Gutierrez → Chiapilla | 67.8 | 68.1 | 0.4 | 76 |
+| Pueblo Nuevo Solistahuacan | Tuxtla Gutierrez → Pueblo Nuevo Solistahuacan | 121.1 | 122.3 | 1.0 | 116 |
+| Aldama | Tuxtla Gutierrez → Aldama | 94.2 | 95.3 | 1.1 | 110 |
+| Rincon Chamula San Pedro | Tuxtla Gutierrez → Rincon Chamula San Pedro | 129.6 | 130.9 | 1.0 | 125 |
+| Pantepec | Tuxtla Gutierrez → Copainala → Pantepec | 117.8 | 119.6 | 1.5 | 151 |
+| Santiago el Pinar | Tuxtla Gutierrez → Ixtapa → Santiago el Pinar | 97.6 | 98.6 | 0.9 | 134 |
+| Larrainzar | Tuxtla Gutierrez → Larrainzar | 92.5 | 93.4 | 1.0 | 119 |
+| Teopisca | Tuxtla Gutierrez → Teopisca | 86.9 | 87.5 | 0.7 | 87 |
+| Totolapa | Tuxtla Gutierrez → Totolapa | 75.8 | 76.1 | 0.4 | 88 |
+| Tapilula | Tuxtla Gutierrez → Copainala → Tapilula | 135.4 | 137.4 | 1.5 | 171 |
+| Acala | Tuxtla Gutierrez → Acala | 52.8 | 52.9 | 0.2 | 60 |
+| Mitontic | Tuxtla Gutierrez → Mitontic | 97.9 | 99.4 | 1.5 | 105 |
 
-**FALTA PONER LA TABLE DE LOS RESULTADOS Y LA EXPLICACION**
+: Rutas óptimas desde Protección Civil (Tuxtla Gutiérrez) hacia los 15 municipios con mayor centralidad PageRank. {#tbl-rutas-optimas}
+
+#### Análisis de los resultados de optimización
+
+De la @tbl-rutas-optimas se desprenden observaciones operativas cruciales para la logística humanitaria en Chiapas:
+
+1. **Impacto real de la topografía**: El incremento topográfico oscila entre el $0.2\%$ (Acala) y el $1.5\%$ (Rayon, Pantepec, Tapilula, Mitontic). Aunque estos porcentajes parecen modestos, representan kilómetros adicionales de recorrido real que impactan directamente en el consumo de combustible, el desgaste de frenos y la fatiga del conductor. Planificar con distancias 2D subestimaría sistemáticamente los costos operativos reales.
+
+2. **Corredores de dependencia logística**: Se observa la formación de cuellos de botella estratégicos. El municipio de **Copainalá** actúa como nodo de transición obligatorio para alcanzar tres de los municipios prioritarios: Rayon, Pantepec y Tapilula. De manera similar, **Ixtapa** funciona como punto de paso hacia Santiago el Pinar. Estos nodos intermedios son puntos críticos de vulnerabilidad: cualquier interrupción en las carreteras que los atraviesan (por deslaves o daños) aislaría simultáneamente a múltiples destinos prioritarios.
+
+3. **Estructura radial vs. conexiones directas**: Las rutas hacia municipios como Chamula, Aldama y Mitontic son conexiones directas desde Tuxtla Gutiérrez, lo que indica que el algoritmo identificó carreteras eficientes entre estos pares. En contraste, las rutas hacia la zona Norte requieren pasar por Copainalá, reflejando la estructura radial y jerárquica de la red vial en esa región montañosa.
+
+4. **Realismo en la estimación del tiempo**: El tiempo estimado de recorrido varía significativamente, desde 56 minutos (San Cristobal) hasta 171 minutos (Tapilula). Es fundamental destacar que este tiempo no se calculó dividiendo la distancia por una velocidad promedio constante. En su lugar, es la **suma acumulativa de los tiempos por tramo** proporcionados por el motor OSRM, los cuales consideran variables reales como el tipo de superficie (pavimento/terracería), límites de velocidad legales y curvatura de la carretera. Esto ofrece una estimación de la duración del viaje mucho más fiable que los modelos tradicionales.
+
+En conclusión, la combinación del algoritmo PageRank (para la selección estratégica de destinos basada en centralidad) y el algoritmo de Dijkstra con métrica 3D (para la planificación táctica de rutas) proporciona un modelo de distribución de ayuda humanitaria que es matemáticamente robusto, computacionalmente eficiente y geográficamente realista para las complejas condiciones del estado de Chiapas.
 
 :::
