@@ -1,0 +1,27 @@
+% Paquetes matemáticos
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{upgreek}
+
+% Cargar TikZ correctamente
+\usepackage{tikz}
+
+% Numeración de ecuaciones compatible con scrreprt
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+% Caja punteada
+\newcommand{\dashedbox}[1]{
+  \begin{tikzpicture}
+    \node[
+      draw,
+      dashed,
+      rounded corners=5pt,
+      inner sep=10pt
+    ]{
+      \begin{minipage}{0.9\textwidth}
+        #1
+      \end{minipage}
+    };
+  \end{tikzpicture}
+}
