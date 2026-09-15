@@ -40,8 +40,6 @@ book:
     - chapters/chapter4.qmd
     - chapters\conclusiones.qmd
     - references.qmd
-  appendices:
-    - chapters/appendix_b.qmd
 comments:
   hypothesis: true
 

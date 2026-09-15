@@ -1015,7 +1015,7 @@ La elección de la longitud del bloque $L$ constituye un compromiso entre preser
 
 Esta adaptación refleja que la escala temporal de correlación varía significativamente entre diferentes variables atmosféricas, y que bloques más largos son necesarios para variables con mayor inercia física. En la implementación, la longitud de bloque se especifica como parámetro al llamar a la función `block_bootstrap_forecasts()`, permitiendo así adaptar el método a las características de cada variable meteorológica.
 
-La implementación computacional del método se detalla en el **Apéndice** @sec-apendice-bootstrap, donde se presentan las funciones principales del algoritmo. El código completo está disponible en el repositorio
+El [código completo](https://github.com/AngelaOrtiz25/tesis_angela/tree/gh-pages/datos_codigos/metodologia_capitulo6) está disponible en el repositorio
 
 ### Resultados empíricos de la cuantificación de incertidumbre
 
