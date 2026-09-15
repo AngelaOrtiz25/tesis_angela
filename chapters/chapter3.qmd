@@ -38,7 +38,7 @@ El flujo metodológico desarrollado en este capítulo comprende las siguientes e
 2. Cálculo de distancias tridimensionales que incorporan explícitamente las variaciones topográficas del terreno.
 3. Construcción formal de la red territorial como grafo ponderado.
 4. Aplicación del algoritmo PageRank y análisis de convergencia de la cadena de Markov subyacente.
-5. Identificación de rutas óptimas desde el punto de almacenamiento (Protección Civil en Tuxtla Gutiérrez) hacia los municipios prioritarios. **DUDA: depende si se palica dijkstra**
+5. Identificación de rutas óptimas desde el punto de almacenamiento (Protección Civil en Tuxtla Gutiérrez) hacia los municipios prioritarios. 
 
 Esta metodología proporciona una base matemáticamente rigurosa para la toma de decisiones en la planificación logística de emergencias, permitiendo optimizar la distribución de recursos mediante la identificación de puntos estratégicos dentro de la red territorial estatal.
 
