@@ -106,7 +106,7 @@ El proceso de recolección y procesamiento de datos se implementó mediante el s
 
 ### Lista de municipios analizados
 
-Como ya se comentó el estudio consideró la totalidad de los 124 municipios que conforman el estado de Chiapas. La lista completa de municipios se presenta en el **Apéndice A** (@sec-apendice-municipios) de esta tesis.
+Como ya se comentó el estudio consideró la totalidad de los 124 municipios que conforman el estado de Chiapas ([lista completa de municipios](https://github.com/AngelaOrtiz25/tesis_angela/blob/gh-pages/datos_codigos/lista_de_municipios_Chiapas.csv))
 
 ### Implementación computacional
 
