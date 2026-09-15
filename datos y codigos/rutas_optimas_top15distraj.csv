@@ -1,0 +1,16 @@
+Municipio Destino,Ruta Óptima,Distancia 2D (km),Distancia 3D (km),Incremento Topográfico (%),Tiempo Est. (min)
+San Cristobal de las Casas,Tuxtla Gutierrez → San Cristobal de las Casas,61.4,61.9,0.8,56.0
+Rayon,Tuxtla Gutierrez → Copainala → Rayon,126.5,128.3,1.5,162.0
+Chamula,Tuxtla Gutierrez → Chamula,76.1,76.7,0.9,78.0
+Chiapilla,Tuxtla Gutierrez → Chiapilla,67.8,68.1,0.4,76.0
+Pueblo Nuevo Solistahuacan,Tuxtla Gutierrez → Pueblo Nuevo Solistahuacan,121.1,122.3,1.0,116.0
+Aldama,Tuxtla Gutierrez → Aldama,94.2,95.3,1.1,110.0
+Rincon Chamula San Pedro,Tuxtla Gutierrez → Rincon Chamula San Pedro,129.6,130.9,1.0,125.0
+Pantepec,Tuxtla Gutierrez → Copainala → Pantepec,117.8,119.6,1.5,151.0
+Santiago el Pinar,Tuxtla Gutierrez → Ixtapa → Santiago el Pinar,97.6,98.6,0.9,134.0
+Larrainzar,Tuxtla Gutierrez → Larrainzar,92.5,93.4,1.0,119.0
+Teopisca,Tuxtla Gutierrez → Teopisca,86.9,87.5,0.7,87.0
+Totolapa,Tuxtla Gutierrez → Totolapa,75.8,76.1,0.4,88.0
+Tapilula,Tuxtla Gutierrez → Copainala → Tapilula,135.4,137.4,1.5,171.0
+Acala,Tuxtla Gutierrez → Acala,52.8,52.9,0.2,60.0
+Mitontic,Tuxtla Gutierrez → Mitontic,97.9,99.4,1.5,105.0
