@@ -110,14 +110,13 @@ Como ya se comentó el estudio consideró la totalidad de los 124 municipios que
 
 ### Implementación computacional
 
-El código completo para la extracción y procesamiento de los datos garantiza la transparencia y reproducibilidad del estudio. Las funciones principales implementadas incluyen:
+El [código completo](https://github.com/AngelaOrtiz25/tesis_angela/blob/gh-pages/datos_codigos/recolecion_de_datos_pagerank.ipynb) para la extracción y procesamiento de los datos garantiza la transparencia y reproducibilidad del estudio. Las funciones principales implementadas incluyen:
 
 - `cargar_mosaico_srtm()`: Carga y fusiona múltiples teselas DEM en un único mosaico ráster.
 - `obtener_coordenadas(ciudad)`: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver @sec-nominatim2, inciso 2
 - `obtener_ruta_osrm(coord_origen, coord_destino)`: Consulta la ruta óptima entre dos puntos usando la API de OSRM.
 - `calcular_distancia_3d_ruta(mosaico, transform, ruta_coords)`: Calcula la distancia 3D incorporando variaciones topográficas.
 
-El código completo se presenta en el **Apéndice A** de esta tesis.
 
 ### Resultados de la recolección de datos
 
