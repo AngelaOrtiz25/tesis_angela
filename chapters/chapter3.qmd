@@ -243,7 +243,7 @@ donde $d_{ij}^{(3D)}$ denota la distancia tridimensional calculada según la met
 
 ### Matriz de adyacencia y normalización
 
-La estructura del grafo se codifica mediante la matriz de adyacencia $N \in \mathbb{R}^{124 \times 124}$, cuyos elementos están dados por:
+La estructura del grafo se codifica mediante la [matriz de adyacencia](https://github.com/AngelaOrtiz25/tesis_angela/blob/gh-pages/datos%20y%20codigos/matriz_transicion_3d%20(2).csv) $N \in \mathbb{R}^{124 \times 124}$, cuyos elementos están dados por:
 
 $$
 n_{ij} = w_{ij}, \quad i,j = 1,\dots,124.
