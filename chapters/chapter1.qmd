@@ -146,17 +146,17 @@ Esta transformación garantiza que $Q$ sea una matriz estocástica por columnas 
 
 En logística humanitaria, las redes ponderadas permiten cuantificar propiedades estructurales que son críticas para la planificación estratégica:
 
-#### 1. Medición de centralidad e influencia estructural
+#### Medición de centralidad e influencia estructural
 El peso de las aristas no solo refleja distancia física, sino también la intensidad de la interacción entre nodos. Municipios con múltiples conexiones de bajo peso (corta distancia, alta accesibilidad) tienden a acumular mayor flujo potencial, convirtiéndose en centros naturales de distribución. Esta propiedad se cuantifica mediante medidas de centralidad espectral, como el vector PageRank, que asigna a cada nodo una puntuación proporcional a su importancia relativa en la red [@borgatti2005centrality].
 
-#### 2. Evaluación de vulnerabilidad y robustez
+#### Evaluación de vulnerabilidad y robustez
 La sensibilidad de la red ante la interrupción de arcos o nodos puede analizarse mediante variaciones en la distribución estacionaria. Sea $\pi$ el vector de centralidad original y $\pi^{(e)}$ el vector tras eliminar el arco $e$. El impacto relativo se mide como:
 $$
 \Delta^{(e)} = \|\pi - \pi^{(e)}\|_1 = \sum_{i=1}^n |\pi_i - \pi_i^{(e)}|.
 $$
 Valores elevados de $\Delta^{(e)}$ identifican enlaces críticos cuya falla redistribuye significativamente la importancia estructural de los municipios, guiando así prioridades de mantenimiento o rutas de contingencia [@barabasi2016network].
 
-#### 3. Accesibilidad ponderada y equidad territorial
+#### Accesibilidad ponderada y equidad territorial
 La distribución de pesos en la red refleja desigualdades geográficas en el acceso a servicios. Un análisis de los pesos de arista salientes por municipio permite identificar regiones con conectividad sistémicamente deficiente, incluso cuando la red es topológicamente conexa. Esta información es esencial para diseñar políticas de inclusión logística y localizar centros de almacenamiento intermedios.
 
 ### Conexión con el algoritmo PageRank: centralidad estructural
