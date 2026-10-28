@@ -202,7 +202,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sistema integrado de decisión bajo incertidumbre para distribución de ayuda humanitaria mediante drones: redes de transporte, centralidad pagerank y pronóstico advectivo en Chiapas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resumen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -286,12 +286,12 @@ window.Quarto = {
 <div style="text-align: justify">
 <p>En situaciones de emergencia, como desastres naturales o crisis humanitarias, la eficiencia en la distribución de ayuda humanitaria constituye un factor determinante para la reducción del impacto sobre las poblaciones afectadas. En regiones caracterizadas por una topografía accidentada y una dispersión territorial significativa, como el estado de Chiapas, la planificación logística enfrenta desafíos estructurales que incrementan los tiempos de respuesta y los costos operativos de distribución.</p>
 <p>El estado de Chiapas, presenta una configuración geográfica predominantemente montañosa. Esta variabilidad altimétrica genera barreras naturales que fragmentan la red vial estatal, limitando particularmente el acceso a comunidades asentadas en laderas y mesetas de difícil conectividad.</p>
-<p>Para abordar este problema de optimización logística, se propone la aplicación del algoritmo PageRank a la red territorial del estado (<a href="chapter1.html#sec-pagerank" class="quarto-xref"><span>Sección 4.4.3</span></a>). Originalmente desarrollado por <span class="citation" data-cites="brin1998anatomy">Brin y Page (<a href="../references.html#ref-brin1998anatomy" role="doc-biblioref">1998</a>)</span> para el ordenamiento de páginas web, este algoritmo fundamenta su operación en la teoría de cadenas de Markov de tiempo discreto (<a href="chapter1.html#sec-markov" class="quarto-xref"><span>Sección 4.3</span></a>), proporcionando una medida de centralidad que identifica nodos estratégicos dentro de una red compleja.</p>
-<p>Matemáticamente, sea <span class="math inline">\(G = (V, E, W)\)</span> un grafo dirigido ponderado que representa la red territorial (<a href="chapter1.html#sec-grafos" class="quarto-xref"><span>Sección 4.1.1</span></a>), donde <span class="math inline">\(V\)</span> denota el conjunto de vértices (municipios), <span class="math inline">\(E \subseteq V \times V\)</span> el conjunto de aristas (conexiones viales), y <span class="math inline">\(W: E \to \mathbb{R}^+\)</span> una función que asigna a cada arista <span class="math inline">\((v_i, v_j)\)</span> la distancia tridimensional <span class="math inline">\(d_{ij}^{(3D)}\)</span> entre los municipios <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>. El algoritmo PageRank calcula el vector estacionario <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> que satisface:</p>
+<p>Para abordar este problema de optimización logística, se propone la aplicación del algoritmo PageRank a la red territorial del estado (<a href="#sec-pagerank" class="quarto-xref"><span class="quarto-unresolved-ref">sec-pagerank</span></a>). Originalmente desarrollado por <span class="citation" data-cites="brin1998anatomy">Brin y Page (<a href="#ref-brin1998anatomy" role="doc-biblioref">1998</a>)</span> para el ordenamiento de páginas web, este algoritmo fundamenta su operación en la teoría de cadenas de Markov de tiempo discreto (<a href="#sec-markov" class="quarto-xref"><span class="quarto-unresolved-ref">sec-markov</span></a>), proporcionando una medida de centralidad que identifica nodos estratégicos dentro de una red compleja.</p>
+<p>Matemáticamente, sea <span class="math inline">\(G = (V, E, W)\)</span> un grafo dirigido ponderado que representa la red territorial (<a href="#sec-grafos" class="quarto-xref"><span class="quarto-unresolved-ref">sec-grafos</span></a>), donde <span class="math inline">\(V\)</span> denota el conjunto de vértices (municipios), <span class="math inline">\(E \subseteq V \times V\)</span> el conjunto de aristas (conexiones viales), y <span class="math inline">\(W: E \to \mathbb{R}^+\)</span> una función que asigna a cada arista <span class="math inline">\((v_i, v_j)\)</span> la distancia tridimensional <span class="math inline">\(d_{ij}^{(3D)}\)</span> entre los municipios <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span>. El algoritmo PageRank calcula el vector estacionario <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> que satisface:</p>
 <p><span class="math display">\[
 \pi = P\pi, \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i,
 \]</span></p>
-<p>donde <span class="math inline">\(P\)</span> es la matriz de transición (<a href="chapter1.html#sec-transicion" class="quarto-xref"><span>Sección 4.3.2</span></a>) modificada que incorpora un factor de amortiguamiento <span class="math inline">\(p = 0.85\)</span> para garantizar la ergodicidad de la cadena (<a href="chapter1.html#sec-ergodicidad" class="quarto-xref"><span>Sección 4.3.4</span></a>). El valor <span class="math inline">\(\pi_i\)</span> representa la importancia relativa del municipio <span class="math inline">\(i\)</span> dentro de la red, permitiendo identificar aquellos nodos que actúan como centros de distribución naturales.</p>
+<p>donde <span class="math inline">\(P\)</span> es la matriz de transición (<a href="#sec-transicion" class="quarto-xref"><span class="quarto-unresolved-ref">sec-transicion</span></a>) modificada que incorpora un factor de amortiguamiento <span class="math inline">\(p = 0.85\)</span> para garantizar la ergodicidad de la cadena (<a href="#sec-ergodicidad" class="quarto-xref"><span class="quarto-unresolved-ref">sec-ergodicidad</span></a>). El valor <span class="math inline">\(\pi_i\)</span> representa la importancia relativa del municipio <span class="math inline">\(i\)</span> dentro de la red, permitiendo identificar aquellos nodos que actúan como centros de distribución naturales.</p>
 <p>El flujo metodológico desarrollado en este capítulo comprende las siguientes etapas:</p>
 <ol type="1">
 <li>Recolección de datos geoespaciales mediante la API de Open Source Routing Machine (OSRM) y el Modelo Digital de Elevación (DEM) de la misión SRTM de la NASA.</li>
@@ -325,11 +325,11 @@ window.Quarto = {
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="fuentes-de-información"><span class="header-section-number">6.2.1</span> Fuentes de información</h3>
 <section id="datos-de-rutas-viales" class="level4" data-number="6.2.1.1">
 <h4 data-number="6.2.1.1" class="anchored" data-anchor-id="datos-de-rutas-viales"><span class="header-section-number">6.2.1.1</span> Datos de rutas viales</h4>
-<p>Los datos de conectividad entre municipios se obtuvieron mediante la API de <em>Open Source Routing Machine</em> (OSRM) (<span class="citation" data-cites="osrm">Project OSRM (<a href="../references.html#ref-osrm" role="doc-biblioref">2024</a>)</span>), la cual proporciona información detallada sobre las rutas existentes entre pares de coordenadas geográficas. El formato de los datos corresponde a coordenadas geográficas en el sistema WGS84 (<span class="citation" data-cites="nga2014wgs84">National Geospatial-Intelligence Agency (<a href="../references.html#ref-nga2014wgs84" role="doc-biblioref">2014</a>)</span>) (<code>[latitud, longitud]</code>) para cada punto que conforma la trayectoria vial entre municipios.</p>
+<p>Los datos de conectividad entre municipios se obtuvieron mediante la API de <em>Open Source Routing Machine</em> (OSRM) (<span class="citation" data-cites="osrm">Project OSRM (<a href="#ref-osrm" role="doc-biblioref">2024</a>)</span>), la cual proporciona información detallada sobre las rutas existentes entre pares de coordenadas geográficas. El formato de los datos corresponde a coordenadas geográficas en el sistema WGS84 (<span class="citation" data-cites="nga2014wgs84">National Geospatial-Intelligence Agency (<a href="#ref-nga2014wgs84" role="doc-biblioref">2014</a>)</span>) (<code>[latitud, longitud]</code>) para cada punto que conforma la trayectoria vial entre municipios.</p>
 </section>
 <section id="datos-de-elevación-topográfica" class="level4" data-number="6.2.1.2">
 <h4 data-number="6.2.1.2" class="anchored" data-anchor-id="datos-de-elevación-topográfica"><span class="header-section-number">6.2.1.2</span> Datos de elevación topográfica</h4>
-<p>La información altimétrica proviene del <em>Modelo Digital de Elevación</em> (DEM) generado por la misión <em>Shuttle Radar Topography Mission</em> (SRTM) de la NASA, disponible en NASA Earthdata (<span class="citation" data-cites="nasa_earthdata">NASA Earthdata (<a href="../references.html#ref-nasa_earthdata" role="doc-biblioref">2024</a>)</span>). Los datos presentan una resolución espacial de 30 metros y se distribuyen en teselas de <span class="math inline">\(1^\circ \times 1^\circ\)</span> de latitud y longitud. Cada archivo ráster SRTM consiste en una malla regular de celdas (píxeles), donde cada celda almacena un valor de elevación del terreno expresado en metros sobre el nivel del mar (m s. n.&nbsp;m.).</p>
+<p>La información altimétrica proviene del <em>Modelo Digital de Elevación</em> (DEM) generado por la misión <em>Shuttle Radar Topography Mission</em> (SRTM) de la NASA, disponible en NASA Earthdata (<span class="citation" data-cites="nasa_earthdata">NASA Earthdata (<a href="#ref-nasa_earthdata" role="doc-biblioref">2024</a>)</span>). Los datos presentan una resolución espacial de 30 metros y se distribuyen en teselas de <span class="math inline">\(1^\circ \times 1^\circ\)</span> de latitud y longitud. Cada archivo ráster SRTM consiste en una malla regular de celdas (píxeles), donde cada celda almacena un valor de elevación del terreno expresado en metros sobre el nivel del mar (m s. n.&nbsp;m.).</p>
 <p>Para cubrir áreas extensas, como un estado o una región montañosa, se integran múltiples teselas, generando un <strong>mosaico ráster</strong> continuo y sin discontinuidades, que permite representar de manera uniforme el relieve del terreno.</p>
 </section>
 </section>
@@ -338,7 +338,7 @@ window.Quarto = {
 <p>El proceso de recolección y procesamiento de datos se implementó mediante el siguiente flujo de trabajo:</p>
 <ol type="1">
 <li><p><strong>Carga y fusión de teselas DEM</strong>: Se integraron 12 teselas SRTM adyacentes que cubren completamente el territorio del estado de Chiapas, generando un mosaico ráster continuo.</p></li>
-<li><p><strong>Obtención de coordenadas geográficas</strong>: Para cada municipio, se consultaron sus coordenadas geográficas mediante el servicio de geocodificación <strong>Nominatim</strong> de OpenStreetMap (<span class="citation" data-cites="nominatim">OpenStreetMap Contributors (<a href="../references.html#ref-nominatim" role="doc-biblioref">2024</a>)</span>).</p></li>
+<li><p><strong>Obtención de coordenadas geográficas</strong>: Para cada municipio, se consultaron sus coordenadas geográficas mediante el servicio de geocodificación <strong>Nominatim</strong> de OpenStreetMap (<span class="citation" data-cites="nominatim">OpenStreetMap Contributors (<a href="#ref-nominatim" role="doc-biblioref">2024</a>)</span>).</p></li>
 <li><p><strong>Consulta de rutas viales</strong>: Utilizando la API de OSRM, se obtuvieron las rutas óptimas entre cada par de municipios, incluyendo la secuencia de coordenadas que conforman cada trayectoria.</p></li>
 <li><p><strong>Extracción de elevaciones</strong>: Para cada punto de coordenadas en las rutas viales, se interpoló su elevación a partir del mosaico ráster SRTM.</p></li>
 <li><p><strong>Cálculo de distancias</strong>: Se calcularon tanto las distancias geodésicas 2D como las distancias tridimensionales 3D incorporando las variaciones topográficas.</p></li>
@@ -353,7 +353,7 @@ window.Quarto = {
 <p>El <a href="https://github.com/AngelaOrtiz25/tesis_angela/blob/gh-pages/datos_codigos/recolecion_de_datos_pagerank.ipynb">código completo</a> para la extracción y procesamiento de los datos garantiza la transparencia y reproducibilidad del estudio. Las funciones principales implementadas incluyen:</p>
 <ul>
 <li><code>cargar_mosaico_srtm()</code>: Carga y fusiona múltiples teselas DEM en un único mosaico ráster.</li>
-<li><code>obtener_coordenadas(ciudad)</code>: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver <a href="#sec-nominatim2" class="quarto-xref"><span>Sección 6.2.2</span></a>, inciso 2</li>
+<li><code>obtener_coordenadas(ciudad)</code>: Obtiene las coordenadas geográficas de un municipio mediante Nominatim ver <a href="#sec-nominatim2" class="quarto-xref"><span class="quarto-unresolved-ref">sec-nominatim2</span></a>, inciso 2</li>
 <li><code>obtener_ruta_osrm(coord_origen, coord_destino)</code>: Consulta la ruta óptima entre dos puntos usando la API de OSRM.</li>
 <li><code>calcular_distancia_3d_ruta(mosaico, transform, ruta_coords)</code>: Calcula la distancia 3D incorporando variaciones topográficas.</li>
 </ul>
@@ -378,7 +378,7 @@ Figura&nbsp;6.1
 </figcaption>
 </figure>
 </div>
-<p>La <a href="#fig-mapa-rutas" class="quarto-xref">Figura&nbsp;<span>6.1</span></a> muestra la red territorial resultante, donde se observa claramente cómo la topografía montañosa del estado genera patrones de conectividad no uniformes, con zonas de alta densidad de rutas en el Valle Central y corredores más limitados en las regiones serranas.</p>
+<p>La <a href="#fig-mapa-rutas" class="quarto-xref">Figura&nbsp;<span class="quarto-unresolved-ref">fig-mapa-rutas</span></a> muestra la red territorial resultante, donde se observa claramente cómo la topografía montañosa del estado genera patrones de conectividad no uniformes, con zonas de alta densidad de rutas en el Valle Central y corredores más limitados en las regiones serranas.</p>
 </section>
 <section id="consideraciones-metodológicas" class="level3" data-number="6.2.6">
 <h3 data-number="6.2.6" class="anchored" data-anchor-id="consideraciones-metodológicas"><span class="header-section-number">6.2.6</span> Consideraciones metodológicas</h3>
@@ -396,7 +396,7 @@ Figura&nbsp;6.1
 <h2 data-number="6.3" class="anchored" data-anchor-id="sec-distancias3d"><span class="header-section-number">6.3</span> Cálculo de distancias geodésicas 2D y 3D</h2>
 <section id="formulación-matemática-de-la-distancia-geodésica-bidimensional" class="level3" data-number="6.3.1">
 <h3 data-number="6.3.1" class="anchored" data-anchor-id="formulación-matemática-de-la-distancia-geodésica-bidimensional"><span class="header-section-number">6.3.1</span> Formulación matemática de la distancia geodésica bidimensional</h3>
-<p>Con el objetivo de estimar la longitud real de las rutas considerando la curvatura terrestre, se empleó la fórmula de Vincenty (<span class="citation" data-cites="vincenty1975">Vincenty (<a href="../references.html#ref-vincenty1975" role="doc-biblioref">1975</a>)</span>) sobre el elipsoide WGS84 (<em>World Geodetic System 1984</em>). Sea una ruta discretizada por <span class="math inline">\(N\)</span> puntos geográficos con coordenadas:</p>
+<p>Con el objetivo de estimar la longitud real de las rutas considerando la curvatura terrestre, se empleó la fórmula de Vincenty (<span class="citation" data-cites="vincenty1975">Vincenty (<a href="#ref-vincenty1975" role="doc-biblioref">1975</a>)</span>) sobre el elipsoide WGS84 (<em>World Geodetic System 1984</em>). Sea una ruta discretizada por <span class="math inline">\(N\)</span> puntos geográficos con coordenadas:</p>
 <p><span class="math display">\[
 P_i = (\phi_i, \lambda_i), \quad i = 1, \dots, N,
 \]</span></p>
@@ -431,7 +431,7 @@ D^{(3D)} := \sum_{i=1}^{N-1} d_i^{(3D)}.
 </section>
 <section id="implementación-computacional-1" class="level3" data-number="6.3.4">
 <h3 data-number="6.3.4" class="anchored" data-anchor-id="implementación-computacional-1"><span class="header-section-number">6.3.4</span> Implementación computacional</h3>
-<p>El cálculo de distancias se implementó utilizando la librería <code>pyproj</code> (<span class="citation" data-cites="pyproj_library">Snow et&nbsp;al. (<a href="../references.html#ref-pyproj_library" role="doc-biblioref">2023</a>)</span>) una interfaz de Python para la biblioteca de proyecciones cartográficas <a href="https://pyproj4.github.io/pyproj/stable/">PROJ</a>. Esta librería proporciona proporciona funciones optimizadas para geodesia elipsoidal. La implementación garantiza consistencia numérica y reproducibilidad, aspectos fundamentales para la validación científica de los resultados.</p>
+<p>El cálculo de distancias se implementó utilizando la librería <code>pyproj</code> (<span class="citation" data-cites="pyproj_library">Snow et&nbsp;al. (<a href="#ref-pyproj_library" role="doc-biblioref">2023</a>)</span>) una interfaz de Python para la biblioteca de proyecciones cartográficas <a href="https://pyproj4.github.io/pyproj/stable/">PROJ</a>. Esta librería proporciona proporciona funciones optimizadas para geodesia elipsoidal. La implementación garantiza consistencia numérica y reproducibilidad, aspectos fundamentales para la validación científica de los resultados.</p>
 <p>El <a href="https://github.com/AngelaOrtiz25/tesis_angela/blob/gh-pages/datos_codigos/recolecion_de_datos_pagerank.ipynb">código completo</a> de procesamiento, incluyendo las funciones para carga de teselas SRTM, obtención de coordenadas mediante Nominatim, consulta de rutas vía API de OSRM y cálculo de distancias 2D y 3D, se presenta en el Apéndice A de esta tesis.</p>
 </section>
 <section id="validación-metodológica" class="level3" data-number="6.3.5">
@@ -462,7 +462,7 @@ w_{ij} = \begin{cases}
 0 &amp; \text{en caso contrario},
 \end{cases}
 \]</span></p>
-<p>donde <span class="math inline">\(d_{ij}^{(3D)}\)</span> denota la distancia tridimensional calculada según la metodología descrita en la <a href="#sec-distancias3d" class="quarto-xref"><span>Sección 6.3</span></a>. Esta formulación refleja la intuición de que municipios más cercanos ejercen una mayor influencia mutua dentro de la red, mientras que distancias mayores corresponden a una conectividad efectiva reducida.</p>
+<p>donde <span class="math inline">\(d_{ij}^{(3D)}\)</span> denota la distancia tridimensional calculada según la metodología descrita en la <a href="#sec-distancias3d" class="quarto-xref"><span class="quarto-unresolved-ref">sec-distancias3d</span></a>. Esta formulación refleja la intuición de que municipios más cercanos ejercen una mayor influencia mutua dentro de la red, mientras que distancias mayores corresponden a una conectividad efectiva reducida.</p>
 </section>
 <section id="matriz-de-adyacencia-y-normalización" class="level3" data-number="6.4.2">
 <h3 data-number="6.4.2" class="anchored" data-anchor-id="matriz-de-adyacencia-y-normalización"><span class="header-section-number">6.4.2</span> Matriz de adyacencia y normalización</h3>
@@ -487,7 +487,7 @@ q_{ij} = \frac{n_{ij}}{\sum_{k=1}^{124} n_{kj}}, \quad i,j = 1,\dots,124,
 <p><span class="math display">\[
 q_{ij} = \frac{1}{124}, \quad \forall i = 1,\dots,124.
 \]</span></p>
-<p>Esta modificación asegura que desde cualquier nodo colgante exista una probabilidad positiva de transitar hacia cualquier otro municipio de la red, preservando así la conservación de la probabilidad total en cada paso del proceso estocástico, tal como ocurre en los proceso estocásticos descritos en el <a href="chapter2.html#sec-estocasticossegundo">Capítulo 3</a></p>
+<p>Esta modificación asegura que desde cualquier nodo colgante exista una probabilidad positiva de transitar hacia cualquier otro municipio de la red, preservando así la conservación de la probabilidad total en cada paso del proceso estocástico, tal como ocurre en los proceso estocásticos descritos en el <a href="#sec-estocasticossegundo">Capítulo 3</a></p>
 </section>
 <section id="propiedades-estructurales-de-la-red" class="level3" data-number="6.4.4">
 <h3 data-number="6.4.4" class="anchored" data-anchor-id="propiedades-estructurales-de-la-red"><span class="header-section-number">6.4.4</span> Propiedades estructurales de la red</h3>
@@ -501,7 +501,7 @@ q_{ij} = \frac{1}{124}, \quad \forall i = 1,\dots,124.
 </section>
 <section id="sec-transicion2" class="level3" data-number="6.4.5">
 <h3 data-number="6.4.5" class="anchored" data-anchor-id="sec-transicion2"><span class="header-section-number">6.4.5</span> Matriz de transición modificada para PageRank</h3>
-<p>A pesar de las propiedades favorables mencionadas, la matriz <span class="math inline">\(Q\)</span> puede presentar convergencia hacia la distribución estacionaria (<a href="chapter1.html#sec-ergodicidad" class="quarto-xref"><span>Sección 4.3.4</span></a>). Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>, típicamente <span class="math inline">\(p = 0.85\)</span>.</p>
+<p>A pesar de las propiedades favorables mencionadas, la matriz <span class="math inline">\(Q\)</span> puede presentar convergencia hacia la distribución estacionaria (<a href="#sec-ergodicidad" class="quarto-xref"><span class="quarto-unresolved-ref">sec-ergodicidad</span></a>). Para garantizar la ergodicidad de la cadena de Markov y asegurar la existencia y unicidad de la distribución estacionaria, se introduce el factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>, típicamente <span class="math inline">\(p = 0.85\)</span>.</p>
 <p>La matriz de transición modificada <span class="math inline">\(P \in \mathbb{R}^{124 \times 124}\)</span> se define como:</p>
 <p><span class="math display">\[
 P = pQ + (1-p)A,
@@ -521,7 +521,7 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <li><strong>Irreducibilidad</strong>: <span class="math inline">\(p_{ij} &gt; 0\)</span> para todo par <span class="math inline">\((i,j)\)</span>, lo cual garantiza que cualquier estado sea alcanzable desde cualquier otro en un número finito de pasos,</li>
 <li><strong>Aperiodicidad</strong>: La existencia de saltos aleatorios elimina ciclos deterministas, asegurando que el período de todos los estados sea igual a 1.</li>
 </ul>
-<p>Estas propiedades garantizan, por el teorema de Perron-Frobenius (<a href="chapter1.html#sec-teroemafrobenius" class="quarto-xref"><span>Sección 4.4.2</span></a>) para matrices estocásticas primitivas, la existencia de un único vector estacionario <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> que satisface:</p>
+<p>Estas propiedades garantizan, por el teorema de Perron-Frobenius (<a href="#sec-teroemafrobenius" class="quarto-xref"><span class="quarto-unresolved-ref">sec-teroemafrobenius</span></a>) para matrices estocásticas primitivas, la existencia de un único vector estacionario <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> que satisface:</p>
 <p><span id="eq-pi"><span class="math display">\[
 \pi = P\pi \quad \sum_{i=1}^{124} \pi_i = 1, \quad \pi_i &gt; 0 \; \forall i.
 \tag{6.1}\]</span></span></p>
@@ -533,8 +533,8 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <section id="fundamentos-matemáticos-del-algoritmo-pagerank" class="level3" data-number="6.5.1">
 <h3 data-number="6.5.1" class="anchored" data-anchor-id="fundamentos-matemáticos-del-algoritmo-pagerank"><span class="header-section-number">6.5.1</span> Fundamentos matemáticos del algoritmo PageRank</h3>
 <p>El algoritmo PageRank, proporciona una medida de centralidad para los nodos de una red basada en su estructura de conectividad global. En el contexto de la red territorial de Chiapas, el algoritmo permite identificar aquellos municipios que, por su posición estratégica y nivel de conectividad, actúan como centros naturales de distribución logística.</p>
-<p>Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto <span class="math inline">\(\{X_n\}_{n \geq 0}\)</span> con espacio de estados finito <span class="math inline">\(S = \{1, 2, \dots, 124\}\)</span>, donde cada estado representa un municipio. La matriz de transición modificada <span class="math inline">\(P \in \mathbb{R}^{124 \times 124}\)</span>, construida según la metodología descrita en la <a href="#sec-transicion2" class="quarto-xref"><span>Sección 6.4.5</span></a>, define las probabilidades de transición entre municipios.</p>
-<p>El vector PageRank <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones <a href="#eq-pi" class="quarto-xref">Ecuación&nbsp;<span>6.1</span></a></p>
+<p>Matemáticamente, el algoritmo modela la red como una cadena de Markov de tiempo discreto <span class="math inline">\(\{X_n\}_{n \geq 0}\)</span> con espacio de estados finito <span class="math inline">\(S = \{1, 2, \dots, 124\}\)</span>, donde cada estado representa un municipio. La matriz de transición modificada <span class="math inline">\(P \in \mathbb{R}^{124 \times 124}\)</span>, construida según la metodología descrita en la <a href="#sec-transicion2" class="quarto-xref"><span class="quarto-unresolved-ref">sec-transicion2</span></a>, define las probabilidades de transición entre municipios.</p>
+<p>El vector PageRank <span class="math inline">\(\pi \in \mathbb{R}^{124}\)</span> se define como el vector estacionario único de esta cadena de Markov, es decir, el vector que satisface el sistema de ecuaciones <a href="#eq-pi" class="quarto-xref">Ecuación&nbsp;<span class="quarto-unresolved-ref">eq-pi</span></a></p>
 <p>El valor <span class="math inline">\(\pi_i\)</span> representa la fracción de tiempo que, en el largo plazo, un navegante aleatorio permanece en el municipio <span class="math inline">\(i\)</span>. Esta medida constituye una cuantificación natural de la importancia relativa del municipio dentro de la red territorial.</p>
 </section>
 <section id="problemas-estructurales-en-redes-reales-y-su-solución" class="level3" data-number="6.5.2">
@@ -549,7 +549,7 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <h4 data-number="6.5.2.2" class="anchored" data-anchor-id="subgrafos-absorbentes"><span class="header-section-number">6.5.2.2</span> Subgrafos absorbentes</h4>
 <p>Los subgrafos absorbentes son subconjuntos de municipios interconectados entre sí, pero sin enlaces hacia el resto de la red. Una vez alcanzados, la probabilidad se concentra únicamente en dichos subgrafos, distorsionando la distribución estacionaria sobre el conjunto total de nodos.</p>
 <p>Para evitar esta situación, PageRank introduce el factor de amortiguamiento <span class="math inline">\(p \in (0,1)\)</span>, que modela la probabilidad de que un navegante aleatorio siga un enlace real de la red. Con probabilidad <span class="math inline">\(1-p\)</span>, el navegante realiza un salto aleatorio uniforme hacia cualquier nodo de la red. En la práctica, se adopta el valor estándar <span class="math inline">\(p = 0.85\)</span>, lo cual implica que en el <span class="math inline">\(85\%\)</span> de los casos se siguen los enlaces existentes y en el <span class="math inline">\(15\%\)</span> restante se ejecuta un salto aleatorio.</p>
-<p>Con estos ajustes, la matriz de transición mantiene la misma estructura ya mencionada en la <a href="#sec-transicion2" class="quarto-xref"><span>Sección 6.4.5</span></a>.</p>
+<p>Con estos ajustes, la matriz de transición mantiene la misma estructura ya mencionada en la <a href="#sec-transicion2" class="quarto-xref"><span class="quarto-unresolved-ref">sec-transicion2</span></a>.</p>
 </section>
 </section>
 <section id="implementación-numérica-mediante-el-método-de-potencias" class="level3" data-number="6.5.3">
@@ -558,7 +558,7 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 <p><span class="math display">\[
 \pi^{(0)}_i = \frac{1}{124}, \quad i = 1, \dots, 124.
 \]</span></p>
-<p>El criterio de convergencia se basa en la norma <span class="math inline">\(\ell_1\)</span> <span class="citation" data-cites="meyer2000matrix kreyszig1989introductory">(<a href="../references.html#ref-meyer2000matrix" role="doc-biblioref">Meyer 2000</a>; <a href="../references.html#ref-kreyszig1989introductory" role="doc-biblioref">Kreyszig 1989</a>)</span> entre iteraciones consecutivas:</p>
+<p>El criterio de convergencia se basa en la norma <span class="math inline">\(\ell_1\)</span> <span class="citation" data-cites="meyer2000matrix kreyszig1989introductory">(<a href="#ref-meyer2000matrix" role="doc-biblioref">Meyer 2000</a>; <a href="#ref-kreyszig1989introductory" role="doc-biblioref">Kreyszig 1989</a>)</span> entre iteraciones consecutivas:</p>
 <p><span class="math display">\[
 \|\pi^{(k+1)} - \pi^{(k)}\|_1 = \sum_{i=1}^{124} |\pi^{(k+1)}_i - \pi^{(k)}_i| &lt; \varepsilon,
 \]</span></p>
@@ -567,7 +567,7 @@ a_{ij} = \frac{1}{124}, \quad \forall i,j = 1,\dots,124.
 </section>
 <section id="resultados-obtenidos-para-la-red-de-chiapas" class="level3" data-number="6.5.4">
 <h3 data-number="6.5.4" class="anchored" data-anchor-id="resultados-obtenidos-para-la-red-de-chiapas"><span class="header-section-number">6.5.4</span> Resultados obtenidos para la red de Chiapas</h3>
-<p>La aplicación del algoritmo PageRank a la red territorial de Chiapas produjo un vector estacionario <span class="math inline">\(\pi\)</span> cuyas componentes reflejan la importancia relativa de cada municipio. Los quince municipios con mayor valor PageRank se presentan en la <a href="#tbl-pagerank" class="quarto-xref">Tabla&nbsp;<span>6.1</span></a>.</p>
+<p>La aplicación del algoritmo PageRank a la red territorial de Chiapas produjo un vector estacionario <span class="math inline">\(\pi\)</span> cuyas componentes reflejan la importancia relativa de cada municipio. Los quince municipios con mayor valor PageRank se presentan en la <a href="#tbl-pagerank" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-pagerank</span></a>.</p>
 <div id="tbl-pagerank" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pagerank-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -679,7 +679,7 @@ Tabla&nbsp;6.1: Municipios con mayor centralidad según PageRank
 </div>
 </figure>
 </div>
-<p>Del análisis de la <a href="#tbl-pagerank" class="quarto-xref">Tabla&nbsp;<span>6.1</span></a> se desprenden tres hallazgos fundamentales.</p>
+<p>Del análisis de la <a href="#tbl-pagerank" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-pagerank</span></a> se desprenden tres hallazgos fundamentales.</p>
 <p><strong>Primero</strong>, once de los quince municipios con mayor centralidad pertenecen a la región de Los Altos de Chiapas. Este resultado se explica por la alta densidad municipal de dicha región, donde numerosos municipios de pequeña extensión territorial se encuentran separados por distancias cortas (10–40 km). Al ponderar las aristas con el inverso de la distancia tridimensional (<span class="math inline">\(w_{ij} = 1/d_{ij}^{(3D)}\)</span>), estas conexiones generan pesos elevados que, acumulados a través de múltiples vecinos, producen una alta probabilidad estacionaria para los nodos de esta región.</p>
 <p><strong>Segundo</strong>, Tuxtla Gutiérrez, a pesar de ser la capital estatal y sede del almacén central de Protección Civil, se ubica en la posición 17 con un score de <span class="math inline">\(\pi = 0.0100\)</span>. Este resultado, aparentemente contraintuitivo, valida la metodología al demostrar que el algoritmo captura la estructura real de conectividad vial sin sesgo por criterios administrativos o demográficos. La posición de Tuxtla se debe a su patrón de conectividad radial: sus conexiones hacia otras regiones del estado son predominantemente de larga distancia (40–120 km), lo que reduce los pesos individuales de sus aristas en comparación con los municipios de Los Altos, cuyas múltiples conexiones cortas generan mayor acumulación de probabilidad estacionaria.</p>
 <p><strong>Tercero</strong>, desde la perspectiva logística, los municipios con mayor centralidad identificada por PageRank funcionan como hubs naturales de redistribución regional. En un escenario de emergencia, una estrategia eficiente consistiría en enviar ayuda desde el almacén central de Tuxtla Gutiérrez hacia estos municipios prioritarios, los cuales, por su alta conectividad local, pueden redistribuir los recursos hacia comunidades adyacentes de manera rápida y con menor costo operativo.</p>
@@ -697,7 +697,7 @@ Tabla&nbsp;6.1: Municipios con mayor centralidad según PageRank
 <li><strong>Infraestructura logística</strong>: Disponibilidad de almacenes, personal capacitado y sistemas de coordinación operativa.</li>
 <li><strong>Centralidad geográfica</strong>: Posición privilegiada que minimiza las distancias promedio hacia la mayoría de los municipios del estado.</li>
 </ol>
-<p>A partir de la aplicación del algoritmo PageRank descrita en la <a href="#sec-aplicaionpagerank" class="quarto-xref"><span>Sección 6.5</span></a>, se identificaron los 15 municipios con mayor importancia relativa (<span class="math inline">\(\pi_i\)</span>) dentro de la red territorial. Estos municipios constituyen los nodos estratégicos hacia los cuales se dirigen las rutas de distribución prioritaria en escenarios de emergencia.</p>
+<p>A partir de la aplicación del algoritmo PageRank descrita en la <a href="#sec-aplicaionpagerank" class="quarto-xref"><span class="quarto-unresolved-ref">sec-aplicaionpagerank</span></a>, se identificaron los 15 municipios con mayor importancia relativa (<span class="math inline">\(\pi_i\)</span>) dentro de la red territorial. Estos municipios constituyen los nodos estratégicos hacia los cuales se dirigen las rutas de distribución prioritaria en escenarios de emergencia.</p>
 </section>
 <section id="análisis-de-rutas-óptimas" class="level3" data-number="6.6.2">
 <h3 data-number="6.6.2" class="anchored" data-anchor-id="análisis-de-rutas-óptimas"><span class="header-section-number">6.6.2</span> Análisis de rutas óptimas</h3>
@@ -710,7 +710,7 @@ Tabla&nbsp;6.1: Municipios con mayor centralidad según PageRank
 </section>
 <section id="resultados-cuantitativos" class="level3" data-number="6.6.3">
 <h3 data-number="6.6.3" class="anchored" data-anchor-id="resultados-cuantitativos"><span class="header-section-number">6.6.3</span> Resultados cuantitativos</h3>
-<p>La <a href="#tbl-rutas-optimas" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> presenta las rutas óptimas calculadas desde Tuxtla Gutiérrez hacia los 15 municipios con mayor valor PageRank. Para cada destino, se detalla la secuencia de municipios que conforman el camino de menor costo, así como las métricas de distancia bidimensional (2D), distancia tridimensional (3D), el incremento porcentual debido al relieve y el tiempo estimado de recorrido.</p>
+<p>La <a href="#tbl-rutas-optimas" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-rutas-optimas</span></a> presenta las rutas óptimas calculadas desde Tuxtla Gutiérrez hacia los 15 municipios con mayor valor PageRank. Para cada destino, se detalla la secuencia de municipios que conforman el camino de menor costo, así como las métricas de distancia bidimensional (2D), distancia tridimensional (3D), el incremento porcentual debido al relieve y el tiempo estimado de recorrido.</p>
 <div id="tbl-rutas-optimas" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-rutas-optimas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -864,7 +864,7 @@ Tabla&nbsp;6.2: Rutas óptimas desde Protección Civil (Tuxtla Gutiérrez) hacia
 </div>
 <section id="análisis-de-los-resultados-de-optimización" class="level4" data-number="6.6.3.1">
 <h4 data-number="6.6.3.1" class="anchored" data-anchor-id="análisis-de-los-resultados-de-optimización"><span class="header-section-number">6.6.3.1</span> Análisis de los resultados de optimización</h4>
-<p>De la <a href="#tbl-rutas-optimas" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> se desprenden observaciones operativas cruciales para la logística humanitaria en Chiapas:</p>
+<p>De la <a href="#tbl-rutas-optimas" class="quarto-xref">Tabla&nbsp;<span class="quarto-unresolved-ref">tbl-rutas-optimas</span></a> se desprenden observaciones operativas cruciales para la logística humanitaria en Chiapas:</p>
 <ol type="1">
 <li><p><strong>Impacto real de la topografía</strong>: El incremento topográfico oscila entre el <span class="math inline">\(0.2\%\)</span> (Acala) y el <span class="math inline">\(1.5\%\)</span> (Rayon, Pantepec, Tapilula, Mitontic). Aunque estos porcentajes parecen modestos, representan kilómetros adicionales de recorrido real que impactan directamente en el consumo de combustible, el desgaste de frenos y la fatiga del conductor. Planificar con distancias 2D subestimaría sistemáticamente los costos operativos reales.</p></li>
 <li><p><strong>Corredores de dependencia logística</strong>: Se observa la formación de cuellos de botella estratégicos. El municipio de <strong>Copainalá</strong> actúa como nodo de transición obligatorio para alcanzar tres de los municipios prioritarios: Rayon, Pantepec y Tapilula. De manera similar, <strong>Ixtapa</strong> funciona como punto de paso hacia Santiago el Pinar. Estos nodos intermedios son puntos críticos de vulnerabilidad: cualquier interrupción en las carreteras que los atraviesan (por deslaves o daños) aislaría simultáneamente a múltiples destinos prioritarios.</p></li>
@@ -878,7 +878,7 @@ Tabla&nbsp;6.2: Rutas óptimas desde Protección Civil (Tuxtla Gutiérrez) hacia
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-brin1998anatomy" class="csl-entry" role="listitem">
 Brin, Sergey, y Lawrence Page. 1998. <span>«The Anatomy of a Large-Scale Hypertextual Web Search Engine»</span>. En <em>Proceedings of the Seventh International World Wide Web Conference (WWW7)</em>, 107-17. Brisbane, Australia: Elsevier.
 </div>
