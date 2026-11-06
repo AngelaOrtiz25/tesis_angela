@@ -47,6 +47,7 @@ El caso de estudio corresponde a una ruta estratégica dentro del municipio de T
 :::
 
 ### Discretización espacial de la trayectoria
+
 Para establecer la posición exacta de un punto en la superficie terrestre, se utiliza el sistema de coordenadas geográficas, también denominado sistema de coordenadas geodésicas. De acuerdo con Hofmann-Wellenhof @hofmann2008gnss, este sistema permite describir la posición de un punto en el espacio tridimensional respecto a un modelo matemático de la Tierra, conocido como elipsoide de referencia (como el WGS84). El sistema se define mediante tres parámetros fundamentales: la **latitud**, que indica la distancia angular de un punto hacia el norte o el sur respecto a la línea del ecuador; la **longitud**, que representa la distancia angular hacia el este o el oeste medida a partir del meridiano de referencia (Greenwich); y la **altura elipsoidal**, que corresponde a la distancia vertical desde la superficie del elipsoide hasta el punto de interés. En el contexto de la navegación aérea y los Sistemas Globales de Navegación por Satélite (GNSS), estas coordenadas constituyen el estándar universal para georreferenciar trayectorias, lo que permite asociar cada punto de la ruta de vuelo con variables espaciales y meteorológicas específicas.
 ![Representación del Sistema de Coordenadas Geodésicas, mostrando la latitud ($\varphi$), la longitud ($\lambda$) y la altura elipsoidal ($h$) sobre el elipsoide de referencia.](geodesicas.png)
 
