@@ -3777,7 +3777,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, bottomtitle=1mm, breakable, bottomrule=.15mm, rightrule=.15mm, opacitybacktitle=0.6, toptitle=1mm, leftrule=.75mm, arc=.35mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, colframe=quarto-callout-note-color-frame, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, left=2mm, colback=white, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, colback=white, arc=.35mm, opacityback=0, toprule=.15mm, coltitle=black, bottomtitle=1mm, colframe=quarto-callout-note-color-frame, left=2mm, toptitle=1mm, leftrule=.75mm, titlerule=0mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, bottomrule=.15mm]
 
 \textbf{Características operativas de la ruta}
 
@@ -3807,22 +3807,21 @@ trayectoria}\label{discretizaciuxf3n-espacial-de-la-trayectoria}
 Para establecer la posición exacta de un punto en la superficie
 terrestre, se utiliza el sistema de coordenadas geográficas, también
 denominado sistema de coordenadas geodésicas. De acuerdo con
-Hofmann-Wellenhof et
-al.~((\citeproc{ref-hofmann2008gnss}{\textbf{hofmann2008gnss?}})), este
-sistema permite describir la posición de un punto en el espacio
-tridimensional respecto a un modelo matemático de la Tierra, conocido
-como elipsoide de referencia (como el WGS84). El sistema se define
-mediante tres parámetros fundamentales: la \textbf{latitud}, que indica
-la distancia angular de un punto hacia el norte o el sur respecto a la
-línea del ecuador; la \textbf{longitud}, que representa la distancia
-angular hacia el este o el oeste medida a partir del meridiano de
-referencia (Greenwich); y la \textbf{altura elipsoidal}, que corresponde
-a la distancia vertical desde la superficie del elipsoide hasta el punto
-de interés. En el contexto de la navegación aérea y los Sistemas
-Globales de Navegación por Satélite (GNSS), estas coordenadas
-constituyen el estándar universal para georreferenciar trayectorias, lo
-que permite asociar cada punto de la ruta de vuelo con variables
-espaciales y meteorológicas específicas.
+Hofmann-Wellenhof et al. Hofmann-Wellenhof, Lichtenegger, y Wasle
+(\citeproc{ref-hofmann2008gnss}{2008}), este sistema permite describir
+la posición de un punto en el espacio tridimensional respecto a un
+modelo matemático de la Tierra, conocido como elipsoide de referencia
+(como el WGS84). El sistema se define mediante tres parámetros
+fundamentales: la \textbf{latitud}, que indica la distancia angular de
+un punto hacia el norte o el sur respecto a la línea del ecuador; la
+\textbf{longitud}, que representa la distancia angular hacia el este o
+el oeste medida a partir del meridiano de referencia (Greenwich); y la
+\textbf{altura elipsoidal}, que corresponde a la distancia vertical
+desde la superficie del elipsoide hasta el punto de interés. En el
+contexto de la navegación aérea y los Sistemas Globales de Navegación
+por Satélite (GNSS), estas coordenadas constituyen el estándar universal
+para georreferenciar trayectorias, lo que permite asociar cada punto de
+la ruta de vuelo con variables espaciales y meteorológicas específicas.
 
 Para el análisis de navegación, la trayectoria completa se discretiza en
 \(N\) segmentos espaciales consecutivos. Cada segmento se representa
@@ -7150,6 +7149,11 @@ Hayashi, Takio. 1973. {«A Method of Estimating the Horizontal Phase
 Velocity of Atmospheric Waves from the Phase Difference of Spectral
 Components»}. \emph{Journal of the Meteorological Society of Japan} 51
 (4): 299-308. \url{https://doi.org/10.2151/jmsj1965.51.4_299}.
+
+\bibitem[\citeproctext]{ref-hofmann2008gnss}
+Hofmann-Wellenhof, B., H. Lichtenegger, y E. Wasle. 2008. \emph{GNSS --
+Global Navigation Satellite Systems: GPS, GLONASS, Galileo, and More}.
+Vienna: Springer.
 
 \bibitem[\citeproctext]{ref-horn2012matrix}
 Horn, Roger A., y Charles R. Johnson. 2012. \emph{Matrix Analysis}. 2.ª
