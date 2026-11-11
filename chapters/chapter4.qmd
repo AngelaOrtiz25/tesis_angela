@@ -8,7 +8,6 @@ format:
 execute: 
   freeze: auto 
 jupyter: python3
-bibliography: referencias.bib
 ---
 :::{style="text-align: justify"}
 Este capítulo presenta un marco matemáticamente fundamentado para la toma de decisiones operativas en el despliegue de drones para transporte de ayuda humanitaria. Se desarrolla un modelo de **pronóstico advectivo a corto plazo** (*nowcasting*) que integra técnicas de análisis espectral, series de tiempo y teoría de decisión bajo incertidumbre. El sistema evalúa la viabilidad de operaciones aéreas mediante la cuantificación de variables meteorológicas críticas (velocidad del viento, temperatura, humedad relativa y precipitación) a lo largo de una ruta específica: Aeropuerto Internacional Ángel Albino Corzo hacia Protección Civil en Tuxtla Gutiérrez, Chiapas. La metodología propuesta garantiza la seguridad operacional mediante una política conservadora de tolerancia cero frente a violaciones de umbrales técnicos, proporcionando un protocolo reproducible para la logística humanitaria en entornos meteorológicos variables.
