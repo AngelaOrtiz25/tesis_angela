@@ -20,8 +20,6 @@ affiliations:
     name: "Universidad Autónoma de Chiapas"
 ---
 
-:::{style="text-align: justify"}
-
 ::: {.abstract summary-type="resumen"}
 ## Resumen {-}
 
@@ -32,13 +30,12 @@ La planificación logística en regiones con topografía compleja y alta exposic
 
 
 ::: {.abstract summary-type="abstract" language="en"}
-::: {.abstract summary-type="abstract" language="en"}
 ## Abstract {-}
 
-Logistical planning in regions with complex topography and high exposure to disasters requires quantitative tools that integrate territorial prioritization, safe operations under meteorological uncertainty, and robust decision-making. This thesis develops a mathematical and computational framework to optimize humanitarian aid distribution and support drone operations in the state of Chiapas, Mexico. In the spatial domain, the road network of 124 municipalities is modeled as a weighted directed graph using three-dimensional distances calculated from Vincenty's formula and the SRTM Digital Elevation Model. By applying the PageRank algorithm with a damping factor ($p=0.85$), a structural centrality vector is obtained that ranks municipalities according to their capacity for logistics flow concentration; the existence and uniqueness of this solution are guaranteed by the Perron-Frobenius theorem. The algorithm identified strategic centers such as Tuxtla Gutiérrez, Tapachula, and San Cristóbal de las Casas. In the operational domain, a hybrid *nowcasting* system was developed for critical variables (wind, temperature, humidity, precipitation) along flight corridors, combining advection velocity estimation via cross-correlation and frequency-wavenumber ($f$-$k$) analysis, with temporal persistence captured by AR(1) processes. Uncertainty was quantified using the *Moving Block Bootstrap* method, preserving serial dependence without assuming normality. Finally, a binary decision rule under uncertainty was formalized based on Wald's criterion and feasible regions, implementing a zero-tolerance policy through the 95th percentile. Results demonstrate that the integration of graph theory, stochastic processes, and robust decision-making provides a reproducible and scalable analytical support for humanitarian logistics in adverse environments.
+Logistical planning in regions with complex topography and high exposure to disasters requires quantitative tools that integrate territorial prioritization, safe operations under meteorological uncertainty, and robust decision-making. This thesis develops a mathematical and computational framework to optimize humanitarian aid distribution and support drone operations in the state of Chiapas, Mexico. In the spatial 
+domain, the road network of 124 municipalities is modeled as a weighted directed graph using three-dimensional distances calculated from Vincenty's formula and the SRTM Digital Elevation Model. By applying the PageRank algorithm with a damping factor ($p=0.85$), a structural centrality vector is obtained that ranks municipalities according to their capacity for logistics flow concentration; the existence and uniqueness of this solution are guaranteed by the Perron-Frobenius theorem. The algorithm identified strategic centers such as Tuxtla Gutiérrez, Tapachula, and San Cristóbal de las Casas. In the operational domain, a hybrid *nowcasting* system was developed for critical variables (wind, temperature, humidity, precipitation) along flight corridors, combining advection velocity estimation via cross-correlation and frequency-wavenumber ($f$-$k$) analysis, with temporal persistence captured by AR(1) processes. Uncertainty was quantified using the *Moving Block Bootstrap* method, preserving serial dependence without assuming normality. Finally, a binary decision rule under uncertainty was formalized based on Wald's criterion and feasible regions, implementing a zero-tolerance policy through the 95th percentile. Results demonstrate that the integration of graph theory, stochastic processes, and robust decision-making provides a reproducible and scalable analytical support for humanitarian logistics in adverse environments.
 
 **Keywords:** PageRank algorithm, Advection model for navigation, Markov chains (MSC 60J10), Statistical decision theory (MSC 62C05).
 :::
 
-:::
 
