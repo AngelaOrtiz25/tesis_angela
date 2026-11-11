@@ -556,16 +556,16 @@ q_{ij} = \frac{\tilde{w}_{ij}}{\sum_{k=1}^n \tilde{w}_{kj}}, \quad \text{si } \s
 \]</span> Esta transformación garantiza que <span class="math inline">\(Q\)</span> sea una matriz estocástica por columnas (<span class="math inline">\(\sum_i q_{ij} = 1\)</span>), condición necesaria para interpretarla como el núcleo de un proceso de Markov discreto <span class="citation" data-cites="brin1998anatomy">(<a href="../references.html#ref-brin1998anatomy" role="doc-biblioref">Brin y Page 1998</a>)</span>.</p>
 <p>Aplicaciones a redes de transporte terrestre</p>
 <p>En logística humanitaria, las redes ponderadas permiten cuantificar propiedades estructurales que son críticas para la planificación estratégica:</p>
-</section>
-<section id="medición-de-centralidad-e-influencia-estructural" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="medición-de-centralidad-e-influencia-estructural">Medición de centralidad e influencia estructural</h3>
+<section id="medición-de-centralidad-e-influencia-estructural" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="medición-de-centralidad-e-influencia-estructural">Medición de centralidad e influencia estructural</h4>
 <p>El peso de las aristas no solo refleja distancia física, sino también la intensidad de la interacción entre nodos. Municipios con múltiples conexiones de bajo peso (corta distancia, alta accesibilidad) tienden a acumular mayor flujo potencial, convirtiéndose en centros naturales de distribución. Esta propiedad se cuantifica mediante medidas de centralidad espectral, como el vector PageRank, que asigna a cada nodo una puntuación proporcional a su importancia relativa en la red <span class="citation" data-cites="borgatti2005centrality">(<a href="../references.html#ref-borgatti2005centrality" role="doc-biblioref">Borgatti 2005</a>)</span>.</p>
 </section>
-<section id="evaluación-de-vulnerabilidad-y-robustez" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="evaluación-de-vulnerabilidad-y-robustez">Evaluación de vulnerabilidad y robustez</h3>
+<section id="evaluación-de-vulnerabilidad-y-robustez" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="evaluación-de-vulnerabilidad-y-robustez">Evaluación de vulnerabilidad y robustez</h4>
 <p>La sensibilidad de la red ante la interrupción de arcos o nodos puede analizarse mediante variaciones en la distribución estacionaria. Sea <span class="math inline">\(\pi\)</span> el vector de centralidad original y <span class="math inline">\(\pi^{(e)}\)</span> el vector tras eliminar el arco <span class="math inline">\(e\)</span>. El impacto relativo se mide como: <span class="math display">\[
 \Delta^{(e)} = \|\pi - \pi^{(e)}\|_1 = \sum_{i=1}^n |\pi_i - \pi_i^{(e)}|.
 \]</span> Valores elevados de <span class="math inline">\(\Delta^{(e)}\)</span> identifican enlaces críticos cuya falla redistribuye significativamente la importancia estructural de los municipios, guiando así prioridades de mantenimiento o rutas de contingencia <span class="citation" data-cites="barabasi2016network">(<a href="../references.html#ref-barabasi2016network" role="doc-biblioref">Barabási 2016</a>)</span>.</p>
+</section>
 <section id="accesibilidad-ponderada-y-equidad-territorial" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="accesibilidad-ponderada-y-equidad-territorial">Accesibilidad ponderada y equidad territorial</h4>
 <p>La distribución de pesos en la red refleja desigualdades geográficas en el acceso a servicios. Un análisis de los pesos de arista salientes por municipio permite identificar regiones con conectividad sistémicamente deficiente, incluso cuando la red es topológicamente conexa. Esta información es esencial para diseñar políticas de inclusión logística y localizar centros de almacenamiento intermedios.</p>
