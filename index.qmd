@@ -20,6 +20,8 @@ affiliations:
     name: "Universidad Autónoma de Chiapas"
 ---
 
+:::{style="text-align: justify"}
+
 ::: {.abstract summary-type="resumen"}
 ## Resumen {-}
 
@@ -38,4 +40,4 @@ domain, the road network of 124 municipalities is modeled as a weighted directed
 **Keywords:** PageRank algorithm, Advection model for navigation, Markov chains (MSC 60J10), Statistical decision theory (MSC 62C05).
 :::
 
-
+:::
