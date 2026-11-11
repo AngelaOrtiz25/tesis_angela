@@ -420,8 +420,6 @@ A partir de la aplicación del algoritmo PageRank descrita en la @sec-aplicaionp
 
 ### Análisis de rutas óptimas
 
-### Análisis de rutas óptimas
-
 Una vez que el algoritmo PageRank ha jerarquizado la red territorial e identificado los 15 nodos con mayor centralidad estructural, el siguiente paso es determinar cómo conectar de manera eficiente el almacén central de Protección Civil en Tuxtla Gutiérrez ($v_0$) con cada uno de estos municipios prioritarios ($v_j$). Para ello se aplica el **algoritmo de Dijkstra**, un método de búsqueda voraz que resuelve el problema de la ruta más corta en grafos con pesos no negativos, explorando iterativamente los nodos accesibles desde el origen y actualizando las distancias acumuladas hasta garantizar el camino de menor costo hacia cada destino.
 
 La particularidad fundamental de esta implementación radica en que los pesos de las aristas no corresponden a distancias euclidianas planas, sino a las **distancias geodésicas tridimensionales** $d^{(3D)}_{k,k+1}$ calculadas a partir de la fórmula de Vincenty y el Modelo Digital de Elevación SRTM. Matemáticamente, la ruta óptima $\mathcal{R}^*_{0j}$ se define como:

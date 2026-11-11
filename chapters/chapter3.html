@@ -701,9 +701,6 @@ Tabla&nbsp;6.1: Municipios con mayor centralidad según PageRank
 </section>
 <section id="análisis-de-rutas-óptimas" class="level3" data-number="6.6.2">
 <h3 data-number="6.6.2" class="anchored" data-anchor-id="análisis-de-rutas-óptimas"><span class="header-section-number">6.6.2</span> Análisis de rutas óptimas</h3>
-</section>
-<section id="análisis-de-rutas-óptimas-1" class="level3" data-number="6.6.3">
-<h3 data-number="6.6.3" class="anchored" data-anchor-id="análisis-de-rutas-óptimas-1"><span class="header-section-number">6.6.3</span> Análisis de rutas óptimas</h3>
 <p>Una vez que el algoritmo PageRank ha jerarquizado la red territorial e identificado los 15 nodos con mayor centralidad estructural, el siguiente paso es determinar cómo conectar de manera eficiente el almacén central de Protección Civil en Tuxtla Gutiérrez (<span class="math inline">\(v_0\)</span>) con cada uno de estos municipios prioritarios (<span class="math inline">\(v_j\)</span>). Para ello se aplica el <strong>algoritmo de Dijkstra</strong>, un método de búsqueda voraz que resuelve el problema de la ruta más corta en grafos con pesos no negativos, explorando iterativamente los nodos accesibles desde el origen y actualizando las distancias acumuladas hasta garantizar el camino de menor costo hacia cada destino.</p>
 <p>La particularidad fundamental de esta implementación radica en que los pesos de las aristas no corresponden a distancias euclidianas planas, sino a las <strong>distancias geodésicas tridimensionales</strong> <span class="math inline">\(d^{(3D)}_{k,k+1}\)</span> calculadas a partir de la fórmula de Vincenty y el Modelo Digital de Elevación SRTM. Matemáticamente, la ruta óptima <span class="math inline">\(\mathcal{R}^*_{0j}\)</span> se define como:</p>
 <p><span class="math display">\[
@@ -724,8 +721,8 @@ Figura&nbsp;6.2: Ejecución del algoritmo de Dijkstra desde Protección Civil (T
 </figure>
 </div>
 </section>
-<section id="resultados-cuantitativos" class="level3" data-number="6.6.4">
-<h3 data-number="6.6.4" class="anchored" data-anchor-id="resultados-cuantitativos"><span class="header-section-number">6.6.4</span> Resultados cuantitativos</h3>
+<section id="resultados-cuantitativos" class="level3" data-number="6.6.3">
+<h3 data-number="6.6.3" class="anchored" data-anchor-id="resultados-cuantitativos"><span class="header-section-number">6.6.3</span> Resultados cuantitativos</h3>
 <p>La <a href="#tbl-rutas-optimas" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> presenta las rutas óptimas calculadas desde Tuxtla Gutiérrez hacia los 15 municipios con mayor valor PageRank. Para cada destino, se detalla la secuencia de municipios que conforman el camino de menor costo, así como las métricas de distancia bidimensional (2D), distancia tridimensional (3D), el incremento porcentual debido al relieve y el tiempo estimado de recorrido.</p>
 <div id="tbl-rutas-optimas" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -878,8 +875,8 @@ Tabla&nbsp;6.2: Rutas óptimas desde Protección Civil (Tuxtla Gutiérrez) hacia
 </div>
 </figure>
 </div>
-<section id="análisis-de-los-resultados-de-optimización" class="level4" data-number="6.6.4.1">
-<h4 data-number="6.6.4.1" class="anchored" data-anchor-id="análisis-de-los-resultados-de-optimización"><span class="header-section-number">6.6.4.1</span> Análisis de los resultados de optimización</h4>
+<section id="análisis-de-los-resultados-de-optimización" class="level4" data-number="6.6.3.1">
+<h4 data-number="6.6.3.1" class="anchored" data-anchor-id="análisis-de-los-resultados-de-optimización"><span class="header-section-number">6.6.3.1</span> Análisis de los resultados de optimización</h4>
 <p>De la <a href="#tbl-rutas-optimas" class="quarto-xref">Tabla&nbsp;<span>6.2</span></a> se desprenden observaciones operativas cruciales para la logística humanitaria en Chiapas:</p>
 <ol type="1">
 <li><p><strong>Impacto real de la topografía</strong>: El incremento topográfico oscila entre el <span class="math inline">\(0.2\%\)</span> (Acala) y el <span class="math inline">\(1.5\%\)</span> (Rayon, Pantepec, Tapilula, Mitontic). Aunque estos porcentajes parecen modestos, representan kilómetros adicionales de recorrido real que impactan directamente en el consumo de combustible, el desgaste de frenos y la fatiga del conductor. Planificar con distancias 2D subestimaría sistemáticamente los costos operativos reales.</p></li>
