@@ -809,29 +809,39 @@ En logística humanitaria, las redes ponderadas permiten cuantificar
 propiedades estructurales que son críticas para la planificación
 estratégica:
 
-Medición de centralidad e influencia estructural El peso de las aristas
-no solo refleja distancia física, sino también la intensidad de la
-interacción entre nodos. Municipios con múltiples conexiones de bajo
-peso (corta distancia, alta accesibilidad) tienden a acumular mayor
-flujo potencial, convirtiéndose en centros naturales de distribución.
-Esta propiedad se cuantifica mediante medidas de centralidad espectral,
-como el vector PageRank, que asigna a cada nodo una puntuación
-proporcional a su importancia relativa en la red
+\subsection*{Medición de centralidad e influencia
+estructural}\label{mediciuxf3n-de-centralidad-e-influencia-estructural}
+\addcontentsline{toc}{subsection}{Medición de centralidad e influencia
+estructural}
+
+El peso de las aristas no solo refleja distancia física, sino también la
+intensidad de la interacción entre nodos. Municipios con múltiples
+conexiones de bajo peso (corta distancia, alta accesibilidad) tienden a
+acumular mayor flujo potencial, convirtiéndose en centros naturales de
+distribución. Esta propiedad se cuantifica mediante medidas de
+centralidad espectral, como el vector PageRank, que asigna a cada nodo
+una puntuación proporcional a su importancia relativa en la red
 (\citeproc{ref-borgatti2005centrality}{Borgatti 2005}).
 
-Evaluación de vulnerabilidad y robustez La sensibilidad de la red ante
-la interrupción de arcos o nodos puede analizarse mediante variaciones
-en la distribución estacionaria. Sea \(\pi\) el vector de centralidad
-original y \(\pi^{(e)}\) el vector tras eliminar el arco \(e\). El
-impacto relativo se mide como: \[
+\subsection*{Evaluación de vulnerabilidad y
+robustez}\label{evaluaciuxf3n-de-vulnerabilidad-y-robustez}
+\addcontentsline{toc}{subsection}{Evaluación de vulnerabilidad y
+robustez}
+
+La sensibilidad de la red ante la interrupción de arcos o nodos puede
+analizarse mediante variaciones en la distribución estacionaria. Sea
+\(\pi\) el vector de centralidad original y \(\pi^{(e)}\) el vector tras
+eliminar el arco \(e\). El impacto relativo se mide como: \[
 \Delta^{(e)} = \|\pi - \pi^{(e)}\|_1 = \sum_{i=1}^n |\pi_i - \pi_i^{(e)}|.
 \] Valores elevados de \(\Delta^{(e)}\) identifican enlaces críticos
 cuya falla redistribuye significativamente la importancia estructural de
 los municipios, guiando así prioridades de mantenimiento o rutas de
 contingencia (\citeproc{ref-barabasi2016network}{Barabási 2016}).
 
-\subsubsection{Accesibilidad ponderada y equidad
+\subsubsection*{Accesibilidad ponderada y equidad
 territorial}\label{accesibilidad-ponderada-y-equidad-territorial}
+\addcontentsline{toc}{subsubsection}{Accesibilidad ponderada y equidad
+territorial}
 
 La distribución de pesos en la red refleja desigualdades geográficas en
 el acceso a servicios. Un análisis de los pesos de arista salientes por
@@ -3807,7 +3817,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, rightrule=.15mm, titlerule=0mm, left=2mm, leftrule=.75mm, coltitle=black, breakable, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, bottomtitle=1mm, toptitle=1mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, left=2mm, bottomtitle=1mm, coltitle=black, colback=white, breakable, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, toptitle=1mm, leftrule=.75mm, bottomrule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, rightrule=.15mm]
 
 \textbf{Características operativas de la ruta}
 
