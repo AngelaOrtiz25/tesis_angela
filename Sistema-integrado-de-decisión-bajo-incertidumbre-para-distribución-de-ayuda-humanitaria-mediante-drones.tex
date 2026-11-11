@@ -3515,6 +3515,9 @@ emergencia.
 \subsection{Análisis de rutas
 óptimas}\label{anuxe1lisis-de-rutas-uxf3ptimas}
 
+\subsection{Análisis de rutas
+óptimas}\label{anuxe1lisis-de-rutas-uxf3ptimas-1}
+
 Una vez que el algoritmo PageRank ha jerarquizado la red territorial e
 identificado los 15 nodos con mayor centralidad estructural, el
 siguiente paso es determinar cómo conectar de manera eficiente el
@@ -3533,23 +3536,54 @@ sino a las \textbf{distancias geodésicas tridimensionales}
 Modelo Digital de Elevación SRTM. Matemáticamente, la ruta óptima
 \(\mathcal{R}^*_{0j}\) se define como:
 
-\begin{equation}
-    \mathcal{R}^*_{0j} = \arg\min_{\mathcal{R} \in P_{0j}} \sum_{(v_k, v_{k+1}) \in \mathcal{R}} d^{(3D)}_{k,k+1}
-\end{equation} donde \(P_{0j}\) es el conjunto de todas las rutas
-posibles. Esta formulación garantiza que el algoritmo penalice
-correctamente las aristas que atraviesan pendientes topográficas
-severas, reflejando el verdadero costo operativo en la accidentada
-orografía chiapaneca.
+\[
+\mathcal{R}^*_{0j} = \arg\min_{\mathcal{R} \in P_{0j}} \sum_{(v_k, v_{k+1}) \in \mathcal{R}} d^{(3D)}_{k,k+1}
+\]
 
-La Figura \ref{fig:dijkstra_chiapas} ilustra el resultado de esta
-ejecución, donde desde el nodo origen se despliegan las rutas óptimas
-hacia los 15 municipios prioritarios, mostrando cómo el algoritmo
-selecciona los corredores viales de menor costo 3D. Para garantizar la
-reproducibilidad y eficiencia computacional de este análisis, se utilizó
-la
-\textbf{implementación del algoritmo de Dijkstra disponible en la biblioteca \texttt{NetworkX} de Python},
-configurada para procesar los pesos tridimensionales derivados del
-modelo de elevación.
+donde \(P_{0j}\) es el conjunto de todas las rutas posibles. Esta
+formulación garantiza que el algoritmo penalice correctamente las
+aristas que atraviesan pendientes topográficas severas, reflejando el
+verdadero costo operativo en la accidentada orografía chiapaneca.
+
+La implementación del algoritmo de Dijkstra se realizó utilizando la
+biblioteca \textbf{NetworkX} de Python, configurada para procesar grafos
+dirigidos ponderados con pesos no negativos. El grafo de entrada
+corresponde a la red territorial de Chiapas construida en la Sección
+6.4, donde cada arista \((v_i, v_j)\) tiene como peso la distancia
+geodésica tridimensional \(d_{ij}^{(3D)}\) calculada mediante la fórmula
+de Vincenty y el Modelo Digital de Elevación SRTM.
+
+El algoritmo se ejecutó desde el nodo origen \(v_0\) correspondiente a
+las instalaciones de Protección Civil en Tuxtla Gutiérrez, calculando
+simultáneamente las rutas óptimas hacia los 15 municipios identificados
+con mayor centralidad estructural según el algoritmo PageRank (Sección
+6.5). La complejidad computacional de esta implementación es
+\(\mathcal{O}(|E| + |V| \log |V|)\), donde \(|V| = 124\) es el número de
+municipios y \(|E|\) el número de conexiones viales, resultando en
+tiempos de ejecución inferiores a un segundo en hardware estándar.
+
+La Figura Figura~\ref{fig-dijkstra-chiapas} ilustra el resultado de esta
+ejecución, donde se observan las rutas óptimas desplegadas desde el nodo
+origen hacia cada municipio prioritario. Los colores y grosores de las
+aristas representan las distancias 3D acumuladas, evidenciando cómo el
+algoritmo selecciona los corredores viales de menor costo topográfico,
+incluso cuando esto implica pasar por municipios intermedios como
+Copainalá o Ixtapa.
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{chapters/dijkstra.png}}
+
+}
+
+\caption{\label{fig-dijkstra-chiapas}Ejecución del algoritmo de Dijkstra
+desde Protección Civil (Tuxtla Gutiérrez) hacia los 15 municipios con
+mayor centralidad PageRank. Los grosores de las aristas representan las
+distancias geodésicas 3D acumuladas.}
+
+\end{figure}%
 
 \subsection{Resultados cuantitativos}\label{resultados-cuantitativos}
 
@@ -3773,7 +3807,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacityback=0, arc=.35mm, colback=white, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toptitle=1mm, left=2mm, bottomrule=.15mm, breakable, colframe=quarto-callout-note-color-frame, coltitle=black]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, bottomrule=.15mm, colframe=quarto-callout-note-color-frame, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, rightrule=.15mm, bottomtitle=1mm, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, opacityback=0, breakable, left=2mm, leftrule=.75mm, opacitybacktitle=0.6, titlerule=0mm, arc=.35mm, colback=white]
 
 \textbf{Características operativas de la ruta}
 

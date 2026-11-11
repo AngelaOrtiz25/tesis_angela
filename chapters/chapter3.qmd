@@ -438,7 +438,7 @@ El algoritmo se ejecutó desde el nodo origen $v_0$ correspondiente a las instal
 
 La Figura @fig-dijkstra-chiapas ilustra el resultado de esta ejecución, donde se observan las rutas óptimas desplegadas desde el nodo origen hacia cada municipio prioritario. Los colores y grosores de las aristas representan las distancias 3D acumuladas, evidenciando cómo el algoritmo selecciona los corredores viales de menor costo topográfico, incluso cuando esto implica pasar por municipios intermedios como Copainalá o Ixtapa.
 
-![Ejecución del algoritmo de Dijkstra desde Protección Civil (Tuxtla Gutiérrez) hacia los 15 municipios con mayor centralidad PageRank. Los grosores de las aristas representan las distancias geodésicas 3D acumuladas.](chapters/dijkstra.png){#fig-dijkstra-chiapas fig-align="center"}
+![Ejecución del algoritmo de Dijkstra desde Protección Civil (Tuxtla Gutiérrez) hacia los 15 municipios con mayor centralidad PageRank. Los grosores de las aristas representan las distancias geodésicas 3D acumuladas.](/chapters/dijkstra.png){#fig-dijkstra-chiapas fig-align="center"}
 
 
 ### Resultados cuantitativos
