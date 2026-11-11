@@ -483,7 +483,7 @@ Este resultado garantiza que los intervalos de confianza construidos a partir de
 
 #### Definición de las σ-álgebras de pasado y futuro
 
-Para completar la formulación teórica del coeficiente de mezcla fuerte, es necesario especificar la estructura de información representada por las $\sigma$-álgebras $\mathcal{F}_{-\infty}^0$ y $\mathcal{F}_k^\infty$. Sea $\{X_t\}_{t \in \mathbb{Z}}$ el proceso estocástico definido sobre un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$.
+Para completar la formulación teórica del coeficiente de mezcla fuerte, es necesario especificar la estructura de información representada por las $\sigma$ -álgebras $\mathcal{F}_{-\infty}^0$ y $\mathcal{F}_k^\infty$. Sea $\{X_t\}_{t \in \mathbb{Z}}$ el proceso estocástico definido sobre un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$.
 
 **Definición 4.2 (σ-álgebra generada por un subconjunto de variables).** Para cualquier conjunto de índices $I \subseteq \mathbb{Z}$, denotamos por $\mathcal{F}_I$ a la σ-álgebra generada por las variables aleatorias $\{X_t : t \in I\}$, definida como la mínima σ-álgebra que hace medibles a todas las variables en dicho conjunto:
 $$
