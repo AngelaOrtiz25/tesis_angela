@@ -3545,13 +3545,15 @@ formulación garantiza que el algoritmo penalice correctamente las
 aristas que atraviesan pendientes topográficas severas, reflejando el
 verdadero costo operativo en la accidentada orografía chiapaneca.
 
-La implementación del algoritmo de Dijkstra se realizó utilizando la
-biblioteca \textbf{NetworkX} de Python, configurada para procesar grafos
-dirigidos ponderados con pesos no negativos. El grafo de entrada
-corresponde a la red territorial de Chiapas construida en la Sección
-6.4, donde cada arista \((v_i, v_j)\) tiene como peso la distancia
-geodésica tridimensional \(d_{ij}^{(3D)}\) calculada mediante la fórmula
-de Vincenty y el Modelo Digital de Elevación SRTM.
+La implementación del
+\href{https://github.com/AngelaOrtiz25/tesis_angela/blob/gh-pages/Dijkstra.ipynb}{algoritmo
+de Dijkstra} se realizó utilizando la biblioteca \textbf{NetworkX} de
+Python, configurada para procesar grafos dirigidos ponderados con pesos
+no negativos. El grafo de entrada corresponde a la red territorial de
+Chiapas construida en la Sección 6.4, donde cada arista \((v_i, v_j)\)
+tiene como peso la distancia geodésica tridimensional \(d_{ij}^{(3D)}\)
+calculada mediante la fórmula de Vincenty y el Modelo Digital de
+Elevación SRTM.
 
 El algoritmo se ejecutó desde el nodo origen \(v_0\) correspondiente a
 las instalaciones de Protección Civil en Tuxtla Gutiérrez, calculando
@@ -3574,7 +3576,7 @@ Copainalá o Ixtapa.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{chapters/dijkstra.png}}
+\pandocbounded{\includegraphics[keepaspectratio]{chapters/dijkstra3.png}}
 
 }
 
@@ -3807,7 +3809,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, colback=white, opacitybacktitle=0.6, leftrule=.75mm, coltitle=black, bottomtitle=1mm, breakable, left=2mm, toptitle=1mm, colframe=quarto-callout-note-color-frame, titlerule=0mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colbacktitle=quarto-callout-note-color!10!white, arc=.35mm, bottomrule=.15mm, opacityback=0, rightrule=.15mm, toprule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, breakable, bottomrule=.15mm, left=2mm, opacitybacktitle=0.6, coltitle=black, rightrule=.15mm, opacityback=0, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, toprule=.15mm, bottomtitle=1mm, toptitle=1mm, titlerule=0mm, leftrule=.75mm, arc=.35mm]
 
 \textbf{Características operativas de la ruta}
 
