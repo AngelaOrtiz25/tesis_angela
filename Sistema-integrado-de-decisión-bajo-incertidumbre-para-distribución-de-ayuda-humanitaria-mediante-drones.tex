@@ -254,7 +254,7 @@
 distribución de ayuda humanitaria mediante drones}
 \author{Ángela Yaneli Ortiz Diaz \and Asesor: Dr.~Yofre Hernán García
 Gómez}
-\date{2026-11-05}
+\date{2026-11-10}
 \begin{document}
 \begin{titlepage}
 \hspace{-1.7cm} %Este comando es para mandar a la izquierda ;)
@@ -307,10 +307,6 @@ Gómez}
 
 \chapter*{Agradecimientos}
 
-
-\setlength{\parindent}{0pt} % Elimina sangría para mayor elegancia
-\setlength{\parskip}{1.2\baselineskip} % Espacio generoso entre párrafos
-
 A Dios, por su infinita ayuda, por guiarme en cada paso y permitirme vivir este momento tan especial.
 
 A mis padres y hermanos, por ser el soporte fundamental en mi camino. Mi más sincero agradecimiento por su apoyo inquebrantable y por el esfuerzo realizado para hacer posible la culminación de esta etapa.
@@ -318,6 +314,7 @@ A mis padres y hermanos, por ser el soporte fundamental en mi camino. Mi más si
 Al Dr. Yofre Hernán García Gómez, mi asesor de tesis, por su paciencia, su disposición de tiempo y de enseñanza, y por su constante motivación.
 
 A cada uno de los docentes que me impartieron clases, por su constante disposición para enseñarnos, su gran calidez humana y la motivación que siempre nos brindaron. Agradezco su paciencia y la excelencia con la que compartieron sus conocimientos, los cuales han sido la base de mi desarrollo profesional.
+
 A mis compañeros y amigos, quienes con cada conversación y momento de convivencia, hicieron de mi estancia universitaria un periodo sumamente ameno y enriquecedor.
 
 
@@ -2378,9 +2375,10 @@ futuro}\label{definiciuxf3n-de-las-ux3c3-uxe1lgebras-de-pasado-y-futuro}
 
 Para completar la formulación teórica del coeficiente de mezcla fuerte,
 es necesario especificar la estructura de información representada por
-las σ-álgebras \(\mathcal{F}_{-\infty}^0\) y \(\mathcal{F}_k^\infty\).
-Sea \(\{X_t\}_{t \in \mathbb{Z}}\) el proceso estocástico definido sobre
-un espacio de probabilidad \((\Omega, \mathcal{F}, \mathbb{P})\).
+las \(\sigma\) -álgebras \(\mathcal{F}_{-\infty}^0\) y
+\(\mathcal{F}_k^\infty\). Sea \(\{X_t\}_{t \in \mathbb{Z}}\) el proceso
+estocástico definido sobre un espacio de probabilidad
+\((\Omega, \mathcal{F}, \mathbb{P})\).
 
 \textbf{Definición 4.2 (σ-álgebra generada por un subconjunto de
 variables).} Para cualquier conjunto de índices
@@ -3775,7 +3773,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, toprule=.15mm, arc=.35mm, colback=white, colbacktitle=quarto-callout-note-color!10!white, coltitle=black, breakable, bottomrule=.15mm, opacitybacktitle=0.6, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, leftrule=.75mm, bottomtitle=1mm, toptitle=1mm, rightrule=.15mm, titlerule=0mm, colframe=quarto-callout-note-color-frame, left=2mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, toprule=.15mm, titlerule=0mm, leftrule=.75mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, opacityback=0, arc=.35mm, colback=white, bottomtitle=1mm, rightrule=.15mm, opacitybacktitle=0.6, toptitle=1mm, left=2mm, bottomrule=.15mm, breakable, colframe=quarto-callout-note-color-frame, coltitle=black]
 
 \textbf{Características operativas de la ruta}
 
@@ -3801,6 +3799,40 @@ afectada.
 
 \subsection{Discretización espacial de la
 trayectoria}\label{discretizaciuxf3n-espacial-de-la-trayectoria}
+
+Para establecer la posición exacta de un punto en la superficie
+terrestre, se utiliza el sistema de coordenadas geográficas, también
+denominado sistema de coordenadas geodésicas. De acuerdo con
+Hofmann-Wellenhof Hofmann-Wellenhof, Lichtenegger, y Wasle
+(\citeproc{ref-hofmann2008gnss}{2008}), este sistema permite describir
+la posición de un punto en el espacio tridimensional respecto a un
+modelo matemático de la Tierra, conocido como elipsoide de referencia
+(como el WGS84). El sistema se define mediante tres parámetros
+fundamentales: la \textbf{latitud}, que indica la distancia angular de
+un punto hacia el norte o el sur respecto a la línea del ecuador; la
+\textbf{longitud}, que representa la distancia angular hacia el este o
+el oeste medida a partir del meridiano de referencia (Greenwich); y la
+\textbf{altura elipsoidal}, que corresponde a la distancia vertical
+desde la superficie del elipsoide hasta el punto de interés. En el
+contexto de la navegación aérea y los Sistemas Globales de Navegación
+por Satélite (GNSS), estas coordenadas constituyen el estándar universal
+para georreferenciar trayectorias, lo que permite asociar cada punto de
+la ruta de vuelo con variables espaciales y meteorológicas específicas.
+
+\begin{figure}
+
+\centering{
+
+\includegraphics[width=\linewidth,height=2.60417in,keepaspectratio]{chapters/geodesica.png}
+
+}
+
+\caption{\label{fig-geodesica}Representación del Sistema de Coordenadas
+Geodésicas, mostrando la latitud (\(\varphi\)), la longitud
+(\(\lambda\)) y la altura elipsoidal (\(h\)) sobre el elipsoide de
+referencia.}
+
+\end{figure}%
 
 Para el análisis de navegación, la trayectoria completa se discretiza en
 \(N\) segmentos espaciales consecutivos. Cada segmento se representa
@@ -7128,6 +7160,11 @@ Hayashi, Takio. 1973. {«A Method of Estimating the Horizontal Phase
 Velocity of Atmospheric Waves from the Phase Difference of Spectral
 Components»}. \emph{Journal of the Meteorological Society of Japan} 51
 (4): 299-308. \url{https://doi.org/10.2151/jmsj1965.51.4_299}.
+
+\bibitem[\citeproctext]{ref-hofmann2008gnss}
+Hofmann-Wellenhof, B., H. Lichtenegger, y E. Wasle. 2008. \emph{GNSS --
+Global Navigation Satellite Systems: GPS, GLONASS, Galileo, and More}.
+Vienna: Springer.
 
 \bibitem[\citeproctext]{ref-horn2012matrix}
 Horn, Roger A., y Charles R. Johnson. 2012. \emph{Matrix Analysis}. 2.ª
