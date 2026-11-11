@@ -420,16 +420,25 @@ A partir de la aplicación del algoritmo PageRank descrita en la @sec-aplicaionp
 
 ### Análisis de rutas óptimas
 
-Una vez que el algoritmo PageRank ha jerarquizado la red territorial e identificado los 15 nodos con mayor centralidad estructural, el siguiente paso es determinar cómo conectar de manera eficiente el almacén central de Protección Civil en Tuxtla Gutiérrez ($v_0$) con cada uno de estos municipios prioritarios ($v_j$). Para ello se aplica el \textbf{algoritmo de Dijkstra}, un método de búsqueda voraz que resuelve el problema de la ruta más corta en grafos con pesos no negativos, explorando iterativamente los nodos accesibles desde el origen y actualizando las distancias acumuladas hasta garantizar el camino de menor costo hacia cada destino.
+### Análisis de rutas óptimas
 
-La particularidad fundamental de esta implementación radica en que los pesos de las aristas no corresponden a distancias euclidianas planas, sino a las \textbf{distancias geodésicas tridimensionales} $d^{(3D)}_{k,k+1}$ calculadas a partir de la fórmula de Vincenty y el Modelo Digital de Elevación SRTM. Matemáticamente, la ruta óptima $\mathcal{R}^*_{0j}$ se define como:
+Una vez que el algoritmo PageRank ha jerarquizado la red territorial e identificado los 15 nodos con mayor centralidad estructural, el siguiente paso es determinar cómo conectar de manera eficiente el almacén central de Protección Civil en Tuxtla Gutiérrez ($v_0$) con cada uno de estos municipios prioritarios ($v_j$). Para ello se aplica el **algoritmo de Dijkstra**, un método de búsqueda voraz que resuelve el problema de la ruta más corta en grafos con pesos no negativos, explorando iterativamente los nodos accesibles desde el origen y actualizando las distancias acumuladas hasta garantizar el camino de menor costo hacia cada destino.
 
-\begin{equation}
-    \mathcal{R}^*_{0j} = \arg\min_{\mathcal{R} \in P_{0j}} \sum_{(v_k, v_{k+1}) \in \mathcal{R}} d^{(3D)}_{k,k+1}
-\end{equation}
+La particularidad fundamental de esta implementación radica en que los pesos de las aristas no corresponden a distancias euclidianas planas, sino a las **distancias geodésicas tridimensionales** $d^{(3D)}_{k,k+1}$ calculadas a partir de la fórmula de Vincenty y el Modelo Digital de Elevación SRTM. Matemáticamente, la ruta óptima $\mathcal{R}^*_{0j}$ se define como:
+
+$$
+\mathcal{R}^*_{0j} = \arg\min_{\mathcal{R} \in P_{0j}} \sum_{(v_k, v_{k+1}) \in \mathcal{R}} d^{(3D)}_{k,k+1}
+$$
+
 donde $P_{0j}$ es el conjunto de todas las rutas posibles. Esta formulación garantiza que el algoritmo penalice correctamente las aristas que atraviesan pendientes topográficas severas, reflejando el verdadero costo operativo en la accidentada orografía chiapaneca.
 
-La Figura \ref{fig:dijkstra_chiapas} ilustra el resultado de esta ejecución, donde desde el nodo origen se despliegan las rutas óptimas hacia los 15 municipios prioritarios, mostrando cómo el algoritmo selecciona los corredores viales de menor costo 3D. Para garantizar la reproducibilidad y eficiencia computacional de este análisis, se utilizó la \textbf{implementación del algoritmo de Dijkstra disponible en la biblioteca \texttt{NetworkX} de Python}, configurada para procesar los pesos tridimensionales derivados del modelo de elevación.
+La implementación del algoritmo de Dijkstra se realizó utilizando la biblioteca **NetworkX** de Python, configurada para procesar grafos dirigidos ponderados con pesos no negativos. El grafo de entrada corresponde a la red territorial de Chiapas construida en la Sección 6.4, donde cada arista $(v_i, v_j)$ tiene como peso la distancia geodésica tridimensional $d_{ij}^{(3D)}$ calculada mediante la fórmula de Vincenty y el Modelo Digital de Elevación SRTM.
+
+El algoritmo se ejecutó desde el nodo origen $v_0$ correspondiente a las instalaciones de Protección Civil en Tuxtla Gutiérrez, calculando simultáneamente las rutas óptimas hacia los 15 municipios identificados con mayor centralidad estructural según el algoritmo PageRank (Sección 6.5). La complejidad computacional de esta implementación es $\mathcal{O}(|E| + |V| \log |V|)$, donde $|V| = 124$ es el número de municipios y $|E|$ el número de conexiones viales, resultando en tiempos de ejecución inferiores a un segundo en hardware estándar.
+
+La Figura @fig-dijkstra-chiapas ilustra el resultado de esta ejecución, donde se observan las rutas óptimas desplegadas desde el nodo origen hacia cada municipio prioritario. Los colores y grosores de las aristas representan las distancias 3D acumuladas, evidenciando cómo el algoritmo selecciona los corredores viales de menor costo topográfico, incluso cuando esto implica pasar por municipios intermedios como Copainalá o Ixtapa.
+
+![Ejecución del algoritmo de Dijkstra desde Protección Civil (Tuxtla Gutiérrez) hacia los 15 municipios con mayor centralidad PageRank. Los grosores de las aristas representan las distancias geodésicas 3D acumuladas.](chapters/dijkstra.png){#fig-dijkstra-chiapas fig-align="center"}
 
 
 ### Resultados cuantitativos
