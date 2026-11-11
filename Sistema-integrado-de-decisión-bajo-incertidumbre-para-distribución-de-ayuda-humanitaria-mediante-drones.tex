@@ -294,7 +294,7 @@ Gómez}
                 \textsc{\large QUE PARA OBTENER EL TÍTULO DE:}\\[0.3cm]
                 \textbf{\textsc{LICENCIADA EN MATEMÁTICAS APLICADAS}}\\[1.5cm]
                 \textsc{\large PRESENTA:}\\[0.3cm]
-                \textbf{\textsc{\large {ÁNGELA YANELI ORTIZ DIAZ}}}\\[2cm]
+                \textbf{\textsc{\large {ÁNGELA YANELI ORTIZ DIAZ X200101}}}\\[2cm]
                 {\large\scshape Director:\\[0.3cm]
                 {\textbf{\large Dr. Yofre Hernán García Gómez }}}\\[2.0cm]
                 \large{Tuxtla Gutiérrez, Chiapas a \today.}
@@ -316,6 +316,10 @@ Al Dr. Yofre Hernán García Gómez, mi asesor de tesis, por su paciencia, su di
 A cada uno de los docentes que me impartieron clases, por su constante disposición para enseñarnos, su gran calidez humana y la motivación que siempre nos brindaron. Agradezco su paciencia y la excelencia con la que compartieron sus conocimientos, los cuales han sido la base de mi desarrollo profesional.
 
 A mis compañeros y amigos, quienes con cada conversación y momento de convivencia, hicieron de mi estancia universitaria un periodo sumamente ameno y enriquecedor.
+
+
+Este trabajo de tesis se deriva del proyecto titulado: Modelación, simulación y control de sistemas dinámicos estocásticos aplicados a problemas de logística  y toma de decisiones bajo incertidumbre, registrado con la clave 01/FYM/RPI/040/26 en la dirección General de Investigación y Posgrado de la Universidad Autónoma de Chiapas y con el apoyo del proyecto de ciencia básica y de frontera SECIHTI No CBF-2025-I-4436.
+
 
 
 \renewcommand*\contentsname{Tabla de contenidos}
@@ -799,32 +803,27 @@ por columnas (\(\sum_i q_{ij} = 1\)), condición necesaria para
 interpretarla como el núcleo de un proceso de Markov discreto
 (\citeproc{ref-brin1998anatomy}{Brin y Page 1998}).
 
-\subsection{Aplicaciones a redes de transporte
-terrestre}\label{aplicaciones-a-redes-de-transporte-terrestre}
+Aplicaciones a redes de transporte terrestre
 
 En logística humanitaria, las redes ponderadas permiten cuantificar
 propiedades estructurales que son críticas para la planificación
 estratégica:
 
-\subsubsection{Medición de centralidad e influencia
-estructural}\label{mediciuxf3n-de-centralidad-e-influencia-estructural}
-
-El peso de las aristas no solo refleja distancia física, sino también la
-intensidad de la interacción entre nodos. Municipios con múltiples
-conexiones de bajo peso (corta distancia, alta accesibilidad) tienden a
-acumular mayor flujo potencial, convirtiéndose en centros naturales de
-distribución. Esta propiedad se cuantifica mediante medidas de
-centralidad espectral, como el vector PageRank, que asigna a cada nodo
-una puntuación proporcional a su importancia relativa en la red
+Medición de centralidad e influencia estructural El peso de las aristas
+no solo refleja distancia física, sino también la intensidad de la
+interacción entre nodos. Municipios con múltiples conexiones de bajo
+peso (corta distancia, alta accesibilidad) tienden a acumular mayor
+flujo potencial, convirtiéndose en centros naturales de distribución.
+Esta propiedad se cuantifica mediante medidas de centralidad espectral,
+como el vector PageRank, que asigna a cada nodo una puntuación
+proporcional a su importancia relativa en la red
 (\citeproc{ref-borgatti2005centrality}{Borgatti 2005}).
 
-\subsubsection{Evaluación de vulnerabilidad y
-robustez}\label{evaluaciuxf3n-de-vulnerabilidad-y-robustez}
-
-La sensibilidad de la red ante la interrupción de arcos o nodos puede
-analizarse mediante variaciones en la distribución estacionaria. Sea
-\(\pi\) el vector de centralidad original y \(\pi^{(e)}\) el vector tras
-eliminar el arco \(e\). El impacto relativo se mide como: \[
+Evaluación de vulnerabilidad y robustez La sensibilidad de la red ante
+la interrupción de arcos o nodos puede analizarse mediante variaciones
+en la distribución estacionaria. Sea \(\pi\) el vector de centralidad
+original y \(\pi^{(e)}\) el vector tras eliminar el arco \(e\). El
+impacto relativo se mide como: \[
 \Delta^{(e)} = \|\pi - \pi^{(e)}\|_1 = \sum_{i=1}^n |\pi_i - \pi_i^{(e)}|.
 \] Valores elevados de \(\Delta^{(e)}\) identifican enlaces críticos
 cuya falla redistribuye significativamente la importancia estructural de
@@ -2370,8 +2369,9 @@ a partir de cuantiles empíricos \(\{q_\alpha^*\}\) son asintóticamente
 válidos, incluso para procesos no gaussianos y no lineales comunes en
 meteorología.
 
-\subsubsection{Definición de las σ-álgebras de pasado y
-futuro}\label{definiciuxf3n-de-las-ux3c3-uxe1lgebras-de-pasado-y-futuro}
+\subsubsection{\texorpdfstring{Definición de las \(\sigma\)-álgebras de
+pasado y
+futuro}{Definición de las \textbackslash sigma-álgebras de pasado y futuro}}\label{definiciuxf3n-de-las-sigma-uxe1lgebras-de-pasado-y-futuro}
 
 Para completar la formulación teórica del coeficiente de mezcla fuerte,
 es necesario especificar la estructura de información representada por
@@ -2380,31 +2380,31 @@ las \(\sigma\) -álgebras \(\mathcal{F}_{-\infty}^0\) y
 estocástico definido sobre un espacio de probabilidad
 \((\Omega, \mathcal{F}, \mathbb{P})\).
 
-\textbf{Definición 4.2 (σ-álgebra generada por un subconjunto de
-variables).} Para cualquier conjunto de índices
+\textbf{Definición 4.2 (\(\sigma\)-álgebra generada por un subconjunto
+de variables).} Para cualquier conjunto de índices
 \(I \subseteq \mathbb{Z}\), denotamos por \(\mathcal{F}_I\) a la
-σ-álgebra generada por las variables aleatorias \(\{X_t : t \in I\}\),
-definida como la mínima σ-álgebra que hace medibles a todas las
-variables en dicho conjunto: \[
+\(\sigma\)-álgebra generada por las variables aleatorias
+\(\{X_t : t \in I\}\), definida como la mínima \(\sigma\)-álgebra que
+hace medibles a todas las variables en dicho conjunto: \[
 \mathcal{F}_I = \sigma\left(\{X_t : t \in I\}\right) = \sigma\left(\bigcup_{t \in I} X_t^{-1}(\mathcal{B}(\mathbb{R}))\right),
-\] donde \(\mathcal{B}(\mathbb{R})\) denota la σ-álgebra de Borel sobre
-los reales.
+\] donde \(\mathcal{B}(\mathbb{R})\) denota la \(\sigma\)-álgebra de
+Borel sobre los reales.
 
-Bajo esta notación, las σ-álgebras que aparecen en el coeficiente de
-mezcla se definen específicamente como:
+Bajo esta notación, las \(\sigma\)-álgebras que aparecen en el
+coeficiente de mezcla se definen específicamente como:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{σ-álgebra del pasado (\(\mathcal{F}_{-\infty}^0\)):}
+  \textbf{\(\sigma\)-álgebra del pasado (\(\mathcal{F}_{-\infty}^0\)):}
   Representa toda la información histórica disponible hasta el tiempo
   \(t=0\): \[
   \mathcal{F}_{-\infty}^0 := \sigma\left(\dots, X_{-1}, X_0\right) = \sigma\left(\{X_t : t \leq 0\}\right).
   \]
 \item
-  \textbf{σ-álgebra del futuro (\(\mathcal{F}_k^\infty\)):} Representa
-  la información generada por el proceso desde el tiempo \(t=k\) en
-  adelante: \[
+  \textbf{\(\sigma\)-álgebra del futuro (\(\mathcal{F}_k^\infty\)):}
+  Representa la información generada por el proceso desde el tiempo
+  \(t=k\) en adelante: \[
   \mathcal{F}_k^\infty := \sigma\left(X_k, X_{k+1}, \dots\right) = \sigma\left(\{X_t : t \geq k\}\right).
   \]
 \end{enumerate}
@@ -3561,13 +3561,14 @@ con mayor centralidad estructural según el algoritmo PageRank (Sección
 municipios y \(|E|\) el número de conexiones viales, resultando en
 tiempos de ejecución inferiores a un segundo en hardware estándar.
 
-La Figura Figura~\ref{fig-dijkstra-chiapas} ilustra el resultado de esta
+La Figura~\ref{fig-dijkstra-chiapas} ilustra el resultado de esta
 ejecución, donde se observan las rutas óptimas desplegadas desde el nodo
 origen hacia cada municipio prioritario. Los colores y grosores de las
 aristas representan las distancias 3D acumuladas, evidenciando cómo el
 algoritmo selecciona los corredores viales de menor costo topográfico,
 incluso cuando esto implica pasar por municipios intermedios como
-Copainalá o Ixtapa.
+Copainalá o Ixtapa. Para más detalles teóricos, véase Dijkstra
+(\citeproc{ref-dijkstra1959}{1959})
 
 \begin{figure}
 
@@ -3806,7 +3807,7 @@ contingencia, en los cuales el uso de drones permite reducir tiempos de
 respuesta y acceder a zonas con infraestructura terrestre limitada o
 afectada.
 
-\begin{tcolorbox}[enhanced jigsaw, bottomtitle=1mm, breakable, colframe=quarto-callout-note-color-frame, colback=white, toprule=.15mm, left=2mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, opacityback=0, coltitle=black, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, titlerule=0mm, opacitybacktitle=0.6, toptitle=1mm, arc=.35mm, leftrule=.75mm]
+\begin{tcolorbox}[enhanced jigsaw, colbacktitle=quarto-callout-note-color!10!white, bottomrule=.15mm, rightrule=.15mm, titlerule=0mm, left=2mm, leftrule=.75mm, coltitle=black, breakable, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame, toprule=.15mm, arc=.35mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota}, colback=white, bottomtitle=1mm, toptitle=1mm, opacityback=0]
 
 \textbf{Características operativas de la ruta}
 
@@ -3875,8 +3876,9 @@ espacio--temporal adecuado para estimación y pronóstico numérico.
 
 Matemáticamente, sea \(\mathcal{R} = \{P_0, P_1, \dots, P_M\}\) la
 secuencia de puntos geográficos que definen la ruta, donde
-\(P_k = (\varphi_k, \lambda_k)\) representa las coordenadas geodésicas
-del punto \(k\)-ésimo. La partición en segmentos se construye mediante:
+\(P_k = (\varphi_k, \lambda_k)\) representa las \textbf{coordenadas
+geodésicas} del punto \(k\)-ésimo. La partición en segmentos se
+construye mediante:
 
 \[
 s_i = \frac{1}{|\mathcal{I}_i|} \sum_{k \in \mathcal{I}_i} d(P_0, P_k), \quad i = 1, \dots, N,
@@ -5535,9 +5537,8 @@ parámetro al llamar a la función \texttt{block\_bootstrap\_forecasts()},
 permitiendo así adaptar el método a las características de cada variable
 meteorológica.
 
-El
-\href{https://github.com/AngelaOrtiz25/tesis_angela/tree/gh-pages/datos_codigos/metodologia_capitulo6}{código
-completo} está disponible en el repositorio
+El código completo esta disponible en este
+\href{https://github.com/AngelaOrtiz25/tesis_angela/tree/gh-pages/datos_codigos/metodologia_capitulo6}{enlace}
 
 \subsection{Resultados empíricos de la cuantificación de
 incertidumbre}\label{resultados-empuxedricos-de-la-cuantificaciuxf3n-de-incertidumbre}
@@ -7152,6 +7153,11 @@ Cham, Switzerland: Springer.
 Cormen, Thomas H., Charles E. Leiserson, Ronald L. Rivest, y Clifford
 Stein. 2022. \emph{Introduction to Algorithms}. 4.ª ed. Cambridge: MIT
 Press.
+
+\bibitem[\citeproctext]{ref-dijkstra1959}
+Dijkstra, E. W. 1959. {«A note on two problems in connexion with
+graphs»}. \emph{Numerische Mathematik} 1 (1): 269-71.
+\url{https://doi.org/10.1007/BF01386390}.
 
 \bibitem[\citeproctext]{ref-durrett2019probability}
 Durrett, Rick. 2019. \emph{Probability: Theory and Examples}. 5.ª ed.

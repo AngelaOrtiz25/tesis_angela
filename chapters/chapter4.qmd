@@ -54,7 +54,7 @@ Para establecer la posición exacta de un punto en la superficie terrestre, se u
 
 Para el análisis de navegación, la trayectoria completa se discretiza en $N$ segmentos espaciales consecutivos. Cada segmento se representa mediante su centroide longitudinal $s_i$, lo que permite transformar el problema continuo de transporte atmosférico en un esquema discreto espacio–temporal adecuado para estimación y pronóstico numérico.
 
-Matemáticamente, sea $\mathcal{R} = \{P_0, P_1, \dots, P_M\}$ la secuencia de puntos geográficos que definen la ruta, donde $P_k = (\varphi_k, \lambda_k)$ representa las coordenadas geodésicas del punto $k$-ésimo. La partición en segmentos se construye mediante:
+Matemáticamente, sea $\mathcal{R} = \{P_0, P_1, \dots, P_M\}$ la secuencia de puntos geográficos que definen la ruta, donde $P_k = (\varphi_k, \lambda_k)$ representa las **coordenadas geodésicas** del punto $k$-ésimo. La partición en segmentos se construye mediante:
 
 $$
 s_i = \frac{1}{|\mathcal{I}_i|} \sum_{k \in \mathcal{I}_i} d(P_0, P_k), \quad i = 1, \dots, N,
@@ -1020,7 +1020,7 @@ La elección de la longitud del bloque $L$ constituye un compromiso entre preser
 
 Esta adaptación refleja que la escala temporal de correlación varía significativamente entre diferentes variables atmosféricas, y que bloques más largos son necesarios para variables con mayor inercia física. En la implementación, la longitud de bloque se especifica como parámetro al llamar a la función `block_bootstrap_forecasts()`, permitiendo así adaptar el método a las características de cada variable meteorológica.
 
-El [código completo](https://github.com/AngelaOrtiz25/tesis_angela/tree/gh-pages/datos_codigos/metodologia_capitulo6) está disponible en el repositorio
+El código completo esta disponible en este [enlace](https://github.com/AngelaOrtiz25/tesis_angela/tree/gh-pages/datos_codigos/metodologia_capitulo6) 
 
 ### Resultados empíricos de la cuantificación de incertidumbre
 

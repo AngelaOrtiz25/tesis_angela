@@ -503,7 +503,7 @@ Figura&nbsp;7.1: Representación del Sistema de Coordenadas Geodésicas, mostran
 </figure>
 </div>
 <p>Para el análisis de navegación, la trayectoria completa se discretiza en <span class="math inline">\(N\)</span> segmentos espaciales consecutivos. Cada segmento se representa mediante su centroide longitudinal <span class="math inline">\(s_i\)</span>, lo que permite transformar el problema continuo de transporte atmosférico en un esquema discreto espacio–temporal adecuado para estimación y pronóstico numérico.</p>
-<p>Matemáticamente, sea <span class="math inline">\(\mathcal{R} = \{P_0, P_1, \dots, P_M\}\)</span> la secuencia de puntos geográficos que definen la ruta, donde <span class="math inline">\(P_k = (\varphi_k, \lambda_k)\)</span> representa las coordenadas geodésicas del punto <span class="math inline">\(k\)</span>-ésimo. La partición en segmentos se construye mediante:</p>
+<p>Matemáticamente, sea <span class="math inline">\(\mathcal{R} = \{P_0, P_1, \dots, P_M\}\)</span> la secuencia de puntos geográficos que definen la ruta, donde <span class="math inline">\(P_k = (\varphi_k, \lambda_k)\)</span> representa las <strong>coordenadas geodésicas</strong> del punto <span class="math inline">\(k\)</span>-ésimo. La partición en segmentos se construye mediante:</p>
 <p><span class="math display">\[
 s_i = \frac{1}{|\mathcal{I}_i|} \sum_{k \in \mathcal{I}_i} d(P_0, P_k), \quad i = 1, \dots, N,
 \]</span></p>
@@ -1320,7 +1320,7 @@ R_j(t) + \dfrac{s_i^{\text{up}} - s_j}{s_{j+1}-s_j}\bigl(R_{j+1}(t)-R_j(t)\bigr)
 </tbody>
 </table>
 <p>Esta adaptación refleja que la escala temporal de correlación varía significativamente entre diferentes variables atmosféricas, y que bloques más largos son necesarios para variables con mayor inercia física. En la implementación, la longitud de bloque se especifica como parámetro al llamar a la función <code>block_bootstrap_forecasts()</code>, permitiendo así adaptar el método a las características de cada variable meteorológica.</p>
-<p>El <a href="https://github.com/AngelaOrtiz25/tesis_angela/tree/gh-pages/datos_codigos/metodologia_capitulo6">código completo</a> está disponible en el repositorio</p>
+<p>El código completo esta disponible en este <a href="https://github.com/AngelaOrtiz25/tesis_angela/tree/gh-pages/datos_codigos/metodologia_capitulo6">enlace</a></p>
 </section>
 <section id="resultados-empíricos-de-la-cuantificación-de-incertidumbre" class="level3" data-number="7.8.3">
 <h3 data-number="7.8.3" class="anchored" data-anchor-id="resultados-empíricos-de-la-cuantificación-de-incertidumbre"><span class="header-section-number">7.8.3</span> Resultados empíricos de la cuantificación de incertidumbre</h3>

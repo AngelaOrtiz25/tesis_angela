@@ -481,24 +481,24 @@ $$
 $$
 Este resultado garantiza que los intervalos de confianza construidos a partir de cuantiles empíricos $\{q_\alpha^*\}$ son asintóticamente válidos, incluso para procesos no gaussianos y no lineales comunes en meteorología.
 
-#### Definición de las σ-álgebras de pasado y futuro
+#### Definición de las $\sigma$-álgebras de pasado y futuro
 
 Para completar la formulación teórica del coeficiente de mezcla fuerte, es necesario especificar la estructura de información representada por las $\sigma$ -álgebras $\mathcal{F}_{-\infty}^0$ y $\mathcal{F}_k^\infty$. Sea $\{X_t\}_{t \in \mathbb{Z}}$ el proceso estocástico definido sobre un espacio de probabilidad $(\Omega, \mathcal{F}, \mathbb{P})$.
 
-**Definición 4.2 (σ-álgebra generada por un subconjunto de variables).** Para cualquier conjunto de índices $I \subseteq \mathbb{Z}$, denotamos por $\mathcal{F}_I$ a la σ-álgebra generada por las variables aleatorias $\{X_t : t \in I\}$, definida como la mínima σ-álgebra que hace medibles a todas las variables en dicho conjunto:
+**Definición 4.2 ($\sigma$-álgebra generada por un subconjunto de variables).** Para cualquier conjunto de índices $I \subseteq \mathbb{Z}$, denotamos por $\mathcal{F}_I$ a la $\sigma$-álgebra generada por las variables aleatorias $\{X_t : t \in I\}$, definida como la mínima $\sigma$-álgebra que hace medibles a todas las variables en dicho conjunto:
 $$
 \mathcal{F}_I = \sigma\left(\{X_t : t \in I\}\right) = \sigma\left(\bigcup_{t \in I} X_t^{-1}(\mathcal{B}(\mathbb{R}))\right),
 $$
-donde $\mathcal{B}(\mathbb{R})$ denota la σ-álgebra de Borel sobre los reales.
+donde $\mathcal{B}(\mathbb{R})$ denota la $\sigma$-álgebra de Borel sobre los reales.
 
-Bajo esta notación, las σ-álgebras que aparecen en el coeficiente de mezcla se definen específicamente como:
+Bajo esta notación, las $\sigma$-álgebras que aparecen en el coeficiente de mezcla se definen específicamente como:
 
-1.  **σ-álgebra del pasado ($\mathcal{F}_{-\infty}^0$):** Representa toda la información histórica disponible hasta el tiempo $t=0$:
+1.  **$\sigma$-álgebra del pasado ($\mathcal{F}_{-\infty}^0$):** Representa toda la información histórica disponible hasta el tiempo $t=0$:
     $$
     \mathcal{F}_{-\infty}^0 := \sigma\left(\dots, X_{-1}, X_0\right) = \sigma\left(\{X_t : t \leq 0\}\right).
     $$
 
-2.  **σ-álgebra del futuro ($\mathcal{F}_k^\infty$):** Representa la información generada por el proceso desde el tiempo $t=k$ en adelante:
+2.  **$\sigma$-álgebra del futuro ($\mathcal{F}_k^\infty$):** Representa la información generada por el proceso desde el tiempo $t=k$ en adelante:
     $$
     \mathcal{F}_k^\infty := \sigma\left(X_k, X_{k+1}, \dots\right) = \sigma\left(\{X_t : t \geq k\}\right).
     $$

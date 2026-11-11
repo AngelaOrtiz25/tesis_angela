@@ -142,14 +142,14 @@ q_{ij} = \frac{\tilde{w}_{ij}}{\sum_{k=1}^n \tilde{w}_{kj}}, \quad \text{si } \s
 $$
 Esta transformación garantiza que $Q$ sea una matriz estocástica por columnas ($\sum_i q_{ij} = 1$), condición necesaria para interpretarla como el núcleo de un proceso de Markov discreto [@brin1998anatomy].
 
-### Aplicaciones a redes de transporte terrestre
+Aplicaciones a redes de transporte terrestre
 
 En logística humanitaria, las redes ponderadas permiten cuantificar propiedades estructurales que son críticas para la planificación estratégica:
 
-#### Medición de centralidad e influencia estructural
+Medición de centralidad e influencia estructural
 El peso de las aristas no solo refleja distancia física, sino también la intensidad de la interacción entre nodos. Municipios con múltiples conexiones de bajo peso (corta distancia, alta accesibilidad) tienden a acumular mayor flujo potencial, convirtiéndose en centros naturales de distribución. Esta propiedad se cuantifica mediante medidas de centralidad espectral, como el vector PageRank, que asigna a cada nodo una puntuación proporcional a su importancia relativa en la red [@borgatti2005centrality].
 
-#### Evaluación de vulnerabilidad y robustez
+Evaluación de vulnerabilidad y robustez
 La sensibilidad de la red ante la interrupción de arcos o nodos puede analizarse mediante variaciones en la distribución estacionaria. Sea $\pi$ el vector de centralidad original y $\pi^{(e)}$ el vector tras eliminar el arco $e$. El impacto relativo se mide como:
 $$
 \Delta^{(e)} = \|\pi - \pi^{(e)}\|_1 = \sum_{i=1}^n |\pi_i - \pi_i^{(e)}|.
