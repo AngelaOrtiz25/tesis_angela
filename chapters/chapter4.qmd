@@ -52,6 +52,7 @@ Para establecer la posición exacta de un punto en la superficie terrestre, se u
 
 ![Representación del Sistema de Coordenadas Geodésicas, mostrando la latitud ($\varphi$), la longitud ($\lambda$) y la altura elipsoidal ($h$) sobre el elipsoide de referencia.](geodesica.png){#fig-geodesica height="250px" fig-align="center"}
 
+
 Para el análisis de navegación, la trayectoria completa se discretiza en $N$ segmentos espaciales consecutivos. Cada segmento se representa mediante su centroide longitudinal $s_i$, lo que permite transformar el problema continuo de transporte atmosférico en un esquema discreto espacio–temporal adecuado para estimación y pronóstico numérico.
 
 Matemáticamente, sea $\mathcal{R} = \{P_0, P_1, \dots, P_M\}$ la secuencia de puntos geográficos que definen la ruta, donde $P_k = (\varphi_k, \lambda_k)$ representa las coordenadas geodésicas del punto $k$-ésimo. La partición en segmentos se construye mediante:
